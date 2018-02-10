@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/native/background-geolocation/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>Ionic Native: Harness the power of Native APIs</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-background-geolocation"
+        class="v2 docs fluid page-background-geolocation has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../../index.html">
+        <img src="../../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../../index.html">
+        <img src="../../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../../index.html">Framework</a></li>
+<li><a href="../../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../../support.html">Customer Support</a></li>
+    <li><a href="../../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <ul ng-controller="DocsNavCtrl" class="native-docs">
+  <li class="back-to-main">
+    <a href="../../index.html">Back to Main Docs</a>
+  </li>
+  <li class="capitalize ">
+  <a href="../index.html">Overview</a>
+</li>
+<li class="capitalize ">
+  <a href="../browser.html">Browser Usage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/3d-touch">3D Touch</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/action-sheet">Action Sheet</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/admob">AdMob</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/admob-free">AdMob Free</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/alipay">Alipay</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/android-fingerprint-auth">Android Fingerprint Auth</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/android-full-screen">Android Full Screen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/android-permissions">Android Permissions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-availability">App Availability</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-minimize">App Minimize</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-preferences">App Preferences</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-rate">App Rate</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-update">App Update</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-version">App Version</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/appodeal">Appodeal</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/autostart">Autostart</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/background-fetch">Background Fetch</a>
+</li>
+<li class="capitalize active">
+  <a href="http://ionicframework.com/docs/native/background-geolocation">Background Geolocation</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/background-mode">Background Mode</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/barcode-scanner">Barcode Scanner</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/base64-to-gallery">Base64 To Gallery</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/battery-status">Battery Status</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/ble">BLE</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/bluetooth-serial">Bluetooth Serial</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/brightness">Brightness</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/broadcaster">Broadcaster</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/browser-tab">Browser Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/calendar">Calendar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/call-number">Call Number</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/camera">Camera</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/card-io">Card IO</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/clipboard">Clipboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/code-push">Code Push</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/contacts">Contacts</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/couchbase-lite">Couchbase Lite</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/crop">Crop</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/date-picker">Date Picker</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/db-meter">DB Meter</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/deeplinks">Deeplinks</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device">Device</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-accounts">Device Accounts</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-feedback">Device Feedback</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-motion">Device Motion</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-orientation">Device Orientation</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/diagnostic">Diagnostic</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/dialogs">Dialogs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/document-viewer">Document Viewer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/email-composer">Email Composer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/estimote-beacons">Estimote Beacons</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/facebook">Facebook</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/fcm">FCM</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file">File</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-chooser">File Chooser</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-encryption">File Encryption</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-opener">File Opener</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-path">File Path</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/fingerprint-aio">Fingerprint AIO</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/flashlight">Flashlight</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/flurry-analytics">Flurry Analytics</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/geofence">Geofence</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/geolocation">Geolocation</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/globalization">Globalization</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/google-analytics">Google Analytics</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/google-maps">Google Maps</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/google-plus">Google Plus</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/gyroscope">Gyroscope</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/header-color">Header Color</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/health">Health</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/health-kit">Health Kit</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/http">HTTP</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/httpd">Httpd</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/ibeacon">IBeacon</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/image-picker">Image Picker</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/image-resizer">Image Resizer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/in-app-browser">In App Browser</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/in-app-purchase">In App Purchase</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/insomnia">Insomnia</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/instagram">Instagram</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/intel-security">Intel Security</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/intercom">Intercom</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/is-debug">Is Debug</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/jins-meme">Jins Meme</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/keychain">Keychain</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/launch-navigator">Launch Navigator</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/launch-review">Launch Review</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/linkedin">LinkedIn</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/local-notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/location-accuracy">Location Accuracy</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/market">Market</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/media">Media</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/media-capture">Media Capture</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/mixpanel">Mixpanel</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/mobile-accessibility">Mobile Accessibility</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/music-controls">Music Controls</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-audio">Native Audio</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-geocoder">Native Geocoder</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-keyboard">Native Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-page-transitions">Native Page Transitions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-storage">Native Storage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/network">Network</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/nfc">NFC</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/onesignal">OneSignal</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/paypal">PayPal</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/pedometer">Pedometer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/phonegap-local-notification">Phonegap Local Notification</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/photo-library">Photo Library</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/photo-viewer">Photo Viewer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/pin-dialog">Pin Dialog</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/plnobject">PLNObject</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/power-management">Power Management</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/printer">Printer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/push">Push</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/safari-view-controller">Safari View Controller</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/screen-orientation">Screen Orientation</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/screenshot">Screenshot</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/secure-storage">Secure Storage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/serial">Serial</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/shake">Shake</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sim">Sim</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sms">SMS</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/social-sharing">Social Sharing</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/speech-recognition">Speech Recognition</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/spinner-dialog">Spinner Dialog</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/splash-screen">Splash Screen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sqlite">SQLite</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sqlite-porter">SQLite Porter</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/status-bar">Status Bar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/stepcounter">Stepcounter</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/streaming-media">Streaming Media</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/stripe">Stripe</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/taptic-engine">Taptic Engine</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/text-to-speech">Text To Speech</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/themeable-browser">Themeable Browser</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/toast">Toast</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/touch-id">Touch ID</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/transfer">Transfer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/twitter-connect">Twitter Connect</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/unique-device-id">Unique Device ID</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/user-agent">User Agent</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/vibration">Vibration</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/video-editor">Video Editor</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/video-player">Video Player</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/youtube-video-player">Youtube Video Player</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/zbar">ZBar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/zeroconf">Zeroconf</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/zip">Zip</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/backlight">Backlight <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/camera-preview">Camera Preview <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/firebase">Firebase <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/hotspot">Hotspot <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-ringtones">Native Ringtones <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/navigation-bar">Navigation Bar <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/pinterest">Pinterest <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/rollbar">Rollbar <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/video-capture-plus">Video Capture Plus <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/web-intent">Web Intent <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/wheelselector-plugin">WheelSelector Plugin <span class="beta">&beta;</span></a>
+</li>
+
+</ul>
+
+    
+  </nav>
+  
+  <main>
+    <h1 class="api-title">Background Geolocation</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/@ionic-native/plugins/background-geolocation/index.ts#L287">
+  Improve this doc
+</a></p>
+
+<p>This plugin provides foreground and background geolocation with battery-saving &quot;circular region monitoring&quot; and &quot;stop detection&quot;. For
+more detail, please see <a href="https://github.com/mauron85/cordova-plugin-background-geolocation">https://github.com/mauron85/cordova-plugin-background-geolocation</a></p>
+
+<p>Repo:
+  <a href="https://github.com/mauron85/cordova-plugin-background-geolocation">
+    https://github.com/mauron85/cordova-plugin-background-geolocation
+  </a>
+</p>
+
+<h2>Installation</h2>
+<ol class="installation">
+  <li>Install the Cordova and Ionic Native plugins:<br />
+    <pre><code class="nohighlight">$ ionic cordova plugin add cordova-plugin-mauron85-background-geolocation
+$ npm install --save @ionic-native/background-geolocation
+</code></pre>
+  </li>
+  <li><a href="../index.html#Add_Plugins_to_Your_App_Module">Add this plugin to your app's module</a></li>
+</ol>
+
+<h2>Supported platforms</h2>
+<ul>
+  <li>iOS</li><li>Android</li><li>Windows Phone 8</li>
+</ul>
+
+<h2>Usage</h2>
+<p>BackgroundGeolocation must be called within app.ts and or before Geolocation. Otherwise the platform will not ask you for background tracking permission.</p>
+<pre><code class="lang-typescript">import { BackgroundGeolocation, BackgroundGeolocationConfig } from &#39;@ionic-native/background-geolocation&#39;;
+
+constructor(private backgroundGeolocation: BackgroundGeolocation) { }
+
+...
+
+const config: BackgroundGeolocationConfig = {
+            desiredAccuracy: 10,
+            stationaryRadius: 20,
+            distanceFilter: 30,
+            debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+            stopOnTerminate: false, // enable this to clear background location settings when the app terminates
+    };
+
+this.backgroundGeolocation.configure(config)
+  .subscribe((location: BackgroundGeolocationResponse) =&gt; {
+
+    console.log(location);
+
+    // IMPORTANT:  You must execute the finish method here to inform the native plugin that you&#39;re finished,
+    // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
+    // IF YOU DON&#39;T, ios will CRASH YOUR APP for spending too much time in the background.
+    this.backgroundGeolocation.finish(); // FOR IOS ONLY
+
+  });
+
+// start recording location
+this.backgroundGeolocation.start();
+
+// If you wish to turn OFF background-tracking, call the #stop method.
+this.backgroundGeolocation.stop();
+</code></pre>
+
+<h2>Instance Members</h2>
+<h3><a class="anchor" name="LocationProvider" href="#LocationProvider"></a><code>LocationProvider</code></h3>
+
+<p>Set location service provider @see https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers </p>
+
+<p>Possible values:
+ ANDROID_DISTANCE_FILTER_PROVIDER: 0, 
+ ANDROID_ACTIVITY_PROVIDER: 1 </p>
+
+<h3><a class="anchor" name="Accuracy" href="#Accuracy"></a><code>Accuracy</code></h3>
+
+<p>Desired accuracy in meters. Possible values [0, 10, 100, 1000]. 
+The lower the number, the more power devoted to GeoLocation resulting in higher accuracy readings. 
+1000 results in lowest power drain and least accurate readings. </p>
+
+<p>Possible values:
+ HIGH: 0 
+ MEDIUM: 10 
+ LOW: 100 
+ PASSIVE: 1000</p>
+
+<p>enum {number}</p>
+
+<h3><a class="anchor" name="Mode" href="#Mode"></a><code>Mode</code></h3>
+
+<p>Used in the switchMode function </p>
+
+<p>Possible values:
+ BACKGROUND: 0
+ FOREGROUND: 1 </p>
+
+<h3><a class="anchor" name="configure" href="#configure"></a><code>configure(options)</code></h3>
+
+<p>Configure the plugin.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      options</td>
+    <td>
+      <code>BackgroundGeolocationConfig</code>
+    </td>
+    <td>
+      <p>options An object of type Config</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Observable&lt;BackgroundGeolocationResponse&gt;</code></p>
+</div>
+<h3><a class="anchor" name="start" href="#start"></a><code>start()</code></h3>
+
+<p>Turn ON the background-geolocation system.
+The user will be tracked whenever they suspend the app.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="stop" href="#stop"></a><code>stop()</code></h3>
+
+<p>Turn OFF background-tracking</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="finish" href="#finish"></a><code>finish()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;<strong class="tag">Windows Phone</strong>&nbsp;</p>
+
+<p>Inform the native plugin that you’re finished, the background-task may be completed</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="changePace" href="#changePace"></a><code>changePace(isMoving)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;<strong class="tag">Windows Phone</strong>&nbsp;</p>
+
+<p>Force the plugin to enter “moving” or “stationary” state</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      isMoving</td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="setConfig" href="#setConfig"></a><code>setConfig(options)</code></h3>
+
+<p>Setup configuration</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      options</td>
+    <td>
+      <code>BackgroundGeolocationConfig</code>
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getStationaryLocation" href="#getStationaryLocation"></a><code>getStationaryLocation()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;<strong class="tag">Windows Phone</strong>&nbsp;</p>
+
+<p>Returns current stationaryLocation if available. null if not</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;Location&gt;</code></p>
+</div>
+<h3><a class="anchor" name="onStationary" href="#onStationary"></a><code>onStationary()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;<strong class="tag">Windows Phone</strong>&nbsp;</p>
+
+<p>Add a stationary-region listener. Whenever the devices enters “stationary-mode”,
+your #success callback will be executed with #location param containing #radius of region</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isLocationEnabled" href="#isLocationEnabled"></a><code>isLocationEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Check if location is enabled on the device</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;number&gt;</code> Returns a promise with int argument that takes values 0, 1 (true).</p>
+</div>
+<h3><a class="anchor" name="showAppSettings" href="#showAppSettings"></a><code>showAppSettings()</code></h3>
+
+<p>Display app settings to change permissions</p>
+
+<h3><a class="anchor" name="showLocationSettings" href="#showLocationSettings"></a><code>showLocationSettings()</code></h3>
+
+<p>Display device location settings</p>
+
+<h3><a class="anchor" name="watchLocationMode" href="#watchLocationMode"></a><code>watchLocationMode()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Method can be used to detect user changes in location services settings.
+If user enable or disable location services then success callback will be executed.
+In case or error (SettingNotFoundException) fail callback will be executed.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="stopWatchingLocationMode" href="#stopWatchingLocationMode"></a><code>stopWatchingLocationMode()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Stop watching for location mode changes.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getLocations" href="#getLocations"></a><code>getLocations()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Method will return all stored locations.
+Locations are stored when:</p>
+<ul>
+  <li>config.stopOnTerminate is false and main activity was killed
+by the system
+ or</li>
+  <li>option.debug is true</li>
+</ul>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getValidLocations" href="#getValidLocations"></a><code>getValidLocations()</code></h3>
+
+<p>Method will return locations, which has not been yet posted to server. NOTE: Locations does contain locationId. </p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="deleteLocation" href="#deleteLocation"></a><code>deleteLocation(locationId)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Delete stored location by given locationId.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      locationId</td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="deleteAllLocations" href="#deleteAllLocations"></a><code>deleteAllLocations()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Delete all stored locations.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="switchMode" href="#switchMode"></a><code>switchMode(modeId)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Normally plugin will handle switching between BACKGROUND and FOREGROUND mode itself.
+Calling switchMode you can override plugin behavior and force plugin to switch into other mode.</p>
+
+<p>In FOREGROUND mode plugin uses iOS local manager to receive locations and behavior is affected by option.desiredAccuracy and option.distanceFilter.
+In BACKGROUND mode plugin uses significant changes and region monitoring to receive locations and uses option.stationaryRadius only. </p>
+
+<p>BackgroundGeolocation.Mode.FOREGROUND
+BackgroundGeolocation.Mode.BACKGROUND 
+*</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      modeId</td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getLogEntries" href="#getLogEntries"></a><code>getLogEntries()</code></h3>
+
+<p>Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries. 
+@see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information. </p>
+
+<p>@param limit {number} Limits the number of entries </p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+
+<h2><a class="anchor" name="BackgroundGeolocationResponse" href="#BackgroundGeolocationResponse"></a>BackgroundGeolocationResponse</h2>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      locationId
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>ID of location as stored in DB (or null)</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      serviceProvider
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>Service provider</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      debug
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>true if location recorded as part of debug</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      time
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>UTC time of this fix, in milliseconds since January 1, 1970.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      latitude
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>latitude, in degrees.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      longitude
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>longitude, in degrees.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      accuracy
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>estimated accuracy of this location, in meters.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      speed
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>speed if it is available, in meters/second over ground.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      altitude
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>altitude if available, in meters above the WGS 84 reference ellipsoid.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      altitudeAccuracy
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>accuracy of the altitude if available.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      bearing
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>bearing, in degrees.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      coords
+    </td>
+    <td>
+      <code>Coordinates</code>
+    </td>
+    <td>
+      <p>A Coordinates object defining the current location</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      timestamp
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>A timestamp representing the time at which the location was retrieved.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<h2><a class="anchor" name="BackgroundGeolocationConfig" href="#BackgroundGeolocationConfig"></a>BackgroundGeolocationConfig</h2>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      desiredAccuracy
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>Desired accuracy in meters. Possible values [0, 10, 100, 1000]. The lower
+the number, the more power devoted to GeoLocation resulting in higher
+accuracy readings. 1000 results in lowest power drain and least accurate
+readings. @see Apple docs (<a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instp/CLLocationManager/desiredAccuracy">https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instp/CLLocationManager/desiredAccuracy</a>)</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      stationaryRadius
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>Stationary radius in meters. When stopped, the minimum distance the device
+must move beyond the stationary location for aggressive background-tracking
+to engage.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      debug
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>When enabled, the plugin will emit sounds for life-cycle events of
+background-geolocation! See debugging sounds table.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      distanceFilter
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>The minimum distance (measured in meters) a device must move horizontally
+before an update event is generated. @see Apple docs. (<a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instp/CLLocationManager/distanceFilter">https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instp/CLLocationManager/distanceFilter</a>)</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      stopOnTerminate
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>IOS, ANDROID ONLY
+Enable this in order to force a stop() when the application terminated
+(e.g. on iOS, double-tap home button, swipe away the app).o</p>
+<p>Defaults to true</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      startOnBoot
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY 
+Start background service on device boot. </p>
+<p>Defaults to false</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      startForeground
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY 
+If false location service will not be started in foreground and no notification will be shown.</p>
+<p>Defaults to true</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      interval
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>ANDROID, WP8 ONLY
+When using BackgroundGeolocation.LocationProvider.ANDROID_DISTANCE_FILTER_PROVIDER:
+The minimum time interval between location updates in milliseconds.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      notificationTitle
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY
+Custom notification title in the drawer.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      notificationText
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY
+Custom notification text in the drawer.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      notificationIconColor
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY
+The accent color to use for notification. Eg. #4CAF50.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      notificationIconLarge
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY 
+The filename of a custom notification icon. See android quirks. 
+NOTE: Only available for API Level &gt;=21.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      notificationIconSmall
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY 
+The filename of a custom notification icon. See android quirks. 
+NOTE: Only available for API Level &gt;=21.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      locationProvider
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY
+Set location service provider @see wiki (<a href="https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers">https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers</a>)</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      activityType
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>IOS ONLY
+[AutomotiveNavigation, OtherNavigation, Fitness, Other] Presumably,
+this affects iOS GPS algorithm. @see Apple docs for more information
+(<a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instp/CLLocationManager/activityType">https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instp/CLLocationManager/activityType</a>)</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      pauseLocationUpdates
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>IOS ONLY 
+Pauses location updates when app is paused </p>
+<p>Defaults to true</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      url
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>Server url where to send HTTP POST with recorded locations </p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      syncUrl
+    </td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>Server url where to send fail to post locations </p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      syncThreshold
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>Specifies how many previously failed locations will be sent to server at once </p>
+<p>Defaults to 100</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      httpHeaders
+    </td>
+    <td>
+      <code>any</code>
+    </td>
+    <td>
+      <p>Optional HTTP headers sent along in HTTP request</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      saveBatteryOnBackground
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>IOS ONLY 
+Switch to less accurate significant changes and region monitory when in background (default)</p>
+<p>Defaults to 100</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      maxLocations
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>Limit maximum number of locations stored into db </p>
+<p>Defaults to 10000</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      fastestInterval
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY with BackgroundGeolocation.LocationProvider.ANDROID_ACTIVITY_PROVIDER</p>
+<p>Fastest rate in milliseconds at which your app can handle location updates.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      activitiesInterval
+    </td>
+    <td>
+      <code>number</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY with BackgroundGeolocation.LocationProvider.ANDROID_ACTIVITY_PROVIDER</p>
+<p>Rate in milliseconds at which activity recognition occurs. Larger values will result in fewer activity detections while improving battery life.</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      stopOnStillActivity
+    </td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>ANDROID ONLY with BackgroundGeolocation.LocationProvider.ANDROID_ACTIVITY_PROVIDER</p>
+<p>stop() is forced, when the STILL activity is detected (default is true)</p>
+
+      <em>(optional)</em>
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/native/background-geolocation/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:21 GMT -->
+</html>

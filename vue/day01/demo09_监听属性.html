@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  <input type="text" v-model="kw"/>
+  {{msg}}
+</div>
+
+<script>
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world',
+      kw:''
+    },
+    watch:{
+      kw: function (newValue,oldValue) {
+        console.log(
+          'oldValue is '+oldValue+" now is "+newValue);
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

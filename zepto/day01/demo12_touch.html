@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <!-- meta:vp  -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta charset="UTF-8">
+  <script src="js/zepto_multiple.js"></script>
+  <title></title>
+</head>
+<body>
+
+<button>btn1</button>
+
+<div>
+  是完美世界推出的一款四维无界多端网游。将涵盖客户端、web、体感、TV、手机、PAD等多个平台,让用户体验到在前所未有的
+</div>
+
+<script>
+
+  //touch模块 是需要在移动端生效
+  
+  $('button').on('longTap', function () {
+    console.log('btn is longTapped');
+  });
+
+  //滑动事件
+
+  //处理滑动事件有可能会出现的异常
+  document.addEventListener(
+    'touchmove',
+    function (event) {
+      event.preventDefault();
+    },
+    false)
+
+  $('div').on('tap', function () {
+    console.log('is tapped...');
+  })
+  $('div').on('swipe', function () {
+    console.log('is swiping...');
+  })
+
+  $('div').on('swipeDown', function () {
+    console.log('swipe to down triggered');
+  })
+
+</script>
+
+
+
+
+
+</body>
+</html>

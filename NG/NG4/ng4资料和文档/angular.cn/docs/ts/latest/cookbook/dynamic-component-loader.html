@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/dynamic-component-loader.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:38 GMT -->
+<head><title>动态组件加载器 - ts - COOKBOOK</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent is-selected">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item is-selected"><a href="dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="dynamic-component-loader.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/cookbook/dynamic-component-loader.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/cookbook/dynamic-component-loader.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">动态组件加载器 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">如何动态加载组件</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>Component templates are not always fixed. An application may need to load new components at runtime.</p>
+<p>组件的模板不会永远是固定的。应用可能会需要在运行期间加载一些新的组件。</p>
+<p>This cookbook shows you how to use <code>ComponentFactoryResolver</code> to add components dynamically.</p>
+<p>这本烹饪书为你展示如何使用<code>ComponentFactoryResolver</code>来动态添加组件。</p>
+<p><a id="toc"></a></p>
+<h1 id="contents">Contents</h1>
+<h1 id="-">目录</h1>
+<ul>
+<li><p><a href="#dynamic-loading">Dynamic component loading</a></p>
+<p><a href="#dynamic-loading">动态组件加载</a></p>
+</li>
+<li><p><a href="#directive">The directive</a></p>
+<p><a href="#directive">指令</a></p>
+</li>
+<li><p><a href="#loading-components">Loading components</a></p>
+<p><a href="#loading-components">加载组件</a></p>
+<ul>
+<li><p><a href="#resolving-components">Resolving Components</a></p>
+<p><a href="#resolving-components">解析组件</a></p>
+</li>
+<li><p><a href="#selector-references">Selector References</a></p>
+<p><a href="#selector-references">通过选择器引用</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#common-interface">A common <em>AdComponent</em> interface</a></p>
+<p><a href="#common-interface">通用的<code>AdComponent</code>接口</a></p>
+</li>
+<li><p><a href="#final-ad-banner">Final ad banner</a></p>
+<p><a href="#final-ad-banner">最终的广告Banner</a></p>
+</li>
+</ul>
+<p>See the <live-example name="cb-dynamic-component-loader"></live-example>
+of the code in this cookbook.</p>
+<p>到<live-example name="cb-dynamic-component-loader"></live-example>查看本烹饪书的源码。</p>
+<div class="l-main-section"></div><a id="dynamic-loading"></a><h2 id="dynamic-component-loading">Dynamic component loading</h2>
+<h2 id="-">动态组件加载</h2>
+<p>The following example shows how to build a dynamic ad banner.</p>
+<p>下面的例子展示了如何构建动态广告条。</p>
+<p>The hero agency is planning an ad campaign with several different
+ads cycling through the banner. New ad components are added
+frequently by several different teams. This makes it impractical
+to use a template with a static component structure.</p>
+<p>英雄管理局正在计划一个广告活动，要在广告条中显示一系列不同的广告。几个不同的小组可能会频繁加入新的广告组件。
+再用只支持静态组件结构的模板显然是不现实的。</p>
+<p>Instead, you need a way to load a new component without a fixed
+reference to the component in the ad banner&#39;s template.</p>
+<p>我们需要一种新的组件加载方式，它不需要在广告条组件的模板中引用固定的组件。</p>
+<p>Angular comes with its own API for loading components dynamically.</p>
+<p>Angular 自带的API就能支持动态加载组件。</p>
+<div class="l-main-section"></div><a id="directive"></a><h2 id="the-directive">The directive</h2>
+<h2 id="-">指令</h2>
+<p>Before you can add components you have to define an anchor point
+to tell Angular where to insert components.</p>
+<p>在添加组件之前，先要定义一个锚点来告诉Angular要把组件插入到什么地方。</p>
+<p>The ad banner uses a helper directive called <code>AdDirective</code> to
+mark valid insertion points in the template.</p>
+<p>广告条使用一个名叫<code>AdDirective</code>的辅助指令来在模板中标记出有效的插入点。</p>
+<div class="code-example"><header><h4>src/app/ad.directive.ts</h4></header><code-example language="ts" format="">import { Directive, ViewContainerRef } from &#39;@angular/core&#39;;
+
+@Directive({
+  selector: &#39;[ad-host]&#39;,
+})
+export class AdDirective {
+  constructor(public viewContainerRef: ViewContainerRef) { }
+}
+</code-example></div><p><code>AdDirective</code> injects <code>ViewContainerRef</code> to gain access to the view
+container of the element that will host the dynamically added component.</p>
+<p><code>AdDirective</code>注入了<code>ViewContainerRef</code>来获取对容器视图的访问权，这个容器就是那些动态加入的组件的宿主。</p>
+<p>In the <code>@Directive</code> decorator, notice the selector name, <code>ad-host</code>;
+that&#39;s what you use to apply the directive to the element.
+The next section shows you how.</p>
+<p>在<code>@Directive</code>装饰器中，要注意选择器的名称：<code>ad-host</code>，它就是我们将应用到元素上的指令。下一节我们会展示如何做。</p>
+<div class="l-main-section"></div><a id="loading-components"></a><h2 id="loading-components">Loading components</h2>
+<h2 id="-">加载组件</h2>
+<p>Most of the ad banner implementation is in <code>ad-banner.component.ts</code>.
+To keep things simple in this example, the HTML is in the <code>@Component</code>
+decorator&#39;s <code>template</code> property as a template string.</p>
+<p>广告条的大部分实现代码都在<code>ad-banner.component.ts</code>中。
+为了让这个例子简单点，我们把HTML直接放在了<code>@Component</code>装饰器的<code>template</code>属性中。</p>
+<p>The <code>&lt;ng-template&gt;</code> element is where you apply the directive you just made.
+To apply the <code>AdDirective</code>, recall the selector from <code>ad.directive.ts</code>,
+<code>ad-host</code>. Apply that to <code>&lt;ng-template&gt;</code> without the square brackets. Now Angular knows
+where to dynamically load components.</p>
+<p><code>&lt;ng-template&gt;</code>元素就是刚才制作的指令将应用到的地方。
+要应用<code>AdDirective</code>，回忆一下来自<code>ad.directive.ts</code>的选择器<code>ad-host</code>。把它应用到<code>&lt;ng-template&gt;</code>（不用带方括号）。
+这下，Angular就知道该把组件动态加载到哪里了。</p>
+<div class="code-example"><header><h4>src/app/ad-banner.component.ts (template)</h4></header><code-example language="ts" format="">template: `
+            &lt;div class=&quot;ad-banner&quot;&gt;
+              &lt;h3&gt;Advertisements&lt;/h3&gt;
+              &lt;ng-template ad-host&gt;&lt;/ng-template&gt;
+            &lt;/div&gt;
+          `
+</code-example></div><p>The <code>&lt;ng-template&gt;</code> element is a good choice for dynamic components
+because it doesn&#39;t render any additional output.</p>
+<p><code>&lt;ng-template&gt;</code>元素是动态加载组件的最佳选择，因为它不会渲染任何额外的输出。</p>
+<a id="resolving-components"></a><h3 id="resolving-components">Resolving components</h3>
+<h3 id="-">解析组件</h3>
+<p>Take a closer look at the methods in <code>ad-banner.component.ts</code>.</p>
+<p>深入看看<code>ad-banner.component.ts</code>中的方法。</p>
+<p><code>AdBannerComponent</code> takes an array of <code>AdItem</code> objects as input,
+which ultimately comes from <code>AdService</code>.  <code>AdItem</code> objects specify 
+the type of component to load and any data to bind to the 
+component.<code>AdService</code> returns the actual ads making up the ad campaign.</p>
+<p><code>AdBannerComponent</code>接收一个<code>AdItem</code>对象的数组作为输入，它最终来自<code>AdService</code>。
+<code>AdItem</code>对象指定要加载的组件类，以及绑定到该组件上的任意数据。
+<code>AdService</code>可以返回广告活动中的那些广告。</p>
+<p>Passing an array of components to <code>AdBannerComponent</code> allows for a
+dynamic list of ads without static elements in the template.</p>
+<p>给<code>AdBannerComponent</code>传入一个组件数组可以让我们在模板中放入一个广告的动态列表，而不用写死在模板中。</p>
+<p>With its <code>getAds()</code> method, <code>AdBannerComponent</code> cycles through the array of <code>AdItems</code>
+and loads a new component every 3 seconds by calling <code>loadComponent()</code>.</p>
+<p>通过<code>getAds()</code>方法，<code>AdBannerComponent</code>可以循环遍历<code>AdItems</code>的数组，并且每三秒调用一次<code>loadComponent()</code>来加载新组件。</p>
+<div class="code-example"><header><h4>src/app/ad-banner.component.ts (excerpt)</h4></header><code-example language="ts" format="">export class AdBannerComponent implements AfterViewInit, OnDestroy {
+  @Input() ads: AdItem[];
+  currentAddIndex: number = -1;
+  @ViewChild(AdDirective) adHost: AdDirective;
+  subscription: any;
+  interval: any;
+
+  constructor(private _componentFactoryResolver: ComponentFactoryResolver) { }
+
+  ngAfterViewInit() {
+    this.loadComponent();
+    this.getAds();
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
+  }
+
+  loadComponent() {
+    this.currentAddIndex = (this.currentAddIndex + 1) % this.ads.length;
+    let adItem = this.ads[this.currentAddIndex];
+
+    let componentFactory = this._componentFactoryResolver.resolveComponentFactory(adItem.component);
+
+    let viewContainerRef = this.adHost.viewContainerRef;
+    viewContainerRef.clear();
+
+    let componentRef = viewContainerRef.createComponent(componentFactory);
+    (&lt;AdComponent&gt;componentRef.instance).data = adItem.data;
+  }
+
+  getAds() {
+    this.interval = setInterval(() =&gt; {
+      this.loadComponent();
+    }, 3000);
+  }
+}
+</code-example></div><p>The <code>loadComponent()</code> method is doing a lot of the heavy lifting here.
+Take it step by step. First, it picks an ad.</p>
+<p>这里的<code>loadComponent()</code>方法很重要。
+我们来一步步看看。首先，它选取了一个广告。</p>
+<div class="l-sub-section"><p><strong>How <em>loadComponent()</em> chooses an ad</strong></p>
+<p><strong><code>loadComponent()</code>如何选择广告</strong></p>
+<p>The <code>loadComponent()</code> method chooses an ad using some math.</p>
+<p><code>loadComponent()</code>方法使用某种算法选择了一个广告。</p>
+<p>First, it sets the <code>currentAddIndex</code> by taking whatever it
+currently is plus one, dividing that by the length of the <code>AdItem</code> array, and
+using the <em>remainder</em> as the new <code>currentAddIndex</code> value. Then, it uses that
+value to select an <code>adItem</code> from the array.</p>
+<p>（译注：循环选取算法）首先，它把<code>currentAddIndex</code>递增一，然后用它除以<code>AdItem</code>数组长度的<em>余数</em>作为新的<code>currentAddIndex</code>的值，
+最后用这个值来从数组中选取一个<code>adItem</code>。</p>
+</div><p>After <code>loadComponent()</code> selects an ad, it uses <code>ComponentFactoryResolver</code> 
+to resolve a <code>ComponentFactory</code> for each specific component. 
+The <code>ComponentFactory</code> then creates an instance of each component.</p>
+<p>在<code>loadComponent()</code>选取了一个广告之后，它使用<code>ComponentFactoryResolver</code>来为每个具体的组件解析出一个<code>ComponentFactory</code>。
+然后<code>ComponentFactory</code>会为每一个组件创建一个实例。</p>
+<p>Next, you&#39;re targeting the <code>viewContainerRef</code> that 
+exists on this specific instance of the component. How do you know it&#39;s 
+this specific instance? Because it&#39;s referring to <code>adHost</code> and <code>adHost</code> is the 
+directive you set up earlier to tell Angular where to insert dynamic components.</p>
+<p>接下来，我们要把<code>viewContainerRef</code>指向这个组件的现有实例。但我们怎么才能找到这个实例呢？
+很简单，因为它指向了<code>adHost</code>，而这个<code>adHost</code>就是我们以前设置过的指令，用来告诉Angular该把动态组件插入到什么位置。</p>
+<p>As you may recall, <code>AdDirective</code> injects <code>ViewContainerRef</code> into its constructor. 
+This is how the directive accesses the element that you want to use to host the dynamic component. </p>
+<p>回忆一下，<code>AdDirective</code>曾在它的构造函数中注入了一个<code>ViewContainerRef</code>。
+因此这个指令可以访问到这个被我们用作动态组件宿主的元素。</p>
+<p>To add the component to the template, you call <code>createComponent()</code> on <code>ViewContainerRef</code>.</p>
+<p>要把这个组件添加到模板中，我们可以调用<code>ViewContainerRef</code>的<code>createComponent()</code>。</p>
+<p>The <code>createComponent()</code> method returns a reference to the loaded component.
+Use that reference to interact with the component by assigning to its properties or calling its methods.</p>
+<p><code>createComponent()</code>方法返回一个引用，指向这个刚刚加载的组件。
+使用这个引用就可以与该组件进行交互，比如设置它的属性或调用它的方法。</p>
+<a id="selector-references"></a><h4 id="selector-references">Selector references</h4>
+<h4 id="-">对选择器的引用</h4>
+<p>Generally, the Angular compiler generates a <code>ComponentFactory</code>
+for any component referenced in a template. However, there are
+no selector references in the templates for
+dynamically loaded components since they load at runtime.</p>
+<p>通常，Angular编译器会为模板中所引用的每个组件都生成一个<code>ComponentFactory</code>类。
+但是，对于动态加载的组件，模板中不会出现对它们的选择器的引用。</p>
+<p>To ensure that the compiler still generates a factory,
+add dynamically loaded components to the <code>NgModule</code>&#39;s <code>entryComponents</code> array:</p>
+<p>要想确保编译器照常生成工厂类，就要把这些动态加载的组件添加到<code>NgModule</code>的<code>entryComponents</code>数组中：</p>
+<div class="code-example"><header><h4>src/app/app.module.ts (entry components)</h4></header><code-example language="ts" format="">entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
+</code-example></div><a id="common-interface"></a><h3 id="a-common-_adcomponent_-interface">A common <em>AdComponent</em> interface</h3>
+<h3 id="-adcomponent-">公共的<code>AdComponent</code>接口</h3>
+<p>In the ad banner, all components implement a common <code>AdComponent</code> interface to
+standardize the API for passing data to the components.</p>
+<p>在广告条中，所有组件都实现了一个公共接口<code>AdComponent</code>，它定义了一个标准化的API，让我们把数据传给组件。</p>
+<p>Here are two sample components and the <code>AdComponent</code> interface for reference:</p>
+<p>下面就是两个范例组件及其<code>AdComponent</code>接口：</p>
+<code-tabs><code-pane language="ts" name="hero-job-ad.component.ts" format="linenums">import { Component, Input } from &#39;@angular/core&#39;;
+
+import { AdComponent }      from &#39;./ad.component&#39;;
+
+@Component({
+  template: `
+    &lt;div class=&quot;job-ad&quot;&gt;
+      &lt;h4&gt;{{data.headline}}&lt;/h4&gt; 
+
+      {{data.body}}
+    &lt;/div&gt;
+  `
+})
+export class HeroJobAdComponent implements AdComponent {
+  @Input() data: any;
+
+}
+</code-pane><code-pane language="ts" name="hero-profile.component.ts" format="linenums">import { Component, Input }  from &#39;@angular/core&#39;;
+
+import { AdComponent }       from &#39;./ad.component&#39;;
+
+@Component({
+  template: `
+    &lt;div class=&quot;hero-profile&quot;&gt;
+      &lt;h3&gt;Featured Hero Profile&lt;/h3&gt;
+      &lt;h4&gt;{{data.name}}&lt;/h4&gt;
+
+      &lt;p&gt;{{data.bio}}&lt;/p&gt;
+
+      &lt;strong&gt;Hire this hero today!&lt;/strong&gt;
+    &lt;/div&gt;
+  `
+})
+export class HeroProfileComponent implements AdComponent {
+  @Input() data: any;
+}
+</code-pane><code-pane language="ts" name="ad.component.ts" format="linenums">export interface AdComponent {
+  data: any;
+}
+</code-pane></code-tabs><a id="final-ad-baner"></a><h3 id="final-ad-banner">Final ad banner</h3>
+<h3 id="-">最终的广告栏</h3>
+<p>The final ad banner looks like this:</p>
+<p>最终的广告栏是这样的：</p>
+<figure class="image-display"><img src="../../../../resources/images/cookbooks/dynamic-component-loader/ads.gif" alt="Ads"></figure><p>See the <live-example name="cb-dynamic-component-loader"></live-example>.</p>
+<p>参见<live-example name="cb-dynamic-component-loader"></live-example>。</p></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/dynamic-component-loader.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:39 GMT -->
+</html>

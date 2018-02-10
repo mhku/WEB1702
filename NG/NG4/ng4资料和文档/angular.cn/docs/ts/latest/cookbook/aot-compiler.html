@@ -1,0 +1,986 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/aot-compiler.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:22 GMT -->
+<head><title>预 (AoT) 编译器 - ts - COOKBOOK</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent is-selected">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item is-selected"><a href="aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="aot-compiler.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/cookbook/aot-compiler.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/cookbook/aot-compiler.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">预 (AoT) 编译器 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">学习如何使用预编译器</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>This cookbook describes how to radically improve performance by compiling <em>ahead-of-time</em> (AOT)
+during a build process.</p>
+<p>这个烹饪指南描述如何通过在构建过程中进行预编译（Ahead of Time - AOT）来从根本上提升性能。</p>
+<a id="toc"></a><h1 id="contents">Contents</h1>
+<h1 id="-">目录</h1>
+<ul>
+<li><p><a href="#overview">Overview</a></p>
+<p><a href="#overview">概览</a></p>
+</li>
+<li><p><a href="#aot-jit">Ahead-of-time (AOT) vs just-in-time (JIT)</a></p>
+<p><a href="#aot-jit">预编译(AOT) vs 即时编译(JIT)</a></p>
+</li>
+<li><p><a href="#why-aot">Why do AOT compilation?</a></p>
+<p><a href="#why-aot">为什么需要AOT编译？</a></p>
+</li>
+<li><p><a href="#compile">Compile with AOT</a></p>
+<p><a href="#compile">用AOT进行编译</a></p>
+</li>
+<li><p><a href="#bootstrap">Bootstrap</a></p>
+<p><a href="#bootstrap">引导</a></p>
+</li>
+<li><p><a href="#tree-shaking">Tree shaking</a></p>
+<p><a href="#tree-shaking">摇树优化（Tree Shaking）</a></p>
+<ul>
+<li><p><a href="#rollup">Rollup</a></p>
+</li>
+<li><p><a href="#rollup-plugins">Rollup Plugins</a></p>
+<p><a href="#rollup-plugins">Rollup插件</a></p>
+</li>
+<li><p><a href="#run-rollup">Run Rollup</a></p>
+<p><a href="#run-rollup">运行Rollup</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#load">Load the bundle</a></p>
+<p><a href="#load">加载捆(bundle)文件</a></p>
+</li>
+<li><p><a href="#serve">Serve the app</a></p>
+<p><a href="#serve">启动开发服务器</a></p>
+</li>
+<li><p><a href="#source-code">AOT QuickStart source code</a></p>
+<p><a href="#source-code">AOT 快速起步源码</a></p>
+</li>
+<li><p><a href="#workflow">Workflow and convenience script</a></p>
+<p><a href="#workflow">工作流与辅助脚本</a></p>
+<ul>
+<li><p><a href="#run-jit">Develop JIT along with AOT</a></p>
+<p><a href="#run-jit">先用JIT开发，再用AOT发布</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#toh">Tour of Heroes</a></p>
+<p><a href="#toh">英雄指南</a></p>
+<ul>
+<li><p><a href="#jit-dev-aot-prod">JIT in development, AOT in production</a></p>
+<p><a href="#jit-dev-aot-prod">开发环境JIT，生产环境AOT</a></p>
+</li>
+<li><p><a href="#shaking">Tree shaking</a></p>
+<p><a href="#shaking">摇树优化</a></p>
+</li>
+<li><p><a href="#running-app">Running the application</a></p>
+<p><a href="#running-app">运行本应用</a></p>
+</li>
+<li><p><a href="#inspect-bundle">Inspect the Bundle</a></p>
+<p><a href="#inspect-bundle">审查捆(bundle)文件</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<a id="overview"></a><div class="l-main-section"></div><h2 id="overview">Overview</h2>
+<h2 id="-">概览</h2>
+<p>An Angular application consists largely of components and their HTML templates.
+Before the browser can render the application,
+the components and templates must be converted to executable JavaScript by the <em>Angular compiler</em>.</p>
+<p>Angular应用主要包含组件和它们的HTML模板。
+在浏览器可以渲染应用之前，组件和模板必须要被<strong>Angular编译器</strong>转换为可以执行的JavaScript。</p>
+<div class="l-sub-section"><p><a href="https://www.youtube.com/watch?v=kW9cJsvcsGo" target="_blank">Watch compiler author Tobias Bosch explain the Angular Compiler</a> at AngularConnect 2016.</p>
+<p>观看编译器作者Tobias Bosch在AngularConnect 2016大会里，对<a href="http://v.youku.com/v_show/id_XMTc1NTE4NTkwOA==.html?from=y1.7-1.4" target="_blank">Angular编译器</a>的演讲。</p>
+</div><p>You can compile the app in the browser, at runtime, as the application loads, using the <strong><em>just-in-time</em> (JIT) compiler</strong>.
+This is the standard development approach shown throughout the documentation.
+It&#39;s great but it has shortcomings.</p>
+<p>你可以在浏览器中使用<em>即时编译器</em>（Just-in-Time - JIT）在运行期间编译该应用，也就是在应用加载时。
+这是本文档中展示过的标准开发方式。
+它很不错，但是有自己的缺点。</p>
+<p>JIT compilation incurs a runtime performance penalty.
+Views take longer to render because of the in-browser compilation step.
+The application is bigger because it includes the Angular compiler
+and a lot of library code that the application won&#39;t actually need.
+Bigger apps take longer to transmit and are slower to load.</p>
+<p>JIT编译导致运行期间的性能损耗。
+由于需要在浏览器中执行这个编译过程，视图需要花更长时间才能渲染出来。
+由于应用包含了Angular编译器以及大量实际上并不需要的库代码，所以文件体积也会更大。
+更大的应用需要更长的时间进行传输，加载也更慢。</p>
+<p>Compilation can uncover many component-template binding errors.
+JIT compilation discovers them at runtime, which is late in the process.</p>
+<p>编译可以发现一些组件模板绑定错误。JIT编译在运行时才揭露它们，那样有点太晚了。</p>
+<p>The <strong><em>ahead-of-time</em> (AOT) compiler</strong> can catch template errors early and improve performance
+by compiling at build time.</p>
+<p>而<strong>预编译</strong>（AOT）会在构建时编译，这样可以在早期截获模板错误，提高应用性能。</p>
+<a id="aot-jit"></a><div class="l-main-section"></div><h2 id="_ahead-of-time_-aot-vs-_just-in-time_-jit-"><em>Ahead-of-time</em> (AOT) vs <em>just-in-time</em> (JIT)</h2>
+<h2 id="-aot-vs-jit-">预编译（AOT） vs 即时编译（JIT）</h2>
+<p>There is actually only one Angular compiler. The difference between AOT and JIT is a matter of timing and tooling.
+With AOT, the compiler runs once at build time using one set of libraries;
+with JIT it runs every time for every user at runtime using a different set of libraries.</p>
+<p>事实上只有一个Angular编译器，AOT和JIT之间的差别仅仅在于编译的时机和所用的工具。
+使用AOT，编译器仅仅使用一组库在构建期间运行一次；使用JIT，编译器在每个用户的每次运行期间都要用不同的库运行一次。</p>
+<a id="why-aot"></a><h2 id="why-do-aot-compilation-">Why do AOT compilation?</h2>
+<h2 id="-aot-">为什么需要AOT编译？</h2>
+<p><em>Faster rendering</em></p>
+<p><strong>渲染得更快</strong></p>
+<p>With AOT, the browser downloads a pre-compiled version of the application.
+The browser loads executable code so it can render the application immediately, without waiting to compile the app first.</p>
+<p>使用AOT，浏览器下载预编译版本的应用程序。
+浏览器直接加载运行代码，所以它可以立即渲染该应用，而不用等应用完成首次编译。</p>
+<p><em>Fewer asynchronous requests</em></p>
+<p><strong>需要的异步请求更少</strong></p>
+<p>The compiler <em>inlines</em> external HTML templates and CSS style sheets within the application JavaScript,
+eliminating separate ajax requests for those source files.</p>
+<p>编译器把外部HTML模板和CSS样式表内联到了该应用的JavaScript中。
+消除了用来下载那些源文件的Ajax请求。</p>
+<p><em>Smaller Angular framework download size</em></p>
+<p><strong>需要下载的Angular框架体积更小</strong></p>
+<p>There&#39;s no need to download the Angular compiler if the app is already compiled.
+The compiler is roughly half of Angular itself, so omitting it dramatically reduces the application payload.</p>
+<p>如果应用已经编译过了，自然不需要再下载Angular编译器了。
+该编译器差不多占了Angular自身体积的一半儿，所以，省略它可以显著减小应用的体积。</p>
+<p><em>Detect template errors earlier</em></p>
+<p><strong>提早检测模板错误</strong></p>
+<p>The AOT compiler detects and reports template binding errors during the build step
+before users can see them.</p>
+<p>AOT编译器在构建过程中检测和报告模板绑定错误，避免用户遇到这些错误。</p>
+<p><em>Better security</em></p>
+<p><strong>更安全</strong></p>
+<p>AOT compiles HTML templates and components into JavaScript files long before they are served to the client.
+With no templates to read and no risky client-side HTML or JavaScript evaluation,
+there are fewer opportunities for injection attacks.</p>
+<p>AOT编译远在HTML模版和组件被服务到客户端之前，将它们编译到JavaScript文件。
+没有模版可以阅读，没有高风险客户端HTML或JavaScript可利用，所以注入攻击的机会较少。</p>
+<a id="compile"></a><div class="l-main-section"></div><h2 id="compile-with-aot">Compile with AOT</h2>
+<h2 id="-aot-">用AOT进行编译</h2>
+<p>Preparing for offline compilation takes a few simple steps.
+Take the <a href="../guide/setup.html">Setup</a> as a starting point.
+A few minor changes to the lone <code>app.component</code> lead to these two class and HTML files:</p>
+<p>AOT编译需要一些简单的准备步骤。我们先从<a href="../guide/setup.html">搭建本地开发环境</a>开始。
+只要单独对<code>app.component</code>文件的类文件和HTML文件做少量修改就可以了。</p>
+<code-tabs><code-pane language="html" name="src/app/app.component.html" format=".">&lt;button (click)=&quot;toggleHeading()&quot;&gt;Toggle Heading&lt;/button&gt;
+&lt;h1 *ngIf=&quot;showHeading&quot;&gt;Hello Angular&lt;/h1&gt;
+
+&lt;h3&gt;List of Heroes&lt;/h3&gt;
+&lt;div *ngFor=&quot;let hero of heroes&quot;&gt;{{hero}}&lt;/div&gt;
+</code-pane><code-pane language="ts" name="src/app/app.component.ts" format=".">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  templateUrl: &#39;./app.component.html&#39;
+})
+export class AppComponent {
+  showHeading = true;
+  heroes = [&#39;Magneta&#39;, &#39;Bombasto&#39;, &#39;Magma&#39;, &#39;Tornado&#39;];
+
+  toggleHeading() {
+    this.showHeading = !this.showHeading;
+  }
+}
+</code-pane></code-tabs><p>Install a few new npm dependencies with the following command: </p>
+<p>用下列命令安装少量新的npm依赖：</p>
+<code-example language="none" class="code-shell">npm install @angular/compiler-cli @angular/platform-server --save</code-example><p>You will run the <code>ngc</code> compiler provided in the <code>@angular/compiler-cli</code> npm package
+instead of the TypeScript compiler (<code>tsc</code>).</p>
+<p>你要用<code>@angular/compiler-cli</code>包中提供的<code>ngc</code>编译器来代替TypeScript编译器（<code>tsc</code>）。</p>
+<p><code>ngc</code> is a drop-in replacement for <code>tsc</code> and is configured much the same way.</p>
+<p><code>ngc</code>是一个<code>tsc</code>的高仿替代品，它们的配置方式几乎完全一样。</p>
+<p><code>ngc</code> requires its own <code>tsconfig.json</code> with AOT-oriented settings.
+Copy the original <code>src/tsconfig.json</code> to a file called <code>tsconfig-aot.json</code> on the project root,
+then modify it as follows.</p>
+<p><code>ngc</code>需要自己的带有AOT专用设置的<code>tsconfig.json</code>。
+把原始的<code>tsconfig.json</code>拷贝到一个名叫<code>tsconfig-aot.json</code>的文件中，然后像这样修改它：</p>
+<div class="code-example"><header><h4>tsconfig-aot.json</h4></header><code-example language="json" format="">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;module&quot;: &quot;es2015&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;sourceMap&quot;: true,
+    &quot;emitDecoratorMetadata&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+    &quot;noImplicitAny&quot;: true,
+    &quot;suppressImplicitAnyIndexErrors&quot;: true
+  },
+
+  &quot;files&quot;: [
+    &quot;src/app/app.module.ts&quot;,
+    &quot;src/main.ts&quot;
+  ],
+
+  &quot;angularCompilerOptions&quot;: {
+   &quot;genDir&quot;: &quot;aot&quot;,
+   &quot;skipMetadataEmit&quot; : true
+ }
+}
+</code-example></div><p>The <code>compilerOptions</code> section is unchanged except for one property.
+<strong>Set the <code>module</code> to <code>es2015</code></strong>.
+This is important as explained later in the <a href="#tree-shaking">Tree Shaking</a> section.</p>
+<p><code>compilerOptions</code>部分只修改了一个属性：**把<code>module</code>设置为<code>es2015</code>。
+这一点非常重要，我们会在后面的<a href="#tree-shaking">摇树优化</a>部分解释为什么。</p>
+<p>What&#39;s really new is the <code>ngc</code> section at the bottom called <code>angularCompilerOptions</code>.
+Its <code>genDir</code> property tells the compiler
+to store the compiled output files in a new <code>aot</code> folder.</p>
+<p><code>ngc</code>区真正新增的内容是底部的<code>angularCompilerOptions</code>。
+它的<code>genDir</code>属性告诉编译器把编译结果保存在新的<code>aot</code>目录下。</p>
+<p>The <code>&quot;skipMetadataEmit&quot; : true</code> property prevents the compiler from generating metadata files with the compiled application.
+Metadata files are not necessary when targeting TypeScript files, so there is no reason to include them.</p>
+<p><code>&quot;skipMetadataEmit&quot; : true</code>属性阻止编译器为编译后的应用生成元数据文件。
+当输出成TypeScript文件时，元数据并不是必须的，因此不需要包含它们。</p>
+<p><strong><em>Component-relative template URLS</em></strong></p>
+<p><strong><em>相对于组件的模板URL</em></strong></p>
+<p>The AOT compiler requires that <code>@Component</code> URLS for external templates and CSS files be <em>component-relative</em>.
+That means that the value of <code>@Component.templateUrl</code> is a URL value <em>relative</em> to the component class file.
+For example, an <code>&#39;app.component.html&#39;</code> URL means that the template file is a sibling of its companion <code>app.component.ts</code> file.</p>
+<p>AOT编译器要求<code>@Component</code>中的外部模板和CSS文件的URL是<em>相对于组件的</em>。
+这意味着<code>@Component.templateUrl</code>的值是一个<em>相对于</em>组件类文件的URL值。
+例如，<code>&#39;app.component.html&#39;</code> URL表示模板文件与它相应的<code>app.component.ts</code>文件放在一起。</p>
+<p>While JIT app URLs are more flexible, stick with <em>component-relative</em> URLs for compatibility with AOT compilation.</p>
+<p>而JIT应用的URL更灵活，固定写成<em>相对于组件的</em>URL的形式对AOT编译的兼容性也更好。</p>
+<p><strong><em>Compiling the application</em></strong></p>
+<p><strong><em> 编译该应用 </em></strong></p>
+<p>Initiate AOT compilation from the command line using the previously installed <code>ngc</code> compiler by executing:</p>
+<p>在命令行中执行下列命令，借助刚安装好的<code>ngc</code>编译器来启动AOT编译：</p>
+<code-example language="none" class="code-shell">node_modules/.bin/ngc -p tsconfig-aot.json</code-example><div class="l-sub-section"><p>Windows users should surround the <code>ngc</code> command in double quotes:</p>
+<p>Windows用户应该双引号<code>ngc</code>命令：</p>
+<code-example format=".">"node_modules/.bin/ngc" -p tsconfig-aot.json</code-example></div><p><code>ngc</code> expects the <code>-p</code> switch to point to a <code>tsconfig.json</code> file or a folder containing a <code>tsconfig.json</code> file.</p>
+<p><code>ngc</code>希望<code>-p</code>选项指向一个<code>tsconfig.json</code>文件，或者一个包含<code>tsconfig.json</code>文件的目录。</p>
+<p>After <code>ngc</code> completes, look for a collection of <em>NgFactory</em> files in the <code>aot</code> folder.
+The <code>aot</code> folder is the directory specified as <code>genDir</code> in <code>tsconfig-aot.json</code>.</p>
+<p>在<code>ngc</code>完成时，会在<code>aot</code>目录下看到一组<em>NgFactory</em>文件（该目录是在<code>tsconfig-aot.json</code>的<code>genDir</code>属性中指定的）。</p>
+<p>These factory files are essential to the compiled application.
+Each component factory creates an instance of the component at runtime by combining the original class file
+and a JavaScript representation of the component&#39;s template.
+Note that the original component class is still referenced internally by the generated factory.</p>
+<p>这些工厂文件对于编译后的应用是必要的。
+每个组件工厂都可以在运行时创建一个组件的实例，其中带有一个原始的类文件和一个用JavaScript表示的组件模板。
+注意，原始的组件类依然是由所生成的这个工厂进行内部引用的。</p>
+<div class="l-sub-section"><p>The curious can open <code>aot/app.component.ngfactory.ts</code> to see the original Angular template syntax
+compiled to TypeScript, its intermediate form.</p>
+<p>如果你好奇，可以打开<code>aot/app.component.ngfactory.ts</code>来看看原始Angular模板语法被编译成TypeScript时的中间结果。</p>
+<p>JIT compilation generates these same <em>NgFactories</em> in memory where they are largely invisible.
+AOT compilation reveals them as separate, physical files.</p>
+<p>JIT编译器在内存中同样会生成这一堆<em>NgFactory</em>，但它们大部分是不可见的。
+AOT编译器则会生成在单独的物理文件中。</p>
+</div><div class="alert is-important"><p>Do not edit the <em>NgFactories</em>! Re-compilation replaces these files and all edits will be lost.</p>
+<p>不要编辑这些<em>NgFactory</em>！重新编译时会替换这些文件，你做的所有修改都会丢失。</p>
+</div><a id="bootstrap"></a><div class="l-main-section"></div><h2 id="bootstrap">Bootstrap</h2>
+<h2 id="-">引导</h2>
+<p>The AOT approach changes application bootstrapping.</p>
+<p>AOT也改变了应用的引导方式。</p>
+<p>Instead of bootstrapping <code>AppModule</code>, you bootstrap the application with the generated module factory, <code>AppModuleNgFactory</code>.</p>
+<p>引导的方式从引导<code>AppModule</code>改成了引导生成的模块工厂：<code>AppModuleNgFactory</code>。</p>
+<p>Make a copy of <code>main.ts</code> and name it <code>main-jit.ts</code>.
+This is the JIT version; set it aside as you may need it <a href="#run-jit" title="Running with JIT">later</a>.</p>
+<p>复制一份<code>main.ts</code>并把它改名为<code>main-jit.ts</code>。
+这就是JIT版本，先把它放在一边，我们<a href="#run-jit" title="Running with JIT">稍后</a>会用到它。</p>
+<p>Open <code>main.ts</code> and convert it to AOT compilation.
+Switch from the <code>platformBrowserDynamic.bootstrap</code> used in JIT compilation to
+<code>platformBrowser().bootstrapModuleFactory</code> and pass in the AOT-generated <code>AppModuleNgFactory</code>.</p>
+<p>打开<code>main.ts</code>，并把它改成AOT编译。
+从<code>platformBrowserDynamic.bootstrap</code>改成使用<code>platformBrowser().bootstrapModuleFactory</code>并把<code>AppModuleNgFactory</code>的AOT编译结果传给它。</p>
+<p>Here is AOT bootstrap in <code>main.ts</code> next to the original JIT version:</p>
+<p>这里是AOT版本<code>main.ts</code>中的引导过程，下一个是你所熟悉的JIT版本。</p>
+<code-tabs><code-pane language="ts" name="src/main.ts" format="linenums">import { platformBrowser }    from &#39;@angular/platform-browser&#39;;
+import { AppModuleNgFactory } from &#39;../aot/src/app/app.module.ngfactory&#39;;
+
+console.log(&#39;Running AOT compiled&#39;);
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
+</code-pane><code-pane language="ts" name="src/main-jit.ts" format="linenums">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import { AppModule }              from &#39;./app/app.module&#39;;
+
+console.log(&#39;Running JIT compiled&#39;);
+platformBrowserDynamic().bootstrapModule(AppModule);
+</code-pane></code-tabs><p>Be sure to <a href="#compiling-aot">recompile</a> with <code>ngc</code>!</p>
+<p>确保用<code>ngc</code>进行<a href="#compiling-aot">重新编译</a>！</p>
+<a id="tree-shaking"></a><h2 id="tree-shaking">Tree shaking</h2>
+<h2 id="-tree-shaking-">摇树优化（Tree shaking）</h2>
+<p>AOT compilation sets the stage for further optimization through a process called <em>tree shaking</em>.
+A tree shaker walks the dependency graph, top to bottom, and <em>shakes out</em> unused code like
+dead leaves in a tree.</p>
+<p>AOT编译为接下来通过一个叫做<em>摇树优化</em>的过程做好了准备。
+摇树优化器从上到下遍历依赖图谱，并且<em>摇掉</em>用不到的代码，这些代码就像是圣诞树中那些死掉的松针一样。</p>
+<p>Tree shaking can greatly reduce the downloaded size of the application 
+by removing unused portions of both source and library code. 
+In fact, most of the reduction in small apps comes from removing unreferenced Angular features. </p>
+<p>通过移除源码和库代码中用不到的部分，摇树优化可以大幅缩减应用的下载体积。
+事实上，在小型应用中大部分的缩减都是因为筛掉了那些没用到的Angular特性。</p>
+<p>For example, this demo application doesn&#39;t use anything from the <code>@angular/forms</code> library.
+There is no reason to download forms-related Angular code and tree shaking ensures that you don&#39;t.</p>
+<p>例如，这个演示程序中没有用到<code>@angular/forms</code>库中的任何东西，那么也就没有理由去下载这些与表单有关的Angular代码了。摇树优化可以帮你确保这一点。</p>
+<p>Tree shaking and AOT compilation are separate steps.
+Tree shaking can only target JavaScript code.
+AOT compilation converts more of the application to JavaScript,
+which in turn makes more of the application &quot;tree shakable&quot;.</p>
+<p>摇树优化和AOT编译是单独的步骤。
+摇树优化仅仅针对JavaScript代码。
+AOT编译会把应用中的大部分都转换成JavaScript，这种转换会让应用更容易被“摇树优化”。</p>
+<a id="rollup"></a><h3 id="rollup">Rollup</h3>
+<p>This cookbook illustrates a tree shaking utility called <em>Rollup</em>.</p>
+<p>这个烹饪宝典中用来示范的摇树优化工具是<em>Rollup</em>。</p>
+<p>Rollup statically analyzes the application by following the trail of <code>import</code> and <code>export</code> statements.
+It produces a final code <em>bundle</em> that excludes code that is exported, but never imported.</p>
+<p>Rollup会通过跟踪<code>import</code>和<code>export</code>语句来对本应用进行静态分析。
+它所生成的最终代码<em>捆</em>中会排除那些被导出过但又从未被导入的代码。</p>
+<p>Rollup can only tree shake <code>ES2015</code> modules which have <code>import</code> and <code>export</code> statements.</p>
+<p>Rollup只能对<code>ES2015</code>模块摇树，因为那里有<code>import</code>和<code>export</code>语句。</p>
+<div class="l-sub-section"><p>Recall that <code>tsconfig-aot.json</code> is configured to produce <code>ES2015</code> modules.
+It&#39;s not important that the code itself be written with <code>ES2015</code> syntax such as <code>class</code> and <code>const</code>.
+What matters is that the code uses ES <code>import</code> and <code>export</code> statements rather than <code>require</code> statements.</p>
+<p>回忆一下，<code>tsconfig-aot.json</code>中曾配置为生成<code>ES2015</code>的模块。
+代码本身是否用到了<code>ES2015</code>语法（例如<code>class</code>和<code>const</code>）并不重要，重要的是这些代码使用的应该是<code>import</code>和<code>export</code>语句，而不是<code>require</code>语句。</p>
+</div><p>In the terminal window, install the Rollup dependencies with this command:</p>
+<p>通过下列命令安装Rollup依赖：</p>
+<code-example language="none" class="code-shell">npm install rollup rollup-plugin-node-resolve rollup-plugin-commonjs rollup-plugin-uglify --save-dev</code-example><p>Next, create a configuration file (<code>rollup-config.js</code>)
+in the project root directory to tell Rollup how to process the application.
+The cookbook configuration file looks like this.</p>
+<p>接下来，在项目根目录新建一个配置文件（<code>rollup-config.js</code>），来告诉Rollup如何处理应用。
+本烹饪书配置文件是这样的：</p>
+<div class="code-example"><header><h4>rollup-config.js</h4></header><code-example language="js" format="">import rollup      from &#39;rollup&#39;
+import nodeResolve from &#39;rollup-plugin-node-resolve&#39;
+import commonjs    from &#39;rollup-plugin-commonjs&#39;;
+import uglify      from &#39;rollup-plugin-uglify&#39;
+
+export default {
+  entry: &#39;src/main.js&#39;,
+  dest: &#39;src/build.js&#39;, // output a single application bundle
+  sourceMap: false,
+  format: &#39;iife&#39;,
+  onwarn: function(warning) {
+    // Skip certain warnings
+
+    // should intercept ... but doesn&#39;t in some rollup versions
+    if ( warning.code === &#39;THIS_IS_UNDEFINED&#39; ) { return; }
+
+    // console.warn everything else
+    console.warn( warning.message );
+  },
+  plugins: [
+      nodeResolve({jsnext: true, module: true}),
+      commonjs({
+        include: &#39;node_modules/rxjs/**&#39;,
+      }),
+      uglify()
+  ]
+}
+</code-example></div><p>This config file tells Rollup that the app entry point is <code>src/app/main.js</code> .
+The <code>dest</code> attribute tells Rollup to create a bundle called <code>build.js</code> in the <code>dist</code> folder.
+It overrides the default <code>onwarn</code> method in order to skip annoying messages about the AOT compiler&#39;s use of the <code>this</code> keyword.</p>
+<p>这个配置文件告诉Rollup，该应用的入口点是<code>app/main.js</code>。
+<code>dest</code>属性告诉Rollup要在<code>dist</code>目录下创建一个名叫<code>build.js</code>的捆文件。
+它覆盖了默认的<code>onwarn</code>方法，以便忽略由于AOT编译器使用<code>this</code>关键字导致的噪音消息。</p>
+<p>The next section covers the plugins in more depth.</p>
+<p>下一节我们将深入讲解插件。</p>
+<a id="rollup-plugins"></a><h3 id="rollup-plugins">Rollup Plugins</h3>
+<h3 id="rollup-">Rollup插件</h3>
+<p>Optional plugins filter and transform the Rollup inputs and output.</p>
+<p>这些可选插件过滤并转换Rollup的输入和输出。</p>
+<p><em>RxJS</em></p>
+<p>Rollup expects application source code to use <code>ES2015</code> modules. 
+Not all external dependencies are published as <code>ES2015</code> modules.
+In fact, most are not. Many of them are published as <em>CommonJS</em> modules.</p>
+<p>Rollup期望应用的源码使用<code>ES2015</code>模块。
+但并不是所有外部依赖都发布成了<code>ES2015</code>模块。
+事实上，大多数都不是。它们大多数都发布成了<em>CommonJS</em>模块。</p>
+<p>The <em>RxJs</em> Observable library is an essential Angular dependency published as an ES5 JavaScript <em>CommonJS</em> module.</p>
+<p>可观察对象库<em>RxJS</em>是Angular所依赖的基础之一，它就是发布成了ES5 JavaScript的<em>CommonJS</em>模块。</p>
+<p>Luckily, there is a Rollup plugin that modifies <em>RxJs</em>
+to use the ES <code>import</code> and <code>export</code> statements that Rollup requires.
+Rollup then preserves the parts of <code>RxJS</code> referenced by the application 
+in the final bundle. Using it is straigthforward. Add the following to 
+the <code>plugins</code> array in <code>rollup-config.js</code>:</p>
+<p>幸运的是，有一个Rollup插件，它会修改<em>RxJS</em>，以使用Rollup所需的ES<code>import</code>和<code>export</code>语句。
+然后Rollup就可以把该应用中用到的那部分<code>RxJS</code>代码留在“捆”文件中了。
+它的用法很简单。把下列代码添加到<code>rollup-config.js</code>的<code>plugins</code>数组中：</p>
+<div class="code-example"><header><h4>rollup-config.js (CommonJs to ES2015 Plugin)</h4></header><code-example language="js" format="">commonjs({
+  include: &#39;node_modules/rxjs/**&#39;,
+}),
+</code-example></div><p><em>Minification</em></p>
+<p><em>最小化</em></p>
+<p>Rollup tree shaking reduces code size considerably.  Minification makes it smaller still.
+This cookbook relies on the <em>uglify</em> Rollup plugin to minify and mangle the code. 
+Add the following to the <code>plugins</code> array:</p>
+<p>Rollup做摇树优化时会大幅减小代码体积。最小化过程则会让它更小。
+本烹饪宝典依赖于Rollup插件<em>uglify</em>来最小化并混淆代码。
+把下列代码添加到<code>plugins</code>数组中：</p>
+<div class="code-example"><header><h4>rollup-config.js (CommonJs to ES2015 Plugin)</h4></header><code-example language="js" format="">uglify()
+</code-example></div><div class="l-sub-section"><p>In a production setting, you would also enable gzip on the web server to compress
+the code into an even smaller package going over the wire.</p>
+<p>在生产环境中，我们还应该打开Web服务器的gzip特性来把代码压缩得更小。</p>
+</div><a id="run-rollup"></a><h3 id="run-rollup">Run Rollup</h3>
+<h3 id="-rollup">运行Rollup</h3>
+<p>Execute the Rollup process with this command:</p>
+<p>通过下列命令执行Rollup过程：</p>
+<code-example language="none" class="code-shell">node_modules/.bin/rollup -c rollup-config.js</code-example><div class="l-sub-section"><p>Windows users should surround the <code>rollup</code> command in double quotes:</p>
+<p>Windows用户要把<code>rollup</code>命令放进双引号中：</p>
+<code-example language="none" class="code-shell">"node_modules/.bin/rollup"  -c rollup-config.js</code-example></div><a id="load"></a><div class="l-main-section"></div><h2 id="load-the-bundle">Load the bundle</h2>
+<h2 id="-">加载捆文件</h2>
+<p>Loading the generated application bundle does not require a module loader like SystemJS.
+Remove the scripts that concern SystemJS.
+Instead, load the bundle file using a single <code>&lt;script&gt;</code> tag <strong><em>after</em></strong> the <code>&lt;/body&gt;</code> tag:</p>
+<p>加载所生成的应用捆文件，并不需要使用像SystemJS这样的模块加载器。
+移除与SystemJS有关的那些脚本吧。
+改用<code>&lt;script&gt;</code>标签来加载这些捆文件：</p>
+<div class="code-example"><header><h4>index.html (load bundle)</h4></header><code-example language="html" format="">&lt;script src=&quot;build.js&quot;&gt;&lt;/script&gt;
+</code-example></div><a id="serve"></a><div class="l-main-section"></div><h2 id="serve-the-app">Serve the app</h2>
+<h2 id="-">启动应用服务器</h2>
+<p>You&#39;ll need a web server to host the application.
+Use the same <code>lite-server</code> employed elsewhere in the documentation:</p>
+<p>你需要一个Web服务器来作为应用的宿主。
+像与文档中其它部分一样，用<code>lite-server</code>吧：</p>
+<code-example language="none" class="code-shell">npm run lite
+</code-example><p>The server starts, launches a browser, and the app should appear.</p>
+<p>启动了服务器、打开浏览器，应用就出现了。</p>
+<a id="source-code"></a><div class="l-main-section"></div><h2 id="aot-quickstart-source-code">AOT QuickStart source code</h2>
+<h2 id="aot-">AOT快速起步源代码</h2>
+<p>Here&#39;s the pertinent source code:</p>
+<p>下面是相关源代码：</p>
+<code-tabs><code-pane language="html" name="src/app/app.component.html" format="linenums">&lt;button (click)=&quot;toggleHeading()&quot;&gt;Toggle Heading&lt;/button&gt;
+&lt;h1 *ngIf=&quot;showHeading&quot;&gt;Hello Angular&lt;/h1&gt;
+
+&lt;h3&gt;List of Heroes&lt;/h3&gt;
+&lt;div *ngFor=&quot;let hero of heroes&quot;&gt;{{hero}}&lt;/div&gt;
+</code-pane><code-pane language="ts" name="src/app/app.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  templateUrl: &#39;./app.component.html&#39;
+})
+export class AppComponent {
+  showHeading = true;
+  heroes = [&#39;Magneta&#39;, &#39;Bombasto&#39;, &#39;Magma&#39;, &#39;Tornado&#39;];
+
+  toggleHeading() {
+    this.showHeading = !this.showHeading;
+  }
+}
+</code-pane><code-pane language="ts" name="src/main.ts" format="linenums">import { platformBrowser }    from &#39;@angular/platform-browser&#39;;
+import { AppModuleNgFactory } from &#39;../aot/src/app/app.module.ngfactory&#39;;
+
+console.log(&#39;Running AOT compiled&#39;);
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
+</code-pane><code-pane language="html" name="src/index.html" format="linenums">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ahead of time compilation&lt;/title&gt;
+    &lt;base href=&quot;/&quot;&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+
+    &lt;script src=&quot;node_modules/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;node_modules/zone.js/dist/zone.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;my-app&gt;Loading...&lt;/my-app&gt;
+  &lt;/body&gt;
+  &lt;script src=&quot;build.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code-pane><code-pane language="json" name="tsconfig-aot.json" format="linenums">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;module&quot;: &quot;es2015&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;sourceMap&quot;: true,
+    &quot;emitDecoratorMetadata&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+    &quot;noImplicitAny&quot;: true,
+    &quot;suppressImplicitAnyIndexErrors&quot;: true
+  },
+
+  &quot;files&quot;: [
+    &quot;src/app/app.module.ts&quot;,
+    &quot;src/main.ts&quot;
+  ],
+
+  &quot;angularCompilerOptions&quot;: {
+   &quot;genDir&quot;: &quot;aot&quot;,
+   &quot;skipMetadataEmit&quot; : true
+ }
+}
+</code-pane><code-pane language="js" name="rollup-config.js" format="linenums">import rollup      from &#39;rollup&#39;
+import nodeResolve from &#39;rollup-plugin-node-resolve&#39;
+import commonjs    from &#39;rollup-plugin-commonjs&#39;;
+import uglify      from &#39;rollup-plugin-uglify&#39;
+
+export default {
+  entry: &#39;src/main.js&#39;,
+  dest: &#39;src/build.js&#39;, // output a single application bundle
+  sourceMap: false,
+  format: &#39;iife&#39;,
+  onwarn: function(warning) {
+    // Skip certain warnings
+
+    // should intercept ... but doesn&#39;t in some rollup versions
+    if ( warning.code === &#39;THIS_IS_UNDEFINED&#39; ) { return; }
+
+    // console.warn everything else
+    console.warn( warning.message );
+  },
+  plugins: [
+      nodeResolve({jsnext: true, module: true}),
+      commonjs({
+        include: &#39;node_modules/rxjs/**&#39;,
+      }),
+      uglify()
+  ]
+}
+</code-pane></code-tabs><a id="workflow"></a><div class="l-main-section"></div><h2 id="workflow-and-convenience-script">Workflow and convenience script</h2>
+<h2 id="-">工作流与便利脚本</h2>
+<p>You&#39;ll rebuild the AOT version of the application every time you make a change.
+Those <em>npm</em> commands are long and difficult to remember.</p>
+<p>每当修改时，我们都将重新构建应用的AOT版本。
+那些<em>npm</em>命令太长，很难记。</p>
+<p>Add the following <em>npm</em> convenience script to the <code>package.json</code> so you can compile and rollup in one command.</p>
+<p>把下列<em>npm</em>便利脚本添加到<code>package.json</code>中，以便用一条命令就可以完成编译和Rollup打包工作。</p>
+<div class="code-example"><header><h4>package.json (build:aot convenience script)</h4></header><code-example language="json" format="linenums">{
+  "scripts": {
+    "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js"
+  }
+}</code-example></div><p>Open a terminal window and try it.</p>
+<p>打开终端窗口，并试一下。</p>
+<code-example language="none" class="code-shell">npm run build:aot
+</code-example><a id="run-jit"></a><h3 id="develop-jit-along-with-aot">Develop JIT along with AOT</h3>
+<h3 id="-jit-aot-">先用JIT开发，再AOT发布</h3>
+<p>AOT compilation and rollup together take several seconds.
+You may be able to develop iteratively a little faster with SystemJS and JIT.
+The same source code can be built both ways. Here&#39;s one way to do that.</p>
+<p>AOT编译和Rollup打包加起来要花好几秒钟。
+用SystemJS和JIT可以让开发期间的迭代更快一点。
+同一套源码可以用这两种方式构建。下面是方法之一：</p>
+<ul>
+<li><p>Make a copy of <code>index.html</code> and call it <code>index-jit.html</code>.</p>
+<p>复制一份<code>index.html</code>并命名为<code>index-jit.html</code>。</p>
+</li>
+<li><p>Delete the script at the bottom of <code>index-jit.html</code> that loads <code>bundle.js</code></p>
+<p>删除<code>index-jit.html</code>底部用来加载<code>bundle.js</code>的脚本</p>
+</li>
+<li><p>Restore the SystemJS scripts like this:</p>
+<p>代之以如下的SystemJS脚本：</p>
+</li>
+</ul>
+<div class="code-example"><header><h4>src/index-jit.html (SystemJS scripts)</h4></header><code-example language="html" format="">&lt;script src=&quot;node_modules/systemjs/dist/system.src.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  System.import(&#39;main-jit.js&#39;).catch(function(err){ console.error(err); });
+&lt;/script&gt;
+</code-example></div><p>Notice the slight change to the <code>system.import</code> which now specifies <code>src/app/main-jit</code>.
+That&#39;s the JIT version of the bootstrap file that we preserved <a href="#bootstrap">above</a>.</p>
+<p>注意，这里稍微修改了一下<code>system.import</code>，现在它指向了<code>src/app/main-jit</code>。
+这就是我们<a href="#bootstrap">以前</a>预留的JIT版本的引导文件。</p>
+<p>Open a <em>different</em> terminal window and enter <code>npm start</code>.</p>
+<p>打开<em>另一个</em>终端窗口，并输入<code>npm start</code>：</p>
+<code-example language="none" class="code-shell">npm start
+</code-example><p>That compiles the app with JIT and launches the server.
+The server loads <code>index.html</code> which is still the AOT version, which you can confirm in the browser console.
+Change the address bar to <code>index-jit.html</code> and it loads the JIT version.
+This is also evident in the browser console.</p>
+<p>它会使用JIT方式编译本应用，并启动服务器。
+服务器仍然加载的是AOT版的<code>index.html</code>，我们可以在浏览器的控制台中确认这一点。
+在地址栏中改为<code>index-jit.html</code>，它就会加载JIT版，这同样可以在浏览器控制台中确认。</p>
+<p>Develop as usual.
+The server and TypeScript compiler are in &quot;watch mode&quot; so your changes are reflected immediately in the browser.</p>
+<p>照常开发。服务器和TypeScript编译器都处于“监听模式”，因此我们的修改都可以立刻反映到浏览器中。</p>
+<p>To see those changes in AOT, switch to the original terminal and re-run <code>npm run build:aot</code>.
+When it finishes, go back to the browser and use the back button to
+return to the AOT version in the default <code>index.html</code>.</p>
+<p>要对比AOT版的变化，可以切换到原来的终端窗口中，并重新运行<code>npm run build:aot</code>。
+结束时，回到浏览器中，并用浏览器的后退按钮回到默认<code>index.html</code>中的AOT版本。</p>
+<p>Now you can develop JIT and AOT, side-by-side.</p>
+<p>现在，我们就可以同时进行JIT和AOT开发了。</p>
+<a id="toh"></a><div class="l-main-section"></div><h2 id="tour-of-heroes">Tour of Heroes</h2>
+<h2 id="-">英雄指南</h2>
+<p>The sample above is a trivial variation of the QuickStart application.
+In this section you apply what you&#39;ve learned about AOT compilation and tree shaking
+to an app with more substance, the <a href="../tutorial/toh-pt6.html"><em>Tour of Heroes</em></a> application.</p>
+<p>上面的例子是《快速起步》应用的一个简单的变体。
+在本节中，你将在一个更多内容的应用 - <a href="../tutorial/toh-pt6.html">英雄指南</a>上使用从AOT编译和摇树优化学到的知识。</p>
+<a id="jit-dev-aot-prod"></a><h3 id="jit-in-development-aot-in-production">JIT in development, AOT in production</h3>
+<h3 id="-jit-aot">开发器使用JIT, 产品期使用AOT</h3>
+<p>Today AOT compilation and tree shaking take more time than is practical for development. That will change soon.
+For now, it&#39;s best to JIT compile in development and switch to AOT compilation before deploying to production.</p>
+<p>目前，AOT编译和摇树优化对开发来说，占用的时间太多了。这将在未来得到改变。
+当前的最佳实践是在开发器使用JIT编译，然后在发布产品前切换到AOT编译。</p>
+<p>Fortunately, the source code can be compiled either way without change <em>if</em> you account for a few key differences.</p>
+<p>幸运的是，<strong>如果</strong>你处理了几个关键不同点，源代码可以在没有任何变化时，采取两种方式的任何一种都能编译。</p>
+<p><strong><em>index.html</em></strong></p>
+<p>The JIT and AOT apps require their own <code>index.html</code> files because they setup and launch so differently. </p>
+<p>JIT和AOT应用的设置和加载非常不一样，因此它们需要各自的<code>index.html</code>文件。</p>
+<p>Here they are for comparison:</p>
+<p>下面是它们的比较：</p>
+<code-tabs><code-pane language="html" name="aot/index.html (AOT)" format="linenums">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;/&quot;&gt;
+    &lt;title&gt;Angular Tour of Heroes&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+
+    &lt;script src=&quot;shim.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;zone.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;my-app&gt;Loading...&lt;/my-app&gt;
+  &lt;/body&gt;
+  &lt;script src=&quot;dist/build.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code-pane><code-pane language="html" name="src/index.html (JIT)" format="linenums">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;/&quot;&gt;
+    &lt;title&gt;Angular Tour of Heroes&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;node_modules/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;node_modules/zone.js/dist/zone.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;node_modules/systemjs/dist/system.src.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import(&#39;main.js&#39;).catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;my-app&gt;Loading...&lt;/my-app&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code-pane></code-tabs><p>The JIT version relies on <code>SystemJS</code> to load individual modules.
+Its scripts appear in its <code>index.html</code>.</p>
+<p>JIT版本依靠<code>SystemJS</code>来加载单个模块，并需要<code>reflect-metadata</code>垫片。
+所以它们出现在它的<code>index.html</code>中。</p>
+<p>The AOT version loads the entire application in a single script, <code>aot/dist/build.js</code>.
+It does not need <code>SystemJS</code>, so that script is absent from its <code>index.html</code></p>
+<p><strong><em>main.ts</em></strong></p>
+<p>JIT and AOT applications boot in much the same way but require different Angular libraries to do so.
+The key differences, covered in the <a href="#bootstrap">Bootstrap</a> section above,
+are evident in these <code>main</code> files which can and should reside in the same folder:</p>
+<p>AOT版本用一个单独的脚本来加载整个应用 - <code>aot/dist/build.js</code>。它不需要<code>SystemJS</code>和<code>reflect-metadata</code>垫片，所以它们不会出现在<code>index.html</code>中。</p>
+<code-tabs><code-pane language="ts" name="main-aot.ts (AOT)" format="linenums">import { platformBrowser }    from &#39;@angular/platform-browser&#39;;
+
+import { AppModuleNgFactory } from &#39;../aot/src/app/app.module.ngfactory&#39;;
+
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
+</code-pane><code-pane language="ts" name="main.ts (JIT)" format="linenums">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+
+import { AppModule } from &#39;./app/app.module&#39;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+</code-pane></code-tabs><p><strong><em>TypeScript configuration</em></strong></p>
+<p><strong><em>TypeScript配置</em></strong></p>
+<p>JIT-compiled applications transpile to <code>commonjs</code> modules.
+AOT-compiled applications transpile to <em>ES2015</em>/<em>ES6</em> modules to facilitate tree shaking.
+AOT requires its own TypeScript configuration settings as well.</p>
+<p>JIT编译的应用编译为<code>commonjs</code>模块。
+AOT编译的应用编译为<strong>ES2015/ES6</strong>模块，用来支持摇树优化。
+而且AOT需要它自己的TypeScript配置设置。</p>
+<p>You&#39;ll need separate TypeScript configuration files such as these:</p>
+<p>你将需要单独的TypeScript配置文件，像这些：</p>
+<code-tabs><code-pane language="json" name="tsconfig-aot.json (AOT)" format="linenums">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;module&quot;: &quot;es2015&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;sourceMap&quot;: true,
+    &quot;emitDecoratorMetadata&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+    &quot;noImplicitAny&quot;: true,
+    &quot;suppressImplicitAnyIndexErrors&quot;: true,
+    &quot;typeRoots&quot;: [
+      &quot;../../node_modules/@types/&quot;
+    ]
+  },
+
+  &quot;files&quot;: [
+    &quot;src/app/app.module.ts&quot;,
+    &quot;src/main-aot.ts&quot;
+  ],
+
+  &quot;angularCompilerOptions&quot;: {
+    &quot;genDir&quot;: &quot;aot&quot;,
+    &quot;skipMetadataEmit&quot; : true
+  }
+}
+</code-pane><code-pane language="json" name="src/tsconfig.json (JIT)" format="linenums">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;module&quot;: &quot;commonjs&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;sourceMap&quot;: true,
+    &quot;emitDecoratorMetadata&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;lib&quot;: [ &quot;es2015&quot;, &quot;dom&quot; ],
+    &quot;noImplicitAny&quot;: true,
+    &quot;suppressImplicitAnyIndexErrors&quot;: true
+  }
+}
+</code-pane></code-tabs><div class="callout is-helpful"><header>@Types and node modules</header><header>@Types和node模块</header><p>In the file structure of <em>this particular sample project</em>,
+the <code>node_modules</code> folder happens to be two levels up from the project root. 
+Therefore, <code>&quot;typeRoots&quot;</code> must be set to <code>&quot;../../node_modules/@types/&quot;</code>. </p>
+<p>在<strong>这个特定的示例项目</strong>的文件结构中，<code>node_modules</code>文件恰好比项目根目录高两级。
+因此，<code>&quot;typeRoots&quot;</code>必须设置为<code>&quot;../../node_modules/@types/&quot;</code>。</p>
+<p>In a more typical project, <code>node_modules</code> would be a sibling of <code>tsconfig-aot.json</code>
+and <code>&quot;typeRoots&quot;</code> would be set to <code>&quot;node_modules/@types/&quot;</code>.
+Edit your <code>tsconfig-aot.json</code> to fit your project&#39;s file structure.</p>
+<p>在一个更典型的项目中，<code>node_modules</code>位于<code>tsconfig-aot.json</code>同级，
+这时<code>&quot;typeRoots&quot;</code>应设置为<code>&quot;node_modules/@types/&quot;</code>。
+编辑你的<code>tsconfig-aot.json</code>，使之适合项目的文件结构。</p>
+</div><a id="shaking"></a><h3 id="tree-shaking">Tree shaking</h3>
+<h3 id="-">摇树优化</h3>
+<p>Rollup does the tree shaking as before.</p>
+<p>Rollup和以前一样，仍然进行摇树优化。</p>
+<div class="code-example"><header><h4>rollup-config.js</h4></header><code-example language="js" format="">import rollup      from &#39;rollup&#39;
+import nodeResolve from &#39;rollup-plugin-node-resolve&#39;
+import commonjs    from &#39;rollup-plugin-commonjs&#39;;
+import uglify      from &#39;rollup-plugin-uglify&#39;
+
+//paths are relative to the execution path
+export default {
+  entry: &#39;src/main-aot.js&#39;,
+  dest: &#39;aot/dist/build.js&#39;, // output a single application bundle
+  sourceMap: true,
+  sourceMapFile: &#39;aot/dist/build.js.map&#39;,
+  format: &#39;iife&#39;,
+  onwarn: function(warning) {
+    // Skip certain warnings
+
+    // should intercept ... but doesn&#39;t in some rollup versions
+    if ( warning.code === &#39;THIS_IS_UNDEFINED&#39; ) { return; }
+
+    // console.warn everything else
+    console.warn( warning.message );
+  },
+  plugins: [
+    nodeResolve({jsnext: true, module: true}),
+    commonjs({
+      include: [&#39;node_modules/rxjs/**&#39;]
+    }),
+    uglify()
+  ]
+}
+</code-example></div><a id="running-app"></a><h3 id="running-the-application">Running the application</h3>
+<h3 id="-">运行应用</h3>
+<div class="alert is-important"><p>The general audience instructions for running the AOT build of the Tour of Heroes app are not ready.</p>
+<p>面向大众的运行AOT构建的英雄指南应用的说明还没有准备好。</p>
+<p>The following instructions presuppose that you have cloned the
+<a href="https://github.com/angular/angular.io" target="_blank">angular.io</a>
+github repository and prepared it for development as explained in the repo&#39;s README.md.</p>
+<p>下面的说明假设你克隆了<a href="https://github.com/angular/angular.io" target="_blank">angular.io</a> Github库，并按照该库的README.md准备了开发环境。</p>
+<p>The <em>Tour of Heroes</em> source code is in the <code>public/docs/_examples/toh-6/ts</code> folder.</p>
+<p><strong>英雄指南</strong>源代码在<code>public/docs/_examples/toh-6/ts</code>目录。</p>
+</div><p>Run the JIT-compiled app with <code>npm start</code> as for all other JIT examples.</p>
+<p>和其他JIT例子一样，使用<code>npm start</code>命令，运行JIT编译的应用：</p>
+<p>Compiling with AOT presupposes certain supporting files, most of them discussed above.</p>
+<p>AOT编译假设上面介绍的一些支持文件都以准备好。</p>
+<code-tabs><code-pane language="html" name="src/index.html" format="linenums">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;/&quot;&gt;
+    &lt;title&gt;Angular Tour of Heroes&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;node_modules/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;node_modules/zone.js/dist/zone.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;node_modules/systemjs/dist/system.src.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import(&#39;main.js&#39;).catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;my-app&gt;Loading...&lt;/my-app&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code-pane><code-pane language="js" name="copy-dist-files.js" format="linenums">var fs = require(&#39;fs&#39;);
+var resources = [
+  &#39;node_modules/core-js/client/shim.min.js&#39;,
+  &#39;node_modules/zone.js/dist/zone.min.js&#39;,
+  &#39;src/styles.css&#39;
+];
+resources.map(function(f) {
+  var path = f.split(&#39;/&#39;);
+  var t = &#39;aot/&#39; + path[path.length-1];
+  fs.createReadStream(f).pipe(fs.createWriteStream(t));
+});
+</code-pane><code-pane language="js" name="rollup-config.js" format="linenums">import rollup      from &#39;rollup&#39;
+import nodeResolve from &#39;rollup-plugin-node-resolve&#39;
+import commonjs    from &#39;rollup-plugin-commonjs&#39;;
+import uglify      from &#39;rollup-plugin-uglify&#39;
+
+//paths are relative to the execution path
+export default {
+  entry: &#39;src/main-aot.js&#39;,
+  dest: &#39;aot/dist/build.js&#39;, // output a single application bundle
+  sourceMap: true,
+  sourceMapFile: &#39;aot/dist/build.js.map&#39;,
+  format: &#39;iife&#39;,
+  onwarn: function(warning) {
+    // Skip certain warnings
+
+    // should intercept ... but doesn&#39;t in some rollup versions
+    if ( warning.code === &#39;THIS_IS_UNDEFINED&#39; ) { return; }
+
+    // console.warn everything else
+    console.warn( warning.message );
+  },
+  plugins: [
+    nodeResolve({jsnext: true, module: true}),
+    commonjs({
+      include: [&#39;node_modules/rxjs/**&#39;]
+    }),
+    uglify()
+  ]
+}
+</code-pane><code-pane language="json" name="tsconfig-aot.json" format="linenums">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;module&quot;: &quot;es2015&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;sourceMap&quot;: true,
+    &quot;emitDecoratorMetadata&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+    &quot;noImplicitAny&quot;: true,
+    &quot;suppressImplicitAnyIndexErrors&quot;: true,
+    &quot;typeRoots&quot;: [
+      &quot;../../node_modules/@types/&quot;
+    ]
+  },
+
+  &quot;files&quot;: [
+    &quot;src/app/app.module.ts&quot;,
+    &quot;src/main-aot.ts&quot;
+  ],
+
+  &quot;angularCompilerOptions&quot;: {
+    &quot;genDir&quot;: &quot;aot&quot;,
+    &quot;skipMetadataEmit&quot; : true
+  }
+}
+</code-pane></code-tabs><p>Extend the <code>scripts</code> section of the <code>package.json</code> with these npm scripts:</p>
+<p>使用下面的npm脚本，扩展<code>package.json</code>文件的<code>scripts</code>部分：</p>
+<div class="code-example"><header><h4>package.json (convenience scripts)</h4></header><code-example language="json" format="linenums">{
+  "scripts": {
+    "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js",
+    "serve:aot": "lite-server -c bs-config.aot.json"
+  }
+}</code-example></div><p>Copy the AOT distribution files into the <code>/aot</code> folder with the node script:</p>
+<p>使用下面的node脚本，拷贝AOT发布文件到<code>/aot/</code>目录：</p>
+<code-example language="none" class="code-shell">node copy-dist-files</code-example><div class="l-sub-section"><p>You won&#39;t do that again until there are updates to <code>zone.js</code> or the <code>core-js</code> shim for old browsers.</p>
+<p>直到<code>zone.js</code>或者支持老版本浏览器的<code>core-js</code>垫片有更新，你不需要再这样做。</p>
+</div><p>Now AOT-compile the app and launch it with the <code>lite-server</code>:</p>
+<p>现在AOT编译应用，并使用<code>lite</code>服务器启动它：</p>
+<code-example language="none" class="code-shell">npm run build:aot && npm run serve:aot
+</code-example><a id="inspect-bundle"></a><h3 id="inspect-the-bundle">Inspect the Bundle</h3>
+<h3 id="-">检查包裹</h3>
+<p>It&#39;s fascinating to see what the generated JavaScript bundle looks like after Rollup.
+The code is minified, so you won&#39;t learn much from inspecting the bundle directly.
+But the <a href="https://github.com/danvk/source-map-explorer/blob/master/README.md" target="_blank">source-map-explorer</a>
+tool can be quite revealing.</p>
+<p>看看Rollup之后生成的JavaScript包，非常神奇。
+代码已经被最小化，所以你不会从中直接学到任何知识。
+但是<a href="https://github.com/danvk/source-map-explorer/blob/master/README.md" target="_blank">source-map-explorer</a> 工具非常有用。</p>
+<p>Install it:</p>
+<p>安装：</p>
+<code-example language="none" class="code-shell">npm install source-map-explorer --save-dev</code-example><p>Run the following command to generate the map.</p>
+<p>运行下面的命令来生成源映射。</p>
+<code-example language="none" class="code-shell">node_modules/.bin/source-map-explorer aot/dist/build.js
+</code-example><p>The <code>source-map-explorer</code> analyzes the source map generated with the bundle and draws a map of all dependencies,
+showing exactly which application and Angular modules and classes are included in the bundle.</p>
+<p><code>source-map-explorer</code>分析从包生成的源映射，并画出一个依赖地图，显示包中包含哪些应用程序和Angular模块和类。</p>
+<p>Here&#39;s the map for <em>Tour of Heroes</em>.</p>
+<p>下面是英雄指南的地图：</p>
+<a href="../../../../resources/images/cookbooks/aot-compiler/toh6-bundle.png" target="_blank" title="View larger image"><figure class="image-display"><img src="../../../../resources/images/cookbooks/aot-compiler/toh6-bundle.png" alt="TOH-6-bundle"></figure></a></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/aot-compiler.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:23 GMT -->
+</html>

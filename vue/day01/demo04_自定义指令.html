@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="example">
+  <p>{{msg}}</p>
+  <h1 v-change="count"> Hello Directive</h1>
+  <button @click="handleClick">clickMe</button>
+</div>
+
+<script>
+
+  //在自定义指令，每一个指令都有自己的3个钩子函数
+  //   bind update unbind
+//  自定义一个叫做change的指令，在指令被调用时修改元素的背景色为红色
+
+
+  new Vue({
+    el:'#example',
+    data:{
+      msg:'Hello Direcitve',
+      count:100
+    },
+    methods:{
+      handleClick: function () {
+        this.count++;
+      }
+    },
+    directives:{
+      change:{
+        bind: function (element,arg2) {
+          console.log(arg2);
+          element.style.backgroundColor = '#ff0000';
+          console.log('in bind');
+        },
+        update: function (arg1,arg2) {
+          console.log(arg1,arg2);
+          console.log(' in update');
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

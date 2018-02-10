@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h3>UI主线程给Worker线程发消息</h3>
+  <button onclick="console.log(111)">按钮1</button>
+  <hr/>
+  <input type="text" id="inputNum">
+  <input type="button" id="bt" value="开始质数判定">
+  <hr/>
+  <button onclick="console.log(222)">按钮2</button>
+  <script>
+    bt.onclick = function(){
+      var n = inputNum.value;
+      //创建Worker线程执行耗时任务
+      var w7 = new Worker('7.js');
+      w7.postMessage(n);
+    }
+  </script>
+</body>
+</html>

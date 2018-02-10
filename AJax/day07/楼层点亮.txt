@@ -1,0 +1,63 @@
+  程序开发
+	1:分析html/css   jd_index.html
+	<!--附加导航(affix)，用来点亮各个楼层的开关-->
+  <div class="affix">
+   <ul>
+    <li><a href="#f1">家电通讯</a></li>
+    <li><a href="#f2">美妆护肤</a></li>
+    <li><a href="#f3">婴童用品</a></li>
+   </ul>
+  </div>    
+	2:分析功有创建js
+  $(window).scrollspy( {
+    target: 'div.affix'
+  });
+
+  问题一:获取滚动条到页面顶部距离
+	1:监听事件滚动事件 scroll
+	  滚动条移动自动触发事件
+	2:获取滚动条位置   
+	  $(window).scrollTop();
+	  900--显示div---2000
+		fadeOut(); 淡出 隐藏
+		fadeIn();  淡入 显示
+
+
+  问题:点亮操作
+	功能:滚动条移动哪个楼层 对应 li class active
+	jd_index.html
+
+	446   <div class="floor" id="f1"> 一楼
+	639   <div class="floor" id="f2"> 二楼
+	832   <div class="floor" id="f3"> 三楼
+	1204
+  <div class="affix">
+   <ul>
+    <li><a href="#f1">家电通讯</a></li>
+    <li><a href="#f2">美妆护肤</a></li>
+    <li><a href="#f3">婴童用品</a></li>
+   </ul>
+  </div>  
+
+  每一个楼层位置
+	$("#f1").offset().top; 1000
+	$("#f2").offset().top; 1400
+	$("#f3").offset().top; 1800
+
+	思路:遍历每个楼层开关(导航开关),
+	     查看当前
+	     window滚动偏移量超过哪个楼层
+			 当前楼层点击 addClass(action);
+   
+ //导航开关   16:50---17:05
+ var $liList =  $opt.find("li");
+ //遍历
+ $liList.each(function(i,li){
+   1:获取当前元素子元素a.获取属性href
+	 2:依据href属性选择获取当前对象.
+	   获取偏移量offset().top
+   3:判断如果当前楼层位置小于滚动位置
+	   当前li添加 class active
+		 查找所有兄弟
+		 删除class active
+ });

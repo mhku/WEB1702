@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+
+</div>
+
+<script type="text/babel">
+  //完成组件的创建和使用
+  var AComponent = React.createClass({
+    handleChange:function(){
+      //1、拿到当前输入框的值
+      var value = this.refs.myInput.value;
+      console.log(value);
+      //2、将这个值传递给Main组件
+      //在子组件中如何调用父组件的方法
+      this.props.funcSave(value);
+
+    },
+    render:function(){
+      return <input type="text" ref='myInput'
+      onChange={this.handleChange}/>
+    }
+  })
+  var BComponent = React.createClass({
+    handleClick:function(){
+      //读取到Main组件中result值
+      console.log("读到的值为："+this.props.funcGet());
+    },
+    render:function(){
+      return <button onClick={this.handleClick}>
+      clickMe</button>
+    }
+  })
+  var MainComponent = React.createClass({
+    result:'123',
+    save:function(nowResult){
+      this.result = nowResult;
+    },
+    get:function(){
+      return this.result;
+    },
+    render:function(){
+      return <div>
+        <AComponent funcSave={this.save}></AComponent>
+        <BComponent funcGet={this.get}>
+        </BComponent>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <MainComponent/>,
+    document.getElementById('example')
+  );
+</script>
+
+
+</body>
+</html>
+
+
+
+
+

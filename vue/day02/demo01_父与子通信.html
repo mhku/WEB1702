@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+  <h1>{{msg}}</h1>
+  <!-- 调用父组件 -->
+  <father-component></father-component>
+</div>
+
+<script>
+
+  /**
+   * 父子组件的通信
+   * props down,events up
+   * 通过属性从父到子传递数据
+   * 通过事件从子到父传递数据
+   *
+   * */
+
+
+
+  //创建父组件
+  Vue.component('father-component',{
+    template:`
+    <div>
+      <p> hello father </p>
+      <hr/>
+      <son-component name="michael">
+      </son-component>
+    </div>
+    `
+  });
+
+  //创建子组件
+  Vue.component('son-component',{
+    props:['name'],
+    template:`
+    <div>
+      <p> this is son component</p>
+      <span>{{"接收到的数据为："+this.name}}</span>
+    </div>
+    `
+  })
+
+  new Vue({
+    el:'#example',
+    data:{
+      msg:'Hello VuejS'
+    }
+  })
+</script>
+
+</body>
+</html>

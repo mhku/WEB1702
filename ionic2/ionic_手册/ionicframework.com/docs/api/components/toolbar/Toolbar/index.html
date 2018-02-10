@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/api/components/toolbar/Toolbar/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../../../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>Toolbar - Ionic API Documentation -  Ionic Framework</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../../../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../../../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../../../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-toolbar"
+        class="v2 docs fluid page-toolbar has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../../../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../../../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../../../../index.html">Framework</a></li>
+<li><a href="../../../../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../../../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../../../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../../../../support.html">Customer Support</a></li>
+    <li><a href="../../../../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     
+       ng-controller="APIDemoCtrl"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/nightly/api/"
+    >
+    nightly 
+  </option>
+
+  <option
+   value="/docs/api/"
+    selected>
+    3.3.0 (latest)
+  </option>
+
+  <option
+   value="/docs/3.2.0/api/"
+    >
+    3.2.0 
+  </option>
+
+  <option
+   value="/docs/3.1.1/api/"
+    >
+    3.1.1 
+  </option>
+
+  <option
+   value="/docs/3.1.0/api/"
+    >
+    3.1.0 
+  </option>
+
+  <option
+   value="/docs/3.0.1/api/"
+    >
+    3.0.1 
+  </option>
+
+  <option
+   value="/docs/3.0.0/api/"
+    >
+    3.0.0 
+  </option>
+
+  <option
+   value="/docs/2.3.0/api/"
+    >
+    2.3.0 
+  </option>
+
+  <option
+   value="/docs/2.2.0/api/"
+    >
+    2.2.0 
+  </option>
+
+  <option
+   value="/docs/2.1.0/api/"
+    >
+    2.1.0 
+  </option>
+
+  <option
+   value="/docs/2.0.1/api/"
+    >
+    2.0.1 
+  </option>
+
+  <option
+   value="/docs/2.0.0/api/"
+    >
+    2.0.0 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="../../../../index.html">Back to Main Docs</a>
+  </li>
+  
+  
+    
+
+  
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/alert/AlertController">AlertController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/avatar/Avatar">Avatar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/chip/Chip">Chip</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Col">Col</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/datetime/DateTime">DateTime</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabButton">FabButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabContainer">FabContainer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabList">FabList</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Footer">Footer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Grid">Grid</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/tap-click/Haptic">Haptic</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Header">Header</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/img/Img">Img</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/IonicErrorHandler">IonicErrorHandler</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicModule">IonicModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/IonicPage">IonicPage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicPageModule">IonicPageModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemOptions">ItemOptions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemReorder">ItemReorder</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/loading/LoadingController">LoadingController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/MenuController">MenuController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/modal/ModalController">ModalController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/normalizeURL">normalizeURL</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/note/Note">Note</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/PlatformConfigToken">PlatformConfigToken</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/popover/PopoverController">PopoverController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/range/Range">Range</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/registerModeConfigs">registerModeConfigs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Row">Row</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/split-pane/SplitPane">SplitPane</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/thumbnail/Thumbnail">Thumbnail</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toast/ToastController">ToastController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize active">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/typography/Typography">Typography</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/ViewController">ViewController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/virtual-scroll/VirtualScroll">VirtualScroll</a>
+</li>
+
+
+
+</ul>
+
+    
+  </nav>
+  
+  <aside id="platform-preview" class="platform-preview">
+    <div class="platform-toggle">
+      <a ng-class="{active: iosActive}"
+         ng-click="setPlatform('ios')">iOS</a>
+      <a ng-class="{active: androidActive}"
+         ng-click="setPlatform('android')">Android</a>
+      <a ng-class="{active: windowsActive}"
+         ng-click="setPlatform('windows')">Windows</a>
+    </div>
+    <div id="demo-device-ios"
+         ng-class="previewPlatform"
+         ng-show="iosActive"
+         ng-cloak>
+      <iframe id="demo-ios"
+            
+              src="http://ionicframework.com/docs/demos/src/toolbar/www/?production=true&amp;ionicplatform=ios"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-android"
+         ng-class="previewPlatform"
+         ng-show="androidActive"
+         ng-cloak>
+      <iframe id="demo-android"
+            
+              src="http://ionicframework.com/docs/demos/src/toolbar/www/?production=true&amp;ionicplatform=android"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-windows"
+         ng-class="previewPlatform"
+         ng-show="windowsActive"
+         ng-cloak>
+      <iframe id="demo-windows"
+            
+              src="http://ionicframework.com/docs/demos/src/toolbar/www/?production=true&amp;ionicplatform=windows"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+  </aside>
+  
+  <main>
+    <h1 class="api-title">
+<a class="anchor" name="toolbar" href="#toolbar"></a>
+
+Toolbar
+<h3><code>ion-toolbar</code></h3>
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master/src/components/toolbar/toolbar.ts#L3">
+Improve this doc
+</a></p>
+
+<p>A Toolbar is a generic bar that is positioned above or below content.
+Unlike a <a href="../Navbar/index.html">Navbar</a>, a toolbar can be used as a subheader.
+When toolbars are placed within an <code>&lt;ion-header&gt;</code> or <code>&lt;ion-footer&gt;</code>,
+the toolbars stay fixed in their respective location. When placed within
+<code>&lt;ion-content&gt;</code>, toolbars will scroll with the content.</p>
+<h3 id="buttons-in-a-toolbar">Buttons in a Toolbar</h3>
+<p>Buttons placed in a toolbar should be placed inside of the <code>&lt;ion-buttons&gt;</code>
+element. An exception to this is a <a href="http://ionicframework.com/docs/api/components/menu/MenuToggle">menuToggle</a> button.
+It should not be placed inside of the <code>&lt;ion-buttons&gt;</code> element. Both the
+<code>&lt;ion-buttons&gt;</code> element and the <code>menuToggle</code> can be positioned inside of the
+toolbar using different properties. The below chart has a description of each
+property.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>Positions element to the left of the content in <code>ios</code> mode, and directly to the right in <code>md</code> and <code>wp</code> mode.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>Positions element to the right of the content in <code>ios</code> mode, and to the far right in <code>md</code> and <code>wp</code> mode.</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td>Positions element to the left of all other elements.</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td>Positions element to the right of all other elements.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-footer-box-shadow-and-border">Header / Footer Box Shadow and Border</h3>
+<p>In <code>md</code> mode, the <code>&lt;ion-header&gt;</code> will receive a box-shadow on the bottom, and the
+<code>&lt;ion-footer&gt;</code> will receive a box-shadow on the top.  In <code>ios</code> mode, the <code>&lt;ion-header&gt;</code>
+will receive a border on the bottom, and the <code>&lt;ion-footer&gt;</code> will receive a border on the
+top. Both the <code>md</code> box-shadow and the <code>ios</code> border can be removed by adding the <code>no-border</code>
+attribute to the element.</p>
+<pre><code class="lang-html">&lt;ion-header no-border&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;Header&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content&gt;
+&lt;/ion-content&gt;
+
+&lt;ion-footer no-border&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;Footer&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-footer&gt;
+</code></pre>
+
+<!-- @usage tag -->
+
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
+
+<pre><code class="lang-html">&lt;ion-header no-border&gt;
+
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;My Toolbar Title&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;I&#39;m a subheader&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+
+&lt;ion-header&gt;
+
+
+&lt;ion-content&gt;
+
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;Scrolls with the content&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+
+&lt;/ion-content&gt;
+
+
+&lt;ion-footer no-border&gt;
+
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;I&#39;m a footer&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+
+&lt;/ion-footer&gt;
+</code></pre>
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2 id="sass-variable-header"><a class="anchor" name="sass-variables" href="#sass-variables"></a>Sass Variables</h2>
+<div id="sass-variables" ng-controller="SassToggleCtrl">
+  <div class="sass-platform-toggle">
+    
+      
+      
+      <a ng-init="setSassPlatform('ios')" ng-class="{ active: active === 'ios' }" ng-click="setSassPlatform('ios')">iOS</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'md' }" ng-click="setSassPlatform('md')">Material Design</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'wp' }" ng-click="setSassPlatform('wp')">Windows Platform</a>
+      
+      
+    
+  </div>
+
+
+  
+  <table ng-show="active === 'ios'" id="sass-ios" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$toolbar-order-ios</code></td>
+        
+          <td><code>(&#10;  back-button: 0,&#10;  menu-toggle-start: 1,&#10;  buttons-left: 2,&#10;  buttons-start: 3,&#10;  content: 4,&#10;  buttons-end: 5,&#10;  buttons-right: 6,&#10;  menu-toggle-end: 7,&#10;)</code></td>
+        
+        <td><p>Order of the toolbar elements</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-button-font-size</code></td>
+        
+          <td><code>1.7rem</code></td>
+        
+        <td><p>Font size of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-title-font-size</code></td>
+        
+          <td><code>1.7rem</code></td>
+        
+        <td><p>Font size of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-title-font-weight</code></td>
+        
+          <td><code>600</code></td>
+        
+        <td><p>Font weight of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-title-text-align</code></td>
+        
+          <td><code>center</code></td>
+        
+        <td><p>Text alignment of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-title-text-color</code></td>
+        
+          <td><code>color-contrast($colors-ios, $toolbar-ios-background)</code></td>
+        
+        <td><p>Text color of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-button-color</code></td>
+        
+          <td><code>color-contrast($colors-ios, $toolbar-ios-background, ios)</code></td>
+        
+        <td><p>Text color of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-button-border-radius</code></td>
+        
+          <td><code>4px</code></td>
+        
+        <td><p>Border radius of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-ios-button-strong-font-weight</code></td>
+        
+          <td><code>600</code></td>
+        
+        <td><p>Font weight of the strong toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$navbar-ios-height</code></td>
+        
+          <td><code>$toolbar-ios-height</code></td>
+        
+        <td><p>Height of the navigation bar</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'md'" id="sass-md" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$toolbar-order-md</code></td>
+        
+          <td><code>(&#10;  back-button: 0,&#10;  menu-toggle-start: 1,&#10;  buttons-left: 2,&#10;  content: 3,&#10;  buttons-start: 4,&#10;  buttons-end: 5,&#10;  buttons-right: 6,&#10;  menu-toggle-end: 7,&#10;)</code></td>
+        
+        <td><p>Order of the toolbar elements</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-md-title-font-size</code></td>
+        
+          <td><code>2rem</code></td>
+        
+        <td><p>Font size of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-md-title-text-color</code></td>
+        
+          <td><code>color-contrast($colors-md, $toolbar-md-background, md)</code></td>
+        
+        <td><p>Text color of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-md-button-font-size</code></td>
+        
+          <td><code>1.4rem</code></td>
+        
+        <td><p>Font size of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-md-button-color</code></td>
+        
+          <td><code>$toolbar-md-title-text-color</code></td>
+        
+        <td><p>Text color of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-md-button-border-radius</code></td>
+        
+          <td><code>2px</code></td>
+        
+        <td><p>Border radius of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-md-button-strong-font-weight</code></td>
+        
+          <td><code>bold</code></td>
+        
+        <td><p>Font weight of the strong toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$navbar-md-height</code></td>
+        
+          <td><code>$toolbar-md-height</code></td>
+        
+        <td><p>Height of the navigation bar</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'wp'" id="sass-wp" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$toolbar-order-wp</code></td>
+        
+          <td><code>(&#10;  back-button: 0,&#10;  menu-toggle-start: 1,&#10;  buttons-left: 2,&#10;  content: 3,&#10;  buttons-start: 4,&#10;  buttons-end: 5,&#10;  buttons-right: 6,&#10;  menu-toggle-end: 7,&#10;)</code></td>
+        
+        <td><p>Order of the toolbar elements</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-padding-top</code></td>
+        
+          <td><code>0</code></td>
+        
+        <td><p>Padding top of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-padding-end</code></td>
+        
+          <td><code>6px</code></td>
+        
+        <td><p>Padding end of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-padding-bottom</code></td>
+        
+          <td><code>$toolbar-wp-title-padding-top</code></td>
+        
+        <td><p>Padding bottom of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-padding-start</code></td>
+        
+          <td><code>$toolbar-wp-title-padding-end</code></td>
+        
+        <td><p>Padding start of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-font-size</code></td>
+        
+          <td><code>1.5rem</code></td>
+        
+        <td><p>Font size of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-font-weight</code></td>
+        
+          <td><code>bold</code></td>
+        
+        <td><p>Font weight of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-text-transform</code></td>
+        
+          <td><code>uppercase</code></td>
+        
+        <td><p>Text transform of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-title-text-color</code></td>
+        
+          <td><code>color-contrast($colors-wp, $toolbar-wp-background, wp)</code></td>
+        
+        <td><p>Text color of the toolbar title</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-button-font-size</code></td>
+        
+          <td><code>1.4rem</code></td>
+        
+        <td><p>Font size of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-button-color</code></td>
+        
+          <td><code>color-contrast($colors-wp, $toolbar-wp-background, wp)</code></td>
+        
+        <td><p>Text color of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-button-border-radius</code></td>
+        
+          <td><code>2px</code></td>
+        
+        <td><p>Border radius of the toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$toolbar-wp-button-strong-font-weight</code></td>
+        
+          <td><code>bold</code></td>
+        
+        <td><p>Font weight of the strong toolbar button</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$navbar-wp-height</code></td>
+        
+          <td><code>$toolbar-wp-height</code></td>
+        
+        <td><p>Height of the navigation bar</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div>
+
+<!-- related link -->
+
+<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
+
+<p><a href="../Navbar/index.html">Navbar API Docs</a><!-- end content block --></p>
+
+<!-- end body block -->
+
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../../../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/api/components/toolbar/Toolbar/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:19 GMT -->
+</html>

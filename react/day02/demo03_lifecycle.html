@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var LifeComponent = React.createClass({
+    getInitialState:function(){
+      return {count:0}
+    },
+    componentWillMount:function(){
+    //做初始化工作
+      console.log(this.refs.myInput);
+      console.log('component will mount');
+    },
+    componentDidMount:function(){
+    //渲染视图、验证、处理
+      console.log(this.refs.myInput);
+      console.log('component did mount');
+    },
+    componentWillUpdate:function(nextProps,nextState){
+      //判断 处理
+      console.log('component will update');
+      console.log(nextProps,nextState);
+    },
+    handleClick:function(){
+      //读取状态中的count，自增操作
+      var nowCount = this.state.count;
+      nowCount++;
+      //写入状态
+      this.setState({count:nowCount});
+    },
+    render:function(){
+      return <div>
+        <input type="text" ref='myInput'/>
+        <p>{this.state.count}</p>
+        <button onClick={this.handleClick}>
+        clickMe</button>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <LifeComponent></LifeComponent>,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

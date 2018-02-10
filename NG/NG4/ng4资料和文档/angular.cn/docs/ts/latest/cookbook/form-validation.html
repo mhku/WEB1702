@@ -1,0 +1,1145 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:40 GMT -->
+<head><title>表单验证 - ts - COOKBOOK</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent is-selected">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item is-selected"><a href="form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="form-validation.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/cookbook/form-validation.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/cookbook/form-validation.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">表单验证 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">验证用户在表单中的输入</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><a id="top"></a><p>Improve overall data quality by validating user input for accuracy and completeness.</p>
+<p>我们可以通过验证用户输入的准确性和完整性，来增强整体数据质量。</p>
+<p>This cookbook shows how to validate user input in the UI and display useful validation messages
+using first the template-driven forms and then the reactive forms approach.</p>
+<p>在本烹饪书中，我们展示在界面中如何验证用户输入，并显示有用的验证信息，先使用模板驱动表单方式，再使用响应式表单方式。</p>
+<div class="l-sub-section"><p>Read more about these choices in the <a href="../guide/forms.html">Forms</a>
+and the <a href="../guide/reactive-forms.html">Reactive Forms</a> guides.</p>
+<p>参见<a href="../guide/forms.html">表单</a>和<a href="../guide/reactive-forms.html">响应式表单</a>了解关于这些选择的更多知识。</p>
+</div><a id="toc"></a><h2 id="contents">Contents</h2>
+<h2 id="-">目录</h2>
+<ul>
+<li><p><a href="#template1">Simple template-driven forms</a></p>
+<p><a href="#template1">简单的模板驱动表单</a></p>
+</li>
+<li><p><a href="#template2">Template-driven forms with validation messages in code</a></p>
+<p><a href="#template2">代码中带验证信息的模板驱动表单</a></p>
+<ul>
+<li><p><a href="#component-class">Component Class</a></p>
+<p><a href="#component-class">组件类</a></p>
+</li>
+<li><p><a href="#improvement">The benefits of messages in code</a></p>
+<p><a href="#improvement">在代码中写消息的优点</a></p>
+</li>
+<li><p><a href="#formmodule"><code>FormModule</code> and template-driven forms</a></p>
+<p><a href="#formmodule"><code>FormModule</code>和模板驱动表单</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#reactive">Reactive forms with validation in code</a></p>
+<p><a href="#reactive">代码中带验证消息的响应式表单</a></p>
+<ul>
+<li><p><a href="#reactive-forms-module">Switch to the <code>ReactiveFormsModule</code></a></p>
+<p><a href="#reactive-forms-module">切换成<code>ReactiveFormsModule</code></a></p>
+</li>
+<li><p><a href="#reactive-component-template">Component template</a></p>
+<p><a href="#reactive-component-template">组件模板</a></p>
+</li>
+<li><p><a href="#reactive-component-class">Component class</a></p>
+<p><a href="#reactive-component-class">组件类</a></p>
+<ul>
+<li><p><a href="#formbuilder"><code>FormBuilder</code> declaration</a></p>
+<p><a href="#formbuilder"><code>FormBuilder</code>声明</a></p>
+</li>
+<li><p><a href="#committing-changes">Committing hero value changes</a></p>
+<p><a href="#committing-changes">提交对英雄值的更改</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="#custom-validation">Custom validation</a></p>
+<p><a href="#custom-validation">自定义验证器</a></p>
+<ul>
+<li><p><a href="#custom-validation-directive">Custom validation directive</a></p>
+<p><a href="#custom-validation-directive">自定义验证指令</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#testing">Testing considerations</a></p>
+<p><a href="#testing">测试方面的考虑</a></p>
+</li>
+</ul>
+<a id="live-example"></a><p><strong>Try the live example to see and download the full cookbook source code.</strong></p>
+<p><strong>查看在线例子，并下载整个烹饪书的源代码</strong></p>
+<live-example name="cb-form-validation" embedded="embedded" img="cookbooks/form-validation/plunker.png">在线例子</live-example><div class="l-main-section"></div><a id="template1"></a><h2 id="simple-template-driven-forms">Simple template-driven forms</h2>
+<h2 id="-">简单的模板驱动表单</h2>
+<p>In the template-driven approach, you arrange
+<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms_in_HTML">form elements</a> in the component&#39;s template.</p>
+<p>在模板驱动表单方法中，你在组件的模板中组织<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms_in_HTML">表单元素</a>。</p>
+<p>You add Angular form directives (mostly directives beginning <code>ng...</code>) to help
+Angular construct a corresponding internal control model that implements form functionality.
+In template-drive forms, the control model is <em>implicit</em> in the template.</p>
+<p>你可以添加Angular表单指令（通常为以<code>ng</code>开头的指令）来帮助Angular构建对应的内部控制模型，以实现表单功能。
+控制模型在模板中是<strong>隐式</strong>的。</p>
+<p>To validate user input, you add <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation">HTML validation attributes</a>
+to the elements. Angular interprets those as well, adding validator functions to the control model.</p>
+<p>要验证用户输入，你添加<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation">HTML验证属性</a>到元素中。
+Angular拦截这些元素，添加验证器函数到控制模型中。</p>
+<p>Angular exposes information about the state of the controls including
+whether the user has &quot;touched&quot; the control or made changes and if the control values are valid.</p>
+<p>Angular暴露关于控制状态的信息，包括用户是否已经“触摸“了控制器，或者用户已经作了更新和控制器的值是否还有效。</p>
+<p>In this first template validation example,
+notice the HTML that reads the control state and updates the display appropriately.
+Here&#39;s an excerpt from the template HTML for a single input control bound to the hero name:</p>
+<p>在第一个模板验证例子中，我们添加了更多HTML，来读取控制器状态并适当更新显示。
+下面是模板HTML中提取的，一个绑定到英雄名字的输入框控制器：</p>
+<div class="code-example"><header><h4>template/hero-form-template1.component.html (Hero name)</h4></header><code-example language="html" format="">&lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+
+&lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot;
+       required minlength=&quot;4&quot; maxlength=&quot;24&quot;
+       name=&quot;name&quot; [(ngModel)]=&quot;hero.name&quot;
+       #name=&quot;ngModel&quot; &gt;
+
+&lt;div *ngIf=&quot;name.errors &amp;&amp; (name.dirty || name.touched)&quot;
+     class=&quot;alert alert-danger&quot;&gt;
+    &lt;div [hidden]=&quot;!name.errors.required&quot;&gt;
+      Name is required
+    &lt;/div&gt;
+    &lt;div [hidden]=&quot;!name.errors.minlength&quot;&gt;
+      Name must be at least 4 characters long.
+    &lt;/div&gt;
+    &lt;div [hidden]=&quot;!name.errors.maxlength&quot;&gt;
+      Name cannot be more than 24 characters long.
+    &lt;/div&gt;
+&lt;/div&gt;
+</code-example></div><p>Note the following:</p>
+<p>请注意以下几点：</p>
+<ul>
+<li><p>The <code>&lt;input&gt;</code> element carries the HTML validation attributes: <code>required</code>, <code>minlength</code>, and <code>maxlength</code>.</p>
+<p><code>&lt;input&gt;</code>元素带有一些HTML验证属性：<code>required</code>、<code>minlength</code> 和 <code>maxlength</code>。</p>
+</li>
+<li><p>The <code>name</code> attribute of the input is set to <code>&quot;name&quot;</code> so Angular can track this input element and associate it
+with an Angular form control called <code>name</code> in its internal control model.</p>
+<p>我们把输入框的<code>name</code>属性设置为<code>&quot;name&quot;</code>，这样Angular可以跟踪这个输入元素，并将其内部控制器模型的一个名为<code>name</code>的Angular表单控制关联起来。</p>
+</li>
+</ul>
+<ul>
+<li><p>The <code>[(ngModel)]</code> directive allows two-way data binding between the input box to the <code>hero.name</code> property.</p>
+<p>我们使用<code>[(ngModel)]</code>指令，将输入框双向数据绑定到<code>hero.name</code>属性。</p>
+</li>
+<li><p>The template variable (<code>#name</code>) has the value <code>&quot;ngModel&quot;</code> (always <code>ngModel</code>).
+This gives you a reference to the Angular <code>NgModel</code> directive
+associated with this control that you can use <em>in the template</em>
+to check for control states such as <code>valid</code> and <code>dirty</code>.</p>
+<p>我们将模板变量(<code>#name</code>)赋值为<code>&quot;ngModel&quot;</code> (总是 <code>ngModel</code>)。
+  它为我们提供了与这个控制器关联的Angular <code>NgModel</code>指令的引用，我们在模板中使用它，以检查控制器状态，比如<code>valid</code>和<code>dirty</code>。</p>
+</li>
+<li><p>The <code>*ngIf</code> on the <code>&lt;div&gt;</code> element reveals a set of nested message <code>divs</code> but only if there are &quot;name&quot; errors and
+the control is either <code>dirty</code> or <code>touched</code>.</p>
+<p><code>&lt;div&gt;</code>元素的<code>*ngIf</code>揭露了一套嵌套消息<code>divs</code>，但是只在有“name”错误和控制器为<code>dirty</code>或者<code>touched</code>。</p>
+</li>
+<li><p>Each nested <code>&lt;div&gt;</code> can present a custom message for one of the possible validation errors.
+There are messages for <code>required</code>, <code>minlength</code>, and <code>maxlength</code>.</p>
+<p>每个嵌套的<code>&lt;div&gt;</code>为其中一个可能出现的验证错误显示一条自定义消息。我们已经为<code>required</code>、<code>minlength</code>、和 <code>maxlength</code>准备了消息。</p>
+</li>
+</ul>
+<p>The full template repeats this kind of layout for each data entry control on the form.</p>
+<p>整个模板为表单上的每种数据输入控制器重复这种布局。</p>
+<a id="why-check"></a><div class="l-sub-section"><h4 id="why-check-_dirty_-and-_touched_-">Why check <em>dirty</em> and <em>touched</em>?</h4>
+<h4 id="-dirty-touched-">为何检查<strong>dirty</strong>和<strong>touched</strong>？</h4>
+<p>The app shouldn&#39;t show errors for a new hero before the user has had a chance to edit the value.
+The checks for <code>dirty</code> and <code>touched</code> prevent premature display of errors.</p>
+<p>当用户创建一个新英雄时，在还没有机会输入之前，我们不应该显示任何错误。
+检查<code>dirty</code>和<code>touched</code>防止了这种过早的错误显示。</p>
+<p>Learn about <code>dirty</code> and <code>touched</code> in the <a href="../guide/forms.html">Forms</a> guide.</p>
+<p>参见<a href="../guide/forms.html">表单</a>章，学习关于<code>dirty</code>和<code>touched</code>的知识。</p>
+</div><p>The component class manages the hero model used in the data binding
+as well as other code to support the view.</p>
+<p>组件类管理用于数据绑定的英雄模型，它还有其他支持视图的代码。</p>
+<div class="code-example"><header><h4>template/hero-form-template1.component.ts (class)</h4></header><code-example language="ts" format="linenums">export class HeroFormTemplate1Component {
+
+  powers = [&#39;Really Smart&#39;, &#39;Super Flexible&#39;, &#39;Weather Changer&#39;];
+
+  hero = new Hero(18, &#39;Dr. WhatIsHisWayTooLongName&#39;, this.powers[0], &#39;Dr. What&#39;);
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+  }
+
+  addHero() {
+    this.hero = new Hero(42, &#39;&#39;, &#39;&#39;);
+  }
+}
+</code-example></div><p>Use this template-driven validation technique when working with static forms with simple, standard validation rules.</p>
+<p>在处理简单的、拥有标准验证规则的静态表单时，使用这种模板驱动验证方法。</p>
+<p>Here are the complete files for the first version of <code>HeroFormTemplateCompononent</code> in the template-driven approach:</p>
+<p>下面是第一个版本的使用模板驱动方法的<code>HeroFormTemplateComponent</code>：</p>
+<code-tabs><code-pane language="html" name="template/hero-form-template1.component.html" format="linenums">&lt;div class=&quot;container&quot;&gt;
+  &lt;div [hidden]=&quot;submitted&quot;&gt;
+    &lt;h1&gt;Hero Form 1 (Template)&lt;/h1&gt;
+    &lt;form #heroForm=&quot;ngForm&quot;  *ngIf=&quot;active&quot;  (ngSubmit)=&quot;onSubmit()&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot;
+               required minlength=&quot;4&quot; maxlength=&quot;24&quot;
+               name=&quot;name&quot; [(ngModel)]=&quot;hero.name&quot;
+               #name=&quot;ngModel&quot; &gt;
+
+        &lt;div *ngIf=&quot;name.errors &amp;&amp; (name.dirty || name.touched)&quot;
+             class=&quot;alert alert-danger&quot;&gt;
+            &lt;div [hidden]=&quot;!name.errors.required&quot;&gt;
+              Name is required
+            &lt;/div&gt;
+            &lt;div [hidden]=&quot;!name.errors.minlength&quot;&gt;
+              Name must be at least 4 characters long.
+            &lt;/div&gt;
+            &lt;div [hidden]=&quot;!name.errors.maxlength&quot;&gt;
+              Name cannot be more than 24 characters long.
+            &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;alterEgo&quot;&gt;Alter Ego&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;alterEgo&quot; class=&quot;form-control&quot;
+               name=&quot;alterEgo&quot;
+               [(ngModel)]=&quot;hero.alterEgo&quot; &gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;power&quot;&gt;Hero Power&lt;/label&gt;
+        &lt;select id=&quot;power&quot; class=&quot;form-control&quot;
+                name=&quot;power&quot;
+                [(ngModel)]=&quot;hero.power&quot; required
+                #power=&quot;ngModel&quot; &gt;
+          &lt;option *ngFor=&quot;let p of powers&quot; [value]=&quot;p&quot;&gt;{{p}}&lt;/option&gt;
+        &lt;/select&gt;
+
+        &lt;div *ngIf=&quot;power.errors &amp;&amp; power.touched&quot; class=&quot;alert alert-danger&quot;&gt;
+          &lt;div [hidden]=&quot;!power.errors.required&quot;&gt;Power is required&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;
+             [disabled]=&quot;!heroForm.form.valid&quot;&gt;Submit&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
+             (click)=&quot;addHero()&quot;&gt;New Hero&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+
+  &lt;hero-submitted [hero]=&quot;hero&quot; [(submitted)]=&quot;submitted&quot;&gt;&lt;/hero-submitted&gt;
+&lt;/div&gt;
+</code-pane><code-pane language="ts" name="template/hero-form-template1.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+
+import { Hero }      from &#39;../shared/hero&#39;;
+
+@Component({
+  selector: &#39;hero-form-template1&#39;,
+  templateUrl: &#39;./hero-form-template1.component.html&#39;
+})
+export class HeroFormTemplate1Component {
+
+  powers = [&#39;Really Smart&#39;, &#39;Super Flexible&#39;, &#39;Weather Changer&#39;];
+
+  hero = new Hero(18, &#39;Dr. WhatIsHisWayTooLongName&#39;, this.powers[0], &#39;Dr. What&#39;);
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+  }
+
+  addHero() {
+    this.hero = new Hero(42, &#39;&#39;, &#39;&#39;);
+  }
+}
+</code-pane></code-tabs><div class="l-main-section"></div><a id="template2"></a><h2 id="template-driven-forms-with-validation-messages-in-code">Template-driven forms with validation messages in code</h2>
+<h2 id="-">验证消息在代码中的模板驱动表单</h2>
+<p>While the layout is straightforward,
+there are obvious shortcomings with the way it&#39;s handling validation messages:</p>
+<p>虽然布局很直观，但是我们处理验证消息的方法有明显的缺陷：</p>
+<ul>
+<li><p>It takes a lot of HTML to represent all possible error conditions.
+This gets out of hand when there are many controls and many validation rules.</p>
+<p>它使用了很多HTML来表现所有可能出现的错误情况。
+如果有太多控制器和太多验证规则，我们就失去了控制。</p>
+</li>
+<li><p>There&#39;s a lot of  JavaScript logic in theHTML.</p>
+<p>我们不喜欢在HTML里面插入这么多JavaScript。</p>
+</li>
+<li><p>The messages are static strings, hard-coded into the template.
+It&#39;s easier to maintain <em>dynamic</em> messages in the component class.</p>
+<p>这些消息是静态的字符串，被硬编码到模板中。把这些动态消息放在代码中会更易于维护。</p>
+</li>
+</ul>
+<p>In this example, you can move the logic and the messages into the component with a few changes to
+the template and component.</p>
+<p>只需要对模板和组件做出一些修改，我们可以将逻辑和消息移到组件中。</p>
+<p>Here&#39;s the hero name again, excerpted from the revised template (Template 2), next to the original version:</p>
+<p>下面也是关于英雄名字的控制器，从修改后的模板（“Template 2”）中抽取出来，与原来的版本相比：</p>
+<code-tabs><code-pane language="html" name="hero-form-template2.component.html (name #2)" format="linenums">        &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot;
+               required minlength=&quot;4&quot; maxlength=&quot;24&quot; forbiddenName=&quot;bob&quot;
+               name=&quot;name&quot; [(ngModel)]=&quot;hero.name&quot; &gt;
+
+        &lt;div *ngIf=&quot;formErrors.name&quot; class=&quot;alert alert-danger&quot;&gt;
+          {{ formErrors.name }}
+        &lt;/div&gt;
+</code-pane><code-pane language="html" name="hero-form-template1.component.html (name #1)" format="linenums">&lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+
+&lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot;
+       required minlength=&quot;4&quot; maxlength=&quot;24&quot;
+       name=&quot;name&quot; [(ngModel)]=&quot;hero.name&quot;
+       #name=&quot;ngModel&quot; &gt;
+
+&lt;div *ngIf=&quot;name.errors &amp;&amp; (name.dirty || name.touched)&quot;
+     class=&quot;alert alert-danger&quot;&gt;
+    &lt;div [hidden]=&quot;!name.errors.required&quot;&gt;
+      Name is required
+    &lt;/div&gt;
+    &lt;div [hidden]=&quot;!name.errors.minlength&quot;&gt;
+      Name must be at least 4 characters long.
+    &lt;/div&gt;
+    &lt;div [hidden]=&quot;!name.errors.maxlength&quot;&gt;
+      Name cannot be more than 24 characters long.
+    &lt;/div&gt;
+&lt;/div&gt;
+</code-pane></code-tabs><p>The <code>&lt;input&gt;</code> element HTML is almost the same. There are noteworthy differences:</p>
+<p><code>&lt;input&gt;</code>元素的HTML几乎一样。但是下列有值得注意的区别：</p>
+<ul>
+<li><p>The hard-code error message <code>&lt;divs&gt;</code> are gone.</p>
+<p>硬编码的错误消息<code>&lt;div&gt;</code>消失了。</p>
+</li>
+<li><p>There&#39;s a new attribute, <code>forbiddenName</code>, that is actually a custom validation directive.
+It invalidates the control if the user enters &quot;bob&quot; in the name <code>&lt;input&gt;</code>(<a href="#live-example">try it</a>).
+See the <a href="#custom-validation">custom validation</a> section later in this cookbook for more information
+on custom validation directives.</p>
+<p>添加了一个新属性<code>forbiddenName</code>，它实际上是一个自定义验证指令。
+  如果用户名<code>&lt;input&gt;</code>中的任何地方输入“bob”，该指令变将控制器标记为无效（<a href="#live-example">试试</a>）。
+  我们将在本烹饪书稍后的地方介绍<a href="#custom-validation">自定义验证指令</a>。</p>
+</li>
+<li><p>The <code>#name</code> template variable is gone because the app no longer refers to the Angular control for this element.</p>
+<p>模板变量<code>#name</code>消失了，因为我们不再需要为这个元素引用Angular控制器。</p>
+</li>
+<li><p>Binding to the new <code>formErrors.name</code> property is sufficent to display all name validation error messages.</p>
+<p>绑定到新的<code>formErrors.name</code>属性，就可以处理所有名字验证错误信息了。</p>
+</li>
+</ul>
+<a id="component-class"></a><h3 id="component-class">Component class</h3>
+<h3 id="-">组件类</h3>
+<p>The original component code for Template 1 stayed the same; however,
+Template 2 requires some changes in the component. This section covers the code
+necessary in Template 2&#39;s component class to acquire the Angular
+form control and compose error messages.</p>
+<p>原组件代码的模板一没变化，只是模板二发生了变化。本节包括模板二的组件类，以获取Angular表单控制器和撰写错误信息。</p>
+<p>The first step is to acquire the form control that Angular created from the template by querying for it.</p>
+<p>第一步是获取Angular通过查询模板而生成的表单控制器。</p>
+<p>Look back at the top of the component template at the
+<code>#heroForm</code> template variable in the <code>&lt;form&gt;</code> element:</p>
+<p>回头看组件模板顶部，我们在<code>&lt;form&gt;</code>元素中设置<code>#heroForm</code>模板变量：</p>
+<div class="code-example"><header><h4>template/hero-form-template1.component.html (form tag)</h4></header><code-example language="html" format="">&lt;form #heroForm=&quot;ngForm&quot;  *ngIf=&quot;active&quot;  (ngSubmit)=&quot;onSubmit()&quot;&gt;
+</code-example></div><p>The <code>heroForm</code> variable is a reference to the control model that Angular derived from the template.
+Tell Angular to inject that model into the component class&#39;s <code>currentForm</code> property using a <code>@ViewChild</code> query:</p>
+<p><code>heroFrom</code>变量是Angular从模板衍生出来的控制模型的引用。
+我们利用<code>@ViewChild</code>来告诉Angular注入这个模型到组件类的<code>currentForm</code>属性：</p>
+<div class="code-example"><header><h4>template/hero-form-template2.component.ts (heroForm)</h4></header><code-example language="ts" format="">heroForm: NgForm;
+@ViewChild(&#39;heroForm&#39;) currentForm: NgForm;
+
+ngAfterViewChecked() {
+  this.formChanged();
+}
+
+formChanged() {
+  if (this.currentForm === this.heroForm) { return; }
+  this.heroForm = this.currentForm;
+  if (this.heroForm) {
+    this.heroForm.valueChanges
+      .subscribe(data =&gt; this.onValueChanged(data));
+  }
+}
+</code-example></div><p>Some observations:</p>
+<p>一些细节：</p>
+<ul>
+<li><p>Angular <code>@ViewChild</code> queries for a template variable when you pass it
+the name of that variable as a string (<code>&#39;heroForm&#39;</code> in this case).</p>
+<p>Angular的<code>@ViewChild</code>使用传入的模板变量的字符串名字（这里是<code>&#39;heroForm&#39;</code>），来查询对应的模板变量。</p>
+</li>
+<li><p>The <code>heroForm</code> object changes several times during the life of the component, most notably when you add a new hero.
+Periodically inspecting it reveals these changes.</p>
+<p><code>heroForm</code>对象在组件的生命周期内变化了好几次，最值得注意的是当我们添加一个新英雄时的变化。我们必须定期重新检测它。</p>
+</li>
+<li><p>Angular calls the <code>ngAfterViewChecked</code> <a href="../guide/lifecycle-hooks.html#afterview">lifecycle hook method</a>
+when anything changes in the view.
+That&#39;s the right time to see if there&#39;s a new <code>heroForm</code> object.</p>
+<p>当视图有任何变化时，Angular调用<code>ngAfterViewChecked</code><a href="../guide/lifecycle-hooks.html#afterview">生命周期钩子方法</a>。这是查看是否有新<code>heroForm</code>对象的最佳时机。</p>
+</li>
+<li><p>When there <em>is</em> a new <code>heroForm</code> model, <code>formChanged()</code> subscribes to its <code>valueChanges</code> <em>Observable</em> property.
+The <code>onValueChanged</code> handler looks for validation errors after every  keystroke.  </p>
+<p>当出现新<code>heroForm</code>模型时，我们订阅它的<code>valueChanged</code><strong>可观察</strong>属性。<br><code>onValueChanged</code>处理器在每次用户键入后查找验证错误。</p>
+</li>
+</ul>
+<div class="code-example"><header><h4>template/hero-form-template2.component.ts (handler)</h4></header><code-example language="ts" format="">onValueChanged(data?: any) {
+  if (!this.heroForm) { return; }
+  const form = this.heroForm.form;
+
+  for (const field in this.formErrors) {
+    // clear previous error message (if any)
+    this.formErrors[field] = &#39;&#39;;
+    const control = form.get(field);
+
+    if (control &amp;&amp; control.dirty &amp;&amp; !control.valid) {
+      const messages = this.validationMessages[field];
+      for (const key in control.errors) {
+        this.formErrors[field] += messages[key] + &#39; &#39;;
+      }
+    }
+  }
+}
+
+formErrors = {
+  &#39;name&#39;: &#39;&#39;,
+  &#39;power&#39;: &#39;&#39;
+};
+</code-example></div><p>The <code>onValueChanged</code> handler interprets user data entry.
+The <code>data</code> object passed into the handler contains the current element values.
+The handler ignores them. Instead, it iterates over the fields of the component&#39;s <code>formErrors</code> object.</p>
+<p><code>onValueChanged</code>处理器拦截用户数据输入。
+包含当前元素值得<code>data</code>对象被传入处理器。
+处理器忽略它们。相反，它迭代组件的<code>formErrors</code>对象。</p>
+<p>The <code>formErrors</code> is a dictionary of the hero fields that have validation rules and their current error messages.
+Only two hero properties have validation rules, <code>name</code> and <code>power</code>.
+The messages are empty strings when the hero data are valid.</p>
+<p><code>formErrors</code>是一个词典，包含了拥有验证规则和当前错误消息的英雄控件。
+  只有两个英雄属性有验证规则，<code>name</code>和<code>power</code>。
+  当英雄数据有效时，这些消息的值为空字符串。</p>
+<p>For each field, the <code>onValueChanged</code> handler does the following:</p>
+<p>对于每个字段，这个<code>onValueChanged</code>处理器会做这些：</p>
+<ul>
+<li><p>Clears the prior error message, if any.</p>
+<p>清除以前的错误信息（如果有的话）</p>
+</li>
+<li><p>Acquires the field&#39;s corresponding Angular form control.</p>
+<p>获取控件对应的Angular表单控制器</p>
+</li>
+<li><p>If such a control exists <em>and</em> it&#39;s been changed (&quot;dirty&quot;)
+<em>and</em> it&#39;s invalid, the handler composes a consolidated error message for all of the control&#39;s errors.</p>
+<p>如果这样的控制器存在，并且它被更新过（“dirty”），<strong>并且</strong>它无效，处理器就会为所有控制器的错误合成一条错误消息。</p>
+</li>
+</ul>
+<p>Next, the component needs some error messages of course&mdash;a set for each validated property with
+one message per validation rule:</p>
+<p>很显然，我们需要一些错误消息，每个验证的属性都需要一套，每个验证规则需要一条消息：</p>
+<div class="code-example"><header><h4>template/hero-form-template2.component.ts (messages)</h4></header><code-example language="ts" format="">validationMessages = {
+  &#39;name&#39;: {
+    &#39;required&#39;:      &#39;Name is required.&#39;,
+    &#39;minlength&#39;:     &#39;Name must be at least 4 characters long.&#39;,
+    &#39;maxlength&#39;:     &#39;Name cannot be more than 24 characters long.&#39;,
+    &#39;forbiddenName&#39;: &#39;Someone named &quot;Bob&quot; cannot be a hero.&#39;
+  },
+  &#39;power&#39;: {
+    &#39;required&#39;: &#39;Power is required.&#39;
+  }
+};
+</code-example></div><p>Now every time the user makes a change, the <code>onValueChanged</code> handler checks for validation errors and produces messages accordingly.</p>
+<p>现在，每次用户作出变化时，<code>onValueChanged</code>处理器检查验证错误并按情况发出错误消息。</p>
+<a id="improvement"></a><h3 id="the-benefits-of-messages-in-code">The benefits of messages in code</h3>
+<h3 id="-">在代码中写消息的优点</h3>
+<p>Clearly the template got substantially smaller while the component code got substantially larger.
+It&#39;s not easy to see the benefit when there are just three fields and only two of them have validation rules.</p>
+<p>很显然，模板变得小多了，组件代码变得大多了。当只有三个控件并且其中只有两个有验证规则时，我们很难看出好处。</p>
+<p>Consider what happens as the number of validated
+fields and rules increases.
+In general, HTML is harder to read and maintain than code.
+The initial template was already large and threatening to get rapidly worse
+with the addition of more validation message <code>&lt;div&gt;</code> elements.</p>
+<p>假设增加需要验证的控件和规则后会怎么样。
+通常，HTML比代码更难阅读和维护。
+初始的模板已经很大了，如果我们添加更多验证消息<code>&lt;div&gt;</code>，它会迅速变得更大。</p>
+<p>After moving the validation messaging to the component,
+the template grows more slowly and proportionally.
+Each field has approximately the same number of lines no matter its number of validation rules.
+The component also grows proportionally, at the rate of one line per validated field
+and one line per validation message.</p>
+<p>将验证消息移到组件后，模板的增长变得更加缓慢，幅度也小一些。
+不管有多少个验证规则，每个控件的行数是差不多的。
+组件也按比例增长，每增加一个控件增加一行，每个验证消息一行。</p>
+<p>Both trends are manageable.</p>
+<p>两条线容易维护。</p>
+<p>Now that the messages are in code, you have more flexibility and can compose messages more efficiently.
+You can refactor the messages out of the component, perhaps to a service class that retrieves them from the server.
+In short, there are more opportunities to improve message handling now that text and logic have moved from template to code.</p>
+<p>现在消息在代码中，我们有更多的灵活度。我们更加智能的撰写消息。
+我们可以将消息重构出组件，比如到一个服务类，从服务端获取消息。
+简而言之，有很多机会增强消息处理，因为文本和逻辑都已经从模板移到代码中。</p>
+<a id="formmodule"></a><h3 id="_formmodule_-and-template-driven-forms"><em>FormModule</em> and template-driven forms</h3>
+<h3 id="_formmodule_-"><em>FormModule</em> 和模板驱动表单</h3>
+<p>Angular has two different forms modules&mdash;<code>FormsModule</code> and
+<code>ReactiveFormsModule</code>&mdash;that correspond with the
+two approaches to form development. Both modules come
+from the same <code>@angular/forms</code> library package.</p>
+<p>Angular有两种不同的表单模块 - <code>FormsModule</code>和<code>ReactiveFormsModule</code> - 它们与表单开发的两种方法对应。
+  两种模块都从同一个<code>@angular/forms</code>库。</p>
+<p>You&#39;ve been reviewing the &quot;Template-driven&quot; approach which requires the <code>FormsModule</code>.
+Here&#39;s how you imported it in the <code>HeroFormTemplateModule</code>.</p>
+<p>我们一直在探讨<strong>模板驱动</strong>方法，它需要<code>FormsModule</code>。下面是如何在<code>HeroFormTemplateModule</code>中导入它：</p>
+<div class="code-example"><header><h4>template/hero-form-template.module.ts</h4></header><code-example language="ts" format="">import { NgModule }     from &#39;@angular/core&#39;;
+import { FormsModule }  from &#39;@angular/forms&#39;;
+
+import { SharedModule }               from &#39;../shared/shared.module&#39;;
+import { HeroFormTemplate1Component } from &#39;./hero-form-template1.component&#39;;
+import { HeroFormTemplate2Component } from &#39;./hero-form-template2.component&#39;;
+
+@NgModule({
+  imports:      [ SharedModule, FormsModule ],
+  declarations: [ HeroFormTemplate1Component, HeroFormTemplate2Component ],
+  exports:      [ HeroFormTemplate1Component, HeroFormTemplate2Component ]
+})
+export class HeroFormTemplateModule { }
+</code-example></div><div class="l-sub-section"><p>This guide hasn&#39;t talked about the <code>SharedModule</code> or its <code>SubmittedComponent</code> which appears at the bottom of every
+form template in this cookbook.  </p>
+<p>我们还没有讲<code>SharedModule</code>或者它的<code>SubmittedComponent</code>，它们出现在本烹饪书的每一个表单模板中。</p>
+<p>They&#39;re not germane to the validation story. Look at the <a href="#live-example">live example</a> if you&#39;re interested.</p>
+<p>它们与表单验证没有紧密的关系。如果你感兴趣，参见<a href="#live-example">在线例子</a>。</p>
+</div><div class="l-main-section"></div><a id="reactive"></a><h2 id="reactive-forms-with-validation-in-code">Reactive forms with validation in code</h2>
+<h2 id="-">在代码中验证响应式表单</h2>
+<p>In the template-driven approach, you markup the template with form elements, validation attributes,
+and <code>ng...</code> directives from the Angular <code>FormsModule</code>.
+At runtime, Angular interprets the template and derives its <em>form control model</em>.</p>
+<p>在模板驱动方法中，你在模板中标出表单元素、验证属性和Angular<code>FormsModule</code>中的<code>ng...</code>指令。
+在运行时间，Angular解释模板并从<strong>表单控制器模型</strong>衍生它。</p>
+<p><strong>Reactive Forms</strong> takes a different approach. 
+You create the form control model in code. You write the template with form elements
+and <code>form...</code> directives from the Angular <code>ReactiveFormsModule</code>.
+At runtime, Angular binds the template elements to your control model based on your instructions.</p>
+<p><strong>响应式表单</strong>采用不同的方法。
+你在代码中创建表单控制器模型，并用表单元素和来自Angular <code>ReactiveFormsModule</code>中的<code>form...</code>指令来编写模板。
+在运行时间，Angular根据你的指示绑定模板元素到你的控制器模型。</p>
+<p>This approach requires a bit more effort. <em>You have to write the control model and manage it</em>.</p>
+<p>这个方法需要做一些额外的工作。<em>你必须编写并管理控制器模型*</em>。</p>
+<p>This allows you to do the following:</p>
+<p>这可以让你：</p>
+<ul>
+<li><p>Add, change, and remove validation functions on the fly.</p>
+<p>随时添加、修改和删除验证函数</p>
+</li>
+<li><p>Manipulate the control model dynamically from within the component.</p>
+<p>在组件内动态操纵控制器模型</p>
+</li>
+<li><p><a href="#testing">Test</a> validation and control logic with isolated unit tests.</p>
+<p>使用孤立单元测试来<a href="#testing">测试</a>验证和控制器逻辑</p>
+</li>
+</ul>
+<p>The following cookbook sample re-writes the hero form in <em>reactive forms</em> style.</p>
+<p>第三个烹饪书例子用<strong>响应式表单</strong>风格重新编写英雄表格。</p>
+<a id="reactive-forms-module"></a><h3 id="switch-to-the-_reactiveformsmodule_">Switch to the <em>ReactiveFormsModule</em></h3>
+<h3 id="-_reactiveformsmodule_">切换到<em>ReactiveFormsModule</em></h3>
+<p>The reactive forms classes and directives come from the Angular <code>ReactiveFormsModule</code>, not the <code>FormsModule</code>.
+The application module for the reactive forms feature in this sample looks like this:</p>
+<p>响应式表单类和指令来自于Angular的<code>ReactiveFormsModule</code>，不是<code>FormsModule</code>。
+本例中，应用模块的“响应式表单”特性是这样的：</p>
+<div class="code-example"><header><h4>src/app/reactive/hero-form-reactive.module.ts</h4></header><code-example language="ts" format="">import { NgModule }            from &#39;@angular/core&#39;;
+import { ReactiveFormsModule } from &#39;@angular/forms&#39;;
+
+import { SharedModule }              from &#39;../shared/shared.module&#39;;
+import { HeroFormReactiveComponent } from &#39;./hero-form-reactive.component&#39;;
+
+@NgModule({
+  imports:      [ SharedModule, ReactiveFormsModule ],
+  declarations: [ HeroFormReactiveComponent ],
+  exports:      [ HeroFormReactiveComponent ]
+})
+export class HeroFormReactiveModule { }
+</code-example></div><p>The reactive forms feature module and component are in the <code>src/app/reactive</code> folder.
+Focus on the <code>HeroFormReactiveComponent</code> there, starting with its template.</p>
+<p>“响应式表单”特性模块和组件在<code>app/reactive</code>目录。
+让我们关注那里的<code>HeroFormReactiveComponent</code>，先看它的模板。</p>
+<a id="reactive-component-template"></a><h3 id="component-template">Component template</h3>
+<h3 id="-">组件模板</h3>
+<p>Begin by changing the <code>&lt;form&gt;</code> tag so that it binds the Angular <code>formGroup</code> directive in the template
+to the <code>heroForm</code> property in the component class.
+The <code>heroForm</code> is the control model that the component class builds and maintains.</p>
+<p>我们先修改<code>&lt;form&gt;</code>标签，让Angular的<code>formGroup</code>指令绑定到组件类的<code>heroForm</code>属性。
+<code>heroForm</code>是组件类创建和维护的控制器模型。</p>
+<div class="code-example"><code-example language="html" format="">&lt;form [formGroup]=&quot;heroForm&quot;  *ngIf=&quot;active&quot;  (ngSubmit)=&quot;onSubmit()&quot;&gt;
+</code-example></div><p>Next, modify the template HTML elements to match the <em>reactive forms</em> style.
+Here is the &quot;name&quot; portion of the template again, revised for reactive forms and compared with the template-driven version:</p>
+<p>接下来，我们修改模板HTML元素，来匹配<strong>响应式表单</strong>样式。
+下面又是“name”部分的模板，响应式表单修改版本和模板驱动版本的比较：</p>
+<code-tabs><code-pane language="html" name="hero-form-reactive.component.html (name #3)" format="linenums">&lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+
+&lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot;
+       formControlName=&quot;name&quot; required &gt;
+
+&lt;div *ngIf=&quot;formErrors.name&quot; class=&quot;alert alert-danger&quot;&gt;
+  {{ formErrors.name }}
+&lt;/div&gt;
+</code-pane><code-pane language="html" name="hero-form-template1.component.html (name #2)" format="linenums">        &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot;
+               required minlength=&quot;4&quot; maxlength=&quot;24&quot; forbiddenName=&quot;bob&quot;
+               name=&quot;name&quot; [(ngModel)]=&quot;hero.name&quot; &gt;
+
+        &lt;div *ngIf=&quot;formErrors.name&quot; class=&quot;alert alert-danger&quot;&gt;
+          {{ formErrors.name }}
+        &lt;/div&gt;
+</code-pane></code-tabs><p>Key changes are:</p>
+<p>关键变化：</p>
+<ul>
+<li><p>The validation attributes are gone (except <code>required</code>) because
+validating happens in code.</p>
+<p>验证属性没有了（除了<code>required</code>），因为我们将在代码中验证。</p>
+</li>
+<li><p><code>required</code> remains, not for validation purposes (that&#39;s in the code),
+but rather for css styling and accessibility.</p>
+<p>保留<code>required</code>，不是为了验证的目的（验证在代码中），而是为了CSS样式和可访问性。</p>
+</li>
+</ul>
+<div class="l-sub-section"><p>A future version of reactive forms will add the <code>required</code> HTML validation attribute to the DOM element
+(and perhaps the <code>aria-required</code> attribute) when the control has the <code>required</code> validator function.</p>
+<p>未来版本的响应式表单将会在控制器有<code>required</code>验证器函数时，添加<code>required</code> HTML验证属性到DOM元素（也可能添加<code>aria-required</code>属性）。 </p>
+<p>Until then, apply the <code>required</code> attribute <em>and</em> add the <code>Validator.required</code> function
+to the control model, as you&#39;ll see below.</p>
+<p>在此之前，添加<code>required</code>属性<strong>以及</strong>添加<code>Validator.required</code>函数到控制器模型，像我们下面这样做：</p>
+</div><ul>
+<li><p>The <code>formControlName</code> replaces the <code>name</code> attribute; it serves the same
+purpose of correlating the input with the Angular form control.</p>
+<p><code>formControlName</code>替换了<code>name</code>属性；它起到了关联输入框和Angular表单控制器的同样作用。</p>
+</li>
+<li><p>The two-way <code>[(ngModel)]</code> binding is gone. 
+The reactive approach does not use data binding to move data into and out of the form controls.
+That&#39;s all in code.</p>
+<p>双向<code>[(ngModel)]</code>绑定消失了。
+响应式表单方法不使用数据绑定从表单控制器移入和移出数据。我们在代码中做这些。</p>
+</li>
+</ul>
+<div class="l-sub-section"><p>The retreat from data binding is a principle of the reactive paradigm rather than a technical limitation.</p>
+<p>不适用表单数据绑定是响应式模式的原则，而非技术限制。</p>
+</div><a id="reactive-component-class"></a><h3 id="component-class">Component class</h3>
+<h3 id="-">组件类</h3>
+<p>The component class is now responsible for defining and managing the form control model. </p>
+<p>组件类现在负责定义和管理表单控制器模型。</p>
+<p>Angular no longer derives the control model from the template so you can no longer query for it.
+You can create the Angular form control model explicitly with the help of the <code>FormBuilder</code>class.</p>
+<p>Angular不再从模板衍生控制器模型，所以我们不能再查询它。
+我们利用<code>FormBuilder</code>来显式创建Angular表单控制器模型。</p>
+<p>Here&#39;s the section of code devoted to that process, paired with the template-driven code it replaces:</p>
+<p>下面是负责该进程的代码部分，与被它取代的模板驱动代码相比：</p>
+<code-tabs><code-pane language="ts" name="reactive/hero-form-reactive.component.ts (FormBuilder)" format="linenums">  heroForm: FormGroup;
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm(): void {
+    this.heroForm = this.fb.group({
+      &#39;name&#39;: [this.hero.name, [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(24),
+          forbiddenNameValidator(/bob/i)
+        ]
+      ],
+      &#39;alterEgo&#39;: [this.hero.alterEgo],
+      &#39;power&#39;:    [this.hero.power, Validators.required]
+    });
+
+    this.heroForm.valueChanges
+      .subscribe(data =&gt; this.onValueChanged(data));
+
+    this.onValueChanged(); // (re)set validation messages now
+  }
+</code-pane><code-pane language="ts" name="template/hero-form-template2.component.ts (ViewChild)" format="linenums">heroForm: NgForm;
+@ViewChild(&#39;heroForm&#39;) currentForm: NgForm;
+
+ngAfterViewChecked() {
+  this.formChanged();
+}
+
+formChanged() {
+  if (this.currentForm === this.heroForm) { return; }
+  this.heroForm = this.currentForm;
+  if (this.heroForm) {
+    this.heroForm.valueChanges
+      .subscribe(data =&gt; this.onValueChanged(data));
+  }
+}
+</code-pane></code-tabs><ul>
+<li><p>Inject <code>FormBuilder</code> in a constructor.</p>
+<p>我们注入<code>FormBuilder</code>到构造函数中。</p>
+</li>
+<li><p>Call a <code>buildForm</code> method in the <code>ngOnInit</code> <a href="../guide/lifecycle-hooks.html#hooks-overview">lifecycle hook method</a>
+because that&#39;s when you&#39;ll have the hero data. Call it again in the <code>addHero</code> method.</p>
+<p>我们在<code>ngOnInit</code><a href="../guide/lifecycle-hooks.html#hooks-overview">生命周期钩子方法</a>中调用<code>buildForm</code>方法，
+  因为这正是我们拥有英雄数据的时刻。我们将在<code>addHero</code>方法中再次调用它。</p>
+</li>
+</ul>
+<div class="l-sub-section"><p>A real app would retrieve the hero asynchronously from a data service, a task best performed in the <code>ngOnInit</code> hook.</p>
+<p>真实的应用很可能从数据服务异步获取英雄，这个任务最好在<code>ngOnInit</code>生命周期钩子中进行。</p>
+</div><ul>
+<li><p>The <code>buildForm</code> method uses the <code>FormBuilder</code>, <code>fb</code>, to declare the form control model.
+Then it attaches the same <code>onValueChanged</code> handler (there&#39;s a one line difference)
+to the form&#39;s <code>valueChanges</code> event and calls it immediately
+to set error messages for the new control model.</p>
+<p><code>buildForm</code>方法使用<code>FormBuilder</code>（<code>fb</code>）来声明表单控制器模型。
+然后它将相同的<code>onValueChanged</code>（有一行代码不一样）处理器附加到表单的<code>valueChanged</code>事件，
+并立刻为新的控制器模型设置错误消息。</p>
+</li>
+</ul>
+<a id="formbuilder"></a><h4 id="_formbuilder_-declaration"><em>FormBuilder</em> declaration</h4>
+<h4 id="_formbuilder_-"><em>FormBuilder</em>声明</h4>
+<p>The <code>FormBuilder</code> declaration object specifies the three controls of the sample&#39;s hero form.</p>
+<p><code>FormBuilder</code>声明对象指定了本例英雄表单的三个控制器。 </p>
+<p>Each control spec is a control name with an array value.
+The first array element is the current value of the corresponding hero field.
+The optional second value is a validator function or an array of validator functions.</p>
+<p>每个控制器的设置都是控制器名字和数组值。
+第一个数组元素是英雄控件对应的当前值。
+第二个值（可选）是验证器函数或者验证器函数数组。</p>
+<p>Most of the validator functions are stock validators provided by Angular as static methods of the <code>Validators</code> class.
+Angular has stock validators that correspond to the standard HTML validation attributes.</p>
+<p>大多数验证器函数是Angular以<code>Validators</code>类的静态方法的形式提供的原装验证器。
+Angular有一些原装验证器，与标准HTML验证属性一一对应。</p>
+<p>The <code>forbiddenNames</code> validator on the <code>&quot;name&quot;</code> control is a custom validator,
+discussed in a separate <a href="#custom-validation">section below</a>.</p>
+<p><code>&quot;name&quot;</code>控制器上的<code>forbiddenNames</code>验证器是自定义验证器，在下面单独的<a href="#custom-validation">小结</a>有所讨论。</p>
+<div class="l-sub-section"><p>Learn more about <code>FormBuilder</code> in the <a href="../guide/reactive-forms.html#formbuilder">Introduction to FormBuilder</a> section of Reactive Forms guide.</p>
+<p>到[响应式表单]的<a href="../guide/reactive-forms.html#formbuilder">FormBuilder介绍</a>部分，学习更多关于<code>FormBuilder</code>的知识。</p>
+</div><a id="committing-changes"></a><h4 id="committing-hero-value-changes">Committing hero value changes</h4>
+<h4 id="-">提交英雄值的更新</h4>
+<p>In two-way data binding, the user&#39;s changes flow automatically from the controls back to the data model properties.
+Reactive forms do not use data binding to update data model properties.
+The developer decides <em>when and how</em> to update the data model from control values.</p>
+<p>在双向数据绑定时，用户的修改自动从控制器流向数据模型属性。
+响应式表单不适用数据绑定来更新数据模型属性。
+开发者决定<strong>何时</strong>与<strong>如何</strong>从控制器的值更新数据模型。</p>
+<p>This sample updates the model twice:</p>
+<p>本例更新模型两次：</p>
+<ol>
+<li><p>When the user submits the form.</p>
+<p>当用户提交标单时</p>
+</li>
+<li><p>When the user adds a new hero.</p>
+<p>当用户添加新英雄时</p>
+</li>
+</ol>
+<p>The <code>onSubmit()</code> method simply replaces the <code>hero</code> object with the combined values of the form:</p>
+<p><code>onSubmit()</code>方法直接使用表单的值得合集来替换<code>hero</code>对象：</p>
+<div class="code-example"><code-example language="ts" format="">onSubmit() {
+  this.submitted = true;
+  this.hero = this.heroForm.value;
+}
+</code-example></div><div class="l-sub-section"><p>This example is lucky in that the <code>heroForm.value</code> properties <em>just happen</em> to
+correspond <em>exactly</em> to the hero data object properties.</p>
+<p>本例非常“幸运”，因为<code>heroForm.value</code>属性<strong>正好</strong>与英雄数据对象属性对应。</p>
+</div><p>The <code>addHero()</code> method discards pending changes and creates a brand new <code>hero</code> model object.</p>
+<p><code>addHero()</code>方法放弃未处理的变化，并创建一个崭新的<code>hero</code>模型对象。</p>
+<div class="code-example"><code-example language="ts" format="">addHero() {
+  this.hero = new Hero(42, &#39;&#39;, &#39;&#39;);
+  this.buildForm();
+}
+</code-example></div><p>Then it calls <code>buildForm()</code> again which replaces the previous <code>heroForm</code> control model with a new one.
+The <code>&lt;form&gt;</code> tag&#39;s <code>[formGroup]</code> binding refreshes the page with the new control model.</p>
+<p>然后它再次调用<code>buildForm</code>，用一个新对象替换了之前的<code>heroForm</code>控制器模型。
+<code>&lt;form&gt;</code>标签的<code>[formGroup]</code>绑定使用这个新的控制器模型更新页面。</p>
+<p>Here&#39;s the complete reactive component file, compared to the two template-driven component files.</p>
+<p>下面是完整的响应式表单的组件文件，与两个模板驱动组件文件对比：</p>
+<code-tabs><code-pane language="ts" name="reactive/hero-form-reactive.component.ts (#3)" format="linenums">import { Component, OnInit }                  from &#39;@angular/core&#39;;
+import { FormGroup, FormBuilder, Validators } from &#39;@angular/forms&#39;;
+
+import { Hero }                   from &#39;../shared/hero&#39;;
+import { forbiddenNameValidator } from &#39;../shared/forbidden-name.directive&#39;;
+
+@Component({
+  selector: &#39;hero-form-reactive3&#39;,
+  templateUrl: &#39;./hero-form-reactive.component.html&#39;
+})
+export class HeroFormReactiveComponent implements OnInit {
+
+  powers = [&#39;Really Smart&#39;, &#39;Super Flexible&#39;, &#39;Weather Changer&#39;];
+
+  hero = new Hero(18, &#39;Dr. WhatIsHisName&#39;, this.powers[0], &#39;Dr. What&#39;);
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+    this.hero = this.heroForm.value;
+  }
+  }
+
+  heroForm: FormGroup;
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm(): void {
+    this.heroForm = this.fb.group({
+      &#39;name&#39;: [this.hero.name, [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(24),
+          forbiddenNameValidator(/bob/i)
+        ]
+      ],
+      &#39;alterEgo&#39;: [this.hero.alterEgo],
+      &#39;power&#39;:    [this.hero.power, Validators.required]
+    });
+
+    this.heroForm.valueChanges
+      .subscribe(data =&gt; this.onValueChanged(data));
+
+    this.onValueChanged(); // (re)set validation messages now
+  }
+
+
+  onValueChanged(data?: any) {
+    if (!this.heroForm) { return; }
+    const form = this.heroForm;
+
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = &#39;&#39;;
+      const control = form.get(field);
+
+      if (control &amp;&amp; control.dirty &amp;&amp; !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + &#39; &#39;;
+        }
+      }
+    }
+  }
+
+  formErrors = {
+    &#39;name&#39;: &#39;&#39;,
+    &#39;power&#39;: &#39;&#39;
+  };
+
+  validationMessages = {
+    &#39;name&#39;: {
+      &#39;required&#39;:      &#39;Name is required.&#39;,
+      &#39;minlength&#39;:     &#39;Name must be at least 4 characters long.&#39;,
+      &#39;maxlength&#39;:     &#39;Name cannot be more than 24 characters long.&#39;,
+      &#39;forbiddenName&#39;: &#39;Someone named &quot;Bob&quot; cannot be a hero.&#39;
+    },
+    &#39;power&#39;: {
+      &#39;required&#39;: &#39;Power is required.&#39;
+    }
+  };
+}
+</code-pane><code-pane language="ts" name="template/hero-form-template2.component.ts (#2)" format="linenums">import { Component, AfterViewChecked, ViewChild } from &#39;@angular/core&#39;;
+import { NgForm } from &#39;@angular/forms&#39;;
+
+import { Hero }      from &#39;../shared/hero&#39;;
+
+@Component({
+  selector: &#39;hero-form-template2&#39;,
+  templateUrl: &#39;./hero-form-template2.component.html&#39;
+})
+export class HeroFormTemplate2Component implements AfterViewChecked {
+
+  powers = [&#39;Really Smart&#39;, &#39;Super Flexible&#39;, &#39;Weather Changer&#39;];
+
+  hero = new Hero(18, &#39;Dr. WhatIsHisWayTooLongName&#39;, this.powers[0], &#39;Dr. What&#39;);
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+  }
+
+  addHero() {
+    this.hero = new Hero(42, &#39;&#39;, &#39;&#39;);
+  }
+
+  heroForm: NgForm;
+  @ViewChild(&#39;heroForm&#39;) currentForm: NgForm;
+
+  ngAfterViewChecked() {
+    this.formChanged();
+  }
+
+  formChanged() {
+    if (this.currentForm === this.heroForm) { return; }
+    this.heroForm = this.currentForm;
+    if (this.heroForm) {
+      this.heroForm.valueChanges
+        .subscribe(data =&gt; this.onValueChanged(data));
+    }
+  }
+
+  onValueChanged(data?: any) {
+    if (!this.heroForm) { return; }
+    const form = this.heroForm.form;
+
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = &#39;&#39;;
+      const control = form.get(field);
+
+      if (control &amp;&amp; control.dirty &amp;&amp; !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + &#39; &#39;;
+        }
+      }
+    }
+  }
+
+  formErrors = {
+    &#39;name&#39;: &#39;&#39;,
+    &#39;power&#39;: &#39;&#39;
+  };
+
+  validationMessages = {
+    &#39;name&#39;: {
+      &#39;required&#39;:      &#39;Name is required.&#39;,
+      &#39;minlength&#39;:     &#39;Name must be at least 4 characters long.&#39;,
+      &#39;maxlength&#39;:     &#39;Name cannot be more than 24 characters long.&#39;,
+      &#39;forbiddenName&#39;: &#39;Someone named &quot;Bob&quot; cannot be a hero.&#39;
+    },
+    &#39;power&#39;: {
+      &#39;required&#39;: &#39;Power is required.&#39;
+    }
+  };
+}
+</code-pane><code-pane language="ts" name="template/hero-form-template1.component.ts (#1)" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+
+import { Hero }      from &#39;../shared/hero&#39;;
+
+@Component({
+  selector: &#39;hero-form-template1&#39;,
+  templateUrl: &#39;./hero-form-template1.component.html&#39;
+})
+export class HeroFormTemplate1Component {
+
+  powers = [&#39;Really Smart&#39;, &#39;Super Flexible&#39;, &#39;Weather Changer&#39;];
+
+  hero = new Hero(18, &#39;Dr. WhatIsHisWayTooLongName&#39;, this.powers[0], &#39;Dr. What&#39;);
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+  }
+
+  addHero() {
+    this.hero = new Hero(42, &#39;&#39;, &#39;&#39;);
+  }
+}
+</code-pane></code-tabs><div class="l-sub-section"><p>Run the <a href="#live-example">live example</a> to see how the reactive form behaves,
+and to compare all of the files in this cookbook sample.</p>
+<p>运行<a href="#live-example">在线例子</a>，查看响应式表单是的行为，并与本章中的例子文件作比较。</p>
+</div><div class="l-main-section"></div><a id="custom-validation"></a><h2 id="custom-validation">Custom validation</h2>
+<h2 id="-">自定义验证</h2>
+<p>This cookbook sample has a custom <code>forbiddenNamevalidator()</code> function that&#39;s applied to both the
+template-driven and the reactive form controls. It&#39;s in the <code>src/app/shared</code> folder
+and declared in the <code>SharedModule</code>.</p>
+<p>本烹饪书例子有一个自定义<code>forbiddenNameValidator</code>函数，在模板驱动和响应式表单中都有使用。
+它在<code>app/shared</code>目录，在<code>SharedModule</code>中被声明。</p>
+<p>Here&#39;s the <code>forbiddenNamevalidator()</code> function:</p>
+<p>下面是<code>forbiddenNameValidator</code>函数：</p>
+<div class="code-example"><header><h4>shared/forbidden-name.directive.ts (forbiddenNameValidator)</h4></header><code-example language="ts" format="">/** A hero&#39;s name can&#39;t match the given regular expression */
+export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} =&gt; {
+    const name = control.value;
+    const no = nameRe.test(name);
+    return no ? {&#39;forbiddenName&#39;: {name}} : null;
+  };
+}
+</code-example></div><p>The function is actually a factory that takes a regular expression to detect a <em>specific</em> forbidden name
+and returns a validator function.</p>
+<p>该函数其实是一个工厂函数，接受一个正则表达式，用来检测<strong>指定</strong>的禁止的名字，并返回验证器函数。</p>
+<p>In this sample, the forbidden name is &quot;bob&quot;;
+the validator rejects any hero name containing &quot;bob&quot;.
+Elsewhere it could reject &quot;alice&quot; or any name that the configuring regular expression matches.</p>
+<p>在本例中，禁止的名字是“bob”；
+验证器拒绝任何带有“bob”的英雄名字。
+在其他地方，只要配置的正则表达式可以匹配上，它可能拒绝“alice”或者任何其他名字。</p>
+<p>The <code>forbiddenNameValidator</code> factory returns the configured validator function.
+That function takes an Angular control object and returns <em>either</em>
+null if the control value is valid <em>or</em> a validation error object.
+The validation error object typically has a property whose name is the validation key, <code>&#39;forbiddenName&#39;</code>,
+and whose value is an arbitrary dictionary of values that you could insert into an error message (<code>{name}</code>).</p>
+<p><code>forbiddenNameValidator</code>工厂函数返回配置好的验证器函数。
+该函数接受一个Angular控制器对象，并在控制器值有效时返回null，或无效时返回验证错误对象。
+验证错误对象通常有一个名为验证秘钥（<code>forbiddenName</code>）的属性。其值为一个任意词典，我们可以用来插入错误信息（<code>{name}</code>）。</p>
+<a id="custom-validation-directive"></a><h3 id="custom-validation-directive">Custom validation directive</h3>
+<h4 id="-">自定义验证指令</h4>
+<p>In the reactive forms component, the <code>&#39;name&#39;</code> control&#39;s validator function list
+has a <code>forbiddenNameValidator</code> at the bottom.</p>
+<p>在响应式表单组件中，我们在<code>&#39;name&#39;</code>控制器的验证函数列表的底部添加了一个配置了的<code>forbiddenNameValidator</code>。</p>
+<div class="code-example"><header><h4>reactive/hero-form-reactive.component.ts (name validators)</h4></header><code-example language="ts" format="">&#39;name&#39;: [this.hero.name, [
+    Validators.required,
+    Validators.minLength(4),
+    Validators.maxLength(24),
+    forbiddenNameValidator(/bob/i)
+  ]
+],
+</code-example></div><p>In the <em>template-driven</em> example, the <code>&lt;input&gt;</code> has the selector (<code>forbiddenName</code>)
+of a custom <em>attribute directive</em>, which rejects &quot;bob&quot;.</p>
+<p>在模板驱动组件的模板中，我们在name的输入框元素中添加了自定义<strong>属性指令</strong>的选择器（<code>forbiddenName</code>），并配置它来拒绝“bob”。</p>
+<div class="code-example"><header><h4>template/hero-form-template2.component.html (name input)</h4></header><code-example language="html" format="">&lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot;
+       required minlength=&quot;4&quot; maxlength=&quot;24&quot; forbiddenName=&quot;bob&quot;
+       name=&quot;name&quot; [(ngModel)]=&quot;hero.name&quot; &gt;
+</code-example></div><p>The corresponding <code>ForbiddenValidatorDirective</code> is a wrapper around the <code>forbiddenNameValidator</code>.</p>
+<p>对应的<code>ForbiddenValidatorDirective</code>包装了<code>forbiddenNamevalidator</code>。</p>
+<p>Angular <code>forms</code> recognizes the directive&#39;s role in the validation process because the directive registers itself
+with the <code>NG_VALIDATORS</code> provider, a provider with an extensible collection of validation directives.</p>
+<p>Angular表单接受指令在验证流程中的作用，因为指令注册自己到<code>NG_VALIDATORS</code>提供商中，该提供商拥有可扩展的验证指令集。</p>
+<div class="code-example"><header><h4>shared/forbidden-name.directive.ts (providers)</h4></header><code-example language="ts" format="">providers: [{provide: NG_VALIDATORS, useExisting: ForbiddenValidatorDirective, multi: true}]
+</code-example></div><p>Here is the rest of the directive to help you get an idea of how it all comes together:</p>
+<p>指令的其它部分是为了帮你理解它们是如何合作的：</p>
+<div class="code-example"><header><h4>shared/forbidden-name.directive.ts (directive)</h4></header><code-example language="ts" format="linenums">@Directive({
+  selector: &#39;[forbiddenName]&#39;,
+  providers: [{provide: NG_VALIDATORS, useExisting: ForbiddenValidatorDirective, multi: true}]
+})
+export class ForbiddenValidatorDirective implements Validator, OnChanges {
+  @Input() forbiddenName: string;
+  private valFn = Validators.nullValidator;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const change = changes[&#39;forbiddenName&#39;];
+    if (change) {
+      const val: string | RegExp = change.currentValue;
+      const re = val instanceof RegExp ? val : new RegExp(val, &#39;i&#39;);
+      this.valFn = forbiddenNameValidator(re);
+    } else {
+      this.valFn = Validators.nullValidator;
+    }
+  }
+
+  validate(control: AbstractControl): {[key: string]: any} {
+    return this.valFn(control);
+  }
+}
+</code-example></div><div class="l-sub-section"><p>If you are familiar with Angular validations, you may have noticed
+that the custom validation directive is instantiated with <code>useExisting</code>
+rather than <code>useClass</code>. The registered validator must be <em>this instance</em> of
+the <code>ForbiddenValidatorDirective</code>&mdash;the instance in the form with
+its <code>forbiddenName</code> property bound to “bob&quot;. If you were to replace
+<code>useExisting</code> with <code>useClass</code>, then you’d be registering a new class instance, one that
+doesn’t have a <code>forbiddenName</code>.</p>
+<p>To see this in action, run the example and then type “bob” in the name of Hero Form 2.
+Notice that you get a validation error. Now change from <code>useExisting</code> to <code>useClass</code> and try again.
+This time, when you type “bob”, there&#39;s no &quot;bob&quot; error message.</p>
+</div><div class="l-sub-section"><p>For more information on attaching behavior to elements,
+see <a href="../guide/attribute-directives.html">Attribute Directives</a>.</p>
+<p>参见<a href="../guide/attribute-directives.html">属性型指令</a>章节。</p>
+</div><div class="l-main-section"></div><a id="testing"></a><h2 id="testing-considerations">Testing Considerations</h2>
+<h2 id="-">测试时的注意事项</h2>
+<p>You can write <em>isolated unit tests</em> of validation and control logic in <em>Reactive Forms</em>.</p>
+<p>我们可以为<strong>响应式表单</strong>的验证器和控制器逻辑编写<strong>孤立单元测试</strong>。</p>
+<p><em>Isolated unit tests</em> probe the component class directly, independent of its
+interactions with its template, the DOM, other dependencies, or Angular itself.</p>
+<p><strong>孤立单元测试</strong>直接检测组件类，与组件和它的模板的交互、DOM、其他以来和Angular本省都无关。</p>
+<p>Such tests have minimal setup, are quick to write, and easy to maintain.
+They do not require the <code>Angular TestBed</code> or asynchronous testing practices.</p>
+<p>这样的测试具有简单设置#，快速编写和容易维护的特征。它们不需要<code>Angular TestBed</code>或异步测试工序。</p>
+<p>That&#39;s not possible with <em>template-driven</em> forms.
+The template-driven approach relies on Angular to produce the control model and
+to derive validation rules from the HTML validation attributes.
+You must use the <code>Angular TestBed</code> to create component test instances,
+write asynchronous tests, and interact with the DOM.</p>
+<p>这对<strong>模板驱动</strong>表单来说是不可能的。
+模板驱动方法依靠Angular来生成控制器模型并从HTML验证属性中衍生验证规则。
+你必须使用<code>Angular TestBed</code>来创建组件测试实例，编写异步测试并与DOM交互。</p>
+<p>While not difficult, this takes more time, work and
+skill&mdash;factors that tend to diminish test code
+coverage and quality.</p>
+<p>虽然这种测试并不困难，但是它需要更多时间、工作和能力 - 这些因素往往会降低测试代码覆盖率和测试质量。</p></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:40 GMT -->
+</html>

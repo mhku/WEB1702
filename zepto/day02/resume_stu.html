@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <title></title>
+  <script src="js/zepto.js"></script>
+  <style>
+    ul {
+      list-style: none;
+      padding: 0
+    }
+
+    ul .tl-wrap {
+      background: #eee;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    ul .tl-wrap.current {
+      color: #ffffff;
+      background-color: greenyellow;
+    }
+  </style>
+</head>
+<body>
+
+<h1>About Me</h1>
+
+<p>出生年月：1999-10-10</p>
+
+<p>手机:185-6789-9876</p>
+
+<p>状态：工作中</p>
+<a href="http://www.baidu.com">个人技术博客</a>
+<br/>
+
+<h1>Work and Education</h1>
+<ul id='history'>
+
+</ul>
+
+<br/>
+
+<h1>Technology and Experience</h1>
+
+<div id="skills">
+
+</div>
+
+<script>
+  //请求服务器端的数据
+  $.get(
+    'data/getWorkInfo.php',
+    function (result) {
+     // console.log(result);
+
+      showWorkInfo(result)
+    }
+  );
+  //将对象数组动态的添加到容器中
+  function showWorkInfo(result){
+    //找到容器
+    var list = $('#history');
+
+    //遍历数组中所有的对象，生成节点，插入到容器
+    $.each(result, function (key,value) {
+      //value.name value.date
+      var item = $('<li></li>');
+      item.addClass('tl-wrap')
+      if(key == 0)
+      {
+        item.addClass('current');
+      }
+      var p = $('<p>'+value.name+value.date+'</p>');
+      item.append(p);
+      list.append(item);
+    })
+  }
+
+  $.get(
+    'data/getTechInfo.php',
+    function (result) {
+      //console.log(result);
+      showTechInfo(result);
+    }
+  )
+
+  function getRandomColor(){
+    var r = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+
+    var r_16 = r.toString(16);
+    var g_16 = g.toString(16);
+    var b_16 = b.toString(16);
+    return '#'+r_16+g_16+b_16;
+
+  }
+
+  function showTechInfo(result){
+    //遍历服务器端返回的结果，创建节点并插入到指定的容器
+    var container = $('#skills');
+    $.each(result, function (key,value) {
+      console.log(key,value);
+      //存储标题和进度条
+      var childContainer = $('<div></div>')
+      //标题
+      var title = $('<h3>'+value.name+'</h3>');
+      //计算进度条宽度的百分比
+      var percent = (value.level/10)*100+'%';
+      var div  = $('<div></div>').css({
+        backgroundColor:'#eeeeee'
+      });
+      var randomColor = getRandomColor();
+      //进度条
+      var level =
+        $('<div>'+value.level+'/10</div>')
+          .css({
+            width:percent,
+            backgroundColor:randomColor,
+            textAlign:'center'
+          })
+
+      childContainer.append(title);
+      div.append(level);
+      childContainer.append(div);
+      container.append(childContainer);
+    })
+  }
+
+</script>
+
+
+</body>
+</html>

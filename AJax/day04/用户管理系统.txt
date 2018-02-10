@@ -1,0 +1,49 @@
+1:新用户注册
+  1.1 用户名 邮件地址
+	1.2 密码  确认密码
+	?库叫  表叫 列 类型
+	16:20-16:30 库/列/添加记录2~3
+	a:创建manager 库 utf8
+	b:创建t_user  库
+	c:列 列类
+	  uid    INT (行编号)
+		email  VARCHAR(50)
+		upwd   VARCHAR(32)
+		regtime DATETIME    注册时间
+		lasttime DATETIME   上一次登录时间
+  追加一列:{标准语法} 16:47--16:52
+  ALTER TABLE 表名 ADD 列名 列类型;
+	ALTER TABLE t_user ADD age INT;
+  删除一列:{标准语法}
+  ALTER TABLE 表名 DROP 列名;
+	ALTER TABLE t_user DROP age;
+
+  16:55-17:10 练习
+	1.3:编写php: user_add.php
+	    接收客户端提交的email/upwd把新用户的信息
+			添加到数据库用户表中,注册时间就是当前时间
+	1.4:编写html:user_add_input.html
+	    创建表单，辅助用户提交注册信息
+			!!表单通过js验证
+			格式 email 标准
+			tao@tom.com.cn
+			格式 upwd  3~10位 数字字母均可
+      [0-9a-zA-Z]{3,10}
+
+作业:
+2:用户登录
+  2.1 帐户 密码
+	2.2 登录成功自动跳转 user_select.php
+	2.3 编写php  login.php
+	2.4 编写html login_input.html
+	    请用户输入邮件地址/密码
+      SELECT * FROM t_user
+			WHERE email='a@com' AND
+			      upwd='123'
+      抓取
+		$row = mysqli_fetch_assoc($result);
+    $row === null
+3:浏览所有用户信息
+  user_select.php
+4:删除用户
+  user_delete.php

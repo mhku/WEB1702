@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            position: relative;
+           margin: 0px;
+            text-align: center;
+        }
+        body:before{
+            content: "";
+            display: table;
+        }
+        #p4{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<h2>拖放API</h2>
+<img src="img/trash.png" alt="" id="transh"/>
+<hr/>
+<img src="img/p4.png" alt="" id="p4"/>
+</body>
+<script>
+    transh.ondragenter=function(e){}
+    transh.ondragleace=function(e){}
+    transh.ondrop=function(e){}
+    //drag事件中获取拖动事件相对于页面的坐标(e.pageX)即时修改事件源的位置（left/top）绝对定位，父元素相对定位
+    //拖动开始
+    var startX=0;
+    var startY=0;
+    p4.ondragstart=function(e){
+        console.log(123);
+    }
+    //拖动中
+    p4.ondrag=function(e){
+        var x= e.pageX;
+        var y= e.pageY;
+        console.log(x,y);
+
+    }
+    //拖动结束
+    p4.ondragend=function(e){
+        console.log(4);
+    }
+</script>
+</html>

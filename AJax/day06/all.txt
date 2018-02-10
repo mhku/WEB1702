@@ -1,0 +1,200 @@
+今天学习的内容
+1:复习昨天知识重点
+2:作业
+3:今天新内容
+   3.1:结束 http 协议
+   3.2:ajax处理不同的数据类型
+	     纯文本     -->掌握
+			 文本与网页 -->重点掌握
+			 xml        -->掌握
+			 json       -->重点掌握!!!(工业标准)
+#--------------------------------
+1:复习昨天知识重点
+  AJAX 
+	作用:实现网页无刷新，无跳转，无提交
+	     网页局部内刷新.
+  1:工作流程
+	  创建对象   var xhr = new XMLHttpRequest()
+		绑定事件   xhr.onreadystatechange=function(){}
+ 		打开连接   xhr.open('GET',url,true);
+  	发送主体数据 xhr.send(null);
+	2:对象属性方法事件
+	  var xhr = new XMLHttpRequest();
+		readyState 0 1 2 3 4
+		status             200
+		responseText
+		responseXML
+		open(method,url,true)
+		send(null); send('name=aa&age=10');
+		onreadystatechange 
+		0-1  open()
+		1-2  send()
+		2-3  自然
+		3-4  自然
+2:作业
+  作业.txt    9:30--9:35 exam.zip
+3:今天新内容
+   3.1:结束 http 协议
+	     请求消息:客户端浏览器发送服务器
+			 响应消息:服务器发送客户端浏览器
+
+   3.2:ajax处理不同的数据类型
+	     纯文本     -->掌握
+			 文本与网页 -->重点掌握
+			 xml        -->掌握
+			 javasript  -->掌握
+			 json       -->重点掌握!!!(工业标准)
+
+    综合示例:图书管理.txt
+		
+    #使用纯文本响应消息
+		服务器:php
+    坑:
+		html/css/js/php  UTF-8
+		mysql            UTF8
+
+		第一行：指定发送数据主体类型纯文本
+		不指定默认:text/html
+		header("Content-Type:text/plain;
+		charset=utf-8");
+		echo "-1";
+		客户端:
+		xhr.responseText;
+
+
+		#使用文本与网页响应消息
+		服务器 php
+		header("content-type:text/html;charset=utf-8");
+		echo "<li>...</li>";
+		客户端 
+		xhr.responseText;
+
+
+		#服务器以何种格式向客户端返回
+		 "批量复合数据"
+    1:text/html
+		  <div><span>css指南</span></div>
+		  <div><span>js指南</span></div>
+		  <div><span>h5指南</span></div>
+		2:application/xml
+		  <books>        100 字节
+			   <book>
+				    <name>css指南</name>
+				 </book>
+			   <book>
+				    <name>js指南</name>
+				 </book>
+			   <book>
+				    <name>h5指南</name>
+				 </book>
+			</books>
+		3:application/json    25字节
+      [
+			 {"name":"css指南"},
+			 {"name":"js指南"},
+			 {"name":"h5指南"}
+			]
+
+      JSON字符串格式,作用描述数据
+			 XML是字符串格式描述数据，麻烦->重量级
+       JSON是字符串格式描术数据，简单->轻量级
+      业界标准:php/java/nodejs/.net...
+			JSON:易于阅读和编定,语法js语句，
+			但是目前己被各种语言所支持.
+			"异构系统交互数据标准"
+			异构系统: java---> json-->php js
+			          c   ---> json-->
+      商城:php--->支付-->(支付宝)(微信)(银行)
+
+			JSON字符串语法要求
+			1:一个JSON字符串有且只有一个根
+			  {}对象   [] 数组
+ 
+        [
+         1,2,3,4
+				]
+				{
+				 "name":"tao","age":10
+				}
+        [
+				 {"name":"tao"},
+				 {"name":"james"}
+				]
+        error
+				{"name":"tao"}
+				{"name":"james"}
+
+			2:JSON中可以表示数字,bool,null,字符串
+			  ----如果字符串必须用双引号
+			3:[]数组可以包含多个值，使用逗号分隔
+			4:{}对象可以包含多个键值对,
+			    使用逗号分隔，键和值之间用冒号;
+					键必须是用双引号
+
+      简单示例:
+			[1,2,4,2,10,10]
+			{"name":"tom","age":10}
+			[{"name":"jerry"},{"name":"kk"},{"age":19}]
+
+      php函数:将常用数据类型转换json字符串
+			$arr = ["name"=>"tom","age"=>19];
+			$str = json_encode($arr);
+			$arr = [1,10,100,9];
+			$str = json_encode($arr);
+			echo $str;
+
+
+      示例:json格式字符串
+			json_01.php
+			json_book02.php
+      -->获取所有图书列表
+			-->转换json字符串输出
+
+
+
+      #格式转换
+			服务器:php
+			1:将数组转换json字符串
+			  $str = json_encode($arr);
+			2:发送客户端浏览器
+			echo $str;
+			客户端:js
+			将json字符串--转换-->js对象
+			1:客户端对象JSON.parse(str);
+			var result = JSON.parse(str);
+      []-->js数组  {}-->js Object
+      json_book02_input.html
+      练习:16:50---17:05
+      json_book02_input.html 完善功能
+			将图书列表拼接字符串 <table>
+			json数据流程.jpg
+
+
+
+			作业一:{异步员工查询和删除}
+			功能要求:
+			1:编写.sql文件:创建数据库 emp
+			  创建数据表
+				t_emp  雇员表  eid ename did{部门编号}
+				t_dept 部门表  did name
+      2:部门表
+			  10  研发部
+				20  市场部
+				30  运营部
+      3:编写php
+			  emp_select.php  查询所有部门列表
+				下拉列表
+				<select id="did"> 
+				   <option value="10">研发部</option>
+				   <option value="20">市场部</option>
+				   <option value="30">运营部</option>
+				</select>
+        <h1>雇员列表</h1>
+				<ul id="list">
+				   ...
+				</ul>
+
+        did.onchange = function(){
+				   var d = this.value;//10 20 30
+					 //发送ajax请求-> json
+				}

@@ -1,0 +1,30 @@
+<h2>数据 模板</h2>
+
+<!--数据绑定-->
+<span>{{"姓名为"+name}}</span>
+
+<!--实现循环功能-->
+<ul>
+    <li *ngFor="let tmp of myList">
+        {{tmp}}
+    </li>
+</ul>
+<!--实现选择功能 -->
+<button *ngIf="hasMore">加载更多</button>
+<!--没有ngShow和ngHide-->
+<!--绑定click事件-->
+<button (click)="handleRefresh()">
+    刷新
+</button>
+
+<hr/>
+<!--中括号是用来将某一个值 绑定到 指定的属性
+a [href]="myUrl"
+
+-->
+<input type="text" [ngModel]="myAge"/>
+<p>{{myAge}}</p>
+
+<!--双向数据绑定-->
+<input type="text" [(ngModel)]="myAddr">
+<p>{{myAddr}}</p>

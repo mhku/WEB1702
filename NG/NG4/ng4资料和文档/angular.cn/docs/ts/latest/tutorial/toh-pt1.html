@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/tutorial/toh-pt1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:17 GMT -->
+<head><title>英雄编辑器 - ts - TUTORIAL</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent is-selected">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item is-selected"><a href="toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="toh-pt1.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/tutorial/toh-pt1.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/tutorial/toh-pt1.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">英雄编辑器 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">构建一个简单的英雄编辑器</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><h2 id="setup-to-develop-locally">Setup to develop locally</h2>
+<h2 id="-">为本地开发搭建环境</h2>
+<p>Follow the <a href="../guide/setup.html">setup</a> instructions for creating a new project
+named <code>angular-tour-of-heroes</code>.</p>
+<p>根据<a href="../guide/setup.html">开发环境</a>中的说明创建一个名为<ngio-ex path="angular-tour-of-heroes"></ngio-ex>的新项目</p>
+<p>The file structure should look like this:</p>
+<p>该项目的文件结构应该是这样的：</p>
+<div class="filetree"><div class="file">angular-tour-of-heroes</div><div class="children"><div class="file">src</div><div class="children"><div class="file">app</div><div class="children"><div class="file">app.component.ts</div><div class="file">app.module.ts</div></div><div class="file">main.ts</div><div class="file">index.html</div><div class="file">styles.css</div><div class="file">systemjs.config.js</div><div class="file">tsconfig.json</div></div><div class="file">node_modules ...</div><div class="file">package.json</div></div></div><p>When you&#39;re done with this page, the app should look like this <live-example></live-example>.</p>
+<p>在我们完成本章时，得到的应用和这个<live-example></live-example>一样。</p>
+<a id="keep-transpiling"></a><h2 id="keep-the-app-transpiling-and-running">Keep the app transpiling and running</h2>
+<h2 id="-">保持应用不断转译和运行</h2>
+<p>Enter the following command in the terminal window:</p>
+<p>在命令行窗口中输入以下命令：</p>
+<code-example language="sh" class="code-shell">npm start
+</code-example><p>This command runs the TypeScript compiler in &quot;watch mode&quot;, recompiling automatically when the code changes.
+The command simultaneously launches the app in a browser and refreshes the browser when the code changes.</p>
+<p>这个命令会在“监听”模式下运行TypeScript编译器，当代码变化时，它会自动重新编译。
+同时，该命令还会在浏览器中启动该应用，并且当代码变化时刷新浏览器。</p>
+<p>You can keep building the Tour of Heroes without pausing to recompile or refresh the browser.</p>
+<p>在后续构建《英雄指南》过程中，应用能持续运行，而不用中断服务来编译或刷新浏览器。</p>
+<div class="l-main-section"><h2 id="show-the-hero">Show the hero</h2>
+<h2 id="-">显示此英雄</h2>
+<p>Add two properties to the <code>AppComponent</code>: a <code>title</code> property for the app name and a <code>hero</code> property
+for a hero named &quot;Windstorm.&quot;</p>
+<p>往<code>AppComponent</code>中添加两个属性：<code>title</code>属性用来表示应用的名字，而<code>hero</code>属性用来表示名叫“Windstorm”的英雄。</p>
+<div class="code-example"><header><h4>app.component.ts (AppComponent class)</h4></header><code-example language="ts" format="">export class AppComponent {
+  title = &#39;Tour of Heroes&#39;;
+  hero = &#39;Windstorm&#39;;
+}
+</code-example></div><p>Now update the template in the <code>@Component</code> decorator with data bindings to these new properties.</p>
+<p>下面，更新<code>@Component</code>装饰器中指定的模板，为这些新属性建立数据绑定。</p>
+<div class="code-example"><header><h4>app.component.ts (@Component)</h4></header><code-example language="ts" format="">template: `&lt;h1&gt;{{title}}&lt;/h1&gt;&lt;h2&gt;{{hero}} details!&lt;/h2&gt;`
+</code-example></div><p>The browser refreshes and displays the title and hero name.</p>
+<p>保存后，浏览器应自动刷新，显示标题和英雄。</p>
+<p>The double curly braces are Angular&#39;s <em>interpolation binding</em> syntax.
+These interpolation bindings present the component&#39;s <code>title</code> and <code>hero</code> property values,
+as strings, inside the HTML header tags.</p>
+<p>这里的双大括号是Angular中的<em>插值表达式绑定</em>语法。它们表示组件的<code>title</code>和<code>hero</code>属性的值会作为字符串插入到HTML标签中间。</p>
+</div><div class="l-sub-section"><p>Read more about interpolation in the <a href="../guide/displaying-data.html">Displaying Data</a> page.</p>
+<p>要了解插值表达式的更多知识，见<a href="../guide/displaying-data.html">显示数据</a>。</p>
+</div><h3 id="hero-object">Hero object</h3>
+<h3 id="hero-">Hero 对象</h3>
+<p>The hero needs more properties.
+Convert the <code>hero</code> from a literal string to a class.</p>
+<p>显然，英雄还需要更多属性。
+让我们把<code>hero</code>从一个字符串字面量换成一个类。</p>
+<p>Create a <code>Hero</code> class with <code>id</code> and <code>name</code> properties.
+Add these properties near the top of the <code>app.component.ts</code> file, just below the import statement.</p>
+<p>创建一个<code>Hero</code>类，它具有<code>id</code>和<code>name</code>属性。
+现在，把下列代码放在<code>app.component.ts</code>的顶部，仅次于 import 语句。</p>
+<div class="code-example"><header><h4>src/app/app.component.ts (Hero class)</h4></header><code-example language="ts" format="">export class Hero {
+  id: number;
+  name: string;
+}
+</code-example></div><p>In the <code>AppComponent</code> class, refactor the component&#39;s <code>hero</code> property to be of type <code>Hero</code>,
+then initialize it with an <code>id</code> of <code>1</code> and the name <code>Windstorm</code>.</p>
+<p>现在，有了一个<code>Hero</code>类，我们把组件<code>hero</code>属性的类型换成<code>Hero</code>。
+然后以<code>1</code>为 id、以 “Windstorm” 为名字，初始化它。</p>
+<div class="code-example"><header><h4>src/app/app.component.ts (hero property)</h4></header><code-example language="ts" format="">hero: Hero = {
+  id: 1,
+  name: &#39;Windstorm&#39;
+};
+</code-example></div><p>Because you changed the hero from a string to an object,
+update the binding in the template to refer to the hero&#39;s <code>name</code> property.</p>
+<p>我们把<code>hero</code>从一个字符串换成了对象，所以也得更新模板中的绑定表达式，来引用<code>hero</code>的<code>name</code>属性。</p>
+<div class="code-example"><code-example language="ts" format="">template: `&lt;h1&gt;{{title}}&lt;/h1&gt;&lt;h2&gt;{{hero.name}} details!&lt;/h2&gt;`
+</code-example></div><p>The browser refreshes and continues to display the hero&#39;s name.</p>
+<p>浏览器自动刷新，并继续显示这位英雄的名字。</p>
+<h3 id="adding-html-with-multi-line-template-strings">Adding HTML with multi-line template strings</h3>
+<h3 id="-html">使用多行模板字符串添加更多 HTML</h3>
+<p>To show all of the hero&#39;s properties,
+add a <code>&lt;div&gt;</code> for the hero&#39;s <code>id</code> property and another <code>&lt;div&gt;</code> for the hero&#39;s <code>name</code>.
+To keep the template readable, place each <code>&lt;div&gt;</code> on its own line.</p>
+<p>要显示英雄的所有属性，还要为英雄的<code>id</code>属性添加一个<code>&lt;div&gt;</code>，为英雄的<code>name</code>属性添加另一个<code>&lt;div&gt;</code>。
+为了保持模板的可读性，把每个<code>&lt;div&gt;</code>单独放一行。</p>
+<p>The backticks around the component template let you put the <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, and <code>&lt;div&gt;</code> elements on their own lines,
+thanks to the <i>template literals</i> feature in ES2015 and TypeScript. For more information, see
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" title="template literal">Template literals</a>.</p>
+<p>反引号包裹的组件模板能让你把<code>&lt;h1&gt;</code>、<code>&lt;h2&gt;</code>和<code>&lt;div&gt;</code>元素各自放在一行上。
+感谢ES2015和TypeScript的<em>模板字面量</em>特性。要了解更多，请参见<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" title="template literal">模板字面量（Template literals）</a> 页。</p>
+<div class="code-example"><header><h4>app.component.ts (AppComponent's template)</h4></header><code-example language="ts" format="">template: `
+  &lt;h1&gt;{{title}}&lt;/h1&gt;
+  &lt;h2&gt;{{hero.name}} details!&lt;/h2&gt;
+  &lt;div&gt;&lt;label&gt;id: &lt;/label&gt;{{hero.id}}&lt;/div&gt;
+  &lt;div&gt;&lt;label&gt;name: &lt;/label&gt;{{hero.name}}&lt;/div&gt;
+  `
+</code-example></div><div class="l-main-section"></div><h2 id="edit-the-hero-name">Edit the hero name</h2>
+<h2 id="-">编辑英雄名字</h2>
+<p>Users should be able to edit the hero name in an <code>&lt;input&gt;</code> textbox.
+The textbox should both <em>display</em> the hero&#39;s <code>name</code> property
+and <em>update</em> that property as the user types.</p>
+<p>用户应该能在一个<code>&lt;input&gt;</code>输入框中编辑英雄的名字。
+当用户输入时，这个输入框应该能同时<em>显示</em>和<em>修改</em>英雄的<code>name</code>属性。</p>
+<p>You need a two-way binding between the <code>&lt;input&gt;</code> form element and the <code>hero.name</code> property.</p>
+<p>也就是说，我们要在表单元素<code>&lt;input&gt;</code>和组件的<code>hero.name</code>属性之间建立双向绑定。</p>
+<h3 id="two-way-binding">Two-way binding</h3>
+<h3 id="-">双向绑定</h3>
+<p>Refactor the hero name in the template so it looks like this:</p>
+<p>把模板中的英雄名字重构成这样：</p>
+<div class="code-example"><code-example language="ts" format="">&lt;div&gt;
+  &lt;label&gt;name: &lt;/label&gt;
+  &lt;input [(ngModel)]=&quot;hero.name&quot; placeholder=&quot;name&quot;&gt;
+&lt;/div&gt;
+</code-example></div><p><code>[(ngModel)]</code> is the Angular syntax to bind the <code>hero.name</code> property
+to the textbox.
+Data flows <em>in both directions:</em> from the property to the textbox,
+and from the textbox back to the property.</p>
+<p><code>[(ngModel)]</code>是一个Angular语法，用与把<code>hero.name</code>绑定到输入框中。
+它的数据流是<em>双向的</em>：从属性到输入框，并且从输入框回到属性。</p>
+<p>Unfortunately, immediately after this change, the application breaks.
+If you looked in the browser console, you&#39;d see Angular complaining that
+&quot;<code>ngModel</code> ... isn&#39;t a known property of <code>input</code>.&quot;</p>
+<p>不幸的是，做了这项改动之后，我们的程序崩溃了。
+打开浏览器的控制台，我们会看到Angular抱怨说：“<code>ngModel</code> ... isn&#39;t a known property of <code>input</code>.”（<code>ngModel</code>不是<code>input</code>元素的已知属性）</p>
+<p>Although <code>NgModel</code> is a valid Angular directive, it isn&#39;t available by default.
+It belongs to the optional <code>FormsModule</code>.
+You must opt-in to using that module.</p>
+<p>虽然<code>NgModel</code>是一个有效的Angular指令，但它默认情况下却是不可用的。
+它属于一个可选模块<code>FormsModule</code>。
+我们必须选择使用那个模块。</p>
+<h3 id="import-the-_formsmodule_">Import the <em>FormsModule</em></h3>
+<h3 id="-_formsmodule_">导入 <em>FormsModule</em></h3>
+<p>Open the <code>app.module.ts</code> file and import the <code>FormsModule</code> symbol from the <code>@angular/forms</code> library.
+Then add the <code>FormsModule</code> to the <code>@NgModule</code> metadata&#39;s <code>imports</code> array, which contains the list
+of external modules that the app uses.</p>
+<p>打开<code>app.module.ts</code>文件，并且从<code>@angular/forms</code>库中导入符号<code>FormsModule</code>。
+然后把<code>FormsModule</code>添加到<code>@NgModule</code>元数据的<code>imports</code>数组中，它是当前应用正在使用的外部模块列表。</p>
+<p>The updated <code>AppModule</code> looks like this:</p>
+<p>修改后的<code>AppModule</code>是这样的：</p>
+<div class="code-example"><header><h4>app.module.ts (FormsModule import)</h4></header><code-example language="ts" format="linenums">import { NgModule }      from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+import { FormsModule }   from &#39;@angular/forms&#39;; // &lt;-- NgModel lives here
+
+import { AppComponent }  from &#39;./app.component&#39;;
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule // &lt;-- import the FormsModule before binding with [(ngModel)]
+  ],
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><div class="l-sub-section"><p>Read more about <code>FormsModule</code> and <code>ngModel</code> in the
+<a href="../guide/forms.html#ngModel">Two-way data binding with ngModel</a> section of the
+<a href="../guide/forms.html">Forms</a> guide and the
+<a href="../guide/template-syntax.html#ngModel">Two-way binding with NgModel</a> section of the
+<a href="../guide/template-syntax.html">Template Syntax</a> guide.</p>
+<p>要学习关于<code>FormsModule</code>和<code>ngModel</code>的更多知识，参见<a href="../guide/forms.html#ngModel">表单</a>和
+<a href="../guide/template-syntax.html#ngModel">模板语法</a>。</p>
+</div><p>When the browser refreshes, the app should work again.
+You can edit the hero&#39;s name and see the changes reflected immediately in the <code>&lt;h2&gt;</code> above the textbox.</p>
+<p>浏览器刷新。又见到我们的英雄了。我们可以编辑英雄的名字，也能看到这个改动立刻体现在<code>&lt;h2&gt;</code>中。</p>
+<div class="l-main-section"></div><h2 id="the-road-you-ve-travelled">The road you&#39;ve travelled</h2>
+<h2 id="-">我们已经走过的路</h2>
+<p>Take stock of what you&#39;ve built.</p>
+<p>我们来盘点一下已经构建完成的部分。</p>
+<ul>
+<li><p>The Tour of Heroes app uses the double curly braces of interpolation (a type of one-way data binding)
+to display the app title and properties of a <code>Hero</code> object.</p>
+<p>我们的《英雄指南》使用双大括号插值表达式(单向数据绑定的一种形式)来显示应用的标题和<code>Hero</code>对象的属性。</p>
+</li>
+<li><p>You wrote a multi-line template using ES2015&#39;s template literals to make the template readable.</p>
+<p>我们使用 ES2015 的模板字符串写了一个多行模板，使我们的模板更具可读性。</p>
+</li>
+<li><p>You added a two-way data binding to the <code>&lt;input&gt;</code> element
+using the built-in <code>ngModel</code> directive. This binding both displays the hero&#39;s name and allows users to change it.</p>
+<p>为了同时显示和修改英雄的名字，我们还使用了内置的<code>ngModel</code>指令，往<code>&lt;input&gt;</code>元素上添加了双向数据绑定。</p>
+</li>
+<li><p>The <code>ngModel</code> directive propagates changes to every other binding of the <code>hero.name</code>.</p>
+<p><code>ngModel</code>指令将这些修改传播到每一个对<code>hero.name</code>的其它绑定。</p>
+</li>
+</ul>
+<p>Your app should look like this <live-example></live-example>.</p>
+<p>运行这部分的<live-example></live-example>。</p>
+<p>Here&#39;s the complete <code>app.component.ts</code> as it stands now:</p>
+<p>完整的<code>app.component.ts</code>是这样的：</p>
+<div class="code-example"><header><h4>src/app/app.component.ts</h4></header><code-example language="ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+export class Hero {
+  id: number;
+  name: string;
+}
+
+@Component({
+  selector: &#39;my-app&#39;,
+  template: `
+    &lt;h1&gt;{{title}}&lt;/h1&gt;
+    &lt;h2&gt;{{hero.name}} details!&lt;/h2&gt;
+    &lt;div&gt;&lt;label&gt;id: &lt;/label&gt;{{hero.id}}&lt;/div&gt;
+    &lt;div&gt;
+      &lt;label&gt;name: &lt;/label&gt;
+      &lt;input [(ngModel)]=&quot;hero.name&quot; placeholder=&quot;name&quot;&gt;
+    &lt;/div&gt;
+    `
+})
+export class AppComponent {
+  title = &#39;Tour of Heroes&#39;;
+  hero: Hero = {
+    id: 1,
+    name: &#39;Windstorm&#39;
+  };
+}
+</code-example></div><div class="l-main-section"></div><h2 id="the-road-ahead">The road ahead</h2>
+<h2 id="-">前方的路</h2>
+<p>In the <a href="toh-pt2.html">next tutorial page</a>, you&#39;ll build on the Tour of Heroes app to display a list of heroes.
+You&#39;ll also allow the user to select heroes and display their details.
+You&#39;ll learn more about how to retrieve lists and bind them to the template.</p>
+<p>在<a href="toh-pt2.html">教程的下一章</a>，我们将在这个《英雄指南》中显示一个英雄列表。
+我们将允许允许用户选择一个英雄，并且显示它/她的详情。
+我们还将学会如何获取列表以及将它们绑定到模板中。</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><div class="l-sub-section"><h3>下一步</h3><a href="toh-pt2.html" class="translated-cn">主从结构</a></div><!--NEXT PAGE HAS NOW BEEN SET--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/tutorial/toh-pt1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:18 GMT -->
+</html>

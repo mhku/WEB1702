@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var PropComponent = React.createClass({
+    render:function(){
+      return <h1>Hello {this.props.userName}</h1>
+    }
+  })
+
+  var Container = React.createClass({
+    render:function(){
+      return <div>
+        <PropComponent userName='zhangsan'>
+        </PropComponent>
+        <PropComponent userName='michael'>
+        </PropComponent>
+        <PropComponent userName='lisi'>
+        </PropComponent>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <Container></Container>,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

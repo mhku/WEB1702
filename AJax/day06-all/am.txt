@@ -1,0 +1,70 @@
+今天学习的内容
+1:复习昨天知识重点
+2:作业
+3:今天新内容
+   3.1:结束 http 协议
+   3.2:ajax处理不同的数据类型
+	     纯文本     -->掌握
+			 文本与网页 -->重点掌握
+			 xml        -->掌握
+			 json       -->重点掌握!!!(工业标准)
+#--------------------------------
+1:复习昨天知识重点
+  AJAX 
+	作用:实现网页无刷新，无跳转，无提交
+	     网页局部内刷新.
+  1:工作流程
+	  创建对象   var xhr = new XMLHttpRequest()
+		绑定事件   xhr.onreadystatechange=function(){}
+ 		打开连接   xhr.open('GET',url,true);
+  	发送主体数据 xhr.send(null);
+	2:对象属性方法事件
+	  var xhr = new XMLHttpRequest();
+		readyState 0 1 2 3 4
+		status             200
+		responseText
+		responseXML
+		open(method,url,true)
+		send(null); send('name=aa&age=10');
+		onreadystatechange 
+		0-1  open()
+		1-2  send()
+		2-3  自然
+		3-4  自然
+2:作业
+  作业.txt    9:30--9:35 exam.zip
+3:今天新内容
+   3.1:结束 http 协议
+	     请求消息:客户端浏览器发送服务器
+			 响应消息:服务器发送客户端浏览器
+
+   3.2:ajax处理不同的数据类型
+	     纯文本     -->掌握
+			 文本与网页 -->重点掌握
+			 xml        -->掌握
+			 javasript  -->掌握
+			 json       -->重点掌握!!!(工业标准)
+
+    综合示例:图书管理.txt
+		
+    #使用纯文本响应消息
+		服务器:php
+    坑:
+		html/css/js/php  UTF-8
+		mysql            UTF8
+
+		第一行：指定发送数据主体类型纯文本
+		不指定默认:text/html
+		header("Content-Type:text/plain;
+		charset=utf-8");
+		echo "-1";
+		客户端:
+		xhr.responseText;
+
+
+		#使用文本与网页响应消息
+		服务器
+		header("content-type:text/html;charset=utf-8");
+		echo "<li...";
+		客户端 
+		xhr.responseText;

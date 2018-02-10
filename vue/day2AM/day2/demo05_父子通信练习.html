@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <father></father>
+</div>
+
+<script>
+  Vue.component('father',{
+    data: function () {
+      return {
+        sonName:'大头儿子',
+        inputValue:''
+      }
+    },
+    methods:{
+      getSonValue: function () {
+        this.inputValue = this.$refs.myChild.sonValue;
+      }
+    },
+    template:`
+    <div>
+      <h1>
+      {{"父组件读取子组件中用户输入的值为"+inputValue}}
+      </h1>
+
+      <hr/>
+      <son ref="myChild"></son>
+    </div>
+    `
+  })
+
+  Vue.component('son',{
+    data: function () {
+      return {
+        sonValue:''
+      }
+    },
+    methods:{
+      sendToFather: function () {
+        this.$parent.getSonValue();
+      }
+    },
+    template:`
+    <div>
+      <h1>
+      {{"子组件的名称为"+this.$parent.sonName}}
+      </h1>
+      <input type="text" v-model="sonValue"/>
+      <button @click="sendToFather">clickMe</button>
+    </div>
+    `
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+ 功能:查询manager/t_user用户信息
+	 ajax
+	 1:创建php  select_user.php
+	   获取manager/t_user 表所有记录
+		 拼接字符串 <li>email/regtime</li>
+		 <li>tom@tom.com:2017-10-10</li>
+		 <li>tom@tom.com:2017-10-10</li>
+		 <li>tom@tom.com:2017-10-10</li>
+	 2:创建html select_user_input.html
+	   <input type="button" id="btn" />
+	   <ul id="menu">
+		   ...
+		 </ul>
+		 2.1:点击btn按钮发送ajax请求
+		 2.2:返回数据 <ul>.....</ul>
+

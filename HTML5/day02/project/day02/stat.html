@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c2" width="800" height="700">
+    您的浏览器不支持Canvas标签！
+  </canvas>
+  <h3>上年度集团销售统计</h3>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //异步请求GET /stat,获取销售统计数据；
+    //根据数据，绘制动态的Canvas统计图
+    $.ajax({
+      type: 'GET',
+      url: '/stat',
+      success: function(list){
+        console.log(list);
+        var ctx = c2.getContext('2d');
+        var cw = 800; //画布的宽
+        var ch = 700; //画布的高
+        var count = list.length;  //数据的数量
+        var padding = 50; //内容到画布边界的距离
+        var barWidth = (cw-2*padding)/(2*count+1);//每个柱子/间距的宽度
+        //绘制每个柱子
+        for(var i=0; i<count; i++){
+          var w = barWidth;  //柱子的宽度
+          var h = list[i].value;  //柱子的高度
+          var x = (2*i+1)*barWidth+padding; //柱子的X
+          var y = ch-padding-h; //柱子的Y
+          ctx.strokeRect(x, y, w, h);
+        }
+        //最外侧轮廓
+        ctx.strokeRect(padding, padding,cw-2*padding, ch-2*padding);
+      }
+    });
+  </script>
+</body>
+</html>

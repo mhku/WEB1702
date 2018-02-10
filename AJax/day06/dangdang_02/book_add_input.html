@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>hello world</title>
+  </head>
+  <body>
+     <h1>添加图书</h1>
+    <form id="regForm" action="#" method="post">
+      <ul>
+       <li>图书名称<input type="text" value="" name="bname" id="bname"/></li>
+       <li>图书图片<input type="text" value="" name="pic" id="pic"/></li>
+       <li>图书价格<input type="text" value="" name="price" id="price"/></li>
+       <li>图书出版日期<input type="text" value="" name="pubtime" id="pubtime"/></li>
+       <li><input id="btn" type="button" value="发布" /></li>
+      </ul>
+    </form>
+    <script>
+       //1:获取按钮
+       //2:绑定点击事件
+       btn.onclick = function(){
+         //2.1:获取所有参数
+         var n = bname.value;
+         var p = pic.value;
+         var d = price.value;
+         var r = pubtime.value;
+         //2.2:创建xhr对象
+         //2.3:绑定事件
+         var xhr = new XMLHttpRequest();
+         xhr.onreadystatechange = function(){
+            //2.3.1 接收返回数据 
+            //2.3.2 清空原有输入
+            if(xhr.readyState===4&&xhr.status===200){
+              var num = parseInt(xhr.responseText);
+              if(num>0){
+                 alert('新记录添加成功编号:'+num);
+                 bname.value = "";
+                 pic.value = "";
+                 price.value= "";
+                 pubtime.value = "";
+              }else{
+                 alert("新记录添加失败"+num);
+              }
+
+            }
+
+         }
+         //2.4:打开连接  POST
+         xhr.open('POST','book_add.php',true);
+         //2.5:设置请求头消息格式
+         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+         //2.6:发送  参数
+         xhr.send(`bname=${n}
+         &pic=${p}&price=${d}&pubtime=${r}`); 
+       }
+    </script>
+  </body>
+  </html>

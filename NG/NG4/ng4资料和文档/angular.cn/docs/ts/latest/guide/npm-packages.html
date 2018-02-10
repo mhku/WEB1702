@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/npm-packages.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:51 GMT -->
+<head><title>npm 包 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item is-selected"><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="npm-packages.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/npm-packages.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/npm-packages.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">npm 包 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">推荐的 npm 包以及如何指定所依赖的包</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>Angular applications and Angular itself depend upon features and functionality provided by a variety of third-party packages.
+These packages are maintained and installed with the Node Package Manager (<a href="https://docs.npmjs.com/" target="_blank">npm</a>).</p>
+<p>Angular应用程序以及Angular本身都依赖于很多第三方包(包括Angular自己)提供的特性和功能。
+这些包由Node包管理器(<a href="https://docs.npmjs.com/" target="_blank">npm</a>)负责安装和维护。</p>
+<div class="l-sub-section"><p>Node.js and npm are essential to Angular development. </p>
+<p>Node.js和npm是做Angular开发的基础。</p>
+<p><a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
+Get them now</a> if they&#39;re not already installed on your machine.</p>
+<p>如果你的电脑上还没有装过，请<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">立即获取它</a>！</p>
+<p><strong>Verify that you are running node <code>v4.x.x</code> or higher and npm <code>3.x.x</code> or higher</strong>
+by running the commands <code>node -v</code> and <code>npm -v</code> in a terminal/console window.
+Older versions produce errors.</p>
+<p>通过在终端/控制台窗口中运行<code>node -v</code>和<code>npm -v</code>命令，来<strong>验证下你是否正在使用node <code>v4.x.x</code>和npm <code>3.x.x</code></strong>。
+    过老的版本有可能出现问题。</p>
+<p>Consider using <a href="https://github.com/creationix/nvm">nvm</a> for managing multiple
+versions of node and npm. You may need <a href="https://github.com/creationix/nvm">nvm</a> if
+you already have projects running on your machine that use other versions of node and npm.</p>
+<p>我们建议使用<a href="https://github.com/creationix/nvm">nvm</a>来管理node和npm的多个版本。如果你机器上已经有某些项目运行了node和npm的其它版本，你就会需要<a href="https://github.com/creationix/nvm">nvm</a>了。</p>
+</div><p>During <a href="setup.html">Setup</a>, a <a href="https://docs.npmjs.com/files/package.json" target="_blank">package.json</a>
+file is installed with a comprehensive starter set of
+packages as specified in the <code>dependencies</code> and <code>devDependencies</code> sections.</p>
+<p>我们在<a href="setup.html">搭建本地开发环境</a>一章中安装并解释了<a href="https://docs.npmjs.com/files/package.json" target="_blank">package.json</a>文件的
+  <code>dependencies</code>和<code>devDependencies</code>区中指定了一组适用于新手的综合依赖包。</p>
+<p>You can use other packages but the packages in <em>this particular set</em> work well together and include
+everything you need to build and run the sample applications in this series.</p>
+<p>你当然可以使用其它包，不过这一组可以很好的协同工作，而且包含了我们在个系列文档中构建和运行范例应用时所需的一切。</p>
+<div class="l-sub-section"><p>Note: A cookbook or guide page may require an additional library such as <em>jQuery</em>.</p>
+<p>注意：烹饪宝典或开发指南中的页面可能需要其它库，比如<em>jQuery</em>。</p>
+</div><p>You&#39;ll install more than you need for the QuickStart guide.
+No worries!
+You only serve to the client those packages that the application actually requests.</p>
+<p>它们远远超过了我们将在“快速起步”中所需要用到的。
+实际上，它比我们在大多数应用中需要的还多。
+安装的包比我们实际需要的包多，其实并没有什么坏处。
+我们最终只会往客户端发送程序中实际用到的那些包。</p>
+<p>This page explains what each package does. You can make substitutions later to suit your tastes and experience.</p>
+<p>本页面会解释每一个包是干什么的，以后你就可以根据自己的喜好和经验，随意替换它们了。</p>
+<div class="l-main-section"></div><h2 id="-dependencies-and-devdependencies-"><em>dependencies</em> and <em>devDependencies</em></h2>
+<h2 id="-dependencies-devdependencies-"><em>dependencies</em>和<em>devDependencies</em></h2>
+<p>The <code>package.json</code> includes two sets of packages,
+<a href="#dependencies">dependencies</a> and <a href="#dev-dependencies">devDependencies</a>.</p>
+<p><code>package.json</code>包含两组包：<a href="#dependencies">dependencies</a>和<a href="#dev-dependencies">devDependencies</a>。</p>
+<p>The <em>dependencies</em> are essential to <em>running</em> the application. 
+The <em>devDependencies</em> are only necessary to <em>develop</em> the application. 
+You can exclude them from production installations by adding <code>--production</code> to the install command, as follows:</p>
+<p><em>dependencies</em>下的这些包是<em>运行</em>本应用的基础，而<em>devDependencies</em>下的只在<em>开发</em>此应用时才用得到。
+通过为<code>install</code>命令添加<code>--production</code>参数，你在产品环境下安装时排除<em>devDependencies</em>下的包，就像这样：</p>
+<code-example format="." language="bash">npm install my-application --production
+</code-example><a id="dependencies"></a><div class="l-main-section"></div><h2 id="-dependencies-"><em>dependencies</em></h2>
+<p>The <code>dependencies</code> section of <code>package.json</code> contains:</p>
+<p>应用程序的<code>package.json</code>文件中，<code>dependencies</code>区下有三类包：</p>
+<ul>
+<li><p><strong><em>Features</em></strong> : Feature packages give the application framework and utility capabilities.</p>
+<p><strong>特性*</strong> - 特性包为应用程序提供了框架和工具方面的能力。</p>
+</li>
+<li><p><strong><em>Polyfills</em></strong> : Polyfills plug gaps in the browser&#39;s JavaScript implementation.</p>
+<p><strong><em>填充(Polyfills)</em></strong> - 填充包弥合了不同浏览器上的JavaScript实现方面的差异。</p>
+</li>
+<li><p><strong><em>Other</em></strong> : Other libraries that support the application such as <code>bootstrap</code> for HTML widgets and styling.</p>
+<p><strong><em>其它</em></strong> - 其它库对本应用提供支持，比如<code>bootstrap</code>包提供了HTML中的小部件和样式。</p>
+</li>
+</ul>
+<div class="l-main-section"></div><h3 id="feature-packages">Feature Packages</h3>
+<h3 id="-">特性包</h3>
+<p><strong><em>@angular/core</em></strong> : Critical runtime parts of the framework needed by every application. 
+Includes all metadata decorators, <code>Component</code>, <code>Directive</code>,  dependency injection, and the component lifecycle hooks.</p>
+<p><strong><em>@angular/core</em></strong> - 框架中关键的运行期部件，每一个应用都需要它。
+包括所有的元数据装饰器：<code>Component</code>、<code>Directive</code>，依赖注入系统，以及组件生命周期钩子。</p>
+<p><strong><em>@angular/common</em></strong> : The commonly needed services, pipes, and directives provided by the Angular team.</p>
+<p><strong><em>@angular/common</em></strong> - 常用的那些由Angular开发组提供的服务、管道和指令。</p>
+<p><strong><em>@angular/compiler</em></strong> : Angular&#39;s <em>Template Compiler</em>. 
+It understands templates and can convert them to code that makes the application run and render. 
+Typically you don’t interact with the compiler directly; rather, you use it indirectly via <code>platform-browser-dynamic</code> or the offline template compiler.</p>
+<p><strong><em>@angular/compiler</em></strong> - Angular的<em>模板编译器</em>。
+它会理解模板，并且把模板转化成代码，以供应用程序运行和渲染。
+开发人员通常不会直接跟这个编译器打交道，而是通过<code>platform-browser-dynamic</code>或离线模板编译器间接使用它。</p>
+<p><strong><em>@angular/platform-browser</em></strong> : Everything DOM and browser related, especially the pieces that help render into theDOM.
+This package also includes the <code>bootstrapStatic()</code> method for bootstrapping applications for production builds that pre-compile templates offline.</p>
+<p><strong><em>@angular/platform-browser</em></strong> - 与DOM和浏览器相关的每样东西，特别是帮助往DOM中渲染的那部分。
+这个包还包含bootstrapStatic方法，用来引导那些在产品构建时需要离线预编译模板的应用程序。</p>
+<p><strong><em>@angular/platform-browser-dynamic</em></strong> : Includes <a href="../api/core/index/Provider-type-alias.html">Providers</a> and a <a href="ngmodule.html#bootstrap">bootstrap</a> method for applications that
+compile templates on the client. Don’t use offline compilation.
+Use this package for bootstrapping during development and for bootstrapping plunker samples.</p>
+<p><strong><em>@angular/platform-browser-dynamic</em></strong> - 为应用程序提供一些<a href="../api/core/index/Provider-type-alias.html">提供商</a>和<a href="ngmodule.html#bootstrap">bootstrap</a>方法，以便在客户端编译模板。不要用于离线编译。
+我们使用这个包在开发期间引导应用，以及引导plunker中的范例。</p>
+<p><strong><em>@angular/http</em></strong> : Angular&#39;s HTTP client.</p>
+<p><strong><em>@angular/http</em></strong> - Angular的HTTP客户端。</p>
+<p><strong><em>@angular/router</em></strong> : Component router.</p>
+<p><strong><em>@angular/router</em></strong> - 路由器。</p>
+<p><strong><em>@angular/upgrade</em></strong> : Set of utilities for upgrading AngularJS applications to Angular.</p>
+<p><strong><em>@angular/upgrade</em></strong> - 一组用于升级AngularJS应用的工具。</p>
+<p><strong><em><a href="https://github.com/systemjs/systemjs">system.js</a></em></strong> :  A dynamic module loader compatible with the 
+<a href="http://www.2ality.com/2014/09/es6-modules-final.html">ES2015 module</a> specification.
+Other viable choices include the well-regarded <a href="https://webpack.github.io/">webpack</a>.</p>
+<p><strong><em><a href="https://github.com/systemjs/systemjs">system.js</a></em></strong> -  是一个动态的模块加载器，
+与<a href="http://www.2ality.com/2014/09/es6-modules-final.html">ES2015模块</a>规范兼容。
+还有很多其它选择，比如广受欢迎的<a href="https://webpack.github.io/">webpack</a>。
+SystemJS被用在了我们的文档范例中。因为它能工作。</p>
+<p>Your future applications are likely to require additional packages that provide
+HTML controls, themes, data access, and various utilities.</p>
+<p>今后，应用程序很可能还会需要更多的包，比如HTML控件、主题、数据访问，以及其它多种工具。</p>
+<a id="polyfills"></a><div class="l-main-section"></div><h3 id="polyfill-packages">Polyfill packages</h3>
+<h3 id="-polyfill-">填充(Polyfill)包</h3>
+<p>Angular requires certain <a href="https://en.wikipedia.org/wiki/Polyfill">polyfills</a> in the application environment.
+Install these polyfills using the npm packages that Angular lists in the <em>peerDependencies</em> section of its <code>package.json</code>.</p>
+<p>在应用程序的运行环境中，Angular需要某些<a href="https://en.wikipedia.org/wiki/Polyfill">填充库</a>。
+我们通过特定的npm包来安装这些填充库，Angular本身把它列在了<code>package.json</code>中的<em>peerDependencies</em>区。</p>
+<p>You must list these packages in the <code>dependencies</code> section of your own <code>package.json</code>.</p>
+<p>但我们必须把它列在我们<code>package.json</code>文件的<code>dependencies</code>区。</p>
+<div class="l-sub-section"><p>For background on this requirement, see <a href="#why-peer-dependencies">Why peerDependencies?</a>.</p>
+<p>查看下面的“<a href="#why-peer-dependencies">为什么用peerDependencies?</a>”，以了解这项需求的背景。</p>
+</div><p><strong><em>core-js</em></strong>: Patches the global context (window) with essential features of ES2015 (ES6).
+ You may substitute an alternative polyfill that provides the same core APIs.
+ When these APIs are implemented by the major browsers, this dependency will become unnecessary.</p>
+<p><strong><em>core-js</em></strong> - 为全局上下文(window)打的补丁，提供了ES2015(ES6)的很多基础特性。
+我们也可以把它换成提供了相同内核API的其它填充库。
+一旦所有的“主流浏览器”都实现了这些API，这个依赖就可以去掉了。</p>
+<p><strong><em>rxjs</em></strong> : A polyfill for the <a href="https://github.com/zenparsing/es-observable">Observables specification</a> currently before the 
+<a href="http://www.ecma-international.org/memento/TC39.htm">TC39</a> committee that determines standards for the JavaScript language.
+You can pick a preferred version of <em>rxjs</em> (within a compatible version range)
+without waiting for Angular updates.</p>
+<p><strong><em>rxjs</em></strong> - 一个为<a href="https://github.com/zenparsing/es-observable">可观察对象(Observable)规范</a>提供的填充库，该规范已经提交给了
+<a href="http://www.ecma-international.org/memento/TC39.htm">TC39</a>委员会，以决定是否要在JavaScript语言中进行标准化。
+开发人员应该能在兼容的版本中选择一个喜欢的<em>rxjs</em>版本，而不用等Angular升级。</p>
+<p><strong><em>zone.js</em></strong> : A polyfill for the <a href="https://gist.github.com/mhevery/63fdcdf7c65886051d55">Zone specification</a> currently before the 
+<a href="http://www.ecma-international.org/memento/TC39.htm">TC39</a> committee that determines standards for the JavaScript language.
+You can pick a preferred version of <em>zone.js</em> to use (within a compatible version range)
+without waiting for Angular updates.</p>
+<p><strong><em>zone.js</em></strong> - 一个为<a href="https://gist.github.com/mhevery/63fdcdf7c65886051d55">Zone规范</a>提供的填充库，该规范已经提交给了
+<a href="http://www.ecma-international.org/memento/TC39.htm">TC39</a>委员会，以决定是否要在JavaScript语言中进行标准化。
+开发人员应该能在兼容的版本中选择一个喜欢的<em>zone.js</em>版本，而不用等Angular升级。</p>
+<a id="other"></a><div class="l-main-section"></div><h3 id="other-helper-libraries">Other helper libraries</h3>
+<h3 id="-">其它辅助库</h3>
+<p><strong><em>angular-in-memory-web-api</em></strong> : An Angular-supported library that simulates a remote server&#39;s web api 
+without requiring an actual server or real HTTP calls. 
+Good for demos, samples, and early stage development (before you even have a server).
+Read about it in the <a href="server-communication.html#in-mem-web-api">HTTP Client</a> page.</p>
+<p><strong><em>angular-in-memory-web-api</em></strong> - 一个Angular的支持库，它能模拟一个远端服务器的Web API，而不需要依赖一个真实的服务器或发起真实的HTTP调用。
+对演示、文档范例和开发的早期阶段(那时候我们可能还没有服务器呢)非常有用。
+请到<a href="server-communication.html#appendix-tour-of-heroes-in-memory-server">Http客户端</a>一章中了解更多知识。</p>
+<p><strong><em>bootstrap</em></strong> : <a href="http://getbootstrap.com/">Bootstrap</a> is a popular HTML and CSS framework for designing responsive web apps.
+Some of the samples improve their appearance with <em>bootstrap</em>.</p>
+<p><strong><em>bootstrap</em></strong> - <a href="http://getbootstrap.com/">bootstrap</a>是一个广受欢迎的HTML和CSS框架，可用来设计响应式网络应用。
+有些文档中的范例使用了<em>bootstrap</em>来强化它们的外观。</p>
+<a id="dev-dependencies"></a><div class="l-main-section"></div><h2 id="-devdependencies-"><em>devDependencies</em></h2>
+<p>The packages listed in the <em>devDependencies</em> section of the <code>package.json</code> help you develop the application.
+You don&#39;t have to deploy them with the production application although there is no harm in doing so.</p>
+<p>列在<code>package.json</code>文件中<em>devDependencies</em>区的包会帮助我们开发该应用程序。
+我们不用把它们部署到产品环境的应用程序中 —— 虽然这样做也没什么坏处。</p>
+<p><strong><em><a href="https://www.npmjs.com/package/concurrently">concurrently</a></em></strong> : 
+A utility to run multiple <em>npm</em> commands concurrently on OS/X, Windows, and Linux operating systems.</p>
+<p><strong><em><a href="https://www.npmjs.com/package/concurrently">concurrently</a></em></strong> - 一个用来在OS/X、Windows和Linux操作系统上同时运行多个<em>npm</em>命令的工具
+<strong><em><a href="https://www.npmjs.com/package/lite-server">lite-server</a></em></strong> : 
+A light-weight, static file server, by <a href="http://johnpapa.net/">John Papa</a> 
+with excellent support for Angular apps that use routing.</p>
+<p><strong><em><a href="https://www.npmjs.com/package/lite-server">lite-server</a></em></strong> - 一个轻量级、静态的服务器，
+由<a href="http://johnpapa.net/">John Papa</a>开发和维护。对使用到路由的Angular程序提供了很好的支持。</p>
+<p><strong><em><a href="https://www.npmjs.com/package/typescript">typescript</a></em></strong> : 
+the TypeScript language server, including the <em>tsc</em> TypeScript compiler.</p>
+<p><strong><em><a href="https://www.npmjs.com/package/typescript">typescript</a></em></strong> - TypeScript语言的服务器，包含了TypeScript编译器<em>tsc</em>。</p>
+<p><strong><em>@types/*</em></strong> : TypeScript definition files.
+Learn more about it in the <a href="typescript-configuration.html#typings">TypeScript Configuration</a> guide.</p>
+<p><strong><em>@types/*</em></strong> - “TypeScript定义”文件管理器。
+要了解更多，请参见<a href="typescript-configuration.html#typings">TypeScript配置</a>页。</p>
+<div class="l-main-section"></div><a id="why-peer-dependencies"></a><h2 id="why-peerdependencies-">Why <em>peerDependencies</em>?</h2>
+<h2 id="-peerdependencies-">为什么使用<em>peerDependencies</em>？</h2>
+<p>There isn&#39;t a <a href="https://nodejs.org/en/blog/npm/peer-dependencies/"><em>peerDependencies</em></a> section in the QuickStart <code>package.json</code>. 
+But Angular has a <em>peerDependencies</em> section in 
+<em>its</em> <code>package.json</code>, which has important consequences for your application. </p>
+<p>在“快速起步”的<code>package.json</code>文件中，并没有<a href="https://nodejs.org/en/blog/npm/peer-dependencies/"><em>peerDependencies</em></a>区。
+但是Angular本身在<em>它自己的</em> <code>package.json</code> 中有，
+它对我们的应用程序有重要的影响。</p>
+<p>This section explains why you load the <a href="#polyfills">polyfill</a> <em>dependency</em> packages in the QuickStart application&#39;s<code>package.json</code>,
+and why you&#39;ll need those packages in your own applications.</p>
+<p>它解释了为什么我们要在“快速起步”的<code>package.json</code>文件中加载这些<a href="#polyfills">填充库(polyfill)</a>依赖包，
+以及为什么我们在自己的应用中会需要它们。</p>
+<p>An explanation of <a href="https://nodejs.org/en/blog/npm/peer-dependencies/">peer dependencies</a> follows.</p>
+<p>然后是对<a href="https://nodejs.org/en/blog/npm/peer-dependencies/">平级依赖(peer dependencies)</a>的简短解释。</p>
+<p>Packages depend on other packages. For example, your application depends on the Angular package.</p>
+<p>每个包都依赖其它的包，比如我们的应用程序就依赖于Angular包。</p>
+<p>Two packages, &quot;A&quot; and &quot;B&quot;, could depend on the same third package &quot;C&quot;. 
+&quot;A&quot; and &quot;B&quot; might both list &quot;C&quot; among their <em>dependencies</em>.</p>
+<p>两个包，“A”和“B”，可能依赖共同的第三个包“C”。
+&quot;A&quot;和“B”可能都在它们的<em>dependencies</em>中列出了“C”。</p>
+<p>What if &quot;A&quot; and &quot;B&quot; depend on different versions of &quot;C&quot; (&quot;C1&quot; and &quot;C2&quot;). The npm package system supports that. 
+It installs &quot;C1&quot; in the <code>node_modules</code> folder for &quot;A&quot; and &quot;C2&quot; in the <code>node_modules</code> folder for &quot;B&quot;.
+Now &quot;A&quot; and &quot;B&quot; have their own copies of &quot;C&quot; and they run without interferring with one another.</p>
+<p>如果“A”和“B”依赖于“C”的不同版本(&quot;C1&quot;和“C2”)。npm包管理系统也能支持！
+它会把“C1”安装到“A”的<code>node_modules</code>目录下给“A”用，把“C2”安装到“B”的<code>node_modules</code>目录下给“B”用。
+现在，“A”和“B”都有了它们自己的一份“C”的复本，它们运行起来也互不干扰。</p>
+<p>But there is a problem. Package &quot;A&quot; may require the presence of &quot;C1&quot; without actually calling upon it directly.
+&quot;A&quot; may only work if <em>everyone is using &quot;C1&quot;</em>. It falls down if any part of the application relies on &quot;C2&quot;.</p>
+<p>但是有一个问题。包“A”可能只需要“C1”出现就行，而实际上并不会直接调用它。
+&quot;A&quot;可能只有当<em>每个人都使用“C1”时</em>才能正常工作。如果程序中的任何一个部分依赖了“C2”，它就会失败。</p>
+<p>The solution is for &quot;A&quot; to declare that &quot;C1&quot; is a <em>peer dependency</em>.</p>
+<p>要想解决这个问题，“A”就需要把“C1”定义为它的<em>平级依赖</em>。</p>
+<p>The difference between a <code>dependency</code> and a <code>peerDependency</code> is roughly this:</p>
+<p>在<code>dependencies</code>和<code>peerDependencies</code>之间的区别大致是这样的：</p>
+<blockquote>
+<p>A <strong>dependency</strong> says, &quot;I need this thing directly available to <em>me</em>.&quot;</p>
+<p><strong>dependency</strong>说：“我需要这东西<em>对我</em>是直接可用的。”</p>
+<p>A <strong>peerDependency</strong> says, &quot;If you want to use me, you need this thing available to <em>you</em>.&quot;</p>
+<p><strong>peerDependency</strong>说：“如果你想使用我，你得先确保这东西<em>对你</em>是可用的”</p>
+</blockquote>
+<p>The Angular <code>package.json</code> specifies several <em>peer dependency</em> packages, 
+each pinned to a particular version of a third-party package.</p>
+<p>Angular就存在这个问题。
+因此，Angular的<code>package.json</code>中指定了一系列<em>平级依赖</em>包，
+把每个第三方包都固定在一个特定的版本上。</p>
+<h3 id="you-must-install-angular-s-peerdependencies-yourself-">You must install Angular&#39;s <em>peerDependencies</em> yourself.</h3>
+<h3 id="-angular-peerdependencies-">我们必须自己安装Angular的<em>peerDependencies</em>。</h3>
+<p>When <em>npm</em> installs packages listed in <em>your</em> <code>dependencies</code> section,
+it also installs the packages listed within <em>their</em> packages <code>dependencies</code> sections.
+The process is recursive.</p>
+<p>当<em>npm</em>安装那些在<em>我们的</em><code>dependencies</code>区指定的包时，
+它也会同时安装上在<em>那些包</em>的<code>dependencies</code>区所指定的那些包。
+这个安装过程是递归的。</p>
+<p>However, as of version 3, <em>npm</em> does <em>not</em> install packages listed in <em>peerDependencies</em> sections.</p>
+<p>但是在npm的第三版中，<em>它不会</em>安装列在<em>peerDependencies</em>区的那些包。</p>
+<p>This means that when your application installs Angular, <strong><em>npm</em> doesn&#39;t automatically install
+the packages listed in Angular&#39;s <em>peerDependencies</em> section</strong>.</p>
+<p>这意味着，当我们的应用程序安装Angular时，<strong><em>npm</em>将不会自动安装列在Angular的<em>peerDependencies</em>区的那些包</strong></p>
+<p>Fortunately, <em>npm</em> issues a warning (a) When any <em>peer dependencies</em> are missing, or (b)
+When the application or any of its other dependencies
+installs a different version of a <em>peer dependency</em>. </p>
+<p>幸运的是，<em>npm</em>会在下列情况下给我们警告：(a) 当任何<em>平级依赖</em>缺失时 或(b) 当应用程序或它的任何其它依赖安装了与<em>平级依赖</em>不同版本的包时。</p>
+<p>These warnings guard against accidental failures due to version mismatches.
+They leave you in control of package and version resolution.</p>
+<p>这些警告可以避免因为版本不匹配而导致的意外错误。
+它们让我们可以控制包和版本的解析过程。</p>
+<p>It is your responsibility to list all <em>peer dependency</em> packages <strong>among your own <em>devDependencies</em></strong>.</p>
+<p>我们的责任是，把所有<em>平级依赖</em>包都<strong>列在我们自己的<em>devDependencies</em>中</strong>。</p>
+<div class="l-sub-section"><h4 id="the-future-of-peerdependencies-">The future of <em>peerDependencies</em></h4>
+<h4 id="-peerdependencies-"><em>peerDependencies</em>的未来</h4>
+<p>The Angular polyfill dependencies are hard requirements. Currently, there is no way to make them optional.</p>
+<p>Angular的填充库依赖只是一个给开发人员的建议或提示，以便它们知道Angular期望用什么。
+它们不应该像现在一样是硬需求，但目前我们也不知道该如何把它们设置为可选的。</p>
+<p>However, there is an npm feature request for &quot;optional peerDependencies,&quot; which would allow you to model this relationship better. 
+When this feature request is implemented, Angular will switch from <em>peerDependencies</em> to <em>optionalPeerDependencies</em> for all polyfills.</p>
+<p>不过，有一个npm的新特性申请，叫做“可选的peerDependencies”，它将会允许我们更好的对这种关系建模。
+一旦它被实现了，Angular将把所有填充库从<em>peerDependencies</em>区切换到<em>optionalPeerDependencies</em>去。</p>
+</div><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/npm-packages.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:52 GMT -->
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>hello world</title>
+  </head>
+  <body>
+     <h1>用户列表</h1>
+     <ul id="menu">
+      ...
+     </ul>
+     <input id="btn" type="button" value="加载列表" />
+
+    <script>
+         btn.onclick = function(){
+           //1:创建对象
+           var xhr = new XMLHttpRequest();
+           //2:绑定事件
+           xhr.onreadystatechange = function(){
+             if(xhr.readyState===4&&xhr.status===200){
+                menu.innerHTML = xhr.responseText;
+             }
+           }
+           //3:打开连接
+           xhr.open('GET','select_user.php',true);
+           //4:发送请求
+           xhr.send(null);
+         }
+    </script>
+  </body>
+  </html>

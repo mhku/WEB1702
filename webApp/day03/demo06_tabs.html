@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <h1 class="title">{{headInfo}}</h1>
+</ion-header-bar>
+
+<ion-tabs class="tabs-icon-top">
+  <ion-tab on-select="handleSelect(0)" title="音乐" icon="ion-headphone">
+    <ion-view>
+      <ion-content>
+        <ul class="list list-inset">
+          <li class="item">Music001</li>
+          <li class="item">Music002</li>
+          <li class="item">Music003</li>
+        </ul>
+      </ion-content>
+    </ion-view>
+  </ion-tab>
+  <ion-tab on-select="handleSelect(1)" title="电影"
+    icon="ion-videocamera">
+    <ion-view>
+      <ion-content>
+        <ul class="list list-inset">
+          <li class="item">Movie001</li>
+          <li class="item">Movie002</li>
+          <li class="item">Movie003</li>
+        </ul>
+      </ion-content>
+    </ion-view>
+  </ion-tab>
+  <ion-tab on-select="handleSelect(2)" title="游戏"
+    icon-on="ion-ios-football"
+    icon-off="ion-ios-football-outline">
+    <ion-view>
+      <ion-content>
+        <ul class="list list-inset">
+          <li class="item">Game001</li>
+          <li class="item">Game002</li>
+          <li class="item">Game003</li>
+        </ul>
+      </ion-content>
+    </ion-view>
+  </ion-tab>
+</ion-tabs>
+
+<!--
+<ion-content>
+  <p>这是正文</p>
+</ion-content>
+-->
+
+
+<!--<ion-footer-bar>-->
+  <!--<h1 class="title">footer</h1>-->
+<!--</ion-footer-bar>-->
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',
+    ['$scope', function ($scope) {
+
+      $scope.headInfo = "";
+      
+      $scope.handleSelect = function (id) {
+        if(id == 0)
+        {
+          $scope.headInfo = "music";
+        }
+        else if(id == 1)
+        {
+          $scope.headInfo = "movie";
+        }
+        else
+        {
+          $scope.headInfo = "game";
+        }
+        
+      }
+
+  }])
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/deployment.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:37 GMT -->
+<head><title>部署 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item is-selected"><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="deployment.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/deployment.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/deployment.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">部署 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">如何部署Angular应用。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>This page describes tools and techniques for deploy and optimize your Angular application.</p>
+<p>本章会描述部署和优化Angular应用的工具与技术。</p>
+<a id="toc"></a><h2 id="table-of-contents">Table of contents</h2>
+<h2 id="-">目录</h2>
+<ul>
+<li><p><a href="#overview">Overview</a></p>
+<p><a href="#overview">概览</a></p>
+</li>
+<li><p><a href="#dev-deploy">Simplest deployment possible</a></p>
+<p><a href="#dev-deploy">最简化的部署方式</a></p>
+</li>
+<li><p><a href="#optimize">Optimize for production</a></p>
+<p><a href="#optimize">为生产环境优化</a></p>
+<ul>
+<li><p><a href="#aot">Ahead-of-Time (AOT) compilation</a></p>
+<p><a href="#aot">预编译（AOT）</a></p>
+</li>
+<li><p><a href="#webpack">Webpack</a></p>
+</li>
+<li><p><a href="#rollup">Tree shaking with <em>rollup</em></a></p>
+<p><a href="#rollup">使用<code>rollup</code>进行摇树优化</a></p>
+</li>
+<li><p><a href="#prune">Pruned libraries</a></p>
+<p><a href="#prune">库的修剪</a></p>
+</li>
+<li><p><a href="#measure">Measure performance first</a></p>
+<p><a href="#measure">首先，度量性能</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#angular-configuration">Angular configuration</a></p>
+<p><a href="#angular-configuration">Angular配置</a></p>
+<ul>
+<li><p><a href="#base-tag">The <code>base</code> tag</a></p>
+<p><a href="#base-tag"><code>base</code>标签</a></p>
+</li>
+<li><p><a href="#enable-prod-mode">Enable production mode</a></p>
+<p><a href="#enable-prod-mode">启用生产模式</a></p>
+</li>
+<li><p><a href="#lazy-loading">Lazy loading</a></p>
+<p><a href="#lazy-loading">惰性加载</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#server-configuration">Server configuration</a></p>
+<p><a href="#server-configuration">服务器配置</a></p>
+<ul>
+<li><p><a href="#fallback">Routed apps must fallback to <code>index.html</code></a></p>
+<p><a href="#fallback">带路由的应用必须以<code>index.html</code>作为后备页面</a></p>
+</li>
+<li><p><a href="#cors">CORS: requesting services from a different server</a></p>
+<p><a href="#cors">CORS：从其它服务器请求服务</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<a id="overview"></a><div class="l-main-section"></div><h2 id="overview">Overview</h2>
+<h2 id="-">概览</h2>
+<p>This guide describes techniques for preparing and deploying an Angular application to a server running remotely.
+The techniques progress from <em>easy but suboptimal</em> to <em>more optimal and more involved</em>.</p>
+<p>本章描述把Angular应用发布到远端服务器时所需的准备与部署技术。从<em>简单却未优化</em>的版本到<em>充分优化但涉及更多知识</em>的版本。</p>
+<ul>
+<li><p>The <a href="#dev-deploy" title="Simplest deployment possible">simple way</a> is to copy the development environment to the server.</p>
+<p><a href="#dev-deploy" title="Simplest deployment possible">最简单的方式</a>只是把文件拷贝到服务器上的部署环境</p>
+</li>
+<li><p><a href="#aot" title="AOT Compilation"><em>Ahead of Time</em> compilation (AOT)</a> is the first of
+<a href="#optimize">several optimization strategies</a>.
+You&#39;ll also want to read the <a href="../cookbook/aot-compiler.html" title="AOT Cookbook">detailed instructions in the AOT Cookbook</a>.</p>
+<p><a href="#aot" title="AOT Compilation"><em>预编译</em>(AOT)</a>是第一种<a href="#optimize">优化策略</a>。
+详情参见<a href="../cookbook/aot-compiler.html" title="AOT Cookbook">烹饪宝典中的AOT章节</a>。</p>
+</li>
+<li><p><a href="#webpack" title="Webpack Optimization">Webpack</a> is a popular general purpose packaging tool with a rich ecosystem, including plugins for AOT.
+The Angular <a href="webpack.html" title="Webpack: an introduction">webpack guide</a> can get you started and
+<em>this</em> page provides additional optimization advice, but you&#39;ll probably have to learn more about webpack on your own.</p>
+<p><a href="#webpack" title="Webpack Optimization">Webpack</a>是具有完善生态系统的常用通用打包工具，包括为AOT准备的插件。
+你可以从<a href="webpack.html" title="Webpack: an introduction">Webpack章</a>开始，它提供了更多优化建议，但是你可能要自己去学习更多Webpack的知识。</p>
+</li>
+<li><p>The <a href="#angular-configuration" title="Angular configuration">Angular configuration</a> section calls attention to
+specific client application changes that could improve performance.</p>
+<p><a href="#angular-configuration" title="Angular configuration">Angular配置</a>一节专注于如何修改应用程序来提高性能。</p>
+</li>
+<li><p>The <a href="#server-configuration" title="Server configuration">Server configuration</a> section describes
+server-side changes that may be necessary, <em>no matter how you deploy the application</em>.</p>
+<p><a href="#server-configuration" title="Server configuration">服务端配置</a>一节描述了服务端的修改，<em>无论我们打算如何部署本应用</em>。</p>
+</li>
+</ul>
+<div class="l-main-section"></div><a id="dev-deploy"></a><h2 id="simplest-deployment-possible">Simplest deployment possible</h2>
+<h2 id="-">最简化的部署方式</h2>
+<p>The simplest way to deploy the app is to publish it to a web server
+directly out of the development environment.</p>
+<p>部署应用最简化的方式是直接把它发布到开发环境之外的Web服务器上。</p>
+<p>It&#39;s already running locally. You&#39;ll just copy it, almost <em>as is</em>,
+to a non-local server that others can reach.</p>
+<p>它已经在本地运行过了。我们基本上只要把它原封不动的复制到别人能访问到的非本地服务器上就可以了。</p>
+<ol>
+<li><p>Copy <em>everything</em> (or <a href="#node-modules" title="Loading npm packages from the web"><em>almost</em> everything</a>)
+from the local project folder to a folder on the server.</p>
+<p>把一切文件（或<a href="#node-modules" title="Loading npm packages from the web"><em>几乎</em>一切文件</a>）从本地项目目录下复制到服务器的目录下。</p>
+</li>
+<li><p>If you&#39;re serving the app out of a subfolder,
+edit a version of <code>index.html</code> to set the <code>&lt;base href&gt;</code> appropriately.
+For example, if the URL to <code>index.html</code> is <code>www.mysite.com/my/app/</code>, set the <em>base href</em>  to
+<code>&lt;base href=&quot;/my/app/&quot;&gt;</code>.
+Otherwise, leave it alone.
+<a href="#base-tag">More on this below</a>.</p>
+<p>如果准备把该应用放在子目录下，就要编辑<code>index.html</code>，并适当设置<code>&lt;base href&gt;</code>。
+比如，如果到<code>index.html</code>的URL是<code>www.mysite.com/my/app/</code>，就把<em>基地址</em>设置为<code>&lt;base href=&quot;/my/app/&quot;&gt;</code>。如果是放在根路径下就不用动它。
+详情参见<a href="#base-tag">稍后</a>。</p>
+</li>
+<li><p>Configure the server to redirect requests for missing files to <code>index.html</code>.
+<a href="#fallback">More on this below</a>.</p>
+<p>把服务器上缺失的文件重定向到<code>index.html</code>，详情参见<a href="#fallback">稍后</a>。</p>
+</li>
+<li><p>Enable production mode as <a href="#enable-prod-mode">described below</a> (optional).</p>
+<p>按照<a href="#enable-prod-mode">稍后</a>的描述启用生产模式（可选）。</p>
+</li>
+</ol>
+<p>That&#39;s the simplest deployment you can do.</p>
+<p>这就是最简化的部署方式。</p>
+<div class="alert is-helpful"><p>This is <em>not</em> a production deployment. It&#39;s not optimized and it won&#39;t be fast for users.
+It might be good enough for sharing your progress and ideas internally with managers, teammates, and other stakeholders.
+Be sure to read about <a href="#optimize" title="Optimizing for production">optimizing for production</a> below.</p>
+<p>这不是生产级部署。它没有优化过，并且对用户来说也不够快。
+但是当你向经理、团队成员或其它利益相关者内部分享你的进度和想法时它是足够的。
+一定要读读稍后的<a href="#optimize" title="Optimizing for production">为生产环境优化</a></p>
+</div><a id="node-modules"></a><h3 id="load-npm-package-files-from-the-web-systemjs-">Load npm package files from the web (SystemJS)</h3>
+<h3 id="-web-npm-systemjs-">从Web上加载npm包（SystemJS）</h3>
+<p>The <code>node_modules</code> folder of <em>npm packages</em> contains much more code
+than is needed to actually run your app in the browser.
+The <code>node_modules</code> for the Quickstart installation is typically 20,500+ files and 180+ MB.
+The application itself requires a tiny fraction of that to run.</p>
+<p><code>node_modules</code>文件夹包含着在浏览器中运行应用时所需的更多代码。
+&quot;快速起步&quot;项目中所需的<code>node_modules</code>通常由20,500+个文件和180+ MB的体积。
+运行应用时其实只需要其中很小的一部分。</p>
+<p>It takes a long time to upload all of that useless bulk and
+users will wait unnecessarily while library files download piecemeal.</p>
+<p>上传这些不需要的文件需要很长时间，而在库的下载期间，用户得进行不必要的等待。</p>
+<p>Load the few files you need from the web instead.</p>
+<p>我们可以转而从网上下载所需的这少量文件。</p>
+<p>(1) Make a copy of <code>index.html</code> for deployment and replace all <code>node_module</code> scripts
+with versions that load from the web. It might look like this.</p>
+<p>(1) 复制一份专用于部署的<code>index.html</code>，并把所有的<code>node_module</code>脚本替换成加载网上的版本。代码如下：</p>
+<div class="code-example"><code-example language="html" format="">&lt;!-- Polyfills --&gt;
+&lt;script src=&quot;https://unpkg.com/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Update these package versions as needed --&gt;
+&lt;script src=&quot;https://unpkg.com/zone.js@0.8.4?main=browser&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/systemjs@0.19.39/dist/system.src.js&quot;&gt;&lt;/script&gt;
+</code-example></div><p>(2) Replace the <code>systemjs.config.js</code> script with a script that
+loads <code>systemjs.config.server.js</code>.</p>
+<p>(2) 把<code>systemjs.config.js</code>脚本改为加载<code>systemjs.config.server.js</code>。</p>
+<div class="code-example"><code-example language="html" format="">&lt;!-- This SystemJS configuration loads umd packages from the web --&gt;
+&lt;script src=&quot;systemjs.config.server.js&quot;&gt;&lt;/script&gt;
+</code-example></div><p>(3) Add <code>systemjs.config.server.js</code> (shown in the code sample below) to the <code>src/</code> folder.
+This alternative version configures <em>SystemJS</em> to load <em>UMD</em> versions of Angular
+(and other third-party packages) from the web.</p>
+<p>(3) 把 <code>systemjs.config.server.js</code>（稍后有代码）复制到<code>src/</code>文件夹。
+这个版本会从网上加载Angular的<em>UMD</em>版本（和其它第三方包）。</p>
+<p>Modify <code>systemjs.config.server.js</code> as necessary to stay in sync with changes
+you make to <code>systemjs.config.js</code>.</p>
+<p>把对<code>systemjs.config.js</code>的修改也随时同步到<code>systemjs.config.server.js</code>文件。</p>
+<p>Notice the <code>paths</code> key:</p>
+<p>注意<code>paths</code>属性：</p>
+<div class="code-example"><code-example language="js" format="">paths: {
+  &#39;npm:&#39;: &#39;https://unpkg.com/&#39; // path serves as alias
+},
+</code-example></div><p>In the standard SystemJS config, the <code>npm</code> path points to the <code>node_modules/</code>.
+In this server config, it points to
+<a href="https://unpkg.com/" target="_blank" title="unpkg.com">https://unpkg.com</a>,
+a site that hosts <em>npm packages</em>,
+and loads them from the web directly.
+There are other service providers that do the same thing.</p>
+<p>在标准的SystemJS配置中，<code>npm</code>路径指向<code>node_modules/</code>。
+在服务器端的配置中，它指向<a href="https://unpkg.com/" target="_blank" title="unpkg.com">https://unpkg.com</a>（一个专门存放<em>npm包</em>的服务器），
+并从网上直接加载它们。
+还有另一些服务提供商做同样的事。</p>
+<p>If you are unwilling or unable to load packages from the open web,
+the inventory in <code>systemjs.config.server.js</code> identifies the files and folders that
+you would copy to a library folder on the server.
+Then change the config&#39;s  <code>&#39;npm&#39;</code> path to point to that folder.</p>
+<p>如果你不想或无法从公网上加载这些包，也可以把<code>systemjs.config.server.js</code>中所指出的这些文件或文件夹复制到服务器上的一个库目录。
+然后修改配置中的<code>&#39;npm&#39;</code>路径指向该文件夹。</p>
+<h3 id="practice-with-an-example">Practice with an example</h3>
+<h3 id="-">用一个例子实践一下</h3>
+<p>The following trivial router sample app shows these changes.</p>
+<p>下面这个例子展示了所有的修改。</p>
+<code-tabs><code-pane language="html" name="index.html" format="linenums">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- Doesn&#39;t load from node_modules! --&gt;
+
+    &lt;!-- Set the base href --&gt;
+    &lt;base href=&quot;/&quot;&gt;
+    &lt;title&gt;Simple Deployment&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;https://unpkg.com/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Update these package versions as needed --&gt;
+    &lt;script src=&quot;https://unpkg.com/zone.js@0.8.4?main=browser&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/systemjs@0.19.39/dist/system.src.js&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- This SystemJS configuration loads umd packages from the web --&gt;
+    &lt;script src=&quot;systemjs.config.server.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+      System.import(&#39;main.js&#39;)
+            .catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;my-app&gt;loading...&lt;/my-app&gt;
+  &lt;/body&gt;
+
+&lt;/html&gt;
+</code-pane><code-pane language="js" name="systemjs.config.server.js" format="linenums">/**
+ * System configuration for deployment without installing node_modules
+ * Loads umd packages from the web instead
+ * Adjust as necessary for your application needs.
+ */
+(function (global) {
+  System.config({
+    paths: {
+      &#39;npm:&#39;: &#39;https://unpkg.com/&#39; // path serves as alias
+    },
+    // map tells the System loader where to look for things
+    map: {
+      app: &#39;app&#39;, // location of transpiled app files
+
+      // angular minimized umd bundles
+      &#39;@angular/core&#39;: &#39;npm:@angular/core/bundles/core.umd.min.js&#39;,
+      &#39;@angular/common&#39;: &#39;npm:@angular/common/bundles/common.umd.min.js&#39;,
+      &#39;@angular/compiler&#39;: &#39;npm:@angular/compiler/bundles/compiler.umd.min.js&#39;,
+      &#39;@angular/platform-browser&#39;: &#39;npm:@angular/platform-browser/bundles/platform-browser.umd.min.js&#39;,
+      &#39;@angular/platform-browser-dynamic&#39;: &#39;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.min.js&#39;,
+      &#39;@angular/http&#39;: &#39;npm:@angular/http/bundles/http.umd.min.js&#39;,
+      &#39;@angular/router&#39;: &#39;npm:@angular/router/bundles/router.umd.min.js&#39;,
+      &#39;@angular/router/upgrade&#39;: &#39;npm:@angular/router/bundles/router-upgrade.umd.min.js&#39;,
+      &#39;@angular/forms&#39;: &#39;npm:@angular/forms/bundles/forms.umd.min.js&#39;,
+      &#39;@angular/upgrade&#39;: &#39;npm:@angular/upgrade/bundles/upgrade.umd.min.js&#39;,
+      &#39;@angular/upgrade/static&#39;: &#39;npm:@angular/upgrade/bundles/upgrade-static.umd.min.js&#39;,
+
+      // other libraries
+      &#39;rxjs&#39;:                      &#39;npm:rxjs@5.0.1&#39;,
+      &#39;angular-in-memory-web-api&#39;: &#39;npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js&#39;
+    },
+    // packages tells the System loader how to load when no filename and/or no extension
+    packages: {
+      app: {
+        main: &#39;./main.js&#39;,
+        defaultExtension: &#39;js&#39;
+      },
+      rxjs: {
+        defaultExtension: &#39;js&#39;
+      }
+    }
+  });
+  })(this);
+</code-pane><code-pane language="ts" name="main.ts" format="linenums">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+
+import { AppModule } from &#39;./app/app.module&#39;;
+
+import { enableProdMode } from &#39;@angular/core&#39;;
+
+// Enable production mode unless running locally
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+</code-pane><code-pane language="ts" name="app/app.module.ts" format="linenums">import { NgModule }             from &#39;@angular/core&#39;;
+import { BrowserModule }        from &#39;@angular/platform-browser&#39;;
+import { RouterModule, Routes } from &#39;@angular/router&#39;;
+
+import { AppComponent }           from &#39;./app.component&#39;;
+import { CrisisListComponent }    from &#39;./crisis-list.component&#39;;
+import { HeroListComponent }      from &#39;./hero-list.component&#39;;
+
+const appRoutes: Routes = [
+  { path: &#39;crisis-center&#39;, component: CrisisListComponent },
+  { path: &#39;heroes&#39;,        component: HeroListComponent },
+
+  { path: &#39;&#39;, redirectTo: &#39;/heroes&#39;, pathMatch: &#39;full&#39; }
+];
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  declarations: [
+    AppComponent,
+    CrisisListComponent,
+    HeroListComponent
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-pane><code-pane language="ts" name="app/app.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  template: `
+    &lt;h1&gt;Simple Deployment&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a routerLink=&quot;/crisis-center&quot; routerLinkActive=&quot;active&quot;&gt;Crisis Center&lt;/a&gt;
+      &lt;a routerLink=&quot;/heroes&quot; routerLinkActive=&quot;active&quot;&gt;Heroes&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+  `
+})
+export class AppComponent { }
+</code-pane><code-pane language="ts" name="app/crisis-list.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  template: `
+    &lt;h2&gt;CRISIS CENTER&lt;/h2&gt;
+    &lt;p&gt;Get your crisis here&lt;/p&gt;`
+})
+export class CrisisListComponent { }
+</code-pane><code-pane language="ts
+  " name="app/hero-list.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  template: `
+    &lt;h2&gt;HEROES&lt;/h2&gt;
+    &lt;p&gt;Get your heroes here&lt;/p&gt;
+  `
+})
+export class HeroListComponent { }
+</code-pane></code-tabs><p>Practice with this sample before attempting these techniques on your application.</p>
+<p>在真实应用中尝试这些技术之前，先用这个例子实践一下。</p>
+<ol>
+<li><p>Follow the <a href="setup.html" title="Angular QuickStart setup">setup instructions</a> for creating a new project
+named <code>simple-deployment</code>.</p>
+<p>遵循<a href="setup.html" title="Angular QuickStart setup">设置步骤</a>创建一个名叫<code>simple-deployment</code>的新项目。</p>
+</li>
+<li><p>Add the &quot;Simple deployment&quot; sample files shown above.</p>
+<p>添加上述的“简单部署”范例文件。</p>
+</li>
+<li><p>Run it with <code>npm start</code> as you would any project.</p>
+<p>像其它项目一样使用<code>npm start</code>来运行它。</p>
+</li>
+<li><p>Inspect the network traffic in the browser developer tools.
+Notice that it loads all packages from the web.
+You could delete the <code>node_modules</code> folder and the app would still run
+(although you wouldn&#39;t be able to recompile or launch <code>lite-server</code>
+until you restored it).</p>
+<p>在浏览器的开发者工具中审查网络包。注意，它从网上加载了所有包。
+我们可以删除<code>node_modules</code>文件夹，该应用仍然可以正常工作（但没办法再重新编译它或者启动<code>lite-server</code>了）。</p>
+</li>
+<li><p>Deploy the sample to the server (minus the <code>node_modules</code> folder!).</p>
+<p>把范例工程部署到服务器上（但<code>node_modules</code>文件夹除外）</p>
+</li>
+</ol>
+<p>When you have that working, try the same process on your application.</p>
+<p>掌握这些之后，就可以在你的真实项目中试用这些过程了。</p>
+<a id="optimize"></a><div class="l-main-section"></div><h2 id="optimize-for-production">Optimize for production</h2>
+<h2 id="-">为生产环境优化</h2>
+<p>Although deploying directly from the development environment works, it&#39;s far from optimal.</p>
+<p>虽然可以直接从开发环境下部署，但是它还远远没有优化。</p>
+<p>The client makes many small requests for individual application code and template files,
+a fact you can quickly confirm by looking at the network tab in a browser&#39;s developer tools.
+Each small file download can spend more time communicating with the server than tranfering data.</p>
+<p>客户端发起了很多小的请求来取得一个个单独的应用代码和模板文件，从浏览器开发工具的Network标签中就可以确认这一点。
+每个小文件都会花费很多时间在与服务器建立通讯而不是传输内容上。</p>
+<p>Development files are full of comments and whitespace for easy reading and debugging.
+The browser downloads entire libraries, instead of just the parts the app needs.
+The volume of code passed from server to client (the &quot;payload&quot;)
+can be significantly larger than is strictly necessary to execute the application.</p>
+<p>开发环境下的文件有很多注释和空格，以便于阅读和调试。
+浏览器会下载整个库，而不只是应用需要的那部分。
+从服务器传到客户端的代码（即有效载荷）的数量会显著大于应用运行时真正需要的那部分。</p>
+<p>The many requests and large payloads mean
+the app takes longer to launch than it would if you optimized it.
+Several seconds may pass (or worse) before the user can see or do anything userful.</p>
+<p>大量请求和载荷意味着应用相对于优化过的版本会花更多时间进行启动。
+当用户看到什么或做什么有用的事情之前，就已经过去了（浪费了）很多秒。</p>
+<p>Does it matter? That depends upon business and technical factors you must evaluate for yourself.</p>
+<p>这重要吗？取决于很多业务和技术方面的因素，我们必须自己评估它们。</p>
+<p>If it <em>does</em> matter, there are tools and techniques to reduce the number of requests and the size of responses.</p>
+<p>如果重要，那么有很多工具和技术可以减少请求数和体积。</p>
+<ul>
+<li><p>Ahead-of-Time (AOT) Compilation: pre-compiles Angular component templates.</p>
+<p>预编译（AOT）：预编译Angular的组件模板。</p>
+</li>
+<li><p>Bundling: concatenates modules into a single file (bundle).</p>
+<p>打捆（Bundle）：把这些模块串接成一个单独的捆文件（bundle）。</p>
+</li>
+<li><p>Inlining: pulls template html and css into the components.</p>
+<p>内联：把模板html和css拉到组件中。</p>
+</li>
+<li><p>Minification: removes excess whitespace, comments, and optional tokens.</p>
+<p>最小化：移除不必要的空格、注释和可选令牌（Token）。</p>
+</li>
+<li><p>Uglification: rewrites code to use short, cryptic variable and function names.</p>
+<p>混淆：使用短的、无意义的变量名和函数名来重写代码。</p>
+</li>
+<li><p>Dead code elimination: removes unreferenced modules and unused code.</p>
+<p>消除死代码：移除未引用过的模块和未使用过的代码。</p>
+</li>
+<li><p>Pruned libraries: drop unused libraries and pare others down to the features you need.</p>
+<p>修剪库：移除未使用过的库，并把其它库裁剪到只剩下你需要的那些特性。</p>
+</li>
+<li><p>Performance measurement: focus on optimizations that make a measurable difference.</p>
+<p>性能度量：集中精力做那些能产生可测量差异的优化。</p>
+</li>
+</ul>
+<p>Each tool does something different.
+They work best in combination and are mutually reinforcing.</p>
+<p>每个工具做的事情都不一样，但它们结合起来会相辅相成。</p>
+<p>You can use any build system you like.
+Whatever system you choose, be sure to automate it so that
+building for production is a single step.</p>
+<p>我们也可以使用任何喜欢的构建系统。
+无论选择的是什么，都务必把它自动化，以便可以一步构建出产品。</p>
+<a id="aot"></a><h3 id="ahead-of-time-aot-compilation">Ahead-of-Time (AOT) compilation</h3>
+<h3 id="-aot-">预编译（AOT）</h3>
+<p>The Angular <em>Ahead-of-Time</em> compiler pre-compiles application components and their templates
+during the build process.</p>
+<p>Angular的<em>预编译</em>器会在构建过程中预先编译应用的组件及其模板。</p>
+<p>Apps compiled with AOT launch faster for several reasons.</p>
+<p>预编译过的应用启动更快，原因如下：</p>
+<ul>
+<li><p>Application components execute immediately, without client-side compilation.</p>
+<p>应用组件会立即执行，不需要客户端编译过程。</p>
+</li>
+<li><p>Templates are embedded as code within their components so there is no client-side request for template files.</p>
+<p>模板会被内嵌在组件中，因此不会再从客户端请求模板文件。</p>
+</li>
+<li><p>You don&#39;t download the Angular compiler, which is pretty big on its own.</p>
+<p>我们不用再下载Angular编译器模块，它本身太大了。</p>
+</li>
+<li><p>The compiler discards unused Angular directives that a tree-shaking tool can then exclude.</p>
+<p>编译器会丢弃那些摇树优化（tree-shaking）工具能排除的代码。</p>
+</li>
+</ul>
+<p>Learn more about AOT Compilation in the <a href="../cookbook/aot-compiler.html" title="AOT Cookbook">AOT Cookbook</a>
+which describes running the AOT compiler from the command line
+and using <a href="#rollup"><em>rollup</em></a> for bundling, minification, uglification and tree shaking.</p>
+<p>要了解AOT编译器的更多知识，参见<a href="../cookbook/aot-compiler.html" title="AOT Cookbook">烹饪宝典中的AOT一章</a>，
+它描述了如何在命令行中执行AOT编译器，并使用<a href="#rollup"><em>rollup</em></a>进行构建、最小化、混淆和摇树优化。</p>
+<a id="webpack"></a><h3 id="webpack-and-aot-">Webpack (and AOT)</h3>
+<h3 id="webpack-aot-">Webpack（与AOT）</h3>
+<p><a href="https://webpack.js.org/" target="_blank" title="Webpack 2">Webpack 2</a> is another
+great option for inlining templates and style-sheets, for bundling, minifying, and uglifying the application.
+The &quot;<a href="webpack.html" title="Webpack: an introduction">Webpack: an introduction</a>&quot; guide will get you started
+using webpack with Angular.</p>
+<p><a href="https://webpack.js.org/" target="_blank" title="Webpack 2">Webpack 2</a>是另一个选项，它可以内联模板、样式表、打包、最小化和混淆应用。
+&quot;<a href="webpack.html" title="Webpack: an introduction">Webpack简介</a>&quot;一章中将会教你如何配合Angular使用Webpack。</p>
+<p>Consider configuring <em>Webpack</em> with the official
+<a href="https://github.com/angular/angular-cli/tree/master/packages/%40ngtools/webpack" target="_blank" title="Ahead-of-Time Webpack Plugin">
+Angular Ahead-of-Time Webpack Plugin</a>.
+This plugin transpiles the TypeScript application code,
+bundles lazy loaded <code>NgModules</code> separately,
+and performs AOT compilation &mdash; without any changes to the source code.</p>
+<p>考虑使用官方的<a href="https://github.com/angular/angular-cli/tree/master/packages/%40ngtools/webpack" target="_blank" title="Ahead-of-Time Webpack Plugin">
+Angular预编译插件</a>来配置<em>Webpack</em>。
+这个插件会转译TypeScript代码、独立打包延迟加载的<code>NgModules</code>，而且不用对源码做任何修改就能执行AOT编译。</p>
+<a id="rollup"></a><h3 id="dead-code-elimination-with-_rollup_">Dead code elimination with <em>rollup</em></h3>
+<h3 id="-rollup-">使用<code>rollup</code>消除死代码</h3>
+<p>Any code that you don&#39;t call is <em>dead code</em>.
+You can reduce the total size of the application substantially by removing dead code from the application and from third-party libraries.</p>
+<p>任何永远不会调到的代码就是<em>死代码</em>。
+通过移除应用和第三方库中的死代码，可以实质性减小应用的总大小。</p>
+<p><em>Tree shaking</em> is a <em>dead code elimination</em> technique that removes entire exports from JavaScript modules.
+If a library exports something that the application doesn&#39;t import, a tree shaking tool removes it from the code base.</p>
+<p><em>摇树优化</em>是一种<em>消除死代码</em>的技术，它会从JavaScript模块中移除导出。
+如果一个库导出了一些东西，但是应用代码没有导入过它，摇树工具就会从代码中移除它。</p>
+<p>Tree shaking was popularized by
+<a href="http://rollupjs.org/" target="_blank" title="Rollup">Rollup</a>, a popular tool with an ecosystem of
+plugins for bundling, minification, and uglification.
+Learn more about tree shaking and dead code elmination in
+<a href="https://medium.com/@Rich_Harris/tree-shaking-versus-dead-code-elimination-d3765df85c80#.15ih9cyvl" target="_blank" title="Tree-shaking and Dead Code Elimination">
+this post</a> by rollup-creator, Rich Harris.</p>
+<p>常用的摇树优化工具是<a href="http://rollupjs.org/" target="_blank" title="Rollup">Rollup</a>，一个带有查件的生态系统，可以完成打包、最小化和混淆。
+要了解关于摇树优化和消除死代码技术的更多知识，参见<a href="https://medium.com/@Rich_Harris/tree-shaking-versus-dead-code-elimination-d3765df85c80#.15ih9cyvl" target="_blank" title="Tree-shaking and Dead Code Elimination">这个帖子</a>，它的作者就是rollup之父Rich Harris。</p>
+<a id="prune"></a><h3 id="pruned-libraries">Pruned libraries</h3>
+<h3 id="-">修剪库</h3>
+<p>Don&#39;t count on automation to remove all dead code.</p>
+<p>不要指望自动移除所有死代码。</p>
+<p>Remove libraries that you don&#39;t use, especially unnecessary scripts in <code>index.html</code>.
+Consider smaller alternatives to the libraries that you do use.</p>
+<p>手动移除不用的库，特别是<code>index.html</code>中不用的脚本。
+为实际使用的那些库则努力选择更小的代用库。</p>
+<p>Some libraries offer facilities for building a custom, skinny version with just the features you need.
+Other libraries let you import features <em>a la carte</em>.
+<strong>RxJS</strong> is a good example; import RxJS <code>Observable</code> operators individually instead of the entire library.</p>
+<p>有些库可以构建出只带所需特性的、自定义的、带皮肤的版本。另一些库则可以让你按需导入它的特性。
+<strong>RxJS</strong>就是一个很好的例子，我们会单独导入<code>Observable</code>的操作符（operator），而不是导入整个库。</p>
+<a id="measure"></a><h3 id="measure-performance-first">Measure performance first</h3>
+<h3 id="-">首先，度量性能</h3>
+<p>You can make better decisions about what to optimize and how when you have a clear and accurate understanding of
+what&#39;s making the application slow.
+The cause may not be what you think it is.
+You can waste a lot of time and money optimizing something that has no tangible benefit or even makes the app slower.
+You should measure the app&#39;s actual behavior when running in the environments that are important to you.</p>
+<p>如果我们能对“是什么导致了应用变慢”的问题有一个清晰、准确的理解，那就可以对优化什么、如何优化做出更好地决策了。
+真正的原因可能并不是你所想的那样。
+我们可能花费大量的时间和金钱去优化一些东西，但它却无法产生可感知的效果甚至让应用变得更慢。
+我们应该在那些最重要的环境中实际运行，来度量应用的实际行为。</p>
+<p>The
+<a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" target="_blank" title="Chrome DevTools Network Performance">
+Chrome DevTools Network Performance page</a> is a good place to start learning about measuring performance.</p>
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" target="_blank" title="Chrome DevTools Network Performance">
+  Chrome开发工具的网络性能页</a>是开始学习度量性能的好地方。</p>
+<p>The <a href="https://www.webpagetest.org/">WebPageTest</a> tool is another good choice
+that can also help verify that your deployment was successful.</p>
+<p><a href="https://www.webpagetest.org/">WebPageTest</a>工具是另一个不错的选择，它能帮你验证你的部署是否成功了。</p>
+<a id="angular-configuration"></a><div class="l-main-section"></div><h2 id="angular-configuration">Angular configuration</h2>
+<h2 id="angular-">Angular配置</h2>
+<p>Angular configuration can make the difference between whether the app launches quickly or doesn&#39;t load at all.</p>
+<p>修改Angular配置可以显示出快速启动应用和完全不加载之间的差异。</p>
+<a id="base-tag"></a><h3 id="the-base-tag">The <code>base</code> tag</h3>
+<h3 id="-base-"><code>base</code>标签</h3>
+<p>The HTML <a href="https://angular.io/docs/ts/latest/guide/router.html#!#base-href"><em>&lt;base href=&quot;...&quot;/&gt;</em></a>
+specifies a base path for resolving relative URLs to assets such as images, scripts, and style sheets.
+For example, given the <code>&lt;base href=&quot;/my/app/&quot;&gt;</code>, the browser resolves a URL such as <code>some/place/foo.jpg</code>
+into a server request for <code>my/app/some/place/foo.jpg</code>.
+During navigation, the Angular router uses the <em>base href</em> as the base path to component, template, and module files.</p>
+<p>HTML中的<a href="https://angular.io/docs/ts/latest/guide/router.html#!#base-href"><em>&lt;base href=&quot;...&quot;/&gt;</em></a>用于指定一个解析相对路径的基地址，如图片、脚本和样式表。
+比如，指定<code>&lt;base href=&quot;/my/app/&quot;&gt;</code>时，浏览器就会把<code>some/place/foo.jpg</code>这样的URL解析成到<code>my/app/some/place/foo.jpg</code>的服务端请求。
+在浏览期间，Angular路由器会使用<em>base href</em>作为组件、模板和模块文件的基地址。</p>
+<div class="l-sub-section"><p>See also the <a href="../api/common/index/APP_BASE_HREF-let.html" title="API: APP_BASE_HREF"><em>APP_BASE_HREF</em></a> alternative.</p>
+<p>参见另一种备选方案<a href="../api/common/index/APP_BASE_HREF-let.html" title="API: APP_BASE_HREF"><em>APP_BASE_HREF</em></a>。</p>
+</div><p>In development, you typically start the server in the folder that holds <code>index.html</code>.
+That&#39;s the root folder and you&#39;d add <code>&lt;base href=&quot;/&quot;&gt;</code> near the top of <code>index.html</code> because <code>/</code> is the root of the app.</p>
+<p>在开发期间，我们通常会在<code>index.html</code>所在的目录中启动服务器。这个目录就是根目录，因为<code>/</code>就是本应用的根，所以我们要在<code>index.html</code>的顶部添加<code>&lt;base href=&quot;/&quot;&gt;</code>。</p>
+<p>But on the shared or production server, you might serve the app from a subfolder.
+For example, when the URL to load the app is something like <code>http://www.mysite.com/my/app/</code>,
+the subfolder is <code>my/app/</code> and you should add <code>&lt;base href=&quot;/my/app/&quot;&gt;</code> to the server version of the <code>index.html</code>.</p>
+<p>但是在共享服务器或生产服务器上，我们可能得从子目录下启动服务器。
+比如，当加载本应用的URL是<code>http://www.mysite.com/my/app/</code>时，子目录就是<code>my/app/</code>，而我们就要在服务器版的<code>index.html</code>中添加<code>&lt;base href=&quot;/my/app/&quot;&gt;</code>。</p>
+<p>When the <code>base</code> tag is misconfigured, the app fails to load and the browser console displays <code>404 - Not Found</code> errors
+for the missing files. Look at where it <em>tried</em> to find those files and adjust the base tag appropriately.</p>
+<p>当<code>base</code>标签没有正确配置时，该应用会加载失败，并且浏览器的控制台会对这些缺失的文件显示<code>404 - Not Found</code>错误。
+看看它在尝试从哪里查找那些文件，并据此调整base标签。</p>
+<a id="enable-prod-mode"></a><h3 id="enable-production-mode">Enable production mode</h3>
+<h3 id="-">启用生产模式</h3>
+<p>Angular apps run in development mode by default, as you can see by the following message on the browser
+console:</p>
+<p>Angular应用默认运行在开发模式下，正如在浏览器控制台中看到的如下信息：</p>
+<code-example format="nocode">Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+（Angular正运行在开发模式下。调用enableProdMode()来启用生产模式）
+</code-example><p>Switching to production mode can make it run faster by disabling development specific checks such as the dual change detection cycles.</p>
+<p>切换到生产模式可以通过禁用开发环境下特有的检查（比如双重变更检测周期）来让应用运行得更快。</p>
+<p>To enable <a href="../api/core/index/enableProdMode-function.html">production mode</a> when running remotely, add the following code to the <code>main.ts</code>.</p>
+<p>要在远程运行时启用<a href="../api/core/index/enableProdMode-function.html">生产模式</a>，请把下列代码添加到<code>main.ts</code>中。</p>
+<div class="code-example"><header><h4>src/main.ts (enableProdMode)</h4></header><code-example language="ts" format="">import { enableProdMode } from &#39;@angular/core&#39;;
+
+// Enable production mode unless running locally
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
+}
+</code-example></div><a id="lazy-loading"></a><h3 id="lazy-loading">Lazy loading</h3>
+<h3 id="-">惰性加载</h3>
+<p>You can dramatically reduce launch time by only loading the application modules that
+absolutely must be present when the app starts.</p>
+<p>通过只加载应用启动时必须展示的那些应用模块，我们可以显著缩减启动时间。</p>
+<p>Configure the Angular Router to defer loading of all other modules (and their associated code), either by
+<a href="router.html#preloading" title="Preloading">waiting until the app has launched</a>
+or by <a href="router.html#asynchronous-routing" title="Lazy loading"><em>lazy loading</em></a>
+them on demand.</p>
+<p>配置Angular路由器可以延迟加载所有其它模块（以及与它们相关的代码），无论是<a href="router.html#preloading" title="Preloading">等应用启动</a>，
+还是在需要时才<a href="router.html#asynchronous-routing" title="Lazy loading">惰性加载</a>。</p>
+<h4 id="don-t-eagerly-import-something-from-a-lazy-loaded-module">Don&#39;t eagerly import something from a lazy loaded module</h4>
+<h4 id="-">不要立即导入惰性加载模块中的任何东西</h4>
+<p>It&#39;s a common mistake.
+You&#39;ve arranged to lazy load a module.
+But you unintentionally import it, with a JavaScript <code>import</code> statement,
+in a file that&#39;s eagerly loaded when the app starts, a file such as the root <code>AppModule</code>.
+If you do that, the module will be loaded immediately.</p>
+<p>这是一种常犯的错误。
+我们本打算惰性加载一个模块，但可能无意中在根模块<code>AppModule</code>文件中使用一个JavaScript的<code>import</code>语句导入了它。
+这样一来，该模块就被立即加载了。</p>
+<p>The bundling configuration must take lazy loading into consideration.
+Because lazy loaded modules aren&#39;t imported in JavaScript (as just noted), bundlers exclude them by default.
+Bundlers don&#39;t know about the router configuration and won&#39;t create separate bundles for lazy loaded modules.
+You have to create these bundles manually.</p>
+<p>关于打包（bundle）方式的配置必须考虑到惰性加载问题。
+因为惰性加载模块不能在JavaScript中导入（就像刚才说明的），打包器应该默认排除它们。
+打包器不知道路由器的配置，并且不会为延迟加载模块创建单独的包。
+我们不得不手动创建这些包。</p>
+<p>The
+<a href="https://github.com/angular/angular-cli/tree/master/packages/%40ngtools/webpack">Angular Ahead-of-Time Webpack Plugin</a>
+automatically recognizes lazy loaded <code>NgModules</code> and creates separate bundles for them.</p>
+<p><a href="https://github.com/angular/angular-cli/tree/master/packages/%40ngtools/webpack">Angular预编译插件</a>会自动识别惰性加载的<code>NgModules</code>，并为它们创建单独的包。</p>
+<a id="server-configuration"></a><div class="l-main-section"></div><h2 id="server-configuration">Server configuration</h2>
+<h2 id="-">服务端配置</h2>
+<p>This section covers changes you may have make to the server or to files deployed to the server.</p>
+<p>这一节涵盖了我们对服务器或准备部署到服务器的文件要做的那些修改。</p>
+<a id="fallback"></a><h3 id="routed-apps-must-fallback-to-index-html-">Routed apps must fallback to <code>index.html</code></h3>
+<h3 id="-index-html-">带路有的应用必须以<code>index.html</code>作为后备页面</h3>
+<p>Angular apps are perfect candidates for serving with a simple static HTML server.
+You don&#39;t need a server-side engine to dynamically compose application pages because
+Angular does that on the client-side.</p>
+<p>Angular应用很适合用简单的静态HTML服务器提供服务。
+我们不需要服务端引擎来动态合成应用页面，因为Angular会在客户端完成这件事。</p>
+<p>If the app uses the Angular router, you must configure the server
+to return the application&#39;s host page (<code>index.html</code>) when asked for a file that it does not have.</p>
+<p>如果该应用使用Angular路由器，我们就必须配置服务器，让它对不存在的文件返回应用的宿主页(<code>index.html</code>)。</p>
+<a id="deep-link"></a><p>A routed application should support &quot;deep links&quot;.
+A <em>deep link</em> is a URL that specifies a path to a component inside the app.
+For example, <code>http://www.mysite.com/heroes/42</code> is a <em>deep link</em> to the hero detail page
+that displays the hero with <code>id: 42</code>.</p>
+<p>带路由的应用应该支持“深链接”。
+所谓<em>深链接</em>就是指一个URL，它用于指定到应用内某个组件的路径。
+比如，<code>http://www.mysite.com/heroes/42</code>就是一个到英雄详情页面的<em>深链接</em>，用于显示<code>id: 42</code>的英雄。</p>
+<p>There is no issue when the user navigates to that URL from within a running client.
+The Angular router interprets the URL and routes to that page and hero.</p>
+<p>当用户从运行中的客户端应用导航到这个URL时，这没问题。
+Angular路由器会拦截这个URL，并且把它路由到正确的页面。</p>
+<p>But clicking a link in an email, entering it in the browser address bar,
+or merely refreshing the browser while on the hero detail page &mdash;
+all of these actions are handled by the browser itself, <em>outside</em> the running application.
+The browser makes a direct request to the server for that URL, bypassing the router.</p>
+<p>但是，当从邮件中点击链接或在浏览器地址栏中输入它或仅仅在英雄详情页刷新下浏览器时，所有这些操作都是由浏览器本身处理的，在应用的控制范围之外。
+浏览器会直接向服务器请求那个URL，路由器没机会插手。</p>
+<p>A static server routinely returns <code>index.html</code> when it receives a request for <code>http://www.mysite.com/</code>.
+But it rejects <code>http://www.mysite.com/heroes/42</code> and returns a <code>404 - Not Found</code> error <em>unless</em> it is
+configured to return <code>index.html</code> instead.</p>
+<p>静态服务器会在收到对<code>http://www.mysite.com/</code>的请求时返回<code>index.html</code>，但是会拒绝对<code>http://www.mysite.com/heroes/42</code>的请求，
+并返回一个<code>404 - Not Found</code>错误，除非，我们把它配置成转而返回<code>index.html</code>。</p>
+<h4 id="fallback-configuration-examples">Fallback configuration examples</h4>
+<h4 id="-">后备页面配置范例</h4>
+<p>There is no single configuration that works for every server.
+The following sections describe configurations for some of the most popular servers.
+The list is by no means exhaustive, but should provide you with a good starting point.</p>
+<p>没有一种配置可以适用于所有服务器。
+后面这些部分会描述对常见服务器的配置方式。
+这个列表虽然不够详尽，但可以为你提供一个良好的起点。</p>
+<h4 id="development-servers">Development servers</h4>
+<h4 id="-">开发服务器</h4>
+<ul>
+<li><p><a href="https://github.com/johnpapa/lite-server">Lite-Server</a>: the default dev server installed with the
+<a href="https://github.com/angular/quickstart">Quickstart repo</a> is pre-configured to fallback to <code>index.html</code>.</p>
+<p><a href="https://github.com/johnpapa/lite-server">Lite-Server</a>是<a href="https://github.com/angular/quickstart">&quot;快速起步&quot;仓库</a>中安装的默认开发服务器，它被预先配置为回退到<code>index.html</code>。</p>
+</li>
+<li><p><a href="https://github.com/webpack/webpack-dev-server">Webpack-Dev-Server</a>:  setup the
+<code>historyApiFallback</code> entry in the dev server options as follows:</p>
+<p><a href="https://github.com/webpack/webpack-dev-server">Webpack-Dev-Server</a>在开发服务器的配置中设置了<code>historyApiFallback</code>，代码如下：</p>
+</li>
+</ul>
+<code-example>historyApiFallback: {
+  disableDotRule: true,
+  htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
+}
+</code-example><h4 id="production-servers">Production servers</h4>
+<h4 id="-">生产服务器</h4>
+<ul>
+<li><p><a href="https://httpd.apache.org/">Apache</a>: add a
+<a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">rewrite rule</a>
+to the <code>.htaccess</code> file as show
+<a href="https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess/">here</a>:</p>
+<p><a href="https://httpd.apache.org/">Apache</a>：在<code>.htaccess</code>文件中添加一个<a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">重写规则</a>，
+代码如下（<a href="https://ngmilk.rocks/2015/03/09/angularjs-html5-mode-or-pretty-urls-on-apache-using-htaccess/">出处</a>）：</p>
+</li>
+</ul>
+<code-example format=".">RewriteEngine On
+# If an existing asset or directory is requested go to it as it is
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+
+# If the requested resource doesn't exist, use index.html
+RewriteRule ^ /index.html
+</code-example><ul>
+<li><p><a href="http://nginx.org/">NGinx</a>: use <code>try_files</code>, as described in
+<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps">Front Controller Pattern Web Apps</a>,
+modified to serve <code>index.html</code>:</p>
+<p><a href="http://nginx.org/">NGinx</a>：使用<code>try_files</code>指向<code>index.html</code>，详细描述见<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#front-controller-pattern-web-apps">Web应用的前端控制器模式</a>。</p>
+</li>
+</ul>
+<code-example format=".">try_files $uri $uri/ /index.html;
+</code-example><ul>
+<li><p><a href="https://www.iis.net/">IIS</a>: add a rewrite rule to <code>web.config</code>, similar to the one shown
+<a href="http://stackoverflow.com/a/26152011/2116927">here</a>:</p>
+<p><a href="https://www.iis.net/">IIS</a>：往<code>web.config</code>中添加一条重写规则，类似于<a href="http://stackoverflow.com/a/26152011/2116927">这里</a>：</p>
+</li>
+</ul>
+<code-example format=".">&lt;system.webServer&gt;
+  &lt;rewrite&gt;
+    &lt;rules&gt;
+      &lt;rule name="Angular Routes" stopProcessing="true"&gt;
+        &lt;match url=".*" /&gt;
+        &lt;conditions logicalGrouping="MatchAll"&gt;
+          &lt;add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" /&gt;
+          &lt;add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" /&gt;
+        &lt;/conditions&gt;
+        &lt;action type="Rewrite" url="/src/" /&gt;
+      &lt;/rule&gt;
+    &lt;/rules&gt;
+  &lt;/rewrite&gt;
+&lt;/system.webServer&gt;
+</code-example><ul>
+<li><p><a href="https://pages.github.com/">GitHub Pages</a>: you can&#39;t
+<a href="https://github.com/isaacs/github/issues/408">directly configure</a>
+the GitHub Pages server, but you can add a 404 page.
+Copy <code>index.html</code> into <code>404.html</code>.
+It will still be served as the 404 response, but the browser will process that page and load the app properly.
+It&#39;s also a good idea to
+<a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch">serve from <code>docs/</code> on master</a>
+and to
+<a href="https://www.bennadel.com/blog/3181-including-node-modules-and-vendors-folders-in-your-github-pages-site.htm">create a <code>.nojekyll</code> file</a></p>
+<p><a href="https://pages.github.com/">GitHub页面服务</a>：我们没办法<a href="https://github.com/isaacs/github/issues/408">直接配置</a> Github的页面服务，但可以添加一个404页，只要把<code>index.html</code>复制到<code>404.html</code>就可以了。
+它仍然会给出一个404响应，但是浏览器将会正确处理该页，并正常加载该应用。
+使用<a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch">在主分支的<code>docs/</code>下启动服务</a>
+并<a href="https://www.bennadel.com/blog/3181-including-node-modules-and-vendors-folders-in-your-github-pages-site.htm">创建一个<code>.nojekyll</code>文件</a>也是一个好办法。</p>
+</li>
+<li><p><a href="https://firebase.google.com/docs/hosting/">Firebase hosting</a>: add a
+<a href="https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites">rewrite rule</a>.</p>
+<p><a href="https://firebase.google.com/docs/hosting/">Firebase主机服务</a>：添加一条<a href="https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites">重写规则</a>。</p>
+</li>
+</ul>
+<code-example format=".">"rewrites": [ {
+  "source": "**",
+  "destination": "/index.html"
+} ]
+</code-example><a id="cors"></a><div class="l-main-section"></div><h3 id="requesting-services-from-a-different-server-cors-">Requesting services from a different server (CORS)</h3>
+<h3 id="-cors-">请求来自另一个服务器的服务（CORS）</h3>
+<p>Angular developers may encounter a
+<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank" title="Cross-origin resource sharing">
+<i>cross-origin resource sharing</i></a> error when making a service request (typically a data service request).
+to a server other than the application&#39;s own host server.
+Browsers forbid such requests unless the server permits them explicitly.</p>
+<p>Angular开发者在向与该应用的宿主服务器不同域的服务器发起请求时，可能会遇到一种<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank" title="Cross-origin resource sharing"><i>跨域资源共享（CORS）</i></a>错误。
+浏览器会阻止该请求，除非得到那台服务器的明确许可。</p>
+<p>There isn&#39;t anything the client application can do about these errors.
+The server must be configured to accept the application&#39;s requests.
+Read about how to enable CORS for specific servers at
+<a href="http://enable-cors.org/server.html" target="_blank" title="Enabling CORS server">enable-cors.org</a>.</p>
+<p>客户端应用对这种错误无能为力。
+服务器必须配置成可以接受来自该应用的请求。
+要了解如何对特定的服务器开启CORS，参见<a href="http://enable-cors.org/server.html" target="_blank" title="Enabling CORS server">enable-cors.org</a>。</p>
+<a id="next-steps"></a><div class="l-main-section"></div><h2 id="next-steps">Next steps</h2>
+<h2 id="-">下一步</h2>
+<p>If you want to go beyond the <a href="#dev-deploy" title="Simplest deployment possible">simple <em>copy-deploy</em></a> approach,
+read the <a href="../cookbook/aot-compiler.html" title="AOT Cookbook">AOT Cookbook</a> next.</p>
+<p>如果我们准备超越<a href="#dev-deploy" title="Simplest deployment possible">简单<em>复制</em>部署</a>的方式，请参阅<a href="../cookbook/aot-compiler.html" title="AOT Cookbook">烹饪宝典中的AOT部分</a>。</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/deployment.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:38 GMT -->
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+  <style>
+    .start{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<h1> this is header 1</h1>
+<button id="confirmId">确认</button>
+
+<ul class="start">
+  <li>test01</li>
+  <li>test02</li>
+  <li>test03</li>
+  <ol>
+    <li>demo01</li>
+    <li>demo02</li>
+  </ol>
+</ul>
+
+<script>
+  $(function () {
+    //常见的zepto提供的选择器
+    //标签选择器
+    console.log($('h1'));
+
+    //id选择器
+    console.log($('#confirmId'));
+
+    //class
+    console.log($('.start'));
+
+    // 父子
+    console.log($('ul>li'));
+
+    // 后代
+    console.log($('ul li'));
+
+    // 属性
+    //...
+
+  })
+
+</script>
+
+
+</body>
+</html>

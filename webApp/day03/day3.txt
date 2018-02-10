@@ -1,0 +1,93 @@
+一、Ionic提供基于AngularJS的扩展
+1、ionHeaderBar
+align-title="top/center/left" 标题对齐的方式
+
+2、ionRefresher
+下拉刷新组件
+①用在ionContent第一个子元素
+②通过on-refresh去绑定刷新要执行的动作
+③事件 $scope.$broadcast('scroll.refreshComplete')
+
+3、ionInfiniteScroll
+上拉加载更多组件
+①用在ionContent最后一个子元素
+②通过on-infinite去绑定加载更多时要执行的动作
+③事件 $scope.$broadcast('scroll.infiniteScrollComplete');
+④该组件默认会在首次加载时判断是否可以加载更多数据，如果可以，就会自动触发on-infinite；可以通过immediate-check='true/false'调整是否允许首次加载是否要自动触发加载更多
+
+注意事项：如果没有更多数据可以加载了，通过ngIf指令移除该组件
+
+练习：通过ionic实现一个列表，同时支持下拉刷新和上拉加载更多，下拉--》列表的头部插入一条新的数据，上拉-》列表的底部插入一条数据。
+
+
+4、$ionicScrollDelegate 
+在服务中封装了控制滚动的方法
+scrollTop scrollBottom scrollTo()
+getScrollPosition
+
+例子：滚动到列表项内容为20：
+Object {left: 0, top: 1060, zoom: 1}
+
+程序控制恢复到指定的位置：
+scrollTo()
+
+5、ionicTab 选项卡/标签页
+css:tabs tab-item tabs-icon-top/bottom/left/right
+通过指令实现选项卡
+
+ionTabs: 通过class来设置tabs-icon-top tabs-positive
+ionTab： 通过属性title icon icon-on icon-off on-select/deselect ng-click
+注意事项：第一个标签页式默认被选中的。on-select只要是该标签页被选中就会触发
+
+练习：实现点击不同的tab页面，更新头部标题的信息
+音乐--》music
+电影--》movie
+游戏--》game
+
+
+6、侧边栏菜单
+ionSideMenus
+	ionSideMenu
+	ionSideMenuContent
+
+ionSideMenu:
+	side/width/is-eneabled
+属性：menu-toggle menu-close
+方法：$ionicSideMenuDelegate.toggleLeft/right
+
+7、窗口
+①actionSheet(从下往上弹出的操作表)
+ $ionicActionSheet.show({})
+ 参数中的对象:titleText/cancelText/destructiveText/buttons/cancel/destructiveButtonClicked/buttonClicked
+
+②popup(在中间显示的弹窗)
+$ionicPopup.alert/prompt/confirm()
+
+③loading
+$ionicLoading.show/hide()
+
+练习：实现一个列表，支持下拉刷新，在下拉刷新的处理函数中加载数据（每次加载数据，都要显示一个加载中的窗口 loading...,只出现2s）
+
+分析：
+①构造数据并显示
+②支持下拉刷新，每次在头部插入一条随机数据
+③在下拉刷新时添加加载中的窗口
+
+8、列表
+ion-list/ion-item/ion-checkbox/ion-toggle/'ion-radio
+
+ion-option-button
+ion-delete-button(show-delete='true')
+ion-reorder-button(show-reorder='true')
+
+11  22
+22  33
+33  44 
+44  55
+55  11
+
+
+二、uiRouter
+
+
+

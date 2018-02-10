@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var AddComponent = React.createClass({
+    handleClick:function(){
+      //拿到用户输入的数据并求和 弹窗显示
+      var num1 = this.refs.numberTop.value;
+      var num2 = this.refs.numberBottom.value;
+      var sum = parseInt(num1)+parseInt(num2);
+      console.log(sum);
+    },
+    render:function(){
+      return <div>
+        <input type="text" ref='numberTop'/>
+        <br/>
+        <input type="text" ref='numberBottom'/>
+        <br/>
+        <button onClick={this.handleClick}>
+          求和
+         </button>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <AddComponent/>,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

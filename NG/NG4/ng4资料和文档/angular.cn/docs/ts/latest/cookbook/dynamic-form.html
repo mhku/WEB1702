@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/dynamic-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:39 GMT -->
+<head><title>动态表单 - ts - COOKBOOK</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent is-selected">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item is-selected"><a href="dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="dynamic-form.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/cookbook/dynamic-form.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/cookbook/dynamic-form.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">动态表单 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">用 FormGroup 渲染动态表单</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>Building handcrafted forms canbe costly and time-consuming, 
+especially if you need a great number of them, they&#39;re similar to each other, and they change frequently 
+to meet rapidly changing business and regulatory requirements.</p>
+<p>有时候手动编写和维护表单所需工作量和时间会过大。特别是在需要编写大量表单时。表单都很相似，而且随着业务和监管需求的迅速变化，表单也要随之变化，这样维护的成本过高。</p>
+<p>It may be more economical to create the forms dynamically, based on metadata that describes the business object model.</p>
+<p>基于业务对象模型的元数据，动态创建表单可能会更划算。</p>
+<p>This cookbook shows you how to use <code>formGroup</code> to dynamically render a simple form with different control types and validation.
+It&#39;s a primitive start. 
+It might evolve to support a much richer variety of questions, more graceful rendering, and superior user experience.
+All such greatness has humble beginnings.</p>
+<p>在此烹饪宝典中，我们会展示如何利用<code>formGroup</code>来动态渲染一个简单的表单，包括各种控件类型和验证规则。
+这个起点很简陋，但可以在这个基础上添加丰富多彩的问卷问题、更优美的渲染以及更卓越的用户体验。</p>
+<p>The example in this cookbook is a dynamic form to build an online application experience for heroes seeking employment.
+The agency is constantly tinkering with the application process.
+You can create the forms on the fly <em>without changing the application code</em>. </p>
+<p>在本例中，我们使用动态表单，为正在找工作的英雄们创建一个在线申请表。英雄管理局会不断修改申请流程，我们要在<em>不修改应用代码</em>的情况下，动态创建这些表单。</p>
+<a id="toc"></a><h1 id="contents">Contents</h1>
+<h1 id="-">目录</h1>
+<ul>
+<li><p><a href="#bootstrap">Bootstrap</a></p>
+<p><a href="#bootstrap">程序启动</a></p>
+</li>
+<li><p><a href="#object-model">Question model</a></p>
+<p><a href="#object-model">问卷问题模型</a></p>
+</li>
+<li><p><a href="#form-component">Question form components</a></p>
+<p><a href="#form-component">问卷表单组件</a></p>
+</li>
+<li><p><a href="#questionnaire-data">Questionnaire data</a></p>
+<p><a href="#questionnaire-data">问卷数据</a></p>
+</li>
+<li><p><a href="#dynamic-template">Dynamic template</a></p>
+<p><a href="#dynamic-template">动态模板</a></p>
+</li>
+</ul>
+<p>See the <live-example name="cb-dynamic-form"></live-example>.</p>
+<p><strong>参见<live-example name="cb-dynamic-form"></live-example></strong>。</p>
+<div class="l-main-section"></div><a id="bootstrap"></a><h2 id="bootstrap">Bootstrap</h2>
+<h2 id="-">程序启动</h2>
+<p>Start by creating an <code>NgModule</code> called <code>AppModule</code>.</p>
+<p>让我们从创建一个名叫<code>AppModule</code>的<code>NgModule</code>开始。</p>
+<p>This cookbook uses <a href="../guide/reactive-forms.html">reactive forms</a>.</p>
+<p>这个烹饪书使用<a href="../guide/reactive-forms.html">响应式表单</a>。</p>
+<p>Reactive forms belongs to a different <code>NgModule</code> called <code>ReactiveFormsModule</code>, 
+so in order to access any reactive forms directives, you have to import 
+<code>ReactiveFormsModule</code> from the <code>@angular/forms</code> library.</p>
+<p>响应式表单属于另外一个叫做<code>ReactiveFormsModule</code>的<code>NgModule</code>，所以，为了使用响应式表单类的指令，我们得从<code>@angular/forms</code>库中引入<code>ReactiveFormsModule</code>模块。</p>
+<p>Bootstrap the <code>AppModule</code> in <code>main.ts</code>.</p>
+<p>我们在<code>main.ts</code>中启动<code>AppModule</code>。</p>
+<code-tabs><code-pane language="ts" name="app.module.ts" format="linenums">import { BrowserModule }                from &#39;@angular/platform-browser&#39;;
+import { ReactiveFormsModule }          from &#39;@angular/forms&#39;;
+import { NgModule }                     from &#39;@angular/core&#39;;
+
+import { AppComponent }                 from &#39;./app.component&#39;;
+import { DynamicFormComponent }         from &#39;./dynamic-form.component&#39;;
+import { DynamicFormQuestionComponent } from &#39;./dynamic-form-question.component&#39;;
+
+@NgModule({
+  imports: [ BrowserModule, ReactiveFormsModule ],
+  declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule {
+  constructor() {
+  }
+}
+</code-pane><code-pane language="ts" name="main.ts" format="linenums">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import { AppModule } from &#39;./app/app.module&#39;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+</code-pane></code-tabs><div class="l-main-section"></div><a id="object-model"></a><h2 id="question-model">Question model</h2>
+<h2 id="-">问卷问题模型</h2>
+<p>The next step is to define an object model that can describe all scenarios needed by the form functionality.
+The hero application process involves a form with a lot of questions.
+The <em>question</em> is the most fundamental object in the model.</p>
+<p>第一步是定义一个对象模型，用来描述所有表单功能需要的场景。英雄的申请流程涉及到一个包含很多问卷问题的表单。问卷问题是最基础的对象模型。</p>
+<p>The following <code>QuestionBase</code> is a fundamental question class.</p>
+<p>下面是我们建立的最基础的问卷问题基类，名叫<code>QuestionBase</code>。</p>
+<div class="code-example"><header><h4>src/app/question-base.ts</h4></header><code-example language="ts" format="linenums">export class QuestionBase&lt;T&gt;{
+  value: T;
+  key: string;
+  label: string;
+  required: boolean;
+  order: number;
+  controlType: string;
+
+  constructor(options: {
+      value?: T,
+      key?: string,
+      label?: string,
+      required?: boolean,
+      order?: number,
+      controlType?: string
+    } = {}) {
+    this.value = options.value;
+    this.key = options.key || &#39;&#39;;
+    this.label = options.label || &#39;&#39;;
+    this.required = !!options.required;
+    this.order = options.order === undefined ? 1 : options.order;
+    this.controlType = options.controlType || &#39;&#39;;
+  }
+}
+</code-example></div><p>From this base you can derive two new classes in <code>TextboxQuestion</code> and <code>DropdownQuestion</code> 
+that represent textbox and dropdown questions.
+The idea is that the form will be bound to specific question types and render the 
+appropriate controls dynamically.</p>
+<p>在这个基础上，我们派生出两个新类<code>TextboxQuestion</code> 和 <code>DropdownQuestion</code>，分别代表文本框和下拉框。这么做的初衷是，表单能动态绑定到特定的问卷问题类型，并动态渲染出合适的控件。</p>
+<p><code>TextboxQuestion</code> supports multiple HTML5 types such as text, email, and url 
+via the <code>type</code> property.</p>
+<p><code>TextboxQuestion</code>可以通过<code>type</code>属性来支持多种HTML5元素类型，比如文本、邮件、网址等。</p>
+<div class="code-example"><header><h4>src/app/question-textbox.ts</h4></header><code-example language="ts" format="">import { QuestionBase } from &#39;./question-base&#39;;
+
+export class TextboxQuestion extends QuestionBase&lt;string&gt; {
+  controlType = &#39;textbox&#39;;
+  type: string;
+
+  constructor(options: {} = {}) {
+    super(options);
+    this.type = options[&#39;type&#39;] || &#39;&#39;;
+  }
+}
+</code-example></div><p><code>DropdownQuestion</code> presents a list of choices in a select box.</p>
+<p><code>DropdownQuestion</code>表示一个带可选项列表的选择框。</p>
+<div class="code-example"><header><h4>src/app/question-dropdown.ts</h4></header><code-example language="ts" format="">import { QuestionBase } from &#39;./question-base&#39;;
+
+export class DropdownQuestion extends QuestionBase&lt;string&gt; {
+  controlType = &#39;dropdown&#39;;
+  options: {key: string, value: string}[] = [];
+
+  constructor(options: {} = {}) {
+    super(options);
+    this.options = options[&#39;options&#39;] || [];
+  }
+}
+</code-example></div><p>Next is <code>QuestionControlService</code>, a simple service for transforming the questions to a <code>FormGroup</code>.
+In a nutshell, the form group consumes the metadata from the question model and 
+allows you to specify default values and validation rules.</p>
+<p>接下来，我们定义了<code>QuestionControlService</code>，一个可以把问卷问题转换为<code>FormGroup</code>的服务。
+简而言之，这个<code>FormGroup</code>使用问卷模型的元数据，并允许我们设置默认值和验证规则。</p>
+<div class="code-example"><header><h4>src/app/question-control.service.ts</h4></header><code-example language="ts" format="">import { Injectable }   from &#39;@angular/core&#39;;
+import { FormControl, FormGroup, Validators } from &#39;@angular/forms&#39;;
+
+import { QuestionBase } from &#39;./question-base&#39;;
+
+@Injectable()
+export class QuestionControlService {
+  constructor() { }
+
+  toFormGroup(questions: QuestionBase&lt;any&gt;[] ) {
+    let group: any = {};
+
+    questions.forEach(question =&gt; {
+      group[question.key] = question.required ? new FormControl(question.value || &#39;&#39;, Validators.required)
+                                              : new FormControl(question.value || &#39;&#39;);
+    });
+    return new FormGroup(group);
+  }
+}
+</code-example></div><a id="form-component"></a><h2 id="question-form-components">Question form components</h2>
+<h2 id="-">问卷表单组件</h2>
+<p>Now that you have defined the complete model you are ready 
+to create components to represent the dynamic form.</p>
+<p>现在我们已经有一个定义好的完整模型了，接着就可以开始创建一个展现动态表单的组件。</p>
+<p><code>DynamicFormComponent</code> is the entry point and the main container for the form. </p>
+<p><code>DynamicFormComponent</code>是表单的主要容器和入口点。</p>
+<code-tabs><code-pane language="html" name="dynamic-form.component.html" format="linenums">&lt;div&gt;
+  &lt;form (ngSubmit)=&quot;onSubmit()&quot; [formGroup]=&quot;form&quot;&gt;
+
+    &lt;div *ngFor=&quot;let question of questions&quot; class=&quot;form-row&quot;&gt;
+      &lt;df-question [question]=&quot;question&quot; [form]=&quot;form&quot;&gt;&lt;/df-question&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;form-row&quot;&gt;
+      &lt;button type=&quot;submit&quot; [disabled]=&quot;!form.valid&quot;&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+
+  &lt;div *ngIf=&quot;payLoad&quot; class=&quot;form-row&quot;&gt;
+    &lt;strong&gt;Saved the following values&lt;/strong&gt;&lt;br&gt;{{payLoad}}
+  &lt;/div&gt;
+&lt;/div&gt;
+</code-pane><code-pane language="ts" name="dynamic-form.component.ts" format="linenums">import { Component, Input, OnInit }  from &#39;@angular/core&#39;;
+import { FormGroup }                 from &#39;@angular/forms&#39;;
+
+import { QuestionBase }              from &#39;./question-base&#39;;
+import { QuestionControlService }    from &#39;./question-control.service&#39;;
+
+@Component({
+  selector: &#39;dynamic-form&#39;,
+  templateUrl: &#39;./dynamic-form.component.html&#39;,
+  providers: [ QuestionControlService ]
+})
+export class DynamicFormComponent implements OnInit {
+
+  @Input() questions: QuestionBase&lt;any&gt;[] = [];
+  form: FormGroup;
+  payLoad = &#39;&#39;;
+
+  constructor(private qcs: QuestionControlService) {  }
+
+  ngOnInit() {
+    this.form = this.qcs.toFormGroup(this.questions);
+  }
+
+  onSubmit() {
+    this.payLoad = JSON.stringify(this.form.value);
+  }
+}
+</code-pane></code-tabs><p>It presents a list of questions, each bound to a <code>&lt;df-question&gt;</code> component element.
+The <code>&lt;df-question&gt;</code> tag matches the <code>DynamicFormQuestionComponent</code>,
+the component responsible for rendering the details of each <em>individual</em> 
+question based on values in the data-bound question object.</p>
+<p>它代表了问卷问题列表，每个问题都被绑定到一个<code>&lt;df-question&gt;</code>组件元素。
+<code>&lt;df-question&gt;</code>标签匹配到的是组件<code>DynamicFormQuestionComponent</code>，该组件的职责是根据各个问卷问题对象的值来动态渲染表单控件。</p>
+<code-tabs><code-pane language="html" name="dynamic-form-question.component.html" format="linenums">&lt;div [formGroup]=&quot;form&quot;&gt;
+  &lt;label [attr.for]=&quot;question.key&quot;&gt;{{question.label}}&lt;/label&gt;
+
+  &lt;div [ngSwitch]=&quot;question.controlType&quot;&gt;
+
+    &lt;input *ngSwitchCase=&quot;&#39;textbox&#39;&quot; [formControlName]=&quot;question.key&quot;
+            [id]=&quot;question.key&quot; [type]=&quot;question.type&quot;&gt;
+
+    &lt;select [id]=&quot;question.key&quot; *ngSwitchCase=&quot;&#39;dropdown&#39;&quot; [formControlName]=&quot;question.key&quot;&gt;
+      &lt;option *ngFor=&quot;let opt of question.options&quot; [value]=&quot;opt.key&quot;&gt;{{opt.value}}&lt;/option&gt;
+    &lt;/select&gt;
+
+  &lt;/div&gt; 
+
+  &lt;div class=&quot;errorMessage&quot; *ngIf=&quot;!isValid&quot;&gt;{{question.label}} is required&lt;/div&gt;
+&lt;/div&gt;
+</code-pane><code-pane language="ts" name="dynamic-form-question.component.ts" format="linenums">import { Component, Input } from &#39;@angular/core&#39;;
+import { FormGroup }        from &#39;@angular/forms&#39;;
+
+import { QuestionBase }     from &#39;./question-base&#39;;
+
+@Component({
+  selector: &#39;df-question&#39;,
+  templateUrl: &#39;./dynamic-form-question.component.html&#39;
+})
+export class DynamicFormQuestionComponent {
+  @Input() question: QuestionBase&lt;any&gt;;
+  @Input() form: FormGroup;
+  get isValid() { return this.form.controls[this.question.key].valid; }
+}
+</code-pane></code-tabs><p>Notice this component can present any type of question in your model.
+You only have two types of questions at this point but you can imagine many more.
+The <code>ngSwitch</code> determines which type of question to display.</p>
+<p>请注意，这个组件能代表模型里的任何问题类型。目前，还只有两种问题类型，但可以添加更多类型。可以用<code>ngSwitch</code>决定显示哪种类型的问题。</p>
+<p>In both components  you&#39;re relying on Angular&#39;s <strong>formGroup</strong> to connect the template HTML to the
+underlying control objects, populated from the question model with display and validation rules.</p>
+<p>在这两个组件中，我们依赖Angular的<strong>formGroup</strong>来把模板HTML和底层控件对象连接起来，该对象从问卷问题模型里获取渲染和验证规则。</p>
+<p><code>formControlName</code> and <code>formGroup</code> are directives defined in 
+<code>ReactiveFormsModule</code>. The templates can access these directives 
+directly since you imported <code>ReactiveFormsModule</code> from <code>AppModule</code>.</p>
+<p><code>formControlName</code>和<code>formGroup</code>是在<code>ReactiveFormsModule</code>中定义的指令。我们之所以能在模板中使用它们，是因为我们往<code>AppModule</code>中导入了<code>ReactiveFormsModule</code>。</p>
+<a id="questionnaire-data"></a><h2 id="questionnaire-data">Questionnaire data</h2>
+<h2 id="-">问卷数据</h2>
+<p><code>DynamicFormComponent</code> expects the list of questions in the form of an array bound to <code>@Input() questions</code>.</p>
+<p> <code>DynamicForm</code>期望得到一个问题列表，该列表被绑定到<code>@Input() questions</code>属性。</p>
+<p> The set of questions you&#39;ve defined for the job application is returned from the <code>QuestionService</code>.
+ In a real app you&#39;d retrieve these questions from storage.</p>
+<p> <code>QuestionService</code>会返回为工作申请表定义的那组问题列表。在真实的应用程序环境中，我们会从数据库里获得这些问题列表。</p>
+<p> The key point is that you control the hero job application questions 
+ entirely through the objects returned from <code>QuestionService</code>.
+ Questionnaire maintenance is a simple matter of adding, updating, 
+ and removing objects from the <code>questions</code> array.</p>
+<p> 关键是，我们完全根据<code>QuestionService</code>返回的对象来控制英雄的工作申请表。
+ 要维护这份问卷，只要非常简单的添加、更新和删除<code>questions</code>数组中的对象就可以了。</p>
+<div class="code-example"><header><h4>src/app/question.service.ts</h4></header><code-example language="ts" format="linenums">import { Injectable }       from &#39;@angular/core&#39;;
+
+import { DropdownQuestion } from &#39;./question-dropdown&#39;;
+import { QuestionBase }     from &#39;./question-base&#39;;
+import { TextboxQuestion }  from &#39;./question-textbox&#39;;
+
+@Injectable()
+export class QuestionService {
+
+  // Todo: get from a remote source of question metadata
+  // Todo: make asynchronous
+  getQuestions() {
+
+    let questions: QuestionBase&lt;any&gt;[] = [
+
+      new DropdownQuestion({
+        key: &#39;brave&#39;,
+        label: &#39;Bravery Rating&#39;,
+        options: [
+          {key: &#39;solid&#39;,  value: &#39;Solid&#39;},
+          {key: &#39;great&#39;,  value: &#39;Great&#39;},
+          {key: &#39;good&#39;,   value: &#39;Good&#39;},
+          {key: &#39;unproven&#39;, value: &#39;Unproven&#39;}
+        ],
+        order: 3
+      }),
+
+      new TextboxQuestion({
+        key: &#39;firstName&#39;,
+        label: &#39;First name&#39;,
+        value: &#39;Bombasto&#39;,
+        required: true,
+        order: 1
+      }),
+
+      new TextboxQuestion({
+        key: &#39;emailAddress&#39;,
+        label: &#39;Email&#39;,
+        type: &#39;email&#39;,
+        order: 2
+      })
+    ];
+
+    return questions.sort((a, b) =&gt; a.order - b.order);
+  }
+}
+</code-example></div><p>Finally, display an instance of the form in the <code>AppComponent</code> shell.</p>
+<p>最后，在<code>AppComponent</code>里显示出表单。</p>
+<div class="code-example"><header><h4>app.component.ts</h4></header><code-example language="ts" format="linenums">import { Component }       from &#39;@angular/core&#39;;
+
+import { QuestionService } from &#39;./question.service&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  template: `
+    &lt;div&gt;
+      &lt;h2&gt;Job Application for Heroes&lt;/h2&gt;
+      &lt;dynamic-form [questions]=&quot;questions&quot;&gt;&lt;/dynamic-form&gt;
+    &lt;/div&gt;
+  `,
+  providers:  [QuestionService]
+})
+export class AppComponent {
+  questions: any[];
+
+  constructor(service: QuestionService) {
+    this.questions = service.getQuestions();
+  }
+}
+</code-example></div><a id="dynamic-template"></a><h2 id="dynamic-template">Dynamic Template</h2>
+<h2 id="-">动态模板</h2>
+<p>Although in this example you&#39;re modelling a job application for heroes, there are no references to any specific hero question 
+outside the objects returned by <code>QuestionService</code>. </p>
+<p>在这个例子中，虽然我们是在为英雄的工作申请表建模，但是除了<code>QuestionService</code>返回的那些对象外，没有其它任何地方是与英雄有关的。</p>
+<p>This is very important since it allows you to repurpose the components for any type of survey
+as long as it&#39;s compatible with the <em>question</em> object model. 
+The key is the dynamic data binding of metadata used to render the form 
+without making any hardcoded assumptions about specific questions. 
+In addition to control metadata, you are also adding validation dynamically.</p>
+<p>这点非常重要，因为只要与<em>问卷</em>对象模型兼容，就可以在任何类型的调查问卷中复用这些组件。
+这里的关键是用到元数据的动态数据绑定来渲染表单，对问卷问题没有任何硬性的假设。除控件的元数据外，还可以动态添加验证规则。</p>
+<p>The <em>Save</em> button is disabled until the form is in a valid state.
+When the form is valid, you can click <em>Save</em> and the app renders the current form values as JSON.
+This proves that any user input is bound back to the data model.
+Saving and retrieving the data is an exercise for another time.</p>
+<p>表单验证通过之前，<em>保存</em>按钮是禁用的。验证通过后，就可以点击<em>保存</em>按钮，程序会把当前值渲染成JSON显示出来。
+这表明任何用户输入都被传到了数据模型里。至于如何储存和提取数据则是另一话题了。</p>
+<p>The final form looks like this:</p>
+<p>完整的表单是这样的：</p>
+<figure class="image-display"><img src="../../../../resources/images/cookbooks/dynamic-form/dynamic-form.png" alt="Dynamic-Form"></figure><p><a href="#top">Back to top</a></p>
+<p><a href="#top">回到顶部</a></p></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/dynamic-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:40 GMT -->
+</html>

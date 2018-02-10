@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+</head>
+<body>
+
+<form id="myForm">
+  <label for="name">用户名</label>
+  <input type="text" id="name" name="user_name"/>
+  <br/>
+  <label for="pwd">密码</label>
+  <input type="text" id="pwd" name="user_pwd"/>
+  <br/>
+  是否同意<input type="checkbox" name='user_isagree'/>
+  <br/>
+  <button>提交</button>
+</form>
+
+<script>
+
+  //调用form模块所提供的3个方法
+  var form = $('#myForm');
+  //序列化
+  var result = form.serialize();
+  console.log(result);
+
+  //指定提交事件被触发时 要调用的处理函数
+  form.submit(function (event) {
+    //阻止默认的跳转行为
+    event.preventDefault();
+    //序列化
+    var result = form.serialize();
+    console.log(result);
+
+    //序列化成数组
+    var resultList = form.serializeArray();
+    console.log(resultList);
+
+  });
+
+
+</script>
+
+</body>
+</html>

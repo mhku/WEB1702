@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/native/diagnostic/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>Ionic Native: Harness the power of Native APIs</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-diagnostic"
+        class="v2 docs fluid page-diagnostic has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../../index.html">
+        <img src="../../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../../index.html">
+        <img src="../../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../../index.html">Framework</a></li>
+<li><a href="../../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../../support.html">Customer Support</a></li>
+    <li><a href="../../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <ul ng-controller="DocsNavCtrl" class="native-docs">
+  <li class="back-to-main">
+    <a href="../../index.html">Back to Main Docs</a>
+  </li>
+  <li class="capitalize ">
+  <a href="../index.html">Overview</a>
+</li>
+<li class="capitalize ">
+  <a href="../browser.html">Browser Usage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/3d-touch">3D Touch</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/action-sheet">Action Sheet</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/admob">AdMob</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/admob-free">AdMob Free</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/alipay">Alipay</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/android-fingerprint-auth">Android Fingerprint Auth</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/android-full-screen">Android Full Screen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/android-permissions">Android Permissions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-availability">App Availability</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-minimize">App Minimize</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-preferences">App Preferences</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-rate">App Rate</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-update">App Update</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/app-version">App Version</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/appodeal">Appodeal</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/autostart">Autostart</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/background-fetch">Background Fetch</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/background-geolocation">Background Geolocation</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/background-mode">Background Mode</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/barcode-scanner">Barcode Scanner</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/base64-to-gallery">Base64 To Gallery</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/battery-status">Battery Status</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/ble">BLE</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/bluetooth-serial">Bluetooth Serial</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/brightness">Brightness</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/broadcaster">Broadcaster</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/browser-tab">Browser Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/calendar">Calendar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/call-number">Call Number</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/camera">Camera</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/card-io">Card IO</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/clipboard">Clipboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/code-push">Code Push</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/contacts">Contacts</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/couchbase-lite">Couchbase Lite</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/crop">Crop</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/date-picker">Date Picker</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/db-meter">DB Meter</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/deeplinks">Deeplinks</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device">Device</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-accounts">Device Accounts</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-feedback">Device Feedback</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-motion">Device Motion</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/device-orientation">Device Orientation</a>
+</li>
+<li class="capitalize active">
+  <a href="http://ionicframework.com/docs/native/diagnostic">Diagnostic</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/dialogs">Dialogs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/document-viewer">Document Viewer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/email-composer">Email Composer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/estimote-beacons">Estimote Beacons</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/facebook">Facebook</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/fcm">FCM</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file">File</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-chooser">File Chooser</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-encryption">File Encryption</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-opener">File Opener</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/file-path">File Path</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/fingerprint-aio">Fingerprint AIO</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/flashlight">Flashlight</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/flurry-analytics">Flurry Analytics</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/geofence">Geofence</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/geolocation">Geolocation</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/globalization">Globalization</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/google-analytics">Google Analytics</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/google-maps">Google Maps</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/google-plus">Google Plus</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/gyroscope">Gyroscope</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/header-color">Header Color</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/health">Health</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/health-kit">Health Kit</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/http">HTTP</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/httpd">Httpd</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/ibeacon">IBeacon</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/image-picker">Image Picker</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/image-resizer">Image Resizer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/in-app-browser">In App Browser</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/in-app-purchase">In App Purchase</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/insomnia">Insomnia</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/instagram">Instagram</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/intel-security">Intel Security</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/intercom">Intercom</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/is-debug">Is Debug</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/jins-meme">Jins Meme</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/keychain">Keychain</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/launch-navigator">Launch Navigator</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/launch-review">Launch Review</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/linkedin">LinkedIn</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/local-notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/location-accuracy">Location Accuracy</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/market">Market</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/media">Media</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/media-capture">Media Capture</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/mixpanel">Mixpanel</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/mobile-accessibility">Mobile Accessibility</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/music-controls">Music Controls</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-audio">Native Audio</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-geocoder">Native Geocoder</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-keyboard">Native Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-page-transitions">Native Page Transitions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-storage">Native Storage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/network">Network</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/nfc">NFC</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/onesignal">OneSignal</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/paypal">PayPal</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/pedometer">Pedometer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/phonegap-local-notification">Phonegap Local Notification</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/photo-library">Photo Library</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/photo-viewer">Photo Viewer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/pin-dialog">Pin Dialog</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/plnobject">PLNObject</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/power-management">Power Management</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/printer">Printer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/push">Push</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/safari-view-controller">Safari View Controller</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/screen-orientation">Screen Orientation</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/screenshot">Screenshot</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/secure-storage">Secure Storage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/serial">Serial</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/shake">Shake</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sim">Sim</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sms">SMS</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/social-sharing">Social Sharing</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/speech-recognition">Speech Recognition</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/spinner-dialog">Spinner Dialog</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/splash-screen">Splash Screen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sqlite">SQLite</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/sqlite-porter">SQLite Porter</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/status-bar">Status Bar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/stepcounter">Stepcounter</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/streaming-media">Streaming Media</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/stripe">Stripe</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/taptic-engine">Taptic Engine</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/text-to-speech">Text To Speech</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/themeable-browser">Themeable Browser</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/toast">Toast</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/touch-id">Touch ID</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/transfer">Transfer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/twitter-connect">Twitter Connect</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/unique-device-id">Unique Device ID</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/user-agent">User Agent</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/vibration">Vibration</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/video-editor">Video Editor</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/video-player">Video Player</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/youtube-video-player">Youtube Video Player</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/zbar">ZBar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/zeroconf">Zeroconf</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/zip">Zip</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/backlight">Backlight <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/camera-preview">Camera Preview <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/firebase">Firebase <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/hotspot">Hotspot <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/native-ringtones">Native Ringtones <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/navigation-bar">Navigation Bar <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/pinterest">Pinterest <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/rollbar">Rollbar <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/video-capture-plus">Video Capture Plus <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/web-intent">Web Intent <span class="beta">&beta;</span></a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/native/wheelselector-plugin">WheelSelector Plugin <span class="beta">&beta;</span></a>
+</li>
+
+</ul>
+
+    
+  </nav>
+  
+  <main>
+    <h1 class="api-title">Diagnostic</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/@ionic-native/plugins/diagnostic/index.ts#L1">
+  Improve this doc
+</a></p>
+
+<p>Checks whether device hardware features are enabled or available to the app, e.g. camera, GPS, wifi</p>
+
+<p>Repo:
+  <a href="https://github.com/dpa99c/cordova-diagnostic-plugin">
+    https://github.com/dpa99c/cordova-diagnostic-plugin
+  </a>
+</p>
+
+<h2>Installation</h2>
+<ol class="installation">
+  <li>Install the Cordova and Ionic Native plugins:<br />
+    <pre><code class="nohighlight">$ ionic cordova plugin add cordova.plugins.diagnostic
+$ npm install --save @ionic-native/diagnostic
+</code></pre>
+  </li>
+  <li><a href="../index.html#Add_Plugins_to_Your_App_Module">Add this plugin to your app's module</a></li>
+</ol>
+
+<h2>Supported platforms</h2>
+<ul>
+  <li>Android</li><li>iOS</li><li>Windows</li>
+</ul>
+
+<h2>Usage</h2>
+<pre><code class="lang-typescript">import { Diagnostic } from &#39;@ionic-native/diagnostic&#39;;
+
+constructor(private diagnostic: Diagnostic) { }
+
+...
+
+let successCallback = (isAvailable) =&gt; { console.log(&#39;Is available? &#39; + isAvailable); };
+let errorCallback = (e) =&gt; console.error(e);
+
+this.diagnostic.isCameraAvailable().then(successCallback).catch(errorCallback);
+
+this.diagnostic.isBluetoothAvailable().then(successCallback, errorCallback);
+
+
+this.diagnostic.getBluetoothState()
+  .then((state) =&gt; {
+    if (state == this.diagnostic.bluetoothState.POWERED_ON){
+      // do something
+    } else {
+      // do something else
+    }
+  }).catch(e =&gt; console.error(e));
+</code></pre>
+
+<h2>Instance Members</h2>
+<h3><a class="anchor" name="permission" href="#permission"></a><code>permission</code></h3>
+
+<h3><a class="anchor" name="permissionStatus" href="#permissionStatus"></a><code>permissionStatus</code></h3>
+
+<h3><a class="anchor" name="locationAuthorizationMode" href="#locationAuthorizationMode"></a><code>locationAuthorizationMode</code></h3>
+
+<h3><a class="anchor" name="permissionGroups" href="#permissionGroups"></a><code>permissionGroups</code></h3>
+
+<h3><a class="anchor" name="locationMode" href="#locationMode"></a><code>locationMode</code></h3>
+
+<h3><a class="anchor" name="bluetoothState" href="#bluetoothState"></a><code>bluetoothState</code></h3>
+
+<h3><a class="anchor" name="NFCState" href="#NFCState"></a><code>NFCState</code></h3>
+
+<h3><a class="anchor" name="isLocationAvailable" href="#isLocationAvailable"></a><code>isLocationAvailable()</code></h3>
+
+<p>Checks if app is able to access device location.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isWifiAvailable" href="#isWifiAvailable"></a><code>isWifiAvailable()</code></h3>
+
+<p>Checks if Wifi is connected/enabled. On iOS this returns true if the device is connected to a network by WiFi. On Android and Windows 10 Mobile this returns true if the WiFi setting is set to enabled.
+On Android this requires permission. <code class="highlighter-rouge">&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;</code></p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isCameraAvailable" href="#isCameraAvailable"></a><code>isCameraAvailable(externalStorage)</code></h3>
+
+<p>Checks if the device has a camera. On Android this returns true if the device has a camera. On iOS this returns true if both the device has a camera AND the application is authorized to use it. On Windows 10 Mobile this returns true if both the device has a rear-facing camera AND the
+application is authorized to use it.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      externalStorage</td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+ <a class="__cf_email__" href="../../../cdn-cgi/l/email-protection.html" data-cfemail="a0c3cfd2c4cfd6c18dd0ccd5c7c9ce8dc3c1cdc5d2c1e0928e92">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>+ requires both of these permissions. Defaults to true.<strong class="tag">Optional</strong></p>
+</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isBluetoothAvailable" href="#isBluetoothAvailable"></a><code>isBluetoothAvailable()</code></h3>
+
+<p>Checks if the device has Bluetooth capabilities and if so that Bluetooth is switched on (same on Android, iOS and Windows 10 Mobile)
+On Android this requires permission <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission></p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="switchToLocationSettings" href="#switchToLocationSettings"></a><code>switchToLocationSettings()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">Windows 10</strong>&nbsp;</p>
+
+<p>Displays the device location settings to allow user to enable location services/change location mode.</p>
+
+<h3><a class="anchor" name="switchToMobileDataSettings" href="#switchToMobileDataSettings"></a><code>switchToMobileDataSettings()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">Windows 10</strong>&nbsp;</p>
+
+<p>Displays mobile settings to allow user to enable mobile data.</p>
+
+<h3><a class="anchor" name="switchToBluetoothSettings" href="#switchToBluetoothSettings"></a><code>switchToBluetoothSettings()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">Windows 10</strong>&nbsp;</p>
+
+<p>Displays Bluetooth settings to allow user to enable Bluetooth.</p>
+
+<h3><a class="anchor" name="switchToWifiSettings" href="#switchToWifiSettings"></a><code>switchToWifiSettings()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">Windows 10</strong>&nbsp;</p>
+
+<p>Displays WiFi settings to allow user to enable WiFi.</p>
+
+<h3><a class="anchor" name="isWifiEnabled" href="#isWifiEnabled"></a><code>isWifiEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">Windows 10</strong>&nbsp;</p>
+
+<p>Returns true if the WiFi setting is set to enabled, and is the same as <code class="highlighter-rouge">isWifiAvailable()</code></p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="setWifiState" href="#setWifiState"></a><code>setWifiState(state)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">Windows 10</strong>&nbsp;</p>
+
+<p>Enables/disables WiFi on the device.
+Requires <code class="highlighter-rouge">ACCESS_WIFI_STATE</code> and <code class="highlighter-rouge">CHANGE_WIFI_STATE</code> permissions on Android</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      state</td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="setBluetoothState" href="#setBluetoothState"></a><code>setBluetoothState(state)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">Windows 10</strong>&nbsp;</p>
+
+<p>Enables/disables Bluetooth on the device.
+Requires <code class="highlighter-rouge">BLUETOOTH</code> and <code class="highlighter-rouge">BLUETOOTH_ADMIN</code> permissions on Android</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      state</td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isLocationEnabled" href="#isLocationEnabled"></a><code>isLocationEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns true if the device setting for location is on. On Android this returns true if Location Mode is switched on. On iOS this returns true if Location Services is switched on.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isLocationAuthorized" href="#isLocationAuthorized"></a><code>isLocationAuthorized()</code></h3>
+
+<p>Checks if the application is authorized to use location.
+Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getLocationAuthorizationStatus" href="#getLocationAuthorizationStatus"></a><code>getLocationAuthorizationStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the location authorization status for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestLocationAuthorization" href="#requestLocationAuthorization"></a><code>requestLocationAuthorization(mode)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the location authorization status for the application.
+Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      mode</td>
+    <td>
+      <code>string</code>
+    </td>
+    <td>
+      <p>iOS only: location authorization mode: &quot;always&quot; or &quot;when_in_use&quot;. If not specified, defaults to &quot;when_in_use&quot;.<strong class="tag">Optional</strong></p>
+</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isCameraPresent" href="#isCameraPresent"></a><code>isCameraPresent()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if camera hardware is present on device.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isCameraAuthorized" href="#isCameraAuthorized"></a><code>isCameraAuthorized(externalStorage)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized to use the camera.
+Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      externalStorage</td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+ <a class="__cf_email__" href="../../../cdn-cgi/l/email-protection.html" data-cfemail="f5969a87919a8394d8859980929c9bd8969498908794b5c7dbc7">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>+ requires both of these permissions. Defaults to true.<strong class="tag">Optional</strong></p>
+</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getCameraAuthorizationStatus" href="#getCameraAuthorizationStatus"></a><code>getCameraAuthorizationStatus(externalStorage)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the camera authorization status for the application.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      externalStorage</td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+ <a class="__cf_email__" href="../../../cdn-cgi/l/email-protection.html" data-cfemail="b0d3dfc2d4dfc6d19dc0dcc5d7d9de9dd3d1ddd5c2d1f0829e82">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>+ requires both of these permissions. Defaults to true.<strong class="tag">Optional</strong></p>
+</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestCameraAuthorization" href="#requestCameraAuthorization"></a><code>requestCameraAuthorization(externalStorage)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests camera authorization for the application.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      externalStorage</td>
+    <td>
+      <code>boolean</code>
+    </td>
+    <td>
+      <p>Android only: If true, requests permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
+ <a class="__cf_email__" href="../../../cdn-cgi/l/email-protection.html" data-cfemail="3f5c504d5b50495e124f534a585651125c5e525a4d5e7f0d110d">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>+ requires both of these permissions. Defaults to true.<strong class="tag">Optional</strong></p>
+</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isMicrophoneAuthorized" href="#isMicrophoneAuthorized"></a><code>isMicrophoneAuthorized()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized to use the microphone.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getMicrophoneAuthorizationStatus" href="#getMicrophoneAuthorizationStatus"></a><code>getMicrophoneAuthorizationStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the microphone authorization status for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestMicrophoneAuthorization" href="#requestMicrophoneAuthorization"></a><code>requestMicrophoneAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests microphone authorization for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isContactsAuthorized" href="#isContactsAuthorized"></a><code>isContactsAuthorized()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized to use contacts (address book).</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getContactsAuthorizationStatus" href="#getContactsAuthorizationStatus"></a><code>getContactsAuthorizationStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the contacts authorization status for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestContactsAuthorization" href="#requestContactsAuthorization"></a><code>requestContactsAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests contacts authorization for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isCalendarAuthorized" href="#isCalendarAuthorized"></a><code>isCalendarAuthorized()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized to use the calendar.</p>
+
+<p>Notes for Android:</p>
+<ul>
+  <li>This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.</li>
+</ul>
+
+<p>Notes for iOS:</p>
+<ul>
+  <li>This relates to Calendar Events (not Calendar Reminders)</li>
+</ul>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getCalendarAuthorizationStatus" href="#getCalendarAuthorizationStatus"></a><code>getCalendarAuthorizationStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the calendar authorization status for the application.</p>
+
+<p>Notes for Android:</p>
+<ul>
+  <li>This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return <code class="highlighter-rouge">GRANTED</code> status as permissions are already granted at installation time.</li>
+</ul>
+
+<p>Notes for iOS:</p>
+<ul>
+  <li>This relates to Calendar Events (not Calendar Reminders)</li>
+</ul>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestCalendarAuthorization" href="#requestCalendarAuthorization"></a><code>requestCalendarAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests calendar authorization for the application.</p>
+
+<p>Notes for iOS:</p>
+<ul>
+  <li>Should only be called if authorization status is NOT_DETERMINED. Calling it when in any other state will have no effect and just return the current authorization status.</li>
+  <li>This relates to Calendar Events (not Calendar Reminders)</li>
+</ul>
+
+<p>Notes for Android:</p>
+<ul>
+  <li>This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.</li>
+  <li>This requests permission for <code class="highlighter-rouge">READ_CALENDAR</code> run-time permission</li>
+  <li>Required permissions must be added to <code class="highlighter-rouge">AndroidManifest.xml</code> as appropriate - see Android permissions: <code class="highlighter-rouge">READ_CALENDAR</code>, <code class="highlighter-rouge">WRITE_CALENDAR</code></li>
+</ul>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="switchToSettings" href="#switchToSettings"></a><code>switchToSettings()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Opens settings page for this app.
+On Android, this opens the “App Info” page in the Settings app.
+On iOS, this opens the app settings page in the Settings app. This works only on iOS 8+ - iOS 7 and below will invoke the errorCallback.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getBluetoothState" href="#getBluetoothState"></a><code>getBluetoothState()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the state of Bluetooth on the device.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="registerBluetoothStateChangeHandler" href="#registerBluetoothStateChangeHandler"></a><code>registerBluetoothStateChangeHandler(handler)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Registers a function to be called when a change in Bluetooth state occurs.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      handler</td>
+    <td>
+      
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<h3><a class="anchor" name="registerLocationStateChangeHandler" href="#registerLocationStateChangeHandler"></a><code>registerLocationStateChangeHandler(handler)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;<strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Registers a function to be called when a change in Location state occurs.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      handler</td>
+    <td>
+      
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<h3><a class="anchor" name="isGpsLocationAvailable" href="#isGpsLocationAvailable"></a><code>isGpsLocationAvailable()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if high-accuracy locations are available to the app from GPS hardware.
+Returns true if Location mode is enabled and is set to “Device only” or “High accuracy” AND if the app is authorised to use location.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isGpsLocationEnabled" href="#isGpsLocationEnabled"></a><code>isGpsLocationEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if location mode is set to return high-accuracy locations from GPS hardware.
+  Returns true if Location mode is enabled and is set to either:</p>
+<ul>
+  <li>Device only = GPS hardware only (high accuracy)</li>
+  <li>High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)</li>
+</ul>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isNetworkLocationAvailable" href="#isNetworkLocationAvailable"></a><code>isNetworkLocationAvailable()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if low-accuracy locations are available to the app from network triangulation/WiFi access points.
+Returns true if Location mode is enabled and is set to “Battery saving” or “High accuracy” AND if the app is authorised to use location.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isNetworkLocationEnabled" href="#isNetworkLocationEnabled"></a><code>isNetworkLocationEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if location mode is set to return low-accuracy locations from network triangulation/WiFi access points.
+Returns true if Location mode is enabled and is set to either:</p>
+<ul>
+  <li>Battery saving = network triangulation and Wifi network IDs (low accuracy)</li>
+  <li>High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)</li>
+</ul>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getLocationMode" href="#getLocationMode"></a><code>getLocationMode()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Returns the current location mode setting for the device.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getPermissionAuthorizationStatus" href="#getPermissionAuthorizationStatus"></a><code>getPermissionAuthorizationStatus(permission)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Returns the current authorisation status for a given permission.
+Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      permission</td>
+    <td>
+      
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getPermissionsAuthorizationStatus" href="#getPermissionsAuthorizationStatus"></a><code>getPermissionsAuthorizationStatus(permissions)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Returns the current authorisation status for multiple permissions.
+Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      permissions</td>
+    <td>
+      
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestRuntimePermission" href="#requestRuntimePermission"></a><code>requestRuntimePermission(permission)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Requests app to be granted authorisation for a runtime permission.
+Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      permission</td>
+    <td>
+      
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestRuntimePermissions" href="#requestRuntimePermissions"></a><code>requestRuntimePermissions(permissions)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Requests app to be granted authorisation for multiple runtime permissions.
+Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      permissions</td>
+    <td>
+      
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isRequestingPermission" href="#isRequestingPermission"></a><code>isRequestingPermission()</code></h3>
+
+<p>Indicates if the plugin is currently requesting a runtime permission via the native API.
+Note that only one request can be made concurrently because the native API cannot handle concurrent requests,
+so the plugin will invoke the error callback if attempting to make more than one simultaneous request.
+Multiple permission requests should be grouped into a single call since the native API is setup to handle batch requests of multiple permission groups.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>boolean</code></p>
+</div>
+<h3><a class="anchor" name="registerPermissionRequestCompleteHandler" href="#registerPermissionRequestCompleteHandler"></a><code>registerPermissionRequestCompleteHandler(handler)</code></h3>
+
+<p>Registers a function to be called when a runtime permission request has completed.
+Pass in a falsey value to de-register the currently registered function.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      handler</td>
+    <td>
+      <code>Function</code>
+    </td>
+    <td>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<h3><a class="anchor" name="isBluetoothEnabled" href="#isBluetoothEnabled"></a><code>isBluetoothEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if the device setting for Bluetooth is switched on.
+This requires <code class="highlighter-rouge">BLUETOOTH</code> permission on Android</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="hasBluetoothSupport" href="#hasBluetoothSupport"></a><code>hasBluetoothSupport()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if the device has Bluetooth capabilities.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="hasBluetoothLESupport" href="#hasBluetoothLESupport"></a><code>hasBluetoothLESupport()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if the device has Bluetooth Low Energy (LE) capabilities.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="hasBluetoothLEPeripheralSupport" href="#hasBluetoothLEPeripheralSupport"></a><code>hasBluetoothLEPeripheralSupport()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if the device supports Bluetooth Low Energy (LE) Peripheral mode.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isExternalStorageAuthorized" href="#isExternalStorageAuthorized"></a><code>isExternalStorageAuthorized()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized to use external storage.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getExternalStorageAuthorizationStatus" href="#getExternalStorageAuthorizationStatus"></a><code>getExternalStorageAuthorizationStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>CReturns the external storage authorization status for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestExternalStorageAuthorization" href="#requestExternalStorageAuthorization"></a><code>requestExternalStorageAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Requests external storage authorization for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getExternalSdCardDetails" href="#getExternalSdCardDetails"></a><code>getExternalSdCardDetails()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Returns details of external SD card(s): absolute path, is writable, free space.</p>
+
+<p>The intention of this method is to return the location and details of removable external SD cards.
+This differs from the “external directories” returned by cordova-plugin-file which return mount points relating to non-removable (internal) storage.</p>
+
+<p>Learn more about this method <a href="https://github.com/dpa99c/cordova-diagnostic-plugin#getexternalsdcarddetails">here</a></p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="switchToWirelessSettings" href="#switchToWirelessSettings"></a><code>switchToWirelessSettings()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Switches to the wireless settings page in the Settings app. Allows configuration of wireless controls such as Wi-Fi, Bluetooth and Mobile networks.</p>
+
+<h3><a class="anchor" name="switchToNFCSettings" href="#switchToNFCSettings"></a><code>switchToNFCSettings()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Displays NFC settings to allow user to enable NFC.</p>
+
+<h3><a class="anchor" name="isNFCPresent" href="#isNFCPresent"></a><code>isNFCPresent()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if NFC hardware is present on device.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isNFCEnabled" href="#isNFCEnabled"></a><code>isNFCEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if the device setting for NFC is switched on.
+Note: this operation does not require NFC permission in the manifest.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isNFCAvailable" href="#isNFCAvailable"></a><code>isNFCAvailable()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Checks if NFC is available to the app. Returns true if the device has NFC capabilities AND if NFC setting is switched on.
+Note: this operation does not require NFC permission in the manifest.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="registerNFCStateChangeHandler" href="#registerNFCStateChangeHandler"></a><code>registerNFCStateChangeHandler(hander)</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">Android</strong>&nbsp;</p>
+
+<p>Registers a function to be called when a change in NFC state occurs. Pass in a falsey value to de-register the currently registered function.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      hander</td>
+    <td>
+      <code>Function</code>
+    </td>
+    <td>
+      <p>callback function to be called when NFC state changes</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isCameraRollAuthorized" href="#isCameraRollAuthorized"></a><code>isCameraRollAuthorized()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized to use the Camera Roll in Photos app.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getCameraRollAuthorizationStatus" href="#getCameraRollAuthorizationStatus"></a><code>getCameraRollAuthorizationStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the authorization status for the application to use the Camera Roll in Photos app.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;string&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestCameraRollAuthorization" href="#requestCameraRollAuthorization"></a><code>requestCameraRollAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests camera roll authorization for the application.
+Should only be called if authorization status is NOT_REQUESTED.
+Calling it when in any other state will have no effect.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isRemoteNotificationsEnabled" href="#isRemoteNotificationsEnabled"></a><code>isRemoteNotificationsEnabled()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if remote (push) notifications are enabled.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isRegisteredForRemoteNotifications" href="#isRegisteredForRemoteNotifications"></a><code>isRegisteredForRemoteNotifications()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Indicates if the app is registered for remote (push) notifications on the device.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getRemoteNotificationTypes" href="#getRemoteNotificationTypes"></a><code>getRemoteNotificationTypes()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Indicates the current setting of notification types for the app in the Settings app.
+Note: on iOS 8+, if “Allow Notifications” switch is OFF, all types will be returned as disabled.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isRemindersAuthorized" href="#isRemindersAuthorized"></a><code>isRemindersAuthorized()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized to use reminders.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getRemindersAuthorizationStatus" href="#getRemindersAuthorizationStatus"></a><code>getRemindersAuthorizationStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the reminders authorization status for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestRemindersAuthorization" href="#requestRemindersAuthorization"></a><code>requestRemindersAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests reminders authorization for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isBackgroundRefreshAuthorized" href="#isBackgroundRefreshAuthorized"></a><code>isBackgroundRefreshAuthorized()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if the application is authorized for background refresh.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="getBackgroundRefreshStatus" href="#getBackgroundRefreshStatus"></a><code>getBackgroundRefreshStatus()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Returns the background refresh authorization status for the application.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestBluetoothAuthorization" href="#requestBluetoothAuthorization"></a><code>requestBluetoothAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests Bluetooth authorization for the application.</p>
+
+<p>Learn more about this method <a href="https://github.com/dpa99c/cordova-diagnostic-plugin#requestbluetoothauthorization">here</a></p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isMotionAvailable" href="#isMotionAvailable"></a><code>isMotionAvailable()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if motion tracking is available on the current device.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="isMotionRequestOutcomeAvailable" href="#isMotionRequestOutcomeAvailable"></a><code>isMotionRequestOutcomeAvailable()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Checks if it’s possible to determine the outcome of a motion authorization request on the current device.
+There’s no direct way to determine if authorization was granted or denied, so the Pedometer API must be used to indirectly determine this:
+therefore, if the device supports motion tracking but not Pedometer Event Tracking, the outcome of requesting motion detection cannot be determined.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;boolean&gt;</code></p>
+</div>
+<h3><a class="anchor" name="requestAndCheckMotionAuthorization" href="#requestAndCheckMotionAuthorization"></a><code>requestAndCheckMotionAuthorization()</code></h3>
+
+<p>
+  <strong>Platforms:</strong><strong class="tag">iOS</strong>&nbsp;</p>
+
+<p>Requests and checks motion authorization for the application: there is no way to independently request only or check only, so both must be done in one operation.</p>
+
+<p>Learn more about this method <a href="https://github.com/dpa99c/cordova-diagnostic-plugin#requestandcheckmotionauthorization">here</a></p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> <code>Promise&lt;any&gt;</code></p>
+</div>
+
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/native/diagnostic/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:22 GMT -->
+</html>

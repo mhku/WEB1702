@@ -1,0 +1,57 @@
+今天学习的内容
+1:复习昨天知识重点
+2:作业/综合练习
+3:http协议
+#-----------------------
+1:复习昨天知识重点
+  1.1:php 操作mysql 查询
+	    a:连接数据库
+      b:设置编码utf8
+			c:创建sql{SELECT ..},发送
+			d:$result 结果集对象
+			e:抓取
+			  一次抓取一行数据
+				关联:$row = mysqli_fetch_assoc($result);
+				索引:$row = mysqli_fetch_row($result);
+				一次抓取所有行数据
+				$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+	1.2:http协议
+2:作业/综合练习
+3:http协议
+  3.1:GET请求与POST请求区别 *****
+	a:语义:
+	 GET:客户端想获取服务器资源
+	 POST:客户端想传递数据给服务器
+	b:安全级:
+	 GET:不安全
+	 POST:不安全
+	 示例:get_post_01.html
+  c:数据长度
+	 GET:客户端发送数据最长1KB
+   &wd=%E4%B8%9C%E4%B8%9C
+	 POST:没限定
+  d:如何发起
+	 GET: 浏览器地址栏输入地址回车
+	      标签:href  src 
+				超链接跳转
+				JS跳转
+				表单GET提交
+				AJAX-GET
+	 POST:表单POST
+	      AJAX-POST
+  e:是否需要编码 
+	 GET： 发送字符中数据不转码
+	 POST：发送字符串数据时自动转码-->中文没问题
+    
+  3.2:http协议详解
+	 a:02.html 盗链
+	 b:缓存.jpg
+
+
+  综合示小项目"用户管理系统"
+	1:新用户注册
+	2:用户登录
+	3:浏览所有用户信息
+	4:删除用户
+	用户管理系统.txt
+

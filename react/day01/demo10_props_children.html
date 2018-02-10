@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  //目标：将myList中指定的3个p，显示在li，插入到ul
+  var MyList = React.createClass({
+    displayList:function(){
+     return React.Children.map(
+            this.props.children,
+            function(child){
+              return <li>{child}</li>
+            }
+          )
+    },
+    render:function(){
+      return <ul>
+        {
+          this.displayList()
+        }
+      </ul>
+    }
+  })
+
+  ReactDOM.render(
+    <MyList>
+      <p>test01</p>
+      <p>test02</p>
+      <p>test03</p>
+    </MyList>
+    ,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

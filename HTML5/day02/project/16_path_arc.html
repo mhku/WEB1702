@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>绘制路径——圆形</h3>
+  <canvas id="c13" width="500" height="400"></canvas>
+  <script>
+    var ctx = c13.getContext('2d');
+
+    //绘制灰色的背景圆环
+    ctx.beginPath();
+    ctx.arc(250,200,100,0, 2*Math.PI);
+    ctx.lineWidth = 20;
+    ctx.strokeStyle = '#aaa';
+    ctx.stroke();
+
+    //绘制圆形进度条
+    var start = -90;  //进度条的起始角度
+    var end = -90;    //进度条的终止角度
+    var t = setInterval(function(){
+      //此练习中可以省略“清除画布”步骤
+      ctx.beginPath();
+      ctx.arc(250,200,100,start*Math.PI/180,end*Math.PI/180);
+      ctx.strokeStyle = '#0a0';
+      ctx.stroke();
+      
+      end += 3;
+      if(end>270){
+        clearInterval(t);
+      }
+    }, 50)
+  </script>
+</body>
+</html>

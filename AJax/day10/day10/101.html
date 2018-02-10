@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> 京东商城－产品列表 </title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+      <h1>读取数据 cookie</h1>
+      <script>
+        //15:55--15:58
+        var input = document.cookie;
+        console.log(input);
+        //"uid=100; uname=tom".split(";");
+        var arr = input.split("; ");
+        //["uid=100", "uname=tom"]
+        var sub = arr[0].split("=");
+        //console.log(sub); ["uid", "100"]
+        console.log(sub[1]);
+
+      </script>
+    </body>
+</html>

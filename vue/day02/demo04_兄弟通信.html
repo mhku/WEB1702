@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+
+  <xiongda></xiongda>
+  <hr/>
+  <xionger></xionger>
+
+</div>
+
+<script type="text/x-template" id="xiongdaTpl">
+  <div>
+    <h1>这是熊大</h1>
+    <button @click="tellLaoer">
+      告诉熊二 光头强来了
+    </button>
+  </div>
+</script>
+
+<script type="text/x-template" id="xiongerTpl">
+  <div>
+    <h1>这是熊二</h1>
+    <button @click="tellLaoda">
+      告诉熊大，知道了
+    </button>
+  </div>
+</script>
+
+<script>
+  var bus = new Vue();
+
+  Vue.component('xiongda',{
+    template:'#xiongdaTpl',
+    mounted: function () {
+      //绑定事件
+      bus.$on('xiongdaEvent', function () {
+        console.log('熊大收到消息了');
+      })
+    },
+    methods:{
+      tellLaoer: function () {
+        //触发绑定到熊二的事件
+        bus.$emit('xiongerEvent','光头强来了');
+      }
+    }
+  })
+
+  Vue.component('xionger',{
+    template:'#xiongerTpl',
+    mounted: function () {
+      bus.$on('xiongerEvent', function (msg) {
+        console.log(msg);
+      });
+    },
+    methods:{
+      tellLaoda: function () {
+        //通过事件通知兄弟组件
+        bus.$emit('xiongdaEvent','知道光头强要来了');
+      }
+    }
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+
+</script>
+
+</body>
+</html>

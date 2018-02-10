@@ -1,0 +1,770 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/ajs-quick-reference.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:23 GMT -->
+<head><title>从 AngularJS 到 Angular 快速参考 - ts - COOKBOOK</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent is-selected">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item is-selected"><a href="ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="ajs-quick-reference.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/cookbook/ajs-quick-reference.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/cookbook/ajs-quick-reference.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">从 AngularJS 到 Angular 快速参考 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">学习如何把 AngularJS 中的概念和技术对应到 Angular 中</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><a id="top"></a><p><em>Angular</em> is the name for the Angular of today and tomorrow.
+<em>AngularJS</em> is the name for all v1.x versions of Angular.</p>
+<p>This guide helps you transition from AngularJS to Angular
+by mapping AngularJS syntax to the equivalent Angular syntax.</p>
+<p>在AngularJS和Angular之间，有很多不同的概念和语法。
+本章提供了一个快速的参考指南，指出一些常用的AngularJS语法及其在Angular中的等价物。</p>
+<p><strong>See the Angular syntax in this <live-example name="cb-ajs-quick-reference"></live-example></strong>.</p>
+<p><strong>可到<live-example name="cb-ajs-quick-reference"></live-example>中查看Angular语法</strong>。</p>
+<h2 id="contents">Contents</h2>
+<p>   内容</p>
+<ul>
+<li><p><a href="#template-basics">Template basics</a>&mdash;binding and local variables.</p>
+<p><a href="#template-basics">模板基础</a> - 绑定变量与局部变量。</p>
+</li>
+<li><p><a href="#template-directives">Template directives</a>&mdash;built-in directives <code>ngIf</code> and <code>ngClass</code>.</p>
+<p><a href="#template-directives">模板指令</a> - 内置指令<code>ngIf</code>和<code>ngClass</code>。</p>
+</li>
+<li><p><a href="#filters-pipes">Filters/pipes</a>&mdash;built-in <em>filters</em>, known as <em>pipes</em> in Angular.</p>
+<p><a href="#filters-pipes">过滤器/管道</a> - 内置<em>过滤器(filter)</em>，在Angular中叫<em>管道(pipe)</em>。</p>
+</li>
+<li><p><a href="#controllers-components">Modules/controllers/components</a>&mdash;<em>modules</em> in Angular are slightly different from <em>modules</em> in AngularJS, and <em>controllers</em> are <em>components</em> in Angular.</p>
+<p><a href="#controllers-components">模块/控制器/组件</a> - Angular 中的<em>模块</em>和AngularJS 中的略有不同；而<em>控制器</em>在Angular 中叫组件。</p>
+</li>
+<li><p><a href="#style-sheets">Style sheets</a>&mdash;more options for CSS than in AngularJS.</p>
+<p><a href="#style-sheets">样式表</a> - Angular 相对AngularJS 在 CSS 方面有了更多选项。</p>
+</li>
+</ul>
+<div class="l-main-section"></div><h2 id="template-basics">Template basics</h2>
+<h2 id="-">模板基础</h2>
+<p>Templates are the user-facing part of an Angular application and are written in HTML.
+The following table lists some of the key AngularJS template features with their equivalent Angular template syntax.</p>
+<p>模板是Angular应用中的门面部分，它是用HTML写的。下表中是一些AngularJS中的关键模板特性及其在Angular中的等价语法。</p>
+<table width="100%"><col width="50%"><col width="50%"><tr><th>AngularJS</th><th>Angular</th></tr><tr style="vertical-align:top"><td><h3 id="bindings-interpolation">Bindings/interpolation</h3>
+<h3 id="-">绑定/插值表达式</h3>
+<code-example>Your favorite hero is: {{vm.favoriteHero}}</code-example><p>In AngularJS, an expression in curly braces denotes one-way binding.
+This binds the value of the element to a property in the controller
+associated with this template.</p>
+<p>在AngularJS中，花括号中的表达式代表单向绑定。
+它把元素的值绑定到了与模板相关控制器的属性上。</p>
+<p>When using the <code>controller as</code> syntax,
+the binding is prefixed with the controller alias (<code>vm</code> or <code>$ctrl</code>) because you
+have to be specific about the source of the binding.</p>
+<p>当使用<code>controller as</code>语法时，该绑定需要用控制器的别名(<code>vm</code>)为前缀，这是因为我们不得不通过它来指定绑定源。</p>
+</td><td><h3 id="bindings-interpolation">Bindings/interpolation</h3>
+<h3 id="-">绑定/插值表达式</h3>
+<div class="code-example"><code-example language="html" format="">Your favorite hero is: {{favoriteHero}}
+</code-example></div><p>In Angular, a template expression in curly braces still denotes one-way binding.
+This binds the value of the element to a property of the component.
+The context of the binding is implied and is always the
+associated component, so it needs no reference variable.</p>
+<p>在Angular中，花括号中的模板表达式同样代表单向绑定。
+它把元素的值绑定到了组件的属性上。
+它绑定的上下文变量是隐式的，并且总是关联到组件。
+所以，它不需要一个引用变量。</p>
+<p>For more information, see the <a href="../guide/template-syntax.html#interpolation">Interpolation</a>
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解更多，请参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#interpolation">插值表达式</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="filters">Filters</h3>
+<h3 id="-">过滤器</h3>
+<code-example>&lt;td>{{movie.title | uppercase}}&lt;/td></code-example><p>To filter output in AngularJS templates, use the pipe character (|) and one or more filters.</p>
+<p>要在AngularJS中过滤输出，使用管道字符(|)以及一个或多个过滤器。</p>
+<p>This example filters the <code>title</code> property to uppercase.</p>
+<p>在这个例子中，我们把<code>title</code>属性过滤成了大写形式。</p>
+</td><td><h3 id="pipes">Pipes</h3>
+<h3 id="-">管道</h3>
+<div class="code-example"><code-example language="html" format="">&lt;td&gt;{{movie.title | uppercase}}&lt;/td&gt;
+</code-example></div><p>In Angular you use similar syntax with the pipe (|) character to filter output, but now you call them <strong>pipes</strong>.
+Many (but not all) of the built-in filters from AngularJS are
+built-in pipes in Angular.</p>
+<p>在Angular中，我们使用相似的语法 —— 用管道字符(|)来过滤输出，但是现在直接把它叫做<strong>管道</strong>了。
+很多(但不是所有)AngularJS中的内置过滤器也成了Angular中的内置管道。</p>
+<p>For more information, see <a href="#filters-pipes">Filters/pipes</a> below.</p>
+<p>请参见下面<a href="#filters-pipes">过滤器/管道</a>了解更多信息。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="local-variables">Local variables</h3>
+<h3 id="-">局部变量</h3>
+<code-example format="">&lt;tr ng-repeat="movie in vm.movies">
+  &lt;td>{{movie.title}}&lt;/td>
+&lt;/tr></code-example><p>Here, <code>movie</code> is a user-defined local variable.</p>
+<p>这里的<code>movie</code>是一个用户定义的局部变量</p>
+</td><td><h3 id="input-variables">Input variables</h3>
+<h3 id="-">输入变量</h3>
+<div class="code-example"><code-example language="html" format="">&lt;tr *ngFor=&quot;let movie of movies&quot;&gt;
+  &lt;td&gt;{{movie.title}}&lt;/td&gt;
+&lt;/tr&gt;
+</code-example></div><p>Angular has true template input variables that are explicitly defined using the <code>let</code> keyword.</p>
+<p>在Angular中，我们有了真正的模板输入变量，它需要使用<code>let</code>关键字进行明确定义。</p>
+<p>For more information, see the <a href="../guide/template-syntax.html#microsyntax">ngFor micro-syntax</a>
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解更多信息，请参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#microsyntax">ngFor微语法</a>部分。</p>
+</td></tr></table><p><a href="#top">Back to top</a></p>
+<p><a href="#top">返回顶部</a></p>
+<div class="l-main-section"></div><h2 id="template-directives">Template directives</h2>
+<h2 id="-">模板指令</h2>
+<p>AngularJS provides more than seventy built-in directives for templates.
+Many of them aren&#39;t needed in Angular because of its more capable and expressive binding system.
+The following are some of the key AngularJS built-in directives and their equivalents in Angular.</p>
+<p>AngularJS 为模板提供了七十多个内置指令。
+在 Angular 中，它们很多都已经不需要了，因为 Angular 有了一个更加强大、快捷的绑定系统。
+下面是一些AngularJS 中的关键指令及其在 Angular 中的等价物。</p>
+<table width="100%"><col width="50%"><col width="50%"><tr><th>AngularJS</th><th>Angular</th></tr><tr style="vertical-align:top"><td><h3 id="ng-app">ng-app</h3>
+<code-example>&lt;body ng-app="movieHunter"></code-example><p>The application startup process is called <strong>bootstrapping</strong>.</p>
+<p>应用的启动过程被称为<strong>引导</strong>。</p>
+<p>Although you can bootstrap an AngularJS app in code,
+many applications bootstrap declaratively with the <code>ng-app</code> directive,
+giving it the name of the application&#39;s module (<code>movieHunter</code>).</p>
+<p>虽然可以从代码中引导Angular应用，
+但很多应用都是通过<code>ng-app</code>指令进行声明式引导的，只要给它一个应用模块的名字(<code>movieHunter</code>)就可以了。</p>
+</td><td><h3 id="bootstrapping">Bootstrapping</h3>
+<h3 id="-">引导</h3>
+<div class="code-example"><header><h4>main.ts</h4></header><code-example language="ts" format="">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import { AppModule } from &#39;./app/app.module&#39;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+</code-example></div><br><div class="code-example"><header><h4>app.module.ts</h4></header><code-example language="ts" format="">import { NgModule }      from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+
+import { AppComponent }  from &#39;./app.component&#39;;
+
+@NgModule({
+  imports: [ BrowserModule ],
+  declarations: [ AppComponent ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><p>Angular doesn&#39;t have a bootstrap directive.
+To launch the app in code, explicitly bootstrap the application&#39;s root module (<code>AppModule</code>)
+in <code>main.ts</code>
+and the application&#39;s root component (<code>AppComponent</code>) in <code>app.module.ts</code>.</p>
+<p>Angular 没有引导指令。
+我们总是通过显式调用一个<code>bootstrap</code>函数，并传入应用模块的名字(<code>AppComponent</code>)来启动应用。</p>
+<p>For more information see the <a href="../guide/setup.html">Setup</a> page.</p>
+<p>要了解更多，参见<a href="../guide/setup.html">搭建本地开发环境</a>。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-class">ng-class</h3>
+<code-example format="">&lt;div ng-class="{active: isActive}">
+&lt;div ng-class="{active: isActive,
+                   shazam: isImportant}"></code-example><p>In AngularJS, the <code>ng-class</code> directive includes/excludes CSS classes
+based on an expression. That expression is often a key-value control object with each
+key of the object defined as a CSS class name, and each value defined as a template expression
+that evaluates to a Boolean value.</p>
+<p>在AngularJS中，<code>ng-class</code>指令会基于一个表达式来包含/排除某些CSS类。该表达式通常是一个“键-值”型的控制对象，
+对象中的每一个键代表一个CSS类名，每一个值定义为一个返回布尔值的模板表达式。</p>
+<p>In the first example, the <code>active</code> class is applied to the element if <code>isActive</code> is true.</p>
+<p>在第一个例子中，当<code>isActive</code>为真时，<code>active</code>类会被应用到元素上。</p>
+<p>You can specify multiple classes, as shown in the second example.</p>
+<p>就像第二个例子中展示的，可以指定多个CSS类。</p>
+</td><td><h3 id="ngclass">ngClass</h3>
+<div class="code-example"><code-example language="html" format="">&lt;div [ngClass]=&quot;{active: isActive}&quot;&gt;
+&lt;div [ngClass]=&quot;{active: isActive,
+                 shazam: isImportant}&quot;&gt;
+&lt;div [class.active]=&quot;isActive&quot;&gt;
+</code-example></div><p>In Angular, the <code>ngClass</code> directive works similarly.
+It includes/excludes CSS classes based on an expression.</p>
+<p>在Angular中，<code>ngClass</code>指令用类似的方式工作。
+它根据一个表达式包含/排除某些CSS类。</p>
+<p>In the first example, the <code>active</code> class is applied to the element if <code>isActive</code> is true.</p>
+<p>在第一个例子中，如果<code>isActive</code>为真，则<code>active</code>类被应用到那个元素上。</p>
+<p>You can specify multiple classes, as shown in the second example.</p>
+<p>就像第二个例子中所展示的那样，可以同时指定多个类。</p>
+<p>Angular also has <strong>class binding</strong>, which is a good way to add or remove a single class,
+as shown in the third example.</p>
+<p>Angular还有<strong>类绑定</strong>，它是单独添加或移除一个类的好办法 —— 就像第三个例子中展示的。</p>
+<p>For more information see the <a href="../guide/template-syntax.html#other-bindings">Attribute, class, and style bindings</a> 
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解更多信息，参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#other-bindings">属性、CSS类和样式绑定</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-click">ng-click</h3>
+<code-example format="">&lt;button ng-click="vm.toggleImage()">
+&lt;button ng-click="vm.toggleImage($event)"></code-example><p>In AngularJS, the <code>ng-click</code> directive allows you to specify custom behavior when an element is clicked.</p>
+<p>在AngularJS中，<code>ng-click</code>指令指定当元素被点击时的自定义行为。</p>
+<p>In the first example, when the user clicks the button, the <code>toggleImage()</code> method in the controller referenced by the <code>vm</code> <code>controller as</code> alias is executed.</p>
+<p>在第一个例子中，如果用户点击了这个按钮，那么控制器的<code>toggleImage()</code>方法就会被执行，这个控制器是被<code>controller as</code>中指定的<code>vm</code>别名所引用的。</p>
+<p>The second example demonstrates passing in the <code>$event</code> object, which provides details about the event
+to the controller.</p>
+<p>第二个例子演示了传入<code>$event</code>对象，它提供了事件的详情，并被传到控制器。</p>
+</td><td><h3 id="bind-to-the-click-event">Bind to the <code>click</code> event</h3>
+<h3 id="-click-">绑定到<code>click</code>事件</h3>
+<div class="code-example"><code-example language="html" format="">&lt;button (click)=&quot;toggleImage()&quot;&gt;
+&lt;button (click)=&quot;toggleImage($event)&quot;&gt;
+</code-example></div><p>AngularJS event-based directives do not exist in Angular.
+Rather, define one-way binding from the template view to the component using <strong>event binding</strong>.</p>
+<p>AngularJS基于事件的指令在Angular中已经不存在了。
+不过，可以使用<strong>事件绑定</strong>来定义从模板视图到组件的单向数据绑定。</p>
+<p>For event binding, define the name of the target event within parenthesis and
+specify a template statement, in quotes, to the right of the equals. Angular then
+sets up an event handler for the target event. When the event is raised, the handler
+executes the template statement.</p>
+<p>要使用事件绑定，把目标事件的名字放在圆括号中，并且使用等号右侧引号中的模板语句对它赋值。
+然后Angular为这个目标时间设置事件处理器。当事件被触发时，这个处理器就会执行模板语句。</p>
+<p>In the first example, when a user clicks the button, the <code>toggleImage()</code> method in the associated component is executed.</p>
+<p>在第一个例子中，当用户点击此按钮时，相关组件中的<code>toggleImage()</code>方法就被执行了。</p>
+<p>The second example demonstrates passing in the <code>$event</code> object, which provides details about the event
+to the component.</p>
+<p>第二个例子演示了如何传入<code>$event</code>对象，它为组件提供了此事件的详情。</p>
+<p>For a list of DOM events, see: <a href="https://developer.mozilla.org/en-US/docs/Web/Events">https://developer.mozilla.org/en-US/docs/Web/Events</a>.</p>
+<p>要查看DOM事件的列表，请参见<a href="https://developer.mozilla.org/en-US/docs/Web/Events">网络事件</a>。</p>
+<p>For more information, see the <a href="../guide/template-syntax.html#event-binding">Event binding</a> 
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解更多，请参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#event-binding">事件绑定</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-controller">ng-controller</h3>
+<code-example format="">&lt;div ng-controller="MovieListCtrl as vm"></code-example><p>In AngularJS, the <code>ng-controller</code> directive attaches a controller to the view.
+Using the <code>ng-controller</code> (or defining the controller as part of the routing) ties the
+view to the controller code associated with that view.</p>
+<p>在AngularJS中，<code>ng-controller</code>指令把控制器附加到视图上。
+使用<code>ng-controller</code>(或把控制器定义为路由的一部分)把视图及其控制器的代码联系在一起。</p>
+</td><td><h3 id="component-decorator">Component decorator</h3>
+<h3 id="component-">Component装饰器</h3>
+<div class="code-example"><code-example language="ts" format="">@Component({
+  selector: &#39;movie-list&#39;,
+  templateUrl: &#39;./movie-list.component.html&#39;,
+  styleUrls: [ &#39;./movie-list.component.css&#39; ],
+})
+</code-example></div><p>In Angular, the template no longer specifies its associated controller.
+Rather, the component specifies its associated template as part of the component class decorator.</p>
+<p>在Angular中，模板不用再指定它相关的控制器。
+反过来，组件会在组件类的装饰器中指定与它相关的模板。</p>
+<p>For more information, see <a href="../guide/architecture.html#component">Architecture Overview</a>.</p>
+<p>要了解更多，请参见<a href="../guide/architecture.html#component">架构概览</a>。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-hide">ng-hide</h3>
+<p>In AngularJS, the <code>ng-hide</code> directive shows or hides the associated HTML element based on
+an expression. For more information, see <a href="#ng-show">ng-show</a>.</p>
+<p>在AngularJS中，<code>ng-hide</code>指令会基于一个表达式显示或隐藏相关的HTML元素。
+参见<a href="#ng-show">ng-show</a>了解更多。</p>
+</td><td><h3 id="bind-to-the-hidden-property">Bind to the <code>hidden</code> property</h3>
+<h3 id="-hidden-">绑定<code>hidden</code>属性</h3>
+<p>In Angular, you use property binding; there is no built-in <em>hide</em> directive.
+For more information, see <a href="#ng-show">ng-show</a>.</p>
+<p>在Angular中，并没有一个内置的<em>hide</em>指令，可以改用属性绑定。
+参见<a href="#ng-show">ng-show</a>了解更多。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-href">ng-href</h3>
+<code-example format="">&lt;a ng-href="angularDocsUrl">Angular Docs&lt;/a></code-example><p>The <code>ng-href</code> directive allows AngularJS to preprocess the <code>href</code> property so that it
+can replace the binding expression with the appropriate URL before the browser
+fetches from that URL.</p>
+<p><code>ng-href</code>指令允许AngularJS对<code>href</code>属性进行预处理，以便它能在浏览器获取那个URL之前，使用一个返回适当URL的绑定表达式替换它。</p>
+<p>In AngularJS, the <code>ng-href</code> is often used to activate a route as part of navigation.</p>
+<p>在AngularJS 中，<code>ng-href</code>通常用来作为导航的一部分，激活一个路由。</p>
+<code-example format="">&lt;a ng-href="#movies">Movies&lt;/a></code-example><p>Routing is handled differently in Angular.</p>
+<p>路由在Angular中的处理方式不同。</p>
+</td><td><h3 id="bind-to-the-href-property">Bind to the <code>href</code> property</h3>
+<h3 id="-href-">绑定到<code>href</code>属性</h3>
+<div class="code-example"><code-example language="html" format="">&lt;a [href]=&quot;angularDocsUrl&quot;&gt;Angular Docs&lt;/a&gt;
+</code-example></div><p>Angular uses property binding; there is no built-in <em>href</em> directive.
+Place the element&#39;s <code>href</code> property in square brackets and set it to a quoted template expression.</p>
+<p>在Angular中，并没有内置的<em>href</em>指令，改用属性绑定。
+我们把元素的<code>href</code>属性放在方括号中，并把它设成一个引号中的模板表达式。</p>
+<p>For more information see the <a href="../guide/template-syntax.html#property-binding">Property binding</a> 
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解<a href="../guide/template-syntax.html#property-binding">属性绑定</a>的更多知识，参见<a href="../guide/template-syntax.html">模板语法</a>。</p>
+<p>In Angular, <code>href</code> is no longer used for routing. Routing uses <code>routerLink</code>, as shown in the following example.</p>
+<p>在Angular中，<code>href</code>不再用作路由，而是改用第三个例子中所展示的<code>routerLink</code>指令。</p>
+<div class="code-example"><code-example language="html" format="">&lt;a [routerLink]=&quot;[&#39;/movies&#39;]&quot;&gt;Movies&lt;/a&gt;
+</code-example></div><p>For more information on routing, see the <a href="../guide/router.html#router-link">RouterLink binding</a> 
+section of the <a href="../guide/router.html">Routing &amp; Navigation</a> page.</p>
+<p>要了解关于路由的更多信息，请参见<a href="../guide/router.html">路由与导航</a>的<a href="../guide/router.html#router-link">RouterLink绑定</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-if">ng-if</h3>
+<code-example format="">&lt;table ng-if="movies.length"></code-example><p>In AngularJS, the <code>ng-if</code> directive removes or recreates a portion of the DOM,
+based on an expression. If the expression is false, the element is removed from the DOM.</p>
+<p>在AngularJS中，<code>ng-if</code>指令会根据一个表达式来移除或重建DOM中的一部分。如果表达式为假，元素就会被从DOM中移除。</p>
+<p>In this example, the <code>&lt;table&gt;</code> element is removed from the DOM unless the <code>movies</code> array has a length greater than zero.</p>
+<p>在这个例子中，除非<code>movies</code>数组的长度大于0，否则<code>&lt;table&gt;</code>元素就会被从DOM中移除。</p>
+</td><td><h3 id="-ngif">*ngIf</h3>
+<div class="code-example"><code-example language="html" format="">&lt;table *ngIf=&quot;movies.length&quot;&gt;
+</code-example></div><p>The <code>*ngIf</code> directive in Angular works the same as the <code>ng-if</code> directive in AngularJS. It removes 
+or recreates a portion of the DOM based on an expression.</p>
+<p>Angular中的<code>*ngIf</code>指令与AngularJS中的<code>ng-if</code>指令一样，
+它根据表达式的值移除或重建DOM中的一部分。</p>
+<p>In this example, the <code>&lt;table&gt;</code> element is removed from the DOM unless the <code>movies</code> array has a length.</p>
+<p>在这个例子中，除非<code>movies</code>数组的长度大于0，否则<code>&lt;table&gt;</code>元素就会被从DOM中移除。</p>
+<p>The (*) before <code>ngIf</code> is required in this example.
+For more information, see <a href="../guide/structural-directives.html">Structural Directives</a>.</p>
+<p>在这个例子中<code>ngIf</code>前的星号(*)是必须的。
+要了解更多信息，参见<a href="../guide/structural-directives.html">结构型指令</a>。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-model">ng-model</h3>
+<code-example format="">&lt;input ng-model="vm.favoriteHero"/></code-example><p>In AngularJS, the <code>ng-model</code> directive binds a form control to a property in the controller associated with the template.
+This provides <strong>two-way binding</strong>, whereby any change made to the value in the view is synchronized with the model, and any change to the model is synchronized with the value in the view.</p>
+<p>在Angular1中，<code>ng-model</code>指令把一个表单控件绑定到了模板相关控制器的一个属性上。
+这提供了<strong>双向绑定</strong>功能，因此，任何对视图中值的改动，都会同步到模型中，对模型的改动，也会同步到视图中。</p>
+</td><td><h3 id="ngmodel">ngModel</h3>
+<div class="code-example"><code-example language="html" format="">&lt;input [(ngModel)]=&quot;favoriteHero&quot; /&gt;
+</code-example></div><p>In Angular, <strong>two-way binding</strong> is denoted by <code>[()]</code>, descriptively referred to as a &quot;banana in a box&quot;. This syntax is a shortcut for defining both property binding (from the component to the view)
+and event binding (from the view to the component), thereby providing two-way binding.</p>
+<p>在Angular中，<strong>双向绑定</strong>使用[()]标记出来，它被形象的比作“盒子中的香蕉”。
+这种语法是一个简写形式，用来同时定义一个属性绑定(从组件到视图)和一个事件绑定(从视图到组件)，因此，我们得到了双向绑定。</p>
+<p>For more information on two-way binding with <code>ngModel</code>, see the <a href="../guide/template-syntax.html#ngModel">NgModel&mdash;Two-way binding to 
+form elements with <code>[(ngModel)]</code></a> 
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解使用ngModel进行双向绑定的更多知识，参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#ngModel">NgModel&mdash;使用<code>[(ngModel)]</code>进行双向绑定</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-repeat">ng-repeat</h3>
+<code-example format="">&lt;tr ng-repeat="movie in vm.movies"></code-example><p>In AngularJS, the <code>ng-repeat</code> directive repeats the associated DOM element
+for each item in the specified collection.</p>
+<p>在Angular1中，<code>ng-repeat</code>指令会为指定集合中的每一个条目重复渲染相关的DOM元素。</p>
+<p>In this example, the table row (<code>&lt;tr&gt;</code>) element repeats for each movie object in the collection of movies.</p>
+<p>在这个例子中，对<code>movies</code>集合中的每一个<code>movie</code>对象重复渲染了这个表格行元素(<code>&lt;tr&gt;</code>)。</p>
+</td><td><h3 id="-ngfor">*ngFor</h3>
+<div class="code-example"><code-example language="html" format="">&lt;tr *ngFor=&quot;let movie of movies&quot;&gt;
+</code-example></div><p>The <code>*ngFor</code> directive in Angular is similar to the <code>ng-repeat</code> directive in AngularJS. It repeats 
+the associated DOM element for each item in the specified collection.
+More accurately, it turns the defined element (<code>&lt;tr&gt;</code> in this example) and its contents into a template and
+uses that template to instantiate a view for each item in the list.</p>
+<p>Angular中的<code>*ngFor</code>指令类似于AngularJS中的<code>ng-repeat</code>指令。
+它为指定集合中的每一个条目重复渲染了相关的DOM元素。
+更准确的说，它把被界定出来的元素(这个例子中是<code>&lt;tr&gt;</code>)及其内容转成了一个模板，并使用那个模板来为列表中的每一个条目实例化一个视图。</p>
+<p>Notice the other syntax differences:
+The (*) before <code>ngFor</code> is required;
+the <code>let</code> keyword identifies <code>movie</code> as an input variable;
+the list preposition is <code>of</code>, not <code>in</code>.</p>
+<p>请注意其它语法上的差异：
+在<code>ngFor</code>前面的星号(*)是必须的；<code>let</code>关键字把<code>movie</code>标记成一个输入变量；列表中使用的介词是<code>of</code>，而不再是<code>in</code>。</p>
+<p>For more information, see <a href="../guide/structural-directives.html">Structural Directives</a>.</p>
+<p>要了解更多信息，参见<a href="../guide/structural-directives.html">结构性指令</a>。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-show">ng-show</h3>
+<code-example format="">&lt;h3 ng-show="vm.favoriteHero">
+  Your favorite hero is: {{vm.favoriteHero}}
+&lt;/h3></code-example><p>In AngularJS, the <code>ng-show</code> directive shows or hides the associated DOM element, based on
+an expression.</p>
+<p>在AngularJS中，<code>ng-show</code>指令根据一个表达式来显示或隐藏相关的DOM元素。</p>
+<p>In this example, the <code>&lt;div&gt;</code> element is shown if the <code>favoriteHero</code> variable is truthy.</p>
+<p>在这个例子中，如果<code>favoriteHero</code>变量为真，<code>&lt;div&gt;</code>元素就会显示出来。</p>
+</td><td><h3 id="bind-to-the-hidden-property">Bind to the <code>hidden</code> property</h3>
+<h3 id="-hidden-">绑定到<code>hidden</code>属性</h3>
+<div class="code-example"><code-example language="html" format="">&lt;h3 [hidden]=&quot;!favoriteHero&quot;&gt;
+  Your favorite hero is: {{favoriteHero}}
+&lt;/h3&gt;
+</code-example></div><p>Angular uses property binding; there is no built-in <em>show</em> directive.
+For hiding and showing elements, bind to the HTML <code>hidden</code> property.</p>
+<p>在Angular中，并没有内置的<em>show</em>指令，可以改用属性绑定。
+要隐藏或显示一个元素，绑定到它的<code>hidden</code>属性就可以了。</p>
+<p>To conditionally display an element, place the element&#39;s <code>hidden</code> property in square brackets and
+set it to a quoted template expression that evaluates to the <em>opposite</em> of <em>show</em>.</p>
+<p>要想有条件的显示一个元素，就把该元素的<code>hidden</code>属性放到一个方括号里，并且把它设置为引号中的模板表达式，它的结果应该是与<em>显示</em>时<em>相反</em>的值。</p>
+<p>In this example, the <code>&lt;div&gt;</code> element is hidden if the <code>favoriteHero</code> variable is not truthy.</p>
+<p>在这个例子中，如果<code>favoriteHero</code>变量不是真值，<code>&lt;div&gt;</code>元素就会被隐藏。</p>
+<p>For more information on property binding, see the <a href="../guide/template-syntax.html#property-binding">Property binding</a><br>section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解关于属性绑定的更多信息，参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#property-binding">模板表达式</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-src">ng-src</h3>
+<code-example format="">&lt;img ng-src="{{movie.imageurl}}">
+</code-example><p>The <code>ng-src</code> directive allows AngularJS to preprocess the <code>src</code> property so that it
+can replace the binding expression with the appropriate URL before the browser
+fetches from that URL.</p>
+<p><code>ng-src</code>指令允许AngularJS对<code>src</code>属性进行预处理，以便它能够在浏览器获取此URL之前，用一个返回适当URL的绑定表达式替换它。</p>
+</td><td><h3 id="bind-to-the-src-property">Bind to the <code>src</code> property</h3>
+<h3 id="-src-">绑定到<code>src</code>属性</h3>
+<div class="code-example"><code-example language="html" format="">&lt;img [src]=&quot;movie.imageurl&quot;&gt;
+</code-example></div><p>Angular uses property binding; there is no built-in <em>src</em> directive.
+Place the <code>src</code> property in square brackets and set it to a quoted template expression.</p>
+<p>在Angular中，并没有一个内置的<em>src</em>指令，可以使用属性绑定。
+把<code>src</code>属性放到方括号中，并且把它设为一个引号中的绑定表达式。</p>
+<p>For more information on property binding, see the <a href="../guide/template-syntax.html#property-binding">Property binding</a><br>section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解属性绑定的更多知识，参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#property-binding">属性绑定</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-style">ng-style</h3>
+<code-example format="">&lt;div ng-style="{color: colorPreference}">
+</code-example><p>In AngularJS, the <code>ng-style</code> directive sets a CSS style on an HTML element
+based on an expression. That expression is often a key-value control object with each
+key of the object defined as a CSS property, and each value defined as an expression
+that evaluates to a value appropriate for the style.</p>
+<p>在AngularJS中，<code>ng-style</code>指令根据一个绑定表达式设置一个HTML元素的CSS样式。
+该表达式通常是一个“键-值”形式的控制对象，对象的每个键都是一个CSS属性，每个值都是一个能计算为此样式的合适值的表达式。</p>
+<p>In the example, the <code>color</code> style is set to the current value of the <code>colorPreference</code> variable.</p>
+<p>在这个例子中，<code>color</code>样式被设置为<code>colorPreference</code>变量的当前值。</p>
+</td><td><h3 id="ngstyle">ngStyle</h3>
+<div class="code-example"><code-example language="html" format="">&lt;div [ngStyle]=&quot;{color: colorPreference}&quot;&gt;
+&lt;div [style.color]=&quot;colorPreference&quot;&gt;
+</code-example></div><p>In Angular, the <code>ngStyle</code> directive works similarly. It sets a CSS style on an HTML element based on an expression.</p>
+<p>在Angular中，<code>ngStyle</code>指令的工作方式与此类似。它根据一个表达式设置HTML元素上的CSS样式。</p>
+<p>In the first example, the <code>color</code> style is set to the current value of the <code>colorPreference</code> variable.</p>
+<p>在第一个例子中，<code>color</code>样式被设置成了<code>colorPreference</code>变量的当前值。</p>
+<p>Angular also has <strong>style binding</strong>, which is good way to set a single style. This is shown in the second example.</p>
+<p>Angular还有<strong>样式绑定</strong>语法，它是单独设置一个样式的好方法。它展示在第二个例子中。</p>
+<p>For more information on style binding, see the <a href="../guide/template-syntax.html#style-binding">Style binding</a> section of the 
+<a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解样式绑定的更多知识，参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#style-binding">样式绑定</a>部分。</p>
+<p>For more information on the <code>ngStyle</code> directive, see <a href="../guide/template-syntax.html#ngStyle">NgStyle</a> 
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解关于<code>ngStyle</code>指令的更多知识，参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#ngStyle">NgStyle</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="ng-switch">ng-switch</h3>
+<code-example format="">&lt;div ng-switch="vm.favoriteHero &&
+                vm.checkMovieHero(vm.favoriteHero)">
+    &lt;div ng-switch-when="true">
+      Excellent choice!
+    &lt;/div>
+    &lt;div ng-switch-when="false">
+      No movie, sorry!
+    &lt;/div>
+    &lt;div ng-switch-default>
+      Please enter your favorite hero.
+    &lt;/div>
+&lt;/div>
+</code-example><p>In AngularJS, the <code>ng-switch</code> directive swaps the contents of
+an element by selecting one of the templates based on the current value of an expression.</p>
+<p>在Angular1中，<code>ng-switch</code>指令根据一个表达式的当前值把元素的内容替换成几个模板之一。</p>
+<p>In this example, if <code>favoriteHero</code> is not set, the template displays &quot;Please enter ...&quot;.
+If <code>favoriteHero</code> is set, it checks the movie hero by calling a controller method.
+If that method returns <code>true</code>, the template displays &quot;Excellent choice!&quot;.
+If that methods returns <code>false</code>, the template displays &quot;No movie, sorry!&quot;.</p>
+<p>在这个例子中，如果<code>favoriteHero</code>没有设置，则模板显示“Please enter ...”。
+如果<code>favoriteHero</code>设置过，它就会通过调用一个控制其方法来检查它是否电影里的英雄。
+如果该方法返回<code>true</code>，模板就会显示“Excellent choice!”。
+如果该方法返回<code>false</code>，该模板就会显示“No movie, sorry!”。</p>
+</td><td><h3 id="ngswitch">ngSwitch</h3>
+<div class="code-example"><code-example language="html" format="">&lt;span [ngSwitch]=&quot;favoriteHero &amp;&amp;
+               checkMovieHero(favoriteHero)&quot;&gt;
+  &lt;p *ngSwitchCase=&quot;true&quot;&gt;
+    Excellent choice!
+  &lt;/p&gt;
+  &lt;p *ngSwitchCase=&quot;false&quot;&gt;
+    No movie, sorry!
+  &lt;/p&gt;
+  &lt;p *ngSwitchDefault&gt;
+    Please enter your favorite hero.
+  &lt;/p&gt;
+&lt;/span&gt;
+</code-example></div><p>In Angular, the <code>ngSwitch</code> directive works similarly.
+It displays an element whose <code>*ngSwitchCase</code> matches the current <code>ngSwitch</code> expression value.</p>
+<p>在Angular中，<code>ngSwitch</code>指令的工作方式与此类似。
+它会显示那个与<code>ngSwitch</code>表达式的当前值匹配的那个<code>*ngSwitchCase</code>所在的元素。</p>
+<p>In this example, if <code>favoriteHero</code> is not set, the <code>ngSwitch</code> value is <code>null</code>
+and <code>*ngSwitchDefault</code> displays, &quot;Please enter ...&quot;.
+If <code>favoriteHero</code> is set, the app checks the movie hero by calling a component method.
+If that method returns <code>true</code>, the app selects <code>*ngSwitchCase=&quot;true&quot;</code> and displays: &quot;Excellent choice!&quot;
+If that methods returns <code>false</code>, the app selects <code>*ngSwitchCase=&quot;false&quot;</code> and displays: &quot;No movie, sorry!&quot;</p>
+<p>在这个例子中，如果<code>favoriteHero</code>没有设置，则<code>ngSwitch</code>的值是<code>null</code>，我们会看到
+<code>*ngSwitchDefault</code>中的段落“Please enter ...”。
+如果<code>favoriteHero</code>被设置了，它就会通过调用一个组件方法来检查电影英雄。
+如果该方法返回<code>true</code>，我们就会看到“Excellent choice!”。
+如果该方法返回<code>false</code>，我们就会看到“No movie, sorry!”。</p>
+<p>The (*) before <code>ngSwitchCase</code> and <code>ngSwitchDefault</code> is required in this example.</p>
+<p>在这个例子中，<code>ngSwitchCase</code>和<code>ngSwitchDefault</code>前面的星号(*)是必须的。</p>
+<p>For more information, see <a href="../guide/template-syntax.html#ngSwitch">The NgSwitch directives</a> 
+section of the <a href="../guide/template-syntax.html">Template Syntax</a> page.</p>
+<p>要了解更多信息，参见<a href="../guide/template-syntax.html">模板语法</a>中的<a href="../guide/template-syntax.html#ngSwitch">NgSwitch指令</a>部分。</p>
+</td></tr></table><p><a href="#top">Back to top</a></p>
+<p><a href="#top">回到顶部</a></p>
+<a id="filters-pipes"></a><div class="l-main-section"></div><h2 id="filters-pipes">Filters/pipes</h2>
+<h2 id="-">过滤器/管道</h2>
+<p>Angular <strong>pipes</strong> provide formatting and transformation for data in the template, similar to AngularJS <strong>filters</strong>.
+Many of the built-in filters in AngularJS have corresponding pipes in Angular.
+For more information on pipes, see <a href="../guide/pipes.html">Pipes</a>.</p>
+<p>Angular中的<strong>管道</strong>为模板提供了格式化和数据转换功能，类似于AngularJS中的<strong>过滤器</strong>。
+AngularJS中的很多内置过滤器在Angular中都有对应的管道。
+要了解管道的更多信息，参见<a href="../guide/pipes.html">Pipes</a>。</p>
+<table width="100%"><col width="50%"><col width="50%"><tr><th>AngularJS</th><th>Angular</th></tr><tr style="vertical-align:top"><td><h3 id="currency">currency</h3>
+<code-example>&lt;td>{{movie.price | currency}}&lt;/td></code-example><p>Formats a number as currency.</p>
+<p>把一个数字格式化成货币。</p>
+</td><td><h3 id="currency">currency</h3>
+<div class="code-example"><code-example language="html" format="">&lt;td&gt;{{movie.price | currency:&#39;USD&#39;:true}}&lt;/td&gt;
+</code-example></div><p>The Angular <code>currency</code> pipe is similar although some of the parameters have changed.</p>
+<p>Angular的<code>currency</code>管道和1中很相似，只是有些参数变化了。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="date">date</h3>
+<code-example>&lt;td>{{movie.releaseDate | date}}&lt;/td></code-example><p>Formats a date to a string based on the requested format.</p>
+<p>基于要求的格式把日期格式化成字符串。</p>
+</td><td><h3 id="date">date</h3>
+<div class="code-example"><code-example language="html" format="">&lt;td&gt;{{movie.releaseDate | date}}&lt;/td&gt;
+</code-example></div><p>The Angular <code>date</code> pipe is similar.</p>
+<p>Angular的<code>date</code>管道和·中很相似。参见<a href="#string-dates">备注</a>来了解字符串日期值。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="filter">filter</h3>
+<code-example>&lt;tr ng-repeat="movie in movieList | filter: {title:listFilter}"></code-example><p>Selects a subset of items from the defined collection, based on the filter criteria.</p>
+<p>基于过滤条件从指定的集合中选取出一个子集。</p>
+</td><td><h3 id="none">none</h3>
+<h3 id="-">没了</h3>
+<p>For performance reasons, no comparable pipe exists in Angular. Do all your filtering in the component. If you need the same filtering code in several templates, consider building a custom pipe.</p>
+<p>在Angular中，出于性能的考虑，并没有一个类似的管道。
+过滤逻辑应该在组件中用代码实现。
+如果它将被复用在几个模板中，可以考虑构建一个自定义管道。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="json">json</h3>
+<code-example>&lt;pre>{{movie | json}}&lt;/pre></code-example><p>Converts a JavaScript object into a JSON string. This is useful for debugging.</p>
+<p>把一个JavaScript对象转换成一个JSON字符串。这对调试很有用。</p>
+</td><td><h3 id="json">json</h3>
+<div class="code-example"><code-example language="html" format="">&lt;pre&gt;{{movie | json}}&lt;/pre&gt;
+</code-example></div><p>The Angular <code>json</code> pipe does the same thing.</p>
+<p>Angular的<code>json</code>管道做完全相同的事。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="limitto">limitTo</h3>
+<code-example>&lt;tr ng-repeat="movie in movieList | limitTo:2:0"></code-example><p>Selects up to the first parameter (2) number of items from the collection
+starting (optionally) at the beginning index (0).</p>
+<p>从集合中选择从(第二参数指定的)起始索引号(0)开始的最多(第一参数指定的)条目数(2)个条目。</p>
+</td><td><h3 id="slice">slice</h3>
+<div class="code-example"><code-example language="html" format="">&lt;tr *ngFor=&quot;let movie of movies | slice:0:2&quot;&gt;
+</code-example></div><p>The <code>SlicePipe</code> does the same thing but the <em>order of the parameters is reversed</em>, in keeping
+with the JavaScript <code>Slice</code> method.
+The first parameter is the starting index; the second is the limit.
+As in AngularJS, coding this operation within the component instead could improve performance.</p>
+<p><code>SlicePipe</code>做同样的事，但是<em>两个参数的顺序是相反的</em>，以便于JavaScript中的<code>slice</code>方法保持一致。
+第一个参数是起始索引号，第二个参数是限制的数量。
+和AngularJS中一样，如果们改用组件中的代码实现此操作，性能将会提升。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="lowercase">lowercase</h3>
+<code-example>&lt;div>{{movie.title | lowercase}}&lt;/div></code-example><p>Converts the string to lowercase.</p>
+<p>把该字符串转成小写形式。</p>
+</td><td><h3 id="lowercase">lowercase</h3>
+<div class="code-example"><code-example language="html" format="">&lt;td&gt;{{movie.title | lowercase}}&lt;/td&gt;
+</code-example></div><p>The Angular <code>lowercase</code> pipe does the same thing.</p>
+<p>Angular的<code>lowercase</code>管道和1中的功能完全相同。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="number">number</h3>
+<code-example>&lt;td>{{movie.starRating | number}}&lt;/td></code-example><p>Formats a number as text.</p>
+<p>把数字格式化为文本。</p>
+</td><td><h3 id="number">number</h3>
+<div class="code-example"><code-example language="html" format="">&lt;td&gt;{{movie.starRating | number}}&lt;/td&gt;
+&lt;td&gt;{{movie.starRating | number:&#39;1.1-2&#39;}}&lt;/td&gt;
+&lt;td&gt;{{movie.approvalRating | percent: &#39;1.0-2&#39;}}&lt;/td&gt;
+</code-example></div><p>The Angular <code>number</code> pipe is similar.
+It provides more functionality when defining
+the decimal places, as shown in the second example above.</p>
+<p>Angular的<code>number</code>管道很相似。
+但在指定小数点位置时，它提供了更多的功能，如第二个范例所示。</p>
+<p>Angular also has a <code>percent</code> pipe, which formats a number as a local percentage
+as shown in the third example.</p>
+<p>Angular还有一个<code>percent</code>管道，它把一个数组格式化为本地化的(local)百分比格式，如第三个范例所示。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="orderby">orderBy</h3>
+<code-example>&lt;tr ng-repeat="movie in movieList | orderBy : 'title'"></code-example><p>Displays the collection in the order specified by the expression.
+In this example, the movie title orders the <code>movieList</code>.</p>
+<p>使用表达式中所指定的方式对集合进行排序。
+在这个例子中，<code>movieList</code>被根据movie的title排序了。</p>
+</td><td><h3 id="none">none</h3>
+<h3 id="-">没了</h3>
+<p>For performance reasons, no comparable pipe exists in Angular.
+Instead, use component code to order or sort results. If you need the same ordering or sorting code in several templates, consider building a custom pipe.</p>
+<p>在Angular中，出于性能的考虑，并没有一个类似的管道。
+排序逻辑应该在组件中用代码实现。
+如果它将被复用在几个模板中，可以考虑构建一个自定义管道。</p>
+</td></tr></table><p><a href="#top">Back to top</a></p>
+<p><a href="#top">回到顶部</a></p>
+<a id="controllers-components"></a><div class="l-main-section"></div><h2 id="modules-controllers-components">Modules/controllers/components</h2>
+<h2 id="-">模块/控制器/组件</h2>
+<p>In both AngularJS and Angular, Angular modules help you organize your application into cohesive blocks of functionality.</p>
+<p>无论在AngularJS还是Angular中，我们都要借助“模块”来把应用拆分成一些紧密相关的功能块。</p>
+<p>In AngularJS, you write the code that provides the model and the methods for the view in a <strong>controller</strong>.
+In Angular, you build a <strong>component</strong>.</p>
+<p>在AngularJS中，我们在<strong>控制器</strong>中写代码，来为视图提供模型和方法。
+在Angular中，我们创建<strong>组件</strong>。</p>
+<p>Because much AngularJS code is in JavaScript, JavaScript code is shown in the AngularJS column.
+The Angular code is shown using TypeScript.</p>
+<p>因为很多AngularJS的代码是用JavaScript写的，所以在AngularJS列显示的是JavaScript代码，而Angular列显示的是TypeScript代码。</p>
+<table width="100%"><col width="50%"><col width="50%"><tr><th>AngularJS</th><th>Angular</th></tr><tr style="vertical-align:top"><td><h3 id="iife">IIFE</h3>
+<code-example>(function () {
+  ...
+}());</code-example><p>In AngularJS,  an immediately invoked function expression (or IIFE) around  controller code
+keeps it out of the global namespace.</p>
+<p>在AngularJS中，用立即调用的函数表达式(IIFE)来包裹控制器代码可以让控制器代码不会污染全局命名空间。</p>
+</td><td><h3 id="none">none</h3>
+<h3 id="-">没了</h3>
+<p>This is a nonissue in Angular because ES 2015 modules 
+handle the namespacing for you.</p>
+<p>在Angular中我们不用担心这个问题，因为使用ES 2015的模块，模块会替我们处理命名空间问题。</p>
+<p>For more information on modules, see the <a href="../guide/architecture.html#modules">Modules</a> section of the 
+<a href="../guide/architecture.html">Architecture Overview</a>.</p>
+<p>要了解关于模块的更多信息，参见<a href="../guide/architecture.html">架构概览</a>中的<a href="../guide/architecture.html#modules">模块</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="angular-modules">Angular modules</h3>
+<h3 id="angular-">Angular模块</h3>
+<code-example>angular.module("movieHunter", ["ngRoute"]);</code-example><p>In AngularJS, an Angular module keeps track of controllers, services, and other code. 
+The second argument defines the list of other modules that this module depends upon.</p>
+<p>在AngularJS中，Angular模块用来对控制器、服务和其它代码进行跟踪。第二个参数定义该模块依赖的其它模块列表。</p>
+</td><td><h3 id="angular-modules">Angular modules</h3>
+<div class="code-example"><code-example language="ts" format="">import { NgModule }      from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+
+import { AppComponent }  from &#39;./app.component&#39;;
+
+@NgModule({
+  imports: [ BrowserModule ],
+  declarations: [ AppComponent ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><p>Angular modules, defined with the <code>NgModule</code> decorator, serve the same purpose:</p>
+<p>Angular的模块用<code>NgModule</code>装饰器进行定义，有如下用途：</p>
+<ul>
+<li><p><code>imports</code>: specifies the list of other modules that this module depends upon</p>
+<p><code>imports</code>: 指定当前模块依赖的其它模块列表</p>
+</li>
+<li><p><code>declaration</code>: keeps track of your components, pipes, and directives.</p>
+<p><code>declaration</code>: 用于记录组件、管道和指令。</p>
+</li>
+</ul>
+<p>For more information on modules, see <a href="../guide/ngmodule.html">Angular Modules</a>.</p>
+<p>要了解关于模块的更多知识，参见<a href="../guide/ngmodule.html">Angular Modules</a>。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="controller-registration">Controller registration</h3>
+<h3 id="-">控制器注册</h3>
+<code-example>angular
+  .module("movieHunter")
+  .controller("MovieListCtrl",
+              ["movieService",
+               MovieListCtrl]);</code-example><p>AngularJS has code in each controller that looks up an appropriate Angular module
+and registers the controller with that module.</p>
+<p>在AngularJS中，在每个控制器中都有一些代码，用于找到合适的Angular模块并把该控制器注册进去。</p>
+<p>The first argument is the controller name. The second argument defines the string names of
+all dependencies injected into this controller, and a reference to the controller function.</p>
+<p>第一个参数是控制器的名称，第二个参数定义了所有将注入到该控制器的依赖的字符串名称，以及一个到控制器函数的引用。</p>
+</td><td><h3 id="component-decorator">Component decorator</h3>
+<h3 id="-">组件装饰器</h3>
+<div class="code-example"><code-example language="ts" format="">@Component({
+  selector: &#39;movie-list&#39;,
+  templateUrl: &#39;./movie-list.component.html&#39;,
+  styleUrls: [ &#39;./movie-list.component.css&#39; ],
+})
+</code-example></div><p>Angular adds a decorator to the component class to provide any required metadata.
+The <code>@Component</code> decorator declares that the class is a component and provides metadata about
+that component such as its selector (or tag) and its template.</p>
+<p>在Angular中，我们往组件类上添加了一个装饰器，以提供任何需要的元数据。
+<code>@Component</code>装饰器把该类声明为组件，并提供了关于该组件的元数据，比如它的选择器(或标签)和模板。</p>
+<p>This is how you associate a template with logic, which is defined in the component class.</p>
+<p>这就是把模板关联到代码的方式，它定义在组件类中。</p>
+<p>For more information, see the <a href="../guide/architecture.html#components">Components</a> 
+section of the <a href="../guide/architecture.html">Architecture Overview</a> page.</p>
+<p>要了解关于模板的更多信息，参见<a href="../guide/architecture.html">架构概览</a>中的<a href="../guide/architecture.html#components">组件</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="controller-function">Controller function</h3>
+<h3 id="-">控制器函数</h3>
+<code-example>function MovieListCtrl(movieService) {
+}</code-example><p>In AngularJS, you write the code for the model and methods in a controller function.</p>
+<p>在Angular1中，我们在控制器函数中写模型和方法的代码。</p>
+</td><td><h3 id="component-class">Component class</h3>
+<h3 id="-">组件类</h3>
+<div class="code-example"><code-example language="ts" format="">export class MovieListComponent {
+}
+</code-example></div><p>In Angular, you create a component class.</p>
+<p>在Angular中，我们写组件类。</p>
+<p>NOTE: If you are using TypeScript with AngularJS, you must use the <code>export</code> keyword to export the component class.</p>
+<p>注意：如果你正在用TypeScript写AngularJS，那么必须用<code>export</code>关键字来导出组件类。</p>
+<p>For more information, see the <a href="../guide/architecture.html#components">Components</a> 
+section of the <a href="../guide/architecture.html">Architecture Overview</a> page.</p>
+<p>要了解关于组件的更多信息，参见<a href="../guide/architecture.html">架构概览</a>中的<a href="../guide/architecture.html#components">组件</a>部分。</p>
+</td></tr><tr style="vertical-align:top"><td><h3 id="dependency-injection">Dependency injection</h3>
+<h3 id="-">依赖注入</h3>
+<code-example>MovieListCtrl.$inject = ['MovieService'];
+function MovieListCtrl(movieService) {
+}</code-example><p>In AngularJS, you pass in any dependencies as controller function arguments.
+This example injects a <code>MovieService</code>.</p>
+<p>在AngularJS中，我们把所有依赖都作为控制器函数的参数。
+在这个例子中，我们注入了一个<code>MovieService</code>。</p>
+<p>To guard against minification problems, tell Angular explicitly
+that it should inject an instance of the <code>MovieService</code> in the first parameter.</p>
+<p>我们还通过在第一个参数明确告诉Angular它应该注入一个<code>MovieService</code>的实例，以防止在最小化时出现问题。</p>
+</td><td><h3 id="dependency-injection">Dependency injection</h3>
+<h3 id="-">依赖注入</h3>
+<div class="code-example"><code-example language="ts" format="">constructor(movieService: MovieService) {
+}
+</code-example></div><p>In Angular, you pass in dependencies as arguments to the component class constructor.
+This example injects a <code>MovieService</code>.
+The first parameter&#39;s TypeScript type tells Angular what to inject, even after minification.</p>
+<p>在Angular中，我们把依赖作为组件构造函数的参数传入。
+在这个例子中，我们注入了一个<code>MovieService</code>。
+即使在最小化之后，第一个参数的TypeScript类型也会告诉Angular它该注入什么。</p>
+<p>For more information, see the <a href="../guide/architecture.html#dependency-injection">Dependency injection</a> 
+section of the <a href="../guide/architecture.html">Architecture Overview</a>.</p>
+<p>要了解关于依赖注入的更多信息，参见<a href="../guide/architecture.html">架构概览</a>中的<a href="../guide/architecture.html#dependency-injection">依赖注入</a>部分。</p>
+</td></tr></table><p><a href="#top">Back to top</a></p>
+<p><a href="#top">回到顶部</a></p>
+<a id="style-sheets"></a><div class="l-main-section"></div><h2 id="style-sheets">Style sheets</h2>
+<h2 id="-">样式表</h2>
+<p>Style sheets give your application a nice look.
+In AngularJS, you specify the style sheets for your entire application.
+As the application grows over time, the styles for the many parts of the application
+merge, which can cause unexpected results.
+In Angular, you can still define style sheets for your entire application. But now you can
+also encapsulate a style sheet within a specific component.</p>
+<p>样式表美化我们的应用程序。
+在AngularJS中，我们为整个应用程序指定样式表。
+当应用程序成长一段时间之后，应用程序中很多部分的样式会被合并，导致无法预计的后果。
+在Angular中，我们仍然会为整个应用程序定义样式，不过现在也可以把样式表封装在特定的组件中。</p>
+<table width="100%"><col width="50%"><col width="50%"><tr><th>AngularJS</th><th>Angular</th></tr><tr style="vertical-align:top"><td><h3 id="link-tag">Link tag</h3>
+<code-example>&lt;link href="styles.css" rel="stylesheet" /></code-example><p>AngularJS, uses a <code>link</code> tag in the head section of the <code>index.html</code> file
+to define the styles for the application.</p>
+<p>在AngularJS中，我们在<code>index.html</code>的<code>head</code>区使用<code>link</code>标签来为应用程序定义样式。</p>
+</td><td><h3 id="link-tag">Link tag</h3>
+<h3 id="link-">Link标签</h3>
+<div class="code-example"><code-example language="html" format="">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+</code-example></div><p>In Angular, you can continue to use the link tag to define the styles for your application in the <code>index.html</code> file.
+But now you can also encapsulate styles for your components.</p>
+<p>在Angular2中，我们可以继续在<code>index.html</code>中使用link标签来为应用程序定义样式。
+但是也能在组件中封装样式。</p>
+<h3 id="styleurls">StyleUrls</h3>
+<p>In Angular, you can use the <code>styles</code> or <code>styleUrls</code> property of the <code>@Component</code> metadata to define
+a style sheet for a particular component.</p>
+<p>在Angular中，我们可以在<code>@Component</code>的元数据中使用<code>styles</code>或<code>styleUrls</code>属性来为一个特定的组件定义样式表。</p>
+<div class="code-example"><code-example language="ts" format="">styleUrls: [ &#39;./movie-list.component.css&#39; ],
+</code-example></div><p>This allows you to set appropriate styles for individual components that won’t leak into
+other parts of the application.</p>
+<p>这让我们可以为各个组件设置合适的样式，而不用担心它被泄漏到程序中的其它部分。</p>
+</td></tr></table><p><a href="#top">Back to top</a></p>
+<p><a href="#top">回到顶部</a></p></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/ajs-quick-reference.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:24 GMT -->
+</html>

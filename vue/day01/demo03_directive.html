@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  <input type="text"
+         v-model.number="num1"
+         placeholder="plz input num1"/>
+  <br/>
+  <input type="text"
+         v-model.number="num2"
+         placeholder="plz input num1"/>
+  <br/>
+  <button @click="handleClick">求和</button>
+</div>
+
+<script>
+  new Vue({
+    el:'#example',
+    data:{
+      num1:'',
+      num2:''
+    },
+    methods:{
+      handleClick:function(){
+        console.log(this.num1+this.num2);
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

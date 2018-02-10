@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/zepto.js">
+
+    </script>
+</head>
+<body>
+
+</body>
+<script>
+    var myList=[100,200,300];
+    var car={name:"baer",price:20};
+    $.each(car,function (key,value) {
+        console.log("key is "+key +"value is"+value);
+    })
+    $.map(myList,function (value,key) {
+        console.log("key is "+key +"value is"+value);
+    })
+
+</script>
+</html>

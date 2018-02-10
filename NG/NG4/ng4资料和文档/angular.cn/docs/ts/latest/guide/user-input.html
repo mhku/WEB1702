@@ -1,0 +1,534 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/user-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:54:57 GMT -->
+<head><title>用户输入 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent is-selected">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item is-selected"><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="user-input.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/user-input.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/user-input.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">用户输入 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>User actions such as clicking a link, pushing a button, and entering
+text raise DOM events.
+This page explains how to bind those events to component event handlers using the Angular
+event binding syntax.</p>
+<p>当用户点击链接、按下按钮或者输入文字时，这些用户动作都会产生 DOM 事件。
+本章解释如何使用 Angular 事件绑定语法把这些事件绑定到事件处理器。</p>
+<p>Run the <live-example></live-example>.</p>
+<p>运行<live-example></live-example></p>
+<h2 id="binding-to-user-input-events">Binding to user input events</h2>
+<h2 id="-">绑定到用户输入事件</h2>
+<p>You can use <a href="template-syntax.html#event-binding">Angular event bindings</a>
+to respond to any <a href="https://developer.mozilla.org/en-US/docs/Web/Events">DOM event</a>.
+Many DOM events are triggered by user input. Binding to these events provides a way to
+get input from the user.</p>
+<p>你可以使用 <a href="template-syntax.html#event-binding">Angular 事件绑定</a>机制来响应任何 <a href="https://developer.mozilla.org/en-US/docs/Web/Events">DOM 事件</a>。
+许多 DOM 事件是由用户输入触发的。绑定这些事件可以获取用户输入。</p>
+<p>To bind to a DOM event, surround the DOM event name in parentheses and assign a quoted
+<a href="template-syntax.html#template-statements">template statement</a> to it.</p>
+<p>要绑定 DOM 事件，只要把 DOM 事件的名字包裹在圆括号中，然后用放在引号中的<a href="template-syntax.html#template-statements">模板语句</a>对它赋值就可以了。</p>
+<p>The following example shows an event binding that implements a click handler:</p>
+<p>下例展示了一个事件绑定，它实现了一个点击事件处理器：</p>
+<div class="code-example"><code-example language="html" format="">&lt;button (click)=&quot;onClickMe()&quot;&gt;Click me!&lt;/button&gt;
+</code-example></div><a id="click"></a><p>The <code>(click)</code> to the left of the equals sign identifies the button&#39;s click event as the <strong>target of the binding</strong>.
+The text in quotes to the right of the equals sign
+is the <strong>template statement</strong>, which reponds
+to the click event by calling the component&#39;s <code>onClickMe</code> method.</p>
+<p>等号左边的<code>(click)</code>表示把按钮的点击事件作为<strong>绑定目标</strong>。
+等号右边引号中的文本是<strong>模板语句</strong>，通过调用组件的<code>onClickMe</code>方法来响应这个点击事件。</p>
+<p>When writing a binding, be aware of a template statement&#39;s <strong>execution context</strong>.
+The identifiers in a template statement belong to a specific context object,
+usually the Angular component controlling the template.
+The example above shows a single line of HTML, but that HTML belongs to a larger component:</p>
+<p>写绑定时，需要知道模板语句的<strong>执行上下文</strong>。
+出现在模板语句中的每个标识符都属于特定的上下文对象。
+这个对象通常都是控制此模板的 Angular 组件。
+上例中只显示了一行 HTML，那段 HTML 片段属于下面这个组件：</p>
+<div class="code-example"><header><h4>src/app/click-me.component.ts</h4></header><code-example language="ts" format="">@Component({
+  selector: &#39;click-me&#39;,
+  template: `
+    &lt;button (click)=&quot;onClickMe()&quot;&gt;Click me!&lt;/button&gt;
+    {{clickMessage}}`
+})
+export class ClickMeComponent {
+  clickMessage = &#39;&#39;;
+
+  onClickMe() {
+    this.clickMessage = &#39;You are my hero!&#39;;
+  }
+}
+</code-example></div><p>When the user clicks the button, Angular calls the <code>onClickMe</code> method from <code>ClickMeComponent</code>.</p>
+<p>当用户点击按钮时，Angular 调用<code>ClickMeComponent</code>的<code>onClickMe</code>方法。</p>
+<div class="l-main-section"></div><h2 id="get-user-input-from-the-event-object">Get user input from the $event object</h2>
+<h2 id="-event-">通过 $event 对象取得用户输入</h2>
+<p>DOM events carry a payload of information that may be useful to the component.
+This section shows how to bind to the <code>keyup</code> event of an input box to get the user&#39;s input after each keystroke.</p>
+<p>DOM 事件可以携带可能对组件有用的信息。
+本节将展示如何绑定输入框的<code>keyup</code>事件，在每个敲击键盘时获取用户输入。</p>
+<p>The following code listens to the <code>keyup</code> event and passes the entire event payload (<code>$event</code>) to the component event handler.</p>
+<p>下面的代码监听<code>keyup</code>事件，并将整个事件载荷 (<code>$event</code>) 传递给组件的事件处理器。</p>
+<div class="code-example"><header><h4>src/app/keyup.components.ts (template v.1)</h4></header><code-example language="ts" format="">template: `
+  &lt;input (keyup)=&quot;onKey($event)&quot;&gt;
+  &lt;p&gt;{{values}}&lt;/p&gt;
+`
+</code-example></div><p>When a user presses and releases a key, the <code>keyup</code> event occurs, and Angular provides a corresponding
+DOM event object in the <code>$event</code> variable which this code passes as a parameter to the component&#39;s <code>onKey()</code> method.</p>
+<p>当用户按下并释放一个按键时，触发<code>keyup</code>事件，Angular 在<code>$event</code>变量提供一个相应的 DOM
+事件对象，上面的代码将它作为参数传递给<code>onKey()</code>方法。</p>
+<div class="code-example"><header><h4>src/app/keyup.components.ts (类 v.1)</h4></header><code-example language="ts" format="">export class KeyUpComponent_v1 {
+  values = &#39;&#39;;
+
+  onKey(event: any) { // without type info
+    this.values += event.target.value + &#39; | &#39;;
+  }
+}
+</code-example></div><p>The properties of an <code>$event</code> object vary depending on the type of DOM event. For example,
+a mouse event includes different information than a input box editing event.</p>
+<p><code>$event</code>对象的属性取决于 DOM 事件的类型。例如，鼠标事件与输入框编辑事件包含了不同的信息。</p>
+<p>All <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">standard DOM event objects</a>
+have a <code>target</code> property, a reference to the element that raised the event.
+In this case, <code>target</code> refers to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement"><code>&lt;input&gt;</code> element</a> and
+<code>event.target.value</code> returns the current contents of that element.</p>
+<p>所有<a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">标准 DOM 事件对象</a>都有一个<code>target</code>属性，
+引用触发该事件的元素。
+在本例中，<code>target</code>是<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement"><code>&lt;input&gt;</code>元素</a>，
+<code>event.target.value</code>返回该元素的当前内容。</p>
+<p>After each call, the <code>onKey()</code> method appends the contents of the input box value to the list
+in the component&#39;s <code>values</code> property, followed by a  separator character (|).
+The <a href="template-syntax.html#interpolation">interpolation</a>
+displays the accumulating input box changes from the <code>values</code> property.</p>
+<p>在组件的<code>onKey()</code>方法中，把输入框的值和分隔符 (|) 追加组件的<code>values</code>属性。
+使用<a href="template-syntax.html#interpolation">插值表达式</a>来把存放累加结果的<code>values</code>属性回显到屏幕上。</p>
+<p>Suppose the user enters the letters &quot;abc&quot;, and then backspaces to remove them one by one.
+Here&#39;s what the UI displays:</p>
+<p>假设用户输入字母“abc”，然后用退格键一个一个删除它们。
+用户界面将显示：</p>
+<code-example>a | ab | abc | ab | a | |</code-example><figure class="image-display"><img src="../../../../resources/images/devguide/user-input/keyup1-anim.gif" alt="key up 1"></figure><div class="l-sub-section"><p>Alternatively, you could accumulate the individual keys themselves by substituting <code>event.key</code>
+for <code>event.target.value</code> in which case the same user input would produce:</p>
+<p>或者，你可以用<code>event.key</code>替代<code>event.target.value</code>，积累各个按键本身，这样同样的用户输入可以产生：</p>
+<code-example>a | b | c | backspace | backspace | backspace |
+</code-example></div><a id="keyup1"></a><h3 id="type-the-_-event_">Type the <em>$event</em></h3>
+<h3 id="-event-"><em>$event</em>的类型</h3>
+<p>The example above casts the <code>$event</code> as an <code>any</code> type.
+That simplifies the code at a cost.
+There is no type information
+that could reveal properties of the event object and prevent silly mistakes.</p>
+<p>上例将<code>$event</code>转换为<code>any</code>类型。
+这样简化了代码，但是有成本。
+没有任何类型信息能够揭示事件对象的属性，防止简单的错误。</p>
+<p>The following example rewrites the method with types:</p>
+<p>下面的例子，使用了带类型方法：</p>
+<div class="code-example"><header><h4>src/app/keyup.components.ts (class v.1 - typed )</h4></header><code-example language="ts" format="">export class KeyUpComponent_v1 {
+  values = &#39;&#39;;
+
+
+  onKey(event: KeyboardEvent) { // with type info
+    this.values += (&lt;HTMLInputElement&gt;event.target).value + &#39; | &#39;;
+  }
+}
+</code-example></div><p>The <code>$event</code> is now a specific <code>KeyboardEvent</code>.
+Not all elements have a <code>value</code> property so it casts <code>target</code> to an input element.
+The <code>OnKey</code> method more clearly expresses what it expects from the template and how it interprets the event.</p>
+<p><code>$event</code>的类型现在是<code>KeyboardEvent</code>。
+不是所有的元素都有<code>value</code>属性，所以它将<code>target</code>转换为输入元素。
+<code>OnKey</code>方法更加清晰的表达了它期望从模板得到什么，以及它是如何解析事件的。</p>
+<h3 id="passing-_-event_-is-a-dubious-practice">Passing <em>$event</em> is a dubious practice</h3>
+<h3 id="-event-">传入 <em>$event</em> 是靠不住的做法</h3>
+<p>Typing the event object reveals a significant objection to passing the entire DOM event into the method:
+the component has too much awareness of the template details.
+It can&#39;t extract information without knowing more than it should about the HTML implementation.
+That breaks the separation of concerns between the template (<em>what the user sees</em>)
+and the component (<em>how the application processes user data</em>).</p>
+<p>类型化事件对象揭露了重要的一点，即反对把整个 DOM 事件传到方法中，因为这样组件会知道太多模板的信息。
+只有当它知道更多它本不应了解的 HTML 实现细节时，它才能提取信息。
+这就违反了模板（<em>用户看到的</em>）和组件（<em>应用如何处理用户数据</em>）之间的分离关注原则。</p>
+<p>The next section shows how to use template reference variables to address this problem.</p>
+<p>下面将介绍如何用模板引用变量来解决这个问题。</p>
+<div class="l-main-section"></div><h2 id="get-user-input-from-a-template-reference-variable">Get user input from a template reference variable</h2>
+<h2 id="-">从一个模板引用变量中获得用户输入</h2>
+<p>There&#39;s another way to get the user data: use Angular
+<a href="template-syntax.html#ref-vars"><strong>template reference variables</strong></a>.
+These variables provide direct access to an element from within the template.
+To declare a template reference variable, precede an identifier with a hash (or pound) character (#).</p>
+<p>还有另一种获取用户数据的方式：使用 Angular 的<a href="template-syntax.html#ref-vars"><strong>模板引用变量</strong></a>。
+这些变量提供了从模块中直接访问元素的能力。
+在标识符前加上井号 (#) 就能声明一个模板引用变量。</p>
+<p>The following example uses a template reference variable
+to implement a keystroke loopback in a simple template.</p>
+<p>下面的例子使用了局部模板变量，在一个超简单的模板中实现按键反馈功能。</p>
+<div class="code-example"><header><h4>src/app/loop-back.component.ts</h4></header><code-example language="ts" format="">@Component({
+  selector: &#39;loop-back&#39;,
+  template: `
+    &lt;input #box (keyup)=&quot;0&quot;&gt;
+    &lt;p&gt;{{box.value}}&lt;/p&gt;
+  `
+})
+export class LoopbackComponent { }
+</code-example></div><p>The template reference variable named <code>box</code>, declared on the <code>&lt;input&gt;</code> element,
+refers to the <code>&lt;input&gt;</code> element itself.
+The code uses the <code>box</code> variable to get the input element&#39;s <code>value</code> and display it
+with interpolation between <code>&lt;p&gt;</code> tags.</p>
+<p>这个模板引用变量名叫<code>box</code>，在<code>&lt;input&gt;</code>元素声明，它引用<code>&lt;input&gt;</code>元素本身。
+代码使用<code>box</code>获得输入元素的<code>value</code>值，并通过插值表达式把它显示在<code>&lt;p&gt;</code>标签中。</p>
+<p>The template is completely self contained. It doesn&#39;t bind to the component,
+and the component does nothing.</p>
+<p>这个模板完全是完全自包含的。它没有绑定到组件，组件也没做任何事情。</p>
+<p>Type something in the input box, and watch the display update with each keystroke.</p>
+<p>在输入框中输入，就会看到每次按键时，显示也随之更新了。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/user-input/keyup-loop-back-anim.gif" alt="反馈"></figure><div class="l-sub-section"><p><strong>This won&#39;t work at all unless you bind to an event</strong>.</p>
+<p><strong>除非你绑定一个事件，否则这将完全无法工作。</strong></p>
+<p>Angular updates the bindings (and therefore the screen)
+only if the app does something in response to asynchronous events, such as keystrokes.</p>
+<p>只有在应用做了些异步事件（如击键），Angular 才更新绑定（并最终影响到屏幕）。</p>
+<p>This example code binds the <code>keyup</code> event
+to the number 0, the shortest template statement possible.
+While the statement does nothing useful,
+it satisfies Angular&#39;s requirement so that Angular will update the screen.</p>
+<p>本例代码将<code>keyup</code>事件绑定到了数字0，这是可能是最短的模板语句。
+虽然这个语句不做什么，但它满足 Angular 的要求，所以 Angular 将更新屏幕。</p>
+</div><p>It&#39;s easier to get to the input box with the template reference
+variable than to go through the <code>$event</code> object. Here&#39;s a rewrite of the previous
+<code>keyup</code> example that uses a template reference variable to get the user&#39;s input.</p>
+<p>从模板变量获得输入框比通过<code>$event</code>对象更加简单。
+下面的代码重写了之前<code>keyup</code>示例，它使用变量来获得用户输入。</p>
+<div class="code-example"><header><h4>src/app/keyup.components.ts (v2)</h4></header><code-example language="ts" format="">@Component({
+  selector: &#39;key-up2&#39;,
+  template: `
+    &lt;input #box (keyup)=&quot;onKey(box.value)&quot;&gt;
+    &lt;p&gt;{{values}}&lt;/p&gt;
+  `
+})
+export class KeyUpComponent_v2 {
+  values = &#39;&#39;;
+  onKey(value: string) {
+    this.values += value + &#39; | &#39;;
+  }
+}
+</code-example></div><p>A nice aspect of this approach is that the component gets clean data values from the view.
+It no longer requires knowledge of the <code>$event</code> and its structure.</p>
+<p>这个方法最漂亮的一点是：组件代码从视图中获得了干净的数据值。再也不用了解<code>$event</code>变量及其结构了。</p>
+<a id="key-event"></a><div class="l-main-section"></div><h2 id="key-event-filtering-with-key-enter-">Key event filtering (with <code>key.enter</code>)</h2>
+<h2 id="-key-enter-">按键事件过滤（通过<code>key.enter</code>）</h2>
+<p>The <code>(keyup)</code> event handler hears <em>every keystroke</em>.
+Sometimes only the <em>Enter</em> key matters, because it signals that the user has finished typing.
+One way to reduce the noise would be to examine every <code>$event.keyCode</code> and take action only when the key is <em>Enter</em>.</p>
+<p><code>(keyup)</code>事件处理器监听<em>每一次按键</em>。
+有时只在意<em>回车</em>键，因为它标志着用户结束输入。
+解决这个问题的一种方法是检查每个<code>$event.keyCode</code>，只有键值是<em>回车</em>键时才采取行动。</p>
+<p>There&#39;s an easier way: bind to Angular&#39;s <code>keyup.enter</code> pseudo-event.
+Then Angular calls the event handler only when the user presses <em>Enter</em>.</p>
+<p>更简单的方法是：绑定到 Angular 的<code>keyup.enter</code> 模拟事件。
+然后，只有当用户敲<em>回车</em>键时，Angular 才会调用事件处理器。</p>
+<div class="code-example"><header><h4>src/app/keyup.components.ts (v3)</h4></header><code-example language="ts" format="">@Component({
+  selector: &#39;key-up3&#39;,
+  template: `
+    &lt;input #box (keyup.enter)=&quot;onEnter(box.value)&quot;&gt;
+    &lt;p&gt;{{value}}&lt;/p&gt;
+  `
+})
+export class KeyUpComponent_v3 {
+  value = &#39;&#39;;
+  onEnter(value: string) { this.value = value; }
+}
+</code-example></div><p>Here&#39;s how it works.</p>
+<p>下面展示了它是如何工作的。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/user-input/keyup3-anim.gif" alt="key up 3"></figure><div class="l-main-section"></div><h2 id="on-blur">On blur</h2>
+<h2 id="-blur-">失去焦点事件 (blur)</h2>
+<p>In the previous example, the current state of the input box
+is lost if the user mouses away and clicks elsewhere on the page
+without first pressing <em>Enter</em>.
+The component&#39;s <code>value</code> property is updated only when the user presses <em>Enter</em>.</p>
+<p>前上例中，如果用户没有先按回车键，而是移开了鼠标，点击了页面中其它地方，输入框的当前值就会丢失。
+只有当用户按下了回车键候，组件的<code>values</code>属性才能更新。</p>
+<p>To fix this issue, listen to both the <em>Enter</em> key and the <em>blur</em> event.</p>
+<p>下面通过同时监听输入框的回车键和失去焦点事件来修正这个问题。</p>
+<div class="code-example"><header><h4>src/app/keyup.components.ts (v4)</h4></header><code-example language="ts" format="">@Component({
+  selector: &#39;key-up4&#39;,
+  template: `
+    &lt;input #box
+      (keyup.enter)=&quot;update(box.value)&quot;
+      (blur)=&quot;update(box.value)&quot;&gt;
+
+    &lt;p&gt;{{value}}&lt;/p&gt;
+  `
+})
+export class KeyUpComponent_v4 {
+  value = &#39;&#39;;
+  update(value: string) { this.value = value; }
+}
+</code-example></div><div class="l-main-section"></div><h2 id="put-it-all-together">Put it all together</h2>
+<h2 id="-">把它们放在一起</h2>
+<p>The previous page showed how to <a href="displaying-data.html">display data</a>.
+This page demonstrated event binding techniques.</p>
+<p>上一章介绍了如何<a href="displaying-data.html">显示数据</a>。
+本章展示了事件绑定技术。</p>
+<p>Now, put it all together in a micro-app
+that can display a list of heroes and add new heroes to the list.
+The user can add a hero by typing the hero&#39;s name in the input box and
+clicking <strong>Add</strong>.</p>
+<p>现在，在一个微型应用中一起使用它们，应用能显示一个英雄列表，并把新的英雄加到列表中。
+用户可以通过输入英雄名和点击“添加”按钮来添加英雄。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/user-input/little-tour-anim.gif" alt="简版英雄指南"></figure><p>Below is the &quot;Little Tour of Heroes&quot;  component.</p>
+<p>下面就是“简版英雄指南”组件。</p>
+<div class="code-example"><header><h4>src/app/little-tour.component.ts</h4></header><code-example language="ts" format="">@Component({
+  selector: &#39;little-tour&#39;,
+  template: `
+    &lt;input #newHero
+      (keyup.enter)=&quot;addHero(newHero.value)&quot;
+      (blur)=&quot;addHero(newHero.value); newHero.value=&#39;&#39; &quot;&gt;
+
+    &lt;button (click)=&quot;addHero(newHero.value)&quot;&gt;Add&lt;/button&gt;
+
+    &lt;ul&gt;&lt;li *ngFor=&quot;let hero of heroes&quot;&gt;{{hero}}&lt;/li&gt;&lt;/ul&gt;
+  `
+})
+export class LittleTourComponent {
+  heroes = [&#39;Windstorm&#39;, &#39;Bombasto&#39;, &#39;Magneta&#39;, &#39;Tornado&#39;];
+  addHero(newHero: string) {
+    if (newHero) {
+      this.heroes.push(newHero);
+    }
+  }
+}
+</code-example></div><h3 id="observations">Observations</h3>
+<h3 id="-">小结</h3>
+<ul>
+<li><p><strong>Use template variables to refer to elements</strong> &mdash;
+The <code>newHero</code> template variable refers to the <code>&lt;input&gt;</code> element.
+You can reference <code>newHero</code> from any sibling or child of the <code>&lt;input&gt;</code> element.</p>
+<p><strong>使用模板变量来引用元素</strong> &mdash; <code>newHero</code>模板变量引用了<code>&lt;input&gt;</code>元素。
+你可以在<code>&lt;input&gt;</code>的任何兄弟或子级元素中引用<code>newHero</code>。</p>
+</li>
+<li><p><strong>Pass values, not elements</strong> &mdash;
+Instead of passing the <code>newHero</code> into the component&#39;s <code>addHero</code> method,
+get the input box value and pass <em>that</em> to <code>addHero</code>.</p>
+<p><strong>传递数值，而非元素</strong> &mdash;
+获取输入框的值并将<em>它</em>传递给组件的<code>addHero</code>，而不要传递<code>newHero</code>。</p>
+</li>
+<li><p><strong>Keep template statements simple</strong> &mdash;
+The <code>(blur)</code> event is bound to two JavaScript statements.
+The first statement calls <code>addHero</code>.  The second statement, <code>newHero.value=&#39;&#39;</code>,
+clears the input box after a new hero is added to the list.</p>
+<p><strong>保持模板语句简单</strong> &mdash;
+<code>(blur)</code>事件被绑定到两个 JavaScript 语句。
+第一句调用<code>addHero</code>。第二句<code>newHero.value=&#39;&#39;</code>在添加新英雄到列表中后清除输入框。</p>
+</li>
+</ul>
+<div class="l-main-section"></div><h2 id="source-code">Source code</h2>
+<h2 id="-">源代码</h2>
+<p>Following is all the code discussed in this page.</p>
+<p>下面是本章讨论过的所有源码。</p>
+<code-tabs><code-pane language="ts" name="click-me.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;click-me&#39;,
+  template: `
+    &lt;button (click)=&quot;onClickMe()&quot;&gt;Click me!&lt;/button&gt;
+    {{clickMessage}}`
+})
+export class ClickMeComponent {
+  clickMessage = &#39;&#39;;
+
+  onClickMe() {
+    this.clickMessage = &#39;You are my hero!&#39;;
+  }
+}
+</code-pane><code-pane language="ts" name="keyup.components.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;key-up1&#39;,
+  template: `
+    &lt;input (keyup)=&quot;onKey($event)&quot;&gt;
+    &lt;p&gt;{{values}}&lt;/p&gt;
+  `
+})
+export class KeyUpComponent_v1 {
+  values = &#39;&#39;;
+
+  /*
+  onKey(event: any) { // without type info
+    this.values += event.target.value + &#39; | &#39;;
+  }
+  */
+
+  onKey(event: KeyboardEvent) { // with type info
+    this.values += (&lt;HTMLInputElement&gt;event.target).value + &#39; | &#39;;
+  }
+}
+
+//////////////////////////////////////////
+
+@Component({
+  selector: &#39;key-up2&#39;,
+  template: `
+    &lt;input #box (keyup)=&quot;onKey(box.value)&quot;&gt;
+    &lt;p&gt;{{values}}&lt;/p&gt;
+  `
+})
+export class KeyUpComponent_v2 {
+  values = &#39;&#39;;
+  onKey(value: string) {
+    this.values += value + &#39; | &#39;;
+  }
+}
+
+//////////////////////////////////////////
+
+@Component({
+  selector: &#39;key-up3&#39;,
+  template: `
+    &lt;input #box (keyup.enter)=&quot;onEnter(box.value)&quot;&gt;
+    &lt;p&gt;{{value}}&lt;/p&gt;
+  `
+})
+export class KeyUpComponent_v3 {
+  value = &#39;&#39;;
+  onEnter(value: string) { this.value = value; }
+}
+
+//////////////////////////////////////////
+
+@Component({
+  selector: &#39;key-up4&#39;,
+  template: `
+    &lt;input #box
+      (keyup.enter)=&quot;update(box.value)&quot;
+      (blur)=&quot;update(box.value)&quot;&gt;
+
+    &lt;p&gt;{{value}}&lt;/p&gt;
+  `
+})
+export class KeyUpComponent_v4 {
+  value = &#39;&#39;;
+  update(value: string) { this.value = value; }
+}
+</code-pane><code-pane language="ts" name="loop-back.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+@Component({
+  selector: &#39;loop-back&#39;,
+  template: `
+    &lt;input #box (keyup)=&quot;0&quot;&gt;
+    &lt;p&gt;{{box.value}}&lt;/p&gt;
+  `
+})
+export class LoopbackComponent { }
+</code-pane><code-pane language="ts
+  " name="little-tour.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;little-tour&#39;,
+  template: `
+    &lt;input #newHero
+      (keyup.enter)=&quot;addHero(newHero.value)&quot;
+      (blur)=&quot;addHero(newHero.value); newHero.value=&#39;&#39; &quot;&gt;
+
+    &lt;button (click)=&quot;addHero(newHero.value)&quot;&gt;Add&lt;/button&gt;
+
+    &lt;ul&gt;&lt;li *ngFor=&quot;let hero of heroes&quot;&gt;{{hero}}&lt;/li&gt;&lt;/ul&gt;
+  `
+})
+export class LittleTourComponent {
+  heroes = [&#39;Windstorm&#39;, &#39;Bombasto&#39;, &#39;Magneta&#39;, &#39;Tornado&#39;];
+  addHero(newHero: string) {
+    if (newHero) {
+      this.heroes.push(newHero);
+    }
+  }
+}
+</code-pane></code-tabs><div class="l-main-section"></div><h2 id="summary">Summary</h2>
+<h2 id="-">小结</h2>
+<p>You have mastered the basic primitives for responding to user input and gestures.</p>
+<p>你已经掌握了响应用户输入和操作的基础技术。</p>
+<p>These techniques are useful for small-scale demonstrations, but they
+quickly become verbose and clumsy when handling large amounts of user input.
+Two-way data binding is a more elegant and compact way to move
+values between data entry fields and model properties.
+The next page, <code>Forms</code>, explains how to write
+two-way bindings with <code>NgModel</code>.</p>
+<p>这些技术对小规模演示很实用，但是在处理大量用户输入时，很容易变得累赘和笨拙。
+要在数据录入字段和模型属性之间传递数据，双向数据绑定是更加优雅和简洁的方式。
+下一章<code>表单</code>解释了如何用<code>NgModel</code>来进行双向绑定。</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><div class="l-sub-section"><h3>下一步</h3><a href="forms.html" class="translated-cn">表单</a></div><!--NEXT PAGE HAS NOW BEEN SET--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/user-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:54:58 GMT -->
+</html>

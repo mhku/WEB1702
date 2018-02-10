@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>hello world</title>
+  </head>
+  <body>
+     <h1>图书搜索建议</h1>
+     <div>
+			<input id="inputKW" /><br />
+			<ul id="suggest">
+        <!-- <li>css大全</li> -->
+        <!-- <li>csss指南</li> -->
+			</ul>
+		</div>
+    <script>
+       //1:获取用户输入元素
+       //2:绑定事件 onkeyup
+       inputKW.onkeyup = function(){
+       //3:获取用户输入文字
+       var da = this.value;
+       if(!da){
+         suggest.innerHTML = "";
+         return;//阻止当前js运行
+       }
+       //4:创建xhr对象
+       var xhr = new XMLHttpRequest();
+       //5:绑定事件
+       xhr.onreadystatechange = function(){
+         if(xhr.readyState===4&&xhr.status===200){
+          suggest.innerHTML = xhr.responseText;  
+         }
+       }
+       //6:打开连接
+       xhr.open('GET',
+       'book_search.php?kw='+da,true);
+       //7:发送数据
+       xhr.send(null);
+       }
+    </script>
+  </body>
+  </html>

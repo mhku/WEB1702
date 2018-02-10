@@ -1,0 +1,44 @@
+今天学习的内容
+1:复习总结昨天项目
+2:作业：分页
+3:添加商品
+4:修改购物车
+#---------------------
+1:复习总结昨天项目
+2:作业：分页
+3:添加商品->购物车
+  a:创建表 购物车   10:40--10:45
+	  t_cart
+		cid[购物车编号]
+		uid[用户编号]  
+		pid[产品编号 ]  
+		count[产品数量]
+		1    1    10   2
+		2    2    10   1
+	b:编写php     cart_detail_add_05.php
+	  接收用户参数 将商品添加购物车表
+    uid   pid   10:45--10:55
+     4    10
+    b.1:如果当前用户uid和产品存在
+		    更新数量 
+    b.2:如果当前用户uid和产品不存在
+		    添加
+4:修改购物车->删除购物车  + -
+
+  
+今天作业:
+  1:购物车项 删除
+	  a:创建php 获取购物车项 id
+		b:DELETE FROM t_cart  where cid = $id
+		c:如果删除成功将 tr 删除
+	2:购物车项 数量增加
+	  a:创建php 获取购物车项 id
+		b:UPDATE t_cart SET count = count+1 ..
+		c:如果更新成功  input value
+		                小计
+	3:购物车项 数量减少
+	  a:创建php 获取购车项  id
+		b:UPDATE t_cart SET count=count-1 ...
+		c:如果更新成功 input value
+									 小计
+									

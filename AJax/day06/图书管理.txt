@@ -1,0 +1,67 @@
+ 2.1:书籍录入功能 9:58--10:03
+		   *a:编写sql文件 dangdang.sql
+			 *b:创建库/创建表 dandang/dd_book
+			 *c:编号 书名 图片 价格 出版时间
+			 *d:添加10行
+
+  #小技巧:每一个mysql列添加属性
+	 NOT NULL
+	 字符串列  NOT NULL DEFAULT ''
+	   数值列  NOT NULL DEFAULT 0
+	   日期列  NOT NULL DEFAULT 0
+
+       e:编写php   book_add.php
+			  header("Content-Type:text/plain;charset=utf-8");
+			   :接收客户端提交参数
+				 :{书名 图片 价格 出版时间} 
+				 :保存数据库中->返回一个整数
+				-1 sql语句失败  10:45--10:50
+				-2 书名没有提交
+				$_REQUIRE['bname']or die("-2");
+				-3 图片没有提交
+				-4 价格没有提交
+				-5 出版时间没提交
+				新加记录id   添加成功
+        10:32--10:42
+		 2.2:用户登录注册
+		     book_add_input.html 表单
+				 1:post发送数据
+         区别：三行      
+         a:打开连接
+				   xhr.open("POST","book_add.php",true);
+         b:添加一行指令(请求主体内容编码)
+				   xhr.setRequestHeader('Content-Type',
+					 'application/x-www-form-urlencoded');
+         c:xhr.send(`bname=${n}&pic=${p}..`);
+				 2:添加成功清除原有输入内容
+
+    2.3:搜索建议
+		    功能:用户输入一个或多个字符
+				     查询数据库包含些字符的所有记录
+          示例: [j]
+					      <li>java大全</li>
+								<li>javascript指南</li>
+								<li>js入门</li>
+		    a:编写 php文件 
+					book_search.php
+					a.1:头信息
+          header("content-type:text/html;
+					charset=utf-8");
+          a.2:sql
+					SELECT  bname FROM dd_book
+					WHERE bname LIKE '%j%';
+					%-->代表0或多个字符串
+					j
+					ccj
+					java
+				b:编写 html文件
+				  book_search_input.html
+          <div>
+					  <input id="inputKW" />
+						<ul id="suggest">
+						   ...
+						</ul>
+					</div>
+      onblur    不可以(失去焦点)
+			onchange  不可以(失去焦点)
+			inputKW.onkeyup 

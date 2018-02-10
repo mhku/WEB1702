@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+</head>
+<body>
+
+<button id="btn1">btn1</button>
+<button id="btn2">btn2</button>
+
+<script>
+  var button1 = $('#btn1');
+  count = 0;
+
+  //绑定事件 on
+  button1.on('click', function (event) {
+    count++;
+    console.log(count);
+    if(count == 6)
+    {
+      alert('再点击解绑了');
+    }
+    else if(count > 6)
+    {
+      //解绑
+      button1.off('click');
+      //通过one实现一次性绑定
+      button1.one('click', function () {
+        alert('已经解绑了');
+      })
+
+    }
+  })
+
+  //找到button2，绑定一个自定义事件customClick
+  $('#btn2').on({
+    customClick: function () {
+      console.log(
+        'btn2 customClick event is triggered');
+    }
+  })
+
+  //触发事件
+  $('#btn2').trigger('customClick');
+
+
+</script>
+
+
+</body>
+</html>

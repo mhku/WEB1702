@@ -1,0 +1,65 @@
+作业一:{异步员工查询和删除}
+			功能要求:
+			1:编写.sql文件:创建数据库 emp
+			  创建数据表
+				t_emp  雇员表  eid ename did{部门编号}
+				t_dept 部门表  did name
+      2:部门表
+			  10  研发部
+				20  市场部
+				30  运营部
+
+      3:编写php
+			  emp_select.php  查询所有部门列表
+				emp_select_json.php 
+				:获取部门编号查询该部门
+				:下所有员工并且返回json
+
+				下拉列表
+				<select id="did"> 
+				   <option value="10">研发部</option>
+				   <option value="20">市场部</option>
+				   <option value="30">运营部</option>
+				</select>
+        <h1>雇员列表</h1>
+				<ul id="list">
+				   ...
+				</ul>
+
+        did.onchange = function(){
+				   var d = this.value;//10 20 30
+					 //发送ajax请求-> json
+				}
+
+        10:25--10:30 看代码流程
+				任务一:
+				查询结果样式改变
+				emp_select.php     升级
+				emp_select_02.php   升级
+				emp_select_json.php 不需要修改
+				<table> 10:30--10:40
+				  雇员编号   雇员名称   操作
+					1          tom1       delete
+					2          tom2       delete
+				</table>
+
+
+
+				任务二:删除指雇员信息
+				<table>
+				  雇员编号   雇员名称   操作
+					1          tom1       delete
+					2          tom2       delete
+				</table> 10:40---10:50
+				#为什么a不能绑定点击事件
+				#原因
+				#a动态添加元素]
+				#解决
+				#js 冒泡 祖先元素绑定事件
+				#target
+				<a href="${o.eid}"
+				class="btn-delete">删除</a>	
+				1:将数据库中对应记录删除
+				  emp_delete.php?eid=?
+				  DELETE FROM t_emp WHERE eid = ?
+        2:将表格中对应记录 tr删除

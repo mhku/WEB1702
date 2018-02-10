@@ -1,0 +1,1287 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/dependency-injection.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:01 GMT -->
+<head><title>依赖注入 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent is-selected">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item is-selected"><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="dependency-injection.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/dependency-injection.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/dependency-injection.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">依赖注入 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p><strong>Dependency injection</strong> is an important application design pattern.
+Angular has its own dependency injection framework, and
+you really can&#39;t build an Angular application without it.
+It&#39;s used so widely that almost everyone just calls it <em>DI</em>.</p>
+<p><strong>依赖注入</strong>是重要的程序设计模式。
+  Angular 有自己的依赖注入框架，离开了它，几乎没法构建 Angular 应用。
+  它使用得非常广泛，以至于几乎每个人都会把它简称为 <em>DI</em>。</p>
+<p>This page covers what DI is, why it&#39;s so useful,
+and <a href="#angular-di">how to use it</a> in an Angular app.</p>
+<p>本章将学习什么是 DI，它有什么用。
+  然后，将学习在 Angular 应用中该<a href="#angular-di">如何使用它</a>。</p>
+<h1 id="contents">Contents</h1>
+<ul>
+<li><p><a href="#why-di">Why dependency injection?</a></p>
+<p><a href="#why-di">为什么需要依赖注入？</a></p>
+</li>
+<li><p><a href="#angular-dependency-injection">Angular dependency injection</a></p>
+<p><a href="#angular-dependency-injection">Angular的依赖注入</a></p>
+<ul>
+<li><p><a href="#injector-config">Configuring the injector</a></p>
+<p><a href="#injector-config">配置注入器</a></p>
+</li>
+<li><p><a href="#register-providers-ngmodule">Registering providers in an <code>NgModule</code></a></p>
+<p><a href="#register-providers-ngmodule">在<code>NgModule</code>中注册提供商</a></p>
+</li>
+<li><p><a href="#register-providers-component">Registering providers in a component</a></p>
+<p><a href="#register-providers-component">在组件中注册提供商</a></p>
+</li>
+<li><p><a href="#ngmodule-vs-comp">When to use <code>NgModule</code> versus an application component</a></p>
+<p><a href="#ngmodule-vs-comp">什么时候使用<code>NgModule</code>？什么时候使用应用组件？</a></p>
+</li>
+<li><p><a href="#prep-for-injection">Preparing the <code>HeroListComponent</code> for injection</a></p>
+<p><a href="#prep-for-injection">为依赖注入准备<code>HeroListComponent</code></a></p>
+</li>
+<li><p><a href="#di-metadata">Implicit injector creation</a></p>
+<p><a href="#di-metadata">隐式依赖注入</a></p>
+</li>
+<li><p><a href="#singleton-services">Singleton services</a></p>
+<p><a href="#singleton-services">单例服务</a></p>
+</li>
+<li><p><a href="#testing-the-component">Testing the component</a></p>
+<p><a href="#testing-the-component">测试组件</a></p>
+</li>
+<li><p><a href="#service-needs-service">When the service needs a service</a></p>
+<p><a href="#service-needs-service">什么时候服务需要另一个服务</a></p>
+</li>
+<li><p><a href="#injectable">Why <code>@Injectable()</code>?</a></p>
+<p><a href="#injectable">为什么要加<code>@Injectable()</code>？</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#logger-service">Creating and registering a logger service</a></p>
+<p><a href="#logger-service">创建并注册日志服务</a></p>
+</li>
+<li><p><a href="#injector-providers">Injector providers</a></p>
+<p><a href="#injector-providers">注入器提供商</a></p>
+<ul>
+<li><p><a href="#provide">The <code>Provider</code> class and <code>provide</code> object literal</a></p>
+</li>
+<li><p><a href="#provide"><code>Provider</code>类和<code>provide</code>对象字面量</a></p>
+</li>
+<li><p><a href="#class-provider">Alternative class providers</a></p>
+<p><a href="#class-provider">代用类提供商</a></p>
+</li>
+<li><p><a href="#class-provider-dependencies">Class provider with dependencies</a></p>
+<p><a href="#class-provider-dependencies">带有依赖的类提供商</a></p>
+</li>
+<li><p><a href="#aliased-class-providers">Aliased class providers</a></p>
+<p><a href="#aliased-class-providers">别名类提供商</a></p>
+</li>
+<li><p><a href="#value-provider">Value providers</a></p>
+<p><a href="#value-provider">值提供商</a></p>
+</li>
+<li><p><a href="#factory-provider">Factory providers</a></p>
+<p><a href="#factory-provider">工厂提供商</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#dependency-injection-tokens">Dependency injection tokens</a></p>
+<p><a href="#dependency-injection-tokens">依赖注入令牌</a></p>
+<ul>
+<li><p><a href="#non-class-dependencies">Non-class dependencies</a></p>
+<p><a href="#non-class-dependencies">非“类”依赖</a></p>
+</li>
+<li><p><a href="#injection-token"><code>InjectionToken</code></a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#optional">Optional dependencies</a></p>
+<p><a href="#optional">可选依赖</a></p>
+</li>
+<li><p><a href="#summary">Summary</a></p>
+<p><a href="#summary">总结</a></p>
+</li>
+<li><p><a href="#explicit-injector">Appendix: Working with injectors directly</a></p>
+<p><a href="#explicit-injector">附录：直接使用注入器</a></p>
+</li>
+</ul>
+<p>Run the <live-example></live-example>.</p>
+<p>运行<live-example></live-example>.</p>
+<div id="why-di" class="l-main-section"></div><h2 id="why-dependency-injection-">Why dependency injection?</h2>
+<h2 id="-">为什么需要依赖注入？</h2>
+<p>To understand why dependency injection is so important, consider an example without it.
+Imagine writing the following code:</p>
+<p>要理解为什么依赖注入这么重要，不妨先考虑不使用它的一个例子。想象下列代码：</p>
+<div class="code-example"><header><h4>src/app/car/car.ts (without DI)</h4></header><code-example language="ts" format="linenums">export class Car {
+
+  public engine: Engine;
+  public tires: Tires;
+  public description = &#39;No DI&#39;;
+
+  constructor() {
+    this.engine = new Engine();
+    this.tires = new Tires();
+  }
+
+  // Method using the engine and tires
+  drive() {
+    return `${this.description} car with ` +
+      `${this.engine.cylinders} cylinders and ${this.tires.make} tires.`;
+  }
+}
+</code-example></div><p>The <code>Car</code> class creates everything it needs inside its constructor.
+What&#39;s the problem?</p>
+<p><code>Car</code>类会在它的构造函数中创建所需的每样东西。
+问题何在？</p>
+<p>The problem is that the <code>Car</code> class is brittle, inflexible, and hard to test.</p>
+<p>问题在于，这个<code>Car</code>类过于脆弱、缺乏弹性并且难以测试。</p>
+<p>This <code>Car</code> needs an engine and tires. Instead of asking for them,
+the <code>Car</code> constructor instantiates its own copies from
+the very specific classes <code>Engine</code> and <code>Tires</code>.</p>
+<p><code>Car</code>类需要一个引擎 (engine) 和一些轮胎 (tire)，它没有去请求现成的实例，
+而是在构造函数中用具体的<code>Engine</code>和<code>Tires</code>类实例化出自己的副本。</p>
+<p>What if the <code>Engine</code> class evolves and its constructor requires a parameter?
+That would break the <code>Car</code> class and it would stay broken until you rewrote it along the lines of
+<code>this.engine = new Engine(theNewParameter)</code>.
+The <code>Engine</code> constructor parameters weren&#39;t even a consideration when you first wrote <code>Car</code>.
+You may not anticipate them even now.
+But you&#39;ll <em>have</em> to start caring because
+when the definition of <code>Engine</code> changes, the <code>Car</code> class must change.
+That makes <code>Car</code> brittle.</p>
+<p>如果<code>Engine</code>类升级了，它的构造函数要求传入一个参数，这该怎么办？
+这个<code>Car</code>类就被破坏了，在把创建引擎的代码重写为<code>this.engine = new Engine(theNewParameter)</code>之前，它都是坏的。
+当第一次写<code>Car</code>类时，我们不关心<code>Engine</code>构造函数的参数，现在也不想关心。
+但是，当<code>Engine</code>类的定义发生变化时，就不得不在乎了，<code>Car</code>类也不得不跟着改变。
+这就会让<code>Car</code>类过于脆弱。</p>
+<p>What if you want to put a different brand of tires on your <code>Car</code>? Too bad.
+You&#39;re locked into whatever brand the <code>Tires</code> class creates. That makes the
+<code>Car</code> class inflexible.</p>
+<p>如果想在<code>Car</code>上使用不同品牌的轮胎会怎样？太糟了。
+我们被锁定在<code>Tires</code>类创建时使用的那个品牌上。这让<code>Car</code>类缺乏弹性。</p>
+<p>Right now each new car gets its own <code>engine</code>. It can&#39;t share an <code>engine</code> with other cars.
+While that makes sense for an automobile engine,
+surely you can think of other dependencies that should be shared, such as the onboard
+wireless connection to the manufacturer&#39;s service center. This <code>Car</code> lacks the flexibility
+to share services that have been created previously for other consumers.</p>
+<p>现在，每辆车都有它自己的引擎。它不能和其它车辆共享引擎。
+虽然这对于汽车来说还算可以理解，但是设想一下那些应该被共享的依赖，比如用来联系厂家服务中心的车载无线电。
+我们的车缺乏必要的弹性，无法共享当初给其它消费者创建的车载无线电。</p>
+<p>When you write tests for <code>Car</code> you&#39;re at the mercy of its hidden dependencies.
+Is it even possible to create a new <code>Engine</code> in a test environment?
+What does <code>Engine</code> depend upon? What does that dependency depend on?
+Will a new instance of <code>Engine</code> make an asynchronous call to the server?
+You certainly don&#39;t want that going on during tests.</p>
+<p>当给<code>Car</code>类写测试的时候，我们就会受制于它背后的那些依赖。
+能在测试环境中成功创建新的<code>Engine</code>吗？
+<code>Engine</code>自己又依赖什么？那些依赖本身又依赖什么？
+<code>Engine</code>的新实例会发起到服务器的异步调用吗？
+我们当然不想在测试期间这么一层层追下去。</p>
+<p>What if the <code>Car</code> should flash a warning signal when tire pressure is low?
+How do you confirm that it actually does flash a warning
+if you can&#39;t swap in low-pressure tires during the test?</p>
+<p>如果<code>Car</code>应该在轮胎气压低的时候闪动警示灯该怎么办？
+如果没法在测试期间换上一个低气压的轮胎，那该如何确认它能正确的闪警示灯？</p>
+<p>You have no control over the car&#39;s hidden dependencies.
+When you can&#39;t control the dependencies, a class becomes difficult to test.</p>
+<p>我们没法控制这辆车背后隐藏的依赖。
+当不能控制依赖时，类就会变得难以测试。</p>
+<p>How can you make <code>Car</code> more robust, flexible, and testable?</p>
+<p>该如何让<code>Car</code>更强壮、有弹性以及可测试？</p>
+<p><a id="ctor-injection"></a>
+That&#39;s super easy. Change the <code>Car</code> constructor to a version with DI:</p>
+<p><a id="ctor-injection"></a>
+答案非常简单。把<code>Car</code>的构造函数改造成使用 DI 的版本：</p>
+<code-tabs><code-pane language="ts" name="src/app/car/car.ts (excerpt with DI)" format=".">public description = &#39;DI&#39;;
+
+constructor(public engine: Engine, public tires: Tires) { }
+</code-pane><code-pane language="ts" name="src/app/car/car.ts (excerpt without DI)" format=".">public engine: Engine;
+public tires: Tires;
+public description = &#39;No DI&#39;;
+
+constructor() {
+  this.engine = new Engine();
+  this.tires = new Tires();
+}
+</code-pane></code-tabs><p>See what happened? The definition of the dependencies are
+now in the constructor.
+The <code>Car</code> class no longer creates an <code>engine</code> or <code>tires</code>.
+It just consumes them.</p>
+<p>发生了什么？我们把依赖的定义移到了构造函数中。
+  <code>Car</code>类不再创建引擎<code>engine</code>或者轮胎<code>tires</code>。
+  它仅仅“消费”它们。</p>
+<div class="l-sub-section"><p>This example leverages TypeScript&#39;s constructor syntax for declaring
+parameters and properties simultaneously.</p>
+<p>这个例子又一次借助 TypeScript 的构造器语法来同时定义参数和属性。</p>
+</div><p>Now you can create a car by passing the engine and tires to the constructor.</p>
+<p>现在，通过往构造函数中传入引擎和轮胎来创建一辆车。</p>
+<div class="code-example"><code-example language="ts" format="">// Simple car with 4 cylinders and Flintstone tires.
+let car = new Car(new Engine(), new Tires());
+</code-example></div><p>How cool is that?
+The definition of the <code>engine</code> and <code>tire</code> dependencies are
+decoupled from the <code>Car</code> class.
+You can pass in any kind of <code>engine</code> or <code>tires</code> you like, as long as they
+conform to the general API requirements of an <code>engine</code> or <code>tires</code>.</p>
+<p>酷！引擎和轮胎这两个依赖的定义与<code>Car</code>类本身解耦了。
+只要喜欢，可以传入任何类型的引擎或轮胎，只要它们能满足引擎或轮胎的通用 API 需求。</p>
+<p>Now, if someone extends the <code>Engine</code> class, that is not <code>Car</code>&#39;s problem.</p>
+<p>这样一来，如果有人扩展了<code>Engine</code>类，那就不再是<code>Car</code>类的烦恼了。</p>
+<div class="l-sub-section"><p>The <em>consumer</em> of <code>Car</code> has the problem. The consumer must update the car creation code to
+something like this:</p>
+<p><code>Car</code>的<em>消费者</em>也有这个问题。消费者必须更新创建这辆车的代码，就像这样：</p>
+<div class="code-example"><code-example language="ts" format="">class Engine2 {
+  constructor(public cylinders: number) { }
+}
+// Super car with 12 cylinders and Flintstone tires.
+let bigCylinders = 12;
+let car = <span class="otl">new Car(new Engine2(bigCylinders), new Tires());</span>
+</code-example></div><p>The critical point is this: the <code>Car</code> class did not have to change.
+You&#39;ll take care of the consumer&#39;s problem shortly.</p>
+<p>这里的要点是：<code>Car</code>本身不必变化。下面就来解决消费者的问题。</p>
+</div><p>The <code>Car</code> class is much easier to test now because you are in complete control
+of its dependencies.
+You can pass mocks to the constructor that do exactly what you want them to do
+during each test:</p>
+<p><code>Car</code>类非常容易测试，因为现在我们对它的依赖有了完全的控制权。
+  在每个测试期间，我们可以往构造函数中传入 mock 对象，做想让它们做的事：</p>
+<div class="code-example"><code-example language="ts" format="">class MockEngine extends Engine { cylinders = 8; }
+class MockTires  extends Tires  { make = &#39;YokoGoodStone&#39;; }
+
+// Test car with 8 cylinders and YokoGoodStone tires.
+let car = <span class="otl">new Car(new MockEngine(), new MockTires());</span>
+</code-example></div><p><strong>You just learned what dependency injection is</strong>.</p>
+<p><strong>刚刚学习了什么是依赖注入</strong></p>
+<p>It&#39;s a coding pattern in which a class receives its dependencies from external
+sources rather than creating them itself.</p>
+<p>它是一种编程模式，可以让类从外部源中获得它的依赖，而不必亲自创建它们。</p>
+<p>Cool! But what about that poor consumer?
+Anyone who wants a <code>Car</code> must now
+create all three parts: the <code>Car</code>, <code>Engine</code>, and <code>Tires</code>.
+The <code>Car</code> class shed its problems at the consumer&#39;s expense.
+You need something that takes care of assembling these parts.</p>
+<p>酷！但是，可怜的消费者怎么办？
+  那些希望得到一个<code>Car</code>的人们现在必须创建所有这三部分了：<code>Car</code>、<code>Engine</code>和<code>Tires</code>。
+  <code>Car</code>类把它的快乐建立在了消费者的痛苦之上。
+  需要某种机制为我们把这三个部分装配好。</p>
+<p>You <em>could</em> write a giant class to do that:</p>
+<p>可以写一个巨型类来做这件事：</p>
+<div class="code-example"><header><h4>src/app/car/car-factory.ts</h4></header><code-example language="ts" format="linenums">import { Engine, Tires, Car } from &#39;./car&#39;;
+
+// BAD pattern!
+export class CarFactory {
+  createCar() {
+    let car = new Car(this.createEngine(), this.createTires());
+    car.description = &#39;Factory&#39;;
+    return car;
+  }
+
+  createEngine() {
+    return new Engine();
+  }
+
+  createTires() {
+    return new Tires();
+  }
+}
+</code-example></div><p>It&#39;s not so bad now with only three creation methods.
+But maintaining it will be hairy as the application grows.
+This factory is going to become a huge spiderweb of
+interdependent factory methods!</p>
+<p>现在只需要三个创建方法，这还不算太坏。
+但是当应用规模变大之后，维护它将变得惊险重重。
+这个工厂类将变成由相互依赖的工厂方法构成的巨型蜘蛛网。</p>
+<p>Wouldn&#39;t it be nice if you could simply list the things you want to build without
+having to define which dependency gets injected into what?</p>
+<p>如果能简单的列出想建造的东西，而不用定义该把哪些依赖注入到哪些对象中，那该多好！</p>
+<p>This is where the dependency injection framework comes into play.
+Imagine the framework had something called an <em>injector</em>.
+You register some classes with this injector, and it figures out how to create them.</p>
+<p>到了依赖注入框架一展身手的时候了！
+想象框架中有一个叫做<em>注入器 (injector)</em> 的东西。
+用这个注入器注册一些类，它会弄明白如何创建它们。</p>
+<p>When you need a <code>Car</code>, you simply ask the injector to get it for you and you&#39;re good to go.</p>
+<p>当需要一个<code>Car</code>时，就简单的找注入器取车就可以了。</p>
+<div class="code-example"><code-example language="ts" format="">let car = injector.get(Car);
+</code-example></div><p>Everyone wins. The <code>Car</code> knows nothing about creating an <code>Engine</code> or <code>Tires</code>.
+The consumer knows nothing about creating a <code>Car</code>.
+You don&#39;t have a gigantic factory class to maintain.
+Both <code>Car</code> and consumer simply ask for what they need and the injector delivers.</p>
+<p>皆大欢喜。<code>Car</code>不需要知道如何创建<code>Engine</code>和<code>Tires</code>。
+消费者不需要知道如何创建<code>Car</code>。
+开发人员不需要维护巨大的工厂类。
+<code>Car</code>和消费者只要简单地请求想要什么，注入器就会交付它们。</p>
+<p>This is what a <strong>dependency injection framework</strong> is all about.</p>
+<p>这就是“<strong>依赖注入框架</strong>”存在的原因。</p>
+<p>Now that you know what dependency injection is and appreciate its benefits,
+read on to see how it is implemented in Angular.</p>
+<p>现在，我们知道了什么是依赖注入，以及它的优点。再来看看它在 Angular 中是怎么实现的。</p>
+<div id="angular-di" class="l-main-section"></div><h2 id="angular-dependency-injection">Angular dependency injection</h2>
+<h2 id="angular-">Angular 依赖注入</h2>
+<p>Angular ships with its own dependency injection framework. This framework can also be used
+as a standalone module by other applications and frameworks.</p>
+<p>Angular 附带了自己的依赖注入框架。此框架也能被当做独立模块用于其它应用和框架中。</p>
+<p>To see what it can do when building components in Angular,
+start with a simplified version of the <code>HeroesComponent</code>
+that from the <a href="../tutorial/index.html">The Tour of Heroes</a>.</p>
+<p>要了解Angular构建组件时注入器做了什么，我们先从<a href="../tutorial/index.html">英雄指南</a>中构建的<code>HeroesComponent</code>的简化版本开始。</p>
+<code-tabs><code-pane language="ts" name="src/app/heroes/heroes.component.ts" format="linenums">import { Component }          from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;my-heroes&#39;,
+  template: `
+  &lt;h2&gt;Heroes&lt;/h2&gt;
+  &lt;hero-list&gt;&lt;/hero-list&gt;
+  `
+})
+export class HeroesComponent { }
+</code-pane><code-pane language="ts" name="src/app/heroes/hero-list.component.ts" format="linenums">import { Component }   from &#39;@angular/core&#39;;
+
+import { HEROES }      from &#39;./mock-heroes&#39;;
+
+@Component({
+  selector: &#39;hero-list&#39;,
+  template: `
+  &lt;div *ngFor=&quot;let hero of heroes&quot;&gt;
+    {{hero.id}} - {{hero.name}}
+  &lt;/div&gt;
+  `
+})
+export class HeroListComponent {
+  heroes = HEROES;
+}
+</code-pane><code-pane language="ts" name="src/app/heroes/hero.ts" format="linenums">export class Hero {
+  id: number;
+  name: string;
+  isSecret = false;
+}
+</code-pane><code-pane language="ts" name="src/app/heroes/mock-heroes.ts" format="linenums">import { Hero } from &#39;./hero&#39;;
+
+export var HEROES: Hero[] = [
+  { id: 11, isSecret: false, name: &#39;Mr. Nice&#39; },
+  { id: 12, isSecret: false, name: &#39;Narco&#39; },
+  { id: 13, isSecret: false, name: &#39;Bombasto&#39; },
+  { id: 14, isSecret: false, name: &#39;Celeritas&#39; },
+  { id: 15, isSecret: false, name: &#39;Magneta&#39; },
+  { id: 16, isSecret: false, name: &#39;RubberMan&#39; },
+  { id: 17, isSecret: false, name: &#39;Dynama&#39; },
+  { id: 18, isSecret: true,  name: &#39;Dr IQ&#39; },
+  { id: 19, isSecret: true,  name: &#39;Magma&#39; },
+  { id: 20, isSecret: true,  name: &#39;Tornado&#39; }
+];
+</code-pane></code-tabs><p>The <code>HeroesComponent</code> is the root component of the <em>Heroes</em> feature area.
+It governs all the child components of this area.
+This stripped down version has only one child, <code>HeroListComponent</code>,
+which displays a list of heroes.</p>
+<p><code>HeroesComponent</code>是<em>英雄</em>特性区域的根组件。它管理区域内所有子组件。
+简化后的版本只有一个子组件<code>HeroListComponent</code>，用来显示英雄列表。</p>
+<p>Right now <code>HeroListComponent</code> gets heroes from <code>HEROES</code>, an in-memory collection
+defined in another file.
+That may suffice in the early stages of development, but it&#39;s far from ideal.
+As soon as you try to test this component or want to get your heroes data from a remote server,
+you&#39;ll have to change the implementation of <code>heroes</code> and
+fix every other use of the <code>HEROES</code> mock data.</p>
+<p>现在<code>HeroListComponent</code>从<code>HEROES</code>获得英雄数据，是在另一个文件中定义的内存数据集。
+  它在开发的早期阶段可能还够用，但离完美就差得远了。
+  一旦开始测试此组件，或者想从远端服务器获得英雄数据，就不得不修改<code>heroes</code>的实现，
+  还要修改每个用到了<code>HEROES</code>模拟数据的地方。</p>
+<p>It&#39;s better to make a service that hides how the app gets hero data.</p>
+<p>最好用一个服务把获取英雄数据的代码封装起来。</p>
+<div class="l-sub-section"><p>Given that the service is a
+<a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separate concern</a>,
+consider writing the service code in its own file.</p>
+<p>因为服务是一个<a href="https://en.wikipedia.org/wiki/Separation_of_concerns">分离关注点</a>，
+    建议你把服务代码放到它自己的文件里。</p>
+<p>See <a href="#one-class-per-file">this note</a> for details.</p>
+<p>参阅<a href="#one-class-per-file">这一条</a>来了解详情。</p>
+</div><p>The following <code>HeroService</code> exposes a <code>getHeroes</code> method that returns
+the same mock data as before, but none of its consumers need to know that.</p>
+<p><code>HeroService</code>暴露了<code>getHeroes</code>方法，返回跟以前一样的模拟数据，但它的消费者不需要知道这一点。</p>
+<div class="code-example"><header><h4>src/app/heroes/hero.service.ts</h4></header><code-example language="ts" format="linenums">import { Injectable } from &#39;@angular/core&#39;;
+
+import { HEROES }     from &#39;./mock-heroes&#39;;
+
+@Injectable()
+export class HeroService {
+  getHeroes() { return HEROES; }
+}
+</code-example></div><div class="l-sub-section"><p>The <code>@Injectable()</code> decorator above the service class is
+covered <a href="#injectable">shortly</a>.</p>
+<p>注意服务类上面这个<code>@Injectable()</code>装饰器。<a href="#injectable">很快</a>会讨论它的用途。</p>
+</div><div class="l-sub-section"><p>Of course, this isn&#39;t a real service.
+If the app were actually getting data from a remote server, the API would have to be
+asynchronous, perhaps returning a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.
+You&#39;d also have to rewrite the way components consume the service.
+This is important in general, but not in this example.</p>
+<p>我们甚至没有假装这是一个真实的服务。
+如果真的从远端服务器获取数据，这个 API 必须是异步的，可能得返回
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES2015 承诺 (promise)</a>。
+需要重新处理组件消费该服务的方式。通常这个很重要，但是目前的故事不需要。</p>
+</div><p>A service is nothing more than a class in Angular.
+It remains nothing more than a class until you register it with an Angular injector.</p>
+<p>服务只是 Angular 中的一个类。
+有 Angular 注入器注册它之前，没有任何特别之处。</p>
+<div id="bootstrap"></div><a id="injector-config"></a><h3 id="configuring-the-injector">Configuring the injector</h3>
+<h3 id="-">配置注入器</h3>
+<p>You don&#39;t have to create an Angular injector.
+Angular creates an application-wide injector for you during the bootstrap process.</p>
+<p>不需要创建 Angular 注入器。
+Angular 在启动过程中自动为我们创建一个应用级注入器。</p>
+<div class="code-example"><header><h4>src/main.ts (bootstrap)</h4></header><code-example language="ts" format="">platformBrowserDynamic().bootstrapModule(AppModule);
+</code-example></div><p>You do have to configure the injector by registering the <strong>providers</strong>
+that create the services the application requires.
+This guide explains what <a href="#providers">providers</a> are later.</p>
+<p>我们必须通过注册<strong>提供商 (provider)</strong> 来配置注入器，这些提供商为应用创建所需服务。
+  在本章的稍后部分会解释什么是<a href="#providers">提供商</a>。</p>
+<p>You can either register a provider within an <a href="ngmodule.html">NgModule</a> or in application components.</p>
+<p>或者在 <a href="ngmodule.html">NgModule</a> 中注册提供商，或者在应用组件中。</p>
+<a id="register-providers-ngmodule"></a><h3 id="registering-providers-in-an-_ngmodule_">Registering providers in an <em>NgModule</em></h3>
+<h3 id="-_ngmodule_-">在<em>NgModule</em>中注册提供商</h3>
+<p>Here&#39;s the <code>AppModule</code> that registers two providers, <code>UserService</code> and an <code>APP_CONFIG</code> provider,
+in its <code>providers</code> array.</p>
+<p>在<code>AppModule</code>的<code>providers</code>中注册了两个提供商，<code>UserService</code>和<code>APP_CONFIG</code>。</p>
+<div class="code-example"><header><h4>src/app/app.module.ts (excerpt)</h4></header><code-example language="ts" format="">@NgModule({
+  imports: [
+    BrowserModule
+  ],
+  declarations: [
+    AppComponent,
+    CarComponent,
+    HeroesComponent,
+    /* . . . */
+  ],
+  providers: [
+    UserService,
+    { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><p>Because the <code>HeroService</code> is used <em>only</em> within the <code>HeroesComponent</code>
+and its subcomponents, the top-level <code>HeroesComponent</code> is the ideal
+place to register it.</p>
+<p>由于<code>HeroService</code><em>只</em>会在<code>HeroesComponent</code>及其子组件中使用，所以顶层组件<code>HeroesComponent</code>是一个合理的注册位置。</p>
+<a id="register-providers-component"></a><h3 id="registering-providers-in-a-component">Registering providers in a component</h3>
+<h3 id="-">在组件中注册提供商</h3>
+<p>Here&#39;s a revised <code>HeroesComponent</code> that registers the <code>HeroService</code> in its <code>providers</code> array.</p>
+<p>下面是更新的<code>HerosComponent</code>，把<code>HeroService</code>注册到了它的<code>providers</code>数组中。</p>
+<div class="code-example"><header><h4>src/app/heroes/heroes.component.ts</h4></header><code-example language="ts" format="">import { Component }          from &#39;@angular/core&#39;;
+
+import { HeroService }        from &#39;./hero.service&#39;;
+
+@Component({
+  selector: &#39;my-heroes&#39;,
+  providers: [HeroService],
+  template: `
+  &lt;h2&gt;Heroes&lt;/h2&gt;
+  &lt;hero-list&gt;&lt;/hero-list&gt;
+  `
+})
+export class HeroesComponent { }
+</code-example></div><a id="ngmodule-vs-comp"></a><h3 id="when-to-use-_ngmodule_-versus-an-application-component">When to use <em>NgModule</em> versus an application component</h3>
+<h3 id="-ngmodule-">该用 NgModule 还是应用组件？</h3>
+<p>On the one hand, a provider in an <code>NgModule</code> is registered in the root injector. That means that every provider
+registered within an <code>NgModule</code> will be accessible in the <em>entire application</em>.</p>
+<p>一方面，NgModule 中的提供商是被注册到根注入器。这意味着在 NgModule 中注册的提供商可以被整个应用访问。</p>
+<p>On the other hand, a provider registered in an application component is available only on that component and all its children.</p>
+<p>另一方面，在应用组件中注册的提供商只在该组件及其子组件中可用。</p>
+<p>Here, the <code>APP_CONFIG</code> service needs to be available all across the application, so it&#39;s
+registered in the <code>AppModule</code> <code>@NgModule</code> <code>providers</code> array.
+But since the <code>HeroService</code> is only used within the <em>Heroes</em>
+feature area and nowhere else, it makes sense to register it in
+the <code>HeroesComponent</code>.</p>
+<p>这里，<code>APP_CONFIG</code>服务需要在应用中到处可用，所以它被注册到了<code>AppModule</code> <code>@NgModule</code>的<code>providers</code>数组。
+但是，由于<code>HeroService</code>只在<em>英雄</em>特性区用到了，其它地方没有用过，因此在<code>HeroesComponent</code>中注册它是有道理的。</p>
+<div class="l-sub-section"><p>Also see <em>&quot;Should I add app-wide providers to the root <code>AppModule</code> or the root <code>AppComponent</code>?&quot;</em> in the <a href="../cookbook/ngmodule-faq.html#q-root-component-or-module">NgModule FAQ</a>.</p>
+<p>参见 <a href="../cookbook/ngmodule-faq.html#q-root-component-or-module">NgModule FAQ</a> 一章的
+  <strong>我该把“全应用级”提供商加到根模块<code>AppModule</code>还是根组件<code>AppComponent</code>？</strong></p>
+</div><a id="prep-for-injection"></a><h3 id="preparing-the-_herolistcomponent_-for-injection">Preparing the <em>HeroListComponent</em> for injection</h3>
+<h3 id="-herolistcomponent-">为注入准备<code>HeroListComponent</code></h3>
+<p>The <code>HeroListComponent</code> should get heroes from the injected <code>HeroService</code>.
+Per the dependency injection pattern, the component must ask for the service in its
+constructor, <a href="#ctor-injection">as discussed earlier</a>.
+It&#39;s a small change:</p>
+<p><code>HeroListComponent</code>应该从注入的<code>HeroService</code>获取英雄数据。
+遵照依赖注入模式的要求，组件必须在它的构造函数中请求这些服务，<a href="#ctor-injection">就像以前解释过的那样</a>。
+只是个小改动：</p>
+<code-tabs><code-pane language="ts" name="src/app/heroes/hero-list.component (with DI)" format="linenums">import { Component }   from &#39;@angular/core&#39;;
+
+import { Hero }        from &#39;./hero&#39;;
+import { HeroService } from &#39;./hero.service&#39;;
+
+@Component({
+  selector: &#39;hero-list&#39;,
+  template: `
+  &lt;div *ngFor=&quot;let hero of heroes&quot;&gt;
+    {{hero.id}} - {{hero.name}}
+  &lt;/div&gt;
+  `
+})
+export class HeroListComponent {
+  heroes: Hero[];
+
+  constructor(heroService: HeroService) {
+    this.heroes = heroService.getHeroes();
+  }
+}
+</code-pane><code-pane language="ts" name="src/app/heroes/hero-list.component (without DI)" format="linenums">import { Component }   from &#39;@angular/core&#39;;
+
+import { HEROES }      from &#39;./mock-heroes&#39;;
+
+@Component({
+  selector: &#39;hero-list&#39;,
+  template: `
+  &lt;div *ngFor=&quot;let hero of heroes&quot;&gt;
+    {{hero.id}} - {{hero.name}}
+  &lt;/div&gt;
+  `
+})
+export class HeroListComponent {
+  heroes = HEROES;
+}
+</code-pane></code-tabs><div class="l-sub-section"><h4 id="focus-on-the-constructor">Focus on the constructor</h4>
+<h4 id="-">来看看构造函数</h4>
+<p>Adding a parameter to the constructor isn&#39;t all that&#39;s happening here.</p>
+<p>往构造函数中添加参数并不是这里所发生的一切。</p>
+<div class="code-example"><code-example language="ts" format="">constructor(heroService: HeroService) {
+  this.heroes = heroService.getHeroes();
+}
+</code-example></div><p>Note that the constructor parameter has the type <code>HeroService</code>, and that
+the <code>HeroListComponent</code> class has an <code>@Component</code> decorator
+(scroll up to confirm that fact).
+Also recall that the parent component (<code>HeroesComponent</code>)
+has <code>providers</code> information for <code>HeroService</code>.</p>
+<p>注意，构造函数参数的类型是<code>HeroService</code>，并且<code>HeroListComponent</code>类有一个<code>@Component</code>装饰器
+（往上翻可以确认）。另外，记得父级组件 (<code>HeroesComponent</code>) 有<code>HeroService</code>的<code>providers</code>信息。</p>
+<p>The constructor parameter type, the <code>@Component</code> decorator,
+and the parent&#39;s <code>providers</code> information combine to tell the
+Angular injector to inject an instance of
+<code>HeroService</code> whenever it creates a new <code>HeroListComponent</code>.</p>
+<p>构造函数参数类型、<code>@Component</code>装饰器和父级的<code>providers</code>信息合起来告诉 Angular 的注入器，
+任何新建<code>HeroListComponent</code>的时候，注入一个<code>HeroService</code>的实例。</p>
+</div><a id="di-metadata"></a><h3 id="implicit-injector-creation">Implicit injector creation</h3>
+<h3 id="-">隐式注入器的创建</h3>
+<p>You saw how to use an injector to create a new
+<code>Car</code> earlier in this guide.
+You <em>could</em> create such an injector
+explicitly:</p>
+<p>本章前面的部分我们看到了如何使用注入器来创建一个新<code>Car</code>。
+你可以像这样显式创建注入器：</p>
+<div class="code-example"><code-example language="ts" format="">  injector = ReflectiveInjector.resolveAndCreate([Car, Engine, Tires]);
+  let car = injector.get(Car);
+</code-example></div><p>You won&#39;t find code like that in the Tour of Heroes or any of the other
+documentation samples.
+You <em>could</em> write code that <a href="#explicit-injector">explicitly creates an injector</a> if you <em>had</em> to,
+but it&#39;s not always the best choice.
+Angular takes care of creating and calling injectors
+when it creates components for you&mdash;whether through HTML markup, as in <code>&lt;hero-list&gt;&lt;/hero-list&gt;</code>,
+or after navigating to a component with the <a href="router.html">router</a>.
+If you let Angular do its job, you&#39;ll enjoy the benefits of automated dependency injection.</p>
+<p>无论在《英雄指南》还是其它范例中，都没有出现这样的代码。
+在必要时，<em>可以</em>写<a href="#explicit-injector">使用显式注入器的代码</a>，但却很少这样做。
+当 Angular 创建组件时 —— 无论通过像<code>&lt;hero-list&gt;&lt;/hero-list&gt;</code>这样的 HTML 标签还是通过<a href="router.html">路由</a>导航到组件 —— 它都会自己管理好注入器的创建和调用。
+只要让 Angular 做好它自己的工作，我们就能安心享受“自动依赖注入”带来的好处。</p>
+<a id="singleton-services"></a><h3 id="singleton-services">Singleton services</h3>
+<h3 id="-">单例服务</h3>
+<p>Dependencies are singletons within the scope of an injector.
+In this guide&#39;s example, a single <code>HeroService</code> instance is shared among the
+<code>HeroesComponent</code> and its <code>HeroListComponent</code> children.</p>
+<p>在一个注入器的范围内，依赖都是单例的。
+在这个例子中，<code>HeroesComponent</code>和它的子组件<code>HeroListComponent</code>共享同一个<code>HeroService</code>实例。</p>
+<p>However, Angular DI is a hierarchical injection
+system, which means that nested injectors can create their own service instances.
+For more information, see <a href="hierarchical-dependency-injection.html">Hierarchical Injectors</a>.</p>
+<p>然而，Angular DI 是一个分层的依赖注入系统，这意味着嵌套的注入器可以创建它们自己的服务实例。
+要了解更多知识，参见<a href="hierarchical-dependency-injection.html">多级依赖注入器</a>一章。</p>
+<a id="testing-the-component"></a><h3 id="testing-the-component">Testing the component</h3>
+<h3 id="-">测试组件</h3>
+<p>Earlier you saw that designing a class for dependency injection makes the class easier to test.
+Listing dependencies as constructor parameters may be all you need to test application parts effectively.</p>
+<p>前面强调过，设计一个适合依赖注入的类，可以让这个类更容易测试。
+要有效的测试应用中的一部分，只需要在构造函数的参数中列出依赖。</p>
+<p>For example, you can create a new <code>HeroListComponent</code> with a mock service that you can manipulate
+under test:</p>
+<p>例如，新建的<code>HeroListComponent</code>实例使用一个模拟 (mock) 服务，以便可以在测试中操纵它：</p>
+<div class="code-example"><code-example language="ts" format="">let expectedHeroes = [{name: &#39;A&#39;}, {name: &#39;B&#39;}]
+let mockService = &lt;HeroService&gt; {getHeroes: () =&gt; expectedHeroes }
+
+it(&#39;should have heroes when HeroListComponent created&#39;, () =&gt; {
+  let hlc = new HeroListComponent(mockService);
+  expect(hlc.heroes.length).toEqual(expectedHeroes.length);
+});
+</code-example></div><div class="l-sub-section"><p>Learn more in <a href="testing.html">Testing</a>.</p>
+<p>要学习更多知识，参见<a href="../testing/index.html">测试</a>。</p>
+</div><a id="service-needs-service"></a><h3 id="when-the-service-needs-a-service">When the service needs a service</h3>
+<h3 id="-">当服务需要别的服务时</h3>
+<p>The <code>HeroService</code> is very simple. It doesn&#39;t have any dependencies of its own.</p>
+<p>这个<code>HeroService</code>非常简单。它本身不需要任何依赖。</p>
+<p>What if it had a dependency? What if it reported its activities through a logging service?
+You&#39;d apply the same <em>constructor injection</em> pattern,
+adding a constructor that takes a <code>Logger</code> parameter.</p>
+<p>如果它也有依赖，该怎么办呢？例如，它需要通过日志服务来汇报自己的活动。
+我们同样用<em>构造函数注入</em>模式，来添加一个带有<code>Logger</code>参数的构造函数。</p>
+<p>Here is the revision compared to the original.</p>
+<p>下面是在原来的基础上所做的修改：</p>
+<code-tabs><code-pane language="ts" name="src/app/heroes/hero.service (v2)" format="linenums">import { Injectable } from &#39;@angular/core&#39;;
+
+import { HEROES }     from &#39;./mock-heroes&#39;;
+import { Logger }     from &#39;../logger.service&#39;;
+
+@Injectable()
+export class HeroService {
+
+  constructor(private logger: Logger) {  }
+
+  getHeroes() {
+    this.logger.log(&#39;Getting heroes ...&#39;);
+    return HEROES;
+  }
+}
+</code-pane><code-pane language="ts" name="src/app/heroes/hero.service (v1)" format="linenums">import { Injectable } from &#39;@angular/core&#39;;
+
+import { HEROES }     from &#39;./mock-heroes&#39;;
+
+@Injectable()
+export class HeroService {
+  getHeroes() { return HEROES; }
+}
+</code-pane></code-tabs><p>The constructor now asks for an injected instance of a <code>Logger</code> and stores it in a private property called <code>logger</code>.
+You call that property within the <code>getHeroes()</code> method when anyone asks for heroes.</p>
+<p>现在，这个构造函数要求注入一个<code>Logger</code>类的实例，并把它存到名为<code>logger</code>的私有属性中。
+  当别人请求英雄数据时，在<code>getHeroes()</code>方法中调用这个属性的方法。</p>
+<a id="injectable"></a><h3 id="why-_-injectable-_-">Why <em>@Injectable()</em>?</h3>
+<h3 id="-_-injectable-_-">为什么要用 <em>@Injectable()</em>?</h3>
+<p><strong><a href="../api/core/index/Injectable-decorator.html">@Injectable()</a></strong> marks a class as available to an
+injector for instantiation. Generally speaking, an injector reports an
+error when trying to instantiate a class that is not marked as
+<code>@Injectable()</code>.</p>
+<p><strong><a href="../api/core/index/Injectable-decorator.html">@Injectable()</a></strong> 标识一个类可以被注入器实例化。
+  通常，在试图实例化没有被标识为<code>@Injectable()</code>的类时，注入器会报错。</p>
+<div class="l-sub-section"><p>As it happens, you could have omitted <code>@Injectable()</code> from the first
+version of <code>HeroService</code> because it had no injected parameters.
+But you must have it now that the service has an injected dependency.
+You need it because Angular requires constructor parameter metadata
+in order to inject a <code>Logger</code>.</p>
+<p>碰巧，第一版的<code>HeroService</code>省略了<code>@Injectable()</code>，那因为它没有注入的参数。
+  但是现在必须要有它，因为服务有了一个注入的依赖。
+  我们需要它，因为 Angular 需要构造函数参数的元数据来注入一个<code>Logger</code>。</p>
+</div><div class="callout is-helpful"><header>Suggestion: add @Injectable() to every service class</header><header>建议：为每个服务类都添加 @Injectable()</header><p>Consider adding <code>@Injectable()</code> to every service class, even those that don&#39;t have dependencies
+and, therefore, do not technically require it. Here&#39;s why:</p>
+<p>建议为每个服务类都添加<code>@Injectable()</code>，包括那些没有依赖严格来说并不需要它的。因为：</p>
+<ul style="font-size:inherit"><li> <p><b>Future proofing:</b> No need to remember <code>@Injectable()</code> when you add a dependency later.</p><p><b>面向未来:</b> 没有必要记得在后来添加依赖的时候添加 <code>@Injectable()</code>。</p></li><li><p><b>Consistency:</b> All services follow the same rules, and you don't have to wonder why a decorator is missing.</p><p><b>一致性:</b>所有的服务都遵循同样的规则，不需要考虑为什么某个地方少了一个。</p></li></ul></div><p>Injectors are also responsible for instantiating components
+like <code>HeroesComponent</code>. So why doesn&#39;t <code>HeroesComponent</code> have
+<code>@Injectable()</code>?</p>
+<p>注入器同时负责实例化像<code>HerosComponent</code>这样的组件。为什么不标记<code>HerosComponent</code>为<code>@Injectable()</code>呢？</p>
+<p>You <em>can</em> add it if you really want to. It isn&#39;t necessary because the
+<code>HeroesComponent</code> is already marked with <code>@Component</code>, and this
+decorator class (like <code>@Directive</code> and <code>@Pipe</code>, which you learn about later)
+is a subtype of <a href="../api/core/index/Injectable-decorator.html">@Injectable()</a>.  It is in
+fact <code>@Injectable()</code> decorators that
+identify a class as a target for instantiation by an injector.</p>
+<p>我们<strong>可以</strong>添加它。但是没有必要，因为<code>HerosComponent</code>已经有<code>@Component</code>装饰器了，
+  <code>@Component</code>（和随后将会学到的<code>@Directive</code>和<code>@Pipe</code>一样）是 <a href="../api/core/index/Injectable-decorator.html">Injectable</a> 的子类型。
+  实际上，正是这些<code>@Injectable()</code>装饰器是把一个类标识为注入器实例化的目标。</p>
+<div class="l-sub-section"><p>At runtime, injectors can read class metadata in the transpiled JavaScript code
+and use the constructor parameter type information
+to determine what things to inject.</p>
+<p>在运行时，注入器可以从编译后的 JavaScript 代码中读取类的元数据，
+并使用构造函数的参数类型信息来决定注入什么。</p>
+<p>Not every JavaScript class has metadata.
+The TypeScript compiler discards metadata by default.
+If the <code>emitDecoratorMetadata</code> compiler option is true 
+(as it should be in the <code>tsconfig.json</code>),
+the compiler adds the metadata to the generated JavaScript 
+for <em>every class with at least one decorator</em>.</p>
+<p>不是每一个 JavaScript 类都有元数据。
+TypeScript 编译器默认忽略元数据。
+如果<code>emitDecoratorMetadata</code>编译器选项为<code>true</code>（在<code>tsconfig.json</code>中它应该为<code>true</code>），
+编译器就会在生成的 JavaScript 中，为<em>每一个至少拥有一个装饰器的类</em>添加元数据。</p>
+<p>While any decorator will trigger this effect, mark the service class with the
+<a href="../api/core/index/Injectable-decorator.html">@Injectable()</a> decorator
+to make the intent clear.</p>
+<p>当然，任何装饰器都会触发这个效果，用 <a href="../api/core/index/Injectable-decorator.html">@Injectable()</a> 来标识服务
+只是为了让这一意图更明显。</p>
+</div><div class="callout is-critical"><header>Always include the parentheses</header><header>别忘了带括号</header><p>Always write <code>@Injectable()</code>, not just <code>@Injectable</code>.
+The application will fail mysteriously if you forget the parentheses.</p>
+<p>总是使用<code>@Injectable()</code>的形式，不能只用<code>@Injectable</code>。
+如果忘了括号，应用就会神不知鬼不觉的失败！</p>
+</div><div id="logger-service" class="l-main-section"></div><h2 id="creating-and-registering-a-logger-service">Creating and registering a logger service</h2>
+<h2 id="-">创建和注册日志服务</h2>
+<p>Inject a logger into  <code>HeroService</code> in two steps:</p>
+<p>要把日志服务注入到<code>HeroService</code>中需要两步：</p>
+<ol>
+<li><p>Create the logger service.</p>
+<p>创建日志服务。</p>
+</li>
+<li><p>Register it with the application.</p>
+<p>把它注册到应用中。</p>
+</li>
+</ol>
+<p>The logger service is quite simple:</p>
+<p>这个日志服务很简单：</p>
+<div class="code-example"><header><h4>src/app/logger.service.ts</h4></header><code-example language="ts" format="linenums">import { Injectable } from &#39;@angular/core&#39;;
+
+@Injectable()
+export class Logger {
+  logs: string[] = []; // capture logs for testing
+
+  log(message: string) {
+    this.logs.push(message);
+    console.log(message);
+  }
+}
+</code-example></div><p>You&#39;re likely to need the same logger service everywhere in your application,
+so put it in the project&#39;s <code>app</code> folder and
+register it in the <code>providers</code> array of the application module, <code>AppModule</code>.</p>
+<p>应用的每个角落都可能需要日志服务，所以把它放到项目的<code>app</code>目录，
+并在应用模块<code>AppModule</code>的元数据<code>providers</code>数组里注册它。</p>
+<div class="code-example"><header><h4>src/app/app.module.ts (excerpt)</h4></header><code-example language="ts" format="">providers: [Logger]
+</code-example></div><p>If you forget to register the logger, Angular throws an exception when it first looks for the logger:</p>
+<p>如果忘了注册这个日志服务，Angular 会在首次查找这个日志服务时，抛出一个异常。</p>
+<code-example format="nocode">EXCEPTION: No provider for Logger! (HeroListComponent -> HeroService -> Logger)
+(异常：Logger类没有提供商！(HeroListComponent -> HeroService -> Logger))
+</code-example><p>That&#39;s Angular telling you that the dependency injector couldn&#39;t find the <em>provider</em> for the logger.
+It needed that provider to create a <code>Logger</code> to inject into a new
+<code>HeroService</code>, which it needed to
+create and inject into a new <code>HeroListComponent</code>.</p>
+<p>Angular 告诉我们，依赖注入器找不到日志服务的<em>提供商</em>。
+在创建<code>HeroListComponent</code>的新实例时需要创建并注入<code>HeroService</code>，
+而<code>HeroService</code>需要创建并注入一个<code>Logger</code>实例，
+Angular 需要这个<code>Logger</code>实例的提供商来。</p>
+<p>The chain of creations started with the <code>Logger</code> provider. <em>Providers</em> are the subject of the next section.</p>
+<p>这个“创建链”始于<code>Logger</code>的提供商。这个<em>提供商</em>就是下一节的主题 。</p>
+<div id="providers" class="l-main-section"></div><h2 id="injector-providers">Injector providers</h2>
+<h2 id="-">注入器的提供商们</h2>
+<p>A provider <em>provides</em> the concrete, runtime version of a dependency value.
+The injector relies on <strong>providers</strong> to create instances of the services
+that the injector injects into components and other services.</p>
+<p>提供商<em>提供</em>依赖值的一个具体的、运行时的版本。
+注入器依靠<strong>提供商</strong>创建服务的实例，注入器再将服务的实例注入组件或其它服务。</p>
+<p>You must register a service <em>provider</em> with the injector, or it won&#39;t know how to create the service.</p>
+<p>必须为注入器注册一个服务的<em>提供商</em>，否则它不知道该如何创建该服务。</p>
+<p>Earlier you registered the <code>Logger</code> service in the <code>providers</code> array of the metadata for the <code>AppModule</code> like this:</p>
+<p>我们在前面通过<code>AppModule</code>元数据中的<code>providers</code>数组注册过<code>Logger</code>服务，就像这样：</p>
+<div class="code-example"><code-example language="ts" format="">providers: [Logger]
+</code-example></div><p>There are many ways to <em>provide</em> something that looks and behaves like a <code>Logger</code>.
+The <code>Logger</code> class itself is an obvious and natural provider.
+But it&#39;s not the only way.</p>
+<p>有很多方式可以<em>提供</em>一些实现 <code>Logger</code>类的东西。
+  <code>Logger</code>类本身是一个显而易见而且自然而然的提供商。
+  但它不是唯一的选项。</p>
+<p>You can configure the injector with alternative providers that can deliver an object that behaves like a <code>Logger</code>.
+You could provide a substitute class. You could provide a logger-like object.
+You could give it a provider that calls a logger factory function.
+Any of these approaches might be a good choice under the right circumstances.</p>
+<p>可以用其它备选提供商来配置注入器，只要它们能交付一个行为类似于<code>Logger</code>的对象就可以了。
+可以提供一个替代类。你可以提供一个类似日志的对象。
+可以给它一个提供商，让它调用可以创建日志服务的工厂函数。
+所有这些方法，只要用在正确的场合，都可能是一个好的选择。</p>
+<p>What matters is that the injector has a provider to go to when it needs a <code>Logger</code>.</p>
+<p>最重要的是，当注入器需要一个<code>Logger</code>时，它得先有一个提供商。</p>
+<div id="provide"></div><h3 id="the-provider-class-and-_provide_-object-literal">The <em>Provider</em> class and <em>provide</em> object literal</h3>
+<h3 id="-provider-"><em>Provider</em>类和一个提供商的字面量</h3>
+<p>You wrote the <code>providers</code> array like this:</p>
+<p>像下面一样写<code>providers</code>数组：</p>
+<div class="code-example"><code-example language="ts" format="">providers: [Logger]
+</code-example></div><p>This is actually a shorthand expression for a provider registration
+using a <em>provider</em> object literal with two properties:</p>
+<p>  这其实是用于注册提供商的简写表达式。
+  使用的是一个带有两个属性的<em>提供商</em>对象字面量：</p>
+<div class="code-example"><code-example language="ts" format="">[{ provide: Logger, useClass: Logger }]
+</code-example></div><p>The first is the <a href="#token">token</a> that serves as the key for both locating a dependency value
+and registering the provider.</p>
+<p>第一个是<a href="#token">令牌 (token)</a>，它作为键值 (key) 使用，用于定位依赖值和注册提供商。</p>
+<p>The second is a provider definition object,
+which you can think of as a <em>recipe</em> for creating the dependency value.
+There are many ways to create dependency values just as there are many ways to write a recipe.</p>
+<p>第二个是一个提供商定义对象。
+可以把它看做是指导如何创建依赖值的<em>配方</em>。
+有很多方式创建依赖值…… 也有很多方式可以写配方。</p>
+<div id="class-provider"></div><h3 id="alternative-class-providers">Alternative class providers</h3>
+<h3 id="-">备选的类提供商</h3>
+<p>Occasionally you&#39;ll ask a different class to provide the service.
+The following code tells the injector
+to return a <code>BetterLogger</code> when something asks for the <code>Logger</code>.</p>
+<p>某些时候，我们会请求一个不同的类来提供服务。
+下列代码告诉注入器，当有人请求<code>Logger</code>时，返回<code>BetterLogger</code>。</p>
+<div class="code-example"><code-example language="ts" format="">[{ provide: Logger, useClass: BetterLogger }]
+</code-example></div><a id="class-provider-dependencies"></a><h3 id="class-provider-with-dependencies">Class provider with dependencies</h3>
+<h3 id="-">带依赖的类提供商</h3>
+<p>Maybe an <code>EvenBetterLogger</code> could display the user name in the log message.
+This logger gets the user from the injected <code>UserService</code>,
+which is also injected at the application level.</p>
+<p>假设<code>EvenBetterLogger</code>可以在日志消息中显示用户名。
+这个日志服务从注入的<code>UserService</code>中取得用户，
+<code>UserService</code>通常也会在应用级注入。</p>
+<div class="code-example"><code-example language="ts" format="">@Injectable()
+class EvenBetterLogger extends Logger {
+  constructor(private userService: UserService) { super(); }
+
+  log(message: string) {
+    let name = this.userService.user.name;
+    super.log(`Message to ${name}: ${message}`);
+  }
+}
+</code-example></div><p>Configure it like <code>BetterLogger</code>.</p>
+<p>就像之前在<code>BetterLogger</code>中那样配置它。</p>
+<div class="code-example"><code-example language="ts" format="">[ UserService,
+  { provide: Logger, useClass: EvenBetterLogger }]
+</code-example></div><a id="aliased-class-providers"></a><h3 id="aliased-class-providers">Aliased class providers</h3>
+<h3 id="-">别名类提供商</h3>
+<p>Suppose an old component depends upon an <code>OldLogger</code> class.
+<code>OldLogger</code> has the same interface as the <code>NewLogger</code>, but for some reason
+you can&#39;t update the old component to use it.</p>
+<p>假设某个旧组件依赖一个<code>OldLogger</code>类。
+<code>OldLogger</code>和<code>NewLogger</code>具有相同的接口，但是由于某些原因，
+我们不能升级这个旧组件并使用它。</p>
+<p>When the <em>old</em> component logs a message with <code>OldLogger</code>,
+you&#39;d like the singleton instance of <code>NewLogger</code> to handle it instead.</p>
+<p>当<em>旧</em>组件想使用<code>OldLogger</code>记录消息时，我们希望改用<code>NewLogger</code>的单例对象来记录。</p>
+<p>The dependency injector should inject that singleton instance
+when a component asks for either the new or the old logger.
+The <code>OldLogger</code> should be an alias for <code>NewLogger</code>.</p>
+<p>不管组件请求的是新的还是旧的日志服务，依赖注入器注入的都应该是同一个单例对象。
+  也就是说，<code>OldLogger</code>应该是<code>NewLogger</code>的别名。</p>
+<p>You certainly do not want two different <code>NewLogger</code> instances in your app.
+Unfortunately, that&#39;s what you get if you try to alias <code>OldLogger</code> to <code>NewLogger</code> with <code>useClass</code>.</p>
+<p>我们当然不会希望应用中有两个不同的<code>NewLogger</code>实例。
+不幸的是，如果尝试通过<code>useClass</code>来把<code>OldLogger</code>作为<code>NewLogger</code>的别名，就会导致这样的后果。</p>
+<div class="code-example"><code-example language="ts" format="">[ NewLogger,
+  // Not aliased! Creates two instances of `NewLogger`
+  { provide: OldLogger, useClass: NewLogger}]
+</code-example></div><p>The solution: alias with the <code>useExisting</code> option.</p>
+<p>解决方案：使用<code>useExisting</code>选项指定别名。</p>
+<div class="code-example"><code-example language="ts" format="">[ NewLogger,
+  // Alias OldLogger w/ reference to NewLogger
+  { provide: OldLogger, useExisting: NewLogger}]
+</code-example></div><a id="value-provider"></a><h3 id="value-providers">Value providers</h3>
+<h3 id="-">值提供商</h3>
+<p>Sometimes it&#39;s easier to provide a ready-made object rather than ask the injector to create it from a class.</p>
+<p>有时，提供一个预先做好的对象会比请求注入器从类中创建它更容易。</p>
+<div class="code-example"><code-example language="ts" format="">// An object in the shape of the logger service
+let silentLogger = {
+  logs: [&#39;Silent logger says &quot;Shhhhh!&quot;. Provided via &quot;useValue&quot;&#39;],
+  log: () =&gt; {}
+};
+</code-example></div><p>Then you register a provider with the <code>useValue</code> option,
+which makes this object play the logger role.</p>
+<p>于是可以通过<code>useValue</code>选项来注册提供商，它会让这个对象直接扮演 logger 的角色。</p>
+<div class="code-example"><code-example language="ts" format="">[{ provide: Logger, useValue: silentLogger }]
+</code-example></div><p>See more <code>useValue</code> examples in the
+<a href="#non-class-dependencies">Non-class dependencies</a> and
+<a href="#injection-token">InjectionToken</a> sections.</p>
+<p>查看更多<code>useValue</code>的例子，见<a href="#non-class-dependencies">非类依赖</a>和 <a href="#injection-token">InjectionToken</a>部分。</p>
+<div id="factory-provider"></div><h3 id="factory-providers">Factory providers</h3>
+<h3 id="-">工厂提供商</h3>
+<p>Sometimes you need to create the dependent value dynamically,
+based on information you won&#39;t have until the last possible moment.
+Maybe the information changes repeatedly in the course of the browser session.</p>
+<p>有时，我们需要动态创建这个依赖值，因为它所需要的信息直到最后一刻才能确定。
+也许这个信息会在浏览器的会话中不停地变化。</p>
+<p>Suppose also that the injectable service has no independent access to the source of this information.</p>
+<p>还假设这个可注入的服务没法通过独立的源访问此信息。</p>
+<p>This situation calls for a <strong>factory provider</strong>.</p>
+<p>这种情况下，请调用<strong>工厂提供商</strong>。</p>
+<p>To illustrate the point, add a new business requirement:
+the <code>HeroService</code> must hide <em>secret</em> heroes from normal users.
+Only authorized users should see secret heroes.</p>
+<p>下面通过添加新的业务需求来说明这一点：
+<code>HeroService</code> 必须对普通用户隐藏掉<em>秘密</em>英雄。
+只有授权用户才能看到秘密英雄。</p>
+<p>Like the <code>EvenBetterLogger</code>, the <code>HeroService</code> needs a fact about the user.
+It needs to know if the user is authorized to see secret heroes.
+That authorization can change during the course of a single application session,
+as when you log in a different user.</p>
+<p>就像<code>EvenBetterLogger</code>那样，<code>HeroService</code>需要了解此用户的身份。
+它需要知道，这个用户是否有权看到隐藏英雄。
+这个授权可能在单一的应用会话中被改变，例如，改用另一个用户的身份登录时。</p>
+<p>Unlike <code>EvenBetterLogger</code>, you can&#39;t inject the <code>UserService</code> into the <code>HeroService</code>.
+The <code>HeroService</code> won&#39;t have direct access to the user information to decide
+who is authorized and who is not.</p>
+<p>与<code>EvenBetterLogger</code>不同，不能把<code>UserService</code>注入到<code>HeroService</code>中。
+  <code>HeroService</code>无权访问用户信息，来决定谁有授权谁没有授权。</p>
+<p>Instead, the <code>HeroService</code> constructor takes a boolean flag to control display of secret heroes.</p>
+<p>让<code>HeroService</code>的构造函数带上一个布尔型的标志，来控制是否显示隐藏的英雄。</p>
+<div class="code-example"><header><h4>src/app/heroes/hero.service.ts (excerpt)</h4></header><code-example language="ts" format="">constructor(
+  private logger: Logger,
+  private isAuthorized: boolean) { }
+
+getHeroes() {
+  let auth = this.isAuthorized ? &#39;authorized &#39; : &#39;unauthorized&#39;;
+  this.logger.log(`Getting heroes for ${auth} user.`);
+  return HEROES.filter(hero =&gt; this.isAuthorized || !hero.isSecret);
+}
+</code-example></div><p>You can inject the <code>Logger</code>, but you can&#39;t inject the  boolean <code>isAuthorized</code>.
+You&#39;ll have to take over the creation of new instances of this <code>HeroService</code> with a factory provider.</p>
+<p>我们可以注入<code>Logger</code>，但是不能注入逻辑型的<code>isAuthorized</code>。
+我们不得不通过通过工厂提供商创建这个<code>HeroService</code>的新实例。</p>
+<p>A factory provider needs a factory function:</p>
+<p>工厂提供商需要一个工厂方法：</p>
+<div class="code-example"><header><h4>src/app/heroes/hero.service.provider.ts (excerpt)</h4></header><code-example language="ts" format="">let heroServiceFactory = (logger: Logger, userService: UserService) =&gt; {
+  return new HeroService(logger, userService.user.isAuthorized);
+};
+</code-example></div><p>Although the <code>HeroService</code> has no access to the <code>UserService</code>, the factory function does.</p>
+<p>虽然<code>HeroService</code>不能访问<code>UserService</code>，但是工厂方法可以。</p>
+<p>You inject both the <code>Logger</code> and the <code>UserService</code> into the factory provider
+and let the injector pass them along to the factory function:</p>
+<p>同时把<code>Logger</code>和<code>UserService</code>注入到工厂提供商中，并且让注入器把它们传给工厂方法：</p>
+<div class="code-example"><header><h4>src/app/heroes/hero.service.provider.ts (excerpt)</h4></header><code-example language="ts" format="">export let heroServiceProvider =
+  { provide: HeroService,
+    useFactory: heroServiceFactory,
+    deps: [Logger, UserService]
+  };
+</code-example></div><div class="l-sub-section"><p>The <code>useFactory</code> field tells Angular that the provider is a factory function
+whose implementation is the <code>heroServiceFactory</code>.</p>
+<p><code>useFactory</code>字段告诉 Angular：这个提供商是一个工厂方法，它的实现是<code>heroServiceFactory</code>。</p>
+<p>The <code>deps</code> property is an array of <a href="#token">provider tokens</a>.
+The <code>Logger</code> and <code>UserService</code> classes serve as tokens for their own class providers.
+The injector resolves these tokens and injects the corresponding services into the matching factory function parameters.</p>
+<p><code>deps</code>属性是<a href="#token">提供商令牌</a>数组。
+    <code>Logger</code>和<code>UserService</code>类作为它们自身类提供商的令牌。
+    注入器解析这些令牌，把相应的服务注入到工厂函数中相应的参数中去。</p>
+</div><p>Notice that you captured the factory provider in an exported variable, <code>heroServiceProvider</code>.
+This extra step makes the factory provider reusable.
+You can register the <code>HeroService</code> with this variable wherever you need it.</p>
+<p>注意，我们在一个导出的变量中捕获了这个工厂提供商：<code>heroServiceProvider</code>。
+这个额外的步骤让工厂提供商可被复用。
+无论哪里需要，都可以使用这个变量注册<code>HeroService</code>。</p>
+<p>In this sample, you need it only in the <code>HeroesComponent</code>,
+where it replaces the previous <code>HeroService</code> registration in the metadata <code>providers</code> array.
+Here you see the new and the old implementation side-by-side:</p>
+<p>在这个例子中，只在<code>HeroesComponent</code>中需要它，
+  这里，它代替了元数据<code>providers</code>数组中原来的<code>HeroService</code>注册。
+  对比一下新的和旧的实现：</p>
+<code-tabs><code-pane language="ts" name="src/app/heroes/heroes.component (v3)" format="linenums">import { Component }          from &#39;@angular/core&#39;;
+
+import { heroServiceProvider } from &#39;./hero.service.provider&#39;;
+
+@Component({
+  selector: &#39;my-heroes&#39;,
+  template: `
+  &lt;h2&gt;Heroes&lt;/h2&gt;
+  &lt;hero-list&gt;&lt;/hero-list&gt;
+  `,
+  providers: [heroServiceProvider]
+})
+export class HeroesComponent { }
+</code-pane><code-pane language="ts" name="src/app/heroes/heroes.component (v2)" format="linenums">import { Component }          from &#39;@angular/core&#39;;
+
+import { HeroService }        from &#39;./hero.service&#39;;
+
+@Component({
+  selector: &#39;my-heroes&#39;,
+  providers: [HeroService],
+  template: `
+  &lt;h2&gt;Heroes&lt;/h2&gt;
+  &lt;hero-list&gt;&lt;/hero-list&gt;
+  `
+})
+export class HeroesComponent { }
+</code-pane></code-tabs><div id="token" class="l-main-section"></div><h2 id="dependency-injection-tokens">Dependency injection tokens</h2>
+<h2 id="-">依赖注入令牌</h2>
+<p>When you register a provider with an injector, you associate that provider with a dependency injection token.
+The injector maintains an internal <em>token-provider</em> map that it references when
+asked for a dependency. The token is the key to the map.</p>
+<p>当向注入器注册提供商时，实际上是把这个提供商和一个 DI 令牌关联起来了。
+注入器维护一个内部的<em>令牌-提供商</em>映射表，这个映射表会在请求依赖时被引用到。
+令牌就是这个映射表中的键值。</p>
+<p>In all previous examples, the dependency value has been a class <em>instance</em>, and
+the class <em>type</em> served as its own lookup key.
+Here you get a <code>HeroService</code> directly from the injector by supplying the <code>HeroService</code> type as the token:</p>
+<p>在前面的所有例子中，依赖值都是一个类<em>实例</em>，并且类的<em>类型</em>作为它自己的查找键值。
+在下面的代码中，<code>HeroService</code>类型作为令牌，直接从注入器中获取<code>HeroService</code> 实例：</p>
+<div class="code-example"><code-example language="ts" format="">heroService: HeroService;
+</code-example></div><p>You have similar good fortune when you write a constructor that requires an injected class-based dependency.
+When you define a constructor parameter with the <code>HeroService</code> class type,
+Angular knows to inject the
+service associated with that <code>HeroService</code> class token:</p>
+<p>编写需要基于类的依赖注入的构造函数对我们来说是很幸运的。
+只要定义一个<code>HeroService</code>类型的构造函数参数，
+Angular 就会知道把跟<code>HeroService</code>类令牌关联的服务注入进来：</p>
+<div class="code-example"><code-example language="ts" format="">constructor(heroService: HeroService)
+</code-example></div><p>This is especially convenient when you consider that most dependency values are provided by classes.</p>
+<p>这是一个特殊的规约，因为大多数依赖值都是以类的形式提供的。</p>
+<a id="non-class-dependencies"></a><h3 id="non-class-dependencies">Non-class dependencies</h3>
+<h3 id="-">非类依赖</h3>
+<p>What if the dependency value isn't a class? Sometimes the thing you want to inject is a
+string, function, or object.</p><p>如果依赖值不是一个类呢？有时候想要注入的东西是一个字符串，函数或者对象。</p><p>Applications often define configuration objects with lots of small facts
+(like the title of the application or the address of a web API endpoint)
+but these configuration objects aren't always instances of a class.
+They can be object literals such as this one:</p><p> 
+应用程序经常为很多很小的因素定义配置对象（例如应用程序的标题或网络API终点的地址）。
+但是这些配置对象不总是类的实例，它们可能是对象，如下面这个：</p><div class="code-example"><header><h4>src/app/app-config.ts (excerpt)</h4></header><code-example language="ts" format="">export interface AppConfig {
+  apiEndpoint: string;
+  title: string;
+}
+
+export const HERO_DI_CONFIG: AppConfig = {
+  apiEndpoint: &#39;api.heroes.com&#39;,
+  title: &#39;Dependency Injection&#39;
+};
+</code-example></div><p>What if you&#39;d like to make this configuration object available for injection?
+You know you can register an object with a <a href="#value-provider">value provider</a>.</p>
+<p>我们想让这个配置对象在注入时可用，而且知道可以使用<a href="#value-provider">值提供商</a>来注册一个对象。</p>
+<p>But what should you use as the token?
+You don&#39;t have a class to serve as a token.
+There is no <code>AppConfig</code> class.</p>
+<p>但是，这种情况下用什么作令牌呢？
+我们没办法找一个类来当作令牌，因为没有<code>Config</code>类。</p>
+<div id="interface" class="l-sub-section"><h3 id="typescript-interfaces-aren-t-valid-tokens">TypeScript interfaces aren&#39;t valid tokens</h3>
+<h3 id="typescript-">TypeScript 接口不是一个有效的令牌</h3>
+<p>The <code>HERO_DI_CONFIG</code> constant has an interface, <code>AppConfig</code>. Unfortunately, you
+cannot use a TypeScript interface as a token:</p>
+<p><code>CONFIG</code>常量有一个接口：<code>AppConfig</code>。不幸的是，不能把 TypeScript 接口用作令牌：  </p>
+<div class="code-example"><code-example language="ts" format="">// FAIL! Can&#39;t use interface as provider token
+[{ provide: AppConfig, useValue: HERO_DI_CONFIG })]
+</code-example></div><div class="code-example"><code-example language="ts" format="">// FAIL! Can&#39;t inject using the interface as the parameter type
+constructor(private config: AppConfig){ }
+</code-example></div><p>That seems strange if you&#39;re used to dependency injection in strongly typed languages, where
+an interface is the preferred dependency lookup key.</p>
+<p>对于习惯于在强类型的语言中使用依赖注入的开发人员，这会看起来很奇怪，
+因为在强类型语言中，接口是首选的用于查找依赖的主键。</p>
+<p>It&#39;s not Angular&#39;s doing. An interface is a TypeScript design-time artifact. JavaScript doesn&#39;t have interfaces.
+The TypeScript interface disappears from the generated JavaScript.
+There is no interface type information left for Angular to find at runtime.</p>
+<p>这不是 Angular 的错。接口只是 TypeScript 设计时 (design-time) 的概念。JavaScript 没有接口。
+TypeScript 接口不会出现在生成的 JavaScript 代码中。
+在运行期，没有接口类型信息可供 Angular 查找。</p>
+</div><a id="injection-token"></a><h3 id="_injectiontoken_"><em>InjectionToken</em></h3>
+<p>One solution to choosing a provider token for non-class dependencies is
+to define and use an <a href="../api/core/index/InjectionToken-class.html"><b>InjectionToken</b></a>.
+The definition of such a token looks like this:</p>
+<p>解决方案是为非类依赖定义和使用<a href="../api/core/index/InjectionToken-class.html"><b>InjectionToken</b></a>作为提供商令牌。
+定义方式是这样的：</p>
+<div class="code-example"><code-example language="ts" format="">import { InjectionToken } from &#39;@angular/core&#39;;
+
+export let APP_CONFIG = new InjectionToken&lt;AppConfig&gt;(&#39;app.config&#39;);
+</code-example></div><p>The type parameter, while optional, conveys the dependency&#39;s type to developers and tooling.
+The token description is another developer aid.</p>
+<p>类型参数，虽然是可选的，但可以向开发者和开发工具传达类型信息。
+而且这个令牌的描述信息也可以为开发者提供帮助。</p>
+<p>Register the dependency provider using the <code>InjectionToken</code> object:</p>
+<p>使用这个<code>InjectionToken</code>对象注册依赖的提供商：</p>
+<div class="code-example"><code-example language="ts" format="">providers: [{ provide: APP_CONFIG, useValue: HERO_DI_CONFIG }]
+</code-example></div><p>Now you can inject the configuration object into any constructor that needs it, with
+the help of an <code>@Inject</code> decorator:</p>
+<p>现在，在<code>@Inject</code>装饰器的帮助下，这个配置对象可以注入到任何需要它的构造函数中：</p>
+<div class="code-example"><code-example language="ts" format="">constructor(@Inject(APP_CONFIG) config: AppConfig) {
+  this.title = config.title;
+}
+</code-example></div><div class="l-sub-section"><p>Although the <code>AppConfig</code> interface plays no role in dependency injection,
+it supports typing of the configuration object within the class.</p>
+<p>虽然<code>AppConfig</code>接口在依赖注入过程中没有任何作用，但它为该类中的配置对象提供了强类型信息。</p>
+</div><p>Aternatively, you can provide and inject the configuration object in an ngModule like <code>AppModule</code>.</p>
+<p>或者在 ngModule 中提供并注入这个配置对象，如<code>AppModule</code>。</p>
+<div class="code-example"><header><h4>src/app/app.module.ts (ngmodule-providers)</h4></header><code-example language="ts" format="">providers: [
+  UserService,
+  { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }
+],
+</code-example></div><div id="optional"></div><h2 id="optional-dependencies">Optional dependencies</h2>
+<h2 id="-">可选依赖</h2>
+<p>The <code>HeroService</code> <em>requires</em> a <code>Logger</code>, but what if it could get by without
+a <code>logger</code>?
+You can tell Angular that the dependency is optional by annotating the
+constructor argument with <code>@Optional()</code>:</p>
+<p><code>HeroService</code><em>需要</em>一个<code>Logger</code>，但是如果想不提供 Logger 也能得到它，该怎么办呢？
+可以把构造函数的参数标记为<code>@Optional()</code>，告诉 Angular 该依赖是可选的：</p>
+<div class="code-example"><code-example language="ts" format="">import { Optional } from &#39;@angular/core&#39;;
+</code-example></div><div class="code-example"><code-example language="ts" format="">constructor(@Optional() private logger: Logger) {
+  if (this.logger) {
+    this.logger.log(some_message);
+  }
+}
+</code-example></div><p>When using <code>@Optional()</code>, your code must be prepared for a null value. If you
+don&#39;t register a <code>logger</code> somewhere up the line, the injector will set the
+value of <code>logger</code> to null.</p>
+<p>当使用<code>@Optional()</code>时，代码必须准备好如何处理空值。
+如果其它的代码没有注册一个 <code>logger</code>，注入器会设置该<code>logger</code>的值为空 null。</p>
+<div class="l-main-section"></div><h2 id="summary">Summary</h2>
+<h2 id="-">总结</h2>
+<p>You learned the basics of Angular dependency injection in this page.
+You can register various kinds of providers,
+and you know how to ask for an injected object (such as a service) by
+adding a parameter to a constructor.</p>
+<p>本章，我们学习了 Angular 依赖注入的基础知识。
+我们可以注册很多种类的提供商，知道如何通过添加构造函数的参数来请求一个注入对象（例如一个服务）。</p>
+<p>Angular dependency injection is more capable than this guide has described.
+You can learn more about its advanced features, beginning with its support for
+nested injectors, in
+<a href="hierarchical-dependency-injection.html">Hierarchical Dependency Injection</a>.</p>
+<p>Angular 依赖注入比前面描述的更能干。
+学习更多高级特性，如对嵌套注入器的支持，见<a href="hierarchical-dependency-injection.html">多级依赖注入</a>一章。</p>
+<div id="explicit-injector" class="l-main-section"></div><h2 id="appendix-working-with-injectors-directly">Appendix: Working with injectors directly</h2>
+<h2 id="-">附录：直接使用注入器</h2>
+<p>Developers rarely work directly with an injector, but
+here&#39;s an <code>InjectorComponent</code> that does.</p>
+<p>这里的<code>InjectorComponent</code>直接使用了注入器，
+但我们很少直接使用它。</p>
+<div class="code-example"><header><h4>src/app/injector.component.ts</h4></header><code-example language="ts" format="linenums">@Component({
+  selector: &#39;my-injectors&#39;,
+  template: `
+  &lt;h2&gt;Other Injections&lt;/h2&gt;
+  &lt;div id=&quot;car&quot;&gt;{{car.drive()}}&lt;/div&gt;
+  &lt;div id=&quot;hero&quot;&gt;{{hero.name}}&lt;/div&gt;
+  &lt;div id=&quot;rodent&quot;&gt;{{rodent}}&lt;/div&gt;
+  `,
+  providers: [Car, Engine, Tires, heroServiceProvider, Logger]
+})
+export class InjectorComponent implements OnInit {
+  car: Car;
+
+  heroService: HeroService;
+  hero: Hero;
+
+  constructor(private injector: Injector) { }
+
+  ngOnInit() {
+    this.car = this.injector.get(Car);
+    this.heroService = this.injector.get(HeroService);
+    this.hero = this.heroService.getHeroes()[0];
+  }
+
+  get rodent() {
+    let rousDontExist = `R.O.U.S.&#39;s? I don&#39;t think they exist!`;
+    return this.injector.get(ROUS, rousDontExist);
+  }
+}
+</code-example></div><p>An <code>Injector</code> is itself an injectable service.</p>
+<p><code>Injector</code>本身是可注入的服务。</p>
+<p>In this example, Angular injects the component&#39;s own <code>Injector</code> into the component&#39;s constructor.
+The component then asks the injected injector for the services it wants in <code>ngOnInit()</code>.</p>
+<p>在这个例子中，Angular 把组件自身的<code>Injector</code>注入到了组件的构造函数中。
+然后，组件在<code>ngOnInit()</code>中向注入的注入器请求它所需的服务。</p>
+<p>Note that the services themselves are not injected into the component.
+They are retrieved by calling <code>injector.get()</code>.</p>
+<p>注意，这些服务本身没有注入到组件，它们是通过调用<code>injector.get()</code>获得的。</p>
+<p>The <code>get()</code> method throws an error if it can&#39;t resolve the requested service.
+You can call <code>get()</code> with a second parameter, which is the value to return if the service
+is not found. Angular can&#39;t find the service if it&#39;s not registered with this or any ancestor injector.</p>
+<p><code>get()</code>方法如果不能解析所请求的服务，会抛出异常。
+调用<code>get()</code>时，还可以使用第二个参数，一旦获取的服务没有在当前或任何祖先注入器中注册过，
+就把它作为返回值。</p>
+<div class="l-sub-section"><p>The technique is an example of the
+<a href="https://en.wikipedia.org/wiki/Service_locator_pattern">service locator pattern</a>.</p>
+<p>刚描述的这项技术是<a href="https://en.wikipedia.org/wiki/Service_locator_pattern">服务定位器模式</a>的一个范例。</p>
+<p><strong>Avoid</strong> this technique unless you genuinely need it.
+It encourages a careless grab-bag approach such as you see here.
+It&#39;s difficult to explain, understand, and test.
+You can&#39;t know by inspecting the constructor what this class requires or what it will do.
+It could acquire services from any ancestor component, not just its own.
+You&#39;re forced to spelunk the implementation to discover what it does.</p>
+<p>要<strong>避免使用</strong>此技术，除非确实需要它。
+它会鼓励鲁莽的方式，就像在这里看到的。
+它难以解释、理解和测试。
+仅通过阅读构造函数，没法知道这个类需要什么或者它将做什么。
+它可以从任何祖先组件中获得服务，而不仅仅是它自己。
+会迫使我们深入它的实现，才可能明白它都做了啥。</p>
+<p>Framework developers may take this approach when they
+must acquire services generically and dynamically.</p>
+<p>框架开发人员必须采用通用的或者动态的方式获取服务时，可能采用这个方法。</p>
+</div><div id="one-class-per-file" class="l-main-section"></div><h2 id="appendix-why-have-one-class-per-file">Appendix: Why have one class per file</h2>
+<h2 id="-">附录：为什么建议每个文件只放一个类</h2>
+<p>Having multiple classes in the same file is confusing and best avoided.
+Developers expect one class per file. Keep them happy.</p>
+<p>在同一个文件中有多个类容易造成混淆，最好避免。
+开发人员期望每个文件只放一个类。这会让它们开心点。</p>
+<p>If you combine the <code>HeroService</code> class with 
+the <code>HeroesComponent</code> in the same file,
+<strong>define the component last</strong>.
+If you define the component before the service,
+you&#39;ll get a runtime null reference error.</p>
+<p>如果我们蔑视这个建议，并且 —— 比如说 —— 把<code>HeroService</code>和<code>HeroesComponent</code>组合在同一个文件里，
+  <strong>就得把组件定义放在最后面！</strong>
+  如果把组件定义在了服务的前面，
+  在运行时抛出空指针错误。</p>
+<div class="l-sub-section"><p>You actually can define the component first with the help of the <code>forwardRef()</code> method as explained
+in this <a href="http://blog.thoughtram.io/angular/2015/09/03/forward-references-in-angular-2.html">blog post</a>.
+But why flirt with trouble?
+Avoid the problem altogether by defining components and services in separate files.</p>
+<p>在<code>forwardRef()</code>方法的帮助下，实际上也可以先定义组件，
+具体说明见这篇<a href="http://blog.thoughtram.io/angular/2015/09/03/forward-references-in-angular-2.html">博客</a>。
+但是为什么要先给自己找麻烦呢？
+还是通过在独立的文件中定义组件和服务，完全避免此问题吧。</p>
+</div><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><div class="l-sub-section"><h3>下一步</h3><a href="template-syntax.html" class="translated-cn">模板语法</a></div><!--NEXT PAGE HAS NOW BEEN SET--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/dependency-injection.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:02 GMT -->
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>各阶段课程</h1>
+<svg id="s1">
+    <rect id="box"></rect>
+</svg>
+
+</body>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    var sw=800;
+    var sh=500;
+    var padding=50;
+    s1.height=sh;
+    s1.width=sw;
+    s1.setAttribute('width',sw);
+    s1.setAttribute('height',sh);
+    box.setAttribute('width',sw-2*padding);
+    box.setAttribute('height',sh-2*padding);
+    box.setAttribute('x',padding);
+    box.setAttribute('y',padding);
+    box.setAttribute('fill','transparent');
+    box.setAttribute('stroke','#333');
+    $.ajax({
+        type:'GET',
+        url:'/stat',
+        success:function(data){
+            console.log(data);
+            var html=$("#s1").html();
+            for(var i=0;i<data.length;i++){
+                var w=(sw-2*padding)/(2*data.length+1);
+                var h=(sh-2*padding)*(data[i].value)/(10);
+                var x=(2*i+1)*w+padding;
+                var y=sh-padding-h;
+                html+=`
+                <rect width="${w}" height="${h}" x="${x}" y="${y}"></rect>
+                `;
+            }
+            //$('#s1').append(html);
+            $('#s1').html(html);
+        }
+    })
+</script>
+</html>

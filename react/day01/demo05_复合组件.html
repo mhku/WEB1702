@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var HeaderComponent = React.createClass({
+    render:function(){
+      return <h1>title</h1>
+    }
+  })
+
+  var LinkComponent = React.createClass({
+    render:function(){
+      return <a href="http://baidu.com">Baidu</a>
+    }
+  })
+
+  //复合组件
+  var InfoComponent = React.createClass({
+    render:function(){
+      return <div>
+        <HeaderComponent></HeaderComponent>
+        <LinkComponent></LinkComponent>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <InfoComponent></InfoComponent>,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            position: relative;
+            margin: 0px;
+            text-align: center;
+        }
+        body:before{
+            content: "";
+            display: table;
+        }
+        #p4{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<h2>拖放API</h2>
+<img src="img/trash.png" alt="" id="transh"/>
+<hr/>
+<img src="img/p4.png" alt="" id="p4"/>
+</body>
+<script>
+    transh.ondragenter=function(e){
+        console.log("1 drag enter");
+    }
+    transh.ondragover=function(e){
+        e.preventDefault();
+        console.log("2 drag over");
+    }
+    transh.ondropleave=function(e){
+        console.log("3 drag leave");
+    }
+    transh.ondrop=function(e){
+        console.log("4 drag leave");
+    }
+</script>
+</html>

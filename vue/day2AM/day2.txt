@@ -1,0 +1,68 @@
+组件间通信
+路由
+网络请求
+
+
+一、组件间通信
+父子组件通信：props down,events up
+
+
+1、父组件 想要与 子组件通信
+①调用子组件指定属性
+<son-component msg='10'></son-component>
+②在子组件中指定props属性来接收值
+Vue.component('son-component',{
+	props:['msg']
+})
+
+注意事项：在子组件中的props属性指定数组中的元素时，要和传递的属性名字是要保持一致的。
+
+2、子组件 与父组件 通信 
+①绑定事件
+父组件在调用子组件时，给子组件通过v-on绑定一个自定义事件以及对应的处理函数（在父组件中）
+
+Vue.component('father-component',{
+	methods:{
+		recvMsg:function(data){}
+	},
+	template:`
+		<son-component v-on:toFather="recvMsg">
+		</son-component>
+	`
+})
+
+②触发事件
+
+Vue.component('son-component',{
+	methods:{
+		sendToFather:function(){ this.$emit('toFather',100)}
+	}
+
+})
+
+（10:25 - 10:35）
+练习：实现两个组件father,son,
+1、父组件：直接调用子组件
+在父组件中调用子组件时，给传个name=‘zhangsan’,让子组件接收name对应的值并显示在h1；
+父组件能够接收到子组件传来的值显示在控制台
+2、子组件中有一个输入框，有一个按钮，有一个h1标签
+子组件能够通过点击按钮，触发customClick的事件，传递输入框中的值给父组件
+
+二、组件间通信
+除了props down,events up,还有其它的方式来实现父子组件通信。
+
+父组件可以通过ref和子组件通信：
+
+1、父组件要想和子组件通信：
+ref（reference 引用、参考），给子组件指定上一个ref属性，在父组件中通过this.$refs.引用名称。
+<son ref='myChild'></son>
+this.$refs.myChild.name
+2、子组件和父组件通信
+this.$parent 读取父组件中的属性和方法。
+this.$parent.name
+练习：实现两个组件father,son,
+1、父组件：直接调用子组件
+在父组件中调用子组件时，给传个name=‘zhangsan’,让子组件接收name对应的值并显示在h1；
+父组件能够接收到子组件传来的值显示在控制台
+2、子组件中有一个输入框，有一个按钮，有一个h1标签
+子组件能够通过点击按钮，触发customClick的事件，传递输入框中的值给父组件

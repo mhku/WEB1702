@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  {{msg}}
+  <father></father>
+</div>
+
+<script type="text/x-template" id="fatherTemplate">
+  <div>
+    <h1>这是父组件</h1>
+    <span>{{"儿子传来的数据是:"+msgFromSon}}</span>
+    <hr/>
+    <!-- 给子组件绑定处理函数-->
+    <son @msgTF="recMsg"></son>
+  </div>
+</script>
+
+<script type="text/x-template" id="sonTemplate">
+  <div>
+    <h1>这是子组件</h1>
+    <input type="text" v-model="kw"/>
+    <button @click="handleClick">clickMe</button>
+  </div>
+</script>
+
+<script>
+
+  //创建父组件
+  Vue.component('father', {
+    template: '#fatherTemplate',
+    data: function () {
+      return {
+        msgFromSon:''
+      }
+    },
+    methods:{
+      recMsg: function (msg) {
+        //在父组件中定义一个方法用来绑定子组件的事件msgTF
+        console.log(msg);
+        this.msgFromSon  = msg;
+      }
+    }
+  })
+
+  //创建子组件
+  Vue.component('son', {
+    template: '#sonTemplate',
+    data: function () {
+      return {
+        kw:''
+      }
+    },
+    methods:{
+      handleClick: function () {
+        console.log(this.kw);
+        //通过$emit方法触发指定的事件
+        this.$emit('msgTF',this.kw);
+      }
+    }
+  })
+
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+
+</script>
+
+</body>
+</html>

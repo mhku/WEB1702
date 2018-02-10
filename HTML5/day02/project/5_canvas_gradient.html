@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>使用渐变对象</h3>
+  <canvas id="c5" width="500" height="400"></canvas>
+  <script>
+    var ctx = c5.getContext('2d');
+
+    //ctx.fillStyle = '#0f0';
+    //创建一个渐变对象
+    var g = ctx.createLinearGradient(50,100, 450, 100);
+    g.addColorStop(0, '#f00');
+    g.addColorStop(0.5, '#ff0');
+    g.addColorStop(1, '#0f0');
+    ctx.fillStyle = g;
+    //ctx.fillRect(50,100, 400, 200);
+
+    ctx.strokeStyle = g;
+    ctx.strokeRect(50,100, 400,200);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/hierarchical-dependency-injection.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:38 GMT -->
+<head><title>多级依赖注入器 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item is-selected"><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="hierarchical-dependency-injection.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/hierarchical-dependency-injection.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/hierarchical-dependency-injection.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">多级依赖注入器 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>You learned the basics of Angular Dependency injection in the
+<a href="dependency-injection.html">Dependency Injection</a> guide.</p>
+<p>在<a href="dependency-injection.html">依赖注入</a>一章中，我们已经学过了 Angular 依赖注入的基础知识。</p>
+<p>Angular has a <em>Hierarchical Dependency Injection</em> system.
+There is actually a tree of injectors that parallel an application&#39;s component tree.
+You can reconfigure the injectors at any level of that component tree.</p>
+<p>Angular 有一个<em>多级依赖注入系统</em>。
+实际上，应用程序中有一个与组件树平行的注入器树（译注：平行是指结构完全相同且一一对应）。
+我们可以在组件树中的任何级别上重新配置注入器，达到一些有趣和有用的效果。</p>
+<p>This guide explores this system and how to use it to your advantage.</p>
+<p>在本章中，我们将浏览这个体系，并告诉你如何善用它。</p>
+<p>Try the <live-example></live-example>.</p>
+<p>试试<live-example></live-example>.</p>
+<div class="l-main-section"></div><h2 id="the-injector-tree">The injector tree</h2>
+<h2 id="-">注入器树</h2>
+<p>In the <a href="dependency-injection.html">Dependency Injection</a> guide,
+you learned how to configure a dependency injector and how to retrieve dependencies where you need them.</p>
+<p>在<a href="dependency-injection.html">依赖注入</a>一章中，我们学过如何配置依赖注入器，以及如何在我们需要时用它获取依赖。</p>
+<p>In fact, there is no such thing as <strong><em>the</em></strong> injector.
+An application may have multiple injectors.
+An Angular application is a tree of components. Each component instance has its own injector.
+The tree of components parallels the tree of injectors.</p>
+<p>实际上，没有<strong><em>那个（唯一的）</em></strong>注入器这回事，一个应用中可能有多个注入器。
+一个 Angular 应用是一个组件树。每个组件实例都有自己的注入器！
+组件的树与注入器的树平行。</p>
+<div class="l-sub-section"><p>The component&#39;s injector may be a <em>proxy</em> for an ancestor injector higher in the component tree.
+That&#39;s an implementation detail that improves efficiency.
+You won&#39;t notice the difference and
+your mental model should be that every component has its own injector.</p>
+<p>组件的注入器可能是一个组件树中更高级的祖先注入器的<em>代理</em>。
+但这只是提升效率的实现细节，我们不用在乎这点差异，在你的脑海里只要想象成每个组件都有自己的注入器就可以了。</p>
+</div><p>Consider this guide&#39;s variation on the Tour of Heroes application .
+At the top is the <code>AppComponent</code> which has some sub- components.
+One of them is the<code>HeroesListComponent</code>.
+The  <code>HeroesListComponent</code> holds and manages multiple instances of the <code>HeroTaxReturnComponent</code>.
+The following diagram represents the state of the this guide&#39;s three-level component tree when there are three instances of <code>HeroTaxReturnComponent</code>
+open simultaneously.</p>
+<p>考虑《英雄指南》应用的一个简单变种。它的顶层是<code>AppComponent</code>组件，它有一些子组件。
+<code>HeroesListComponent</code>组件保存和管理着<code>HeroTaxReturnComponent</code>的多个实例。
+下图展示了当<code>HeroesCardComponent</code>的三个 <code>HeroTaxReturnComponent</code> 实例同时展开时的三级组件树状态。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/dependency-injection/component-hierarchy.png" alt="injector tree" width="600"></figure><h3 id="injector-bubbling">Injector bubbling</h3>
+<h3 id="-">注入器冒泡</h3>
+<p>When a component requests a dependency, Angular tries to satisfy that dependency with a provider registered in that component&#39;s own injector.
+If the component&#39;s injector lacks the provider, it passes the request up to its parent component&#39;s injector.
+If that injector can&#39;t satisfy the request, it passes it along to <em>its</em> parent injector.
+The requests keep bubbling up until Angular finds an injector that can handle the request or runs out of ancestor injectors.
+If it runs out of ancestors, Angular throws an error.</p>
+<p>当一个组件申请获得一个依赖时，Angular 先尝试用该组件自己的注入器来满足它。
+如果该组件的注入器没有找到对应的提供商，它就把这个申请转给它父组件的注入器来处理。
+如果那个注入器也无法满足这个申请，它就继续转给<em>它的</em>父组件的注入器。
+这个申请继续往上冒泡 —— 直到我们找到了一个能处理此申请的注入器或者超出了组件树中的祖先位置为止。
+如果超出了组件树中的祖先还未找到，Angular 就会抛出一个错误。</p>
+<div class="l-sub-section"><p>You can cap the bubbling. An intermediate component can declare that it is the &quot;host&quot; component.
+The hunt for providers will climb no higher than the injector for that host component.
+ This is a topic for another day.</p>
+<p>我们还可以“盖住”这次冒泡。一个中层的组件可以声称自己是“宿主”组件。
+向上查找提供商的过程会截止于这个“宿主”组件。
+我们先保留这个问题，等改天再讨论这个选项。</p>
+</div><h3 id="re-providing-a-service-at-different-levels">Re-providing a service at different levels</h3>
+<h3 id="-">在不同层级再次提供同一个服务</h3>
+<p>You can re-register a provider for a particular dependency token at multiple levels of the injector tree.
+You don&#39;t <em>have</em> to re-register providers. You shouldn&#39;t do so unless you have a good reason.
+But you <em>can</em>.</p>
+<p>我们可以在注入器树中的多个层次上为指定的依赖令牌重新注册提供商。
+但<em>并非必须</em>重新注册，事实上，虽然可以重新注册，但除非有很好的理由，否则不应该这么做。</p>
+<p>As the resolution logic works upwards, the first provider encountered wins.
+Thus, a provider in an intermediate injector intercepts a request for a service from something lower in the tree.
+It effectively &quot;reconfigures&quot; and &quot;shadows&quot; a provider at a higher level in the tree.</p>
+<p>服务解析逻辑会自下而上查找，碰到的第一个提供商会胜出。
+因此，注入器树中间层注入器上的提供商，可以拦截来自底层的对特定服务的请求。
+这导致它可以“重新配置”和者说“遮蔽”高层的注入器。</p>
+<p>If you only specify providers at the top level (typically the root <code>AppModule</code>), the tree of injectors appears to be flat.
+All requests bubble up to the root <code>NgModule</code> injector that you configured with the <code>bootstrapModule</code> method.</p>
+<p>如果我们只在顶级（通常是根模块<code>AppModule</code>），这三个注入器看起来将是“平面”的。
+所有的申请都会冒泡到根<code>NgModule</code>进行处理，也就是我们在<code>bootstrapModule</code>方法中配置的那个。</p>
+<div class="l-main-section"></div><h2 id="component-injectors">Component injectors</h2>
+<h2 id="-">组件注入器</h2>
+<p>The ability to configure one or more providers at different levels opens up interesting and useful possibilities.</p>
+<p>在不同层次上重新配置一个或多个提供商的能力，开启了一些既有趣又有用的可能性。</p>
+<h3 id="scenario-service-isolation">Scenario: service isolation</h3>
+<h3 id="-">场景：服务隔离</h3>
+<p>Architectural reasons may lead you to restrict access to a service to the application domain where it belongs.</p>
+<p>出于架构方面的考虑，可能会让你决定把一个服务限制到只能在它所属的特定领域中访问。</p>
+<p>The guide sample includes a <code>VillainsListComponent</code> that displays a list of villains.
+It gets those villains from a <code>VillainsService</code>.</p>
+<p>本章的范例中包括一个<code>VillainsListComponent</code>，它显示一个反派的列表。</p>
+<p>While you <em>could</em> provide <code>VillainsService</code> in the root <code>AppModule</code> (that&#39;s where you&#39;ll find the <code>HeroesService</code>),
+that would make the <code>VillainsService</code> available everywhere in the application, including the <em>Hero</em> workflows.</p>
+<p>虽然我们也可以在根模块<code>AppModule</code>中提供<code>VillainsService</code>（就像<code>HeroesService</code>那样），不过那样一来就会导致在整个应用中到处都能访问到<code>VillainsService</code>，包括在<em>英雄</em>工作流中。</p>
+<p>If you later modified the <code>VillainsService</code>, you could break something in a hero component somewhere.
+That&#39;s not supposed to happen but providing the service in the root <code>AppModule</code> creates that risk.</p>
+<p>如果我们以后修改了<code>VillainsService</code>，那就可能会破坏英雄组件中的某些部分。
+这可不妙，但是在根模块<code>AppModule</code>中提供这个服务可能会导致这种风险。</p>
+<p>Instead, provide the <code>VillainsService</code> in the <code>providers</code> metadata of the <code>VillainsListComponent</code> like this:</p>
+<p>我们可以换一种方案：在<code>VillainsListComponent</code>元数据的<code>providers</code>中提供<code>VillainsService</code>，就像这样：</p>
+<div class="code-example"><header><h4>src/app/villains-list.component.ts (metadata)</h4></header><code-example language="ts" format="">@Component({
+  selector: &#39;villains-list&#39;,
+  templateUrl: &#39;./villains-list.component.html&#39;,
+  providers: [ VillainsService ]
+})
+</code-example></div><p>By providing <code>VillainsService</code> in the <code>VillainsListComponent</code> metadata and nowhere else,
+the service becomes available only in the <code>VillainsListComponent</code> and its sub-component tree.
+It&#39;s still a singleton, but it&#39;s a singleton that exist solely in the <em>villain</em> domain.</p>
+<p>在<code>VillainsListComponent</code>的元数据中而不是其它地方提供<code>VillainsService</code>服务，该服务就会只在<code>VillainsListComponent</code>及其子组件树中可用。
+它仍然是单例，但是这个单例只存在于<em>反派（villain）</em>这个领域中。</p>
+<p>Now you know that a hero component can&#39;t access it. You&#39;ve reduced your exposure to error.</p>
+<p>现在，我们可以确信英雄组件不会访问它，因此减少了犯错误的机会。</p>
+<h3 id="scenario-multiple-edit-sessions">Scenario: multiple edit sessions</h3>
+<h3 id="-">场景：多重编辑会话</h3>
+<p>Many applications allow users to work on several open tasks at the same time.
+For example, in a tax preparation application, the preparer could be working on several tax returns,
+switching from one to the other throughout the day.</p>
+<p>很多应用允许用户同时进行多个任务。
+比如，在纳税申报应用中，申报人可以打开多个报税单，随时可能从一个切换到另一个。</p>
+<p>This guide demonstrates that scenario with an example in the Tour of Heroes theme.
+Imagine an outer <code>HeroListComponent</code> that displays a list of super heroes.</p>
+<p>本章要示范的场景仍然是基于《英雄指南》的。
+想象一个外层的<code>HeroListComponent</code>，它显示一个超级英雄的列表。</p>
+<p>To open a hero&#39;s tax return, the preparer clicks on a hero name, which opens a component for editing that return.
+Each selected hero tax return opens in its own component and multiple returns can be open at the same time.</p>
+<p>要打开一个英雄的报税单，申报者点击英雄名，它就会打开一个组件来编辑那个申报单。
+每个选中的申报单都会在自己的组件中打开，并且可以同时打开多个申报单。</p>
+<p>Each tax return component has the following characteristics:</p>
+<p>每个报税单组件都有下列特征：</p>
+<ul>
+<li><p>Is its own tax return editing session.</p>
+<p>属于它自己的报税单会话。</p>
+</li>
+<li><p>Can change a tax return without affecting a return in another component.</p>
+<p>可以修改一个报税单，而不会影响另一个组件中的申报单。</p>
+</li>
+<li><p>Has the ability to save the changes to its tax return or cancel them.</p>
+<p>能把所做的修改保存到它的报税单中，或者放弃它们。</p>
+</li>
+</ul>
+<figure class="image-display"><img src="../../../../resources/images/devguide/dependency-injection/hid-heroes-anim.gif" width="400" alt="Heroes in action"></figure><p>One might suppose that the <code>HeroTaxReturnComponent</code> has logic to manage and restore changes.
+That would be a pretty easy task for a simple hero tax return.
+In the real world, with a rich tax return data model, the change management would be tricky.
+You might delegate that management to a helper service, as this example does.</p>
+<p>实现方式之一就是让<code>HeroTaxReturnComponent</code>有逻辑来管理和还原那些更改。
+这对于简单的报税单来说是很容易的。
+不过，在现实世界中，报税单的数据模型非常复杂，对这些修改的管理可能不得不投机取巧。
+于是我们可以把这种管理任务委托给一个辅助服务，就像这个例子中所做的。</p>
+<p>Here is the <code>HeroTaxReturnService</code>.
+It caches a single <code>HeroTaxReturn</code>, tracks changes to that return, and can save or restore it.
+It also delegates to the application-wide singleton <code>HeroService</code>, which it gets by injection.</p>
+<p>这是一个报税单服务<code>HeroTaxReturnService</code>。
+它缓存了单条<code>HeroTaxReturn</code>，用于跟踪那个申报单的变更，并且可以保存或还原它。
+它还委托给了全应用级的单例服务<code>HeroService</code>，它是通过依赖注入机制取得的。</p>
+<div class="code-example"><header><h4>src/app/hero-tax-return.service.ts</h4></header><code-example language="ts" format="linenums">import { Injectable }    from &#39;@angular/core&#39;;
+import { HeroTaxReturn } from &#39;./hero&#39;;
+import { HeroesService } from &#39;./heroes.service&#39;;
+
+@Injectable()
+export class HeroTaxReturnService {
+  private currentTaxReturn: HeroTaxReturn;
+  private originalTaxReturn: HeroTaxReturn;
+
+  constructor(private heroService: HeroesService) { }
+
+  set taxReturn (htr: HeroTaxReturn) {
+    this.originalTaxReturn = htr;
+    this.currentTaxReturn  = htr.clone();
+  }
+
+  get taxReturn (): HeroTaxReturn {
+    return this.currentTaxReturn;
+  }
+
+  restoreTaxReturn() {
+    this.taxReturn = this.originalTaxReturn;
+  }
+
+  saveTaxReturn() {
+    this.taxReturn = this.currentTaxReturn;
+    this.heroService.saveTaxReturn(this.currentTaxReturn).subscribe();
+  }
+}
+</code-example></div><p>Here is the <code>HeroTaxReturnComponent</code> that makes use of it.</p>
+<p>下面是正在使用它的<code>HeroTaxReturnComponent</code>组件。</p>
+<div class="code-example"><header><h4>src/app/hero-tax-return.component.ts</h4></header><code-example language="ts" format="linenums">import { Component, EventEmitter, Input, Output } from &#39;@angular/core&#39;;
+import { HeroTaxReturn }        from &#39;./hero&#39;;
+import { HeroTaxReturnService } from &#39;./hero-tax-return.service&#39;;
+
+@Component({
+  selector: &#39;hero-tax-return&#39;,
+  templateUrl: &#39;./hero-tax-return.component.html&#39;,
+  styleUrls: [ &#39;./hero-tax-return.component.css&#39; ],
+  providers: [ HeroTaxReturnService ]
+})
+export class HeroTaxReturnComponent {
+  message = &#39;&#39;;
+  @Output() close = new EventEmitter&lt;void&gt;();
+
+  get taxReturn(): HeroTaxReturn {
+    return this.heroTaxReturnService.taxReturn;
+  }
+  @Input()
+  set taxReturn (htr: HeroTaxReturn) {
+    this.heroTaxReturnService.taxReturn = htr;
+  }
+
+  constructor(private heroTaxReturnService: HeroTaxReturnService ) { }
+
+  onCanceled()  {
+    this.flashMessage(&#39;Canceled&#39;);
+    this.heroTaxReturnService.restoreTaxReturn();
+  };
+
+  onClose()  { this.close.emit(); };
+
+  onSaved() {
+    this.flashMessage(&#39;Saved&#39;);
+    this.heroTaxReturnService.saveTaxReturn();
+  }
+
+  flashMessage(msg: string) {
+    this.message = msg;
+    setTimeout(() =&gt; this.message = &#39;&#39;, 500);
+  }
+}
+</code-example></div><p>The <em>tax-return-to-edit</em> arrives via the input property which is implemented with getters and setters.
+The setter initializes the component&#39;s own instance of the <code>HeroTaxReturnService</code> with the incoming return.
+The getter always returns what that service says is the current state of the hero.
+The component also asks the service to save and restore this tax return.</p>
+<p>我们通过输入属性得到<em>要编辑的报税单</em>，我们把它实现成了读取器（getter）和设置器（setter）。
+设置器根据传进来的报税单初始化了组件自己的<code>HeroTaxReturnService</code>实例。
+读取器总是返回该服务所存英雄的当前状态。
+组件也会请求该服务来保存或还原这个报税单。</p>
+<p>There&#39;d be big trouble if <em>this</em> service were an application-wide singleton.
+Every component would share the same service instance.
+Each component would overwrite the tax return that belonged to another hero.
+What a mess!</p>
+<p>这里有个大问题，那就是如果<em>这个</em>服务是一个全应用范围的单例，每个组件就都会共享同一个服务实例，每个组件也都会覆盖属于其他英雄的报税单，真是一团糟！</p>
+<p>Look closely at the metadata for the <code>HeroTaxReturnComponent</code>. Notice the <code>providers</code> property.</p>
+<p>但仔细看<code>HeroTaxReturnComponent</code>的元数据，注意<code>providers</code>属性。</p>
+<div class="code-example"><code-example language="ts" format="">providers: [ HeroTaxReturnService ]
+</code-example></div><p>The <code>HeroTaxReturnComponent</code> has its own provider of the <code>HeroTaxReturnService</code>.
+Recall that every component <em>instance</em> has its own injector.
+Providing the service at the component level ensures that <em>every</em> instance of the component gets its own, private instance of the service.
+No tax return overwriting. No mess.</p>
+<p><code>HeroTaxReturnComponent</code>有它自己的<code>HeroTaxReturnService</code>提供商。
+回忆一下，每个组件的<em>实例</em>都有它自己的注入器。
+在组件级提供服务可以确保组件的<em>每个</em>实例都得到一个自己的、私有的服务实例。
+报税单不会再被意外覆盖，这下清楚了。</p>
+<div class="l-sub-section"><p>The rest of the scenario code relies on other Angular features and techniques that you can learn about elsewhere in the documentation.
+You can review it and download it from the <live-example></live-example>.</p>
+<p>该场景代码中的其它部分依赖另一些Angular的特性和技术，我们将会在本文档的其它章节学到。
+你可以到<live-example></live-example>查看代码和下载它。</p>
+</div><h3 id="scenario-specialized-providers">Scenario: specialized providers</h3>
+<h3 id="-">场景：专门的提供商</h3>
+<p>Another reason to re-provide a service is to substitute a <em>more specialized</em> implementation of that service,
+deeper in the component tree.</p>
+<p>重新提供服务的另一个原因，是在组件树的深层中把该服务替换为一个<em>更特殊的</em>实现。</p>
+<p>Consider again the Car example from the <a href="dependency-injection.html">Dependency Injection</a> guide.
+Suppose you configured the root injector (marked as A) with <em>generic</em> providers for
+<code>CarService</code>, <code>EngineService</code> and <code>TiresService</code>.</p>
+<p>再次考虑<a href="dependency-injection.html">依赖注入</a>一章中车辆（Car）的例子。
+假设我们在根注入器（代号A）中配置了<em>通用的</em>提供商：<code>CarService</code>、<code>EngineService</code>和<code>TiresService</code>。</p>
+<p>You create a car component (A) that displays a car constructed from these three generic services.</p>
+<p>我们创建了一个车辆组件（A），它显示一个从另外三个通用服务构造出的车辆。</p>
+<p>Then you create a child component (B) that defines its own, <em>specialized</em> providers for <code>CarService</code> and <code>EngineService</code>
+that have special capabilites suitable for whatever is going on in component (B).</p>
+<p>然后，我们创建一个子组件（B），它为<code>CarService</code>和<code>EngineService</code>定义了自己的<em>特殊的</em>提供商，它们具有更特殊的能力，适用于组件B的。</p>
+<p>Component (B) is the parent of another component (C) that defines its own, even <em>more specialized</em> provider for <code>CarService</code>.</p>
+<p>组件B是另一个组件C的父组件，而组件C又定义了自己的，<em>更特殊的</em><code>CarService</code>提供商。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/dependency-injection/car-components.png" alt="car components" width="220"></figure><p>Behind the scenes, each component sets up its own injector with zero, one, or more providers defined for that component itself.</p>
+<p>在幕后，每个组件都有自己的注入器，这个注入器带有为组件本身准备的0个、1个或多个提供商。</p>
+<p>When you resolve an instance of <code>Car</code> at the deepest component (C),
+its injector produces an instance of <code>Car</code> resolved by injector (C) with an <code>Engine</code> resolved by injector (B) and
+<code>Tires</code> resolved by the root injector (A).</p>
+<p>当我们在最深层的组件C解析<code>Car</code>的实例时，它使用注入器C解析生成了一个<code>Car</code>的实例，使用注入器B解析了<code>Engine</code>，而<code>Tires</code>则是由根注入器A解析的。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/dependency-injection/injector-tree.png" alt="car injector tree" width="600"></figure><div class="l-sub-section"><p>The code for this <em>cars</em> scenario is in the <code>car.components.ts</code> and <code>car.services.ts</code> files of the sample
+which you can review and download from the <live-example></live-example>.</p>
+<p><em>车辆</em>场景下的代码位于<code>car.components.ts</code>和<code>car.services.ts</code>文件中，这个例子你可以在<live-example></live-example>查看和下载。</p>
+</div><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/hierarchical-dependency-injection.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:40 GMT -->
+</html>

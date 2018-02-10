@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>用户名：<input type="text"></li>
+    <li>密码：<input type="text"></li>
+    <li>验证码：<input type="text" id="inputChk">
+        <img src="1.php" alt="" width="62" height="20" id="codepng">
+        <i>看不清 <a href="#" id="change">换一张</a></i>
+        <b id="chkOk" style="display:none;"></b>
+        <p id="info"></p>
+    </li>
+    <li><button id="btnSubmit">注册</button></li>
+</ul>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+
+
+    $('#change').on('click',function(e){
+        e.preventDefault();
+        $('#codepng').attr('src','1.php');
+    });
+    function register(){
+    $('#inputChk').blur(function(){
+        var val=this.value;
+        var me=this;
+        var newCode='';
+        $.ajax({
+            type:'post',
+            url:'2.php',
+            data:{vcode:val},
+            success:function(data){
+                console.log(data);
+                if(data==='验证码正确'){
+                    $('#chkOk').css('display','block');
+                    me.newCode=val;
+                    console.log(me.newCode);
+                    $('#info').html(data);
+                }else{
+                    $('#info').html(data);
+                }
+
+            }
+        });
+    });
+    }
+    register();
+    $('#btnSubmit').click(function(){
+      var v=$('#info').html();
+        console.log(v);
+        if(v==="验证码有误"){
+            v='请填写正确验证码'
+            $("#info").html(v);
+        }else if(v===''){
+            v="请填写验证码";
+            $('#info').html(v);
+        }else{
+            register()
+        }
+    })
+</script>
+</body>
+</html>

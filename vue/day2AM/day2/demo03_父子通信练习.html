@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <father></father>
+</div>
+
+<script>
+  Vue.component('father',{
+    data: function () {
+      return {
+        result:''
+      }
+    },
+    methods:{
+      recvMsg: function (msg) {
+        console.log('fromSon event is received '+msg);
+        this.result = msg;
+      }
+    },
+    template:`
+    <div>
+      <h1>{{"子组件传来的数据为"+result}}</h1>
+      <hr/>
+      <son @fromSon="recvMsg" name="zhangsan">
+      </son>
+    </div>
+    `
+  })
+
+  Vue.component('son',{
+    data: function () {
+      return {
+        myValue:''
+      }
+    },
+    props:['name'],
+    methods:{
+      sendToFather: function () {
+        //触发自定义事件
+        this.$emit('fromSon',this.myValue);
+      }
+    },
+    template:`<div>
+      <h1>{{"接收到父组件传来的值为"+name}}</h1>
+      <input type="text" v-model="myValue"/>
+      <button @click="sendToFather">
+      向父组件传值
+      </button>
+    </div>`
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+</script>
+
+</body>
+</html>

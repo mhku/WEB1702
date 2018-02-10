@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+
+  <!-- meta:vp -->
+
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body>
+<!--页头-->
+<ion-header-bar class="bar-positive">
+  <h1 class="title">这是页头</h1>
+</ion-header-bar>
+
+<!--正文-->
+<ion-content>
+  <div class="list list-inset">
+    <label  class="item item-input">
+      <span class="input-label">姓名</span>
+      <input type="text "placeholder="请输入姓名"/>
+    </label>
+    <label  class="item item-input">查找
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search"  placeholder="输入查找内容"/>
+    </label>
+    <label  class="item item-input">
+      日期：
+      <input type="date"/>
+    </label>
+    <label  class="item item-input item-select">
+      <span class="input-label">选择喜欢的颜色</span>
+      <select name="" id="">
+        <option value="">红色</option>
+        <option value="">绿色</option>
+        <option value="">蓝色</option>
+      </select>
+    </label>
+    <div class="item item-toggle">灯开关
+      <label for=""class="toggle">
+        <input type="checkbox"/>
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </div>
+    <div class="item">
+      选择喜欢的电影
+      <ul class="list list-inset">
+        <ion-checkbox>钢铁侠1</ion-checkbox>
+        <ion-checkbox>钢铁侠2</ion-checkbox>
+        <ion-checkbox>钢铁侠3</ion-checkbox>
+      </ul>
+    </div>
+    <div class="item">
+      选择性别
+      <ul class="list">
+        <ion-radio>男</ion-radio>
+        <ion-radio>女</ion-radio>
+      </ul>
+    </div>
+    <div class="range">
+      <i class="icon ion-volume-low"></i>
+      <input type="range" name="volume"/>
+      <i class="icon ion-volume-high"></i>
+    </div>
+  </div>
+</ion-content>
+
+<!--页尾-->
+<ion-footer-bar class="bar-assertive">
+  <h1 class="title">这是页尾</h1>
+</ion-footer-bar>
+
+<script>
+  angular.module('myApp',['ionic']);
+</script>
+
+</body>
+</html>

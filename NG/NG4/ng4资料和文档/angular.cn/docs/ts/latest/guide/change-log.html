@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/change-log.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:13 GMT -->
+<head><title>更新记录 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent is-selected">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item is-selected"><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">更新记录 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">最新文档更新历史记录。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>The Angular documentation is a living document with continuous improvements.
+This log calls attention to recent significant changes.</p>
+<p>我们将持续不断的更新和改进Angular文档。本日志记录了近期最重要的变更。</p>
+<h2 id="updated-to-angular-4-0-documentation-for-angular-2-x-can-be-found-at-v2-angular-io-https-v2-angular-io-">Updated to Angular 4.0. Documentation for Angular 2.x can be found at <a href="https://v2.angular.io/">v2.angular.io</a>.</h2>
+<h2 id="-angular-4-0-angular-2-x-v2-angular-io-https-v2-angular-io-">更新到 Angular 4.0 。Angular 2.x 的文档在 <a href="https://v2.angular.io/">v2.angular.io</a> 。</h2>
+<h2 id="all-mention-of-moduleid-removed-component-relative-paths-cookbook-deleted-2017-03-13-">All mention of moduleId removed. &quot;Component relative paths&quot; cookbook deleted (2017-03-13)</h2>
+<h2 id="-moduleid-2017-03-13-">移除了所有的moduleId引用。移除了“组件相对路径” 的烹饪书。(2017-03-13)</h2>
+<p>We added a new SystemJS plugin (systemjs-angular-loader.js) to our recommended SystemJS configuration.
+This plugin dynamically converts &quot;component-relative&quot; paths in templateUrl and styleUrls to &quot;absolute paths&quot; for you.</p>
+<p>我们往建议的SystemJS配置中新增了一个SystemJS插件 (systemjs-angular-loader.js) 。
+这个插件可以帮你把templateUrl和styleUrls中的组件相对路径动态转换为绝对路径。</p>
+<p>We strongly encourage you to only write component-relative paths.
+That is the only form of URL discussed in these docs. You no longer need to write @Component({ moduleId: module.id }), nor should you.</p>
+<p>我们强烈建议你只写组件相对路径。
+这也是本文档中所使用的唯一形式。你不必再写<code>@Component({ moduleId: module.id })</code>，而且也不应该再这么写。</p>
+<h2 id="new-downloadable-examples-for-each-guide-2017-02-28-">NEW: Downloadable examples for each guide (2017-02-28)</h2>
+<h2 id="-2017-02-28-">新增：每篇指南都增加了可下载的范例程序 (2017-02-28)</h2>
+<p>Now you can download the sample code for any guide and run it locally.
+Look for the new download links next to the &quot;live example&quot; links.</p>
+<p>现在你可以为任何一篇指南下载范例程序，并且在本地运行它了。
+请在“在线例子”的链接后面查找新的下载链接。</p>
+<h2 id="template-syntax-structural-directives-refreshed-2017-02-06-">Template Syntax/Structural Directives: refreshed (2017-02-06)</h2>
+<h2 id="-2017-02-06-">模板语法/结构型指令：更新了 (2017-02-06)</h2>
+<p>The <a href="template-syntax.html"><em>Template-Syntax</em></a> and <a href="structural-directives.html"><em>Structural Directives</em></a>
+guides were significantly revised for clarity, accuracy, and current recommended practices.
+Discusses <code>&lt;ng-container&gt;</code>.
+Revised samples are more clear and cover all topics discussed.</p>
+<p>对<a href="template-syntax.html">模板语法</a> 和 <a href="structural-directives.html">结构型指令</a>这两篇指南做了大幅修改，来让它们更加清晰、准确，并符合当前的最佳实践。
+讨论了<code>&lt;ng-container&gt;</code>。
+修改了例子，来让它们更清晰，并且覆盖了所有讨论到的主题。</p>
+<h2 id="new-samples-re-structured-with-src-folder-2017-02-02-">NEW: Samples re-structured with <code>src/</code> folder (2017-02-02)</h2>
+<h2 id="-src-2017-02-02-">新增：调整了范例程序的结构，移到了<code>src/</code>文件夹 (2017-02-02)</h2>
+<p>All documentation samples have been realigned with the default folder structure of the Angular CLI.
+That&#39;s a step along the road to basing the sample in the Angular CLI.
+But it&#39;s also good in its own right. 
+It helps clearly separate app code from setup and configuration files.</p>
+<p>所有的文档范例都已经向Angular CLI的默认文件夹结构看齐了。
+这是把范例迁移到Angular CLI过程中的一步。
+不过也不仅是为了迁移，它确实能帮我们把应用代码从环境代码和配置代码中分离出来。</p>
+<p>All samples now have a <code>src/</code> folder at the project root.
+The former <code>app/</code> folder moves under <code>src/</code>. 
+Read about moving your existing project to this structure in 
+<a href="https://github.com/angular/quickstart#updating-to-a-newer-version-of-the-quickstart-repo" target="_blank" target="Migrating samples/quickstart app to the src folder">
+the QuickStart repo update instructions</a>.</p>
+<p>我们已经把所有范例改成了使用项目根目录下的<code>src/</code>文件夹。
+也就是把以前的<code>app/</code>文件夹移到了<code>src/</code>文件夹下面。
+要了解如何对你的现有工程进行这种迁移，请参阅<a href="https://github.com/angular/quickstart#updating-to-a-newer-version-of-the-quickstart-repo" target="_blank" target="把范例中的应用迁移到src文件夹">QuickStart中的迁移指南</a>。</p>
+<p>Notably:</p>
+<p>要点：</p>
+<ul>
+<li><p><code>app/main.ts</code> moved to <code>src/main.ts</code>.</p>
+<p>  把<code>app/main.ts</code>移到<code>src/main.ts</code>。</p>
+</li>
+<li><p><code>app/</code> moved to <code>src/app/</code>.</p>
+<p>  把<code>app/</code>移到<code>src/app/</code>。</p>
+</li>
+<li><p><code>index.html</code>, <code>styles.css</code> and <code>tsconfig.json</code> moved inside <code>src/</code>.</p>
+<p>  把<code>index.html</code>、<code>styles.css</code>和<code>tsconfig.json</code>移到<code>src/</code>中。</p>
+</li>
+<li><p><code>systemjs.config.js</code> now imports <code>main.js</code> instead of <code>app</code>.</p>
+<p>  <code>systemjs.config.js</code>现在要导入<code>main.js</code>而不是<code>app</code>。</p>
+</li>
+<li><p>Added <code>lite-server</code> configuration (<code>bs-config.json</code>) to serve <code>src/</code>.</p>
+<p>  新增了一个<code>lite-server</code>配置(<code>bs-config.json</code>)以便在<code>src/</code>下启动开发服务器。</p>
+</li>
+</ul>
+<h2 id="new-reactive-forms-guide-2017-01-31-">NEW: Reactive Forms guide (2017-01-31)</h2>
+<h2 id="-reactive-2017-01-31-">新增：响应式（Reactive）表单指南 (2017-01-31)</h2>
+<p>The new <a href="reactive-forms.html"><strong>Reactive Forms</strong></a> guide explains how and why to build a &quot;reactive form&quot;.
+&quot;Reactive Forms&quot; are the code-based counterpart to the declarative &quot;Template Driven&quot; forms approach
+introduced in the <a href="forms.html">Forms</a> guide.
+Check it out before you decide how to add forms to your app. 
+Remember also that you can use both techniques in the same app, 
+choosing the approach that best fits each scenario.</p>
+<p>新的<a href="reactive-forms.html"><strong>响应式表单</strong></a>指南解释了如何以及何时构建“响应式表单”。
+“响应式表单”是基于代码的表单构建方式，与<a href="forms.html">表单</a>中介绍的声明“模板驱动”表单的方法相对。
+在你决定如何往应用中添加表单之前，建议先读读那一章。
+同时，别忘了你可以在同一个应用中同时使用这两种技术，根据场景来选择最合适的方法。</p>
+<h2 id="new-deployment-guide-2017-01-30-">NEW: Deployment guide (2017-01-30)</h2>
+<h2 id="-2017-01-30-">新增：部署指南 (2017-01-30)</h2>
+<p>The new <a href="deployment.html">Deployment</a> guide describes techniques for putting your application on a server.
+It includes important advice on optimizing for production.</p>
+<p>新的<a href="deployment.html">部署指南</a>讲的是如何把应用放到服务器上。
+其中包括了为生产环境进行优化的重要建议。</p>
+<h2 id="hierarchical-dependency-injection-refreshed-2017-01-13-">Hierarchical Dependency Injection: refreshed (2017-01-13)</h2>
+<h2 id="-2017-01-13-">多级依赖注入：更新完毕 (2017-01-13)</h2>
+<p><a href="hierarchical-dependency-injection.html">Hierarchical Dependency Injection</a> guide is significantly revised.
+Closes issue #3086.
+Revised samples are clearer and cover all topics discussed</p>
+<p><a href="hierarchical-dependency-injection.html">多级依赖注入</a>做了显著修改。关闭了issue #3086。修改过的范例更加清晰，而且覆盖了讨论到的全部主题。</p>
+<h2 id="miscellaneous-2017-01-05-">Miscellaneous (2017-01-05)</h2>
+<h2 id="-2017-01-05-">杂项 (2017-01-05)</h2>
+<ul>
+<li><p><a href="setup.html">Setup</a> guide: 
+  added (optional) instructions on how to remove <em>non-essential</em> files. </p>
+<p>  <a href="setup.html">环境搭建</a>指南:
+  添加了（可选的）步骤说明，告诉你如何移除<em>非核心</em>文件。</p>
+</li>
+<li><p>No longer consolidate RxJS operator imports in <code>rxjs-extensions</code> file; each file should import what it needs.</p>
+<p>  不再在<code>rxjs-extensions</code>文件中统一导入RxJS的操作符，每个文件应该各自导入它自己所需的。</p>
+</li>
+<li><p>All samples prepend template/style URLs with <code>./</code> as a best practice.</p>
+<p>  所有范例都在模板/样式的URL之前添加<code>./</code>前缀 …… 而且你在实际开发中也应该这么做。</p>
+</li>
+<li><p><a href="style-guide.html">Style Guide</a>: copy edits and revised rules.</p>
+<p>  <a href="style-guide.html">风格指南</a>：复制了编辑过的和修改过的规则。</p>
+</li>
+</ul>
+<h2 id="router-more-detail-2016-12-21-">Router: more detail (2016-12-21)</h2>
+<h2 id="-2016-12-21-">路由：更详细 (2016-12-21)</h2>
+<p>Added more information to the <a href="router.html">Router</a> guide 
+including sections named outlets, wildcard routes, and preload strategies.</p>
+<p>往<a href="router.html">路由指南</a>中添加了更多信息，包括“命名出口（Outlet）”、通配符路由和预加载策略。</p>
+<h2 id="http-how-to-set-default-request-headers-and-other-request-options-2016-12-14-">HTTP: how to set default request headers (and other request options) (2016-12-14)</h2>
+<h2 id="http-2016-12-14-">Http：如何设置默认的请求头（以及其它配置项） (2016-12-14)</h2>
+<p>Added section on how to set default request headers (and other request options) to 
+<a href="server-communication.html#override-default-request-options">HTTP</a> guide.</p>
+<p>往<a href="server-communication.html#override-default-request-options">Http指南</a>中添加了一节“如何设置默认的请求头（以及其它配置项）”</p>
+<h2 id="testing-added-component-test-plunkers-2016-12-02-">Testing: added component test plunkers (2016-12-02)</h2>
+<h2 id="-plunker-2016-12-02-">测试：添加了组件测试的plunker范例 (2016-12-02)</h2>
+<p>Added two plunkers that each test <em>one simple component</em> so you can write a component test plunker of your own: <live-example name="setup" plnkr="quickstart-specs">one</live-example> for the QuickStart seed&#39;s <code>AppComponent</code> and <live-example name="testing" plnkr="banner-specs">another</live-example> for the Testing guide&#39;s <code>BannerComponent</code>. 
+Linked to these plunkers in <a href="testing.html#live-examples">Testing</a> and <a href="setup-systemjs-anatomy-2.html">Setup anatomy</a> guides.</p>
+<p>添加了两个plunker例子，每个都测试一个简单的组件，以便你可以自己在plunker中写组件测试：<live-example name="setup" plnkr="quickstart-specs">一个</live-example>用于测试快速起步中的<code>AppComponent</code>，<live-example name="testing" plnkr="banner-specs">另一个</live-example>用于测试“测试”章节的<code>BannerComponent</code>。
+并在<a href="testing.html#live-examples">测试</a>和<a href="setup-systemjs-anatomy-2.html">环境设置剖析</a>中链接到它们。</p>
+<h2 id="internationalization-pluralization-and-_select_-2016-11-30-">Internationalization: pluralization and <em>select</em> (2016-11-30)</h2>
+<h2 id="-select-2016-11-30-">国际化：单复数和<code>select</code> (2016-11-30)</h2>
+<p>The <a href="../cookbook/i18n.html">Internationalization (i18n)</a> guide explains how to handle pluralization and 
+translation of alternative texts with <code>select</code>.
+The sample demonstrates these features too.</p>
+<p><a href="i18n.html">国际化 (i18n)</a>解释了如何处理单复数问题，和如何使用<code>select</code>来翻译候选内容。
+例子中也演示了这些特性。</p>
+<h2 id="testing-karma-file-updates-2016-11-30-">Testing: karma file updates (2016-11-30)</h2>
+<h2 id="-karma-2016-11-30-">测试：更新了karma文件 (2016-11-30)</h2>
+<ul>
+<li><p><code>karma.config</code> + <code>karma-test-shim</code> can handle multiple spec source paths;
+see quickstart issue: <a href="https://github.com/angular/quickstart/issues/294">angular/quickstart#294</a>.</p>
+<p>  <code>karma.config</code> + <code>karma-test-shim</code>可以处理多个测试源文件路径了，参见<a href="https://github.com/angular/quickstart/issues/294">angular/quickstart#294</a>。</p>
+</li>
+<li><p>Displays Jasmine Runner output in the karma-launched browser.</p>
+<p>  在启动了karma的浏览器中显示Jasmine的输出。</p>
+</li>
+</ul>
+<h2 id="quickstart-rewrite-2016-11-18-">QuickStart Rewrite (2016-11-18)</h2>
+<h2 id="-2016-11-18-">全新《快速起步》 (2016-11-18)</h2>
+<p>The QuickStart is completely rewritten so that it actually is quick.
+It references a minimal &quot;Hello Angular&quot; app running in Plunker.
+The new <a href="setup.html">Setup</a> page tells you how to install a local development environment
+by downloading (or cloning) the QuickStart github repository.
+You are no longer asked to copy-and-paste code into setup files that were not explained anyway.</p>
+<p>完全重写了《快速起步》，变得更加快速。
+它使用了在 Plunker 中运行的最小化的 “Hello Angular” 应用。
+新添加的<a href="setup.html">搭建本地开发环境</a>页面解释了如何通过下载或者克隆 QuickStart github 库来安装本地开发环境。
+你将不再需要拷贝粘贴代码到一些并没有对其解释的配置文件中。</p>
+<h2 id="sync-with-angular-v-2-2-0-2016-11-14-">Sync with Angular v.2.2.0 (2016-11-14)</h2>
+<h2 id="-angular-v-2-2-0-2016-11-14-">与Angular v.2.2.0同步(2016-11-14)</h2>
+<p>Docs and code samples updated and tested with Angular v.2.2.0 .</p>
+<p>使用Angular v.2.2.0更新和测试所有文档和代码例子。</p>
+<h2 id="update-ngupgrade-guide-for-the-aot-friendly-_upgrade-static_-module-2016-11-14-">UPDATE: NgUpgrade Guide for the AOT friendly <em>upgrade/static</em> module (2016-11-14)</h2>
+<h2 id="-aot-_upgrade-static_-ngupgrade-2016-11-14-">更新：用于AoT的<em>upgrade/static</em>模块NgUpgrade指南 (2016-11-14)</h2>
+<p>The updated <a href="upgrade.html">NgUpgrade Guide</a> guide covers the 
+new AOT friendly <code>upgrade/static</code> module 
+released in v.2.2.0, which is the recommended
+facility for migrating from AngularJS to Angular.
+The documentation for the version prior to v.2.2.0 has been removed.</p>
+<p>更新的<a href="upgrade.html">NgUpgrade指南</a>覆盖在v.2.2.0发布的AoT<code>upgrade/static</code>模块，
+是从AngularJS升级至Angular的推荐工具。
+删除早于v.2.2.0版本的文档。</p>
+<h2 id="es6-described-in-typescript-to-javascript-2016-11-14-">ES6  described in &quot;TypeScript to JavaScript&quot; (2016-11-14)</h2>
+<h2 id="-typescript-javascript-es6-2016-11-14-">在“从TypeScript到JavaScript”增加ES6的描述 (2016-11-14)</h2>
+<p>The updated <a href="../cookbook/ts-to-js.html">TypeScript to JavaScript</a> cookbook 
+now explains how to write apps in ES6/7</p>
+<p>更新了“<a href="../cookbook/ts-to-js.html">从TypeScript到JavaScript</a>”烹饪宝典，解释如何使用ES6/7编写应用</p>
+<p>by translating the common idioms in the TypeScript documentation examples
+(and elsewhere on the web) to ES6/7 and ES5.</p>
+<p>将TypeScript文档示例中（以及网站其它地方）的习惯用法翻译成ES6/7和ES5。</p>
+<h2 id="sync-with-angular-v-2-1-1-2016-10-21-">Sync with Angular v.2.1.1 (2016-10-21)</h2>
+<h2 id="-angular-v-2-1-1-2016-10-21-">与Angular v.2.1.1 同步(2016-10-21)</h2>
+<p>Docs and code samples updated and tested with Angular v.2.1.1. </p>
+<p>使用Angular v.2.1.1更新和测试所有文档和代码例子。</p>
+<h2 id="npm-_-types_-packages-replace-_typings_-2016-10-20-">npm <em>@types</em> packages replace <em>typings</em> (2016-10-20)</h2>
+<h2 id="-npm-_-types_-_typings_-2016-10-20-">使用npm的<em>@types</em>包替换<em>typings</em> (2016-10-20)</h2>
+<p>Documentation samples now get TypeScript type information for 3rd party libraries
+from npm <code>@types</code> packages rather than with the <em>typings</em> tooling.
+The <code>typings.json</code> file is gone.</p>
+<p>文档例子现在从npm的<code>@types</code>第三方库获取TypeScript类型信息，不再使用<em>typings</em>。
+删除<code>typings.json</code>文件。</p>
+<p>The <a href="upgrade.html">AngularJS Upgrade</a> guide reflects this change.
+The <code>package.json</code> installs <code>@types/angular</code> and several <code>@types/angular-...</code>
+packages in support of upgrade; these are not needed for pure Angular development.</p>
+<p>&quot;<a href="upgrade.html">从AngularJS升级</a>&quot;指南反映了这个变化。
+<code>package.json</code>安装<code>@types/angular</code>和一些<code>@types/angular-...</code>包来支持升级。它们在纯Angular开发中是不需要的。</p>
+<h2 id="-template-syntax-explains-two-way-data-binding-syntax-2016-10-20-">&quot;Template Syntax&quot; explains two-way data binding syntax (2016-10-20)</h2>
+<h2 id="-2016-10-20-">&quot;模板语法&quot;添加了双向数据绑定语法的解释(2016-10-20)</h2>
+<p>Demonstrates how to two-way data bind to a custom Angular component and
+re-explains <code>[(ngModel)]</code> in terms of the basic <code>[()]</code> syntax.</p>
+<p>展示了如何在自定义Angular组件中双向数据绑定，用基础<code>[()]</code>重新解释<code>[(ngModel)]</code>。</p>
+<h2 id="breaking-change-in-memory-web-api-v-0-1-11-delivered-as-esm-umd-2016-10-19-">BREAKING CHANGE: <code>in-memory-web-api</code> (v.0.1.11) delivered as esm umd (2016-10-19)</h2>
+<h2 id="-in-memory-web-api-v-0-1-11-esm-umd-2016-10-19-">破坏性变化：<code>in-memory-web-api</code> (v.0.1.11) 以esm umd的形式发布 (2016-10-19)</h2>
+<p>This change supports ES6 developers and aligns better with typical Angular libraries.
+It does not affect the module&#39;s API but it does affect how you load and import it.
+See the <a href="https://github.com/angular/in-memory-web-api/blob/master/CHANGELOG.md#0113-2016-10-20" target="_blank">change note</a>
+in the <code>in-memory-web-api</code> repo.</p>
+<p>这个变化支持ES6开发者，并与典型的Angular库看齐。
+它不会影响模块的API，但是它改变了加载和导入它的方式。
+参见<code>in-memory-web-api</code>库的<a href="https://github.com/angular/in-memory-web-api/blob/master/CHANGELOG.md#0113-2016-10-20" target="_blank">变更记录</a>。</p>
+<h2 id="-router-_preload_-syntax-and-_-enter_-_-leave_-animations-2016-10-19-">&quot;Router&quot; <em>preload</em> syntax and <em>:enter</em>/<em>:leave</em> animations (2016-10-19)</h2>
+<h2 id="-_-_-_-enter_-_-leave_-2016-10-19-">&quot;路由器&quot;<em>预加载</em>语法和<em>:enter</em>/<em>:leave</em>动画(2016-10-19)</h2>
+<p>The router can lazily <em>preload</em> modules <em>after</em> the app starts and
+<em>before</em> the user navigates to them for improved perceived performance.</p>
+<p>路由器可以在应用启动<em>之后</em>和用户导航到惰性加载模块<em>之前</em>，预先加载惰性模块，以增强性能。</p>
+<p>New <code>:enter</code> and <code>:leave</code> aliases make animation more natural.</p>
+<p>新<code>:enter</code>和<code>:leave</code>语法，让动画更加自然。</p>
+<h2 id="sync-with-angular-v-2-1-0-2016-10-12-">Sync with Angular v.2.1.0 (2016-10-12)</h2>
+<h2 id="-angular-v-2-1-0-2016-10-12-">与Angular v.2.1.0同步(2016-10-12)</h2>
+<p>Docs and code samples updated and tested with Angular v.2.1.0 .</p>
+<p>使用Angular v.2.1.0更新和测试所有文档和代码例子。</p>
+<h2 id="new-ahead-of-time-aot-compilation-cookbook-2016-10-11-">NEW &quot;Ahead of time (AOT) Compilation&quot; cookbook (2016-10-11)</h2>
+<h2 id="-aot-2016-10-11-">添加了新的“预编译(AoT)&quot;烹饪书(2016-10-11)</h2>
+<p>The NEW <a href="../cookbook/aot-compiler.html">Ahead of time (AOT) Compilation</a> cookbook
+explains what AOT compilation is and why you&#39;d want it.
+It demonstrates the basics with a QuickStart app
+followed by the more advanced considerations of compiling and bundling the Tour of Heroes.</p>
+<p>全新<a href="../cookbook/aot-compiler.html">预编译(AoT)</a>烹饪书介绍了什么是AoT编译和为何你需要它。
+它以<strong>快速起步</strong>应用程序开始讲解，接着介绍了编译和构建<strong>英雄指南</strong>的更高级的注意事项。</p>
+<h2 id="sync-with-angular-v-2-0-2-2016-10-6-">Sync with Angular v.2.0.2 (2016-10-6)</h2>
+<h2 id="-angular-v-2-0-2-2016-10-6-">与Angular v.2.0.2同步 (2016-10-6)</h2>
+<p>Docs and code samples updated and tested with Angular v.2.0.2 .</p>
+<p>使用Angular v.2.0.2更新和测试所有文档和代码例子。</p>
+<h2 id="-routing-and-navigation-guide-with-the-_router-module_-2016-10-5-">&quot;Routing and Navigation&quot; guide with the <em>Router Module</em> (2016-10-5)</h2>
+<h2 id="-2016-10-5-">在“路由和导航”向导中添加<strong>路由模块</strong> (2016-10-5)</h2>
+<p>The <a href="router.html">Routing and Navigation</a> guide now locates route configuration
+in a <em>Routing Module</em>. 
+The <em>Routing Module</em> replaces the previous <em>routing object</em> involving the <code>ModuleWithProviders</code>.</p>
+<p><a href="router.html">Routing and Navigation</a>现在在<strong>路由模块</strong>中设置路由配置。
+<strong>路由模块</strong>替换之前的<strong>路由对象</strong>，使用了<code>ModuleWithProviders</code>。</p>
+<p><a href="router.html">Routing and Navigation</a></p>
+<p><a href="router.html">路由与导航</a></p>
+<p>All guided samples with routing use the <em>Routing Module</em> and prose content has been updated,
+most conspicuously in the 
+<a href="ngmodule.html">NgModule</a> guide and <a href="../cookbook/ngmodule-faq.html">NgModule FAQ</a> cookbook.</p>
+<p>所有使用路由的例子都使用<strong>路由模块</strong>，相关内容也被更新。更新最多的是<a href="ngmodule.html">Angular模块（NgModule）</a>章和<a href="../cookbook/ngmodule-faq.html">Angular模块常见问题</a>烹饪书。</p>
+<h2 id="new-internationalization-cookbook-2016-09-30-">New &quot;Internationalization&quot; Cookbook (2016-09-30)</h2>
+<h2 id="-2016-09-30-">全新“国际化”烹饪书(2016-09-30)</h2>
+<p>Added a new <a href="../cookbook/i18n.html">Internationalization (i18n)</a> cookbook that shows how
+to use Angular &quot;i18n&quot; facilities to translate template text into multiple languages.</p>
+<p>添加了新的<a href="../cookbook/i18n.html">国际化(i18n)</a>烹饪书，展示了如何使用Angular的“i18n”工具来讲模板文本翻译到多种语言。</p>
+<h2 id="-angular-in-memory-web-api-package-rename-2016-09-27-">&quot;angular-in-memory-web-api&quot; package rename (2016-09-27)</h2>
+<h2 id="-angular-in-memory-web-api-2016-09-27-">重命名“angular-in-memory-web-api”包(2016-09-27)</h2>
+<p>Many samples use the <code>angular-in-memory-web-api</code> to simulate a remote server.
+This library is also useful to you during early development before you have a server to talk to.</p>
+<p>许多例子使用了<code>angular-in-memory-web-api</code>来模拟远程服务器。
+这个库在你拥有服务器之前的早期开发阶段也很有用。</p>
+<p>The package name was changed from &quot;angular2-in-memory-web-api&quot; which is still frozen-in-time on npm.
+The new &quot;angular-in-memory-web-api&quot; has new features. 
+<a href="https://github.com/angular/in-memory-web-api/blob/master/README.md" target="_blank">Read about them on github</a>.</p>
+<p>这个包的名字从“angular2-in-memory-web-api”（仍然有效，但不再更新了）重新命名了。
+新的“angular-in-memory-web-api”有新的功能。
+<a href="https://github.com/angular/in-memory-web-api/blob/master/README.md" target="_blank">到github获得更多详情</a>.</p>
+<h2 id="-style-guide-with-_ngmodules_-2016-09-27-">&quot;Style Guide&quot; with <em>NgModules</em> (2016-09-27)</h2>
+<h2 id="-_ngmodules_-2016-09-27-">“风格指南”中添加了<em>NgModules</em>(2016-09-27)</h2>
+<p><a href="style-guide.html">StyleGuide</a> explains recommended conventions for Angular modules (NgModule).</p>
+<p><a href="style-guide.html">StyleGuide</a>解释了我们为Angular模块（NgModule）而推荐的约定。</p>
+<p>Barrels now are far less useful and have been removed from the style guide;
+they remain valuable but are not a matter of Angular style.
+Also relaxed the rule that discouraged use of the <code>@Component.host</code> property.</p>
+<p>现在，封装桶不再那么重要，风格指南已经移除了它们。
+它们仍然很有价值，但是它们与Angular风格无关。
+我们同时对<strong>不推荐使用<code>@Component.host</code>属性</strong>的规则有所放宽。</p>
+<h2 id="_moduleid-module-id_-everywhere-2016-09-25-"><em>moduleId: module.id</em> everywhere (2016-09-25)</h2>
+<h2 id="moduleid-module-id-2016-09-25-">moduleId：到处添加module.id(2016-09-25)</h2>
+<p>Sample components that get their templates or styles with <code>templateUrl</code> or <code>styleUrls</code>
+have been converted to <em>module-relative</em> URLs.
+Added the <code>moduleId: module.id</code> property-and-value to their <code>@Component</code> metadata.</p>
+<p>在所有使用<code>templateUrl</code>或者<code>styleUrls</code>来获取模板或样式的例子组件都被转换为<strong>相对模块</strong>的URL。
+我们添加了<code>moduleId: module.id</code>到它们的<code>@Component</code>元数据。</p>
+<p>This change is a requirement for compilation with AOT compiler when the app loads
+modules with SystemJS as the samples currently do.</p>
+<p>当应用像例子当前使用的方法一样 - 使用SystemJS加载模块时，本更新是AoT编译器的前提条件。</p>
+<h2 id="-lifecycle-hooks-guide-simplified-2016-09-24-">&quot;Lifecycle Hooks&quot; guide simplified (2016-09-24)</h2>
+<h2 id="-2016-09-24-">简化了“生命周期钩子”章(2016-09-24)</h2>
+<p>The <a href="lifecycle-hooks.html">Lifecycle Hooks</a> guide is shorter, simpler, and
+draws more attention to the order in which Angular calls the hooks.</p>
+<p><a href="lifecycle-hooks.html">生命周期钩子</a>章现在更加简短，并且对强调了Angular是以什么顺序来调用钩子方法的。</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/change-log.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:14 GMT -->
+</html>

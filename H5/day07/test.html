@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wordList{
+            list-style: none;
+            padding: 0px;
+        }
+        #wordList span{
+            display: inline-block;
+            width: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h3>知识管理系统</h3>
+<ul id="wordList">
+    <!--<li><span></span></li>-->
+</ul>
+<input type="button " id="bt" value="提交"/>
+
+</body>
+<script>
+    var html='';
+    for(var i=0;i<localStorage.length;i++ ){
+        var key=localstorage.key(i);
+        html+=`
+            <li><span>${key}</span> <input> </li>
+        `;
+    }
+    wordList.innerHTML=html;
+    bt.onclick(function(){
+        var total=localstorage.length;
+        var correct=0;
+        var inpitList=document.querySelectorAll("#wordList input");
+        for(var i=0;i<inpitList.length;i++){
+            var userInput=inpitList[i].value;
+            var key=localStorage.key(i);
+            var value=localStorage[key];
+            if(userInput===value){
+                correct++;
+            }
+        }
+        sessionStorage['totalCount']=total;
+        sessionStorage['correctCount']=correct;
+        location.href='result.html';
+    })
+</script>
+</html>

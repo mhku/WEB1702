@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  <to-do-box></to-do-box>
+</div>
+
+
+<!--指定模板的新的方式-->
+<script type="text/x-template" id='todoinput'>
+  <div>
+    <h1>待做事项列表</h1>
+    <input type="text"/>
+    <button>add</button>
+  </div>
+</script>
+
+<script>
+
+  //通过反引号
+  Vue.component('to-do-box', {
+    template: `<div>
+     <to-do-input></to-do-input>
+    <to-do-list></to-do-list>
+    </div>`
+  })
+
+  Vue.component('to-do-input', {
+    template: '#todoinput'
+  });
+
+  Vue.component('to-do-list', {
+    template: '<ul> <to-do-item></to-do-item><to-do-item></to-do-item></ul>'
+  })
+
+  Vue.component('to-do-item', {
+    template: '<li> <button>delete</button> <span>test</span></li>'
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+
+</script>
+
+</body>
+</html>

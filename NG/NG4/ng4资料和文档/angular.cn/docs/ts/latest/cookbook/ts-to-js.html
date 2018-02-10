@@ -1,0 +1,1703 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/ts-to-js.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:48 GMT -->
+<head><title>从 TypeScript 到 JavaScript - ts - COOKBOOK</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent is-selected">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item is-selected"><a href="ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="ts-to-js.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/cookbook/ts-to-js.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/cookbook/ts-to-js.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">从 TypeScript 到 JavaScript </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript.</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>Anything you can do with Angular in <em>TypeScript</em>, you can also do
+in JavaScript. Translating from one language to the other is mostly a
+matter of changing the way you organize your code and access Angular APIs.</p>
+<p>在 Angular 中，<em>TypeScript</em> 可以做的任何事，也可以用 JavaScript 实现。
+将一种语言翻译成另一种语言，主要是改变了组织代码和访问 Angular API 的方式。</p>
+<p><em>TypeScript</em> is a popular language option for Angular development.
+Most code examples on the Internet as well as on this site are written in <em>TypeScript</em>.
+This cookbook contains recipes for translating <em>TypeScript</em>
+code examples to <em>ES6</em> and to <em>ES5</em> so that JavaScript developers
+can read and write Angular apps in their preferred dialect.</p>
+<p><em>TypeScript</em> 在 Angular 开发中比较流行。
+互联网上和本网站中的大多数范例都是用 <em>TypeScript</em> 写的。</p>
+<a id="toc"></a><h2 id="table-of-contents">Table of contents</h2>
+<h2 id="-">目录</h2>
+<ul>
+<li><p><a href="#from-ts"><em>TypeScript</em> to <em>ES6</em> to <em>ES5</em></a><br></p>
+<p><a href="#from-ts"><em>TypeScript</em> 到 <em>ES6</em> 到 <em>ES5</em></a><br></p>
+</li>
+<li><p><a href="#modularity">Modularity: imports and exports</a><br></p>
+<p><a href="#modularity">模块化：导入和导出</a><br></p>
+</li>
+<li><p><a href="#class-metadata">Classes and Class Metadata</a><br></p>
+<p><a href="#class-metadata">类和类的元数据</a><br></p>
+</li>
+<li><p><a href="#dsl"><em>ES5</em> DSL</a><br></p>
+<p><a href="#dsl"><em>ES5</em> 领域专用语言</a><br></p>
+</li>
+<li><p><a href="#interfaces">Interfaces</a><br></p>
+<p><a href="#interfaces">接口</a><br></p>
+</li>
+<li><p><a href="#io-decorators">Input and Output Metadata</a><br></p>
+<p><a href="#io-decorators">输入和输出元数据</a><br></p>
+</li>
+<li><p><a href="#dependency-injection">Dependency Injection</a><br></p>
+<p><a href="#dependency-injection">依赖注入</a><br></p>
+</li>
+<li><p><a href="#host-binding">Host Binding</a><br></p>
+<p><a href="#host-binding">宿主绑定</a><br></p>
+</li>
+<li><p><a href="#view-child-decorators">View and Child Decorators</a><br></p>
+<p><a href="#view-child-decorators">视图和子组件装饰器</a><br></p>
+</li>
+<li><p><a href="#aot">AOT compilation in <em>TypeScript</em> Only</a><br></p>
+<p><a href="#aot">只用于 <em>TypeScript</em> 的预编译</a><br></p>
+</li>
+</ul>
+<p><strong>Run and compare the live <live-example name="cb-ts-to-js">TypeScript</live-example> and <live-example name="cb-ts-to-js" lang="js">JavaScript</live-example>
+code shown in this cookbook.</strong></p>
+<p>运行在线例子，比较 <live-example name="cb-ts-to-js">TypeScript</live-example> 版和 <live-example name="cb-ts-to-js" lang="js">JavaScript</live-example> 版的代码。</p>
+<a id="from-ts"></a><div class="l-main-section"></div><h2 id="_typescript_-to-_es6_-to-_es5_"><em>TypeScript</em> to <em>ES6</em> to <em>ES5</em></h2>
+<p>##<em>TypeScript</em> 到 <em>ES6</em> 到 <em>ES5</em></p>
+<p><em>TypeScript</em>
+<a href="https://www.typescriptlang.org/" target="_blank" title="&quot;TypeScript is a typed, superset of JavaScript&quot;">is a typed superset of <em>ES6 JavaScript</em></a>.
+<em>ES6 JavaScript</em> is a superset of <em>ES5 JavaScript</em>. <em>ES5</em> is the kind of JavaScript that runs natively in all modern browsers.
+The transformation of <em>TypeScript</em> code all the way down to <em>ES5</em> code can be seen as &quot;shedding&quot; features.</p>
+<p><em>TypeScript</em> <a href="https://www.typescriptlang.org/" target="_blank" title="&quot;TypeScript 是类型化的 JavaScript 的超集&quot;">是 <em>ES6 JavaScript</em> 类型化的超集</a>。<em>ES6 JavaScript</em> 是 <em>ES5 JavaScript</em> 的超集。<em>ES5</em> 是可以在所有现代浏览器中运行的 JavaScript。</p>
+<p>The downgrade progression is</p>
+<p>降级的过程是</p>
+<ul>
+<li><p><em>TypeScript</em> to <em>ES6-with-decorators</em></p>
+<p><em>TypeScript</em> 降级到 <em>带装饰器的 ES6</em></p>
+</li>
+<li><p><em>ES6-with-decorators</em> to <em>ES6-without-decorators</em> (&quot;<em>plain ES6</em>&quot;)</p>
+<p><em>带装饰器的 ES6</em> 降级到 <em>没有装饰器的 ES6</em> (“<em>普通 ES6</em>”)</p>
+</li>
+<li><p><em>ES6-without-decorators</em> to <em>ES5</em></p>
+<p><em>没有装饰器的 ES6</em> 降级到 <em>ES5</em></p>
+</li>
+</ul>
+<p>When translating from <em>TypeScript</em> to <em>ES6-with-decorators</em>, remove
+<a href="http://www.typescriptlang.org/docs/handbook/classes.html#public-private-and-protected-modifiers">class property access modifiers</a>
+such as <code>public</code> and <code>private</code>.
+Remove most of the
+<a href="https://www.typescriptlang.org/docs/handbook/basic-types.html">type declarations</a>,
+such as <code>:string</code> and <code>:boolean</code>
+but <strong>keep the constructor parameter types which are used for dependency injection</strong>.</p>
+<p> <em>TypeScript</em> 翻译到 <em>带装饰器的 ES6</em> 时，移除了<a href="http://www.typescriptlang.org/docs/handbook/classes.html#public-private-and-protected-modifiers">类属性访问修饰符</a>，如<code>public</code>和<code>private</code>。
+移除了大部分的<a href="https://www.typescriptlang.org/docs/handbook/basic-types.html">类型声明</a>，如<code>:string</code>和<code>:boolean</code>。
+但<strong>保留了用于依赖注入的构造函数参数类型</strong>。</p>
+<p>From <em>ES6-with-decorators</em> to <em>plain ES6</em>, remove all
+<a href="https://www.typescriptlang.org/docs/handbook/decorators.html">decorators</a>
+and the remaining types.
+You must declare properties in the class constructor (<code>this.title = &#39;...&#39;</code>) rather than in the body of the class.</p>
+<p><em>带装饰器的 ES6</em> 翻译到<em>普通 ES6</em> 时，移除了所有的<a href="https://www.typescriptlang.org/docs/handbook/decorators.html">装饰器</a>和剩下的类型。
+必须在构造函数中声明属性（<code>this.title = &#39;...&#39;</code>），而不是在类的代码体中。</p>
+<p>Finally, from <em>plain ES6</em> to <em>ES5</em>, the main missing features are <code>import</code>
+statements and <code>class</code> declarations.</p>
+<p>最后，<em>普通 ES6</em> 翻译成 <em>ES5</em>，缺少的主要特性是<code>import</code>和<code>class</code>声明。</p>
+<p>For <em>plain ES6</em> transpilation you can <em>start</em> with a setup similar to the
+<a href="https://github.com/angular/quickstart"><em>TypeScript</em> quickstart</a> and adjust the application code accordingly.
+Transpile with <a href="https://babeljs.io/">Babel</a> using the <code>es2015</code> preset.
+To use decorators and annotations with Babel, install the
+<a href="https://github.com/shuhei/babel-plugin-angular2-annotations"><code>angular2</code></a> preset as well.</p>
+<p> 对<em>普通 ES6</em> 的翻译，可以从类似 <a href="https://github.com/angular/quickstart"><em>TypeScript</em> 快速开始</a>的设置开始，
+调整相应代码。然后用 <a href="https://babeljs.io/">Babel</a> 进行转译，使用<code>es2015</code>预设值。
+要在 Babel 中使用装饰器和注释，还需安装<a href="https://github.com/shuhei/babel-plugin-angular2-annotations"><code>angular2</code></a>预设值。</p>
+<a id="modularity"></a><div class="l-main-section"></div><h2 id="importing-and-exporting">Importing and Exporting</h2>
+<h2 id="-">导入和导出</h2>
+<h3 id="importing-angular-code">Importing Angular Code</h3>
+<h3 id="-angular-">导入 Angular 代码</h3>
+<p>In both <em>TypeScript</em> and <em>ES6</em>, you import Angular classes, functions, and other members with <em>ES6</em> <code>import</code> statements.</p>
+<p>在 <em>TypeScript</em> 和 <em>ES6</em> 中，可以使用 <em>ES6</em> <code>import</code>语句导入 Angular 类、函数和其它成员。</p>
+<p>In <em>ES5</em>, you access the Angular entities of the <a href="../glossary.html#scoped-package">the Angular packages</a>
+through the global <code>ng</code> object.
+Anything you can import from <code>@angular</code> is a nested member of this <code>ng</code> object:</p>
+<p>在 <em>ES5</em> 中，通过全局<code>ng</code>对象访问 <a href="../glossary.html#scoped-package">Angular 包</a>中的 Angular 实体。
+凡是可以从<code>@angular</code>导入的，都是该<code>ng</code>对象的嵌套成员。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format=".">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import {
+  LocationStrategy,
+  HashLocationStrategy
+} from &#39;@angular/common&#39;;
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format=".">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import {
+  LocationStrategy,
+  HashLocationStrategy
+} from &#39;@angular/common&#39;;
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format=".">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import {
+  LocationStrategy,
+  HashLocationStrategy
+} from &#39;@angular/common&#39;;
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript" format=".">var platformBrowserDynamic = ng.platformBrowserDynamic.platformBrowserDynamic;
+var LocationStrategy = ng.common.LocationStrategy;
+var HashLocationStrategy = ng.common.HashLocationStrategy;
+</code-pane></code-tabs><h3 id="exporting-application-code">Exporting Application Code</h3>
+<h3 id="-">导出应用代码</h3>
+<p>Each file in a <em>TypeScript</em> or <em>ES6</em> Angular application constitutes an <em>ES6</em> module.
+When you want to make something available to other modules, you <code>export</code> it.</p>
+<p><em>TypeScript</em> 或 <em>ES6</em> Angular 应用中每个文件都构成一个 <em>ES6</em> 模块。
+当想要让某个东西对其它模块可用时，就<code>export</code>它。</p>
+<p><em>ES5</em> lacks native support for modules. 
+In an Angular <em>ES5</em> application, you load each file manually by adding a <code>&lt;script&gt;</code> tag to <code>index.html</code>. </p>
+<p><em>ES5</em> 不支持模块。在 Angular <em>ES5</em> 应用中，需要在<code>index.html</code>中添加<code>&lt;script&gt;</code>标签，手工加载每个文件。</p>
+<div class="alert is-important"><p>The order of <code>&lt;script&gt;</code> tags is often significant.
+You must load a file that defines a public JavaScript entity before a file that references that entity.</p>
+<p><code>&lt;script&gt;</code>标签的顺序通常很重要。
+必须在引用实体的文件之前，加载定义该公共 JavaScript 实体的文件。</p>
+</div><p>The best practice in <em>ES5</em> is to create a form of modularity that avoids polluting the global scope.
+Add one application namespace object such as <code>app</code> to the global <code>document</code>.
+Then each code file &quot;exports&quot; public entities by attaching them to that namespace object, e.g., <code>app.HeroComponent</code>.
+You could factor a large application into several sub-namespaces
+which leads to &quot;exports&quot; along the lines of <code>app.heroQueries.HeroComponent</code>.</p>
+<p><em>ES5</em> 中，最佳实践是，创建某种形式的模块化，避免污染全局作用域。
+添加一个应用命名空间对象（如<code>app</code>）到全局的<code>document</code>。
+接着，每个代码文件都通过附加到该命名空间来“导出”公共实体，例如，<code>app.HeroComponent</code>。
+可以把一个大型应用中分解成多个子命名空间，可以象这样进行“导出”，<code>app.heroQueries.HeroComponent</code></p>
+<p>Every <em>ES5</em> file should wrap code in an 
+<a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">Immediately Invoked Function Expression (IIFE)</a>
+to limit unintentional leaking of private symbols into the global scope.</p>
+<p>每个 <em>ES5</em> 文件都应包裹在<a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">立即调用函数表达式 (IIFE)</a> 中，
+防止把私有符号无意地泄漏到全局作用域。</p>
+<p>Here is a <code>HeroComponent</code> as it might be defined and &quot;exported&quot; in each of the four language variants.</p>
+<p>下面是<code>HeroComponent</code>定义和“导出”的四种不同语言变种。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">export class HeroComponent {
+  title = &#39;Hero Detail&#39;;
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">export class HeroComponent {
+  title = &#39;Hero Detail&#39;;
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class HeroComponent {
+  constructor() {
+    this.title = &#39;Hero Detail&#39;;
+  }
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript" format="linenums">app.HeroComponent = HeroComponent; // &quot;export&quot;
+
+HeroComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-view&#39;,
+    template: &#39;&lt;h1&gt;{{title}}: {{getName()}}&lt;/h1&gt;&#39;
+  })
+];
+
+function HeroComponent() {
+  this.title = &quot;Hero Detail&quot;;
+}
+
+HeroComponent.prototype.getName = function() { return &#39;Windstorm&#39;; };
+</code-pane></code-tabs><h3 id="importing-application-code">Importing Application Code</h3>
+<h3 id="-">导入应用代码</h3>
+<p>In <em>TypeScript</em> and <em>ES6</em> apps, you <code>import</code> things that have been exported from other modules.</p>
+<p>在 <em>TypeScript</em> 和 <em>ES6</em> 应用中，可以导入 (<code>import</code>) 其它模块已导出的东西。</p>
+<p>In <em>ES5</em> you use the shared namespace object to access &quot;exported&quot; entities from other files.</p>
+<p>在 <em>ES5</em> 中，使用共享的命名空间对象访问其它文件“导出”的实体。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format=".">import { HeroComponent } from &#39;./hero.component&#39;;
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format=".">import { HeroComponent } from &#39;./hero.component&#39;;
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format=".">import { HeroComponent } from &#39;./hero.component&#39;;
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript" format=".">var HeroComponent = app.HeroComponent;
+</code-pane></code-tabs><div class="alert is-helpful"><p>Alternatively, you can use a module loader such as Webpack or
+Browserify in an Angular JavaScript project. In such a project, you would
+use <em>CommonJS</em> modules and the <code>require</code> function to load Angular framework code.
+Then use <code>module.exports</code> and <code>require</code> to export and import application  code.</p>
+<p>还可以在 Angular JavaScript 项目中使用模块加载器，如 Webpack 或 Browserify。
+在这样的项目中，使用 <em>CommonJS</em> 模块和<code>require</code>函数来加载 Angular 框架代码。
+用<code>module.exports</code>和<code>require</code>导入和导出应用代码。</p>
+</div><a id="class-metadata"></a><div class="l-main-section"></div><h2 id="classes-and-class-metadata">Classes and Class Metadata</h2>
+<h2 id="-">类和类的元数据</h2>
+<h3 id="classes">Classes</h3>
+<h3 id="-">类</h3>
+<p>Most Angular <em>TypeScript</em> and <em>ES6</em> code is written as classes.</p>
+<p>大多数 Angular <em>TypeScript</em> 和 <em>ES6</em> 代码是写成了类。</p>
+<p>Properties and method parameters of <em>TypeScript</em> classes may be marked with the access modifiers
+<code>private</code>, <code>internal</code>, and <code>public</code>.
+Remove these modifiers when translating to JavaScript.</p>
+<p><em>TypeScript</em> 类的属性和方法参数可以用访问修饰符<code>private</code>、<code>internal</code>和<code>public</code>标记。
+当翻译成 JavaScript 时，移除这些修饰符。</p>
+<p>Most type declarations (e.g, <code>:string</code> and <code>:boolean</code>) should be removed when translating to JavaScript.
+When translating to <em>ES6-with-decorators</em>, <strong><em>do not remove types from constructor parameters!</em></strong></p>
+<p>当翻译成 JavaScript 时，移除大多数类型声明（如，<code>:string</code>和<code>:boolean</code>）。
+当翻译成<em>带装饰器的 ES6</em> 时，<strong><em>不移除构造函数参数类型！</em></strong></p>
+<p>Look for types in <em>TypeScript</em> property declarations.
+In general it is better to initialize such properties with default values because
+many browser JavaScript engines can generate more performant code.
+When <em>TypeScript</em> code follows this same advice, it can infer the property types
+and there is nothing to remove during translation.</p>
+<p>看一下 <em>TypeScript</em> 属性声明中的类型。通常，最好用缺省值初始化这些属性，因为许多浏览器的 JavaScript
+引擎可生成更高性能的代码。当 <em>TypeScript</em> 代码遵循这一建议时，它可以推导出属性类型，翻译时就不需要移除任何内容。</p>
+<p>In <em>ES6-without-decorators</em>, properties of classes must be assigned inside the constructor.</p>
+<p>在<em>不带装饰器的 ES6</em> 中，类的属性必须在构造函数中指定。</p>
+<p><em>ES5</em> JavaScript has no classes.
+Use the constructor function pattern instead, adding methods to the prototype.</p>
+<p><em>ES5</em> JavaScript 没有类。
+使用构造函数模式，把方法添加到 prototype 中。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">export class HeroComponent {
+  title = &#39;Hero Detail&#39;;
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">export class HeroComponent {
+  title = &#39;Hero Detail&#39;;
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class HeroComponent {
+  constructor() {
+    this.title = &#39;Hero Detail&#39;;
+  }
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript" format="linenums">function HeroComponent() {
+  this.title = &quot;Hero Detail&quot;;
+}
+
+HeroComponent.prototype.getName = function() { return &#39;Windstorm&#39;; };
+</code-pane></code-tabs><h3 id="metadata">Metadata</h3>
+<h3 id="-">元数据</h3>
+<p>When writing in <em>TypeScript</em> or <em>ES6-with-decorators</em>,
+provide configuration and metadata by adorning a class with one or more <em>decorators</em>.
+For example, you supply metadata to a component class by preceding its definition with a
+<a href="../api/core/index/Component-decorator.html"><code>@Component</code></a> decorator function whose
+argument is an object literal with metadata properties.</p>
+<p>当用 <em>TypeScript</em> 或 <em>带装饰器的 ES6</em> 编写代码时，使用一个或多个<em>装饰器 (decorator)</em> 来修饰类，
+提供配置和元数据。</p>
+<p>In <em>plain ES6</em>, you provide metadata by attaching an <code>annotations</code> array to the <em>class</em>.
+Each item in the array is a new instance of a metadata decorator created with a similar metadata object literal.</p>
+<p>在<em>普通 ES6</em> 中，通过向<em>类</em>附加一个<code>annotations</code>数组来提供元数据。</p>
+<p>In <em>ES5</em>, you also provide an <code>annotations</code> array but you attach it to the <em>constructor function</em> rather than to a class.</p>
+<p>在<em>ES5</em>中，也是提供一个<code>annotations</code>数组，但把它附加到<em>构造函数</em>，而不是类。</p>
+<p>See these variations side-by-side:</p>
+<p>看一下这些变种：</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;hero-view&#39;,
+  template: &#39;&lt;h1&gt;{{title}}: {{getName()}}&lt;/h1&gt;&#39;
+})
+export class HeroComponent {
+  title = &#39;Hero Detail&#39;;
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;hero-view&#39;,
+  template: &#39;&lt;h1&gt;{{title}}: {{getName()}}&lt;/h1&gt;&#39;
+})
+export class HeroComponent {
+  title = &#39;Hero Detail&#39;;
+  getName() {return &#39;Windstorm&#39;; }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+export class HeroComponent {
+  constructor() {
+    this.title = &#39;Hero Detail&#39;;
+  }
+  getName() {return &#39;Windstorm&#39;; }
+}
+
+HeroComponent.annotations = [
+  new Component({
+    selector: &#39;hero-view&#39;,
+    template: &#39;&lt;h1&gt;{{title}}: {{getName()}}&lt;/h1&gt;&#39;
+  })
+];
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript" format="linenums">app.HeroComponent = HeroComponent; // &quot;export&quot;
+
+HeroComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-view&#39;,
+    template: &#39;&lt;h1&gt;{{title}}: {{getName()}}&lt;/h1&gt;&#39;
+  })
+];
+
+function HeroComponent() {
+  this.title = &quot;Hero Detail&quot;;
+}
+
+HeroComponent.prototype.getName = function() { return &#39;Windstorm&#39;; };
+</code-pane></code-tabs><p><strong><em>External Template file</em></strong></p>
+<p><strong><em>外部模块文件</em></strong></p>
+<p>A large component template is often kept in a separate template file.</p>
+<p>大的组件模板通常是放在独立的文件中。</p>
+<div class="code-example"><header><h4>src/app/hero-title.component.html</h4></header><code-example language="html" format="">&lt;h1&gt;{{titlePrefix}} {{title}}&lt;/h1&gt;
+&lt;button (click)=&quot;ok()&quot;&gt;OK&lt;/button&gt;
+&lt;p&gt;{{ msg }}&lt;/p&gt;
+</code-example></div><p>The component (<code>HeroTitleComponent</code> in this case) then references the template file in its metadata <code>templateUrl</code> property:</p>
+<p>接着，组件（这里是<code>HeroTitleComponent</code>）在它的元数据<code>templateUrl</code>属性中引用该模板文件：</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format=".">@Component({
+  selector: &#39;hero-title&#39;,
+  templateUrl: &#39;./hero-title.component.html&#39;
+})
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format=".">@Component({
+  selector: &#39;hero-title&#39;,
+  templateUrl: &#39;./hero-title.component.html&#39;
+})
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format=".">HeroTitleComponent.annotations = [
+  new Component({
+    selector: &#39;hero-title&#39;,
+    templateUrl: &#39;./hero-title.component.html&#39;
+  })
+];
+</code-pane><code-pane language="js" name="ES5 JavaScript" format=".">HeroTitleComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-title&#39;,
+    templateUrl: &#39;app/hero-title.component.html&#39;
+  })
+];
+</code-pane></code-tabs><p>Note that both the <em>TypeScript</em> and <em>ES6</em> <code>templateUrl</code> properties identify the location of the template file <em>relative to the component module</em>.</p>
+<p>注意，<em>TypeScript</em> 和两个<em>ES6</em>的<code>templateUrl</code>属性<em>相对于组件模块</em>来标识模板文件的位置。</p>
+<a id="dsl"></a><div class="l-main-section"></div><h2 id="_es5_-dsl"><em>ES5</em> DSL</h2>
+<h2 id="_es5_-"><em>ES5</em> 领域专用语言</h2>
+<p>This <em>ES5</em> pattern of creating a constructor and annotating it with metadata is so common that Angular
+provides a convenience API to make it a little more compact and locates the metadata above the constructor,
+as you would if you wrote in <em>TypeScript</em> or <em>ES6-with-decorators</em>.</p>
+<p>创建构造函数并用元数据对它进行注释，是一个常见的 <em>ES5</em> 模式，Angular 提供了一套方便的 API，使代码更简洁，
+并且元数据也刚好位于构造函数的上方，看起来就像 <em>TypeScript</em> 或 <em>带装饰器的 ES6</em> 写的代码。</p>
+<p>This <em>API</em> (<em>Application Programming Interface</em>) is commonly known as the <em>ES5 DSL</em> (<em>Domain Specific Language</em>).</p>
+<p>这个 <em>API</em> (<em>Application Programming Interface，应用编程接口</em>) 通常称作 <em>ES5 DSL</em> (<em>Domain Specific Language，领域专用语言</em>)。</p>
+<p>Set an application namespace property (e.g., <code>app.HeroDslComponent</code>) to the result of an <code>ng.core.Component</code> function call.
+Pass the same metadata object to <code>ng.core.Component</code> as you did before.
+Then chain a call to the <code>Class</code> method which takes an object defining the class constructor and instance methods.</p>
+<p>把<code>ng.core.Component</code>函数调用的结果设置到应用命名空间属性，如<code>app.HeroDslComponent</code>。
+向<code>ng.core.Component</code>传递与之前一样的元数据对象。
+接着，在调用链上调用<code>Class</code>函数，它接收一个对象，其中定义了类的构造函数和实例方法。</p>
+<p>Here is an example of the <code>HeroComponent</code>, re-written with the DSL,
+next to the original <em>ES5</em> version for comparison:</p>
+<p>下例中的<code>HeroComponent</code>，用 DSL 进行了重写，跟原来的 <em>ES5</em> 版本进行对比一下：</p>
+<code-tabs><code-pane language="js" name="ES5 JavaScript with DSL" format="linenums">app.HeroComponent = ng.core.Component({
+  selector: &#39;hero-view-dsl&#39;,
+  template: &#39;&lt;h1&gt;{{title}}: {{getName()}}&lt;/h1&gt;&#39;,
+})
+.Class({
+  constructor: function HeroComponent() {
+    this.title = &quot;Hero Detail&quot;;
+  },
+
+  getName: function() { return &#39;Windstorm&#39;; }
+});
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript" format="linenums">app.HeroComponent = HeroComponent; // &quot;export&quot;
+
+HeroComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-view&#39;,
+    template: &#39;&lt;h1&gt;{{title}}: {{getName()}}&lt;/h1&gt;&#39;
+  })
+];
+
+function HeroComponent() {
+  this.title = &quot;Hero Detail&quot;;
+}
+
+HeroComponent.prototype.getName = function() { return &#39;Windstorm&#39;; };
+</code-pane></code-tabs><div class="callout is-helpful"><header>Name the constructor</header><header>命名构造函数</header><p>A <strong>named</strong> constructor displays clearly in the console log
+if the component throws a runtime error.
+An <strong>unnamed</strong> constructor displays as an anonymous function (e.g., <code>class0</code>)
+which is impossible to find in the source code.</p>
+<p>如果组件抛出运行时异常，<strong>命名</strong>的构造函数在控制台日志中显示得更清楚。
+<strong>未命名</strong>的构造函数显示为匿名函数（如，<code>class0</code>），不可能在源代码中找到它。</p>
+</div><h3 id="properties-with-getters-and-setters">Properties with getters and setters</h3>
+<h3 id="-getter-setter-">具有 getter 和 setter 的属性</h3>
+<p><em>TypeScript</em> and <em>ES6</em> support with getters and setters.
+Here&#39;s an example of a read-only <em>TypeScript</em> property with a getter
+that prepares a toggle-button label for the next clicked state:</p>
+<p><em>TypeScript</em> 和 <em>ES6</em> 支持 getter 和 setter。
+下面是 <em>TypeScript</em> 只读属性的例子，它有一个 getter，为下一次点击状态准备切换按钮的标签：</p>
+<div class="code-example"><header><h4>ts/src/app/hero-queries.component.ts</h4></header><code-example language="ts" format="">get buttonLabel() {
+  return this.active ? &#39;Deactivate&#39; : &#39;Activate&#39;;
+}
+</code-example></div><p>This <em>TypeScript</em> &quot;getter&quot; property is transpiled to an <em>ES5</em>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" title="Defined Properties">defined property</a>.
+The <em>ES5 DSL</em> does not support <em>defined properties</em> directly
+but you can still create them by extracting the &quot;class&quot; prototype and
+adding the <em>defined property</em> in raw JavaScript like this:</p>
+<p>这个 <em>TypeScript</em> &quot;getter&quot; 属性会翻译成 <em>ES5</em> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" title="Defined Properties">已定义属性</a>。
+<em>ES5 DSL</em> 不直接支持<em>已定义属性</em>，你仍可提取“类”原型，象下面这样添加<em>已定义属性</em>：</p>
+<div class="code-example"><header><h4>js/src/app/hero-queries.component.ts</h4></header><code-example language="js" format="">// add prototype property w/ getter outside the DSL
+var proto = app.heroQueries.HeroQueriesComponent.prototype;
+Object.defineProperty(proto, &quot;buttonLabel&quot;, {
+    get: function () {
+        return this.active ? &#39;Deactivate&#39; : &#39;Activate&#39;;
+    },
+    enumerable: true
+});
+</code-example></div><h3 id="dsl-for-other-classes">DSL for other classes</h3>
+<h3 id="-dsl">用于其它类的 DSL</h3>
+<p>There are similar DSLs for other decorated classes.
+You can define a directive with <code>ng.core.Directive</code>:</p>
+<p>其它被装饰的类也有类似的DSL，可以用<code>ng.core.Directive</code>定义指令：</p>
+<code-example>app.MyDirective = ng.core.Directive({
+  selector: '[myDirective]'
+}).Class({
+  ...
+});</code-example><p>and a pipe with <code>ng.core.Pipe</code>:</p>
+<p>用<code>ng.core.Pipe</code>添加一个管道：</p>
+<code-example>app.MyPipe = ng.core.Pipe({
+  name: 'myPipe'
+}).Class({
+  ...
+});
+</code-example><a id="interfaces"></a><div class="l-main-section"></div><h2 id="interfaces">Interfaces</h2>
+<h2 id="-">接口</h2>
+<p>A <em>TypeScript</em> interface helps ensure that a class implements the interface&#39;s members correctly.
+We strongly recommend Angular interfaces where appropriate.
+For example, the component class that implements the <code>ngOnInit</code> lifecycle hook method
+should implement the <code>OnInit</code> interface.</p>
+<p><em>TypeScript</em>用于确保一个类正确地实现了接口成员。
+在适当的地方，我们强烈推荐使用 Angular 接口。
+例如，实现了<code>ngOnInit</code>生命周期钩子方法的组件类应实现<code>OnInit</code>接口。</p>
+<p><em>TypeScript</em> interfaces exist for developer convenience and are not used by Angular at runtime.
+They have no physical manifestation in the generated JavaScript code.
+Just implement the methods and ignore interfaces when translating code samples from <em>TypeScript</em> to JavaScript.</p>
+<p><em>TypeScript</em> 接口只是为了方便开发人员，Angular 在运行时并不使用它。
+它们在生成的 JavaScript中并不存在。
+当从 <em>TypeScript</em> 翻译成 JavaScript 时，只保留了实现方法，而忽略接口。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">import { Component, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;hero-lifecycle&#39;,
+  template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+})
+export class HeroComponent implements OnInit {
+  name: string;
+  ngOnInit() {
+    // todo: fetch from server async
+    setTimeout(() =&gt; this.name = &#39;Windstorm&#39;, 0);
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;hero-lifecycle&#39;,
+  template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+})
+export class HeroComponent {
+  name = &#39;&#39;;
+  ngOnInit() {
+    // todo: fetch from server async
+    setTimeout(() =&gt; this.name = &#39;Windstorm&#39;, 0);
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">import { Component } from &#39;@angular/core&#39;;
+export class HeroComponent {
+  ngOnInit() {
+    // todo: fetch from server async
+    setTimeout(() =&gt; this.name = &#39;Windstorm&#39;, 0);
+  }
+}
+
+HeroComponent.annotations = [
+  new Component({
+    selector: &#39;hero-lifecycle&#39;,
+    template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+  })
+];
+</code-pane><code-pane language="js" name="ES5 JavaScript" format="linenums">app.HeroComponent = HeroComponent;
+
+HeroComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-lifecycle&#39;,
+    template: &#39;&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;&#39;
+  })
+];
+
+function HeroComponent() { }
+
+HeroComponent.prototype.ngOnInit = function() {
+  // todo: fetch from server async
+  setTimeout(() =&gt; this.name = &#39;Windstorm&#39;, 0);
+};
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">app.HeroComponent = ng.core.Component({
+  selector: &#39;hero-lifecycle-dsl&#39;,
+  template: &#39;&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;&#39;
+})
+.Class({
+  constructor: function HeroComponent() { },
+  ngOnInit: function() {
+    // todo: fetch from server async
+    setTimeout(() =&gt; this.name = &#39;Windstorm&#39;, 0);
+  }
+});
+</code-pane></code-tabs><a id="io-decorators"></a><div class="l-main-section"></div><h2 id="input-and-output-metadata">Input and Output Metadata</h2>
+<h2 id="-">输入和输出元数据</h2>
+<h3 id="input-and-output-decorators">Input and Output Decorators</h3>
+<h3 id="-">输入和输出装饰器</h3>
+<p>In <em>TypeScript</em> and <em>ES6-with-decorators</em>, you often add metadata to class <em>properties</em> with <em>property decorators</em>.
+For example, you apply <a href="../guide/template-syntax.html#inputs-outputs"><code>@Input</code> and <code>@Output</code> property decorators</a>
+to public class properties that will be the target of data binding expressions in parent components.</p>
+<p>在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，经常会用<em>属性装饰器</em>往类的<em>属性</em>上添加元数据。
+例如，向公共类属性添加<a href="../guide/template-syntax.html#inputs-outputs"><code>@Input</code>和<code>@Output</code>属性装饰器</a> ，
+会使这些属性成为父组件绑定表达式的目标。</p>
+<p>There is no equivalent of a property decorator in <em>ES5</em> or <em>plain ES6</em>.
+Fortunately, every property decorator has an equivalent representation in a class decorator metadata property.
+A <em>TypeScript</em> <code>@Input</code> property decorator can be represented by an item in the <code>Component</code> metadata&#39;s <code>inputs</code> array.</p>
+<p>在 <em>ES5</em> 或 <em>普通 ES6</em> 中，没有等价的属性装饰器。
+幸运的是，每个属性装饰器在类的装饰器元数据属性中有等价的表示形式。
+<em>TypeScript</em> 的<code>@Input</code>属性装饰器可以表示为<code>Component</code>元数据的<code>inputs</code>数组中的一项。</p>
+<p>You already know how to add <code>Component</code> or <code>Directive</code> class metadata in <em>any</em> JavaScript dialect so
+there&#39;s nothing fundamentally new about adding another property.
+But note that what would have been <em>separate</em> <code>@Input</code> and <code>@Output</code> property decorators for each class property are
+combined in the metadata <code>inputs</code> and <code>outputs</code> <em>arrays</em>.</p>
+<p>你已经知道如何用<em>任意的</em> JavaScript 方言添加<code>Component</code> 或 <code>Directive</code>元数据，
+所以添加另一个属性也没什么新鲜的。
+但要注意的是，用于每个类属性的那些<em>分离</em>的<code>@Input</code>和<code>@Output</code>属性装饰器，都合并到了<code>inputs</code>和<code>outputs</code><em>数组</em>中。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">@Component({
+  selector: &#39;app-confirm&#39;,
+  templateUrl: &#39;./confirm.component.html&#39;
+})
+export class ConfirmComponent {
+  @Input() okMsg = &#39;&#39;;
+  @Input(&#39;cancelMsg&#39;) notOkMsg = &#39;&#39;;
+  @Output() ok = new EventEmitter();
+  @Output(&#39;cancel&#39;) notOk = new EventEmitter();
+
+  onOkClick() {
+    this.ok.emit(true);
+  }
+  onNotOkClick() {
+    this.notOk.emit(true);
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">@Component({
+  selector: &#39;app-confirm&#39;,
+  templateUrl: &#39;./confirm.component.html&#39;
+})
+export class ConfirmComponent {
+  @Input() okMsg = &#39;&#39;;
+  @Input(&#39;cancelMsg&#39;) notOkMsg = &#39;&#39;;
+  @Output() ok = new EventEmitter();
+  @Output(&#39;cancel&#39;) notOk = new EventEmitter();
+
+  onOkClick() {
+    this.ok.emit(true);
+  }
+  onNotOkClick() {
+    this.notOk.emit(true);
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class ConfirmComponent {
+  constructor(){
+    this.ok    = new EventEmitter();
+    this.notOk = new EventEmitter();
+  }
+  onOkClick() {
+    this.ok.emit(true);
+  }
+  onNotOkClick() {
+    this.notOk.emit(true);
+  }
+}
+
+ConfirmComponent.annotations = [
+  new Component({
+    selector: &#39;app-confirm&#39;,
+    templateUrl: &#39;./confirm.component.html&#39;,
+    inputs: [
+      &#39;okMsg&#39;,
+      &#39;notOkMsg: cancelMsg&#39;
+    ],
+    outputs: [
+      &#39;ok&#39;,
+      &#39;notOk: cancel&#39;
+    ]
+  })
+];
+</code-pane><code-pane language="js" name="ES5 JavaScript" format="linenums">app.ConfirmComponent = ConfirmComponent;
+
+ConfirmComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;app-confirm&#39;,
+    templateUrl: &#39;app/confirm.component.html&#39;,
+    inputs: [
+      &#39;okMsg&#39;,
+      &#39;notOkMsg: cancelMsg&#39;
+    ],
+    outputs: [
+      &#39;ok&#39;,
+      &#39;notOk: cancel&#39;
+    ]
+  })
+];
+
+function ConfirmComponent() {
+  this.ok    = new ng.core.EventEmitter();
+  this.notOk = new ng.core.EventEmitter();
+}
+
+ConfirmComponent.prototype.onOkClick = function() {
+  this.ok.emit(true);
+}
+
+ConfirmComponent.prototype.onNotOkClick = function() {
+  this.notOk.emit(true);
+}
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">app.ConfirmComponent = ng.core.Component({
+  selector: &#39;app-confirm-dsl&#39;,
+  templateUrl: &#39;app/confirm.component.html&#39;,
+  inputs: [
+    &#39;okMsg&#39;,
+    &#39;notOkMsg: cancelMsg&#39;
+  ],
+  outputs: [
+    &#39;ok&#39;,
+    &#39;notOk: cancel&#39;
+  ]
+})
+.Class({
+  constructor: function ConfirmComponent() {
+    this.ok    = new ng.core.EventEmitter();
+    this.notOk = new ng.core.EventEmitter();
+  },
+
+  onOkClick: function() {
+    this.ok.emit(true);
+  },
+
+  onNotOkClick: function() {
+    this.notOk.emit(true);
+  }
+});
+</code-pane></code-tabs><p>In the previous example, one of the public-facing binding names (<code>cancelMsg</code>)
+differs from the corresponding class property name (<code>notOkMsg</code>).
+That&#39;s OK but you must tell Angular about it so that it can map an external binding of <code>cancelMsg</code>
+to the component&#39;s <code>notOkMsg</code> property.</p>
+<p>上例中，其中一个面向公共的绑定名 (<code>cancelMsg</code>)，不同于相应的类属性名 (<code>notOkMsg</code>)。
+这样做没有问题，但必须把它告诉 Angular，这样 Angular 才能把<code>cancelMsg</code>的外部绑定映射到组件的<code>notOkMsg</code>属性。</p>
+<p>In <em>TypeScript</em> and <em>ES6-with-decorators</em>, 
+you specify the special binding name in the argument to the property decorator.</p>
+<p>在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，在属性装饰器的参数中指定特定的绑定名。</p>
+<p>In <em>ES5</em> and <em>plain ES6</em> code, convey this pairing with the <code>propertyName: bindingName</code> syntax in the class metadata.</p>
+<p>在 <em>ES5</em> 或 <em>普通 ES6</em> 中，用<code>propertyName: bindingName</code>语法表示在类的元数据中。</p>
+<div class="l-main-section"></div><h2 id="dependency-injection">Dependency Injection</h2>
+<h2 id="-">依赖注入</h2>
+<p>Angular relies heavily on <a href="../guide/dependency-injection.html">Dependency Injection</a> to provide services to the objects it creates.
+When Angular creates a new component, directive, pipe or another service,
+it sets the class constructor parameters to instances of services provided by an <em>Injector</em>.</p>
+<p>Angular 严重依赖<a href="../guide/dependency-injection.html">依赖注入</a>来为它创建的对象提供服务。
+当 Angular 创建一个新组件、指令、管道或其它服务时，
+它把<em>注入器</em>提供的服务的实例传递给类的构造函数参数。</p>
+<p>The developer must tell Angular what to inject into each parameter.</p>
+<p>开发人员必须告诉 Angular 向每个参数中注入什么。</p>
+<h3 id="injection-by-class-type">Injection by Class Type</h3>
+<h3 id="-">按类的类型注入</h3>
+<p>The easiest and most popular technique in <em>TypeScript</em> and <em>ES6-with-decorators</em> is to set the constructor parameter type
+to the class associated with the service to inject. </p>
+<p>在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，最简单和流行的技术是把构造函数参数的类型设置为待注入服务的类。</p>
+<p>The <em>TypeScript</em> transpiler writes parameter type information into the generated JavaScript.
+Angular reads that information at runtime and locates the corresponding service in the appropriate <em>Injector</em>..
+The <em>ES6-with-decorators</em> transpiler does essentially the same thing using the same parameter-typing syntax.</p>
+<p><em>TypeScript</em> 转译器把参数类型信息写进生成的 JavaScript。
+Angular 在运行时读取该信息，并在适当的<em>注入器</em>中定位相应的服务。
+<em>带装饰器的 ES6</em> 转译器本质上也使用同样的参数类型语法，做同样的工作。</p>
+<p><em>ES5</em> and <em>plain ES6</em> lack types so you must identify &quot;injectables&quot; by attaching a <strong><code>parameters</code></strong> array to the constructor function.
+Each item in the array specifies the service&#39;s injection token.</p>
+<p><em>ES5</em> 或 <em>普通 ES6</em> 缺少类型，必须向构造函数附加<strong><code>parameters</code></strong>数组来标识“可注入对象”。
+数组中的每一项指定一个服务的注入令牌。</p>
+<p>As with <em>TypeScript</em> the most popular token is a class,
+or rather a <em>constructor function</em> that represents a class in <em>ES5</em> and <em>plain ES6</em>.
+The format of the <code>parameters</code> array varies:</p>
+<p><em>TypeScript</em> 中，最常用的令牌是类，而<em>ES5</em> 和 <em>普通 ES6</em> 使用<em>构造函数</em>表示一个类。
+因此，<code>parameters</code>数组会有所不同：</p>
+<ul>
+<li><p><em>plain ES6</em> &mdash; nest each constructor function in a sub-array.</p>
+<p><em>普通 ES6</em> &mdash; 函数构造嵌套在一个子数组中。</p>
+</li>
+<li><p><em>ES5</em> &mdash; simply list the constructor functions.</p>
+<p><em>ES5</em> &mdash; 简单列出构造函数。</p>
+</li>
+</ul>
+<p>When writing with <em>ES5 DSL</em>, set the <code>Class.constructor</code> property to
+an array whose first parameters are the injectable constructor functions and whose
+last parameter is the class constructor itself.
+This format should be familiar to AngularJS developers.</p>
+<p>当用 <em>ES5 DSL</em> 时，把<code>Class.constructor</code>属性设置为一个数组，它的前面的参数是
+注入的服务，最后一个参数是类构造函数本身。
+AngularJS 的开发人员对这种形式应该很熟悉。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">import { Component }   from &#39;@angular/core&#39;;
+import { DataService } from &#39;./data.service&#39;;
+
+@Component({
+  selector: &#39;hero-di&#39;,
+  template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+})
+export class HeroComponent {
+  name = &#39;&#39;;
+  constructor(dataService: DataService) {
+    this.name = dataService.getHeroName();
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">import { Component }   from &#39;@angular/core&#39;;
+import { DataService } from &#39;./data.service&#39;;
+
+@Component({
+  selector: &#39;hero-di&#39;,
+  template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+})
+export class HeroComponent {
+  name = &#39;&#39;;
+  constructor(dataService: DataService) {
+    this.name = dataService.getHeroName();
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">import { Component }   from &#39;@angular/core&#39;;
+import { DataService } from &#39;./data.service&#39;;
+
+export class HeroComponent {
+  constructor(dataService) {
+    this.name = dataService.getHeroName();
+  }
+}
+
+HeroComponent.annotations = [
+  new Component({
+    selector: &#39;hero-di&#39;,
+    template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+  })
+];
+
+HeroComponent.parameters = [
+  [DataService]
+];
+</code-pane><code-pane language="js" name="ES5 JavaScript" format="linenums">app.HeroComponent = HeroComponent;
+
+HeroComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-di&#39;,
+    template: &#39;&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;&#39;
+  })
+];
+
+HeroComponent.parameters = [ app.DataService ];
+
+function HeroComponent(dataService) {
+  this.name = dataService.getHeroName();
+}
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">app.HeroComponent = ng.core.Component({
+  selector: &#39;hero-di-dsl&#39;,
+  template: &#39;&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;&#39;
+})
+.Class({
+  constructor: [
+    app.DataService,
+    function HeroComponent(service) {
+      this.name = service.getHeroName();
+    }
+  ]
+});
+</code-pane></code-tabs><h3 id="injection-with-the-inject-decorator">Injection with the @Inject decorator</h3>
+<h3 id="-inject-">用 @Inject 装饰器注入</h3>
+<p>Sometimes the dependency injection token isn&#39;t a class or constructor function.</p>
+<p>有时，依赖注入的令牌不是类或构造函数。</p>
+<p>In <em>TypeScript</em> and <em>ES6-with-decorators</em>, you precede the class constructor parameter
+by calling the <code>@Inject()</code> decorator with the injection token.
+In the following example, the token is the string <code>&#39;heroName&#39;</code>.</p>
+<p>在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，可以在类的构造函数参数前调用<code>@Inject()</code>装饰器来指定注入令牌。
+在这个例子中，这个令牌是字符串<code>&#39;heroName&#39;</code></p>
+<p>The other JavaScript dialects add a <code>parameters</code> array to the class contructor function.
+Each item constains a new instance of <code>Inject</code>:</p>
+<p>其它 JavaScript 方言是通过向类的构造函数添加<code>parameters</code>数组。
+其中的每一项是<code>Inject</code>的实例。</p>
+<ul>
+<li><p><em>plain ES6</em> &mdash; each item is a new instance of <code>Inject(token)</code> in a sub-array.</p>
+<p><em>普通 ES6</em> &mdash; 每一项是嵌套在一个子数组中的<code>Inject(token)</code>的实例。</p>
+</li>
+<li><p><em>ES5</em> &mdash; simply list the string tokens.</p>
+<p><em>ES5</em> &mdash; 简单列出字符串令牌。</p>
+</li>
+</ul>
+<p>When writing with <em>ES5 DSL</em>, set the <code>Class.constructor</code> property to a function definition
+array as before. Create a new instance of <code>ng.core.Inject(token)</code> for each parameter.</p>
+<p>当用 <em>ES5 DSL</em> 时，象前面那样把<code>Class.constructor</code>属性设置为函数定义数组。
+为每个参数创建一个<code>ng.core.Inject(token)</code>。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">@Component({
+  selector: &#39;hero-di-inject&#39;,
+  template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+})
+export class HeroComponent {
+  constructor(@Inject(&#39;heroName&#39;) private name: string) { }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">@Component({
+  selector: &#39;hero-di-inject&#39;,
+  template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+})
+export class HeroComponent {
+  constructor(@Inject(&#39;heroName&#39;) name) {
+    this.name = name;
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class HeroComponent {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+HeroComponent.annotations = [
+  new Component({
+    selector: &#39;hero-di-inject&#39;,
+    template: `&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;`
+  })
+];
+
+HeroComponent.parameters = [
+  [new Inject(&#39;heroName&#39;)]
+];
+</code-pane><code-pane language="js" name="ES5 JavaScript" format="linenums">app.HeroComponent = HeroComponent;
+
+HeroComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-di-inject&#39;,
+    template: &#39;&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;&#39;
+  })
+];
+
+HeroComponent.parameters = [ &#39;heroName&#39; ];
+
+function HeroComponent(name) {
+  this.name = name;
+}
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">app.HeroComponent = ng.core.Component({
+  selector: &#39;hero-di-inject-dsl&#39;,
+  template: &#39;&lt;h1&gt;Hero: {{name}}&lt;/h1&gt;&#39;
+})
+.Class({
+  constructor: [
+    new ng.core.Inject(&#39;heroName&#39;),
+    function HeroComponent(name) {
+      this.name = name;
+    }
+  ]
+});
+</code-pane></code-tabs><h3 id="additional-injection-decorators">Additional Injection Decorators</h3>
+<h3 id="-">其它注入装饰器</h3>
+<p>You can qualify injection behavior with injection decorators from <code>@angular/core</code>.</p>
+<p>可以使用<code>@angular/core</code>中的注入装饰器来限定注入行为。</p>
+<p>In <em>TypeScript</em> and <em>ES6-with-decorators</em>,
+you precede the constructor parameters with injection qualifiers such as:</p>
+<p>在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，可以将下列注入限定符加在构造函数参数前面：</p>
+<ul>
+<li><p><a href="../api/core/index/Optional-decorator.html"><code>@Optional</code></a> sets the parameter to <code>null</code> if the service is missing</p>
+<p><a href="../api/core/index/Optional-decorator.html"><code>@Optional</code></a> 如果找不到服务，设置参数为<code>null</code></p>
+</li>
+<li><p><a href="../api/core/index/Attribute-interface.html"><code>@Attribute</code></a> to inject a host element attribute value</p>
+<p><a href="../api/core/index/Attribute-interface.html"><code>@Attribute</code></a> 注入宿主元素属性值</p>
+</li>
+<li><p><a href="../api/core/index/ContentChild-decorator.html"><code>@ContentChild</code></a> to inject a content child</p>
+<p><a href="../api/core/index/ContentChild-decorator.html"><code>@ContentChild</code></a> 注入内容子组件</p>
+</li>
+<li><p><a href="../api/core/index/ViewChild-decorator.html"><code>@ViewChild</code></a> to inject a view child</p>
+<p><a href="../api/core/index/ViewChild-decorator.html"><code>@ViewChild</code></a> 注入视图子组件</p>
+</li>
+<li><p><a href="../api/core/index/Host-decorator.html"><code>@Host</code></a> to inject a service in this component or its host</p>
+<p><a href="../api/core/index/Host-decorator.html"><code>@Host</code></a> 注入本组件或它宿主中的服务</p>
+</li>
+<li><p><a href="../api/core/index/SkipSelf-decorator.html"><code>@SkipSelf</code></a> to inject a service provided in an ancestor of this component</p>
+<p><a href="../api/core/index/SkipSelf-decorator.html"><code>@SkipSelf</code></a> 注入本组件祖先中提供的服务</p>
+</li>
+</ul>
+<p>In <em>plain ES6</em> and <em>ES5</em>, create an instance of the equivalent injection qualifier in a nested array within the <code>parameters</code> array.
+For example, you&#39;d write <code>new Optional()</code> in <em>plain ES6</em> and <code>new ng.core.Optional()</code> in <em>ES5</em>.</p>
+<p>在<em>ES5</em> 或 <em>普通 ES6</em> 中，通过在<code>parameters</code>数组中创建一个嵌套数组，创建等价的注入限定符实例。</p>
+<p>When writing with <em>ES5 DSL</em>, set the <code>Class.constructor</code> property to a function definition
+array as before. Use a nested array to define a parameter&#39;s complete injection specification.</p>
+<p>当用 <em>ES5 DSL</em> 时，象前面那样把<code>Class.constructor</code>属性设置为函数定义数组。
+用嵌套数组来定义参数完整的注入规格说明。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">@Component({
+  selector: &#39;hero-title&#39;,
+  templateUrl: &#39;./hero-title.component.html&#39;
+})
+export class HeroTitleComponent {
+  msg: string = &#39;&#39;;
+  constructor(
+    @Inject(&#39;titlePrefix&#39;) @Optional() private titlePrefix: string,
+    @Attribute(&#39;title&#39;) private title: string
+  ) { }
+
+  ok() {
+    this.msg = &#39;OK!&#39;;
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">@Component({
+  selector: &#39;hero-title&#39;,
+  templateUrl: &#39;./hero-title.component.html&#39;
+})
+export class HeroTitleComponent {
+  msg = &#39;&#39;;
+  constructor(
+    @Inject(&#39;titlePrefix&#39;) @Optional() titlePrefix,
+    @Attribute(&#39;title&#39;) title
+  ) {
+    this.titlePrefix = titlePrefix;
+    this.title = title;
+  }
+
+  ok() {
+    this.msg = &#39;OK!&#39;;
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class HeroTitleComponent {
+  constructor(titlePrefix, title) {
+    this.titlePrefix = titlePrefix;
+    this.title  = title;
+    this.msg = &#39;&#39;;
+  }
+
+  ok() {
+    this.msg = &#39;OK!&#39;;
+  }
+}
+
+HeroTitleComponent.annotations = [
+  new Component({
+    selector: &#39;hero-title&#39;,
+    templateUrl: &#39;./hero-title.component.html&#39;
+  })
+];
+
+HeroTitleComponent.parameters = [
+  [new Optional(), new Inject(&#39;titlePrefix&#39;)],
+  [new Attribute(&#39;title&#39;)]
+];
+</code-pane><code-pane language="js" name="ES5 JavaScript" format="linenums">  app.HeroTitleComponent = HeroTitleComponent;
+
+  HeroTitleComponent.annotations = [
+    new ng.core.Component({
+      selector: &#39;hero-title&#39;,
+      templateUrl: &#39;app/hero-title.component.html&#39;
+    })
+  ];
+
+  function HeroTitleComponent(titlePrefix, title) {
+      this.titlePrefix = titlePrefix;
+      this.title  = title;
+      this.msg = &#39;&#39;;
+  }
+
+  HeroTitleComponent.prototype.ok = function() {
+    this.msg = &#39;OK!&#39;;
+  }
+
+  HeroTitleComponent.parameters = [
+    [new ng.core.Optional(), new ng.core.Inject(&#39;titlePrefix&#39;)],
+    [new ng.core.Attribute(&#39;title&#39;)]
+  ];
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">app.HeroTitleComponent = ng.core.Component({
+  selector: &#39;hero-title-dsl&#39;,
+  templateUrl: &#39;app/hero-title.component.html&#39;
+})
+.Class({
+  constructor: [
+    [ new ng.core.Optional(), new ng.core.Inject(&#39;titlePrefix&#39;) ],
+    new ng.core.Attribute(&#39;title&#39;),
+    function HeroTitleComponent(titlePrefix, title) {
+      this.titlePrefix = titlePrefix;
+      this.title  = title;
+      this.msg = &#39;&#39;;
+    }
+  ],
+
+  ok: function() {
+    this.msg = &#39;OK!&#39;;
+  }
+});
+</code-pane></code-tabs><div class="l-sub-section"><p>In the example above, there is no provider for the <code>&#39;titlePrefix&#39;</code> token.
+Without <code>Optional</code>, Angular would raise an error.
+With <code>Optional</code>, Angular sets the constructor parameter to <code>null</code>
+and the component displays the title without a prefix.</p>
+<p>上例中，<code>&#39;titlePrefix&#39;</code>令牌没有提供商。
+如果没有<code>Optional</code>，Angular 将抛出错误。
+加上<code>Optional</code>，Angular 将构造函数参数设置为<code>null</code>，
+组件显示没有前缀的标题。</p>
+</div><a id="host-binding"></a><div class="l-main-section"></div><h2 id="host-binding">Host Binding</h2>
+<h2 id="-">宿主绑定</h2>
+<p>Angular supports bindings to properties and events of the <em>host element</em> which is the
+element whose tag matches the component selector.</p>
+<p>Angular 支持绑定到<em>宿主元素</em>的属性和事件，
+宿主元素是那些标签匹配组件选择器的元素。</p>
+<h3 id="host-decorators">Host Decorators</h3>
+<h3 id="-">宿主装饰器</h3>
+<p>In <em>TypeScript</em> and <em>ES6-with-decorators</em>, you can use host property decorators to bind a host
+element to a component or directive.
+The <a href="../api/core/index/HostBinding-interface.html"><code>@HostBinding</code></a> decorator
+binds host element properties to component data properties.
+The <a href="../api/core/index/HostListener-interface.html"><code>@HostListener</code></a> decorator binds
+host element events to component event handlers.</p>
+<p>在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，可以使用宿主属性装饰器把宿主元素绑定到组件或指令。
+<a href="../api/core/index/HostBinding-interface.html"><code>@HostBinding</code></a>装饰器把宿主元素属性绑定到组件数据属性。
+<a href="../api/core/index/HostListener-interface.html"><code>@HostListener</code></a>装饰器把宿主元素事件绑定到组件事件处理器。</p>
+<p>In <em>plain ES6</em> or <em>ES5</em>, add a <code>host</code> attribute to the component metadata to achieve the
+same effect as <code>@HostBinding</code> and <code>@HostListener</code>. </p>
+<p>在<em>ES5</em> 或 <em>普通 ES6</em> 中，向组件元数据添加<code>host</code>属性可以获得同样的效果。</p>
+<p>The  <code>host</code> value is an object whose properties are host property and listener bindings:</p>
+<p><code>host</code>的值是一个对象，它的属性是宿主属性和监听器绑定：</p>
+<ul>
+<li><p>Each key follows regular Angular binding syntax: <code>[property]</code> for host bindings
+or <code>(event)</code> for host listeners.</p>
+<p>每个键遵循 Angular 绑定语法：<code>[property]</code>用于宿主绑定，<code>(event)</code>用于宿主监听器。</p>
+</li>
+<li><p>Each value identifies the corresponding component property or method.</p>
+<p>每个值标识相应的组件属性或方法。</p>
+</li>
+</ul>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">@Component({
+  selector: &#39;hero-host&#39;,
+  template: `
+    &lt;h1 [class.active]=&quot;active&quot;&gt;Hero Host in Decorators&lt;/h1&gt;
+    &lt;div&gt;Heading clicks: {{clicks}}&lt;/div&gt;
+  `,
+  // Styles within (but excluding) the &lt;hero-host&gt; element
+  styles: [&#39;.active {background-color: yellow;}&#39;]
+})
+export class HeroHostComponent {
+  // HostBindings to the &lt;hero-host&gt; element
+  @HostBinding() title = &#39;Hero Host in Decorators Tooltip&#39;;
+  @HostBinding(&#39;class.heading&#39;) headingClass = true;
+
+  active = false;
+  clicks = 0;
+
+  // HostListeners on the entire &lt;hero-host&gt; element
+  @HostListener(&#39;click&#39;)
+  clicked() {
+    this.clicks += 1;
+  }
+
+  @HostListener(&#39;mouseenter&#39;, [&#39;$event&#39;])
+  enter(event: Event) {
+    this.active = true;
+    this.headingClass = false;
+  }
+
+  @HostListener(&#39;mouseleave&#39;, [&#39;$event&#39;])
+  leave(event: Event) {
+    this.active = false;
+    this.headingClass = true;
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">@Component({
+  selector: &#39;hero-host&#39;,
+  template: `
+    &lt;h1 [class.active]=&quot;active&quot;&gt;Hero Host in Decorators&lt;/h1&gt;
+    &lt;div&gt;Heading clicks: {{clicks}}&lt;/div&gt;
+  `,
+  // Styles within (but excluding) the &lt;hero-host&gt; element
+  styles: [&#39;.active {background-color: yellow;}&#39;]
+})
+export class HeroHostComponent {
+  // HostBindings to the &lt;hero-host&gt; element
+  @HostBinding() title = &#39;Hero Host in Decorators Tooltip&#39;;
+  @HostBinding(&#39;class.heading&#39;) headingClass = true;
+
+  active = false;
+  clicks = 0;
+
+  // HostListeners on the entire &lt;hero-host&gt; element
+  @HostListener(&#39;click&#39;)
+  clicked() {
+    this.clicks += 1;
+  }
+
+  @HostListener(&#39;mouseenter&#39;, [&#39;$event&#39;])
+  enter(event: Event) {
+    this.active = true;
+    this.headingClass = false;
+  }
+
+  @HostListener(&#39;mouseleave&#39;, [&#39;$event&#39;])
+  leave(event: Event) {
+    this.active = false;
+    this.headingClass = true;
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class HeroHostComponent {
+  constructor() {
+    this.active = false;
+    this.clicks = 0;
+    this.headingClass = true;
+    this.title = &#39;Hero Host Tooltip&#39;;
+  }
+
+  clicked() {
+    this.clicks += 1;
+  }
+
+  enter(event) {
+    this.active = true;
+    this.headingClass = false;
+  }
+
+  leave(event) {
+    this.active = false;
+    this.headingClass = true;
+  }
+}
+
+HeroHostComponent.annotations = [
+  new Component({
+    selector: &#39;hero-host&#39;,
+    template: `
+      &lt;h1 [class.active]=&quot;active&quot;&gt;Hero Host&lt;/h1&gt;
+      &lt;div&gt;Heading clicks: {{clicks}}&lt;/div&gt;
+    `,
+    host: {
+      // HostBindings to the &lt;hero-host&gt; element
+      &#39;[title]&#39;: &#39;title&#39;,
+      &#39;[class.heading]&#39;: &#39;headingClass&#39;,
+      &#39;(click)&#39;: &#39;clicked()&#39;,
+
+      // HostListeners on the entire &lt;hero-host&gt; element
+      &#39;(mouseenter)&#39;: &#39;enter($event)&#39;,
+      &#39;(mouseleave)&#39;: &#39;leave($event)&#39;
+    },
+    // Styles within (but excluding) the &lt;hero-host&gt; element
+    styles: [&#39;.active {background-color: yellow;}&#39;]
+  })
+];
+</code-pane><code-pane language="js" name="ES5 JavaScript" format="linenums">app.HeroComponent = HeroComponent;
+
+HeroComponent.annotations = [
+  new ng.core.Component({
+    selector: &#39;hero-host&#39;,
+    template:
+      &#39;&lt;h1 [class.active]=&quot;active&quot;&gt;Hero Host&lt;/h1&gt;&#39; +
+      &#39;&lt;div&gt;Heading clicks: {{clicks}}&lt;/div&gt;&#39;,
+    host: {
+      // HostBindings to the &lt;hero-host&gt; element
+      &#39;[title]&#39;: &#39;title&#39;,
+      &#39;[class.heading]&#39;: &#39;headingClass&#39;,
+      &#39;(click)&#39;: &#39;clicked()&#39;,
+
+      // HostListeners on the entire &lt;hero-host&gt; element
+      &#39;(mouseenter)&#39;: &#39;enter($event)&#39;,
+      &#39;(mouseleave)&#39;: &#39;leave($event)&#39;
+    },
+    // Styles within (but excluding) the &lt;hero-host&gt; element
+    styles: [&#39;.active {background-color: yellow;}&#39;]
+  })
+];
+
+function HeroComponent() {
+  this.clicks = 0;
+  this.headingClass = true;
+  this.title = &#39;Hero Host Tooltip content&#39;;
+}
+
+HeroComponent.prototype.clicked = function() {
+  this.clicks += 1;
+}
+
+HeroComponent.prototype.enter = function(event) {
+  this.active = true;
+  this.headingClass = false;
+}
+
+HeroComponent.prototype.leave = function(event) {
+  this.active = false;
+  this.headingClass = true;
+}
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">app.HeroComponent = ng.core.Component({
+  selector: &#39;hero-host-dsl&#39;,
+  template: `
+    &lt;h1 [class.active]=&quot;active&quot;&gt;Hero Host (DSL)&lt;/h1&gt;
+    &lt;div&gt;Heading clicks: {{clicks}}&lt;/div&gt;
+  `,
+  host: {
+    // HostBindings to the &lt;hero-host-dsl&gt; element
+    &#39;[title]&#39;: &#39;title&#39;,
+    &#39;[class.heading]&#39;: &#39;headingClass&#39;,
+    &#39;(click)&#39;: &#39;clicked()&#39;,
+
+    // HostListeners on the entire &lt;hero-host-dsl&gt; element
+    &#39;(mouseenter)&#39;: &#39;enter($event)&#39;,
+    &#39;(mouseleave)&#39;: &#39;leave($event)&#39;
+  },
+  // Styles within (but excluding) the &lt;hero-host-dsl&gt; element
+  styles: [&#39;.active {background-color: coral;}&#39;]
+})
+.Class({
+  constructor: function HeroComponent() {
+    this.clicks = 0;
+    this.headingClass = true;
+    this.title = &#39;Hero Host Tooltip DSL content&#39;;
+  },
+
+  clicked() {
+    this.clicks += 1;
+  },
+
+  enter(event) {
+    this.active = true;
+    this.headingClass = false;
+  },
+
+  leave(event) {
+    this.active = false;
+    this.headingClass = true;
+  }
+});
+</code-pane></code-tabs><h3 id="host-metadata">Host Metadata</h3>
+<h3 id="-">宿主元数据</h3>
+<p>Some developers prefer to specify host properties and listeners
+in the component metadata.
+They&#39;d <em>rather</em> do it the way you <em>must</em> do it <em>ES5</em> and <em>plain ES6</em>.</p>
+<p>一些开发人员更喜欢在组件元数据中指定宿主属性和监听器。
+它们宁愿采用这种方式，也是 <em>ES5</em> 或 <em>普通 ES6</em> 中必须采用的方式。</p>
+<p>The following re-implementation of the <code>HeroComponent</code> reminds us that <em>any property metadata decorator</em>
+can be expressed as component or directive metadata in both <em>TypeScript</em> and <em>ES6-with-decorators</em>.
+These particular <em>TypeScript</em> and <em>ES6</em> code snippets happen to be identical.</p>
+<p>下面重新实现了<code>HeroComponent</code>，它提醒我们，在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，
+<em>任何属性元数据装饰器</em>都可以表示为组件或指令元数据。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">@Component({
+  selector: &#39;hero-host-meta&#39;,
+  template: `
+    &lt;h1 [class.active]=&quot;active&quot;&gt;Hero Host in Metadata&lt;/h1&gt;
+    &lt;div&gt;Heading clicks: {{clicks}}&lt;/div&gt;
+  `,
+  host: {
+    // HostBindings to the &lt;hero-host-meta&gt; element
+    &#39;[title]&#39;: &#39;title&#39;,
+    &#39;[class.heading]&#39;: &#39;headingClass&#39;,
+
+    // HostListeners on the entire &lt;hero-host-meta&gt; element
+    &#39;(click)&#39;: &#39;clicked()&#39;,
+    &#39;(mouseenter)&#39;: &#39;enter($event)&#39;,
+    &#39;(mouseleave)&#39;: &#39;leave($event)&#39;
+  },
+  // Styles within (but excluding) the &lt;hero-host-meta&gt; element
+  styles: [&#39;.active {background-color: coral;}&#39;]
+})
+export class HeroHostMetaComponent {
+  title = &#39;Hero Host in Metadata Tooltip&#39;;
+  headingClass = true;
+
+  active = false;
+  clicks = 0;
+
+  clicked() {
+    this.clicks += 1;
+  }
+
+  enter(event: Event) {
+    this.active = true;
+    this.headingClass = false;
+  }
+
+  leave(event: Event) {
+    this.active = false;
+    this.headingClass = true;
+  }
+}
+</code-pane><code-pane language="es6
+  " name="ES6 JavaScript with decorators" format="linenums">@Component({
+  selector: &#39;hero-host-meta&#39;,
+  template: `
+    &lt;h1 [class.active]=&quot;active&quot;&gt;Hero Host in Metadata&lt;/h1&gt;
+    &lt;div&gt;Heading clicks: {{clicks}}&lt;/div&gt;
+  `,
+  host: {
+    // HostBindings to the &lt;hero-host-meta&gt; element
+    &#39;[title]&#39;: &#39;title&#39;,
+    &#39;[class.heading]&#39;: &#39;headingClass&#39;,
+
+    // HostListeners on the entire &lt;hero-host-meta&gt; element
+    &#39;(click)&#39;: &#39;clicked()&#39;,
+    &#39;(mouseenter)&#39;: &#39;enter($event)&#39;,
+    &#39;(mouseleave)&#39;: &#39;leave($event)&#39;
+  },
+  // Styles within (but excluding) the &lt;hero-host-meta&gt; element
+  styles: [&#39;.active {background-color: coral;}&#39;]
+})
+export class HeroHostMetaComponent {
+  title = &#39;Hero Host in Metadata Tooltip&#39;;
+  headingClass = true;
+
+  active = false;
+  clicks = 0;
+
+  clicked() {
+    this.clicks += 1;
+  }
+
+  enter(event: Event) {
+    this.active = true;
+    this.headingClass = false;
+  }
+
+  leave(event: Event) {
+    this.active = false;
+    this.headingClass = true;
+  }
+}
+</code-pane></code-tabs><a id="view-child-decorators"></a><div class="l-main-section"></div><h3 id="view-and-child-decorators">View and Child Decorators</h3>
+<h3 id="-">视图和子组件装饰器</h3>
+<p>Several <em>property</em> decorators query a component&#39;s nested view and content components.</p>
+<p>有几个<em>属性</em>装饰器可用于查询组件的嵌套视图和内容组件。</p>
+<div class="l-sub-section"><p><em>View</em> children are associated with element tags that appear <em>within</em> the component&#39;s template.</p>
+<p><em>视图</em>子组件与出现在组件模板<em>内</em>的元素标签相关联。</p>
+<p><em>Content</em> children are associated with elements that appear <em>between</em> the component&#39;s element tags;
+they are projected into an <code>&lt;ng-content&gt;</code> slot in the component&#39;s template.     </p>
+<p><em>内容</em>子组件与出现在组件元素标签<em>之间</em>的那些元素相关联，
+它们被投影到组件模板的<code>&lt;ng-content&gt;</code>中。</p>
+</div><p>The <a href="../api/core/index/ViewChild-decorator.html"><code>@ViewChild</code></a> and
+<a href="../api/core/index/ViewChildren-decorator.html"><code>@ViewChildren</code></a> property decorators
+allow a component to query instances of other components that are used in
+its view.</p>
+<p><a href="../api/core/index/ViewChild-decorator.html"><code>@ViewChild</code></a> 和
+<a href="../api/core/index/ViewChildren-decorator.html"><code>@ViewChildren</code></a>
+属性装饰器允许组件查询位于其视图中的其它组件的实例。</p>
+<p>In <em>ES5</em> and <em>ES6</em>, you access a component&#39;s view children by adding a <code>queries</code> property to the component metadata.
+The <code>queries</code> property value is a hash map.</p>
+<p>在 <em>ES5</em> 和 <em>ES6</em> 中，通过向组件元数据添加<code>queries</code>属性来访问组件的视图子组件。
+<code>queries</code>属性是一个映射表。</p>
+<ul>
+<li><p>each <em>key</em> is the name of a component property that will hold the view child or children.</p>
+<p>每个<em>键</em>是用来保存视图子组件的组件属性名。</p>
+</li>
+<li><p>each <em>value</em> is a new instance of either <code>ViewChild</code> or <code>ViewChildren</code>.</p>
+<p>每个<em>值</em>是<code>ViewChild</code>或<code>ViewChildren</code>的实例。</p>
+</li>
+</ul>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">@Component({
+  selector: &#39;hero-queries&#39;,
+  template: `
+    &lt;view-child *ngFor=&quot;let hero of heroData&quot; [hero]=&quot;hero&quot;&gt;
+      &lt;content-child&gt;&lt;/content-child&gt;
+    &lt;/view-child&gt;
+    &lt;button (click)=&quot;activate()&quot;&gt;{{buttonLabel}} All&lt;/button&gt;
+  `
+})
+export class HeroQueriesComponent {
+  active = false;
+  heroData = [
+    {id: 1, name: &#39;Windstorm&#39;},
+    {id: 2, name: &#39;LaughingGas&#39;}
+  ];
+
+  @ViewChildren(ViewChildComponent) views: QueryList&lt;ViewChildComponent&gt;;
+
+  activate() {
+    this.active = !this.active;
+    this.views.forEach(
+      view =&gt; view.activate()
+    );
+  }
+
+  get buttonLabel() {
+    return this.active ? &#39;Deactivate&#39; : &#39;Activate&#39;;
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">@Component({
+  selector: &#39;hero-queries&#39;,
+  template: `
+    &lt;view-child *ngFor=&quot;let hero of heroData&quot; [hero]=&quot;hero&quot;&gt;
+      &lt;content-child&gt;&lt;/content-child&gt;
+    &lt;/view-child&gt;
+    &lt;button (click)=&quot;activate()&quot;&gt;{{buttonLabel}} All&lt;/button&gt;
+  `
+})
+export class HeroQueriesComponent {
+  active = false;
+  heroData = [
+    {id: 1, name: &#39;Windstorm&#39;},
+    {id: 2, name: &#39;LaughingGas&#39;}
+  ];
+
+  @ViewChildren(ViewChildComponent) views;
+
+  activate() {
+    this.active = !this.active;
+    this.views.forEach(
+      view =&gt; view.activate()
+    );
+  }
+
+  get buttonLabel() {
+    return this.active ? &#39;Deactivate&#39; : &#39;Activate&#39;;
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class HeroQueriesComponent {
+  constructor(){
+    this.active = false;
+    this.heroData = [
+      {id: 1, name: &#39;Windstorm&#39;},
+      {id: 2, name: &#39;LaughingGas&#39;}
+    ];
+  }
+
+  activate() {
+    this.active = !this.active;
+    this.views.forEach(
+      view =&gt; view.activate()
+    );
+  }
+
+  get buttonLabel() {
+    return this.active ? &#39;Deactivate&#39; : &#39;Activate&#39;;
+  }
+}
+
+HeroQueriesComponent.annotations = [
+  new Component({
+    selector: &#39;hero-queries&#39;,
+    template: `
+      &lt;view-child *ngFor=&quot;let hero of heroData&quot; [hero]=&quot;hero&quot;&gt;
+        &lt;content-child&gt;&lt;/content-child&gt;
+      &lt;/view-child&gt;
+      &lt;button (click)=&quot;activate()&quot;&gt;{{buttonLabel}} All&lt;/button&gt;
+    `,
+    queries: {
+      views: new ViewChildren(ViewChildComponent)
+    }
+  })
+];
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">  app.heroQueries.HeroQueriesComponent = ng.core.Component({
+    selector: &#39;hero-queries&#39;,
+    template:
+      &#39;&lt;view-child *ngFor=&quot;let hero of heroData&quot; [hero]=&quot;hero&quot;&gt;&#39; +
+        &#39;&lt;content-child&gt;&lt;/content-child&gt;&#39; +
+      &#39;&lt;/view-child&gt;&#39; +
+      &#39;&lt;button (click)=&quot;activate()&quot;&gt;{{buttonLabel}} All&lt;/button&gt;&#39;,
+    queries: {
+      views: new ng.core.ViewChildren(app.heroQueries.ViewChildComponent)
+    }
+  })
+  .Class({
+    constructor: function HeroQueriesComponent() {
+      this.active = false;
+      this.heroData = [
+        {id: 1, name: &#39;Windstorm&#39;},
+        {id: 2, name: &#39;LaughingGas&#39;}
+      ];
+    },
+
+    activate: function() {
+      this.active = !this.active;
+      this.views.forEach(function(view) {
+        view.activate();
+      });
+    },
+  });
+
+  // add prototype property w/ getter outside the DSL
+  var proto = app.heroQueries.HeroQueriesComponent.prototype;
+  Object.defineProperty(proto, &quot;buttonLabel&quot;, {
+      get: function () {
+          return this.active ? &#39;Deactivate&#39; : &#39;Activate&#39;;
+      },
+      enumerable: true
+  });
+</code-pane></code-tabs><p>The <a href="../api/core/index/ContentChild-decorator.html"><code>@ContentChild</code></a> and
+<a href="../api/core/index/ContentChildren-decorator.html"><code>@ContentChildren</code></a> property decorators
+allow a component to query instances of other components that have been projected
+into its view from elsewhere.</p>
+<p><a href="../api/core/index/ContentChild-decorator.html"><code>@ContentChild</code></a> 和
+<a href="../api/core/index/ContentChildren-decorator.html"><code>@ContentChildren</code></a>
+装饰器允许组件查询从其它地方投影到视图里的其它组件的实例。</p>
+<p>They can be added in the same way as <a href="../api/core/index/ViewChild-decorator.html"><code>@ViewChild</code></a> and
+<a href="../api/core/index/ViewChildren-decorator.html"><code>@ViewChildren</code></a>.</p>
+<p>添加它们的方式与<a href="../api/core/index/ViewChild-decorator.html"><code>@ViewChild</code></a> 和
+<a href="../api/core/index/ViewChildren-decorator.html"><code>@ViewChildren</code></a> 相同。</p>
+<code-tabs><code-pane language="ts" name="TypeScript" format="linenums">@Component({
+  selector: &#39;view-child&#39;,
+  template: `
+  &lt;h2 [class.active]=active&gt;
+    {{hero.name}}
+    &lt;ng-content&gt;&lt;/ng-content&gt;
+  &lt;/h2&gt;`,
+  styles: [&#39;.active {font-weight: bold; background-color: skyblue;}&#39;]
+})
+export class ViewChildComponent {
+  @Input() hero: any;
+  active = false;
+
+  @ContentChild(ContentChildComponent) content: ContentChildComponent;
+
+  activate() {
+    this.active = !this.active;
+    this.content.activate();
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript with decorators" format="linenums">@Component({
+  selector: &#39;view-child&#39;,
+  template: `
+  &lt;h2 [class.active]=active&gt;
+    {{hero.name}}
+    &lt;ng-content&gt;&lt;/ng-content&gt;
+  &lt;/h2&gt;`,
+  styles: [&#39;.active {font-weight: bold; background-color: skyblue;}&#39;]
+})
+export class ViewChildComponent {
+  @Input() hero;
+  active = false;
+
+  @ContentChild(ContentChildComponent) content;
+
+  activate() {
+    this.active = !this.active;
+    this.content.activate();
+  }
+}
+</code-pane><code-pane language="es6" name="ES6 JavaScript" format="linenums">export class ViewChildComponent {
+  constructor() {
+    this.active = false;
+  }
+
+  activate() {
+    this.active = !this.active;
+    this.content.activate();
+  }
+}
+
+ViewChildComponent.annotations = [
+  new Component({
+    selector: &#39;view-child&#39;,
+    template: `&lt;h2 [class.active]=active&gt;
+      {{hero.name}}
+      &lt;ng-content&gt;&lt;/ng-content&gt;
+    &lt;/h2&gt;`,
+    styles: [&#39;.active {font-weight: bold; background-color: skyblue;}&#39;],
+    inputs: [&#39;hero&#39;],
+    queries: {
+      content: new ContentChild(ContentChildComponent)
+    }
+  })
+];
+</code-pane><code-pane language="js
+  " name="ES5 JavaScript with DSL" format="linenums">app.heroQueries.ViewChildComponent = ng.core.Component({
+  selector: &#39;view-child&#39;,
+  template:
+    &#39;&lt;h2 [class.active]=active&gt;&#39; +
+      &#39;{{hero.name}} &#39; +
+      &#39;&lt;ng-content&gt;&lt;/ng-content&gt;&#39; +
+    &#39;&lt;/h2&gt;&#39;,
+  styles: [&#39;.active {font-weight: bold; background-color: skyblue;}&#39;],
+  inputs: [&#39;hero&#39;],
+  queries: {
+    content: new ng.core.ContentChild(app.heroQueries.ContentChildComponent)
+  }
+})
+.Class({
+  constructor: function HeroQueriesHeroComponent() {
+    this.active = false;
+  },
+
+  activate: function() {
+    this.active = !this.active;
+    this.content.activate();
+  }
+});
+</code-pane></code-tabs><div class="alert is-helpful"><p>In <em>TypeScript</em> and <em>ES6-with-decorators</em> you can also use the <code>queries</code> metadata
+instead of the <code>@ViewChild</code> and <code>@ContentChild</code> property decorators.</p>
+<p>在 <em>TypeScript</em> 和 <em>带装饰器的 ES6</em> 中，还可以使用<code>queries</code>元数据代替
+<code>@ViewChild</code> 和 <code>@ContentChild</code>属性装饰器。</p>
+</div><a id="aot"></a><div class="l-main-section"></div><h2 id="aot-compilation-in-_typescript_-only">AOT Compilation in <em>TypeScript</em> only</h2>
+<h2 id="-_typescript_-">只用于 <em>TypeScript</em> 的预编译</h2>
+<p>Angular offers two modes of template compilation, JIT (<em>Just-in-Time</em>) and
+<a href="aot-compiler.html">AOT (<em>Ahead-of-Time</em>)</a>.
+Currently the AOT compiler only works with <em>TypeScript</em> applications because, in part, it generates
+<em>TypeScript</em> files as an intermediate result.
+<strong>AOT is not an option for pure JavaScript applications</strong> at this time.</p>
+<p>Angular 模板编译有两种方式：JiT (<em>Just-in-Time，即时编译</em>) 和
+<a href="aot-compiler.html">AoT (<em>Ahead-of-Time，预编译</em>)</a>。
+目前，预编译只能用于 <em>TypeScript</em> 应用，因为（部分原因）它生成的中间结果是 <em>TypeScript</em> 文件。
+当前，<strong>预编译不能用于纯 JavaScript 应用</strong>。</p></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/ts-to-js.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:50 GMT -->
+</html>

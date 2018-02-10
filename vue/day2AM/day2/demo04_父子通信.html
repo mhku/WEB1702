@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <father></father>
+</div>
+
+<script>
+  Vue.component('father',{
+    data: function () {
+      return {
+        name:'小头爸爸'
+      }
+    },
+    methods:{
+      checkSon: function () {
+        //读取子组件的名称显示在控制台
+        var result = this.$refs.myChild.name;
+        console.log(
+          '在父组件中读到的子组件属性值为'+result);
+        var age = this.$refs.myChild.getSonAge();
+        console.log(
+          '父组件得到的子组件的方法返回结果为'+age);
+      }
+    },
+    template:`<div>
+    <h1>这是父组件</h1>
+    <button @click="checkSon">查看子组件属性</button>
+    <hr/>
+    <son ref="myChild"></son>
+    </div>`
+  })
+
+  Vue.component('son',{
+    data: function () {
+        return {
+          name:'大头儿子'
+        }
+    },
+    methods:{
+      getSonAge: function () {
+        return 10;
+      },
+      getParentInfo: function () {
+        //调用父组件中的属性和方法
+        var FatherName = this.$parent.name;
+        console.log(
+          "父组件中的属性信息为 "+FatherName);
+      }
+    },
+    template:`<div>
+    <h1>这是子组件</h1>
+    <button @click="getParentInfo">调用父组件中的属性值和方法</button>
+    </div>`
+  })
+
+
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>hello world</title>
+  </head>
+  <body>
+			<button id="count1">ok</button>
+      <table border="1" width="90%">
+        <thead>
+          <tr>
+            <td>图书名称</td>
+            <td>图书价格</td>
+          </tr>
+        </thead>
+        <tbody id="tb1">
+        </tbody>
+      </table>
+    <script>
+       count1.onclick = function(){
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function(){
+            if(xhr.readyState===4&&xhr.status===200){
+              var strjson = xhr.responseText;
+              //将字符串转换js对象
+              var result = JSON.parse(strjson);
+              //循环js数组中每一个内容
+              var html = '';
+              for(var i=0;i<result.length;i++){
+                 var obj = result[i];
+                 //拼接字符串 <tr><td></td><td></td></tr>
+                 html += `
+                   <tr>
+                     <td>${obj.bname}</td>
+                     <td>${obj.price}</td>
+                   </tr>
+                 `;
+              }
+              tb1.innerHTML = html;
+            }
+            
+          }
+          xhr.open("GET","json_book_02.php",true);
+          xhr.send(null);
+       }  
+    </script>
+  </body>
+  </html>

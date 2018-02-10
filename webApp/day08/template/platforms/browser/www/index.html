@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <title>Hello World</title>
+</head>
+
+<body>
+<div class="app">
+    <h1>Hello Cordova </h1>
+    <!-- 准备显示设备信息-->
+    <p id="deviceInfo">正在获取信息..</p>
+    <button onclick="getNowAcceleration()">
+        得到加速度信息
+    </button>
+    <button onclick="watchAccele()">watch</button>
+    <button onclick="stopWatch()">stop</button>
+    <button onclick="takePhoto()">拍照2</button>
+    <button onclick="record()">录音</button>
+    <button onclick="writeSth()">write</button>
+    <button onclick="readSth()">read</button>
+    <button onclick="showAlert()">弹窗</button>
+    <button onclick="playBeep()">声音</button>
+    <button onclick="playVibrate()">震动</button>
+    <div id="deviceready" class="blink">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+    </div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+
+    //通过notification发出震动
+    function playVibrate(){
+//    参数是发出震动的维持时间，是以毫秒为基本单位
+        navigator.notification
+                .vibrate(1000);
+    }
+
+    //通过notification发出声音
+    function playBeep(){
+        // 参数为次数
+        navigator.notification
+                .beep(3);
+    }
+
+    //显示一个holo风格的警告窗
+    function showAlert(){
+        navigator.notification
+                .alert('Hello Notification');
+    }
+
+    //定义一个方法，得到当前的加速度信息
+    function getNowAcceleration() {
+        navigator.accelerometer.getCurrentAcceleration(
+                function (acceleration) {
+
+                    var result =
+                            "x is " + acceleration.x
+                            + " y is " + acceleration.y
+                            + " z is " + acceleration.z;
+                    console.log(result);
+
+                },
+                function () {
+                    alert('get acceleration failed');
+                }
+        )
+    }
+
+    function failed(){
+        alert('file operate failed');
+    }
+
+    //从根目录中读取test.txt中的内容并弹窗显示
+    function readSth(){
+        //创建fileSystem
+        window.requestFileSystem(
+                LocalFileSystem.PERSISTENT,
+                0,
+                function (fileSystem) {
+                    getReadFileEntry(fileSystem);
+                },
+                failed
+        );
+    }
+    //通过fileSystem得到fileEntry对象
+    function getReadFileEntry(fileSystem){
+        fileSystem.root.getFile(
+                "test.txt",
+                null,
+                function (fileEntry) {
+                    getReadFile(fileEntry);
+                },
+                failed
+        )
+    }
+
+    //通过fileEntry来创建file对象
+    function getReadFile(fileEntry){
+        fileEntry.file(
+                function (file) {
+                    readFile(file);
+                },
+                failed
+        );
+    }
+    //通过fileReader读取file对象中的信息并弹窗显示出来
+    function readFile(file){
+        //创建fileReader
+        var reader = new FileReader();
+
+        //绑定读操作完成之后的处理函数
+        reader.onloadend = function (event) {
+            alert(event.target.result);
+        }
+
+        //读取内容
+        reader.readAsText(file);
+    }
+
+
+    //创建一个文件test.txt 并写入'Hello PhoneGap'
+    function writeSth(){
+        //得到文件系统对象
+        window.requestFileSystem(
+                LocalFileSystem.PERSISTENT,
+                0,
+                function (fileSystem) {
+                    getFileEntry(fileSystem);
+                },
+                failed
+        )
+    }
+    //通过fileSytem得到fileEntry对象
+    function getFileEntry(fileSystem){
+        fileSystem.root.getFile(
+                'test.txt',
+                {create:true},
+                function (fileEntry) {
+                    getFileWriter(fileEntry);
+                },
+                failed
+        )
+    }
+    //通过fileEntry来创建fileWriter对象
+    function getFileWriter(fileEntry){
+        fileEntry.createWriter(
+                function (fileWriter) {
+
+                    //绑定写入成功后的处理函数
+                    fileWriter.onwrite = function () {
+                        alert('write success');
+                    }
+
+                    //写入内容
+                    fileWriter.write('Hello PhoneGap')
+
+                },
+                failed
+        )
+    }
+
+
+    //采集音频
+    function record(){
+
+        //得到capture对象
+        var Capture = navigator.device.capture;
+        //调用采集音频的方法
+        Capture.captureAudio(
+                function (mediaFiles) {
+                    //当采集成功时，读取录制的第一个音频信息
+                    console.log(mediaFiles[0].fullPath);
+                },
+                function () {
+                    alert('capture audio failed');
+                },
+                {limit:2}
+        )
+
+    }
+
+    //拍照
+    function takePhoto(){
+        console.log('take photo');
+        navigator.camera.getPicture(
+                function (imgData) {
+                    console.log(imgData);
+                },
+                function () {
+                    console.log('take photo failed');
+                },
+                {
+                    sourceType:Camera.PictureSourceType.CAMERA
+                }
+        )
+    }
+
+
+
+    //结束监听
+    function stopWatch(){
+        if(watchId)
+        {
+            navigator.accelerometer.clearWatch(watchId);
+        }
+        watchId = null;
+    }
+
+    //监听加速度传感器信息
+    function watchAccele() {
+        watchId = navigator.accelerometer.watchAcceleration(
+                function (acceleration) {
+                    var result = "x:" + acceleration.x + " y:" + acceleration.y + " z:" + acceleration.z;
+                    console.log(result);
+                },
+                function () {
+                    alert('watch failed');
+                },
+//      指定监听的时间间隔（以毫秒为基本单位）
+                {frequency: 500}
+        )
+    }
+
+</script>
+</body>
+
+</html>

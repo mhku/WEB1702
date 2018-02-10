@@ -1,0 +1,648 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/animations.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:23 GMT -->
+<head><title>动画 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item is-selected"><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="animations.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/animations.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/animations.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">动画 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">Angular 动画系统指南。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>Motion is an important aspect in the design of modern web applications. Good
+user interfaces transition smoothly between states with engaging animations
+that call attention where it&#39;s needed. Well-designed animations can make a UI not only
+more fun but also easier to use.</p>
+<p>动画是现代Web应用设计中一个很重要的方面。我们希望用户界面能在不同的状态之间更平滑的转场。如果需要，还可以用适当的动画来吸引注意力。
+设计良好的动画不但会让UI更有趣，还会让它更容易使用。</p>
+<p>Angular&#39;s animation system lets you build animations that run with the same kind of native
+performance found in pure CSS animations. You can also tightly integrate your
+animation logic with the rest of your application code, for ease of control.</p>
+<p>Angular的动画系统赋予了制作各种动画效果的能力，以构建出与原生CSS动画性能相同的动画。
+我们也获得了额外的让动画逻辑与其它应用代码紧紧集成在一起的能力，这让动画可以被更容易的触发与控制。</p>
+<div class="alert is-helpful"><p>Angular animations are built on top of the standard <a href="https://w3c.github.io/web-animations/">Web Animations API</a>
+and run natively on <a href="http://caniuse.com/#feat=web-animation">browsers that support it</a>.</p>
+<p>Angular动画是基于标准的<a href="https://w3c.github.io/web-animations/">Web动画API(Web Animations API)</a>构建的，它们在<a href="http://caniuse.com/#feat=web-animation">支持此API的浏览器中</a>会用原生方式工作。</p>
+<p>For other browsers, a polyfill is required. Grab
+<a href="https://github.com/web-animations/web-animations-js"><code>web-animations.min.js</code> from GitHub</a> and
+add it to your page.</p>
+<p>至于其它浏览器，就需要一个填充库(polyfill)了。你可以<a href="https://github.com/web-animations/web-animations-js">从这里获取<code>web-animations.min.js</code></a>，并把它加入你的页面中。   </p>
+</div><h1 id="contents">Contents</h1>
+<h1 id="-">目录</h1>
+<ul>
+<li><p><a href="#example-transitioning-between-states">Example: Transitioning between two states</a></p>
+<p><a href="#example-transitioning-between-states">范例：在两个状态之间进行转场(Transition)</a></p>
+</li>
+<li><p><a href="#states-and-transitions">States and transitions</a></p>
+<p><a href="#states-and-transitions">状态与转场</a></p>
+</li>
+<li><p><a href="#example-entering-and-leaving">Example: Entering and leaving</a>.</p>
+<p><a href="#example-entering-and-leaving">范例：进场与离场</a></p>
+</li>
+<li><p><a href="#example-entering-and-leaving-from-different-states">Example: Entering and leaving from different states</a>.</p>
+<p><a href="#example-entering-and-leaving-from-different-states">范例：从其它状态进场与离场</a></p>
+</li>
+<li><p><a href="#animatable-properties-and-units">Animatable properties and units</a>.  </p>
+<p><a href="#animatable-properties-and-units">可动的(Animatable)属性与单位</a></p>
+</li>
+<li><p><a href="#automatic-property-calculation">Automatic property calculation</a>.  </p>
+<p><a href="#automatic-property-calculation">自动属性值计算</a></p>
+</li>
+<li><p><a href="#animation-timing">Animation timing</a>.  </p>
+<p><a href="#animation-timing">动画时间线(Timing)</a></p>
+</li>
+<li><p><a href="#multi-step-animations-with-keyframes">Multi-step animations with keyframes</a>.  </p>
+<p><a href="#multi-step-animations-with-keyframes">基于关键帧(Keyframes)的多阶段动画</a></p>
+</li>
+<li><p><a href="#parallel-animation-groups">Parallel animation groups</a>.  </p>
+<p><a href="#parallel-animation-groups">并行动画组(Group)</a></p>
+</li>
+<li><p><a href="#animation-callbacks">Animation callbacks</a>.  </p>
+<p><a href="#animation-callbacks">动画回调</a></p>
+</li>
+</ul>
+<div class="l-sub-section"><p>The examples in this page are available as a <live-example></live-example>.</p>
+<p>本章中引用的这个例子可以到<live-example></live-example>去体验。</p>
+</div><a id="example-transitioning-between-states"></a><div class="l-main-section"></div><h2 id="quickstart-example-transitioning-between-two-states">Quickstart example: Transitioning between two states</h2>
+<h2 id="-">快速起步范例：在两个状态间转场</h2>
+<figure><img src="../../../../resources/images/devguide/animations/animation_basic_click.gif" alt="A simple transition animation" align="right" style="width:220px;margin-left:20px"></figure><p>You can build a simple animation that transitions an element between two states
+driven by a model attribute.</p>
+<p>我们来构建一个简单的动画，它会让一个元素用模型驱动的方式在两个状态之间转场。</p>
+<p>Animations are defined inside <code>@Component</code> metadata. Before you can add animations, you need
+to import a few animation-specific imports and functions:</p>
+<p>动画会被定义在<code>@Component</code>元数据中。在添加动画之前，先引入一些与动画有关的函数：</p>
+<div class="code-example"><header><h4>app.module.ts (@NgModule imports excerpt)</h4></header><code-example language="ts" format="">import { NgModule } from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+import { BrowserAnimationsModule } from &#39;@angular/platform-browser/animations&#39;;
+</code-example></div><div class="code-example"><header><h4>hero-list-basic.component.ts</h4></header><code-example language="ts" format="">import {
+  Component,
+  Input
+} from &#39;@angular/core&#39;;
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from &#39;@angular/animations&#39;;
+</code-example></div><p>With these, you can define an <em>animation trigger</em> called <code>heroState</code> in the component
+metadata. It uses animations to transition between two states: <code>active</code> and <code>inactive</code>. When a
+hero is active, the element appears in a slightly larger size and lighter color.</p>
+<p>通过这些，可以在组件元数据中定义一个名叫<code>heroState</code>的<em>动画触发器</em>。它在两个状态<code>active</code>和<code>inactive</code>之间进行转场。
+当英雄处于激活状态时，它会把该元素显示得稍微大一点、亮一点。</p>
+<div class="code-example"><header><h4>hero-list-basic.component.ts (@Component excerpt)</h4></header><code-example language="ts" format="">  animations: [
+    trigger(&#39;heroState&#39;, [
+      state(&#39;inactive&#39;, style({
+        backgroundColor: &#39;#eee&#39;,
+        transform: &#39;scale(1)&#39;
+      })),
+      state(&#39;active&#39;,   style({
+        backgroundColor: &#39;#cfd8dc&#39;,
+        transform: &#39;scale(1.1)&#39;
+      })),
+      transition(&#39;inactive =&gt; active&#39;, animate(&#39;100ms ease-in&#39;)),
+      transition(&#39;active =&gt; inactive&#39;, animate(&#39;100ms ease-out&#39;))
+    ])
+  ]
+</code-example></div><div class="alert is-helpful"><p>In this example, you are defining animation styles (color and transform) inline in the
+animation metadata.</p>
+<p>在这个例子中，我们在元数据中用内联的方式定义了动画样式(<code>color</code>和<code>transform</code>)。在即将到来的一个Angular版本中，还将支持从组件的CSS样式表中提取样式。</p>
+</div><p>Now, using the <code>[@triggerName]</code> syntax, attach the animation that you just defined to
+one or more elements in the component&#39;s template.</p>
+<p>我们刚刚定义了一个动画，但它还没有被用到任何地方。要想使用它，可以在模板中用<code>[@triggerName]</code>语法来把它附加到一个或多个元素上。</p>
+<div class="code-example"><header><h4>hero-list-basic.component.ts (excerpt)</h4></header><code-example language="ts" format="">template: `
+  &lt;ul&gt;
+    &lt;li *ngFor=&quot;let hero of heroes&quot;
+        [@heroState]=&quot;hero.state&quot;
+        (click)=&quot;hero.toggleState()&quot;&gt;
+      {{hero.name}}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+`,
+</code-example></div><p>Here, the animation trigger applies to every element repeated by an <code>ngFor</code>. Each of
+the repeated elements animates independently. The value of the
+attribute is bound to the expression <code>hero.state</code> and is always either <code>active</code> or <code>inactive</code>.</p>
+<p>这里，我们把该动画触发器添加到了由<code>ngFor</code>重复出来的每一个元素上。每个重复出来的元素都有独立的动画效果。
+然后把<code>@triggerName</code>属性(Attribute)的值设置成表达式<code>hero.state</code>。这个值应该或者是<code>inactive</code>或者是<code>active</code>，因为我们刚刚为它们俩定义过动画状态。</p>
+<p>With this setup, an animated transition appears whenever a hero object changes state.
+Here&#39;s the full component implementation:</p>
+<p>通过这些设置，一旦英雄对象的状态发生了变化，就会触发一个转场动画。下面是完整的组件实现：</p>
+<div class="code-example"><header><h4>hero-list-basic.component.ts</h4></header><code-example language="ts" format="linenums">import {
+  Component,
+  Input
+} from &#39;@angular/core&#39;;
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from &#39;@angular/animations&#39;;
+
+import { Heroes } from &#39;./hero.service&#39;;
+
+@Component({
+  selector: &#39;hero-list-basic&#39;,
+  template: `
+    &lt;ul&gt;
+      &lt;li *ngFor=&quot;let hero of heroes&quot;
+          [@heroState]=&quot;hero.state&quot;
+          (click)=&quot;hero.toggleState()&quot;&gt;
+        {{hero.name}}
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  `,
+  styleUrls: [&#39;./hero-list.component.css&#39;],
+  animations: [
+    trigger(&#39;heroState&#39;, [
+      state(&#39;inactive&#39;, style({
+        backgroundColor: &#39;#eee&#39;,
+        transform: &#39;scale(1)&#39;
+      })),
+      state(&#39;active&#39;,   style({
+        backgroundColor: &#39;#cfd8dc&#39;,
+        transform: &#39;scale(1.1)&#39;
+      })),
+      transition(&#39;inactive =&gt; active&#39;, animate(&#39;100ms ease-in&#39;)),
+      transition(&#39;active =&gt; inactive&#39;, animate(&#39;100ms ease-out&#39;))
+    ])
+  ]
+})
+export class HeroListBasicComponent {
+  @Input() heroes: Heroes;
+}
+</code-example></div><h2 id="states-and-transitions">States and transitions</h2>
+<h2 id="-">状态与转场</h2>
+<p>Angular animations are defined as logical <strong>states</strong> and <strong>transitions</strong>
+between states.</p>
+<p>Angular动画是由<strong>状态</strong>和<strong>状态之间的转场效果</strong>所定义的。</p>
+<p>An animation state is a string value that you define in your application code. In the example
+above, the states <code>&#39;active&#39;</code> and <code>&#39;inactive&#39;</code> are based on the logical state of
+hero objects. The source of the state can be a simple object attribute, as it was in this case,
+or it can be a value computed in a method. The important thing is that you can read it into the
+component&#39;s template.</p>
+<p>动画状态是一个由程序代码中定义的字符串值。在上面的例子中，基于英雄对象的逻辑状态,我们使用了<code>&#39;active&#39;</code>和<code>&#39;inactive&#39;</code>这两种状态。
+状态的来源可以是像本例中这样简单的对象属性，也可以是由方法计算出来的值。重点是，我们得能从组件模板中读取它。</p>
+<p>We can define <em>styles</em> for each animation state:</p>
+<p>我们可以为每个动画状态定义了<em>一组样式</em>：</p>
+<div class="code-example"><code-example language="ts" format="">state(&#39;inactive&#39;, style({
+  backgroundColor: &#39;#eee&#39;,
+  transform: &#39;scale(1)&#39;
+})),
+state(&#39;active&#39;,   style({
+  backgroundColor: &#39;#cfd8dc&#39;,
+  transform: &#39;scale(1.1)&#39;
+})),
+</code-example></div><p>These <code>state</code> definitions specify the <em>end styles</em> of each state.
+They are applied to the element once it has transitioned to that state, and stay
+<em>as long as it remains in that state</em>. In effect, you&#39;re defining what styles the element has in different states.</p>
+<p>这些<code>state</code>具体定义了每个状态的<em>最终样式</em>。一旦元素转场到那个状态，该样式就会被应用到此元素上，<em>当它留在此状态时</em>，这些样式也会一直保持着。
+从这个意义上讲，这里其实并不只是在定义动画，而是在定义该元素在不同状态时应该具有的样式。</p>
+<p>After you define states, you can define <em>transitions</em> between the states. Each transition
+controls the timing of switching between one set of styles and the next:</p>
+<p>定义完状态，就能定义在状态之间的各种<em>转场</em>了。每个转场都会控制一条在一组样式和下一组样式之间切换的时间线：</p>
+<div class="code-example"><code-example language="ts" format="">transition(&#39;inactive =&gt; active&#39;, animate(&#39;100ms ease-in&#39;)),
+transition(&#39;active =&gt; inactive&#39;, animate(&#39;100ms ease-out&#39;))
+</code-example></div><figure class="image-display"><img src="../../../../resources/images/devguide/animations/ng_animate_transitions_inactive_active.png" alt="In Angular animations you define states and transitions between states" width="400"></figure><p>If several transitions have the same timing configuration, you can combine
+them into the same <code>transition</code> definition:</p>
+<p>如果多个转场都有同样的时间线配置，就可以把它们合并进同一个<code>transition</code>定义中：</p>
+<div class="code-example"><code-example language="ts" format="">transition(&#39;inactive =&gt; active, active =&gt; inactive&#39;,
+ animate(&#39;100ms ease-out&#39;))
+</code-example></div><p>When both directions of a transition have the same timing, as in the previous
+example, you can use the shorthand syntax <code>&lt;=&gt;</code>:</p>
+<p>如果要对同一个转场的两个方向都使用相同的时间线（就像前面的例子中那样），就可以使用<code>&lt;=&gt;</code>这种简写语法：</p>
+<div class="code-example"><code-example language="ts" format="">transition(&#39;inactive &lt;=&gt; active&#39;, animate(&#39;100ms ease-out&#39;))
+</code-example></div><p>You can also apply a style during an animation but not keep it around
+after the animation finishes. You can define such styles inline, in the <code>transition</code>. In this example,
+the element receives one set of styles immediately and is then animated to the next.
+When the transition finishes, none of these styles are kept because they&#39;re not
+defined in a <code>state</code>.</p>
+<p>有时希望一些样式只在动画期间生效，但在结束后并不保留它们。这时可以把这些样式内联在<code>transition</code>中进行定义。
+在这个例子中，该元素会立刻获得一组样式，然后动态转场到下一个状态。当转场结束时，这些样式并不会被保留，因为它们并没有被定义在<code>state</code>中。</p>
+<div class="code-example"><code-example language="ts" format="">transition(&#39;inactive =&gt; active&#39;, [
+  style({
+    backgroundColor: &#39;#cfd8dc&#39;,
+    transform: &#39;scale(1.3)&#39;
+  }),
+  animate(&#39;80ms ease-in&#39;, style({
+    backgroundColor: &#39;#eee&#39;,
+    transform: &#39;scale(1)&#39;
+  }))
+]),
+</code-example></div><h3 id="the-wildcard-state-">The wildcard state <code>*</code></h3>
+<h3 id="-"><code>*</code>(通配符)状态</h3>
+<p>The <code>*</code> (&quot;wildcard&quot;) state matches <em>any</em> animation state. This is useful for defining styles and
+transitions that apply regardless of which state the animation is in. For example:</p>
+<p><code>*</code>(通配符)状态匹配<em>任何</em>动画状态。当定义那些不需要管当前处于什么状态的样式及转场时，这很有用。比如：</p>
+<ul>
+<li><p>The <code>active =&gt; *</code> transition applies when the element&#39;s state changes from <code>active</code> to anything else.</p>
+<p>当该元素的状态从<code>active</code>变成任何其它状态时，<code>active =&gt; *</code>转场都会生效。</p>
+</li>
+<li><p>The <code>* =&gt; *</code> transition applies when <em>any</em> change between two states takes place.</p>
+<p>当在<em>任意</em>两个状态之间切换时，<code>* =&gt; *</code>转场都会生效。</p>
+</li>
+</ul>
+<figure class="image-display"><img src="../../../../resources/images/devguide/animations/ng_animate_transitions_inactive_active_wildcards.png" alt="The wildcard state can be used to match many different transitions at once" width="400"></figure><h3 id="the-void-state">The <code>void</code> state</h3>
+<h3 id="-void-"><code>void</code>状态</h3>
+<p>The special state called <code>void</code> can apply to any animation. It applies
+when the element is <em>not</em> attached to a view, perhaps because it has not yet been
+added or because it has been removed. The <code>void</code> state is useful for defining enter and
+leave animations.</p>
+<p>有一种叫做<code>void</code>的特殊状态，它可以应用在任何动画中。它表示元素<em>没有</em>被附加到视图。这种情况可能是由于它尚未被添加进来或者已经被移除了。
+<code>void</code>状态在定义“进场”和“离场”的动画时会非常有用。</p>
+<p>For example the <code>* =&gt; void</code> transition applies when the element leaves the view,
+regardless of what state it was in before it left.</p>
+<p>比如当一个元素离开视图时，<code>* =&gt; void</code>转场就会生效，而不管它在离场以前是什么状态。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/animations/ng_animate_transitions_void_in.png" alt="The void state can be used for enter and leave transitions" width="400"></figure><p>The wildcard state <code>*</code> also matches <code>void</code>.</p>
+<p><code>*</code>通配符状态也能匹配<code>void</code>。</p>
+<h2 id="example-entering-and-leaving">Example: Entering and leaving</h2>
+<h2 id="-">例子：进场与离场</h2>
+<figure><img src="../../../../resources/images/devguide/animations/animation_enter_leave.gif" alt="Enter and leave animations" align="right" style="width:250px"></figure><p>Using the <code>void</code> and <code>*</code> states you can define transitions that animate the
+entering and leaving of elements:</p>
+<p>使用<code>void</code>和<code>*</code>状态，可以定义元素进场与离场时的转场动画：</p>
+<ul>
+<li><p>Enter: <code>void =&gt; *</code></p>
+<p>进场：<code>void =&gt; *</code></p>
+</li>
+<li><p>Leave: <code>* =&gt; void</code></p>
+<p>离场：<code>* =&gt; void</code></p>
+</li>
+</ul>
+<p>For example, in the <code>animations</code> array below there are two transitions that use 
+the <code>void =&gt; *</code> and <code>* =&gt; void</code> syntax to animate the element in and out of the view.</p>
+<p>例如，在下面的<code>animations</code>数组中，这两个转场语句使用<code>void =&gt; *</code>和<code>* =&gt; void</code>语法来让该元素以动画形式进入和离开当前视图。</p>
+<div class="code-example"><header><h4>hero-list-enter-leave.component.ts (excerpt)</h4></header><code-example language="ts" format="">animations: [
+  trigger(&#39;flyInOut&#39;, [
+    state(&#39;in&#39;, style({transform: &#39;translateX(0)&#39;})),
+    transition(&#39;void =&gt; *&#39;, [
+      style({transform: &#39;translateX(-100%)&#39;}),
+      animate(100)
+    ]),
+    transition(&#39;* =&gt; void&#39;, [
+      animate(100, style({transform: &#39;translateX(100%)&#39;}))
+    ])
+  ])
+]
+</code-example></div><p>Note that in this case the styles are applied to the void state directly in the
+transition definitions, and not in a separate <code>state(void)</code> definition. Thus, the transforms
+are different on enter and leave: the element enters from the left
+and leaves to the right.</p>
+<p>注意，在这个例子中，这些样式在转场定义中被直接应用到了<code>void</code>状态，但并没有一个单独的<code>state(void)</code>定义。
+这么做是因为希望在进场与离场时使用不一样的转换效果：元素从左侧进场，从右侧离开。</p>
+<div class="l-sub-section"><p>These two common animations have their own aliases:</p>
+<p>这两个常见的动画有自己的别名：</p>
+<code-example language="typescript">transition(':enter', [ ... ]); // void => *
+transition(':leave', [ ... ]); // * => void
+</code-example></div><h2 id="example-entering-and-leaving-from-different-states">Example: Entering and leaving from different states</h2>
+<h2 id="-">范例：从不同的状态下进场和离场</h2>
+<figure><img src="../../../../resources/images/devguide/animations/animation_enter_leave_states.gif" alt="Enter and leave animations combined with state animations" align="right" style="width:200px"></figure><p>You can also combine this animation with the earlier state transition animation by
+using the hero state as the animation state. This lets you configure
+different transitions for entering and leaving based on what the state of the hero
+is:</p>
+<p>通过把英雄的状态用作动画的状态，还能把该动画跟以前的转场动画组合成一个复合动画。这让我们能根据该英雄的当前状态为其配置不同的进场与离场动画：</p>
+<ul>
+<li><p>Inactive hero enter: <code>void =&gt; inactive</code></p>
+<p>非激活英雄进场：<code>void =&gt; inactive</code></p>
+</li>
+<li><p>Active hero enter: <code>void =&gt; active</code></p>
+<p>激活英雄进场：<code>void =&gt; active</code></p>
+</li>
+<li><p>Inactive hero leave: <code>inactive =&gt; void</code></p>
+<p>非激活英雄离场：<code>inactive =&gt; void</code></p>
+</li>
+<li><p>Active hero leave: <code>active =&gt; void</code></p>
+<p>激活英雄离场：<code>active =&gt; void</code></p>
+</li>
+</ul>
+<p>This gives you fine-grained control over each transition:</p>
+<p>现在就对每一种转场都有了细粒度的控制：</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/animations/ng_animate_transitions_inactive_active_void.png" alt="This example transitions between active, inactive, and void states" width="400"></figure><div class="code-example"><header><h4>hero-list-enter-leave.component.ts (excerpt)</h4></header><code-example language="ts" format="">animations: [
+  trigger(&#39;heroState&#39;, [
+    state(&#39;inactive&#39;, style({transform: &#39;translateX(0) scale(1)&#39;})),
+    state(&#39;active&#39;,   style({transform: &#39;translateX(0) scale(1.1)&#39;})),
+    transition(&#39;inactive =&gt; active&#39;, animate(&#39;100ms ease-in&#39;)),
+    transition(&#39;active =&gt; inactive&#39;, animate(&#39;100ms ease-out&#39;)),
+    transition(&#39;void =&gt; inactive&#39;, [
+      style({transform: &#39;translateX(-100%) scale(1)&#39;}),
+      animate(100)
+    ]),
+    transition(&#39;inactive =&gt; void&#39;, [
+      animate(100, style({transform: &#39;translateX(100%) scale(1)&#39;}))
+    ]),
+    transition(&#39;void =&gt; active&#39;, [
+      style({transform: &#39;translateX(0) scale(0)&#39;}),
+      animate(200)
+    ]),
+    transition(&#39;active =&gt; void&#39;, [
+      animate(200, style({transform: &#39;translateX(0) scale(0)&#39;}))
+    ])
+  ])
+]
+</code-example></div><h2 id="animatable-properties-and-units">Animatable properties and units</h2>
+<h2 id="-animatable-">可动的(Animatable)属性与单位</h2>
+<p>Since Angular&#39;s animation support builds on top of Web Animations, you can animate any property
+that the browser considers <em>animatable</em>. This includes positions, sizes, transforms, colors,
+borders, and many others. The W3C maintains
+<a href="https://www.w3.org/TR/css3-transitions/#animatable-properties">a list of animatable properties</a>
+on its <a href="https://www.w3.org/TR/css3-transitions">CSS Transitions page</a>.</p>
+<p>由于Angular的动画支持是基于Web Animations标准的，所以也能支持浏览器认为可以<em>参与动画</em>的任何属性。这些属性包括位置(position)、大小(size)、变换(transform)、颜色(color)、边框(border)等很多属性。W3C维护着
+<a href="https://www.w3.org/TR/css3-transitions/#animatable-properties">一个“可动”属性列表</a>。</p>
+<p>For positional properties that have a numeric value, you can define a unit by providing
+the value as a string with the appropriate suffix:</p>
+<p>尺寸类属性(如位置、大小、边框等)包括一个数字值和一个用来定义长度单位的后缀：</p>
+<ul>
+<li><code>&#39;50px&#39;</code></li>
+<li><code>&#39;3em&#39;</code></li>
+<li><code>&#39;100%&#39;</code></li>
+</ul>
+<p>If you don&#39;t provide a unit when specifying dimension, Angular assumes the default of <code>px</code>:</p>
+<p>对大多数尺寸类属性而言，还能只定义一个数字，那就表示它使用的是像素(px)数：</p>
+<ul>
+<li><p><code>50</code> is the same as saying <code>&#39;50px&#39;</code></p>
+<p><code>50</code>相当于<code>&#39;50px&#39;</code></p>
+</li>
+</ul>
+<h2 id="automatic-property-calculation">Automatic property calculation</h2>
+<h2 id="-">自动属性值计算</h2>
+<figure><img src="../../../../resources/images/devguide/animations/animation_auto.gif" alt="Animation with automated height calculation" align="right" style="width:220px;margin-left:20px"></figure><p>Sometimes you don&#39;t know the value of a dimensional style property until runtime.
+For example, elements often have widths and heights that
+depend on their content and the screen size. These properties are often tricky
+to animate with CSS.</p>
+<p>有时候，我们想在动画中使用的尺寸类样式，它的值在开始运行之前都是不可知的。比如，元素的宽度和高度往往依赖于它们的内容和屏幕的尺寸。处理这些属性对CSS动画而言通常是相当棘手的。</p>
+<p>In these cases, you can use a special <code>*</code> property value so that the value of the
+property is computed at runtime and then plugged into the animation.</p>
+<p>如果用Angular动画，就可以用一个特殊的<code>*</code>属性值来处理这种情况。该属性的值将会在运行期被计算出来，然后插入到这个动画中。</p>
+<p>In this example, the leave animation takes whatever height the element has before it
+leaves and animates from that height to zero:</p>
+<p>这个例子中的“离场”动画会取得该元素在离场前的高度，并且把它从这个高度用动画转场到0高度：</p>
+<div class="code-example"><code-example language="ts" format="">animations: [
+  trigger(&#39;shrinkOut&#39;, [
+    state(&#39;in&#39;, style({height: &#39;*&#39;})),
+    transition(&#39;* =&gt; void&#39;, [
+      style({height: &#39;*&#39;}),
+      animate(250, style({height: 0}))
+    ])
+  ])
+]
+</code-example></div><h2 id="animation-timing">Animation timing</h2>
+<h2 id="-">动画时间线</h2>
+<p>There are three timing properties you can tune for every animated transition:
+the duration, the delay, and the easing function. They are all combined into
+a single transition <em>timing string</em>.</p>
+<p>对每一个动画转场效果，有三种时间线属性可以调整：持续时间(duration)、延迟(delay)和缓动(easing)函数。它们被合并到了一个单独的<em>转场时间线字符串</em>。</p>
+<h3 id="duration">Duration</h3>
+<h3 id="-">持续时间</h3>
+<p>The duration controls how long the animation takes to run from start to finish.
+You can define a duration in three ways:</p>
+<p>持续时间控制动画从开始到结束要花多长时间。可以用三种方式定义持续时间：</p>
+<ul>
+<li><p>As a plain number, in milliseconds: <code>100</code></p>
+<p>作为一个普通数字，以毫秒为单位，如：<code>100</code></p>
+</li>
+<li><p>In a string, as milliseconds: <code>&#39;100ms&#39;</code></p>
+<p>作为一个字符串，以毫秒为单位，如：<code>&#39;100ms&#39;</code></p>
+</li>
+<li><p>In a string, as seconds: <code>&#39;0.1s&#39;</code></p>
+<p>作为一个字符串，以秒为单位，如：<code>&#39;0.1s&#39;</code></p>
+</li>
+</ul>
+<h3 id="delay">Delay</h3>
+<h3 id="-">延迟</h3>
+<p>The delay controls the length of time between the animation trigger and the beginning
+of the transition. You can define one by adding it to the same string
+following the duration. It also has the same format options as the duration:</p>
+<p>延迟控制的是在动画已经触发但尚未真正开始转场之前要等待多久。可以把它添加到字符串中的持续时间后面，它的选项格式也跟持续时间是一样的：</p>
+<ul>
+<li><p>Wait for 100ms and then run for 200ms: <code>&#39;0.2s 100ms&#39;</code></p>
+<p>等待100毫秒，然后运行200毫秒：<code>&#39;0.2s 100ms&#39;</code>。</p>
+</li>
+</ul>
+<h3 id="easing">Easing</h3>
+<h3 id="-">缓动函数</h3>
+<p>The <a href="http://easings.net/">easing function</a> controls how the animation accelerates
+and decelerates during its runtime. For example, an <code>ease-in</code> function causes
+the animation to begin relatively slowly but pick up speed as it progresses. You
+can control the easing by adding it as a <em>third</em> value in the string after the duration
+and the delay (or as the <em>second</em> value when there is no delay):</p>
+<p><a href="http://easings.net/">缓动函数</a>用于控制动画在运行期间如何加速和减速。比如：使用<code>ease-in</code>函数意味着动画开始时相对缓慢，然后在进行中逐步加速。可以通过在这个字符串中的持续时间和延迟后面添加<em>第三个</em>值来控制使用哪个缓动函数(如果没有定义延迟就作为<em>第二个</em>值)。</p>
+<ul>
+<li><p>Wait for 100ms and then run for 200ms, with easing: <code>&#39;0.2s 100ms ease-out&#39;</code></p>
+<p>等待100毫秒，然后运行200毫秒，并且带缓动：<code>&#39;0.2s 100ms ease-out&#39;</code></p>
+</li>
+<li><p>Run for 200ms, with easing: <code>&#39;0.2s ease-in-out&#39;</code></p>
+<p>运行200毫秒，并且带缓动：<code>&#39;0.2s ease-in-out&#39;</code></p>
+</li>
+</ul>
+<figure><img src="../../../../resources/images/devguide/animations/animation_timings.gif" alt="Animations with specific timings" align="right" style="width:220px;margin-left:20px"></figure><h3 id="example">Example</h3>
+<h3 id="-">例子</h3>
+<p>Here are a couple of custom timings in action. Both enter and leave last for
+200 milliseconds, that is <code>0.2s</code>, but they have different easings. The leave begins after a
+slight delay of 10 milliseconds as specified in <code>&#39;0.2s 10 ease-out&#39;</code>:</p>
+<p>这里是两个自定义时间线的动态演示。“进场”和“离场”都持续200毫秒，也就是<code>0.2s</code>，但它们有不同的缓动函数。“离场”动画会在100毫秒的延迟之后开始，也就是<code>&#39;0.2s 10 ease-out&#39;</code>：</p>
+<div class="code-example"><header><h4>hero-list-timings.component.ts (excerpt)</h4></header><code-example language="ts" format="">animations: [
+  trigger(&#39;flyInOut&#39;, [
+    state(&#39;in&#39;, style({opacity: 1, transform: &#39;translateX(0)&#39;})),
+    transition(&#39;void =&gt; *&#39;, [
+      style({
+        opacity: 0,
+        transform: &#39;translateX(-100%)&#39;
+      }),
+      animate(&#39;0.2s ease-in&#39;)
+    ]),
+    transition(&#39;* =&gt; void&#39;, [
+      animate(&#39;0.2s 10 ease-out&#39;, style({
+        opacity: 0,
+        transform: &#39;translateX(100%)&#39;
+      }))
+    ])
+  ])
+]
+</code-example></div><h2 id="multi-step-animations-with-keyframes">Multi-step animations with keyframes</h2>
+<h2 id="-keyframes-">基于关键帧(Keyframes)的多阶段动画</h2>
+<figure><img src="../../../../resources/images/devguide/animations/animation_multistep.gif" alt="Animations with some bounce implemented with keyframes" align="right" style="width:220px;margin-left:20px"></figure><p>Animation <em>keyframes</em> go beyond a simple transition to a more intricate animation
+that goes through one or more intermediate styles when transitioning between two sets of styles.</p>
+<p>通过定义动画的<em>关键帧</em>，可以把两组样式之间的简单转场，升级成一种更复杂的动画，它会在转场期间经历一个或多个中间样式。</p>
+<p>For each keyframe, you specify an <em>offset</em> that defines at which point
+in the animation that keyframe applies. The offset is a number between zero,
+which marks the beginning of the animation, and one, which marks the end.</p>
+<p>每个关键帧都可以被指定一个<em>偏移量</em>，用来定义该关键帧将被用在动画期间的哪个时间点。偏移量是一个介于0(表示动画起点)和1(表示动画终点)之间的数组。</p>
+<p>This example adds some &quot;bounce&quot; to the enter and leave animations with
+keyframes:</p>
+<p>在这个例子中，我们使用关键帧来为进场和离场动画添加一些“反弹效果”：</p>
+<div class="code-example"><header><h4>hero-list-multistep.component.ts (excerpt)</h4></header><code-example language="ts" format="">animations: [
+  trigger(&#39;flyInOut&#39;, [
+    state(&#39;in&#39;, style({transform: &#39;translateX(0)&#39;})),
+    transition(&#39;void =&gt; *&#39;, [
+      animate(300, keyframes([
+        style({opacity: 0, transform: &#39;translateX(-100%)&#39;, offset: 0}),
+        style({opacity: 1, transform: &#39;translateX(15px)&#39;,  offset: 0.3}),
+        style({opacity: 1, transform: &#39;translateX(0)&#39;,     offset: 1.0})
+      ]))
+    ]),
+    transition(&#39;* =&gt; void&#39;, [
+      animate(300, keyframes([
+        style({opacity: 1, transform: &#39;translateX(0)&#39;,     offset: 0}),
+        style({opacity: 1, transform: &#39;translateX(-15px)&#39;, offset: 0.7}),
+        style({opacity: 0, transform: &#39;translateX(100%)&#39;,  offset: 1.0})
+      ]))
+    ])
+  ])
+]
+</code-example></div><p>Note that the offsets are <em>not</em> defined in terms of absolute time. They are relative
+measures from zero to one. The final timeline of the animation is based on the combination
+of keyframe offsets, duration, delay, and easing.</p>
+<p>注意，这个偏移量并<em>不是</em>用绝对数字定义的时间段，而是在0到1之间的相对值（百分比）。动画的最终时间线会基于关键帧的偏移量、持续时间、延迟和缓动函数计算出来。</p>
+<p>Defining offsets for keyframes is optional. If you omit them, offsets with even
+spacing are automatically assigned. For example, three keyframes without predefined
+offsets receive offsets <code>0</code>, <code>0.5</code>, and <code>1</code>.</p>
+<p>为关键帧定义偏移量是可选的。如果省略它们，偏移量会自动根据帧数平均分布出来。例如，三个未定义过偏移量的关键帧会分别获得偏移量：<code>0</code>、<code>0.5</code>和<code>1</code>。</p>
+<h2 id="parallel-animation-groups">Parallel animation groups</h2>
+<h2 id="-group-">并行动画组(Group)</h2>
+<figure><img src="../../../../resources/images/devguide/animations/animation_groups.gif" alt="Parallel animations with different timings, implemented with groups" align="right" style="width:220px;margin-left:20px"></figure><p>You&#39;ve seen how to animate multiple style properties at the same time:
+just put all of them into the same <code>style()</code> definition.</p>
+<p>我们已经知道该如何在同一时间段进行多个样式的动画了：只要把它们都放进同一个<code>style()</code>定义中就行了！</p>
+<p>But you may also want to configure different <em>timings</em> for animations that happen
+in parallel. For example, you may want to animate two CSS properties but use a
+different easing function for each one.</p>
+<p>但我们也可能会希望为同时发生的几个动画配置不同的<em>时间线</em>。比如，同时对两个CSS属性做动画，但又得为它们定义不同的缓动函数。</p>
+<p>For this you can use animation <em>groups</em>. In this example, using groups both on
+enter and leave allows for two different timing configurations. Both
+are applied to the same element in parallel, but run independently of each other:</p>
+<p>这种情况下就可以用动画<em>组</em>来解决了。在这个例子中，我们同时在进场和离场时使用了组，以便能让它们使用两种不同的时间线配置。
+它们被同时应用到同一个元素上，但又彼此独立运行：</p>
+<div class="code-example"><header><h4>hero-list-groups.component.ts (excerpt)</h4></header><code-example language="ts" format="">animations: [
+  trigger(&#39;flyInOut&#39;, [
+    state(&#39;in&#39;, style({width: 120, transform: &#39;translateX(0)&#39;, opacity: 1})),
+    transition(&#39;void =&gt; *&#39;, [
+      style({width: 10, transform: &#39;translateX(50px)&#39;, opacity: 0}),
+      group([
+        animate(&#39;0.3s 0.1s ease&#39;, style({
+          transform: &#39;translateX(0)&#39;,
+          width: 120
+        })),
+        animate(&#39;0.3s ease&#39;, style({
+          opacity: 1
+        }))
+      ])
+    ]),
+    transition(&#39;* =&gt; void&#39;, [
+      group([
+        animate(&#39;0.3s ease&#39;, style({
+          transform: &#39;translateX(50px)&#39;,
+          width: 10
+        })),
+        animate(&#39;0.3s 0.2s ease&#39;, style({
+          opacity: 0
+        }))
+      ])
+    ])
+  ])
+]
+</code-example></div><p>One group animates the element transform and width; the other group animates the opacity.</p>
+<p>其中一个动画组对元素的<code>transform</code>和<code>width</code>做动画，另一个组则对<code>opacity</code>做动画。</p>
+<h2 id="animation-callbacks">Animation callbacks</h2>
+<h2 id="-">动画回调</h2>
+<p>A callback is fired when an animation is started and also when it is done.</p>
+<p>当动画开始和结束时，会触发一个回调。</p>
+<p>In the keyframes example, you have a <code>trigger</code> called <code>@flyInOut</code>. You can hook
+those callbacks like this:</p>
+<p>对于例子中的这个关键帧，我们有一个叫做<code>@flyInOut</code>的<code>trigger</code>。在那里我们可以挂钩到那些回调，比如：  </p>
+<div class="code-example"><header><h4>hero-list-multistep.component.ts (excerpt)</h4></header><code-example language="ts" format="">template: `
+  &lt;ul&gt;
+    &lt;li *ngFor=&quot;let hero of heroes&quot;
+        (@flyInOut.start)=&quot;animationStarted($event)&quot;
+        (@flyInOut.done)=&quot;animationDone($event)&quot;
+        [@flyInOut]=&quot;&#39;in&#39;&quot;&gt;
+      {{hero.name}}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+`,
+</code-example></div><p>The callbacks receive an <code>AnimationEvent</code> that contains contains useful properties such as 
+<code>fromState</code>, <code>toState</code> and <code>totalTime</code>.</p>
+<p>这些回调接收一个<code>AnimationTransitionEvent</code>参数，它包含一些有用的属性，例如<code>fromState</code>，<code>toState</code>和<code>totalTime</code>。</p>
+<p>Those callbacks will fire whether or not an animation is picked up.</p>
+<p>无论动画是否实际执行过，那些回调都会触发。</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/animations.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:26 GMT -->
+</html>

@@ -1,0 +1,1284 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/ngmodule-faq.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:41 GMT -->
+<head><title>Angular 模块常见问题 - ts - COOKBOOK</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent is-selected">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item is-selected"><a href="ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="ngmodule-faq.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/cookbook/ngmodule-faq.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/cookbook/ngmodule-faq.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">Angular 模块常见问题 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">对 @NgModule 常见问题的解答</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>NgModules help organize an application into cohesive blocks of functionality.</p>
+<p><strong>Angular模块</strong>可以帮我们把应用组织成一些紧密相关的代码块。</p>
+<p>The <a href="../guide/ngmodule.html">NgModules</a> page guides you
+from the most elementary <code>@NgModule</code> to a multi-faceted sample with lazy-loaded modules.</p>
+<p><a href="../guide/ngmodule.html">Angular模块</a>章涵盖了此概念，并带你从最基本的<code>@NgModule</code>学到惰性加载模块。</p>
+<p>This page answers the questions many developers ask about NgModule design and implementation.</p>
+<p><em>这里</em>回答的是开发者常问起的关于Angular模块的设计与实现问题。</p>
+<div class="alert is-important"><p>These FAQs assume that you have read the <a href="../guide/ngmodule.html">NgModules</a> page.</p>
+<p>本《Angular模块常见问题》假设你已经读完了<a href="../guide/ngmodule.html">Angular模块</a>章。</p>
+</div><p>Declarations</p>
+<p>声明(declarations)</p>
+<ul>
+<li><p><a href="#q-what-to-declare">What classes should I add to <em>declarations</em>?</a></p>
+<p><a href="#q-what-to-declare">我应该把哪些类加到<em>declarations</em>中？</a></p>
+</li>
+<li><p><a href="#q-declarable">What is a <em>declarable</em>?</a></p>
+<p><a href="#q-declarable">什么是<em>可声明的</em>？</a></p>
+</li>
+<li><p><a href="#q-what-not-to-declare">What classes should I <em>not</em> add to <em>declarations</em>?</a></p>
+<p><a href="#q-what-not-to-declare">我<em>不应该</em>把哪些类加到<em>declarations</em>中？</a></p>
+</li>
+<li><p><a href="#q-why-multiple-mentions">Why list the same component in multiple <em>NgModule</em> properties?</a></p>
+<p><a href="#q-why-multiple-mentions">为什么要把同一个组件列在<em>NgModule</em>的不同属性中？</a></p>
+</li>
+<li><p><a href="#q-why-cant-bind-to">What does &quot;Can&#39;t bind to &#39;x&#39; since it isn&#39;t a known property of &#39;y&#39;&quot; mean?</a></p>
+<p><a href="#q-why-cant-bind-to">&quot;<em>Can&#39;t bind to &#39;x&#39; since it isn&#39;t a known property of &#39;y&#39;</em>&quot;是什么意思？</a></p>
+</li>
+</ul>
+<p>Imports</p>
+<p>导入(imports)</p>
+<ul>
+<li><p><a href="#q-what-to-import">What should I import?</a></p>
+<p><a href="#q-what-to-import">我应该导入什么？</a></p>
+</li>
+<li><p><a href="#q-browser-vs-common-module">Should I import <em>BrowserModule</em> or <em>CommonModule</em>?</a></p>
+<p><a href="#q-browser-vs-common-module">我应该导入<em>BrowserModule</em>还是<em>CommonModule</em>？</a></p>
+</li>
+<li><p><a href="#q-reimport">What if I import the same module twice?</a></p>
+<p><a href="#q-reimport">如果我两次导入了同一个模块会怎么样？</a></p>
+</li>
+</ul>
+<p>Exports</p>
+<p>导出(exports)</p>
+<ul>
+<li><p><a href="#q-what-to-export">What should I export?</a></p>
+<p><a href="#q-what-to-export">我应该导出什么？</a></p>
+</li>
+<li><p><a href="#q-what-not-to-export">What should I <em>not</em> export?</a></p>
+<p><a href="#q-what-not-to-export">我<em>不</em>应该导出什么？</a></p>
+</li>
+<li><p><a href="#q-re-export">Can I re-export imported classes and modules?</a></p>
+<p><a href="#q-re-export">我能再次导出(re-export)所导入的类和模块吗？</a></p>
+</li>
+<li><p><a href="#q-for-root">What is the <em>forRoot</em> method?</a></p>
+<p><a href="#q-for-root"><em>forRoot</em>方法是什么？</a></p>
+</li>
+</ul>
+<p>Service Providers</p>
+<p>服务提供商(providers)</p>
+<ul>
+<li><p><a href="#q-module-provider-visibility">Why is a service provided in a feature module visible everywhere?</a></p>
+<p><a href="#q-module-provider-visibility">为什么特性模块中提供的服务是到处可见的？</a></p>
+</li>
+<li><p><a href="#q-lazy-loaded-module-provider-visibility">Why is a service provided in a <em>lazy-loaded</em> module visible only to that module?</a></p>
+<p><a href="#q-lazy-loaded-module-provider-visibility">为什么<em>惰性加载</em>模块中的服务提供商只对那个模块本身可见？</a></p>
+</li>
+<li><p><a href="#q-module-provider-duplicates">What if two modules provide the same service?</a></p>
+<p><a href="#q-module-provider-duplicates">如果两个模块提供了<em>同一个</em>服务会怎样？</a></p>
+</li>
+<li><p><a href="#q-component-scoped-providers">How do I restrict service scope to a module?</a></p>
+<p><a href="#q-component-scoped-providers">如何把服务的范围限制在某个模块中？</a></p>
+</li>
+<li><p><a href="#q-root-component-or-module">Should I add app-wide providers to the root <em>AppModule</em> or the root <em>AppComponent</em>?</a></p>
+<p><a href="#q-root-component-or-module">我应该把全应用级的提供商添加到根模块<em>AppModule</em>还是根组件<em>AppComponent</em>？</a></p>
+</li>
+<li><p><a href="#q-component-or-module">Should I add other providers to a module or a component?</a></p>
+<p><a href="#q-component-or-module">我应该把其它提供商添加到模块中还是组件中？</a></p>
+</li>
+<li><p><a href="#q-why-bad">Why is it bad if <em>SharedModule</em> provides a service to a lazy-loaded module?</a></p>
+<p><a href="#q-why-bad">为什么让<em>SharedModule</em>为惰性加载模块提供服务是个馊主意？</a></p>
+</li>
+<li><p><a href="#q-why-child-injector">Why does lazy loading create a child injector?</a></p>
+<p><a href="#q-why-child-injector">为什么惰性加载模块要创建一个子注入器？</a></p>
+</li>
+<li><p><a href="#q-is-it-loaded">How can I tell if a module or service was previously loaded?</a></p>
+<p><a href="#q-is-it-loaded">我要怎样才能知道一个模块或服务已经被加载过？</a></p>
+</li>
+</ul>
+<p>Entry Components</p>
+<p>入口组件</p>
+<ul>
+<li><p><a href="#q-entry-component-defined">What is an <em>entry component</em>?</a></p>
+<p><a href="#q-entry-component-defined">什么是<em>入口组件</em>？</a></p>
+</li>
+<li><p><a href="#q-bootstrap_vs_entry_component">What is the difference between a <em>bootstrap</em> component and an <em>entry component</em>?</a></p>
+<p><a href="#q-bootstrap_vs_entry_component"><em>引导</em>组件和<em>入口</em>组件有什么不同？</a></p>
+</li>
+<li><p><a href="#q-when-entry-components">When do I add components to <em>entryComponents</em>?</a></p>
+<p><a href="#q-when-entry-components">什么情况下我应该把组件添加到<em>entryComponent</em>中？</a></p>
+</li>
+<li><p><a href="#q-why-entry-components">Why does Angular need <em>entryComponents</em>?</a></p>
+<p><a href="#q-why-entry-components">为什么Angular需要<em>entryComponents</em>？</a></p>
+</li>
+</ul>
+<p>General</p>
+<p>一般问题</p>
+<ul>
+<li><p><a href="#q-module-recommendations">What kinds of modules should I have and how should I use them?</a></p>
+<p><a href="#q-module-recommendations">我需要哪些类型的模块？我应该如何使用它们？</a></p>
+</li>
+<li><p><a href="#q-ng-vs-js-modules">What&#39;s the difference between Angular and JavaScript Modules?</a></p>
+<p><a href="#q-ng-vs-js-modules">Angular模块和JavaScript模块有什么不同？</a></p>
+</li>
+<li><p><a href="#q-template-reference">How does Angular find components, directives, and pipes in a template?</a></p>
+<p><a href="#q-template-reference">Angular如何是在模板中查找组件、指令和管道的？</a></p>
+</li>
+<li><p><a href="#q-template-reference">What is a &quot;template reference&quot;?</a></p>
+<p><a href="#q-template-reference">什么是“模板引用”？</a></p>
+</li>
+<li><p><a href="#q-angular-compiler">What is the Angular compiler?</a></p>
+<p><a href="#q-angular-compiler">什么是Angular编译器（Compiler）？</a></p>
+</li>
+<li><p><a href="#q-ngmodule-api">Can you summarize the NgModule API?</a></p>
+<p><a href="#q-ngmodule-api">你能总结一下<em>NgModule</em> API吗？</a></p>
+</li>
+</ul>
+<div class="l-hr"></div><a id="q-what-to-declare"></a><div class="l-main-section"></div><h2 id="what-classes-should-i-add-to-_declarations_-">What classes should I add to <em>declarations</em>?</h2>
+<h2 id="-declarations-">我应该把哪些类加到<em>declarations</em>中？</h2>
+<p>Add <a href="#q-declarable">declarable</a> classes&mdash;components, directives, and pipes&mdash;to a <code>declarations</code> list.</p>
+<p>把<a href="#q-declarable">可声明</a>的类（组件、指令和管道）添加到<code>declarations</code>列表中。</p>
+<p>Declare these classes in <em>exactly one</em> module of the application.
+Declare them in <em>this</em> module if they <em>belong</em> to this module.</p>
+<p>这些类只能在应用程序的<em>一个并且只有一个</em>模块中声明。
+只有当它们<em>从属于</em>某个模块时，才能把在<em>此</em>模块中声明它们。</p>
+<div class="l-hr"></div><a id="q-declarable"></a><div class="l-main-section"></div><h2 id="what-is-a-_declarable_-">What is a <em>declarable</em>?</h2>
+<h2 id="-">什么是<em>可声明的</em>？</h2>
+<p>Declarables are the class types&mdash;components, directives, and pipes&mdash;that
+you can add to a module&#39;s <code>declarations</code> list.
+They&#39;re the <em>only</em> classes that you can add to <code>declarations</code>.</p>
+<p><em>可声明的</em>就是组件、指令和管道等可以被加到模块的<code>declarations</code>列表中的类。它们也是<em>所有</em>能被加到<code>declarations</code>中的类。</p>
+<div class="l-hr"></div><a id="q-what-not-to-declare"></a><div class="l-main-section"></div><h2 id="what-classes-should-i-_not_-add-to-_declarations_-">What classes should I <em>not</em> add to <em>declarations</em>?</h2>
+<h2 id="-declarations-">哪些类<em>不</em>应该加到<code>declarations</code>中？</h2>
+<p>Add only <a href="#q-declarable">declarable</a> classes to a module&#39;s <code>declarations</code> list.</p>
+<p>只有<a href="#q-declarable">可声明的</a>类才能加到模块的<code>declarations</code>列表中。</p>
+<p>Do <em>not</em> declare the following:</p>
+<p><em>不要</em>声明：</p>
+<ul>
+<li><p>A class that&#39;s already declared in another module, whether an app module, @NgModule, or third-party module.</p>
+<p>已经在其它模块中声明过的类。无论它来自应用自己的模块（@NgModule）还是第三方模块。</p>
+</li>
+<li><p>An array of directives imported from another module.
+For example, don&#39;t declare FORMS_DIRECTIVES from <code>@angular/forms</code>.</p>
+<p>从其它模块中导入的指令。例如，不要声明来自<code>@angular/forms</code>的FORMS_DIRECTIVES。</p>
+</li>
+<li><p>Module classes.</p>
+<p>模块类</p>
+</li>
+<li><p>Service classes.</p>
+<p>服务类</p>
+</li>
+<li><p>Non-Angular classes and objects, such as
+strings, numbers, functions, entity models, configurations, business logic, and helper classes.</p>
+<p>非Angular的类和对象，比如：字符串、数字、函数、实体模型、配置、业务逻辑和辅助类。</p>
+</li>
+</ul>
+<div class="l-hr"></div><a id="q-why-multiple-mentions"></a><div class="l-main-section"></div><h2 id="why-list-the-same-component-in-multiple-_ngmodule_-properties-">Why list the same component in multiple <em>NgModule</em> properties?</h2>
+<h2 id="-ngmodule-">为什么要把同一个组件声明在不同的<em>NgModule</em>属性中？</h2>
+<p><code>AppComponent</code> is often listed in both <code>declarations</code> and <code>bootstrap</code>.
+You might see <code>HeroComponent</code> listed in <code>declarations</code>, <code>exports</code>, and <code>entryComponents</code>.</p>
+<p>我们经常看到<code>AppComponent</code>被同时列在<code>declarations</code>和<code>bootstrap</code>中。
+  我们还可能看到<code>HeroComponent</code>被同时列在<code>declarations</code>、<code>exports</code>和<code>entryComponent</code>中。</p>
+<p>While that seems redundant, these properties have different functions.
+Membership in one list doesn&#39;t imply membership in another list.</p>
+<p>这<em>看起来</em>是多余的，不过这些函数具有不同的功能，我们无法从它出现在一个列表中推断出它也应该在另一个列表中。</p>
+<ul>
+<li><p><code>AppComponent</code> could be declared in this module but not bootstrapped.</p>
+<p><code>AppComponent</code>可能被声明在此模块中，但可能不是引导组件。</p>
+</li>
+<li><p><code>AppComponent</code> could be bootstrapped in this module but declared in a different feature module.</p>
+<p><code>AppComponent</code>可能在此模块中引导，但可能是由另一个特性模块声明的。</p>
+</li>
+<li><p><code>HeroComponent</code> could be imported from another app module (so you can&#39;t declare it) and re-exported by this module.</p>
+<p><code>HeroComponent</code>可能是从另一个应用模块中导入的（所以我们没法声明它）并且被当前模块重新导出。</p>
+</li>
+<li><p><code>HeroComponent</code> could be exported for inclusion in an external component&#39;s template
+as well as dynamically loaded in a pop-up dialog.</p>
+<p><code>HeroComponent</code>可能被导入，以便用在外部组件的模板中，但也可能同时被一个弹出式对话框加载。</p>
+</li>
+</ul>
+<div class="l-hr"></div><a id="q-why-cant-bind-to"></a><div class="l-main-section"></div><h2 id="what-does-can-t-bind-to-x-since-it-isn-t-a-known-property-of-y-mean-">What does &quot;Can&#39;t bind to &#39;x&#39; since it isn&#39;t a known property of &#39;y&#39;&quot; mean?</h2>
+<h2 id="-_can-t-bind-to-x-since-it-isn-t-a-known-property-of-y-_-">&quot;<em>Can&#39;t bind to &#39;x&#39; since it isn&#39;t a known property of &#39;y&#39;</em>&quot;是什么意思？</h2>
+<p>This error usually means that you haven&#39;t declared the directive &quot;x&quot;
+or haven&#39;t imported the module to which &quot;x&quot; belongs.</p>
+<p>这个错误通常意味着你或者忘了声明指令“x”，或者你没有导入“x”所属的模块。</p>
+<p>For example, if &quot;x&quot; is <code>ngModel</code>, you probably haven&#39;t imported the <code>FormsModule</code> from <code>@angular/forms</code>.</p>
+<p>比如，如果这个“x”是<code>ngModel</code>，你可能忘了从<code>@angular/forms</code>中导入<code>FormsModule</code>。</p>
+<p>Perhaps you declared &quot;x&quot; in an application sub-module but forgot to export it?
+The &quot;x&quot; class isn&#39;t visible to other modules until you add it to the <code>exports</code> list.</p>
+<p>也可能你在该应用的特性模块中声明了“x”，但是忘了从那个模块导出它。
+除非你把这个“x”类加入了<code>exports</code>列表中，否则它对其它模块将是不可见的。</p>
+<div class="l-hr"></div><a id="q-what-to-import"></a><div class="l-main-section"></div><h2 id="what-should-i-import-">What should I import?</h2>
+<h2 id="-">我应该导入什么？</h2>
+<p>Import modules whose public (exported) <a href="#q-declarable">declarable classes</a>
+you need to reference in this module&#39;s component templates.</p>
+<p>一句话：导入你需要在当前模块的组件模板中使用的那些公开的（被导出的）<a href="#q-declarable">可声明类</a>。</p>
+<p>This always means importing <code>CommonModule</code> from <code>@angular/common</code> for access to
+the Angular directives such as <code>NgIf</code> and <code>NgFor</code>.
+You can import it directly or from another module that <a href="#q-reexport">re-exports</a> it.</p>
+<p>这意味着要从<code>@angular/common</code>中导入<code>CommonModule</code>才能访问Angular的内置指令，比如<code>NgIf</code>和<code>NgFor</code>。
+你可以直接导入它或者从<a href="#q-reexport">重新导出</a>过该模块的其它模块中导入它。</p>
+<p>Import <code>FormsModule</code> from <code>@angular/forms</code>
+if your components have <code>[(ngModel)]</code> two-way binding expressions.</p>
+<p>如果你的组件有<code>[(ngModel)]</code>双向绑定表达式，就要从<code>@angular/forms</code>中导入<code>FormsModule</code>。</p>
+<p>Import <em>shared</em> and <em>feature</em> modules when this module&#39;s components incorporate their
+components, directives, and pipes.</p>
+<p>如果当前模块中的组件包含了<em>共享</em>模块和<em>特性</em>模块中的组件、指令和管道，就导入这些模块。</p>
+<p>Import only <a href="#q-browser-vs-common-module">BrowserModule</a> in the root <code>AppModule</code>.</p>
+<p>只能在根模块<code>AppModule</code>中<a href="#q-browser-vs-common-module">导入<em>BrowserModule</em></a>。</p>
+<div class="l-hr"></div><a id="q-browser-vs-common-module"></a><div class="l-main-section"></div><h2 id="should-i-import-_browsermodule_-or-_commonmodule_-">Should I import <em>BrowserModule</em> or <em>CommonModule</em>?</h2>
+<h2 id="-browsermodule-commonmodule-">我应该导入<em>BrowserModule</em>还是<em>CommonModule</em>？</h2>
+<p>The <em>root application module</em> (<code>AppModule</code>) of almost every browser application
+should import <code>BrowserModule</code> from <code>@angular/platform-browser</code>.</p>
+<p>几乎所有要在浏览器中使用的应用的<strong>根模块</strong>（<code>AppModule</code>）都应该从<code>@angular/platform-browser</code>中导入<code>BrowserModule</code>。</p>
+<p><code>BrowserModule</code> provides services that are essential to launch and run a browser app.</p>
+<p><code>BrowserModule</code>提供了启动和运行浏览器应用的那些基本的服务提供商。</p>
+<p><code>BrowserModule</code> also re-exports <code>CommonModule</code> from <code>@angular/common</code>,
+which means that components in the <code>AppModule</code> module also have access to
+the Angular directives every app needs, such as <code>NgIf</code> and <code>NgFor</code>.</p>
+<p><code>BrowserModule</code>还从<code>@angular/common</code>中重新导出了<code>CommonModule</code>，这意味着<code>AppModule</code>中的组件也同样可以访问那些每个应用都需要的Angular指令，如<code>NgIf</code>和<code>NgFor</code>。</p>
+<p><em>Do not import</em> <code>BrowserModule</code> in any other module.
+<em>Feature modules</em> and <em>lazy-loaded modules</em> should import <code>CommonModule</code> instead.
+They need the common directives. They don&#39;t need to re-install the app-wide providers.</p>
+<p>在其它任何模块中都<em>不要导入</em><code>BrowserModule</code>。
+<em>特性模块</em>和<em>惰性加载模块</em>应该改成导入<code>CommonModule</code>。
+它们需要通用的指令。它们不需要重新初始化全应用级的提供商。</p>
+<div class="l-sub-section"><p><code>BrowserModule</code> throws an error if you try to lazy load  a module that imports it.</p>
+<p>如果你在惰性加载模块中导入<code>BrowserModule</code>，Angular就会抛出一个错误。</p>
+</div><p>Importing <code>CommonModule</code> also frees feature modules for use on <em>any</em> target platform, not just browsers.</p>
+<p>特性模块中导入<code>CommonModule</code>可以让它能用在任何目标平台上，不仅是浏览器。那些跨平台库的作者应该喜欢这种方式的。</p>
+<div class="l-hr"></div><a id="q-reimport"></a><div class="l-main-section"></div><h2 id="what-if-i-import-the-same-module-twice-">What if I import the same module twice?</h2>
+<h2 id="-">如果我两次导入同一个模块会怎么样？</h2>
+<p>That&#39;s not a problem. When three modules all import Module &#39;A&#39;,
+Angular evaluates Module &#39;A&#39; once, the first time it encounters it, and doesn&#39;t do so again.</p>
+<p>不会有问题。当三个模块全都导入模块&#39;A&#39;时，Angular只会首次遇到时加载一次模块&#39;A&#39;，之后就不会这么做了。</p>
+<p>That&#39;s true at whatever level <code>A</code> appears in a hierarchy of imported modules.
+When Module &#39;B&#39; imports Module &#39;A&#39;, Module &#39;C&#39; imports &#39;B&#39;, and Module &#39;D&#39; imports <code>[C, B, A]</code>,
+then &#39;D&#39; triggers the evaluation of &#39;C&#39;, which triggers the evaluation of &#39;B&#39;, which evaluates &#39;A&#39;.
+When Angular gets to the &#39;B&#39; and &#39;A&#39; in &#39;D&#39;, they&#39;re already cached and ready to go.</p>
+<p>无论<code>A</code>出现在所导入模块的哪个层级，都会如此。
+如果模块&#39;B&#39;导入模块&#39;A&#39;、模块&#39;C&#39;导入模块&#39;B&#39;，模块&#39;D&#39;导入<code>[C, B, A]</code>，那么&#39;D&#39;会触发模块&#39;C&#39;的加载，&#39;C&#39;会触发&#39;B&#39;的加载，而&#39;B&#39;会加载&#39;A&#39;。
+当Angular在&#39;D&#39;中想要获取&#39;B&#39;和&#39;A&#39;时，这两个模块已经被缓存过了，可以立即使用。</p>
+<p>Angular doesn&#39;t like modules with circular references, so don&#39;t let Module &#39;A&#39; import Module &#39;B&#39;, which imports Module &#39;A&#39;.</p>
+<p>Angular不允许模块之间出现循环依赖，所以不要让模块&#39;A&#39;导入模块&#39;B&#39;，而模块&#39;B&#39;又导入模块&#39;A&#39;。</p>
+<div class="l-hr"></div><a id="q-what-to-export"></a><div class="l-main-section"></div><h2 id="what-should-i-export-">What should I export?</h2>
+<h2 id="-">我应该导出什么？</h2>
+<p>Export <a href="#q-declarable">declarable</a> classes that components in <em>other</em> modules
+are able to reference in their templates. These are your <em>public</em> classes.
+If you don&#39;t export a class, it stays <em>private</em>, visible only to other component
+declared in this module.</p>
+<p>导出那些<em>其它模块</em>希望在自己的模板中引用的<a href="#q-declarable">可声明类</a>。这些也是你的<em>公开</em>类。
+如果你不导出某个类，它就是<em>私有的</em>，只对当前模块中声明的其它组件可见。</p>
+<p>You <em>can</em> export any declarable class&mdash;components, directives, and pipes&mdash;whether
+it&#39;s declared in this module or in an imported module.</p>
+<p>你<em>可以</em>导出任何可声明类（组件、指令和管道），而不用管它是声明在当前模块中还是某个导入的模块中。</p>
+<p>You <em>can</em> re-export entire imported modules, which effectively re-exports all of their exported classes.
+A module can even export a module that it doesn&#39;t import.</p>
+<p>你<em>可以</em>重新导出整个导入过的模块，这将导致重新导出它们导出的所有类。模块甚至还可以导出它未曾导入过的模块。</p>
+<div class="l-hr"></div><a id="q-what-not-to-export"></a><div class="l-main-section"></div><h2 id="what-should-i-not-export-">What should I <em>not</em> export?</h2>
+<h2 id="-">我<em>不应该</em>导出什么？</h2>
+<p>Don&#39;t export the following:</p>
+<p><em>不要</em>导出：</p>
+<ul>
+<li><p>Private components, directives, and pipes that you need only within components declared in this module.
+If you don&#39;t want another module to see it, don&#39;t export it.</p>
+<p>那些你只想在当前模块中声明的那些组件中使用的私有组件、指令和管道。如果你不希望任何模块看到它，就不要导出。</p>
+</li>
+<li><p>Non-declarable objects such as services, functions, configurations, and entity models.</p>
+<p>不可声明的对象，比如服务、函数、配置、实体模型等。</p>
+</li>
+<li><p>Components that are only loaded dynamically by the router or by bootstrapping.
+Such <a href="#q-entry-component-defined">entry components</a> can never be selected in another component&#39;s template.
+While there&#39;s no harm in exporting them, there&#39;s also no benefit.</p>
+<p>那些只被路由器或引导函数动态加载的组件。</p>
+<pre><code>比如[入口组件](#q-entry-component-defined)可能从来不会在其它组件的模板中出现。
+导出它们没有坏处，但也没有好处。
+</code></pre></li>
+<li><p>Pure service modules that don&#39;t have public (exported) declarations.
+For example, there&#39;s no point in re-exporting <code>HttpModule</code> because it doesn&#39;t export anything.
+It&#39;s only purpose is to add http service providers to the application as a whole.</p>
+<p>纯服务模块没有公开（导出）的声明。
+例如，没必要重新导出<code>HttpModule</code>，因为它不导出任何东西。
+它唯一的用途是一起把http的那些服务提供商添加到应用中。</p>
+</li>
+</ul>
+<div class="l-hr"></div><a id="q-reexport"></a><a id="q-re-export"></a><div class="l-main-section"></div><h2 id="can-i-re-export-classes-and-modules-">Can I re-export classes and modules?</h2>
+<h2 id="-">我可以重新导出类和模块吗？</h2>
+<p>Absolutely.</p>
+<p>毫无疑问！</p>
+<p>Modules are a great way to selectively aggregate classes from other modules and
+re-export them in a consolidated, convenience module.</p>
+<p>模块是从其它模块中选取类并把它们重新导出成统一、便利的新模块的最佳方式。</p>
+<p>A module can re-export entire modules, which effectively re-exports all of their exported classes.
+Angular&#39;s own <code>BrowserModule</code> exports a couple of modules like this:</p>
+<p>模块可以重新导出其它模块，这会导致重新导出它们导出的所有类。
+Angular自己的<code>BrowserModule</code>就重新导出了一组模块，例如：</p>
+<code-example>exports: [CommonModule, ApplicationModule]
+</code-example><p>A module can export a combination of its own declarations, selected imported classes, and imported modules.</p>
+<p>模块还能导出一个组合，它可以包含自己的声明、某些导入的类以及导入的模块。</p>
+<div class="l-sub-section"><p>Don&#39;t bother re-exporting pure service modules.
+Pure service modules don&#39;t export <a href="#q-declarable">declarable</a> classes that another module could use.
+For example, there&#39;s no point in re-exporting <code>HttpModule</code> because it doesn&#39;t export anything.
+It&#39;s only purpose is to add http service providers to the application as a whole.</p>
+<p>不要费心去导出纯服务类。
+纯服务类的模块不会导出任何可供其它模块使用的<a href="#q-declarable">可声明类</a>。
+例如，不用重新导出<code>HttpModule</code>，因为它没有导出任何东西。
+它唯一的用途是把那些http服务提供商一起添加到应用中。</p>
+</div><div class="l-hr"></div><a id="q-for-root"></a><div class="l-main-section"></div><h2 id="what-is-the-_forroot_-method-">What is the <em>forRoot</em> method?</h2>
+<h2 id="-forroot-"><em>forRoot</em>方法是什么？</h2>
+<p>The <code>forRoot</code> static method is a convention that makes it easy for developers to configure the module&#39;s providers.</p>
+<p>静态方法<code>forRoot</code>是一个约定，它可以让开发人员更轻松的配置模块的提供商。</p>
+<p>The <code>RouterModule.forRoot</code> method is a good example.
+Apps pass a <code>Routes</code> object to <code>RouterModule.forRoot</code> in order to configure the app-wide <code>Router</code> service with routes.
+<code>RouterModule.forRoot</code> returns a <a href="../api/core/index/ModuleWithProviders-interface.html">ModuleWithProviders</a>.
+You add that result to the <code>imports</code> list of the root <code>AppModule</code>.</p>
+<p><code>RouterModule.forRoot</code>就是一个很好的例子。
+应用把一个<code>Routes</code>对象传给<code>RouterModule.forRoot</code>，为的就是使用路由配置全应用级的<code>Router</code>服务。
+<code>RouterModule.forRoot</code>返回一个<a href="../api/core/index/ModuleWithProviders-interface.html">ModuleWithProviders</a>对象。
+我们把这个结果添加到根模块<code>AppModule</code>的<code>imports</code>列表中。</p>
+<div class="alert is-important"><p>Only call and import a <code>.forRoot</code> result in the root application module, <code>AppModule</code>.
+Importing it in any other module, particularly in a lazy-loaded module,
+is contrary to the intent and will likely produce a runtime error.</p>
+<p>只能在应用的根模块<code>AppModule</code>中调用并导入<code>.forRoot</code>的结果。
+在其它模块中导入它，特别是惰性加载模块中，是违反设计目标的并会导致一个运行时错误。</p>
+</div><p><code>RouterModule</code> also offers a <code>forChild</code> static method for configuring the routes of lazy-loaded modules.</p>
+<p><code>RouterModule</code>也提供了静态方法<code>forChild</code>，用于配置惰性加载模块的路由。</p>
+<p><em>forRoot</em> and <em>forChild</em> are conventional names for methods that
+configure services in root and feature modules respectively.</p>
+<p><strong><em>forRoot</em></strong>和<strong><em>forChild</em></strong>都是方法的约定名称，它们分别用于在根模块和特性模块中配置服务。</p>
+<p>Angular doesn&#39;t recognize these names but Angular developers do.
+Follow this convention when you write similar modules with configurable service providers.</p>
+<p>Angular并不识别这些名字，但是Angular的开发人员可以。
+当你写类似的需要可配置的服务提供商时，请遵循这个约定。</p>
+<div class="l-hr"></div><a id="q-module-provider-visibility"></a><div class="l-main-section"></div><h2 id="why-is-a-service-provided-in-a-feature-module-visible-everywhere-">Why is a service provided in a feature module visible everywhere?</h2>
+<h2 id="-">为什么服务提供商在特性模块中的任何地方都是可见的？</h2>
+<p>Providers listed in the <code>@NgModule.providers</code> of a bootstrapped module have <em>application scope</em>.
+Adding a service provider to <code>@NgModule.providers</code> effectively publishes the service to the entire application.</p>
+<p>列在引导模块的<code>@NgModule.providers</code>中的服务提供商具有<strong>全应用级作用域</strong>。
+往<code>NgModule.providers</code>中添加服务提供商将导致该服务被发布到整个应用中。</p>
+<p>When you import a module,
+Angular adds the module&#39;s service providers (the contents of its <code>providers</code> list)
+to the application <em>root injector</em>.</p>
+<p>当我们导入一个模块时，Angular就会把该模块的服务提供商（也就是它的<code>providers</code>列表中的内容）加入该应用的<em>根注入器</em>中。</p>
+<p>This makes the provider visible to every class in the application that knows the provider&#39;s lookup token.</p>
+<p>这会让该提供商对应用中所有知道该提供商令牌（token）的类都可见。</p>
+<p>This is by design.
+Extensibility through module imports is a primary goal of the NgModule system.
+Merging module providers into the application injector
+makes it easy for a module library to enrich the entire application with new services.
+By adding the <code>HttpModule</code> once, every application component can make http requests.</p>
+<p>Angular就是如此设计的。
+通过模块导入来实现可扩展性是Angular模块系统的主要设计目标。
+把模块的提供商并入应用程序的注入器可以让库模块使用新的服务来强化应用程序变得更容易。
+只要添加一次<code>HttpModule</code>，那么应用中的每个组件就都可以发起Http请求了。</p>
+<p>However, this might feel like an unwelcome surprise if you expect the module&#39;s services
+to be visible only to the components declared by that feature module.
+If the <code>HeroModule</code> provides the <code>HeroService</code> and the root <code>AppModule</code> imports <code>HeroModule</code>,
+any class that knows the <code>HeroService</code> <em>type</em> can inject that service,
+not just the classes declared in the <code>HeroModule</code>.</p>
+<p>不过，如果你期望模块的服务只对那个特性模块内部声明的组件可见，那么这可能会带来一些不受欢迎的意外。
+如果<code>HeroModule</code>提供了一个<code>HeroService</code>，并且根模块<code>AppModule</code>导入了<code>HeroModule</code>，那么任何知道<code>HeroService</code><em>类型</em>的类都可能注入该服务，而不仅是在<code>HeroModule</code>中声明的那些类。</p>
+<div class="l-hr"></div><a id="q-lazy-loaded-module-provider-visibility"></a><div class="l-main-section"></div><h2 id="why-is-a-service-provided-in-a-_lazy-loaded_-module-visible-only-to-that-module-">Why is a service provided in a <em>lazy-loaded</em> module visible only to that module?</h2>
+<h2 id="-">为什么在惰性加载模块中声明的服务提供商只对该模块自身可见？</h2>
+<p>Unlike providers of the modules loaded at launch,
+providers of lazy-loaded modules are <em>module-scoped</em>.</p>
+<p>和启动时就加载的模块中的提供商不同，惰性加载模块中的提供商是<em>局限于模块</em>的。</p>
+<p>When the Angular router lazy-loads a module, it creates a new execution context.
+That <a href="#q-why-child-injector" title="Why Angular creates a child injector">context has its own injector</a>,
+which is a direct child of the application injector.</p>
+<p>当Angular路由器惰性加载一个模块时，它创建了一个新的运行环境。
+那个环境<a href="#q-why-child-injector" title="为什么Angular会创建子注入器">拥有自己的注入器</a>，它是应用注入器的直属子级。</p>
+<p>The router adds the lazy module&#39;s providers and the providers of its imported modules to this child injector.</p>
+<p>路由器把该惰性加载模块的提供商和它导入的模块的提供商添加到这个子注入器中。</p>
+<p>These providers are insulated from changes to application providers with the same lookup token.
+When the router creates a component within the lazy-loaded context,
+Angular prefers service instances created from these providers to the service instances of the application root injector.</p>
+<p>这些提供商不会被拥有相同令牌的应用级别提供商的变化所影响。
+当路由器在惰性加载环境中创建组件时，Angular优先使用惰性加载模块中的服务实例，而不是来自应用的根注入器的。</p>
+<div class="l-hr"></div><a id="q-module-provider-duplicates"></a><div class="l-main-section"></div><h2 id="what-if-two-modules-provide-the-same-service-">What if two modules provide the same service?</h2>
+<h2 id="-">如果两个模块提供了<em>同一个</em>服务会怎么样？</h2>
+<p>When two imported modules, loaded at the same time, list a provider with the same token,
+the second module&#39;s provider &quot;wins&quot;. That&#39;s because both providers are added to the same injector.</p>
+<p>当同时加载了两个导入的模块，它们都列出了使用同一个令牌的提供商时，后导入的模块会“获胜”，这是因为这两个提供商都被添加到了同一个注入器中。</p>
+<p>When Angular looks to inject a service for that token,
+it creates and delivers the instance created by the second provider.</p>
+<p>当Angular尝试根据令牌注入服务时，它使用第二个提供商来创建并交付服务实例。</p>
+<p><em>Every</em> class that injects this service gets the instance created by the second provider.
+Even classes declared within the first module get the instance created by the second provider.</p>
+<p><em>每个</em>注入了该服务的类获得的都是由第二个提供商创建的实例。
+即使是声明在第一个模块中的类，它取得的实例也是来自第二个提供商的。</p>
+<p>If Module A provides a service for token &#39;X&#39; and imports a module B
+that also provides a service for token &#39;X&#39;, then Module A&#39;s service definition &quot;wins&quot;.</p>
+<p>如果模块A提供了一个使用令牌&#39;X&#39;的服务，并且导入的模块B也用令牌&#39;X&#39;提供了一个服务，那么模块A中定义的服务“获胜”了。</p>
+<p>The service provided by the root <code>AppModule</code> takes precedence over services provided by imported modules.
+The <code>AppModule</code> always wins.</p>
+<p>由根<code>AppModule</code>提供的服务相对于所导入模块中提供的服务有优先权。换句话说：<code>AppModule</code>总会获胜。</p>
+<div class="l-hr"></div><a id="q-component-scoped-providers"></a><div class="l-main-section"></div><h2 id="how-do-i-restrict-service-scope-to-a-module-">How do I restrict service scope to a module?</h2>
+<h2 id="-">我们应该如何把服务的范围限制到模块中？</h2>
+<p>When a module is loaded at application launch,
+its <code>@NgModule.providers</code> have <em>application-wide scope</em>;
+that is, they are available for injection throughout the application.</p>
+<p>如果一个模块在应用程序启动时就加载，它的<code>@NgModule.providers</code>具有<strong><em>全应用级作用域</em></strong>。
+它们也可用于整个应用的注入中。</p>
+<p>Imported providers are easily replaced by providers from another imported module.
+Such replacement might be by design. It could be unintentional and have adverse consequences.</p>
+<p>导入的提供商很容易被由其它导入模块中的提供商替换掉。
+这虽然是故意这样设计的，但是也可能引起意料之外的结果。</p>
+<div class="alert is-important"><p>As a general rule, import modules with providers <em>exactly once</em>, preferably in the application&#39;s <em>root module</em>.
+That&#39;s also usually the best place to configure, wrap, and override them.</p>
+<p>作为一个通用的规则，应该<em>只导入一次</em>带提供商的模块，最好在应用的<em>根模块</em>中。
+那里也是配置、包装和改写这些服务的最佳位置。</p>
+</div><p>Suppose a module requires a customized <code>HttpBackend</code> that adds a special header for all Http requests.
+If another module elsewhere in the application also customizes <code>HttpBackend</code>
+or merely imports the <code>HttpModule</code>, it could override this module&#39;s <code>HttpBackend</code> provider,
+losing the special header. The server will reject http requests from this module.</p>
+<p>假设模块需要一个定制过的<code>HttpBackend</code>，它为所有的Http请求添加一个特别的请求头。
+  如果应用中其它地方的另一个模块也定制了<code>HttpBackend</code>或仅仅导入了<code>HttpModule</code>，它就会改写当前模块的<code>HttpBackend</code>提供商，丢掉了这个特别的请求头。
+  这样服务器就会拒绝来自该模块的请求。</p>
+<p>To avoid this problem, import the <code>HttpModule</code> only in the <code>AppModule</code>, the application <em>root module</em>.</p>
+<p>要消除这个问题，就只能在应用的根模块<code>AppModule</code>中导入<code>HttpModule</code>。</p>
+<p>If you must guard against this kind of &quot;provider corruption&quot;, <em>don&#39;t rely on a launch-time module&#39;s <code>providers</code>.</em></p>
+<p>如果你必须防范这种“提供商腐化”现象，那就<em>不要依赖于“启动时加载”模块的<code>providers</code></em>。</p>
+<p>Load the module lazily if you can.
+Angular gives a <a href="#q-lazy-loaded-module-provider-visibility">lazy-loaded module</a> its own child injector.
+The module&#39;s providers are visible only within the component tree created with this injector.</p>
+<p>只要可能，就让模块惰性加载。
+Angular给了<a href="#q-lazy-loaded-module-provider-visibility">惰性加载模块</a>自己的子注入器。
+该模块中的提供商只对由该注入器创建的组件树可见。</p>
+<p>If you must load the module eagerly, when the application starts,
+<em>provide the service in a component instead.</em></p>
+<p>如果你必须在应用程序启动时主动加载该模块，<strong><em>就改成在组件中提供该服务</em></strong>。</p>
+<p>Continuing with the same example, suppose the components of a module truly require a private, custom <code>HttpBackend</code>.</p>
+<p>继续看这个例子，假设某个模块的组件真的需要一个私有的、自定义的<code>HttpBackend</code>。</p>
+<p>Create a &quot;top component&quot; that acts as the root for all of the module&#39;s components.
+Add the custom <code>HttpBackend</code> provider to the top component&#39;s <code>providers</code> list rather than the module&#39;s <code>providers</code>.
+Recall that Angular creates a child injector for each component instance and populates the injector
+with the component&#39;s own providers.</p>
+<p>那就创建一个“顶级组件”来扮演该模块中所有组件的根。
+把这个自定义的<code>HttpBackend</code>提供商添加到这个顶级组件的<code>providers</code>列表中，而不是该模块的<code>providers</code>中。
+回忆一下，Angular会为每个组件实例创建一个子注入器，并使用组件自己的<code>providers</code>来配置这个注入器。</p>
+<p>When a child of this component asks for the <code>HttpBackend</code> service,
+Angular provides the local <code>HttpBackend</code> service,
+not the version provided in the application root injector.
+Child components make proper http requests no matter what other modules do to <code>HttpBackend</code>.</p>
+<p>当该组件的子组件<em>想要</em>一个<code>HttpBackend</code>服务时，Angular会提供一个局部的<code>HttpBackend</code>服务，而不是应用的根注入器创建的那个。
+子组件将正确发起http请求，而不管其它模块对<code>HttpBackend</code>做了什么。</p>
+<p>Be sure to create module components as children of this module&#39;s top component.</p>
+<p>确保把模块中的组件都创建成这个顶级组件的子组件。</p>
+<p>You can embed the child components in the top component&#39;s template.
+Alternatively, make the top component a routing host by giving it a <code>&lt;router-outlet&gt;</code>.
+Define child routes and let the router load module components into that outlet.</p>
+<p>你可以把这些子组件都嵌在顶级组件的模板中。或者，给顶级组件一个<code>&lt;router-outlet&gt;</code>，让它作为路由的宿主。
+定义子路由，并让路由器把模块中的组件加载进该路由出口（outlet）中。</p>
+<div class="l-hr"></div><a id="q-root-component-or-module"></a><div class="l-main-section"></div><h2 id="should-i-add-application-wide-providers-to-the-root-_appmodule_-or-the-root-_appcomponent_-">Should I add application-wide providers to the root <em>AppModule</em> or the root <em>AppComponent</em>?</h2>
+<h2 id="-appmodule-appcomponent-">我应该把全应用级提供商添加到根模块<code>AppModule</code>中还是根组件<code>AppComponent</code>中？</h2>
+<p>Register application-wide providers in the root <code>AppModule</code>, not in the <code>AppComponent</code>.</p>
+<p>在根模块<code>AppModule</code>中注册全应用级提供商，而不是<code>AppComponent</code>中。</p>
+<p>Lazy-loaded modules and their components can inject <code>AppModule</code> services;
+they can&#39;t inject <code>AppComponent</code> services.</p>
+<p>惰性加载模块及其组件可以注入<code>AppModule</code>中的服务，却不能注入<code>AppComponent</code>中的。</p>
+<p>Register a service in <code>AppComponent</code> providers <em>only</em> if the service must be hidden
+from components outside the <code>AppComponent</code> tree. This is a rare use case.</p>
+<p><em>只有</em>当该服务必须对<code>AppComponent</code>组件树之外的组件不可见时，才应该把服务注册进<code>AppComponent</code>的<code>providers</code>中。
+这是一个非常罕见的异常用法。</p>
+<p>More generally, <a href="#q-component-or-module">prefer registering providers in modules</a> to registering in components.</p>
+<p>更一般地说，<a href="#q-component-or-module">优先把提供商注册进模块中</a>，而不是组件中。</p>
+<h3 id="discussion">Discussion</h3>
+<h3 id="-">讨论</h3>
+<p>Angular registers all startup module providers with the application root injector.
+The services created from root injector providers are available to the entire application.
+They are <em>application-scoped</em>.</p>
+<p>Angular把所有启动期模块的提供商都注册进了应用的根注入器中。
+这些服务是由根注入器中的提供商创建的，并且在整个应用中都可用。
+它们具有<em>应用级作用域</em>。</p>
+<p>Certain services (such as the <code>Router</code>) only work when registered in the application root injector.</p>
+<p>某些服务（比如<code>Router</code>）只有当注册进应用的根注入器时才能正常工作。</p>
+<p>By contrast, Angular registers <code>AppComponent</code> providers with the <code>AppComponent</code>&#39;s own injector.
+<code>AppComponent</code> services are available only to that component and its component tree.
+They are <em>component-scoped</em>.</p>
+<p>相反，Angular使用<code>AppComponent</code>自己的注入器注册了<code>AppComponent</code>的提供商。
+<code>AppComponent</code>服务只在该组件及其子组件树中才能使用。
+它们具有<em>组件级作用域</em>。</p>
+<p>The <code>AppComponent</code>&#39;s injector is a <em>child</em> of the root injector, one down in the injector hierarchy.
+For applications that don&#39;t use the router, that&#39;s <em>almost</em> the entire application.
+But for routed applications, &quot;almost&quot; isn&#39;t good enough.</p>
+<p><code>AppComponent</code>的注入器是根注入器的<em>子级</em>，注入器层次中的下一级。
+这对于没有路由器的应用来说<em>几乎是</em>整个应用了。
+但这个“几乎”对于带路有的应用仍然是不够的。</p>
+<p><code>AppComponent</code> services don&#39;t exist at the root level where routing operates.
+Lazy-loaded modules can&#39;t reach them.
+In the NgModule page sample applications, if you had registered <code>UserService</code> in the <code>AppComponent</code>,
+the <code>HeroComponent</code> couldn&#39;t inject it.
+The application  would fail the moment a user navigated to &quot;Heroes&quot;.</p>
+<p>当有路由时，<code>AppComponent</code>服务并不在根部。
+惰性加载的模块就不能用它们。
+在“Angular模块”章的范例应用中，如果我们在<code>AppComponent</code>中注册<code>UserService</code>，那么<code>HeroComponent</code>就不能注入它。
+一旦用户导航到“Heroes”特性区，该应用就会失败。</p>
+<div class="l-hr"></div><a id="q-component-or-module"></a><div class="l-main-section"></div><h2 id="should-i-add-other-providers-to-a-module-or-a-component-">Should I add other providers to a module or a component?</h2>
+<h2 id="-">我应该把其它提供商注册到模块中还是组件中？</h2>
+<p>In general, prefer registering feature-specific providers in modules (<code>@NgModule.providers</code>)
+to registering in components (<code>@Component.providers</code>).</p>
+<p>通常，优先把模块中具体特性的提供商注册到模块中（<code>@NgModule.providers</code>），而不是组件中（<code>@Component.providers</code>）。</p>
+<p>Register a provider with a component when you <em>must</em> limit the scope of a service instance
+to that component and its component tree.
+Apply the same reasoning to registering a provider with a directive.</p>
+<p>当你<em>必须</em>把服务实例的范围限制到某个组件及其子组件树时，就把提供商注册到该组件中。
+指令的提供商也同样照此处理。</p>
+<p>For example, a hero editing component that needs a private copy of a caching hero service should register
+the <code>HeroService</code> with the <code>HeroEditorComponent</code>.
+Then each new instance of the <code>HeroEditorComponent</code> gets its own cached service instance.
+The changes that editor makes to heroes in its service don&#39;t touch the hero instances elsewhere in the application.</p>
+<p>例如，如果英雄编辑组件需要自己私有的缓存英雄服务实例，那么我们应该把<code>HeroService</code>注册进<code>HeroEditorComponent</code>中。
+这样，每个新的<code>HeroEditorComponent</code>的实例都会得到一份自己的缓存服务实例。
+编辑器的改动只会作用于它自己的服务，而不会影响到应用中其它地方的英雄实例。</p>
+<p><a href="#q-root-component-or-module">Always register <em>application-wide</em> services with the root <code>AppModule</code></a>,
+not the root <code>AppComponent</code>.</p>
+<p><a href="#q-root-component-or-module">总是在根模块<code>AppModule</code>中注册<em>全应用级</em>服务</a>，而不要在根组件<code>AppComponent</code>中。</p>
+<div class="l-hr"></div><a id="q-why-bad"></a><div class="l-main-section"></div><h2 id="why-is-it-bad-if-_sharedmodule_-provides-a-service-to-a-lazy-loaded-module-">Why is it bad if <em>SharedModule</em> provides a service to a lazy-loaded module?</h2>
+<h2 id="-sharedmodule-">为什么<em>SharedModule</em>为惰性加载模块提供服务是个馊主意？</h2>
+<p>This question is addressed in the <a href="../guide/ngmodule.html#no-shared-module-providers">Why UserService isn&#39;t shared</a>
+section of the <a href="../guide/ngmodule.html">NgModules</a> page,
+which discusses the importance of keeping providers out of the <code>SharedModule</code>.</p>
+<p>这个问题在<a href="../guide/ngmodule.html">Angular模块</a>一章的<a href="../guide/ngmodule.html#no-shared-module-providers">为何UserService不是共享的</a>部分出现过，
+那时我们在讨论不要把提供商放进<code>SharedModule</code>的重要性。</p>
+<p>Suppose the <code>UserService</code> was listed in the module&#39;s <code>providers</code> (which it isn&#39;t).
+Suppose every module imports this <code>SharedModule</code> (which they all do).</p>
+<p>假设把<code>UserService</code>列在了模块的<code>providers</code>中（我们没有这么做）。
+假设每个模块都导入了这个<code>SharedModule</code>（我们是这么做的）。</p>
+<p>When the app starts, Angular eagerly loads the <code>AppModule</code> and the <code>ContactModule</code>.</p>
+<p>当应用启动时，Angular主动加载了<code>AppModule</code>和<code>ContactModule</code>。</p>
+<p>Both instances of the imported <code>SharedModule</code> would provide the <code>UserService</code>.
+Angular registers one of them in the root app injector (see <a href="#q-reimport">What if I import the same module twice?</a>).
+Then some component injects <code>UserService</code>, Angular finds it in the app root injector,
+and delivers the app-wide singleton <code>UserService</code>. No problem.</p>
+<p>导入的<code>SharedModule</code>的每个实例都会提供<code>UserService</code>。
+Angular把它们中的一个注册进了应用的根注入器中（参见<a href="#q-reimport">如果同一个模块被导入两次会怎么样？</a>）。
+然后，某些组件要求注入<code>UserService</code>，Angular就会在应用的根注入器中查找它，并交付一个全应用级的单例对象<code>UserService</code>。这没问题。</p>
+<p>Now consider the <code>HeroModule</code> <em>which is lazy loaded</em>.</p>
+<p>现在，该考虑<code>HeroModule</code>了，<em>它是惰性加载的！</em>。</p>
+<p>When the router lazy loads the <code>HeroModule</code>, it creates a child injector and registers the <code>UserService</code>
+provider with that child injector. The child injector is <em>not</em> the root injector.</p>
+<p>当路由器准备惰性加载<code>HeroModule</code>的时候，它会创建一个子注入器，并且把<code>UserService</code>的提供商注册到那个子注入器中。子注入器和根注入器是<em>不同</em>的。</p>
+<p>When Angular creates a lazy <code>HeroComponent</code>, it must inject a <code>UserService</code>.
+This time it finds a <code>UserService</code> provider in the lazy module&#39;s <em>child injector</em>
+and creates a <em>new</em> instance of the <code>UserService</code>.
+This is an entirely different <code>UserService</code> instance
+than the app-wide singleton version that Angular injected in one of the eagerly loaded components.</p>
+<p>当Angular创建一个惰性加载的<code>HeroComponent</code>时，它必须注入一个<code>UserService</code>。
+这次，它会从惰性加载模块的<em>子注入器</em>中查找<code>UserService</code>的提供商，并用它创建一个<code>UserService</code>的新实例。
+这个<code>UserService</code>实例与Angular在主动加载的组件中注入的那个全应用级单例对象截然不同。</p>
+<p>That&#39;s almost certainly a mistake.</p>
+<p>这绝对是一个错误。</p>
+<div class="l-sub-section"><p>To demonstrate, run the <live-example name="ngmodule">live example</live-example>.
+Modify the <code>SharedModule</code> so that it provides the <code>UserService</code> rather than the <code>CoreModule</code>.
+Then toggle between the &quot;Contact&quot; and &quot;Heroes&quot; links a few times.
+The username goes bonkers as the Angular creates a new <code>UserService</code> instance each time.
+<!-- CF: "goes bonkers" is jargon. Can you describe the behavior in plain English?  --></p>
+<p>自己验证一下吧。
+运行这个<live-example name="ngmodule">在线例子</live-example>。
+修改<code>SharedModule</code>，由它来提供<code>UserService</code>而不再由<code>CoreModule</code>。
+然后在“Contact”和“Heroes”链接之间切换几次。
+由于Angular每次都创建一个新的<code>UserService</code>实例，所以用户名变得不正常了。</p>
+</div><div class="l-hr"></div><a id="q-why-child-injector"></a><div class="l-main-section"></div><h2 id="why-does-lazy-loading-create-a-child-injector-">Why does lazy loading create a child injector?</h2>
+<h2 id="-">为什么惰性加载模块会创建一个子注入器？</h2>
+<p>Angular adds <code>@NgModule.providers</code> to the application root injector, unless the module is lazy loaded.
+For a lazy-loaded module, Angular creates a <em>child injector</em> and adds the module&#39;s providers to the child injector.</p>
+<p>Angular会把<code>@NgModule.providers</code>中的提供商添加到应用的根注入器中……
+除非该模块是惰性加载的，这种情况下，它会创建一<em>子注入器</em>，并且把该模块的提供商添加到这个子注入器中。</p>
+<p>This means that a module behaves differently depending on whether it&#39;s loaded during application start
+or lazy loaded later. Neglecting that difference can lead to <a href="#q-why-bad">adverse consequences</a>.</p>
+<p>这意味着模块的行为将取决于它是在应用启动期间加载的还是后来惰性加载的。如果疏忽了这一点，可能导致<a href="#q-why-bad">严重后果</a>。</p>
+<p>Why doesn&#39;t Angular add lazy-loaded providers to the app root injector as it does for eagerly loaded modules?</p>
+<p>为什么Angular不能像主动加载模块那样把惰性加载模块的提供商也添加到应用程序的根注入器中呢？为什么会出现这种不一致？</p>
+<p>The answer is grounded in a fundamental characteristic of the Angular dependency-injection system.
+An injector can add providers <em>until it&#39;s first used</em>.
+Once an injector starts creating and delivering services, its provider list is frozen; no new providers are allowed.</p>
+<p>归根结底，这来自于Angular依赖注入系统的一个基本特征：
+在注入器还没有被第一次使用之前，可以不断为其添加提供商。
+一旦注入器已经创建和开始交付服务，它的提供商列表就被冻结了，不再接受新的提供商。</p>
+<p>When an applications starts, Angular first configures the root injector with the providers of all eagerly loaded modules
+<em>before</em> creating its first component and injecting any of the provided services.
+Once the application begins, the app root injector is closed to new providers.</p>
+<p>当应用启动时，Angular会首先使用所有主动加载模块中的提供商来配置根注入器，这发生在它创建第一个组件以及注入任何服务之前。
+一旦应用开始工作，应用的根注入器就不再接受新的提供商了。</p>
+<p>Time passes and application logic triggers lazy loading of a module.
+Angular must add the lazy-loaded module&#39;s providers to an injector somewhere.
+It can&#39;t added them to the app root injector because that injector is closed to new providers.
+So Angular creates a new child injector for the lazy-loaded module context.</p>
+<p>之后，应用逻辑开始惰性加载某个模块。
+Angular必须把这个惰性加载模块中的提供商添加到<em>某个</em>注入器中。
+但是它无法将它们添加到应用的根注入器中，因为根注入器已经不再接受新的提供商了。
+于是，Angular在惰性加载模块的上下文中创建了一个新的子注入器。</p>
+<div class="l-hr"></div><a id="q-is-it-loaded"></a><div class="l-main-section"></div><h2 id="how-can-i-tell-if-a-module-or-service-was-previously-loaded-">How can I tell if a module or service was previously loaded?</h2>
+<h2 id="-">我要如何知道一个模块或服务是否已经加载过了？</h2>
+<p>Some modules and their services should be loaded only once by the root <code>AppModule</code>.
+Importing the module a second time by lazy loading a module could <a href="#q-why-bad">produce errant behavior</a>
+that may be difficult to detect and diagnose.</p>
+<p>某些模块及其服务只能被根模块<code>AppModule</code>加载一次。
+  在惰性加载模块中再次导入这个模块会<a href="#q-why-bad">导致错误的行为</a>，这个错误可能非常难于检测和诊断。</p>
+<p>To prevent this issue, write a constructor that attempts to inject the module or service
+from the root app injector. If the injection succeeds, the class has been loaded a second time.
+You can throw an error or take other remedial action.</p>
+<p>为了防范这种风险，我们可以写一个构造函数，它会尝试从应用的根注入器中注入该模块或服务。如果这种注入成功了，那就说明这个类是被第二次加载的，我们就可以抛出一个错误，或者采取其它挽救措施。</p>
+<p>Certain NgModules (such as <code>BrowserModule</code>) implement such a guard,
+such as this <code>CoreModule</code> constructor from the NgModules page.</p>
+<p>某些Angular模块（例如<code>BrowserModule</code>）就实现了一个像 Angular 模块那一章的<code>CoreModule</code>构造函数那样的守卫。</p>
+<div class="code-example"><header><h4>src/app/core/core.module.ts (Constructor)</h4></header><code-example language="ts" format="">constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
+  if (parentModule) {
+    throw new Error(
+      &#39;CoreModule is already loaded. Import it in the AppModule only&#39;);
+  }
+}
+</code-example></div><div class="l-hr"></div><a id="q-entry-component-defined"></a><div class="l-main-section"></div><h2 id="what-is-an-_entry-component_-">What is an <em>entry component</em>?</h2>
+<h2 id="-">什么是<em>入口组件</em>？</h2>
+<p>An entry component is any component that Angular loads <em>imperatively</em> by type.</p>
+<p>Angular根据其类型<em>不可避免地</em>加载的组件是<em>入口组件</em>，</p>
+<p>A component loaded <em>declaratively</em> via its selector is <em>not</em> an entry component.</p>
+<p>而通过组件选择器<em>声明式</em>加载的组件则<em>不是</em>入口组件。</p>
+<p>Most application components are loaded declaratively.
+Angular uses the component&#39;s selector to locate the element in the template.
+It then creates the HTML representation of the component and inserts it into the DOM at the selected element.
+These aren&#39;t entry components.</p>
+<p>大多数应用组件都是声明式加载的。
+Angular使用该组件的选择器在模板中定位元素，然后创建表现该组件的HTML，并把它插入DOM中所选元素的内部。它们不是入口组件。</p>
+<p>A few components are only loaded dynamically and are <em>never</em> referenced in a component template.</p>
+<p>也有少量组件只会被动态加载，并且<em>永远不会</em>被组件的模板所引用。</p>
+<p>The bootstrapped root <code>AppComponent</code> is an <em>entry component</em>.
+True, its selector matches an element tag in <code>index.html</code>.
+But <code>index.html</code> isn&#39;t a component template and the <code>AppComponent</code>
+selector doesn&#39;t match an element in any component template.</p>
+<p>用于引导的根<code>AppComponent</code>就是一个<em>入口组件</em>。
+虽然它的选择器匹配了<code>index.html</code>中的一个元素，但是<code>index.html</code>并不是组件模板，而且<code>AppComponent</code>选择器也不会在任何组件模板中出现。</p>
+<p>Angular loads <code>AppComponent</code> dynamically because it&#39;s either listed <em>by type</em> in <code>@NgModule.bootstrap</code>
+or boostrapped imperatively with the module&#39;s <code>ngDoBootstrap</code> method.</p>
+<p>Angular总是会动态加载<code>AppComponent</code> —— 无论把它的<em>类型</em>列在了<code>@NgModule.bootstrap</code>函数中，还是命令式的调用该模块的<code>ngDoBootstrap</code>方法来引导它。</p>
+<p>Components in route definitions are also <em>entry components</em>.
+A route definition refers to a component by its <em>type</em>.
+The router ignores a routed component&#39;s selector (if it even has one) and
+loads the component dynamically into a <code>RouterOutlet</code>.</p>
+<p>在路由定义中用到的组件也同样是<em>入口组件</em>。
+路由定义根据<em>类型</em>来引用组件。
+路由器会忽略路由组件的选择器（即使它有选择器），并且把该组件动态加载到<code>RouterOutlet</code>中。</p>
+<p>The compiler can&#39;t discover these <em>entry components</em> by looking for them in other component templates.
+You must tell it about them by adding them to the <code>entryComponents</code> list.</p>
+<p>编译器无法通过在其它组件的模板中查找来发现这些<em>入口组件</em>。
+  我们必须通过把它们加入<code>entryComponents</code>列表中来让编译器知道它们的存在。</p>
+<p>Angular automatically adds the following types of components to the module&#39;s <code>entryComponents</code>:</p>
+<p>Angular会自动把下列类型的组件添加到模块的<code>entryComponents</code>中：</p>
+<ul>
+<li><p>The component in the <code>@NgModule.bootstrap</code> list.</p>
+<p>那些出现在<code>@NgModule.bootstrap</code>列表中的组件。</p>
+</li>
+<li><p>Components referenced in router configuration.</p>
+<p>那些被路由定义引用的组件。</p>
+</li>
+</ul>
+<p>You don&#39;t have to mention these components explicitly, although doing so is harmless.</p>
+<p>我们并不需要显式的引用这些组件 —— 虽然引用了也没坏处。</p>
+<div class="l-hr"></div><a id="q-bootstrap_vs_entry_component"></a><div class="l-main-section"></div><h2 id="what-s-the-difference-between-a-_bootstrap_-component-and-an-_entry-component_-">What&#39;s the difference between a <em>bootstrap</em> component and an <em>entry component</em>?</h2>
+<h3 id="-"><em>引导组件</em>和<em>入口组件</em>有什么不同？</h3>
+<p>A bootstrapped component <em>is</em> an <a href="#q-entry-component-defined">entry component</a>
+that Angular loads into the DOM during the bootstrap (application launch) process.
+Other entry components are loaded dynamically by other means, such as with the router.</p>
+<p>引导组件是<a href="#q-entry-component-defined">入口组件</a>的一种。
+它是被Angular的引导（应用启动）过程加载到DOM中的入口组件。
+其它入口组件则是被其它方式动态加载的，比如被路由器加载。</p>
+<p>The <code>@NgModule.bootstrap</code> property tells the compiler that this is an entry component <em>and</em>
+it should generate code to bootstrap the application with this component.</p>
+<p><code>@NgModule.bootstrap</code>属性告诉编译器这是一个入口组件，同时它应该生成一些代码来用该组件引导此应用。</p>
+<p>There&#39;s no need to list a component in both the <code>bootstrap</code> and <code>entryComponent</code> lists,
+although doing so is harmless.</p>
+<p>不需要把组件同时列在<code>bootstrap</code>和<code>entryComponent</code>列表中 —— 虽然这样做也没坏处。</p>
+<div class="l-hr"></div><a id="q-when-entry-components"></a><div class="l-main-section"></div><h2 id="when-do-i-add-components-to-_entrycomponents_-">When do I add components to <em>entryComponents</em>?</h2>
+<h3 id="-entrycomponents-">什么时候我应该把组件加到<code>entryComponents</code>中？</h3>
+<p>Most application developers won&#39;t need to add components to the <code>entryComponents</code>.</p>
+<p>大多数应用开发者都不需要把组件添加到<code>entryComponents</code>中。</p>
+<p>Angular adds certain components to <em>entry components</em> automatically.
+Components listed in <code>@NgModule.bootstrap</code> are added automatically.
+Components referenced in router configuration are added automatically.
+These two mechanisms account for almost all entry components.</p>
+<p>Angular会自动把恰当的组件添加到<em>入口组件</em>中。
+列在<code>@NgModule.bootstrap</code>中的组件会自动加入。
+由路由配置引用到的组件会被自动加入。
+用这两种机制添加的组件在入口组件中占了绝大多数。</p>
+<p>If your app happens to bootstrap or dynamically load a component <em>by type</em> in some other manner,
+you must add it to <code>entryComponents</code> explicitly.</p>
+<p>如果你的应用要用其它手段来<em>根据类型</em>引导或动态加载组件，那就得把它显式添加到<code>entryComponents</code>中。</p>
+<p>Although it&#39;s harmless to add components to this list,
+it&#39;s best to add only the components that are truly <em>entry components</em>.
+Don&#39;t include components that <a href="#q-template-reference">are referenced</a>
+in the templates of other components.</p>
+<p>虽然把组件加到这个列表中也没什么坏处，不过最好还是只添加真正的<em>入口组件</em>。
+不要添加那些被其它组件的模板<a href="#q-template-reference">引用过</a>的组件。</p>
+<div class="l-hr"></div><a id="q-why-entry-components"></a><div class="l-main-section"></div><h2 id="why-does-angular-need-_entrycomponents_-">Why does Angular need <em>entryComponents</em>?</h2>
+<h3 id="-angular-">为什么Angular需要<em>入口组件</em>？</h3>
+<p><em>Entry components</em> are also declared.
+Why doesn&#39;t the Angular compiler generate code for every component in <code>@NgModule.declarations</code>?
+Then you wouldn&#39;t need entry components.</p>
+<p><em>入口组件</em>也是被声明的。
+为什么Angular编译器不为<code>@NgModule.declarations</code>中的每个组件都生成一份代码呢？那样就不需要入口组件了。</p>
+<p>The reason is <em>tree shaking</em>. For production apps you want to load the smallest, fastest code possible.
+The code should contain only the classes that you actually need.
+It should exclude a component that&#39;s never used, whether or not that component is declared.</p>
+<p>原因在于<em>摇树优化</em>。对于产品化应用，我们希望加载尽可能小而快的代码。
+代码中应该仅仅包括那些实际用到的类。
+它应该排除那些我们从未用过的组件，无论该组件是否被声明过。</p>
+<p>In fact, many libraries declare and export components you&#39;ll never use.
+If you don&#39;t reference them, the tree shaker drops these components from the final code package.</p>
+<p>事实上，大多数库中声明和导出的组件我们都用不到。
+如果我们从未引用它们，那么<em>摇树优化器</em>就会从最终的代码包中把这些组件砍掉。</p>
+<p>If the <a href="#q-angular-compiler">Angular compiler</a> generated code for every declared component,
+it would defeat the purpose of the tree shaker.</p>
+<p>如果<a href="#q-angular-compiler">Angular编译器</a>为每个声明的组件都生成了代码，那么摇树优化器的作用就没有了。</p>
+<p>Instead, the compiler adopts a recursive strategy that generates code only for the components you use.</p>
+<p>所以，编译器转而采用一种递归策略，它只为我们用到的那些组件生成代码。</p>
+<p>The compiler starts with the entry components,
+then it generates code for the declared components it <a href="#q-template-reference">finds</a> in an entry component&#39;s template,
+then for the declared components it discovers in the templates of previously compiled components,
+and so on. At the end of the process, the compiler has generated code for every  entry component
+and every component reachable from an entry component.</p>
+<p>编译器从入口组件开始工作，为它在入口组件的模板中<a href="#q-template-reference">找到的</a>那些组件生成代码，然后又为在这些组件中的模板中发现的组件生成代码，以此类推。
+当这个过程结束时，它就已经为每个入口组件以及从入口组件可以抵达的每个组件生成了代码。</p>
+<p>If a component isn&#39;t an <em>entry component</em> or wasn&#39;t found in a template,
+the compiler omits it.</p>
+<p>如果该组件不是<em>入口组件</em>或者没有在任何模板中发现过，编译器就会忽略它。</p>
+<div class="l-hr"></div><a id="q-module-recommendations"></a><div class="l-main-section"></div><h2 id="what-kinds-of-modules-should-i-have-and-how-should-i-use-them-">What kinds of modules should I have and how should I use them?</h2>
+<h4 id="-">有哪些类型的模块？我应该如何使用它们？</h4>
+<p>Every app is different. Developers have various levels of experience and comfort with the available choices.
+Some suggestions and guidelines appear to have wide appeal.</p>
+<p>每个应用都不一样。根据不同程度的经验，开发者会做出不同的选择。一些建议和向导具有更加广泛的吸引力。</p>
+<div class="alert is-important"><p>The following is preliminary guidance based on early experience using NgModules in a few applications.
+Read with appropriate caution and reflection.</p>
+<p>下面这些初步的指南仅来自在少量应用中使用Angular模块时的早期体验。
+仅供参考。</p>
+</div><h3 id="_sharedmodule_"><em>SharedModule</em></h3>
+<p>Create a <code>SharedModule</code> with the components, directives, and pipes that you use
+everywhere in your app. This module should consist entirely of <code>declarations</code>,
+most of them exported.</p>
+<p>为那些可能会在应用中到处使用的组件、指令和管道创建<code>SharedModule</code>。
+  这种模块应该只包含<code>declarations</code>，并且应该导出几乎所有<code>declarations</code>里面的声明。</p>
+<p>The <code>SharedModule</code> may re-export other <a href="#widget-feature-module">widget modules</a>, such as <code>CommonModule</code>,
+<code>FormsModule</code>, and modules with the UI controls that you use most widely.</p>
+<p><code>SharedModule</code>可以重新导出其它<a href="#widget-feature-module">小部件模块</a>，比如<code>CommonModule</code>、<code>FormsModule</code>和提供你广泛使用的UI控件的那些模块。</p>
+<p>The <code>SharedModule</code> should <em>not</em> have <code>providers</code> for reasons <a href="#q-why-bad">explained previously</a>.
+Nor should any of its imported or re-exported modules have <code>providers</code>.
+If you deviate from this guideline, know what you&#39;re doing and why.</p>
+<p><code>SharedModule</code><strong><em>不应该</em></strong>带有<code>providers</code>，原因<a href="#q-why-bad">在前面解释过了</a>。
+它的导入或重新导出的模块中也不应该有<code>providers</code>。
+如果你要违背这条指导原则，请务必想清楚你在做什么，并要有充分的理由。</p>
+<p>Import the <code>SharedModule</code> in your <em>feature</em> modules,
+both those loaded when the app starts and those you lazy load later.</p>
+<p>在任何特性模块中（无论是你在应用启动时主动加载的模块还是之后惰性加载的模块），你都可以随意导入这个<code>SharedModule</code>。</p>
+<h3 id="_coremodule_"><em>CoreModule</em></h3>
+<p>Create a <code>CoreModule</code> with <code>providers</code> for the singleton services you load when the application starts.</p>
+<p>为你要在应用启动时加载的那些服务创建一个带<code>providers</code>的<code>CoreModule</code>。</p>
+<p>Import <code>CoreModule</code> in the root <code>AppModule</code> only.
+Never import <code>CoreModule</code> in any other module.</p>
+<p>只能在根模块<code>AppModule</code>中导入<code>CoreModule</code>。
+永远不要在除根模块<code>AppModule</code>之外的任何模块中导入<code>CoreModule</code>。</p>
+<p>Consider making <code>CoreModule</code> a <a href="#service-feature-module">pure services module</a> with no <code>declarations</code>.</p>
+<p>考虑把<code>CoreModule</code>做成一个没有<code>declarations</code>的<a href="#service-feature-module">纯服务模块</a>。</p>
+<div class="l-sub-section"><p>This page sample departs from that advice by declaring and exporting two components that are
+only used within the root <code>AppComponent</code> declared by <code>AppModule</code>.
+Someone following this guideline strictly would have declared these components in the <code>AppModule</code> instead.</p>
+<p>这里的范例违背了此建议，它声明和导出了两个只用在<code>AppModule</code>模块的<code>AppComponent</code>组件中的组件。
+如果你想严格遵循这条指南，应该把这两个组件改为声明在<code>AppModule</code>中。</p>
+</div><h3 id="feature-modules">Feature Modules</h3>
+<h3 id="-">特性模块</h3>
+<p>Create feature modules around specific application business domains, user workflows, and utility collections.</p>
+<p>围绕特定的业务领域、工作流和工具集来为应用创建<em>特性模块</em>。</p>
+<p>Feature modules tend to fall into one of the following groups:</p>
+<p>特性模块一般可分成下面这几种：</p>
+<ul>
+<li><p><a href="#domain-feature-module">Domain feature modules</a>.</p>
+<p><a href="#domain-feature-module">领域特性模块</a>。</p>
+</li>
+<li><p><a href="#routed-feature-module">Routed feature modules</a></p>
+<p><a href="#routed-feature-module">带路由的特性模块</a></p>
+</li>
+<li><p><a href="#routing-module">Routing modules</a></p>
+<p><a href="#routing-module">路由模块</a></p>
+</li>
+<li><p><a href="#service-feature-module">Service feature modules</a></p>
+<p><a href="#service-feature-module">服务特性模块</a></p>
+</li>
+<li><p><a href="#widget-feature-module">Widget feature modules</a>.</p>
+<p><a href="#widget-feature-module">窗口部件特性模块</a></p>
+</li>
+</ul>
+<div class="l-sub-section"><p>Real-world modules are often hybrids that purposefully deviate from the following guidelines.
+These guidelines are not laws;
+follow them unless you have a good reason to do otherwise.</p>
+<p>真实世界中的模块通常会偏离这些指导原则，而混杂多种不同的类型。
+这些只是指导原则，不是硬性要求。
+但除非你有充分的理由不这么做，最好还是遵循它们。</p>
+</div><table><tr><th style="vertical-align: top"><p>Feature Module</p><p>特性模块</p></th><th style="vertical-align: top"><p>Guidelines</p><p>指导原则</p></th></tr><tr><td style="vertical-align: top"><a id="domain-feature-module"></a><p>Domain</p><p>领域</p></td><td><p>Domain feature modules deliver a user experience <em>dedicated to a particular application domain</em>
+like editing a customer or placing an order.</p>
+<p>领域特性模块<strong>专注于一个特定的应用领域</strong>来提供用户体验，比如编辑消费者信息或下订单。</p>
+<p>They typically have a top component that acts as the feature root.
+Private, supporting sub-components descend from it.</p>
+<p>它们通常有一个顶级组件，并作为该特性的根组件。
+内部则是它的一些子组件。</p>
+<p>Domain feature modules consist mostly of <em>declarations</em>.
+Only the top component is exported.</p>
+<p>领域特性模块几乎总是由<code>declarations</code>构成。只有顶级组件会被导出。</p>
+<p>Domain feature modules rarely have <em>providers</em>.
+When they do, the lifetime of the provided services
+should be the same as the lifetime of the module.</p>
+<p>领域特性模块很少会有<code>providers</code>。
+        如果要这么做，那它们所提供服务的生命周期就应该与该模块的生命周期相同。</p>
+<p>Don&#39;t provide application-wide singleton services in a domain feature module.</p>
+<p>不要在领域特性模块中提供全应用级的单例服务。</p>
+<p>Domain feature modules are typically imported <em>exactly once</em> by a larger feature module.</p>
+<p>领域特性模块的典型用法是<em>只被</em>更大的特性模块<em>导入一次</em>。</p>
+<p>They might be imported by the root <code>AppModule</code> of a small application that lacks routing.</p>
+<p>对于缺少路由的小型应用，它们可能只会被根模块<code>AppModule</code>导入一次。</p>
+<div class="l-sub-section"><p>For an example, see the <a href="../guide/ngmodule.html#contact-module-v1">Make <em>Contact</em> a feature module</a>
+section of the <a href="../guide/ngmodule.html">NgModules</a> page, before routing is introduced.</p>
+<p>比如<a href="../guide/ngmodule.html">Angular模块</a>章的<a href="../guide/ngmodule.html#contact-module-v1"><em>ContactModule</em></a>。</p>
+</div></td></tr><tr><td style="vertical-align: top"><a id="routed-feature-module"></a><p>Routed</p><p>路由特性模块</p></td><td><p><em>Routed feature modules</em> are <em>domain feature modules</em>
+whose top components are the <em>targets of router navigation routes</em>.</p>
+<p><em>路由特性模块</em>属于<em>领域特性模块</em>的一种，它的顶层组件是<strong>路由器导航时的路由目标</strong>。</p>
+<p>All lazy-loaded modules are routed feature modules by definition.</p>
+<p>根据这个定义，所有惰性加载的模块都是路由特性模块。</p>
+<p>This page&#39;s <code>ContactModule</code>, <code>HeroModule</code>, and <code>CrisisModule</code> are routed feature modules.</p>
+<p>这里的<code>ContactModule</code>、<code>HeroModule</code>和<code>CrisisModule</code>都是路由特性模块。</p>
+<p>Routed feature modules <em>shouldn&#39;t export anything</em>.
+They don&#39;t have to because their components never appear in the template of an external component.</p>
+<p>路由特性模块<em>不应该导出任何东西</em>，这是因为它们中的任何组件都不可能出现在外部组件的模板中。</p>
+<p>A lazy-loaded routed feature module should <em>not be imported</em> by any module.
+Doing so would trigger an eager load, defeating the purpose of lazy loading.
+<code>HeroModule</code> and <code>CrisisModule</code> are lazy loaded. They aren&#39;t mentioned among the <code>AppModule</code> imports.</p>
+<p>惰性加载的路由特性模块也不应该被任何模块<em>导出</em>。
+那么做会触发一次主动加载，破坏了我们惰性加载的目的。
+<code>HeroModule</code>和<code>CrisisModule</code>是惰性加载的。它们没有出现在<code>AppModule</code>的<code>imports</code>中。</p>
+<p>But an eager loaded routed feature module must be imported by another module
+so that the compiler learns about its components.
+<code>ContactModule</code> is eager loaded and therefore listed among the <code>AppModule</code> imports.</p>
+<p>而主动加载的路由特性模块必须被其它模块导入，以便编译器了解它有哪些组件。
+<code>ContactModule</code>就是主动加载的，因此它也被列在了<code>AppModule</code>的<code>imports</code>中。</p>
+<p>Routed Feature Modules rarely have <em>providers</em> for reasons <a href="#q-why-bad">explained earlier</a>.
+When they do, the lifetime of the provided services
+should be the same as the lifetime of the module.</p>
+<p>路由特性模块很少会有<code>providers</code>，理由<a href="#q-why-bad">前面解释过</a>。
+        如果要那么做，它所提供的服务就应该与模块具有相同的生命周期。</p>
+<p>Don&#39;t provide application-wide singleton services in a routed feature module
+or in a module that the routed module imports.</p>
+<p>不要在路由特性模块及其导入的模块中提供<em>全应用级</em>的单例服务。</p>
+</td></tr><tr><td style="vertical-align: top"><a id="routing-module"></a><p>Routing</p><p>路由模块</p></td><td><p>A <a href="../guide/router.html#routing-module">routing module</a> <em>provides routing configuration</em> for another module.</p>
+<p><a href="../guide/router.html#routing-module">路由模块</a>为其它模块<strong>提供路由配置</strong>。</p>
+<p>A routing module separates routing concerns from its companion module.</p>
+<p>路由模块将路由配置从它的关联模块分离开来。</p>
+<p>A routing module typically does the following:</p>
+<p>路由模块通常会做这些：</p>
+<ul>
+<li><p>Defines routes.</p>
+<p>定义路由。</p>
+</li>
+<li><p>Adds router configuration to the module&#39;s <code>imports</code>.</p>
+<p>添加路由配置到模块的<code>imports</code>中。</p>
+</li>
+<li><p>Re-exports <code>RouterModule</code>.</p>
+<p>重新导出<code>RouterModule</code>。</p>
+</li>
+<li><p>Adds guard and resolver service providers to the module&#39;s <code>providers</code>.</p>
+<p>添加守卫和解析器服务提供商到模块的<code>providers</code>。</p>
+</li>
+</ul>
+<p>The name of the routing module should parallel the name of its companion module, using the suffix &quot;Routing&quot;.
+For example, <code>FooModule</code> in <code>foo.module.ts</code> has a routing module named <code>FooRoutingModule</code>
+in <code>foo-routing.module.ts</code></p>
+<p>路由模块的名字应该和它的关联模块平行，比如使用“Routing”前缀，
+<code>foo.module.ts</code>中的<code>FooModule</code>有名为<code>FooRoutingModule</code>的路由模块，所属文件名为<code>foo-routing.module.ts</code>。</p>
+<p>If the companion module is the <em>root</em> <code>AppModule</code>, 
+the <code>AppRoutingModule</code> adds router configuration to its <code>imports</code> with <code>RouterModule.forRoot(routes)</code>. 
+All other routing modules are children that import <code>RouterModule.forChild(routes)</code>.</p>
+<p>如果关联模块是<strong>根</strong><code>AppModule</code>，那么在<code>AppRoutingModule</code>的<code>imports</code>中，添加<code>RouterModule.forRoot(routes)</code>来配置路由。
+所有其它路由模块都是子级，导入<code>RouterModule.forChild(routes)</code>。</p>
+<p>A routing module re-exports the <code>RouterModule</code> as a convenience
+so that components of the companion module have access to
+router directives such as <code>RouterLink</code> and <code>RouterOutlet</code>.</p>
+<p>路由模块顺便重新导出<code>RouterModule</code>，这样关联模块的组件可以访问路由指令，比如<code>RouterLink</code>和<code>RouterOutlet</code>。</p>
+<p>A routing module <em>should not have its own <code>declarations</code></em>. 
+ Components, directives, and pipes are the <em>responsibility of the feature module</em>,
+not the <em>routing</em> module.</p>
+<p>路由模块<strong>不应该有自己的<code>declarations</code>！</strong>。组件、指令和管道是<strong>特性模块的责任</strong>，不属于路由模块。</p>
+<p>A routing module should <em>only</em> be imported by its companion module.</p>
+<p>路由模块应该<strong>只</strong>被它的关联模块导入。</p>
+<p>The <code>AppRoutingModule</code>, <code>ContactRoutingModule</code>, and <code>HeroRoutingModule</code> are good examples.</p>
+<p><code>AppRoutingModule</code>、<code>ContactRoutingModule</code>和`HeroRoutingModule是很好的例子。</p>
+<div class="l-sub-section"><p>See also <a href="../guide/router.html#why-routing-module">Do you need a <em>Routing Module</em>?</a> on the
+<a href="../guide/router.html">Routing &amp; Navigation</a> page.</p>
+<p>参见<a href="../guide/router.html">路由与导航</a>一章的“<a href="../guide/router.html#why-routing-module">你需要<strong>路由模块</strong>吗?</a>”部分。</p>
+</div></td></tr><tr><td style="vertical-align: top"><a id="service-feature-module"></a><p>Service</p><p>服务</p></td><td><p>Service modules <em>provide utility services</em> such as data access and messaging.</p>
+<p><em>服务模块</em>用于<strong>提供工具类服务</strong>，比如数据访问和消息等。</p>
+<p>Ideally, they consist entirely of <em>providers</em> and have no <em>declarations</em>.
+The <code>CoreModule</code> and Angular&#39;s <code>HttpModule</code> are good examples.</p>
+<p>理想情况下，它们应该完全由<code>providers</code>组成，不应该包括<code>declarations</code>。
+<code>CoreModule</code>和Angular的<code>HttpModule</code>就是很好的例子。</p>
+<p>Service Modules should <em>only</em> be imported by the root <code>AppModule</code>.</p>
+<p>服务模块应该<em>只被</em>根模块<code>AppModule</code>导入。</p>
+<p>Do <em>not</em> import service modules in other feature modules.
+If you deviate from this guideline, know what you&#39;re doing and why.</p>
+<p><em>不要</em>在任何特性模块中导入它们。
+如果你要违背这条指导原则，请务必想清楚你在做什么，并要有充分的理由。</p>
+</td></tr><tr><td style="vertical-align: top"><a id="widget-feature-module"></a><p>Widget</p><p>窗口部件</p></td><td><p>A widget module makes <em>components, directives, and pipes</em> available to external modules.</p>
+<p><em>窗口部件</em>模块导出能用供外部模块使用的<strong>组件、指令和管道</strong>。</p>
+<p><code>CommonModule</code> and <code>SharedModule</code> are widget modules.
+Many third-party UI component libraries are widget modules.</p>
+<p><code>CommonModule</code>和<code>SharedModule</code>都是窗口部件模块。
+很多第三方UI组件库都是窗口部件模块。</p>
+<p>A widget module should consist entirely of <em>declarations</em>, most of them exported.</p>
+<p>部件模块应该只有<code>declarations</code>，并导出里面的绝大多数声明。</p>
+<p>A widget module should rarely have <em>providers</em>.
+If you deviate from this guideline, know what you&#39;re doing and why.</p>
+<p>窗口部件模块很少会有<code>providers</code>。
+如果你要违背这条指导原则，请务必想清楚你在做什么，并要有充分的理由。</p>
+<p>Import widget modules in any module whose component templates need the widgets.</p>
+<p>如果任何模块的组件模板中需要用到这些窗口部件，就请导入相应的窗口部件模块。</p>
+</td></tr></table><p>The following table summarizes the key characteristics of each <em>feature module</em> group.</p>
+<p>下表是对各种<em>特性模块</em>的关键特征汇总。</p>
+<div class="l-sub-section"><p>Real-world modules are often hybrids that knowingly deviate from these guidelines.</p>
+<p>真实世界中的模块可能会违背这些分类法，混杂使用它们。</p>
+</div><table><tr><th><p>Feature Module</p><p>特性模块</p></th><th><p>Declarations</p><p>声明`declarations`</p></th><th><p>Providers</p><p>提供商`providers`</p></th><th><p>Exports</p><p>导出什么</p></th><th><p>Imported By</p><p>被谁导入</p></th><th><p>Examples</p><p>范例</p></th></tr><tr><td><p>Domain</p><p>领域</p></td><td><p>Yes</p><p>有</p></td><td><p>Rare</p><p>罕见</p></td><td><p>Top component</p><p>顶级组件</p></td><td><p>Feature, <code>AppModule</code></p><p>特性模块和<code>AppModule</code></p></td><td><p><code>ContactModule</code> (before routing)</p><p><code>ContactModule</code>（路由之前的那个例子）</p></td></tr><tr><td><p>Routed</p><p>路由</p></td><td><p>Yes</p><p>有</p></td><td><p>Rare</p><p>罕见</p></td><td><p>No</p><p>无</p></td><td><p>Nobody</p><p>无</p></td><td><p><code>ContactModule</code>, <code>HeroModule</code>, <code>CrisisModule</code></p><p><code>ContactModule</code>、<code>HeroModule</code>、<code>CrisisModule</code></p></td></tr><tr><td><p>Routing</p><p>路由</p></td><td><p>No</p><p>无</p></td><td><p>Yes</p><p>有</p></td><td><p>No</p><p>无</p></td><td><p><code>AppModule</code></p><p><code>AppModule</code></p></td><td><p><code>HttpModule</code>, <code>CoreModule</code></p><p><code>HttpModule</code>、<code>CoreModule</code></p></td></tr><tr><td><p>Service</p><p>服务</p></td><td><p>No</p><p>无</p></td><td><p>Yes</p><p>有</p></td><td><p>No</p><p>无</p></td><td><p><code>AppModule</code></p><p><code>AppModule</code></p></td><td><p><code>HttpModule</code>, <code>CoreModule</code></p><p><code>HttpModule</code>、<code>CoreModule</code></p></td></tr><tr><td><p>Widget</p><p>窗口部件</p></td><td><p>Yes</p><p>有</p></td><td><p>Rare</p><p>罕见</p></td><td><p>Yes</p><p>有</p></td><td><p>Feature</p><p>特性模块</p></td><td><p><code>CommonModule</code>, <code>SharedModule</code></p><p><code>CommonModule</code>、<code>SharedModule</code></p></td></tr></table><div class="l-hr"></div><a id="q-ng-vs-js-modules"></a><div class="l-main-section"></div><h2 id="what-s-the-difference-between-angular-and-javascript-modules-">What&#39;s the difference between Angular and JavaScript Modules?</h2>
+<h3 id="angular-javascript-">Angular模块和JavaScript模块有什么区别？</h3>
+<p>Angular and JavaScript are different yet complementary module systems.</p>
+<p>Angular和JavaScript是两种不同但互补的模块体系。</p>
+<p>In modern JavaScript, every file is a <em>module</em>
+(see the <a href="http://exploringjs.com/es6/ch_modules.html">Modules</a> page of the Exploring ES6 website).
+Within each file you write an <code>export</code> statement to make parts of the module public:</p>
+<p>在现代JavaScript中，每个文件都是模块（参见<a href="http://exploringjs.com/es6/ch_modules.html">模块</a>）。
+在每个文件中，我们写一个<code>export</code>语句将模块的一部分公开。</p>
+<code-example format=".">export class AppComponent { ... }
+</code-example><p>Then you <code>import</code> a part in another module:</p>
+<p>然后，我们可以在其它模块中<code>import</code>那部分：</p>
+<code-example format=".">import { AppComponent }  from './app.component';
+</code-example><p>This kind of modularity is a feature of the <em>JavaScript language</em>.</p>
+<p>这种模块化方式是<em>JavaScript</em>语言中的特性。</p>
+<p>An <em>NgModule</em> is a feature of <em>Angular</em> itself.</p>
+<p>而<em>Angular模块</em>是<em>Angular本身</em>的特性。</p>
+<p>Angular&#39;s <code>NgModule</code> also has <code>imports</code> and <code>exports</code> and they serve a similar purpose.</p>
+<p>Angular的<code>NgModule</code>也有自己的<code>imports</code>和<code>exports</code>来达到类似的目的。</p>
+<p>You <em>import</em> other NgModules so you can use their exported classes in component templates.
+You <em>export</em> this NgModule&#39;s classes so they can be imported and used by components of <em>other</em> modules.</p>
+<p>我们可以<em>导入</em>其它Angular模块，以便在当前模块的组件模板中使用它们导出的类。
+我们可以<em>导出</em>当前Angular模块中的类，以便其它模块可以导入它们，并用在自己的组件模板中。</p>
+<p>The NgModule classes differ from JavaScript module class in the following key ways:</p>
+<p>Angular的模块类与JavaScript的模块类有三个主要的不同点：</p>
+<ul>
+<li><p>An NgModule bounds <a href="#q-declarable">declarable classes</a> only.
+Declarables are the only classes that matter to the <a href="#q-angular-compiler">Angular compiler</a>.</p>
+<p>Angular模块只绑定了<a href="#q-declarable"><em>可声明的类</em></a>，这些可声明的类只是供<a href="#q-angular-compiler">Angular编译器</a>用的。</p>
+</li>
+<li><p>Instead of defining all member classes in one giant file (as in a JavaScript module),
+ you list the module&#39;s classes in the <code>@NgModule.declarations</code> list.</p>
+<p> JavaScript模块把所有成员类都定义在一个巨型文件，Angular模块则把自己的类都列在<code>@NgModule.declarations</code>数组中。</p>
+</li>
+<li><p>An NgModule can only export the <a href="#q-declarable">declarable classes</a>
+it owns or imports from other modules.
+It doesn&#39;t declare or export any other kind of class.</p>
+<p> Angular模块只能导出<a href="#q-declarable"><em>可声明的类</em></a>。这可能是它自己拥有的也可能是从其它模块中导入的。它不会声明或导出任何其它类型的类。</p>
+</li>
+</ul>
+<p>The NgModule is also special in another way.
+Unlike JavaScript modules, an NgModule can extend the <em>entire</em> application with services
+by adding providers to the <code>@NgModule.providers</code> list.
+<!-- CF: Should this sentence be a bullet point in the list above? --></p>
+<p>Angular模块还有些别的特殊之处。
+不同于JavaScript模块，Angular模块可以通过把服务提供商添加到<code>@NgModule.providers</code>数组中来扩展<em>整个</em>应用提供的服务。</p>
+<div class="alert is-important"><p>The provided services don&#39;t belong to the module nor are they scoped to the declared classes.
+They are available <em>everywhere</em>.</p>
+<p>这些提供的服务不仅仅从属于当前模块，其作用范围也不局限于模块中声明的类。它们<em>在哪里</em>都能用。</p>
+</div><p>Here&#39;s an <em>NgModule</em> class with imports, exports, and declarations.</p>
+<p>这里是一个带有<code>imports</code>、<code>exports</code>和<code>declarations</code>的<em>Angular模块</em>类。</p>
+<div class="code-example"><code-example language="ts" format="">@NgModule({
+  imports:      [ CommonModule, FormsModule ],
+  declarations: [ ContactComponent, HighlightDirective, AwesomePipe ],
+  exports:      [ ContactComponent ],
+  providers:    [ ContactService ]
+})
+export class ContactModule { }
+</code-example></div><p>Of course you use <em>JavaScript</em> modules to write <em>Angular</em> modules as seen in the complete <code>contact.module.ts</code> file:</p>
+<p>当然，我们同样得用<em>JavaScript</em>模块来写<em>Angular模块</em>，就像在最终版<code>contact.module.ts</code>文件中所见到的：</p>
+<div class="code-example"><header><h4>src/app/contact/contact.module.ts</h4></header><code-example language="ts" format="">import { NgModule }           from &#39;@angular/core&#39;;
+import { CommonModule }       from &#39;@angular/common&#39;;
+import { FormsModule }        from &#39;@angular/forms&#39;;
+
+import { AwesomePipe }        from &#39;./awesome.pipe&#39;;
+
+import
+       { ContactComponent }   from &#39;./contact.component&#39;;
+import { ContactService }     from &#39;./contact.service&#39;;
+import { HighlightDirective } from &#39;./highlight.directive&#39;;
+
+@NgModule({
+  imports:      [ CommonModule, FormsModule ],
+  declarations: [ ContactComponent, HighlightDirective, AwesomePipe ],
+  exports:      [ ContactComponent ],
+  providers:    [ ContactService ]
+})
+export class ContactModule { }
+</code-example></div><div class="l-hr"></div><a id="q-template-reference"></a><div class="l-main-section"></div><h2 id="how-does-angular-find-components-directives-and-pipes-in-a-template-br-what-is-a-i-b-template-reference-b-i-">How does Angular find components, directives, and pipes in a template?<br>What is a <i><b>template reference</b></i>?</h2>
+<h2 id="angular-">Angular 如何查找模板中的组件、指令和管道？什么是 <strong><em>模板引用</em></strong> ？</h2>
+<p>The <a href="#q-angular-compiler">Angular compiler</a> looks inside component templates
+for other components, directives, and pipes. When it finds one, that&#39;s a &quot;template reference&quot;.</p>
+<p><a href="#q-angular-compiler">Angular编译器</a>在组件模板内查找其它组件、指令和管道。一旦找到了，那就是一个“模板引用”。</p>
+<p>The Angular compiler finds a component or directive in a template when it can match the <em>selector</em> of that
+component or directive to some HTML in that template.</p>
+<p>Angular编译器通过在一个模板的HTML中匹配组件或指令的<strong>选择器（selector）</strong>，来查找组件或指令。</p>
+<p>The compiler finds a pipe if the pipe&#39;s <em>name</em> appears within the pipe syntax of the template HTML.</p>
+<p>编译器通过分析模板HTML中的管道语法中是否出现了特定的管道名来查找对应的管道。</p>
+<p>Angular only matches selectors and pipe names for classes that are declared by this module
+or exported by a module that this module imports.</p>
+<p>Angular只查询两种组件、指令或管道：1）那些在当前模块中声明过的，以及2）那些被当前模块导入的模块所导出的。</p>
+<div class="l-hr"></div><a id="q-angular-compiler"></a><div class="l-main-section"></div><h2 id="what-is-the-angular-compiler-">What is the Angular compiler?</h2>
+<h3 id="-angular-">什么是Angular编译器？</h3>
+<p>The Angular compiler converts the application code you write into highly performant JavaScript code.
+The <code>@NgModule</code> metadata play an important role in guiding the compilation process.</p>
+<p><em>Angular编译器</em>会把我们所写的应用代码转换成高性能的JavaScript代码。
+在编译过程中，<code>@NgModule</code>的元数据扮演了很重要的角色。</p>
+<p>The code you write isn&#39;t immediately executable.
+Consider <em>components</em>.
+Components have templates that contain custom elements, attribute directives, Angular binding declarations,
+and some peculiar syntax that clearly isn&#39;t native HTML.</p>
+<p>我们写的代码是无法直接执行的。
+比如<strong>组件</strong>。
+组件有一个模板，其中包含了自定义元素、属性型指令、Angular绑定声明和一些显然不属于原生HTML的古怪语法。</p>
+<p>The Angular compiler reads the template markup,
+combines it with the corresponding component class code, and emits <em>component factories</em>.</p>
+<p><em>Angular编译器</em>读取模板的HTML，把它和相应的组件类代码组合在一起，并产出<em>组件工厂</em>。</p>
+<p>A component factory creates a pure, 100% JavaScript representation
+of the component that incorporates everything described in its <code>@Component</code> metadata:
+the HTML, the binding instructions, the attached styles.</p>
+<p>组件工厂为组件创建纯粹的、100% JavaScript的表示形式，它包含了<code>@Component</code>元数据中描述的一切：HTML、绑定指令、附属的样式等……</p>
+<p>Because <em>directives</em> and <em>pipes</em> appear in component templates,
+the Angular compiler incorporates them into compiled component code too.</p>
+<p>由于<strong>指令</strong>和<strong>管道</strong>都出现在组件模板中，<em>Angular编译器*</em>也同样会把它们组合到编译成的组件代码中。</p>
+<p><code>@NgModule</code> metadata tells the Angular compiler what components to compile for this module and
+how to link this module with other modules.</p>
+<p><code>@NgModule</code>元数据告诉<em>Angular编译器</em>要为当前模块编译哪些组件，以及如何把当前模块和其它模块链接起来。</p>
+<div class="l-hr"></div><a id="q-ngmodule-api"></a><div class="l-main-section"></div><h2 id="ngmodule-api">NgModule API</h2>
+<p>The following table summarizes the <code>NgModule</code> metadata properties.</p>
+<p>下面是<code>NgModule</code>元数据中属性的汇总表：</p>
+<!--export interface NgModuleMetadataType {
+  providers?: any[];
+  declarations?: Array<Type|any[]>;
+  imports?: Array<Type|ModuleWithProviders|any[]>;
+  exports?: Array<Type|any[]>;
+  entryComponents?: Array<Type|any[]>;
+  bootstrap?: Array<Type|any[]>;
+  schemas?: Array<SchemaMetadata|any[]>;
+}
+--><table><tr><th><p>Property</p><p>属性</p></th><th><p>Description</p><p>描述</p></th></tr><tr><td style="vertical-align: top"><code>declarations</code></td><td><p>A list of <a href="#q-declarable">declarable</a> classes,
+the <em>component</em>, <em>directive</em>, and <em>pipe</em> classes that <em>belong to this module</em>.</p>
+<p><a href="#q-declarable">可声明类</a>的列表，也就是属于当前模块的<strong>组件</strong>、<strong>指令</strong>和<strong>管道</strong>类。</p>
+<p>These declared classes are visible within the module but invisible to
+components in a different module unless they are <em>exported</em> from this module and
+the other module <em>imports</em> this one.</p>
+<p>这些声明的类对组件内部可见，但是对其它模块不可见，除非 (a) 这些类从当前模块中<em>导出过</em>，并且 (b) 其它模块导入了当前模块。</p>
+<p>Components, directives, and pipes must belong to <em>exactly</em> one module.
+The compiler emits an error if you try to declare the same class in more than one module.</p>
+<p>组件、指令和管道<em>只能</em>属于一个模块。
+如果尝试把同一个类声明在多个模块中，编译器就会报告一个错误。</p>
+<p><em>Do not re-declare a class imported from another module.</em></p>
+<p><strong>不要重新声明从其它模块中导入的类。</strong></p>
+</td></tr><tr><td style="vertical-align: top"><code>providers</code></td><td><p>A list of dependency-injection providers.</p>
+<p>依赖注入提供商的列表。</p>
+<p>Angular registers these providers with the root injector of the module&#39;s execution context.
+That&#39;s the application&#39;s root injector for all modules loaded when the application starts.</p>
+<p>Angular会在当前模块执行环境的根注入器中注册这些提供商。
+那是应用程序在启动时为其加载的所有模块提供的根注入器。</p>
+<p>Angular can inject one of these provider services into any component in the application.
+If this module or any module loaded at launch provides the <code>HeroService</code>,
+Angular can inject the same <code>HeroService</code> intance into any app component.</p>
+<p>Angular可以把这些提供商提供的服务注入到应用中的任何组件中。
+如果该模块提供了<code>HeroService</code>或启动时被加载的任何模块提供了<code>HeroService</code>，那么Angular就会把同一个<code>HeroService</code>实例注入到应用中的任何组件中。</p>
+<p>A lazy-loaded module has its own sub-root injector which typically
+is a direct child of the application root injector.</p>
+<p>惰性加载模块有自己的子注入器，通常它是应用的根注入器的直接子级。</p>
+<p>Lazy-loaded services are scoped to the lazy module&#39;s injector.
+If a lazy-loaded module also provides the <code>HeroService</code>,
+any component created within that module&#39;s context (such as by router navigation)
+gets the local instance of the service, not the instance in the root application injector.</p>
+<p>惰性加载的服务，其作用范围仅限于惰性加载模块的注入器中。
+如果惰性加载的模块也提供了<code>HeroService</code>，那么在该模块的环境中创建的任何组件（比如通过路由器导航），都会得到该服务的一个局部实例，而不是来自应用程序根注入器的那个全局实例。</p>
+<p>Components in external modules continue to receive the instance created for the application root.</p>
+<p>外部模块中的组件仍然会取得由应用的根注入器创建的那个实例。</p>
+</td></tr><tr><td style="vertical-align: top"><code>imports</code></td><td><p>A list of supporting modules.</p>
+<p>支撑模块的列表。</p>
+<p>Specifically, the list of modules whose exported components, directives, or pipes
+are referenced by the component templates declared in this module.</p>
+<p>特别是包含当前模块中的组件模板引用过的组件、指令或管道的那些模块的列表。</p>
+<p>A component template can <a href="#q-template-reference">reference</a> another component, directive, or pipe
+when the referenced class is declared in this module
+or the class was imported from another module.</p>
+<p>在两种情况下组件模板可以<a href="#q-template-reference">引用</a>其它组件、指令或管道：或者所引用的类是声明在当前模块中的，或者那个类已经从其它模块中导入进来了。</p>
+<p>A component can use the <code>NgIf</code> and <code>NgFor</code> directives only because its parent module
+imported the Angular <code>CommonModule</code> (perhaps indirectly by importing <code>BrowserModule</code>).</p>
+<p>组件可以使用<code>NgIf</code>和<code>NgFor</code>指令，只是因为它所在的模块导入了Angular的<code>CommonModule</code>（也可能是通过导入<code>BrowserModule</code>而间接导入的）。</p>
+<p>You can import many standard directives with the <code>CommonModule</code>
+but some familiar directives belong to other modules.
+A component template can bind with <code>[(ngModel)]</code> only after importing the Angular <code>FormsModule</code>.</p>
+<p>通过<code>CommonModule</code>，我们可以导入很多标准指令。
+但是也有一些熟悉的指令是属于其它模块的。
+比如组件只有导入了Angular的<code>FormsModule</code>才能在组件模板中用<code>[(ngModel)]</code>进行绑定。</p>
+</td></tr><tr><td style="vertical-align: top"><code>exports</code></td><td><p>A list of declarations&mdash;<em>component</em>, <em>directive</em>, and <em>pipe</em> classes&mdash;that
+an importing module can use.</p>
+<p>可供导入了自己的模块使用的可声明对象（<strong>组件</strong>、<strong>指令</strong>、<strong>管道类</strong>）的列表。</p>
+<p>Exported declarations are the module&#39;s <em>public API</em>.
+A component in another module can <a href="#q-template-reference">reference</a> <em>this</em> module&#39;s <code>HeroComponent</code>
+if it imports this module and this module exports <code>HeroComponent</code>.</p>
+<p>这些导出的可声明对象就是模块的<em>公开API</em>。
+如果 (a) 其它模块导入了当前模块，并且 (b) 当前模块导出了<code>HeroComponent</code>，
+那么其它模块中的组件就可以<a href="#q-template-reference">引用</a>来自当前模块的<code>HeroComponent</code>。</p>
+<p>Declarations are private by default.
+If this module does <em>not</em> export <code>HeroComponent</code>, no other module can see it.</p>
+<p>可声明对象默认情况下是私有的。
+如果当前模块<em>没有</em>导出<code>HeroComponent</code>，那么没有任何其它模块能看到它。</p>
+<p>Importing a module does <em>not</em> automatically re-export the imported module&#39;s imports.
+Module &#39;B&#39; can&#39;t use <code>ngIf</code> just because it imported module <code>A</code> which imported <code>CommonModule</code>.
+Module &#39;B&#39; must import <code>CommonModule</code> itself.</p>
+<p>导入一个模块<em>并不会</em>自动重新导出这个模块导出的东西。
+模块&#39;B&#39;即使导入了模块<code>A</code>，而模块<code>A</code>中导入过<code>CommonModule</code>，它也没法使用<code>NgIf</code>。模块<code>B</code>必须自己导入<code>CommonModule</code>。</p>
+<p>A module can list another module among its <code>exports</code>, in which case
+all of that module&#39;s public components, directives, and pipes are exported.</p>
+<p>一个模块可以把另一个模块加入自己的<code>exports</code>列表中，这时，另一个模块的所有公开组件、指令和管道都会被导出。</p>
+<p><a href="#q-re-export">Re-export</a> makes module transitivity explicit.
+If Module &#39;A&#39; re-exports <code>CommonModule</code> and Module &#39;B&#39; imports Module &#39;A&#39;,
+Module &#39;B&#39; components can use <code>ngIf</code> even though &#39;B&#39; itself didn&#39;t import <code>CommonModule</code>.</p>
+<p><a href="#q-re-export">重新导出</a>可以让模块的传递性更加明确。
+如果模块<code>A</code>重新导出了<code>CommonModule</code>，然后模块<code>B</code>导入了模块<code>A</code>，那么模块<code>B</code>中的组件就能使用<code>NgIf</code>了，虽然模块<code>B</code>本身并没有导入过<code>CommonModule</code>。</p>
+</td></tr><tr><td style="vertical-align: top"><code>bootstrap</code></td><td><p>A list of components that can be bootstrapped.</p>
+<p>能被引导的组件列表。</p>
+<p>Usually there&#39;s only one component in this list, the <em>root component</em> of the application.</p>
+<p>通常，在这个列表中只有一个组件，也就是应用的<em>根组件</em>。</p>
+<p>Angular can launch with multiple bootstrap components,
+each with its own location in the host web page.</p>
+<p>Angular也可以引导多个引导组件，它们每一个都在宿主页面中有自己的位置。</p>
+<p>A bootstrap component is automatically an <code>entryComponent</code>.</p>
+<p>引导组件会自动成为<code>entryComponent</code>。</p>
+</td></tr><tr><td style="vertical-align: top"><code>entryComponents</code></td><td><p>A list of components that are <em>not</em> <a href="#q-template-reference">referenced</a> in a reachable component template.</p>
+<p>那些<em>没有</em>在任何可访问的组件的模板中<a href="#q-template-reference">引用过</a>的组件列表。</p>
+<p>Most developers never set this property.
+The <a href="#q-angular-compiler">Angular compiler</a> must know about every component actually used in the application.
+The compiler can discover most components by walking the tree of references
+from one component template to another.</p>
+<p>大多数开发人员从来没有设置过该属性。<a href="#q-angular-compiler"><em>Angular编译器</em></a>必须知道在应用中实际用过的每一个组件。
+通过遍历组件模板中的引用树，编译器可以自动找出大多数的组件。</p>
+<p>But there&#39;s always at least one component that&#39;s not referenced in any template:
+the root component, <code>AppComponent</code>, that you bootstrap to launch the app.
+That&#39;s why it&#39;s called an <em>entry component</em>.</p>
+<p>但是至少有一个组件不会被任何模板引用：根组件<code>AppComponent</code>，因为我们就是用它来引导本应用程序的。
+这也就是为什么它被称为<em>入口组件</em>。</p>
+<p>Routed components are also <em>entry components</em> because they aren&#39;t referenced in a template either.
+The router creates them and drops them into the DOM near a <code>&lt;router-outlet&gt;</code>.</p>
+<p>路由组件同样是<em>入口组件</em>，因为它们也不会被从模板中引用。
+路由器创建会它们，并把它们扔到DOM中的<code>&lt;router-outlet&gt;</code>。</p>
+<p>While the bootstrapped and routed components are <em>entry components</em>,
+you usually don&#39;t have to add them to a module&#39;s <code>entryComponents</code> list.</p>
+<p><em>引导组件</em>和<em>路由组件</em>都是<em>入口组件</em>，我们一般不用再把它们添加到模块的<code>entryComponents</code>列表中。</p>
+<p>Angular automatically adds components in the module&#39;s <code>bootstrap</code> list to the <code>entryComponents</code> list.
+The <code>RouterModule</code> adds routed components to that list.</p>
+<p>Angular会自动把模块的<code>bootstrap</code>列表中的组件添加到<code>entryComponents</code>列表中。
+       <code>RouterModule</code>同样会把路由组件添加到<code>entryComponents</code>列表中。</p>
+<p>That leaves only the following sources of undiscoverable components:</p>
+<p>这样，那些无法自动发现的组件就只剩下这些来源了：</p>
+<ul>
+<li><p>Components bootstrapped using one of the imperative techniques.</p>
+<p>使用某种命令式技巧引导的组件。</p>
+</li>
+<li><p>Components dynamically loaded into the DOM by some means other than the router.</p>
+<p>使用路由器之外的手段动态加载到DOM中的组件。</p>
+</li>
+</ul>
+<p>Both are advanced techniques that few developers ever employ.
+If you are one of those few, you must add these components to the
+<code>entryComponents</code> list yourself, either programmatically or by hand.</p>
+<p>所有这些高级技巧是只有极少数开发人员才会去用的。
+如果你是其中的一位，那么你就不得不自行把这些组件添加到<code>entryComponents</code>列表中 —— 无论是用程序添加还是手动添加。</p>
+</td></tr></table></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/cookbook/ngmodule-faq.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:57:47 GMT -->
+</html>

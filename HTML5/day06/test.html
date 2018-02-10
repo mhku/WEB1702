@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wordlist{
+            list-style: none;
+            padding: 0px;
+
+        }
+        #wordlist span{
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+            padding-right: 1em;
+        }
+    </style>
+</head>
+<body>
+<h3>开始测试</h3>
+<ul id="wordlist">
+    <!--<li > <span>red</span> <input type=""/> </li>-->
+    <!--<li > <span>red</span> <input type=""/> </li>-->
+    <!--<li > <span>red</span> <input type=""/> </li>-->
+    <!--<li > <span>pink</span> <input type=""/> </li>-->
+
+</ul>
+<input id="bt" type="button" value="提交答案"/>
+</body>
+<script >
+    var html='';
+    for(var i=0;i<localStorage.length;i++){
+        var key=localStorage.key(i);
+        html=`
+            <li > <span>${key}</span> <input /> </li>
+        `;
+        wordlist.innerHTML=html;
+
+    }
+    bt.onclick=function(){
+        var total=localStorage.length;
+        var correct=0;
+        var inpuList=document.querySelectorAll("#wordlist input");
+        for(var i=0;i<inpuList.length;i++){
+            var userInput=inpuList[i].value;
+            var key=localStorage.key(i);
+            var value=localStorage[key];
+            if(userInput===value){
+                correct++;
+            }
+        }
+        sessionStorage['totalCount']=total;
+        sessionStorage['correctCount']=total;
+
+        location.href=result.html;
+
+    }
+</script>
+</html>

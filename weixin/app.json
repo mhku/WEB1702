@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#064",
+    "navigationBarTitleText": "我喜欢你，逗逼3号",
+    "navigationBarTextStyle":"red"
+  }
+}
+  

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body>
+
+<ion-side-menus>
+  <!-- 实现一个侧边栏菜单-->
+  <ion-side-menu class="positive-bg">
+    <button class="button-icon ion-close" menu-close="left"></button>
+    <ul class="list list-inset">
+      <li class="item">个人中心</li>
+      <li class="item">帮助与关于</li>
+      <li class="item">退出登录</li>
+    </ul>
+  </ion-side-menu>
+
+  <!-- 再实现一个右边打开的侧边栏菜单-->
+  <ion-side-menu
+    width="100"
+    class="balanced-bg" side="right">
+    <ul class="list list-inset">
+      <li class="item">个人中心</li>
+      <li class="item">帮助与关于</li>
+      <li class="item">退出登录</li>
+    </ul>
+  </ion-side-menu>
+
+  <!-- 正文-->
+  <ion-side-menu-content>
+    <ion-header-bar>
+      <h1 class="title">header</h1>
+    </ion-header-bar>
+
+    <ion-content ng-controller="myCtrl">
+      <p>这是正文</p>
+      <button menu-toggle="left">操作侧边栏菜单</button>
+      <br/>
+      <button
+        ng-click="openLeft()"
+        class="button button-balanced">
+        打开左边的侧边栏菜单
+      </button>
+      <br/>
+      <button ng-click="operateRightMenu()"
+              class="button button-assertive">
+        操作右边侧边栏菜单
+      </button>
+    </ion-content>
+
+    <ion-footer-bar>
+      <h1 class="title">footer</h1>
+    </ion-footer-bar>
+  </ion-side-menu-content>
+</ion-side-menus>
+
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',
+  ['$scope','$ionicSideMenuDelegate',
+    function ($scope,$ionicSideMenuDelegate) {
+      //打开左边的侧边栏菜单
+      $scope.openLeft = function () {
+        $ionicSideMenuDelegate.toggleLeft(true);
+      }
+      
+      //操作右边的侧边栏菜单
+      $scope.operateRightMenu = function () {
+        $ionicSideMenuDelegate.toggleRight();
+      }
+      
+    }
+  ])
+
+</script>
+
+</body>
+</html>

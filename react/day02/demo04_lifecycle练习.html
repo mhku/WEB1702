@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var LifeCycleComponent = React.createClass({
+    getInitialState:function(){
+      return {opacityValue:0};
+    },
+    componentDidMount:function(){
+      console.log('组件已经挂载到DOM');
+      setInterval(
+        function(){
+          //不断的修改组件元素的透明度（初始化状态）
+          //读取状态中已有的值，处理
+          var nowValue = this.state.opacityValue;
+          nowValue = nowValue+0.1;
+          if(nowValue > 1)
+          {
+            nowValue = 0;
+          }
+
+          //修改状态
+          this.setState(
+            {opacityValue:nowValue},
+            function(){
+             console.log(this.state.opacityValue);
+            }
+          );
+
+        }.bind(this),
+        500
+       )
+    },
+    render:function(){
+      return <div
+      style={{opacity:this.state.opacityValue}}>
+        Hello LifeCycle
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <LifeCycleComponent></LifeCycleComponent>,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

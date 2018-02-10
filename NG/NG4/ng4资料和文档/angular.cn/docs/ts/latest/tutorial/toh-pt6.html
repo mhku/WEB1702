@@ -1,0 +1,1363 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/tutorial/toh-pt6.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:22 GMT -->
+<head><title>HTTP - ts - TUTORIAL</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="../guide/index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="../guide/setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="../guide/learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="../guide/architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="../guide/appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="../guide/displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="../guide/user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="../guide/forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="../guide/dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="../guide/template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="../guide/cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="../guide/style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="../guide/glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="../guide/change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent is-selected">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item is-selected"><a href="toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="../guide/animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../guide/animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="../guide/attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="../guide/browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="../guide/component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="../guide/deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="../guide/hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="../guide/reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="../guide/server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="../guide/lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="../guide/ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="../guide/npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="../guide/pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="../guide/router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="../guide/security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="../guide/setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="../guide/structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="../guide/testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="../guide/typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="../guide/upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="../guide/webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="toh-pt6.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/tutorial/toh-pt6.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/tutorial/toh-pt6.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">HTTP </h1><div class="clear"></div><h2 class="hero-subtitle">获取和保存数据</h2></header><div class="banner"><p class="text-body translated-cn">把服务和组件改为用 Angular 的 HTTP 服务实现</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>In this page, you&#39;ll make the following improvements.</p>
+<p>在这一章中，我们将进行如下增强：</p>
+<ul>
+<li><p>Get the hero data from a server.</p>
+<p>从服务器获取英雄数据。</p>
+</li>
+<li><p>Let users add, edit, and delete hero names.</p>
+<p>让用户添加、编辑和删除英雄名。</p>
+</li>
+<li><p>Save the changes to the server.</p>
+<p>把这些更改保存到服务器。</p>
+</li>
+</ul>
+<p>You&#39;ll teach the app to make corresponding HTTP calls to a remote server&#39;s web API.</p>
+<p>我们要让应用能够对远端服务器提供的Web API发起相应的HTTP调用。</p>
+<p>When you&#39;re done with this page, the app should look like this <live-example></live-example>.</p>
+<p>当我们完成这一章时，应用会变成这样：<live-example></live-example>。</p>
+<div class="l-main-section"></div><h2 id="where-you-left-off">Where you left off</h2>
+<h2 id="-">延续上一步教程</h2>
+<p>In the <a href="toh-pt5.html">previous page</a>, you learned to navigate between the dashboard and the fixed heroes list,
+editing a selected hero along the way.
+That&#39;s the starting point for this page.</p>
+<p>在<a href="toh-pt5.html">前一章</a>中，我们学会了在仪表盘和固定的英雄列表之间导航，并编辑选定的英雄。这也就是本章的起点。</p>
+<h2 id="keep-the-app-transpiling-and-running">Keep the app transpiling and running</h2>
+<h2 id="-">保持应用的转译与运行</h2>
+<p>Enter the following command in the terminal window:</p>
+<p>在终端窗口输入如下命令：</p>
+<code-example language="sh" class="code-shell">npm start
+</code-example><p>This command runs the TypeScript compiler in &quot;watch mode&quot;, recompiling automatically when the code changes.
+The command simultaneously launches the app in a browser and refreshes the browser when the code changes.</p>
+<p>这个命令会在“监听”模式下运行TypeScript编译器，当代码变化时，它会自动重新编译。
+  同时，该命令还会在浏览器中启动该应用，并且当代码变化时刷新浏览器。</p>
+<p>You can keep building the Tour of Heroes without pausing to recompile or refresh the browser.</p>
+<p>在后续构建《英雄指南》过程中，应用能持续运行，而不用中断服务来编译或刷新浏览器。</p>
+<div id="http-providers" class="l-main-section"></div><h1>Providing HTTP Services</h1><h1>提供 HTTP 服务</h1><p>The <code>HttpModule</code> is not a core Angular module.
+<code>HttpModule</code> is Angular&#39;s optional approach to web access. It exists as a separate add-on module called <code>@angular/http</code>
+and is shipped in a separate script file as part of the Angular npm package.</p>
+<p><code>HttpModule</code><strong><em>并不是</em></strong> Angular 的核心模块。
+  它是 Angular 用来进行 Web 访问的一种可选方式，并位于一个名叫 <code>@angular/http</code> 的独立附属模块中，并作为 Angular 的 npm 包之一而发布出来。</p>
+<p>You&#39;re ready to import from <code>@angular/http</code> because <code>systemjs.config</code> configured <em>SystemJS</em> to load that library when you need it.</p>
+<p><code>systemjs.config</code>中已经配置好了 <em>SystemJS</em>，并在必要时加载它，因此我们已经准备好从<code>@angular/http</code>中导入它了。</p>
+<h2 id="register-for-http-services">Register for HTTP services</h2>
+<h2 id="-http-">注册 <em>HTTP</em> 服务</h2>
+<p>The app will depend on the Angular <code>http</code> service, which itself depends on other supporting services.
+The <code>HttpModule</code> from the <code>@angular/http</code> library holds providers for a complete set of HTTP services.</p>
+<p>我们的应用将会依赖于 Angular 的<code>http</code>服务，它本身又依赖于其它支持类服务。
+    来自<code>@angular/http</code>库中的<code>HttpModule</code>保存着这些 HTTP 相关服务提供商的全集。</p>
+<p>To allow access to these services from anywhere in the app,
+add <code>HttpModule</code> to the <code>imports</code> list of the <code>AppModule</code>.</p>
+<p>我们要能从本应用的任何地方访问这些服务，就要把<code>HttpModule</code>添加到<code>AppModule</code>的<code>imports</code>列表中。
+这里同时也是我们引导应用及其根组件<code>AppComponent</code>的地方。</p>
+<div class="code-example"><header><h4>src/app/app.module.ts (v1)</h4></header><code-example language="ts" format="linenums">import { NgModule }      from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+import { FormsModule }   from &#39;@angular/forms&#39;;
+import { HttpModule }    from &#39;@angular/http&#39;;
+
+import { AppRoutingModule } from &#39;./app-routing.module&#39;;
+
+import { AppComponent }         from &#39;./app.component&#39;;
+import { DashboardComponent }   from &#39;./dashboard.component&#39;;
+import { HeroesComponent }      from &#39;./heroes.component&#39;;
+import { HeroDetailComponent }  from &#39;./hero-detail.component&#39;;
+import { HeroService }          from &#39;./hero.service&#39;;
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HeroDetailComponent,
+    HeroesComponent,
+  ],
+  providers: [ HeroService ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><p>Notice that you also supply <code>HttpModule</code> as part of the <em>imports</em> array in root NgModule <code>AppModule</code>.</p>
+<p>注意，现在<code>HttpModule</code>已经是根模块<code>AppModule</code>的<code>imports</code>数组的一部分了。</p>
+<div class="l-main-section"></div><h2 id="simulate-the-web-api">Simulate the web API</h2>
+<h2 id="-web-api">模拟web API</h2>
+<p>We recommend registering app-wide services in the root
+<code>AppModule</code> <em>providers</em>.</p>
+<p>我们建议在根模块<code>AppModule</code>的<code>providers</code>数组中注册全应用级的服务。</p>
+<p>Until you have a web server that can handle requests for hero data,
+the HTTP client will fetch and save data from
+a mock service, the <em>in-memory web API</em>.</p>
+<p>在拥有一个能处理Web请求的服务器之前，我们可以先用HTTP客户端通过一个模拟（Mock）服务（内存Web API）来获取和保存数据。</p>
+<p>Update <code>src/app/app.module.ts</code> with this version, which uses the mock service:</p>
+<p>修改<code>src/app/app.module.ts</code>，让它使用这个模拟服务：</p>
+<div class="code-example"><header><h4>src/app/app.module.ts (v2)</h4></header><code-example language="ts" format="linenums">import { NgModule }      from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+import { FormsModule }   from &#39;@angular/forms&#39;;
+import { HttpModule }    from &#39;@angular/http&#39;;
+
+import { AppRoutingModule } from &#39;./app-routing.module&#39;;
+
+// Imports for loading &amp; configuring the in-memory web api
+import { InMemoryWebApiModule } from &#39;angular-in-memory-web-api&#39;;
+import { InMemoryDataService }  from &#39;./in-memory-data.service&#39;;
+
+import { AppComponent }         from &#39;./app.component&#39;;
+import { DashboardComponent }   from &#39;./dashboard.component&#39;;
+import { HeroesComponent }      from &#39;./heroes.component&#39;;
+import { HeroDetailComponent }  from &#39;./hero-detail.component&#39;;
+import { HeroService }          from &#39;./hero.service&#39;;
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HeroDetailComponent,
+    HeroesComponent,
+  ],
+  providers: [ HeroService ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><p>Rather than require a real API server, this example simulates communication with the remote server by adding the
+<a href="https://github.com/angular/in-memory-web-api" target="_blank" title="In-memory Web API">InMemoryWebApiModule</a>
+to the module <code>imports</code>, effectively  replacing the <code>Http</code> client&#39;s XHR backend service with an in-memory alternative.</p>
+<p>导入<code>InMemoryWebApiModule</code>并将其加入到模块的<code>imports</code>数组。
+  <code>InMemoryWebApiModule</code>将<code>Http</code>客户端默认的后端服务 &mdash;
+  这是一个辅助服务，负责与远程服务器对话 &mdash;
+  替换成了<em>内存 Web API</em>服务：</p>
+<div class="code-example"><code-example language="ts" format="">InMemoryWebApiModule.forRoot(InMemoryDataService),
+</code-example></div><p>The <code>forRoot()</code> configuration method takes an <code>InMemoryDataService</code> class
+that primes the in-memory database.
+Add the file <code>in-memory-data.service.ts</code> in <code>app</code> with the following content:</p>
+<p><code>forRoot()</code>配置方法需要<code>InMemoryDataService</code>类实例，用来向内存数据库填充数据：
+往<code>app</code>目录下新增一个文件<code>in-memory-data.service.ts</code>，填写下列内容：</p>
+<div class="code-example"><header><h4>src/app/in-memory-data.service.ts</h4></header><code-example language="ts" format="">import { InMemoryDbService } from &#39;angular-in-memory-web-api&#39;;
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    let heroes = [
+      {id: 11, name: &#39;Mr. Nice&#39;},
+      {id: 12, name: &#39;Narco&#39;},
+      {id: 13, name: &#39;Bombasto&#39;},
+      {id: 14, name: &#39;Celeritas&#39;},
+      {id: 15, name: &#39;Magneta&#39;},
+      {id: 16, name: &#39;RubberMan&#39;},
+      {id: 17, name: &#39;Dynama&#39;},
+      {id: 18, name: &#39;Dr IQ&#39;},
+      {id: 19, name: &#39;Magma&#39;},
+      {id: 20, name: &#39;Tornado&#39;}
+    ];
+    return {heroes};
+  }
+}
+</code-example></div><p>This file replaces <code>mock-heroes.ts</code>, which is now safe to delete.</p>
+<p>这个文件已经替换了<code>mock-heroes.ts</code>，可以删除<code>mock-heroes.ts</code>了。</p>
+<div class="alert is-helpful"><p>The in-memory web API is only useful in the early stages of development and for demonstrations such as this Tour of Heroes.
+Don&#39;t worry about the details of this backend substitution; you can
+skip it when you have a real web API server.</p>
+<p>内存Web API只在开发的早期阶段或写《英雄指南》这样的演示程序时才有用。有了它，你将来替换后端实现时就不用关心这些细节问题了。如果你已经有了一个真实的Web API服务器，尽管跳过它吧。</p>
+<p>Read more about the in-memory web API in the
+<a href="../guide/server-communication.html#in-mem-web-api">Appendix: Tour of Heroes in-memory web api</a>
+section of the <a href="../guide/server-communication.html#in-mem-web-api">HTTP Client</a> page.</p>
+<p>关于<em>内存 Web API</em> 的更多信息，见 <a href="../guide/server-communication.html#in-mem-web-api">附录：英雄指南Web API</a>中的<a href="../guide/server-communication.html#in-mem-web-api">HTTP 客户端</a>部分。</p>
+</div><div class="l-main-section"></div><h2 id="heroes-and-http">Heroes and HTTP</h2>
+<h2 id="-http">英雄与 HTTP</h2>
+<p>In the current <code>HeroService</code> implementation, a Promise resolved with mock heroes is returned.</p>
+<p>在目前的<code>HeroService</code>的实现中，返回的是一个能解析（resolve）成模拟英雄列表的承诺（Promise）。</p>
+<div class="code-example"><header><h4>src/app/hero.service.ts (old getHeroes)</h4></header><code-example language="ts" format="linenums">getHeroes(): Promise&lt;Hero[]&gt; {
+  return Promise.resolve(HEROES);
+}
+</code-example></div><p>This was implemented in anticipation of ultimately
+fetching heroes with an HTTP client, which must be an asynchronous operation.</p>
+<p>我们返回一个承诺 (Promise)，它用模拟版的英雄列表进行解析。
+  它当时可能看起来显得有点过于复杂，不过我们预料到总有这么一天会通过 HTTP 客户端来获取英雄数据，
+  而且我们知道，那一定是一个异步操作。</p>
+<p>Now convert <code>getHeroes()</code> to use HTTP.</p>
+<p>现在，我们把<code>getHeroes()</code>换成使用 HTTP。</p>
+<div class="code-example"><header><h4>src/app/hero.service.ts (updated getHeroes and new class members)</h4></header><code-example language="ts" format="linenums">  private heroesUrl = &#39;api/heroes&#39;;  // URL to web api
+
+  constructor(private http: Http) { }
+
+  getHeroes(): Promise&lt;Hero[]&gt; {
+    return this.http.get(this.heroesUrl)
+               .toPromise()
+               .then(response =&gt; response.json().data as Hero[])
+               .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise&lt;any&gt; {
+    console.error(&#39;An error occurred&#39;, error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+</code-example></div><p>Update the import statements as follows:</p>
+<p>更新后的导入声明如下：</p>
+<div class="code-example"><header><h4>src/app/hero.service.ts (updated imports)</h4></header><code-example language="ts" format="linenums">import { Injectable }    from &#39;@angular/core&#39;;
+import { Headers, Http } from &#39;@angular/http&#39;;
+
+import &#39;rxjs/add/operator/toPromise&#39;;
+
+import { Hero } from &#39;./hero&#39;;
+</code-example></div><p>Refresh the browser. The hero data should successfully load from the
+mock server.</p>
+<p>刷新浏览器后，英雄数据就会从模拟服务器被成功读取。</p>
+<h3 id="http-promise">HTTP Promise</h3>
+<p>The Angular <code>http.get</code> returns an RxJS <code>Observable</code>.
+<em>Observables</em> are a powerful way to manage asynchronous data flows.
+You&#39;ll read about <a href="#observables">Observables</a> later in this page.</p>
+<p>Angular 的<code>http.get</code>返回一个 RxJS 的<code>Observable</code>对象。
+<em>Observable（可观察对象）</em>是一个管理异步数据流的强力方式。
+后面我们还会进一步学习<a href="#observables">可观察对象</a>。</p>
+<p>For now, you&#39;ve converted the <code>Observable</code> to a <code>Promise</code> using the <code>toPromise</code> operator.</p>
+<p><em>现在</em>，我们先利用<code>toPromise</code>操作符把<code>Observable</code>直接转换成<code>Promise</code>对象，回到已经熟悉的地盘。</p>
+<div class="code-example"><code-example language="ts" format="">.toPromise()
+</code-example></div><p>The Angular <code>Observable</code> doesn&#39;t have a <code>toPromise</code> operator out of the box.</p>
+<p>不幸的是，Angular 的<code>Observable</code>并没有一个<code>toPromise</code>操作符... 没有打包在一起发布。Angular的<code>Observable</code>只是一个骨架实现。</p>
+<p>There are many operators like <code>toPromise</code> that extend <code>Observable</code> with useful capabilities.
+To use those capabilities, you have to add the operators themselves.
+That&#39;s as easy as importing them from the RxJS library like this:</p>
+<p>有很多像<code>toPromise</code>这样的操作符，用于扩展<code>Observable</code>，为其添加有用的能力。
+  如果我们希望得到那些能力，就得自己添加那些操作符。
+  那很容易，只要从 RxJS 库中导入它们就可以了，就像这样：</p>
+<div class="code-example"><code-example language="ts" format="">import &#39;rxjs/add/operator/toPromise&#39;;
+</code-example></div><div class="l-sub-section"><p>You&#39;ll add more operators, and learn why you must do so, <a href="#rxjs-imports">later in this tutorial</a>.</p>
+<p>我们还要添加更多的操作符，并且必须这么做，要了解其中的原因，参见<a href="#rxjs-imports">本章稍后的部分</a>。</p>
+</div><h3 id="extracting-the-data-in-the-then-callback">Extracting the data in the <em>then</em> callback</h3>
+<h3 id="-then-">在 <em>then</em> 回调中提取出数据</h3>
+<p>In the <em>Promise</em>&#39;s <code>then()</code> callback , you call the <code>json</code> method of the HTTP <code>Response</code> to extract the
+data within the response.</p>
+<p>在 <em>promise</em> 的<code>then()</code>回调中，我们调用 HTTP 的<code>Reponse</code>对象的<code>json</code>方法，以提取出其中的数据。</p>
+<div class="code-example"><code-example language="ts" format="">.then(response =&gt; response.json().data as Hero[])
+</code-example></div><p>The response JSON has a single <code>data</code> property, which
+holds the array of heroes that the caller wants.
+So you grab that array and return it as the resolved Promise value.</p>
+<p>这个由<code>json</code>方法返回的对象只有一个<code>data</code>属性。
+这个<code>data</code>属性保存了<em>英雄</em>数组，这个数组才是调用者真正想要的。
+所以我们取得这个数组，并且把它作为承诺的值进行解析。</p>
+<div class="alert is-important"><p>Note the shape of the data that the server returns.
+This particular in-memory web API example returns an object with a <code>data</code> property.
+Your API might return something else. Adjust the code to match your web API.</p>
+<p>仔细看看这个由服务器返回的数据的形态。
+这个<em>内存 Web API</em> 的范例中所做的是返回一个带有<code>data</code>属性的对象。
+你的 API 也可以返回其它东西。请调整这些代码以匹配<em>你的 Web API</em>。</p>
+</div><p>The caller is unaware that you fetched the heroes from the (mock) server.
+It receives a Promise of <em>heroes</em> just as it did before.</p>
+<p>调用者并不知道这些实现机制，它仍然像以前那样接收一个包含<em>英雄数据</em>的承诺。
+它也不知道我们已经改成了从服务器获取英雄数据。
+它也不必了解把 HTTP 响应转换成英雄数据时所作的这些复杂变换。
+看到美妙之处了吧，这正是将数据访问委托组一个服务的目的。</p>
+<h3 id="error-handling">Error Handling</h3>
+<h3 id="-">错误处理</h3>
+<p>At the end of <code>getHeroes()</code>, you <code>catch</code> server failures and pass them to an error handler.</p>
+<p>在<code>getHeroes()</code>的最后，我们<code>catch</code>了服务器的失败信息，并把它们传给了错误处理器：</p>
+<div class="code-example"><code-example language="ts" format="">.catch(this.handleError);
+</code-example></div><p>This is a critical step.
+You must anticipate HTTP failures, as they happen frequently for reasons beyond your control.</p>
+<p>这是一个关键的步骤！
+我们必须预料到 HTTP 请求会失败，因为有太多我们无法控制的原因可能导致它们频繁出现各种错误。</p>
+<div class="code-example"><code-example language="ts" format="linenums">private handleError(error: any): Promise&lt;any&gt; {
+  console.error(&#39;An error occurred&#39;, error); // for demo purposes only
+  return Promise.reject(error.message || error);
+}
+</code-example></div><p>This demo service logs the error to the console; in real life,
+you would handle the error in code. For a demo, this works.</p>
+<p>在这个范例服务中，我们把错误记录到控制台中；在真实世界中，我们应该用代码对错误进行处理。但对于演示来说，这就够了。</p>
+<p>The code also includes an error to
+the caller in a rejected promise, so that the caller can display a proper error message to the user.</p>
+<p>我们还要通过一个被拒绝 (rejected) 的承诺来把该错误用一个用户友好的格式返回给调用者，
+以便调用者能把一个合适的错误信息显示给用户。</p>
+<h3 id="get-hero-by-id">Get hero by id</h3>
+<h3 id="-id-">通过id获取英雄</h3>
+<p>When the <code>HeroDetailComponent</code> asks the <code>HeroService</code> to fetch a hero,
+the <code>HeroService</code> currently fetches all heroes and
+filters for the one with the matching <code>id</code>.
+That&#39;s fine for a simulation, but it&#39;s wasteful to ask a real server for all heroes when you only want one.
+Most web APIs support a <em>get-by-id</em> request in the form <code>api/hero/:id</code> (such as <code>api/hero/11</code>).</p>
+<p>当<code>HeroDetailComponent</code>向<code>HeroService</code>请求获取一个英雄时，<code>HeroService</code>会获取所有英雄，并从中过滤出与<code>id</code>匹配的那一个。
+这对于例子来说倒是无可厚非，
+  不过在真实服务中，这种为了获取一个英雄而请求全部英雄的做法就有点浪费了，
+  许多Web API支持<em>get-by-id</em>请求，形如：<code>api/hero/:id</code>（如：<code>api/hero/11</code>）。</p>
+<p>Update the <code>HeroService.getHero()</code> method to make a <em>get-by-id</em> request:</p>
+<p>修改 <code>HeroService.getHero()</code> 方法来发起一个 <em>get-by-id</em> 请求：</p>
+<div class="code-example"><header><h4>src/app/hero.service.ts</h4></header><code-example language="ts" format="linenums">getHero(id: number): Promise&lt;Hero&gt; {
+  const url = `${this.heroesUrl}/${id}`;
+  return this.http.get(url)
+    .toPromise()
+    .then(response =&gt; response.json().data as Hero)
+    .catch(this.handleError);
+}
+</code-example></div><p>This request is almost the same as <code>getHeroes()</code>.
+The hero id in the URL identifies which hero the server should update.</p>
+<p>此方法基本上与<code>getHeroes</code>方法一致，通过在URL中添加英雄的id来告诉服务器应该获取<em>那个</em>英雄，
+  匹配<code>api/hero/:id</code>模式。</p>
+<p>Also, the <code>data</code> in the response is a single hero object rather than an array.</p>
+<p>我们还要把响应中返回的<code>data</code>改为一个英雄对象，而不再是对象数组。组。</p>
+<h3 id="unchanged-_getheroes_-api">Unchanged <em>getHeroes</em> API</h3>
+<h3 id="-getheroes-api-"><code>getHeroes</code> API 没变</h3>
+<p>Although you made significant internal changes to <code>getHeroes()</code> and <code>getHero()</code>,
+the public signatures didn&#39;t change.
+You still return a Promise from both methods.
+You won&#39;t have to update any of the components that call them.</p>
+<p>尽管我们在<code>getHeroes()</code>和<code>getHero()</code>方法的<em>内部</em>做了重大修改，
+  但是他们的公共签名却没有变。这两个方法仍然返回的是一个Promise对象，
+  所以并不需要修改任何调用他们的组件。</p>
+<p>Now it&#39;s time to add the ability to create and delete heroes.</p>
+<p>现在，我们该支持创建和删除英雄了。</p>
+<div class="l-main-section"></div><h2 id="updating-hero-details">Updating hero details</h2>
+<h2 id="-">更新英雄详情</h2>
+<p>Try editing a hero&#39;s name in the hero detail view.
+As you type, the hero name is updated in the view heading.
+But if you click the Back button, the changes are lost.</p>
+<p>我们已经可以在英雄详情中编辑英雄的名字了。来试试吧。在输入的时候，页头上的英雄名字也会随之更新。
+不过当我们点了<code>Back（后退）</code>按钮时，这些修改就丢失了。</p>
+<p>Updates weren&#39;t lost before. What changed?
+When the app used a list of mock heroes, updates were applied directly to the
+hero objects within the single, app-wide, shared list. Now that you&#39;re fetching data
+from a server, if you want changes to persist, you must write them back to
+the server.</p>
+<p>以前是不会丢失更新的，怎么回事？
+当该应用使用模拟出来的英雄列表时，修改的是一份全局共享的英雄列表，而现在改成了从服务器获取数据。
+如果我们希望这些更改被持久化，我们就得把它们写回服务器。</p>
+<h3 id="add-the-ability-to-save-hero-details">Add the ability to save hero details</h3>
+<h3 id="-">保存英雄详情</h3>
+<p>At the end of the hero detail template, add a save button with a <code>click</code> event
+binding that invokes a new component method named <code>save()</code>.</p>
+<p>我们先来确保对英雄名字的编辑不会丢失。先在英雄详情模板的底部添加一个保存按钮，它绑定了一个<code>click</code>事件，事件绑定会调用组件中一个名叫<code>save()</code>的新方法：</p>
+<div class="code-example"><header><h4>src/app/hero-detail.component.html (save)</h4></header><code-example language="html" format="">&lt;button (click)=&quot;save()&quot;&gt;Save&lt;/button&gt;
+</code-example></div><p>Add the following <code>save()</code> method, which persists hero name changes using the hero service
+<code>update()</code> method and then navigates back to the previous view.</p>
+<p><code>save()</code>方法使用 hero 服务的<code>update()</code>方法来持久化对英雄名字的修改，然后导航回前一个视图：</p>
+<div class="code-example"><header><h4>src/app/hero-detail.component.ts (save)</h4></header><code-example language="ts" format="linenums">save(): void {
+  this.heroService.update(this.hero)
+    .then(() =&gt; this.goBack());
+}
+</code-example></div><h3 id="add-a-hero-service-_update-_-method">Add a hero service <em>update()</em> method</h3>
+<h3 id="hero-update-">hero 服务的<code>update</code>方法</h3>
+<p>The overall structure of the <code>update()</code> method is similar to that of
+<code>getHeroes()</code>, but it uses an HTTP <code>put()</code> to persist server-side changes.</p>
+<p><code>update()</code>方法的大致结构与<code>getHeroes()</code>类似，不过我们使用 HTTP 的 <code>put()</code> 方法来把修改持久化到服务端：</p>
+<div class="code-example"><header><h4>src/app/hero.service.ts (update)</h4></header><code-example language="ts" format="linenums">private headers = new Headers({&#39;Content-Type&#39;: &#39;application/json&#39;});
+
+update(hero: Hero): Promise&lt;Hero&gt; {
+  const url = `${this.heroesUrl}/${hero.id}`;
+  return this.http
+    .put(url, JSON.stringify(hero), {headers: this.headers})
+    .toPromise()
+    .then(() =&gt; hero)
+    .catch(this.handleError);
+}
+</code-example></div><p>To identify which hero the server should update, the hero <code>id</code> is encoded in
+the URL. The <code>put()</code> body is the JSON string encoding of the hero, obtained by
+calling <code>JSON.stringify</code>. The body content type
+(<code>application/json</code>) is identified in the request header.</p>
+<p>我们通过一个编码在 URL 中的英雄 <code>id</code> 来告诉服务器应该更新哪个英雄。<code>put</code> 的 body 是该英雄的 JSON 字符串，它是通过调用<code>JSON.stringify</code>得到的。
+并且在请求头中标记出的 body 的内容类型（<code>application/json</code>）。</p>
+<p>Refresh the browser, change a hero name, save your change,
+and click the browser Back button. Changes should now persist.</p>
+<p>刷新浏览器试一下，对英雄名字的修改确实已经被持久化了。</p>
+<div class="l-main-section"></div><h2 id="add-the-ability-to-add-heroes">Add the ability to add heroes</h2>
+<h2 id="-">添加英雄</h2>
+<p>To add a hero, the app needs the hero&#39;s name. You can use an <code>input</code>
+element paired with an add button.</p>
+<p>要添加一个新的英雄，我们得先知道英雄的名字。我们使用一个 <code>input</code> 元素和一个添加按钮来实现。</p>
+<p>Insert the following into the heroes component HTML, just after
+the heading:</p>
+<p>把下列代码插入 heroes 组件的 HTML 中，放在标题的下面：</p>
+<div class="code-example"><header><h4>src/app/heroes.component.html (add)</h4></header><code-example language="html" format="linenums">&lt;div&gt;
+  &lt;label&gt;Hero name:&lt;/label&gt; &lt;input #heroName /&gt;
+  &lt;button (click)=&quot;add(heroName.value); heroName.value=&#39;&#39;&quot;&gt;
+    Add
+  &lt;/button&gt;
+&lt;/div&gt;
+</code-example></div><p>In response to a click event, call the component&#39;s click handler and then
+clear the input field so that it&#39;s ready for another name.</p>
+<p>当点击事件触发时，我们调用组件的点击处理器，然后清空这个输入框，以便用来输入另一个名字。</p>
+<div class="code-example"><header><h4>src/app/heroes.component.ts (add)</h4></header><code-example language="ts" format="linenums">add(name: string): void {
+  name = name.trim();
+  if (!name) { return; }
+  this.heroService.create(name)
+    .then(hero =&gt; {
+      this.heroes.push(hero);
+      this.selectedHero = null;
+    });
+}
+</code-example></div><p>When the given name is non-blank, the handler delegates creation of the
+named hero to the hero service, and then adds the new hero to the array.</p>
+<p>当指定的名字不为空的时候，点击处理器就会委托 hero 服务来创建一个具有此名字的英雄，
+  并把这个新的英雄添加到我们的数组中。</p>
+<p>Implement the <code>create()</code> method in the <code>HeroService</code> class.</p>
+<p>然后，我们在<code>HeroService</code>类中实现这个<code>create()</code>方法。</p>
+<div class="code-example"><header><h4>src/app/hero.service.ts (create)</h4></header><code-example language="ts" format="linenums">create(name: string): Promise&lt;Hero&gt; {
+  return this.http
+    .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+    .toPromise()
+    .then(res =&gt; res.json().data as Hero)
+    .catch(this.handleError);
+}
+</code-example></div><p>Refresh the browser and create some heroes.</p>
+<p>刷新浏览器，并创建一些新的英雄！</p>
+<div class="l-main-section"></div><h2 id="add-the-ability-to-delete-a-hero">Add the ability to delete a hero</h2>
+<h2 id="-">支持添加英雄</h2>
+<p>Each hero in the heroes view should have a delete button.</p>
+<p>在英雄列表视图中的每个英雄都应该有一个删除按钮。</p>
+<p>Add the following button element to the heroes component HTML, after the hero
+name in the repeated <code>&lt;li&gt;</code> element.</p>
+<p>把这个按钮元素添加到英雄列表组件的 HTML 中，把它放在<code>&lt;li&gt;</code>标签中的英雄名的后面：</p>
+<div class="code-example"><code-example language="html" format="linenums">&lt;button class=&quot;delete&quot;
+  (click)=&quot;delete(hero); $event.stopPropagation()&quot;&gt;x&lt;/button&gt;
+</code-example></div><p>The <code>&lt;li&gt;</code> element should now look like this:</p>
+<p><code>&lt;li&gt;</code>元素应该变成了这样：</p>
+<div class="code-example"><header><h4>src/app/heroes.component.html (li-element)</h4></header><code-example language="html" format="linenums">  &lt;li *ngFor=&quot;let hero of heroes&quot; (click)=&quot;onSelect(hero)&quot;
+      [class.selected]=&quot;hero === selectedHero&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;{{hero.id}}&lt;/span&gt;
+    &lt;span&gt;{{hero.name}}&lt;/span&gt;
+    &lt;button class=&quot;delete&quot;
+      (click)=&quot;delete(hero); $event.stopPropagation()&quot;&gt;x&lt;/button&gt;
+  &lt;/li&gt;
+</code-example></div><p>In addition to calling the component&#39;s <code>delete()</code> method, the delete button&#39;s
+click handler code stops the propagation of the click event&mdash;you
+don&#39;t want the <code>&lt;li&gt;</code> click handler to be triggered because doing so would
+select the hero that the user will delete.</p>
+<p>除了调用组件的<code>delete()</code>方法之外，这个删除按钮的点击处理器还应该阻止点击事件向上冒泡 &mdash;
+我们并不希望触发<code>&lt;li&gt;</code>的事件处理器，否则它会选中我们要删除的这位英雄。</p>
+<p>The logic of the <code>delete()</code> handler is a bit trickier:</p>
+<p><code>delete()</code>处理器的逻辑略复杂：</p>
+<div class="code-example"><header><h4>src/app/heroes.component.ts (delete)</h4></header><code-example language="ts" format="linenums">delete(hero: Hero): void {
+  this.heroService
+      .delete(hero.id)
+      .then(() =&gt; {
+        this.heroes = this.heroes.filter(h =&gt; h !== hero);
+        if (this.selectedHero === hero) { this.selectedHero = null; }
+      });
+}
+</code-example></div><p>Of course you delegate hero deletion to the hero service, but the component
+is still responsible for updating the display: it removes the deleted hero
+from the array and resets the selected hero, if necessary.</p>
+<p>当然，我们仍然把删除英雄的操作委托给了 hero 服务，
+不过该组件仍然负责更新显示：它从数组中移除了被删除的英雄，如果删除的是正选中的英雄，还会清空选择。</p>
+<p>To place the delete button at the far right of the hero entry,
+add this CSS:</p>
+<p>我们希望删除按钮被放在英雄条目的最右边。
+于是 CSS 变成了这样：</p>
+<div class="code-example"><header><h4>src/app/heroes.component.css (additions)</h4></header><code-example language="css" format="linenums">button.delete {
+  float:right;
+  margin-top: 2px;
+  margin-right: .8em;
+  background-color: gray !important;
+  color:white;
+}
+</code-example></div><h3 id="hero-service-_delete-_-method">Hero service <em>delete()</em> method</h3>
+<h3 id="hero-delete-">hero 服务的<code>delete()</code>方法</h3>
+<p>Add the hero service&#39;s <code>delete()</code> method, which uses the <code>delete()</code> HTTP method to remove the hero from the server:</p>
+<p>hero 服务的<code>delete()</code>方法使用 HTTP 的 <code>delete()</code> 方法来从服务器上移除该英雄：</p>
+<div class="code-example"><header><h4>src/app/hero.service.ts (delete)</h4></header><code-example language="ts" format="linenums">delete(id: number): Promise&lt;void&gt; {
+  const url = `${this.heroesUrl}/${id}`;
+  return this.http.delete(url, {headers: this.headers})
+    .toPromise()
+    .then(() =&gt; null)
+    .catch(this.handleError);
+}
+</code-example></div><p>Refresh the browser and try the new delete functionality.</p>
+<p>刷新浏览器，并试一下这个新的删除功能。</p>
+<div id="observables"></div><h2 id="observables">Observables</h2>
+<h2 id="-observable-">可观察对象 (Observable)</h2>
+<p>Each <code>Http</code> service method  returns an <code>Observable</code> of HTTP <code>Response</code> objects.</p>
+<p><code>Http</code>服务中的每个方法都返回一个 HTTP <code>Response</code>对象的<code>Observable</code>实例。</p>
+<p>The <code>HeroService</code> converts that <code>Observable</code> into a <code>Promise</code> and returns the promise to the caller.
+This section shows you how, when, and why to return the <code>Observable</code> directly.</p>
+<p>我们的<code>HeroService</code>中把那个<code>Observable</code>对象转换成了<code>Promise</code>（承诺），并把这个承诺返回给了调用者。
+  这一节，我们将学会直接返回<code>Observable</code>，并且讨论何时以及为何那样做会更好。</p>
+<h3 id="background">Background</h3>
+<h3 id="-">背景</h3>
+<p>An <em>Observable</em> is a stream of events that you can process with array-like operators.</p>
+<p>一个<em>可观察对象</em>是一个事件流，我们可以用数组型操作符来处理它。</p>
+<p>Angular core has basic support for observables. 
+Developers augment that support with operators and extensions from the
+<a href="http://reactivex.io/rxjs" target="_blank" title="RxJS">RxJS library</a>.
+You&#39;ll see how shortly.</p>
+<p>Angular 内核中提供了对可观察对象的基本支持。而我们这些开发人员可以自己从 <a href="http://reactivex.io/rxjs" target="_blank" title="RxJS">RxJS</a> 库中引入操作符和扩展。
+  我们会简短的讲解下如何做。</p>
+<p>Recall that the <code>HeroService</code>  chained the <code>toPromise</code> operator to the <code>Observable</code> result of <code>http.get()</code>.
+That operator converted the <code>Observable</code> into a <code>Promise</code> and you passed that promise back to the caller.</p>
+<p>快速回忆一下<code>HeroService</code>，它在<code>http.get()</code>返回的<code>Observable</code>后面串联了一个<code>toPromise</code>操作符。
+该操作符把<code>Observable</code>转换成了<code>Promise</code>，并且我们把那个承诺返回给了调用者。</p>
+<p>Converting to a Promise is often a good choice. You typically ask <code>http.get()</code> to fetch a single chunk of data.
+When you receive the data, you&#39;re done.
+The calling component can easily consume a single result in the form of a Promise.</p>
+<p>转换成承诺通常是更好地选择，我们通常会要求<code>http.get()</code>获取单块数据。只要接收到数据，就算完成。
+使用承诺这种形式的结果是让调用方更容易写，并且承诺已经在 JavaScript 程序员中被广泛接受了。</p>
+<p>But requests aren&#39;t always done only once.
+You may start one request,
+cancel it, and make a different request before the server has responded to the first request.</p>
+<p>但是请求并非总是“一次性”的。我们可以开始一个请求，
+  并且取消它，在服务器对第一个请求作出回应之前，再开始另一个不同的请求 。
+  像这样一个<em>请求-取消-新请求</em>的序列用<em>承诺</em>是很难实现的，但接下来我们会看到，它对于<em>可观察对象</em>却很简单。</p>
+<p>A <em>request-cancel-new-request</em> sequence is difficult to implement with <code>Promise</code>s, but
+easy with <code>Observable</code>s.</p>
+<p><em>请求-取消-新请求</em>的序列对于<code>Promise</code>来说是很难实现的，但是对<code>Observable</code>来说则很容易。</p>
+<h3 id="add-the-ability-to-search-by-name">Add the ability to search by name</h3>
+<h3 id="-">支持按名搜索</h3>
+<p>You&#39;re going to add a <em>hero search</em> feature to the Tour of Heroes.
+As the user types a name into a search box, you&#39;ll make repeated HTTP requests for heroes filtered by that name.</p>
+<p>我们要为《英雄指南》添加一个<em>英雄搜索</em>特性。
+  当用户在搜索框中输入一个名字时，我们将不断发起 HTTP 请求，以获得按名字过滤的英雄。</p>
+<p>Start by creating <code>HeroSearchService</code> that sends search queries to the server&#39;s web API.</p>
+<p>我们先创建<code>HeroSearchService</code>服务，它会把搜索请求发送到我们服务器上的 Web API。</p>
+<div class="code-example"><header><h4>src/app/hero-search.service.ts</h4></header><code-example language="ts" format="linenums">import { Injectable } from &#39;@angular/core&#39;;
+import { Http }       from &#39;@angular/http&#39;;
+
+import { Observable }     from &#39;rxjs/Observable&#39;;
+import &#39;rxjs/add/operator/map&#39;;
+
+import { Hero }           from &#39;./hero&#39;;
+
+@Injectable()
+export class HeroSearchService {
+
+  constructor(private http: Http) {}
+
+  search(term: string): Observable&lt;Hero[]&gt; {
+    return this.http
+               .get(`app/heroes/?name=${term}`)
+               .map(response =&gt; response.json().data as Hero[]);
+  }
+}
+</code-example></div><p>The <code>http.get()</code> call in <code>HeroSearchService</code> is similar to the one
+in the <code>HeroService</code>, although the URL now has a query string.</p>
+<p><code>HeroSearchService</code>中的<code>http.get()</code>调用和<code>HeroService</code>中的很相似，只是这次带了查询字符串。</p>
+<p>More importantly, you no longer call <code>toPromise()</code>.
+  Instead you return the <em>Observable</em> from the the <code>http.get()</code>, 
+  after chaining it to another RxJS operator, <code>map()</code>, 
+  to extract heroes from the response data.</p>
+<p>更重要的是：我们不再调用<code>toPromise</code>方法，而是从<code>http.get</code>
+  方法中返回一个<em>Observable</em>对象，之后调用RxJS的<code>map</code>操作符
+  来从返回数据中提取英雄。  </p>
+<p>RxJS operator chaining makes response processing easy and readable.
+  See the <a href="#rxjs-imports">discussion below about operators</a>.</p>
+<p>链式RxJS操作可以让我们简单、易读的处理响应数据。详见<a href="#rxjs-imports">下面关于操作符的讨论</a></p>
+<h3 id="herosearchcomponent">HeroSearchComponent</h3>
+<p>Let&#39;s create a new <code>HeroSearchComponent</code> that calls this new <code>HeroSearchService</code>.</p>
+<p>我们再创建一个新的<code>HeroSearchComponent</code>来调用这个新的<code>HeroSearchService</code>。</p>
+<p>The component template is simple&mdash;just a text box and a list of matching search results.</p>
+<p>组件模板很简单，就是一个输入框和一个显示匹配的搜索结果的列表。</p>
+<div class="code-example"><header><h4>src/app/hero-search.component.html</h4></header><code-example language="html" format="linenums">&lt;div id=&quot;search-component&quot;&gt;
+  &lt;h4&gt;Hero Search&lt;/h4&gt;
+  &lt;input #searchBox id=&quot;search-box&quot; (keyup)=&quot;search(searchBox.value)&quot; /&gt;
+  &lt;div&gt;
+    &lt;div *ngFor=&quot;let hero of heroes | async&quot;
+         (click)=&quot;gotoDetail(hero)&quot; class=&quot;search-result&quot; &gt;
+      {{hero.name}}
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code-example></div><p>Also, add styles for the new component.</p>
+<p>我们还要往这个新组件中添加样式。</p>
+<div class="code-example"><header><h4>src/app/hero-search.component.css</h4></header><code-example language="css" format="linenums">.search-result{
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  width:195px;
+  height: 16px;
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.search-result:hover {
+  color: #eee;
+  background-color: #607D8B;
+}
+
+#search-box{
+  width: 200px;
+  height: 20px;
+}
+</code-example></div><p>As the user types in the search box, a <em>keyup</em> event binding calls the component&#39;s <code>search()</code>
+method with the new search box value.</p>
+<p>当用户在搜索框中输入时，一个 <em>keyup</em> 事件绑定会调用该组件的<code>search()</code>方法，并传入新的搜索框的值。</p>
+<p>As expected, the <code>*ngFor</code> repeats hero objects from the component&#39;s <code>heroes</code> property.</p>
+<p>不出所料，<code>*ngFor</code>从该组件的<code>heroes</code>属性重复获取 <em>hero</em> 对象。这也没啥特别的。</p>
+<p>But as you&#39;ll soon see, the <code>heroes</code> property is now an <em>Observable</em> of hero arrays, rather than just a hero array.
+The <code>*ngFor</code> can&#39;t do anything with an <code>Observable</code> until you route it through the <code>async</code> pipe (<code>AsyncPipe</code>).
+The <code>async</code> pipe subscribes to the <code>Observable</code> and produces the array of heroes to <code>*ngFor</code>.</p>
+<p>但是，接下来我们看到<code>heroes</code>属性现在是英雄列表的<code>Observable</code>对象，而不再只是英雄数组。
+  <code>*ngFor</code>不能用可观察对象做任何事，除非我们在它后面跟一个<code>async</code> pipe (<code>AsyncPipe</code>)。
+  这个<code>async</code>管道会订阅到这个可观察对象，并且为<code>*ngFor</code>生成一个英雄数组。</p>
+<p>Create the <code>HeroSearchComponent</code> class and metadata.</p>
+<p>该创建<code>HeroSearchComponent</code>类及其元数据了。</p>
+<div class="code-example"><header><h4>src/app/hero-search.component.ts</h4></header><code-example language="ts" format="linenums">import { Component, OnInit } from &#39;@angular/core&#39;;
+import { Router }            from &#39;@angular/router&#39;;
+
+import { Observable }        from &#39;rxjs/Observable&#39;;
+import { Subject }           from &#39;rxjs/Subject&#39;;
+
+// Observable class extensions
+import &#39;rxjs/add/observable/of&#39;;
+
+// Observable operators
+import &#39;rxjs/add/operator/catch&#39;;
+import &#39;rxjs/add/operator/debounceTime&#39;;
+import &#39;rxjs/add/operator/distinctUntilChanged&#39;;
+
+import { HeroSearchService } from &#39;./hero-search.service&#39;;
+import { Hero } from &#39;./hero&#39;;
+
+@Component({
+  selector: &#39;hero-search&#39;,
+  templateUrl: &#39;./hero-search.component.html&#39;,
+  styleUrls: [ &#39;./hero-search.component.css&#39; ],
+  providers: [HeroSearchService]
+})
+export class HeroSearchComponent implements OnInit {
+  heroes: Observable&lt;Hero[]&gt;;
+  private searchTerms = new Subject&lt;string&gt;();
+
+  constructor(
+    private heroSearchService: HeroSearchService,
+    private router: Router) {}
+
+  // Push a search term into the observable stream.
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  ngOnInit(): void {
+    this.heroes = this.searchTerms
+      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
+      .distinctUntilChanged()   // ignore if next search term is same as previous
+      .switchMap(term =&gt; term   // switch to new observable each time the term changes
+        // return the http search observable
+        ? this.heroSearchService.search(term)
+        // or the observable of empty heroes if there was no search term
+        : Observable.of&lt;Hero[]&gt;([]))
+      .catch(error =&gt; {
+        // TODO: add real error handling
+        console.log(error);
+        return Observable.of&lt;Hero[]&gt;([]);
+      });
+  }
+
+  gotoDetail(hero: Hero): void {
+    let link = [&#39;/detail&#39;, hero.id];
+    this.router.navigate(link);
+  }
+}
+</code-example></div><h4 id="search-terms">Search terms</h4>
+<h4 id="-">搜索词</h4>
+<p>Focus on the <code>searchTerms</code>:</p>
+<p>仔细看下这个<code>searchTerms</code>：</p>
+<div class="code-example"><code-example language="ts" format="linenums">private searchTerms = new Subject&lt;string&gt;();
+
+// Push a search term into the observable stream.
+search(term: string): void {
+  this.searchTerms.next(term);
+}
+</code-example></div><p>A <code>Subject</code> is a producer of an <em>observable</em> event stream;
+<code>searchTerms</code> produces an <code>Observable</code> of strings, the filter criteria for the name search.</p>
+<p>  <code>Subject</code>（主题）是一个<em>可观察的</em>事件流中的生产者。
+  <code>searchTerms</code>生成一个产生字符串的<code>Observable</code>，用作按名称搜索时的过滤条件。Each call to <code>search()</code> puts a new string into this subject&#39;s <em>observable</em> stream by calling <code>next()</code>.</p>
+<p>  每当调用<code>search()</code>时都会调用<code>next()</code>来把新的字符串放进该主题的<em>可观察</em>流中。</p>
+<a id="ngoninit"></a><h4 id="initialize-the-heroes-property-ngoninit-">Initialize the <em>heroes</em> property (<em>ngOnInit</em>)</h4>
+<h4 id="-heroes-ngoninit-">初始化 <em>heroes</em> 属性(<em>ngOnInit</em>)</h4>
+<p>A <code>Subject</code> is also an <code>Observable</code>.
+You can turn the stream
+of search terms into a stream of <code>Hero</code> arrays and assign the result to the <code>heroes</code> property.</p>
+<p><code>Subject</code>也是一个<code>Observable</code>对象。
+我们要把搜索词的流转换成<code>Hero</code>数组的流，并把结果赋值给<code>heroes</code>属性。</p>
+<div class="code-example"><code-example language="ts" format="linenums">heroes: Observable&lt;Hero[]&gt;;
+
+ngOnInit(): void {
+  this.heroes = this.searchTerms
+    .debounceTime(300)        // wait 300ms after each keystroke before considering the term
+    .distinctUntilChanged()   // ignore if next search term is same as previous
+    .switchMap(term =&gt; term   // switch to new observable each time the term changes
+      // return the http search observable
+      ? this.heroSearchService.search(term)
+      // or the observable of empty heroes if there was no search term
+      : Observable.of&lt;Hero[]&gt;([]))
+    .catch(error =&gt; {
+      // TODO: add real error handling
+      console.log(error);
+      return Observable.of&lt;Hero[]&gt;([]);
+    });
+}
+</code-example></div><p>Passing every user keystroke directly to the <code>HeroSearchService</code> would create an excessive amount of HTTP requests,
+taxing server resources and burning through the cellular network data plan.</p>
+<p>如果我们直接把每一次用户按键都直接传给<code>HeroSearchService</code>，就会发起一场 HTTP 请求风暴。
+  这可不好玩。我们不希望占用服务器资源，也不想耗光蜂窝移动网络的流量。</p>
+<p>Instead, you can chain <code>Observable</code> operators that reduce the request flow to the string <code>Observable</code>.
+You&#39;ll make fewer calls to the <code>HeroSearchService</code> and still get timely results. Here&#39;s how:</p>
+<p>不过，我们可以在字符串的<code>Observable</code>后面串联一些<code>Observable</code>操作符，来归并这些请求。
+  我们将对<code>HeroSearchService</code>发起更少的调用，并且仍然获得足够及时的响应。做法如下：</p>
+<ul>
+<li><p><code>debounceTime(300)</code> waits until the flow of new string events pauses for 300 milliseconds
+before passing along the latest string. You&#39;ll never make requests more frequently than 300ms.</p>
+<p>在传出最终字符串之前，<code>debounceTime(300)</code>将会等待，直到新增字符串的事件暂停了 300 毫秒。
+我们实际发起请求的间隔永远不会小于 300ms。</p>
+</li>
+<li><p><code>distinctUntilChanged</code> ensures that a request is sent only if the filter text changed.</p>
+<p><code>distinctUntilChanged</code>确保只在过滤条件变化时才发送请求，
+这样就不会重复请求同一个搜索词了。</p>
+</li>
+<li><p><code>switchMap()</code> calls the search service for each search term that makes it through <code>debounce</code> and <code>distinctUntilChanged</code>.
+It cancels and discards previous search observables, returning only the latest search service observable.</p>
+<p><code>switchMap()</code>会为每个从<code>debounce</code>和<code>distinctUntilChanged</code>中通过的搜索词调用搜索服务。
+它会取消并丢弃以前的搜索可观察对象，只保留最近的。</p>
+</li>
+</ul>
+<div class="l-sub-section"><p>With the <a href="http://www.learnrxjs.io/operators/transformation/switchmap.html">switchMap operator</a>
+(formerly known as <code>flatMapLatest</code>),
+every qualifying key event can trigger an <code>http()</code> method call.
+Even with a 300ms pause between requests, you could have multiple HTTP requests in flight
+and they may not return in the order sent.</p>
+<p>借助<a href="http://www.learnrxjs.io/operators/transformation/switchmap.html">switchMap操作符</a>
+(正式名称是<code>flatMapLatest</code>)
+每次符合条件的按键事件都会触发一次对<code>http()</code>方法的调用。即使在发送每个请求前都有 300 毫秒的延迟，
+我们仍然可能同时拥有多个在途的 HTTP 请求，并且它们返回的顺序未必就是发送时的顺序。</p>
+<p><code>switchMap()</code> preserves the original request order while returning
+ only the observable from the most recent <code>http</code> method call.
+Results from prior calls are canceled and discarded.</p>
+<p><code>switchMap()</code>保留了原始的请求顺序，并且只返回最近一次 <code>http</code> 调用返回的可观察对象。
+这是因为以前的调用都被取消或丢弃了。</p>
+<p>If the search text is empty, the <code>http()</code> method call is also short circuited
+and an observable containing an empty array is returned.</p>
+<p>如果搜索框为空，我们还可以短路掉这次<code>http()</code>方法调用，并且直接返回一个包含空数组的可观察对象。</p>
+<p>Note that until the service supports that feature,<em>canceling</em> the <code>HeroSearchService</code> Observable
+doesn&#39;t actually abort a pending HTTP request.
+For now , unwanted resultsare discarded.</p>
+<p>注意，<em>取消</em><code>HeroSearchService</code>的可观察对象并不会实际中止 (abort) 一个未完成的 HTTP 请求，
+除非服务支持这个特性，这个问题我们以后再讨论。
+目前我们的做法只是丢弃不希望的结果。</p>
+</div><ul>
+<li><p><code>catch</code> intercepts a failed observable.
+The simple example prints the error to the console; a real life app would do better.
+Then to clear the search result, you return an observable containing an empty array .</p>
+<p><code>catch</code>拦截失败的可观察对象。这个简单的例子中只是把错误信息打印到控制台（但实际的应用需要做更多事），然后返回一个包含空数组的可观察对象，以清空搜索结果。</p>
+</li>
+</ul>
+<a id="rxjs-imports"></a><h3 id="import-rxjs-operators">Import RxJS operators</h3>
+<h3 id="-rxjs-">导入 RxJS 操作符</h3>
+<p>Most RxJS operators are not included in Angular&#39;s base <code>Observable</code> implementation.
+The base implementation includes only what Angular itself requires.</p>
+<p>大部分RxJS操作符都不包括在Angular的<code>Observable</code>基本实现中，基本实现只包括Angular本身所需的功能。</p>
+<p>When you need more RxJS features, extend  <code>Observable</code> by <em>importing</em> the libraries in which they are defined.
+Here are all the RxJS imports that <em>this</em> component needs:</p>
+<p>如果想要更多的RxJS功能，我们必须<em>导入</em>其所定义的库来扩展<code>Observable</code>对象，
+  以下是<em>这个</em>模块所需导入的所有RxJS操作符：</p>
+<div class="code-example"><header><h4>src/app/hero-search.component.ts (rxjs imports)</h4></header><code-example language="ts" format="">import { Observable }        from &#39;rxjs/Observable&#39;;
+import { Subject }           from &#39;rxjs/Subject&#39;;
+
+// Observable class extensions
+import &#39;rxjs/add/observable/of&#39;;
+
+// Observable operators
+import &#39;rxjs/add/operator/catch&#39;;
+import &#39;rxjs/add/operator/debounceTime&#39;;
+import &#39;rxjs/add/operator/distinctUntilChanged&#39;;
+</code-example></div><p>The <code>import &#39;rxjs/add/...&#39;</code> syntax may be unfamiliar.
+It&#39;s missing the usual list of symbols between the braces: <code>{...}</code>.</p>
+<p>你可能并不熟悉这种<code>import &#39;rxjs/add/...&#39;</code>语法，它缺少了花括号中的导入列表：<code>{...}</code>。</p>
+<p>You don&#39;t need the operator symbols themselves.
+In each case, the mere act of importing the library
+loads and executes the library&#39;s script file which, in turn, adds the operator to the <code>Observable</code> class.</p>
+<p>这是因为我们并不需要操作符本身，这种情况下，我们所做的其实是导入这个库，加载并运行其中的脚本，
+它会把操作符添加到<code>Observable</code>类中。</p>
+<h3 id="add-the-search-component-to-the-dashboard">Add the search component to the dashboard</h3>
+<h3 id="-">为仪表盘添加搜索组件</h3>
+<p>Add the hero search HTML element to the bottom of the <code>DashboardComponent</code> template.</p>
+<p>将表示“英雄搜索”组件的 HTML 元素添加到<code>DashboardComponent</code>模版的最后面。</p>
+<div class="code-example"><header><h4>src/app/dashboard.component.html</h4></header><code-example language="html" format="">&lt;h3&gt;Top Heroes&lt;/h3&gt;
+&lt;div class=&quot;grid grid-pad&quot;&gt;
+  &lt;a *ngFor=&quot;let hero of heroes&quot;  [routerLink]=&quot;[&#39;/detail&#39;, hero.id]&quot;  class=&quot;col-1-4&quot;&gt;
+    &lt;div class=&quot;module hero&quot;&gt;
+      &lt;h4&gt;{{hero.name}}&lt;/h4&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;hero-search&gt;&lt;/hero-search&gt;
+</code-example></div><p>Finally, import <code>HeroSearchComponent</code> from
+<code>hero-search.component.ts</code>
+and add it to the <code>declarations</code> array.</p>
+<p>最后，从<span ngio-ex>hero-search.component.ts</span>中导入<code>HeroSearchComponent</code>并将其添加到<code>declarations</code>数组中。</p>
+<div class="code-example"><header><h4>src/app/app.module.ts (search)</h4></header><code-example language="ts" format="linenums">  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HeroDetailComponent,
+    HeroesComponent,
+    HeroSearchComponent
+  ],
+</code-example></div><p>Run the app again. In the Dashboard, enter some text in the search box.
+If you enter characters that match any existing hero names, you&#39;ll see something like this.</p>
+<p>再次运行该应用，跳转到<em>仪表盘</em>，并在英雄下方的搜索框里输入一些文本。
+运行效果如下：</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/toh/toh-hero-search.png" alt="Hero Search Component"></figure><div class="l-main-section"></div><h2 id="app-structure-and-code">App structure and code</h2>
+<h2 id="-">应用的结构与代码</h2>
+<p>Review the sample source code in the <live-example></live-example> for this page.
+Verify that you have the following structure:</p>
+<p>回顾一下本章<live-example></live-example>中的范例代码。
+  验证我们是否得到了如下结构：</p>
+<div class="filetree"><div class="file">angular-tour-of-heroes</div><div class="children"><div class="file">src</div><div class="children"><div class="file">app</div><div class="children"><div class="file">app.component.ts</div><div class="file">app.component.css</div><div class="file">app.module.ts</div><div class="file">app-routing.module.ts</div><div class="file">dashboard.component.css</div><div class="file">dashboard.component.html</div><div class="file">dashboard.component.ts</div><div class="file">hero.ts</div><div class="file">hero-detail.component.css</div><div class="file">hero-detail.component.html</div><div class="file">hero-detail.component.ts</div><div class="file">hero-search.component.html (new)</div><div class="file">hero-search.component.css (new)</div><div class="file">hero-search.component.ts (new)</div><div class="file">hero-search.service.ts (new)</div><div class="file">hero.service.ts</div><div class="file">heroes.component.css</div><div class="file">heroes.component.html</div><div class="file">heroes.component.ts</div><div class="file">in-memory-data.service.ts (new)</div></div><div class="file">main.ts</div><div class="file">index.html</div><div class="file">styles.css</div><div class="file">systemjs.config.js</div><div class="file">tsconfig.json</div></div><div class="file">node_modules ...</div><div class="file">package.json</div></div></div><div class="l-main-section"></div><h2 id="home-stretch">Home Stretch</h2>
+<h2 id="-">最后冲刺</h2>
+<p>You&#39;re at the end of your journey, and you&#39;ve accomplished a lot.</p>
+<p>旅程即将结束，不过我们已经收获颇丰。</p>
+<ul>
+<li><p>You added the necessary dependencies to use HTTP in the app.</p>
+<p>我们添加了在应用程序中使用 HTTP 的必备依赖。</p>
+</li>
+<li><p>You refactored <code>HeroService</code> to load heroes from a web API.</p>
+<p>我们重构了<code>HeroService</code>，以通过 web API 来加载英雄数据。</p>
+</li>
+<li><p>You extended <code>HeroService</code> to support <code>post()</code>, <code>put()</code>, and <code>delete()</code> methods.</p>
+<p>我们扩展了<code>HeroService</code>来支持 <code>post()</code>、<code>put()</code> 和 <code>delete()</code> 方法。</p>
+</li>
+<li><p>You updated the components to allow adding, editing, and deleting of heroes.</p>
+<p>我们更新了组件，以允许用户添加、编辑和删除英雄。</p>
+</li>
+<li><p>You configured an in-memory web API.</p>
+<p>我们配置了一个内存 Web API。</p>
+</li>
+<li><p>You learned how to use Observables.</p>
+<p>我们学会了如何使用“可观察对象”。</p>
+</li>
+</ul>
+<p>Here are the files you added or changed in this page.</p>
+<p>下面是我们<strong>添加或修改</strong>之后的文件汇总。</p>
+<code-tabs><code-pane language="ts" name="app.comp...ts" format="linenums">import { Component }          from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  template: `
+    &lt;h1&gt;{{title}}&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a routerLink=&quot;/dashboard&quot; routerLinkActive=&quot;active&quot;&gt;Dashboard&lt;/a&gt;
+      &lt;a routerLink=&quot;/heroes&quot; routerLinkActive=&quot;active&quot;&gt;Heroes&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+  `,
+  styleUrls: [&#39;./app.component.css&#39;]
+})
+export class AppComponent {
+  title = &#39;Tour of Heroes&#39;;
+}
+</code-pane><code-pane language="ts" name="app.mod...ts" format="linenums">import { NgModule }      from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+import { FormsModule }   from &#39;@angular/forms&#39;;
+import { HttpModule }    from &#39;@angular/http&#39;;
+
+import { AppRoutingModule } from &#39;./app-routing.module&#39;;
+
+// Imports for loading &amp; configuring the in-memory web api
+import { InMemoryWebApiModule } from &#39;angular-in-memory-web-api&#39;;
+import { InMemoryDataService }  from &#39;./in-memory-data.service&#39;;
+
+import { AppComponent }         from &#39;./app.component&#39;;
+import { DashboardComponent }   from &#39;./dashboard.component&#39;;
+import { HeroesComponent }      from &#39;./heroes.component&#39;;
+import { HeroDetailComponent }  from &#39;./hero-detail.component&#39;;
+import { HeroService }          from &#39;./hero.service&#39;;
+import { HeroSearchComponent }  from &#39;./hero-search.component&#39;;
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HeroDetailComponent,
+    HeroesComponent,
+    HeroSearchComponent
+  ],
+  providers: [ HeroService ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-pane><code-pane language="ts" name="heroes.comp...ts" format="linenums">import { Component, OnInit } from &#39;@angular/core&#39;;
+import { Router }            from &#39;@angular/router&#39;;
+
+import { Hero }                from &#39;./hero&#39;;
+import { HeroService }         from &#39;./hero.service&#39;;
+
+@Component({
+  selector: &#39;my-heroes&#39;,
+  templateUrl: &#39;./heroes.component.html&#39;,
+  styleUrls: [ &#39;./heroes.component.css&#39; ]
+})
+export class HeroesComponent implements OnInit {
+  heroes: Hero[];
+  selectedHero: Hero;
+
+  constructor(
+    private heroService: HeroService,
+    private router: Router) { }
+
+  getHeroes(): void {
+    this.heroService
+        .getHeroes()
+        .then(heroes =&gt; this.heroes = heroes);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.create(name)
+      .then(hero =&gt; {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
+  }
+
+  delete(hero: Hero): void {
+    this.heroService
+        .delete(hero.id)
+        .then(() =&gt; {
+          this.heroes = this.heroes.filter(h =&gt; h !== hero);
+          if (this.selectedHero === hero) { this.selectedHero = null; }
+        });
+  }
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
+
+  gotoDetail(): void {
+    this.router.navigate([&#39;/detail&#39;, this.selectedHero.id]);
+  }
+}
+</code-pane><code-pane language="html" name="heroes.comp...html" format="linenums">&lt;h2&gt;My Heroes&lt;/h2&gt;
+&lt;div&gt;
+  &lt;label&gt;Hero name:&lt;/label&gt; &lt;input #heroName /&gt;
+  &lt;button (click)=&quot;add(heroName.value); heroName.value=&#39;&#39;&quot;&gt;
+    Add
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;ul class=&quot;heroes&quot;&gt;
+  &lt;li *ngFor=&quot;let hero of heroes&quot; (click)=&quot;onSelect(hero)&quot;
+      [class.selected]=&quot;hero === selectedHero&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;{{hero.id}}&lt;/span&gt;
+    &lt;span&gt;{{hero.name}}&lt;/span&gt;
+    &lt;button class=&quot;delete&quot;
+      (click)=&quot;delete(hero); $event.stopPropagation()&quot;&gt;x&lt;/button&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div *ngIf=&quot;selectedHero&quot;&gt;
+  &lt;h2&gt;
+    {{selectedHero.name | uppercase}} is my hero
+  &lt;/h2&gt;
+  &lt;button (click)=&quot;gotoDetail()&quot;&gt;View Details&lt;/button&gt;
+&lt;/div&gt;
+</code-pane><code-pane language="css" name="heroes.comp...css" format="linenums">.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.heroes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.heroes li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+.heroes li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.heroes li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.heroes .text {
+  position: relative;
+  top: -3px;
+}
+.heroes .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button.delete {
+  float:right;
+  margin-top: 2px;
+  margin-right: .8em;
+  background-color: gray !important;
+  color:white;
+}
+</code-pane><code-pane language="ts" name="hero-detail.comp...ts" format="linenums">import &#39;rxjs/add/operator/switchMap&#39;;
+import { Component, OnInit }      from &#39;@angular/core&#39;;
+import { ActivatedRoute, Params } from &#39;@angular/router&#39;;
+import { Location }               from &#39;@angular/common&#39;;
+
+import { Hero }        from &#39;./hero&#39;;
+import { HeroService } from &#39;./hero.service&#39;;
+
+@Component({
+  selector: &#39;hero-detail&#39;,
+  templateUrl: &#39;./hero-detail.component.html&#39;,
+  styleUrls: [ &#39;./hero-detail.component.css&#39; ]
+})
+export class HeroDetailComponent implements OnInit {
+  hero: Hero;
+
+  constructor(
+    private heroService: HeroService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params
+      .switchMap((params: Params) =&gt; this.heroService.getHero(+params[&#39;id&#39;]))
+      .subscribe(hero =&gt; this.hero = hero);
+  }
+
+  save(): void {
+    this.heroService.update(this.hero)
+      .then(() =&gt; this.goBack());
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+}
+</code-pane><code-pane language="html" name="hero-detail.comp...html" format="linenums">&lt;div *ngIf=&quot;hero&quot;&gt;
+  &lt;h2&gt;{{hero.name}} details!&lt;/h2&gt;
+  &lt;div&gt;
+    &lt;label&gt;id: &lt;/label&gt;{{hero.id}}&lt;/div&gt;
+  &lt;div&gt;
+    &lt;label&gt;name: &lt;/label&gt;
+    &lt;input [(ngModel)]=&quot;hero.name&quot; placeholder=&quot;name&quot; /&gt;
+   &lt;/div&gt;
+  &lt;button (click)=&quot;goBack()&quot;&gt;Back&lt;/button&gt;
+  &lt;button (click)=&quot;save()&quot;&gt;Save&lt;/button&gt;
+&lt;/div&gt;
+</code-pane><code-pane language="ts" name="hero.service.ts" format="linenums">import { Injectable }    from &#39;@angular/core&#39;;
+import { Headers, Http } from &#39;@angular/http&#39;;
+
+import &#39;rxjs/add/operator/toPromise&#39;;
+
+import { Hero } from &#39;./hero&#39;;
+
+@Injectable()
+export class HeroService {
+
+  private headers = new Headers({&#39;Content-Type&#39;: &#39;application/json&#39;});
+  private heroesUrl = &#39;api/heroes&#39;;  // URL to web api
+
+  constructor(private http: Http) { }
+
+  getHeroes(): Promise&lt;Hero[]&gt; {
+    return this.http.get(this.heroesUrl)
+               .toPromise()
+               .then(response =&gt; response.json().data as Hero[])
+               .catch(this.handleError);
+  }
+
+
+  getHero(id: number): Promise&lt;Hero&gt; {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response =&gt; response.json().data as Hero)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise&lt;void&gt; {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() =&gt; null)
+      .catch(this.handleError);
+  }
+
+  create(name: string): Promise&lt;Hero&gt; {
+    return this.http
+      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .toPromise()
+      .then(res =&gt; res.json().data as Hero)
+      .catch(this.handleError);
+  }
+
+  update(hero: Hero): Promise&lt;Hero&gt; {
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http
+      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .toPromise()
+      .then(() =&gt; hero)
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise&lt;any&gt; {
+    console.error(&#39;An error occurred&#39;, error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+}
+</code-pane><code-pane language="ts" name="in-memory-data.service.ts" format="linenums">import { InMemoryDbService } from &#39;angular-in-memory-web-api&#39;;
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    let heroes = [
+      {id: 11, name: &#39;Mr. Nice&#39;},
+      {id: 12, name: &#39;Narco&#39;},
+      {id: 13, name: &#39;Bombasto&#39;},
+      {id: 14, name: &#39;Celeritas&#39;},
+      {id: 15, name: &#39;Magneta&#39;},
+      {id: 16, name: &#39;RubberMan&#39;},
+      {id: 17, name: &#39;Dynama&#39;},
+      {id: 18, name: &#39;Dr IQ&#39;},
+      {id: 19, name: &#39;Magma&#39;},
+      {id: 20, name: &#39;Tornado&#39;}
+    ];
+    return {heroes};
+  }
+}
+</code-pane></code-tabs><code-tabs><code-pane language="ts" name="hero-search.service.ts" format="linenums">import { Injectable } from &#39;@angular/core&#39;;
+import { Http }       from &#39;@angular/http&#39;;
+
+import { Observable }     from &#39;rxjs/Observable&#39;;
+import &#39;rxjs/add/operator/map&#39;;
+
+import { Hero }           from &#39;./hero&#39;;
+
+@Injectable()
+export class HeroSearchService {
+
+  constructor(private http: Http) {}
+
+  search(term: string): Observable&lt;Hero[]&gt; {
+    return this.http
+               .get(`app/heroes/?name=${term}`)
+               .map(response =&gt; response.json().data as Hero[]);
+  }
+}
+</code-pane><code-pane language="ts" name="hero-search.component.ts" format="linenums">import { Component, OnInit } from &#39;@angular/core&#39;;
+import { Router }            from &#39;@angular/router&#39;;
+
+import { Observable }        from &#39;rxjs/Observable&#39;;
+import { Subject }           from &#39;rxjs/Subject&#39;;
+
+// Observable class extensions
+import &#39;rxjs/add/observable/of&#39;;
+
+// Observable operators
+import &#39;rxjs/add/operator/catch&#39;;
+import &#39;rxjs/add/operator/debounceTime&#39;;
+import &#39;rxjs/add/operator/distinctUntilChanged&#39;;
+
+import { HeroSearchService } from &#39;./hero-search.service&#39;;
+import { Hero } from &#39;./hero&#39;;
+
+@Component({
+  selector: &#39;hero-search&#39;,
+  templateUrl: &#39;./hero-search.component.html&#39;,
+  styleUrls: [ &#39;./hero-search.component.css&#39; ],
+  providers: [HeroSearchService]
+})
+export class HeroSearchComponent implements OnInit {
+  heroes: Observable&lt;Hero[]&gt;;
+  private searchTerms = new Subject&lt;string&gt;();
+
+  constructor(
+    private heroSearchService: HeroSearchService,
+    private router: Router) {}
+
+  // Push a search term into the observable stream.
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  ngOnInit(): void {
+    this.heroes = this.searchTerms
+      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
+      .distinctUntilChanged()   // ignore if next search term is same as previous
+      .switchMap(term =&gt; term   // switch to new observable each time the term changes
+        // return the http search observable
+        ? this.heroSearchService.search(term)
+        // or the observable of empty heroes if there was no search term
+        : Observable.of&lt;Hero[]&gt;([]))
+      .catch(error =&gt; {
+        // TODO: add real error handling
+        console.log(error);
+        return Observable.of&lt;Hero[]&gt;([]);
+      });
+  }
+
+  gotoDetail(hero: Hero): void {
+    let link = [&#39;/detail&#39;, hero.id];
+    this.router.navigate(link);
+  }
+}
+</code-pane><code-pane language="html" name="hero-search.component.html" format="linenums">&lt;div id=&quot;search-component&quot;&gt;
+  &lt;h4&gt;Hero Search&lt;/h4&gt;
+  &lt;input #searchBox id=&quot;search-box&quot; (keyup)=&quot;search(searchBox.value)&quot; /&gt;
+  &lt;div&gt;
+    &lt;div *ngFor=&quot;let hero of heroes | async&quot;
+         (click)=&quot;gotoDetail(hero)&quot; class=&quot;search-result&quot; &gt;
+      {{hero.name}}
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code-pane><code-pane language="css" name="hero-search.component.css" format="linenums">.search-result{
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  width:195px;
+  height: 16px;
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.search-result:hover {
+  color: #eee;
+  background-color: #607D8B;
+}
+
+#search-box{
+  width: 200px;
+  height: 20px;
+}
+</code-pane></code-tabs><div class="l-sub-section"><h2 id="next-step">Next step</h2>
+<h2 id="-">下一步</h2>
+<p>Return to the <a href="../guide/learning-angular.html#architecture">learning path</a>, where
+you can read more about the concepts and practices found in this tutorial.</p>
+<p>返回<a href="../guide/learning-angular.html#architecture">学习路径</a>，你可以阅读在本教程中探索到的概念和实践。</p>
+</div><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/tutorial/toh-pt6.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:23 GMT -->
+</html>

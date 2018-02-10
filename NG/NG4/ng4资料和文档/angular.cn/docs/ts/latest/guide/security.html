@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/security.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:01 GMT -->
+<head><title>安全 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item is-selected"><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="security.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/security.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/security.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">安全 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">开发内容安全的 Angular 应用。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>This page describes Angular&#39;s built-in
+protections against common web-application vulnerabilities and attacks such as cross-site
+scripting attacks. It doesn&#39;t cover application-level security, such as authentication (<em>Who is
+this user?</em>) and authorization (<em>What can this user do?</em>).</p>
+<p>Web应用程序的安全涉及到很多方面。针对常见的漏洞和攻击，比如跨站脚本攻击，Angular提供了一些内置的保护措施。本章将讨论这些内置保护措施，但不会涉及应用级安全，比如用户认证（<em>这个用户是谁？</em>）和授权(<em>这个用户能做什么？</em>)。</p>
+<p>For more information about the attacks and mitigations described below, see <a href="https://www.owasp.org/index.php/Category:OWASP_Guide_Project">OWASP Guide Project</a>.</p>
+<p>要了解更多攻防信息，参见<a href="https://www.owasp.org/index.php/Category:OWASP_Guide_Project">开放式Web应用程序安全项目(OWASP)</a>。</p>
+<div class="l-main-section"></div><h1 id="contents-">Contents:</h1>
+<h1 id="-">目录：</h1>
+<ul>
+<li><p><a href="#report-issues">Reporting vulnerabilities</a>.</p>
+<p><a href="#report-issues">举报漏洞</a>.</p>
+</li>
+<li><p><a href="#best-practices">Best practices</a>.</p>
+<p><a href="#best-practices">最佳实践</a>.</p>
+</li>
+<li><p><a href="#xss">Preventing cross-site scripting (XSS)</a>.</p>
+<p><a href="#xss">防范跨站脚本(XSS)攻击</a>.</p>
+</li>
+<li><p><a href="#bypass-security-apis">Trusting safe values</a>.</p>
+<p><a href="#bypass-security-apis">信任安全值</a>.</p>
+</li>
+<li><p><a href="#http">HTTP-Level vulnerabilities</a>.</p>
+<p><a href="#http">HTTP级别的漏洞</a>.</p>
+</li>
+<li><p><a href="#code-review">Auditing Angular applications</a>.</p>
+<p><a href="#code-review">审计Angular应用程序</a>.</p>
+</li>
+</ul>
+<p>You can run the <live-example></live-example> in Plunker and download the code from there.</p>
+<p>运行<live-example></live-example>来试用本页的代码。</p>
+<div class="l-main-section"></div><h2 id="report-issues"><p> Reporting vulnerabilities</p><p> 举报漏洞</p></h2><p>To report vulnerabilities in Angular itself, email us at <a href="mailto:security@angular.io">security@angular.io</a>.</p>
+<p>给我们（<a href="mailto:security@angular.io">security@angular.io</a>）发邮件，报告Angular本身的漏洞。</p>
+<p>For more information about how Google handles security issues, see <a href="https://www.google.com/about/appsecurity/">Google&#39;s security
+philosophy</a>.</p>
+<p>要了解关于“谷歌如何处理安全问题”的更多信息，参见<a href="https://www.google.com/about/appsecurity/">谷歌的安全哲学</a>。</p>
+<div class="l-main-section"></div><h2 id="best-practices"><p> Best practices</p><p> 最佳实践</p></h2><ul>
+<li><p><strong>Keep current with the latest Angular library releases.</strong>
+We regularly update the Angular libraries, and these updates may fix security defects discovered in
+previous versions. Check the Angular <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md">change
+log</a> for security-related updates.</p>
+<p><strong>及时把Angular包更新到最新版本。</strong>
+我们会频繁的更新Angular库，这些更新可能会修复之前版本中发现的安全漏洞。查看Angular的<a href="https://github.com/angular/angular/blob/master/CHANGELOG.md">更新记录</a>，了解与安全有关的更新。</p>
+</li>
+<li><p><strong>Don&#39;t modify your copy of Angular.</strong>
+Private, customized versions of Angular tend to fall behind the current version and may not include
+important security fixes and enhancements. Instead, share your Angular improvements with the
+community and make a pull request.</p>
+<p><strong>不要修改你的Angular副本。</strong>
+私有的、定制版的Angular往往跟不上最新版本，这可能导致你忽略重要的安全修复与增强。反之，应该在社区共享你对Angular所做的改进并创建Pull Request。</p>
+</li>
+<li><p><strong>Avoid Angular APIs marked in the documentation as “<em>Security Risk</em>.”</strong>
+For more information, see the <a href="#bypass-security-apis">Trusting safe values</a> section of this page.</p>
+<p><strong>避免使用本文档中带“<a href="#bypass-security-apis"><em>安全风险</em></a>”标记的Angular API。</strong> 
+要了解更多信息，请参阅本章的<a href="#bypass-security-apis">信任那些安全的值</a>部分。</p>
+</li>
+</ul>
+<div class="l-main-section"></div><h2 id="xss"><p> Preventing cross-site scripting (XSS)</p><p> 防范跨站脚本(XSS)攻击</p></h2><p><a href="https://en.wikipedia.org/wiki/Cross-site_scripting">Cross-site scripting (XSS)</a> enables attackers
+to inject malicious code into web pages. Such code can then, for example, steal user data (in
+particular, login data) or perform actions to impersonate the user. This is one of the most
+common attacks on the web.</p>
+<p><a href="https://en.wikipedia.org/wiki/Cross-site_scripting">跨站脚本(XSS)</a>允许攻击者将恶意代码注入到页面中。这些代码可以偷取用户数据
+（特别是它们的登录数据），还可以冒充用户执行操作。它是Web上最常见的攻击方式之一。</p>
+<p>To block XSS attacks, you must prevent malicious code from entering the DOM(Document Object Model). For example, if
+attackers can trick you into inserting a <code>&lt;script&gt;</code> tag in the DOM, they can run arbitrary code on
+your website. The attack isn&#39;t limited to <code>&lt;script&gt;</code> tags&mdash;many elements and properties in the
+DOM allow code execution, for example, <code>&lt;img onerror=&quot;...&quot;&gt;</code> and <code>&lt;a href=&quot;javascript:...&quot;&gt;</code>. If
+attacker-controlled data enters the DOM, expect security vulnerabilities.</p>
+<p>为了防范XSS攻击，我们必须阻止恶意代码进入DOM。比如，如果某个攻击者能骗我们把<code>&lt;script&gt;</code>标签插入到DOM，就可以在我们的网站上运行任何代码。
+除了<code>&lt;script&gt;</code>，攻击者还可以使用很多DOM元素和属性来执行代码，比如<code>&lt;img onerror=&quot;...&quot;&gt;</code>、<code>&lt;a href=&quot;javascript:...&quot;&gt;</code>。
+如果攻击者所控制的数据混进了DOM，就会导致安全漏洞。</p>
+<h3 id="angular-s-cross-site-scripting-security-model">Angular’s cross-site scripting security model</h3>
+<h3 id="angular-">Angular的“跨站脚本安全模型”</h3>
+<p>To systematically block XSS bugs, Angular treats all values as untrusted by default. When a value
+is inserted into the DOM from a template, via property, attribute, style, class binding, or interpolation, 
+Angular sanitizes and escapes untrusted values.</p>
+<p>为了系统性的防范XSS问题，Angular默认把所有值都当做不可信任的。
+当值从模板中以属性（Property）、DOM元素属性（Attribte)、CSS类绑定或插值表达式等途径插入到DOM中的时候，
+Angular将对这些值进行无害化处理（Sanitize），对不可信的值进行编码。</p>
+<p><em>Angular templates are the same as executable code</em>: HTML, attributes, and binding expressions
+(but not the values bound) in templates are trusted to be safe. This means that applications must
+prevent values that an attacker can control from ever making it into the source code of a
+template. Never generate template source code by concatenating user input and templates. 
+To prevent these vulnerabilities, use
+the <a href="#offline-template-compiler">offline template compiler</a>, also known as <em>template injection</em>.</p>
+<p><strong>Angular的模板同样是可执行的</strong>：模板中的HTML、Attribute和绑定表达式（还没有绑定到值的时候）会被当做可信任的。
+这意味着应用必须防止把可能被攻击者控制的值直接编入模板的源码中。永远不要根据用户的输入和原始模板动态生成模板源码！
+使用<a href="#offline-template-compiler">离线模板编译器</a>是防范这类“模板注入”漏洞的有效途径。</p>
+<h3 id="sanitization-and-security-contexts">Sanitization and security contexts</h3>
+<h3 id="-">无害化处理与安全环境</h3>
+<p><em>Sanitization</em> is the inspection of an untrusted value, turning it into a value that&#39;s safe to insert into
+the DOM. In many cases, sanitization doesn&#39;t change a value at all. Sanitization depends on context:
+a value that&#39;s harmless in CSS is potentially dangerous in a URL.</p>
+<p>无害化处理会审查不可信的值，并将它们转换成可以安全插入到DOM的形式。多数情况下，这些值并不会在处理过程中发生任何变化。
+无害化处理的方式取决于所在的环境：一个在CSS里面无害的值，可能在URL里很危险。</p>
+<p>Angular defines the following security contexts:</p>
+<p>Angular定义了四个安全环境 - HTML，样式，URL，和资源URL：</p>
+<ul>
+<li><p><strong>HTML</strong> is used when interpreting a value as HTML, for example, when binding to <code>innerHtml</code>.</p>
+<p><strong>HTML</strong>：值需要被解释为HTML时使用，比如当绑定到<code>innerHTML</code>时。</p>
+</li>
+<li><p><strong>Style</strong> is used when binding CSS into the <code>style</code> property.</p>
+<p><strong>样式</strong>：值需要作为CSS绑定到<code>style</code>属性时使用。</p>
+</li>
+<li><p><strong>URL</strong> is used for URL properties such as <code>&lt;a href&gt;</code>.</p>
+<p><strong>URL</strong>：值需要被用作URL属性时使用，比如<code>&lt;a href&gt;</code>。</p>
+</li>
+<li><p><strong>Resource URL</strong> is a URL that will be loaded and executed as code, for example, in <code>&lt;script src&gt;</code>.</p>
+<p><strong>资源URL</strong>：值需要被当做代码而加载并执行时使用，比如<code>&lt;script src&gt;</code>中的URL。</p>
+</li>
+</ul>
+<p>Angular sanitizes untrusted values for HTML, styles, and URLs; sanitizing resource URLs isn&#39;t
+possible because they contain arbitrary code. In development mode, Angular prints a console warning
+when it has to change a value during sanitization.</p>
+<p>Angular会对前三项中种不可信的值进行无害化处理。但Angular无法对第四种资源URL进行无害化，因为它们可能包含任何代码。在开发模式下，
+如果Angular在进行无害化处理时需要被迫改变一个值，它就会在控制台上输出一个警告。</p>
+<h3 id="sanitization-example">Sanitization example</h3>
+<h3 id="-">无害化示例</h3>
+<p>The following template binds the value of <code>htmlSnippet</code>, once by interpolating it into an element&#39;s
+content, and once by binding it to the <code>innerHTML</code> property of an element:</p>
+<p>下面的例子绑定了<code>htmlSnippet</code>的值，一次把它放进插值表达式里，另一次把它绑定到元素的<code>innerHTML</code>属性上。</p>
+<div class="code-example"><header><h4>src/app/inner-html-binding.component.html</h4></header><code-example language="html" format="linenums">&lt;h3&gt;Binding innerHTML&lt;/h3&gt;
+&lt;p&gt;Bound value:&lt;/p&gt;
+&lt;p class=&quot;e2e-inner-html-interpolated&quot;&gt;{{htmlSnippet}}&lt;/p&gt;
+&lt;p&gt;Result of binding to innerHTML:&lt;/p&gt;
+&lt;p class=&quot;e2e-inner-html-bound&quot; [innerHTML]=&quot;htmlSnippet&quot;&gt;&lt;/p&gt;
+</code-example></div><p>Interpolated content is always escaped&mdash;the HTML isn&#39;t interpreted and the browser displays
+angle brackets in the element&#39;s text content.</p>
+<p>插值表达式的内容总会被编码 - 其中的HTML不会被解释，所以浏览器会在元素的文本内容中显示尖括号。</p>
+<p>For the HTML to be interpreted, bind it to an HTML property such as <code>innerHTML</code>. But binding
+a value that an attacker might control into <code>innerHTML</code> normally causes an XSS
+vulnerability. For example, code contained in a <code>&lt;script&gt;</code> tag is executed:</p>
+<p>如果希望这段HTML被正常解释，就必须绑定到一个HTML属性上，比如<code>innerHTML</code>。但是如果把一个可能被攻击者控制的值绑定到<code>innerHTML</code>就会导致XSS漏洞。
+比如，包含在<code>&lt;script&gt;</code>标签的代码就会被执行：</p>
+<div class="code-example"><header><h4>src/app/inner-html-binding.component.ts (class)</h4></header><code-example language="ts" format="">export class InnerHtmlBindingComponent {
+  // For example, a user/attacker-controlled value from a URL.
+  htmlSnippet = &#39;Template &lt;script&gt;alert(&quot;0wned&quot;)&lt;/script&gt; &lt;b&gt;Syntax&lt;/b&gt;&#39;;
+}
+</code-example></div><p>Angular recognizes the value as unsafe and automatically sanitizes it, which removes the <code>&lt;script&gt;</code>
+tag but keeps safe content such as the text content of the <code>&lt;script&gt;</code> tag and the <code>&lt;b&gt;</code> element.</p>
+<p>Angular认为这些值是不安全的，并自动进行无害化处理。它会移除<code>&lt;script&gt;</code>标签，但保留安全的内容，比如该片段中的文本内容或<code>&lt;b&gt;</code>元素。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/security/binding-inner-html.png" alt="A screenshot showing interpolated and bound HTML values"></figure><h3 id="avoid-direct-use-of-the-dom-apis">Avoid direct use of the DOM APIs</h3>
+<h3 id="-dom-api">避免直接使用DOM API</h3>
+<p>The built-in browser DOM APIs don&#39;t automatically protect you from security vulnerabilities.
+For example, <code>document</code>, the node available through <code>ElementRef</code>, and many third-party APIs
+contain unsafe methods. Avoid directly interacting with the DOM and instead use Angular
+templates where possible.</p>
+<p>浏览器内置的DOM API不会自动针对安全漏洞进行防护。比如，<code>document</code>（它可以通过<code>ElementRef</code>访问）以及其它第三方API都可能包含不安全的方法。
+要避免直接与DOM交互，只要可能，就尽量使用Angular模板。</p>
+<h3 id="content-security-policy">Content security policy</h3>
+<h3 id="-">内容安全策略</h3>
+<p>Content Security Policy (CSP) is a defense-in-depth
+technique to prevent XSS. To enable CSP, configure your web server to return an appropriate
+<code>Content-Security-Policy</code> HTTP header. Read more about content security policy at 
+<a href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/">An Introduction to Content Security Policy</a>
+on the HTML5Rocks website.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">内容安全策略(CSP)</a>是用来防范XSS的纵深防御技术。
+要打开CSP，请配置你的Web服务器，让它返回合适的HTTP头<code>Content_Security_Policy</code>。
+要了解关于内容安全策略的更多信息，请参阅HTML5Rocks上的<a href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/">内容安全策略简介</a></p>
+<a id="offline-template-compiler"></a><h3 id="use-the-offline-template-compiler">Use the offline template compiler</h3>
+<h3 id="-">使用离线模板编译器</h3>
+<p>The offline template compiler prevents a whole class of vulnerabilities called template injection,
+and greatly improves application performance. Use the offline template compiler in production
+deployments; don&#39;t dynamically generate templates. Angular trusts template code, so generating
+templates, in particular templates containing user data, circumvents Angular&#39;s built-in protections. 
+For information about dynamically constructing forms in a safe way, see the 
+<a href="../cookbook/dynamic-form.html">Dynamic Forms</a> cookbook page.</p>
+<p>离线模板编译器阻止了一整套被称为“模板注入”的漏洞，并能显著增强应用程序的性能。尽量在产品发布时使用离线模板编译器，
+而不要动态生成模板（比如在代码中拼接字符串生成模板）。由于Angular会信任模板本身的代码，所以，动态生成的模板 —— 特别是包含用户数据的模板 —— 会绕过Angular自带的保护机制。
+要了解如何用安全的方式动态创建表单，请参见<a href="../cookbook/dynamic-form.html">动态表单烹饪宝典</a>一章。</p>
+<h3 id="server-side-xss-protection">Server-side XSS protection</h3>
+<h3 id="-xss-">服务器端XSS保护</h3>
+<p>HTML constructed on the server is vulnerable to injection attacks. Injecting template code into an
+Angular application is the same as injecting executable code into the
+application: it gives the attacker full control over the application. To prevent this, 
+use a templating language that automatically escapes values to prevent XSS vulnerabilities on
+the server. Don&#39;t generate Angular templates on the server side using a templating language; doing this
+carries a high risk of introducing template-injection vulnerabilities.</p>
+<p>服务器端构造的HTML很容易受到注入攻击。当需要在服务器端生成HTML时（比如Angular应用的初始页面），
+  务必使用一个能够自动进行无害化处理以防范XSS漏洞的后端模板语言。不要在服务器端使用模板语言生成Angular模板，
+  这样会带来很高的“模板注入”风险。</p>
+<div class="l-main-section"></div><h2 id="bypass-security-apis">Trusting safe values</h2><h2 id="bypass-security-apis">信任安全值</h2><p>Sometimes applications genuinely need to include executable code, display an <code>&lt;iframe&gt;</code> from some
+URL, or construct potentially dangerous URLs. To prevent automatic sanitization in any of these 
+situations, you can tell Angular that you inspected a value, checked how it was generated, and made 
+sure it will always be secure. But <em>be careful</em>. If you trust a value that might be malicious, you 
+are introducing a security vulnerability into your application. If in doubt, find a professional 
+security reviewer.</p>
+<p>有时候，应用程序确实需要包含可执行的代码，比如使用URL显示<code>&lt;iframe&gt;</code>，或者构造出有潜在危险的URL。
+    为了防止在这种情况下被自动无害化，你可以告诉Angular：我已经审查了这个值，检查了它是怎么生成的，并确信它总是安全的。
+    但是<strong>千万要小心</strong>！如果你信任了一个可能是恶意的值，就会在应用中引入一个安全漏洞。如果你有疑问，请找一个安全专家复查下。</p>
+<p>To mark a value as trusted, inject <code>DomSanitizer</code> and call one of the
+following methods:</p>
+<p>注入<code>DomSanitizer</code>服务，然后调用下面的方法之一，你就可以把一个值标记为可信任的。</p>
+<ul>
+<li><code>bypassSecurityTrustHtml</code></li>
+<li><code>bypassSecurityTrustScript</code></li>
+<li><code>bypassSecurityTrustStyle</code></li>
+<li><code>bypassSecurityTrustUrl</code></li>
+<li><code>bypassSecurityTrustResourceUrl</code></li>
+</ul>
+<p>Remember, whether a value is safe depends on context, so choose the right context for
+your intended use of the value. Imagine that the following template needs to bind a URL to a
+<code>javascript:alert(...)</code> call:</p>
+<p>记住，一个值是否安全取决于它所在的环境，所以你要为这个值按预定的用法选择正确的环境。假设下面的模板需要把<code>javascript.alert(...)</code>方法绑定到URL。</p>
+<div class="code-example"><header><h4>src/app/bypass-security.component.html (URL)</h4></header><code-example language="html" format="">&lt;h4&gt;An untrusted URL:&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&quot;e2e-dangerous-url&quot; [href]=&quot;dangerousUrl&quot;&gt;Click me&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;A trusted URL:&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&quot;e2e-trusted-url&quot; [href]=&quot;trustedUrl&quot;&gt;Click me&lt;/a&gt;&lt;/p&gt;
+</code-example></div><p>Normally, Angular automatically sanitizes the URL, disables the dangerous code, and
+in development mode, logs this action to the console. To prevent
+this, mark the URL value as a trusted URL using the <code>bypassSecurityTrustUrl</code> call:</p>
+<p>通常，Angular会自动无害化这个URL并禁止危险的代码。为了防止这种行为，我们可以调用<code>bypassSecurityTrustUrl</code>把这个URL值标记为一个可信任的URL：</p>
+<div class="code-example"><header><h4>src/app/bypass-security.component.ts (trust-url)</h4></header><code-example language="ts" format="">constructor(private sanitizer: DomSanitizer) {
+  // javascript: URLs are dangerous if attacker controlled.
+  // Angular sanitizes them in data binding, but you can
+  // explicitly tell Angular to trust this value:
+  this.dangerousUrl = &#39;javascript:alert(&quot;Hi there&quot;)&#39;;
+  this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
+</code-example></div><figure class="image-display"><img src="../../../../resources/images/devguide/security/bypass-security-component.png" alt="A screenshot showing an alert box created from a trusted URL"></figure><p>If you need to convert user input into a trusted value, use a
+controller method. The following template allows users to enter a YouTube video ID and load the
+corresponding video in an <code>&lt;iframe&gt;</code>. The <code>&lt;iframe src&gt;</code> attribute is a resource URL security
+context, because an untrusted source can, for example, smuggle in file downloads that unsuspecting users 
+could execute. So call a method on the controller to construct a trusted video URL, which causes
+Angular to allow binding into <code>&lt;iframe src&gt;</code>:</p>
+<p>如果需要把用户输入转换为一个可信任的值，我们可以很方便的在控制器方法中处理。下面的模板允许用户输入一个YouTube视频的ID，
+  然后把相应的视频加载到<code>&lt;iframe&gt;</code>中。<code>&lt;iframe src&gt;</code>是一个“资源URL”的安全环境，因为不可信的源码可能作为文件下载到本地，被毫无防备的用户执行。
+  所以我们要调用一个控制器方法来构造一个新的、可信任的视频URL，然后把它绑定到<code>&lt;iframe src&gt;</code>。</p>
+<div class="code-example"><header><h4>src/app/bypass-security.component.html (iframe)</h4></header><code-example language="html" format="">&lt;h4&gt;Resource URL:&lt;/h4&gt;
+&lt;p&gt;Showing: {{dangerousVideoUrl}}&lt;/p&gt;
+&lt;p&gt;Trusted:&lt;/p&gt;
+&lt;iframe class=&quot;e2e-iframe-trusted-src&quot; width=&quot;640&quot; height=&quot;390&quot; [src]=&quot;videoUrl&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;Untrusted:&lt;/p&gt;
+&lt;iframe class=&quot;e2e-iframe-untrusted-src&quot; width=&quot;640&quot; height=&quot;390&quot; [src]=&quot;dangerousVideoUrl&quot;&gt;&lt;/iframe&gt;
+</code-example></div><div class="code-example"><header><h4>src/app/bypass-security.component.ts (trust-video-url)</h4></header><code-example language="ts" format="">updateVideoUrl(id: string) {
+  // Appending an ID to a YouTube URL is safe.
+  // Always make sure to construct SafeValue objects as
+  // close as possible to the input data so
+  // that it&#39;s easier to check if the value is safe.
+  this.dangerousVideoUrl = &#39;https://www.youtube.com/embed/&#39; + id;
+  this.videoUrl =
+      this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
+}
+</code-example></div><div class="l-main-section"></div><h2 id="http">HTTP-level vulnerabilities</h2><h2 id="http">HTTP级别的漏洞</h2><p>Angular has built-in support to help prevent two common HTTP vulnerabilities, cross-site request
+forgery (CSRF or XSRF) and cross-site script inclusion (XSSI). Both of these must be mitigated primarily 
+on the server side, but Angular provides helpers to make integration on the client side easier.</p>
+<p>Angular内置了一些支持来防范两个常见的HTTP漏洞：跨站请求伪造（XSRF）和跨站脚本包含（XSSI）。
+  这两个漏洞主要在服务器端防范，但是Angular也自带了一些辅助特性，可以让客户端的集成变得更容易。</p>
+<h3 id="xsrf">Cross-site request forgery</h3><h3 id="xsrf">跨站请求伪造（XSRF）</h3><p>In a cross-site request forgery (CSRF or XSRF), an attacker tricks the user into visiting
+a different web page (such as <code>evil.com</code>) with malignant code that secretly sends a malicious request 
+to the application&#39;s web server (such as <code>example-bank.com</code>). </p>
+<p>在跨站请求伪造（XSRF或CSFR）中，攻击者欺骗用户，让他们访问一个假冒页面(例如<code>evil.com</code>)，
+该页面带有恶意代码，秘密的向你的应用程序服务器发送恶意请求(例如<code>example-bank.com</code>)。</p>
+<p>Assume the user is logged into the application at <code>example-bank.com</code>.
+The user opens an email and clicks a link to <code>evil.com</code>, which opens in a new tab.</p>
+<p>假设用户已经在<code>example-bank.com</code>登录。用户打开一个邮件，点击里面的链接，在新页面中打开<code>evil.com</code>。</p>
+<p>The <code>evil.com</code> page immediately sends a malicious request to <code>example-bank.com</code>.
+Perhaps it&#39;s a request to transfer money from the user&#39;s account to the attacker&#39;s account.
+The browser automatically sends the <code>example-bank.com</code> cookies (including the authentication cookie) with this request.</p>
+<p>该<code>evil.com</code>页面立刻发送恶意请求到<code>example-bank.com</code>。这个请求可能是从用户账户转账到攻击者的账户。
+与该请求一起，浏览器自动发出<code>example-bank.com</code>的cookie。</p>
+<p>If the <code>example-bank.com</code> server lacks XSRF protection, itcan&#39;t tell the difference between a legitimate request from the application
+and the forged request from <code>evil.com</code>.</p>
+<p>如果<code>example-bank.com</code>服务器缺乏XSRF保护，就无法辨识请求是从应用程序发来的合法请求还是从<code>evil.com</code>来的假请求。</p>
+<p>To prevent this, the application must ensure that a user request originates from the real
+application, not from a different site. 
+The server and client must cooperate to thwart this attack.</p>
+<p>为了防止这种情况，你必须确保每个用户的请求都是从你自己的应用中发出的，而不是从另一个网站发出的。
+  客户端和服务器必须合作来抵挡这种攻击。</p>
+<p>In a common anti-XSRF technique, the application server sends a randomly
+generated authentication token in a cookie.
+The client code reads the cookie and adds a custom request header with the token in all subsequent requests.
+The server compares the received cookie value to the request header value and rejects the request if the values are missing or don&#39;t match.</p>
+<p>常见的反XSRF技术是服务器随机生成一个用户认证令牌到cookie中。
+  客户端代码获取这个cookie，并用它为接下来所有的请求添加自定义请求页头。
+  服务器比较收到的cookie值与请求页头的值，如果它们不匹配，便拒绝请求。</p>
+<p>This technique is effective because all browsers implement the <em>same origin policy</em>. Only code from the website 
+on which cookies are set can read the cookies from that site and set custom headers on requests to that site.
+That means only your application can read this cookie token and set the custom header. The malicious code on <code>evil.com</code> can&#39;t.</p>
+<p>这个技术之所以有效，是因为所有浏览器都实现了<em>同源策略</em>。只有设置cookie的网站的代码可以访问该站的cookie，并为该站的请求设置自定义页头。
+  这就是说，只有你的应用程序可以获取这个cookie令牌和设置自定义页头。<code>evil.com</code>的恶意代码不能。</p>
+<p>Angular&#39;s <code>http</code> has built-in support for the client-side half of this technique in its <code>XSRFStrategy</code>. 
+The default <code>CookieXSRFStrategy</code> is turned on automatically.
+Before sending an HTTP request, the <code>CookieXSRFStrategy</code> looks for a cookie called <code>XSRF-TOKEN</code> and 
+sets a header named <code>X-XSRF-TOKEN</code> with the value of that cookie. </p>
+<p>Angular的<code>http</code>客户端在其<code>XSRFStrategy</code>中具有对这项技术的内置支持。
+  默认的<code>CookieXSRFStrategy</code>会被自动开启
+  在发送每个请求之前，<code>CookieXSRFStrategy</code>查询名为<code>XSRF-TOKEN</code>的cookie，并设置一个名为<code>X-XSRF-TOKEN</code>的HTTP请求头，并把该cookie的值赋给它。</p>
+<p>The server must do its part by setting the
+initial <code>XSRF-TOKEN</code> cookie and confirming that each subsequent state-modifying request
+includes a matching <code>XSRF-TOKEN</code> cookie and <code>X-XSRF-TOKEN</code> header.</p>
+<p>服务器必须要完成自己的任务，设置初始<code>XSRF-TOKEN</code>cookie，并确认接下来的每个请求包含了配对的<code>XSRF-TOKEN</code>cookie和<code>X-XSRF-TOKEN</code>页头。</p>
+<p>XSRF/CSRF tokens should be unique per user and session, have a large random value generated by a
+cryptographically secure random number generator, and  expire in a day or two.</p>
+<p>CSRF令牌对每个用户和session应该是唯一的，它包含一大串由安全的随机数字生成器生成的随机值，并且在一两天之内过期。</p>
+<p>Your server may use a different cookie or header name for this purpose.
+An Angular application can customize cookie and header names by providing its own <code>CookieXSRFStrategy</code> values.</p>
+<p>你的服务器可能使用不同的cookie或者页头名字。Angular应用可以通过自己的<code>CookieXSRFStrategy</code>值来自定义cookie和页头名字。</p>
+<code-example language="typescript">{ provide: XSRFStrategy, useValue: new CookieXSRFStrategy('myCookieName', 'My-Header-Name') }
+</code-example><p>Or you can implement and provide an entirely custom <code>XSRFStrategy</code>:</p>
+<p>或者你可以实现和提供完整的自定义<code>XSRFStrategy</code>：</p>
+<code-example language="typescript">{ provide: XSRFStrategy, useClass: MyXSRFStrategy }
+</code-example><p>For information about CSRF at the Open Web Application Security Project (OWASP), see
+<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" target="_blank">Cross-Site Request Forgery (CSRF)</a> and
+<a href="https://www.owasp.org/index.php/CSRF_Prevention_Cheat_Sheet" target="_blank">Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet</a>.
+The Stanford University paper 
+<a href="https://seclab.stanford.edu/websec/csrf/csrf.pdf" target="_blank">Robust Defenses for Cross-Site Request Forgery</a> is a rich source of detail.</p>
+<p>到开放式Web应用程序安全项目(OWASP)的<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">这里</a>
+和<a href="https://www.owasp.org/index.php/CSRF_Prevention_Cheat_Sheet">这里</a>学习更多关于跨站请求伪造（XSRF）的知识。
+这个<a href="https://seclab.stanford.edu/websec/csrf/csrf.pdf">斯坦福大学论文</a>有详尽的细节。</p>
+<p>See also Dave Smith&#39;s easy-to-understand 
+<a href="https://www.youtube.com/watch?v=9inczw6qtpY" target="_blank" title="Cross Site Request Funkery Securing Your Angular Apps From Evil Doers">talk on XSRF at AngularConnect 2016</a>.</p>
+<p>参见Dave Smith在<a href="https://www.youtube.com/watch?v=9inczw6qtpY" target="_blank" title="Cross Site Request Funkery Securing Your Angular Apps From Evil Doers">AngularConnect 2016关于XSRF的演讲</a>。</p>
+<h3 id="xssi">Cross-site script inclusion (XSSI)</h3><h3 id="xssi">跨站脚本包含(XSSI)</h3><p>Cross-site script inclusion, also known as JSON vulnerability, can allow an attacker&#39;s website to
+read data from a JSON API. The attack works on older browsers by overriding native JavaScript
+object constructors, and then including an API URL using a <code>&lt;script&gt;</code> tag.</p>
+<p>跨站脚本包含，也被称为Json漏洞，它可以允许一个攻击者的网站从JSON API读取数据。这种攻击发生在老的浏览器上，
+它重写原生JavaScript对象的构造函数，然后使用<code>&lt;script&gt;</code>标签包含一个API的URL。</p>
+<p>This attack is only successful if the returned JSON is executable as JavaScript. Servers can
+prevent an attack by prefixing all JSON responses to make them non-executable, by convention, using the
+well-known string <code>&quot;)]}&#39;,\n&quot;</code>.</p>
+<p>只有在返回的JSON能像JavaScript一样可以被执行时，这种攻击才会生效。所以服务端会约定给所有JSON响应体加上前缀<code>&quot;)]}&#39;,\n&quot;</code>，来把它们标记为不可执行的，
+以防范这种攻击。</p>
+<p>Angular&#39;s <code>Http</code> library recognizes this convention and automatically strips the string
+<code>&quot;)]}&#39;,\n&quot;</code> from all responses before further parsing.</p>
+<p>Angular的<code>Http</code>库会识别这种约定，并在进一步解析之前，自动把字符串<code>&quot;)]}&#39;,\n&quot;</code>从所有响应中去掉。</p>
+<p>For more information, see the XSSI section of this <a href="https://security.googleblog.com/2011/05/website-security-for-webmasters.html">Google web security blog
+post</a>.</p>
+<p>要学习更多这方面的知识，请参见<a href="https://security.googleblog.com/2011/05/website-security-for-webmasters.html">谷歌Web安全博客文章</a>的XSSI小节。</p>
+<div class="l-main-section"></div><h2 id="code-review">Auditing Angular applications</h2><h2 id="code-review">审计Angular应用程序</h2><p>Angular applications must follow the same security principles as regular web applications, and
+must be audited as such. Angular-specific APIs that should be audited in a security review,
+such as the <a href="#bypass-security-apis"><em>bypassSecurityTrust</em></a> methods, are marked in the documentation
+as security sensitive.</p>
+<p>Angular应用应该遵循和常规Web应用一样的安全原则并按照这些原则进行审计。Angular中某些应该在安全评审中被审计的API（
+比如<a href="#bypass-security-apis"><em>bypassSecurityTrust</em></a> API）都在文档中被明确标记为安全性敏感的。</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/security.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:02 GMT -->
+</html>

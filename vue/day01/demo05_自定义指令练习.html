@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+
+  <button
+    v-if="count <= 5"
+    @click="handleClick" v-operatebutton="count">
+    clickMe
+  </button>
+
+</div>
+
+<script>
+  new Vue({
+    el:'#example',
+    data:{
+      count:0
+    },
+    methods:{
+      handleClick: function () {
+        this.count++;
+      }
+    },
+    directives:{
+      operatebutton:{
+        bind: function () {
+          console.log('in bind');
+        },
+        update: function (elment,obj) {
+          elment.innerHTML = obj.value;
+          console.log('in update');
+//          if(obj.value > 5)
+//          {
+//            elment.remove();
+//          }
+        },
+        unbind: function () {
+          console.log('in unbind');
+        }
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

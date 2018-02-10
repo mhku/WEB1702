@@ -1,0 +1,73 @@
+版本一:图片轮播 jquery插件
+
+1:jquery插件种类二种
+  1.1:全局插件       不与任何dom对象关联通用功能
+	1.2:jquery对象插件 和一个多个dom对象有关
+2:jquery对象插件(图片轮播)
+3:开发流程
+  jd_index_02.js
+  a:判断当前jquery是否加载成功
+	  if(window.$===undefined){
+		   throw new Error("依赖jquery必须加载");
+		}
+	b:为jQuery.fn.添加方法
+	  jQuery.fn.carousel = function(){
+		   //------注释   14:20--14:35
+		}
+	c:调用插件 html
+	  <script src="jquery.js"></script>
+		<script src="jd_index_02.js"></script>
+		<script>
+	  $("选择器").carousel();
+		</script>
+
+
+  程序开发
+	1:分析html/css   jd_index.html 235 line
+	    <div id="slider">
+       <img  class="active"  src="Images/index/banner_02.jpg">
+       <img src="Images/index/banner_01.jpg">
+       <img src="Images/index/banner_03.jpg">
+       <img src="Images/index/banner_04.jpg">
+       <img src="Images/index/banner_05.jpg">
+      <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </div>
+ 
+	2:分析功有创建js
+	 	<script>
+	   $("#slider").carousel();
+		</script> 
+	
+	  2.1:创建一组变量
+		 1:每隔多久轮换一张     3000
+		 2:所有img类数组对象    imgList
+		 3:所有li组成类数组对象 liList
+		 4:当前显示序号         index[0 1 2 3 4]
+		 5:核心函数 lunHuan
+		  5.1:序号++
+			5.2:判序>4
+			5.3:当前下标图片添加class active
+			    兄弟class active删除
+      5.4:当前下标页码添加class active
+			    兄弟class active删除
+		 6:启动定时器调用 lunHuan
+		   时间
+		 7:为所有页码绑定点击事件
+		   7.1 获取页码 3 
+			 7.2 获取当前下标图片添加class active
+			     兄弟class active删除
+					 获取当前页码添加class active
+					 兄弟class active删除
+
+     示例:
+		 var index = 0;
+		 第一张图片 banner_02.jpg
+		 页码       <li>1</li>
+     $imgList.eq(index).addClass("active");
+		 .siblings().removeClass("active");

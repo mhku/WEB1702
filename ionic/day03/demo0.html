@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/ionic.css"/>
+    <script src="js/ionic.bundle.js"></script>
+</head>
+<body>
+<ion-header-bar>
+    <h1 class="title">header</h1>
+</ion-header-bar>
+<ion-content ng-controller="myCtr">
+    <button ng-click="loadData()">加载数据</button>
+    <ul class="list list-inset">
+        <li class="item" ng-repeat="myItem in myList">
+            {{myItem}}
+        </li>
+    </ul>
+</ion-content>
+<ion-footer-bar>
+    <h1 class="title">footer</h1>
+</ion-footer-bar>
+</body>
+<script>
+    var app = angular.module('myApp', ['ionic']);
+    app.controller("myCtr",["$scope",'$ionicLoading',"$timeout",function($scope,$ionicLoading,$timeout){
+        $scope.myList=[];
+        $scope.loadData=function(){
+            template:"loading.....",
+            duration:2000
+        }
+        /*$timeout(function(){
+            $scope.myList.push(Math.floor(Math.random()*100));
+            $ionicLoading.hide();
+        },2000)
+        */
+    }])
+</script>
+
+</html>

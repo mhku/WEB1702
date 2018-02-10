@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/api/components/input/Input/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../../../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>Input - Ionic API Documentation -  Ionic Framework</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../../../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../../../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../../../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-input"
+        class="v2 docs fluid page-input has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../../../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../../../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../../../../index.html">Framework</a></li>
+<li><a href="../../../../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../../../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../../../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../../../../support.html">Customer Support</a></li>
+    <li><a href="../../../../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     
+       ng-controller="APIDemoCtrl"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/nightly/api/"
+    >
+    nightly 
+  </option>
+
+  <option
+   value="/docs/api/"
+    selected>
+    3.3.0 (latest)
+  </option>
+
+  <option
+   value="/docs/3.2.0/api/"
+    >
+    3.2.0 
+  </option>
+
+  <option
+   value="/docs/3.1.1/api/"
+    >
+    3.1.1 
+  </option>
+
+  <option
+   value="/docs/3.1.0/api/"
+    >
+    3.1.0 
+  </option>
+
+  <option
+   value="/docs/3.0.1/api/"
+    >
+    3.0.1 
+  </option>
+
+  <option
+   value="/docs/3.0.0/api/"
+    >
+    3.0.0 
+  </option>
+
+  <option
+   value="/docs/2.3.0/api/"
+    >
+    2.3.0 
+  </option>
+
+  <option
+   value="/docs/2.2.0/api/"
+    >
+    2.2.0 
+  </option>
+
+  <option
+   value="/docs/2.1.0/api/"
+    >
+    2.1.0 
+  </option>
+
+  <option
+   value="/docs/2.0.1/api/"
+    >
+    2.0.1 
+  </option>
+
+  <option
+   value="/docs/2.0.0/api/"
+    >
+    2.0.0 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="../../../../index.html">Back to Main Docs</a>
+  </li>
+  
+  
+    
+
+  
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/alert/AlertController">AlertController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/avatar/Avatar">Avatar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/chip/Chip">Chip</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Col">Col</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/datetime/DateTime">DateTime</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabButton">FabButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabContainer">FabContainer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabList">FabList</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Footer">Footer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Grid">Grid</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/tap-click/Haptic">Haptic</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Header">Header</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/img/Img">Img</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize active">
+  <a href="http://ionicframework.com/docs/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/IonicErrorHandler">IonicErrorHandler</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicModule">IonicModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/IonicPage">IonicPage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicPageModule">IonicPageModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemOptions">ItemOptions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemReorder">ItemReorder</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/loading/LoadingController">LoadingController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/MenuController">MenuController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/modal/ModalController">ModalController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/normalizeURL">normalizeURL</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/note/Note">Note</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/PlatformConfigToken">PlatformConfigToken</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/popover/PopoverController">PopoverController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/range/Range">Range</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/registerModeConfigs">registerModeConfigs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Row">Row</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/split-pane/SplitPane">SplitPane</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/thumbnail/Thumbnail">Thumbnail</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toast/ToastController">ToastController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/typography/Typography">Typography</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/ViewController">ViewController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/virtual-scroll/VirtualScroll">VirtualScroll</a>
+</li>
+
+
+
+</ul>
+
+    
+  </nav>
+  
+  <aside id="platform-preview" class="platform-preview">
+    <div class="platform-toggle">
+      <a ng-class="{active: iosActive}"
+         ng-click="setPlatform('ios')">iOS</a>
+      <a ng-class="{active: androidActive}"
+         ng-click="setPlatform('android')">Android</a>
+      <a ng-class="{active: windowsActive}"
+         ng-click="setPlatform('windows')">Windows</a>
+    </div>
+    <div id="demo-device-ios"
+         ng-class="previewPlatform"
+         ng-show="iosActive"
+         ng-cloak>
+      <iframe id="demo-ios"
+            
+              src="http://ionicframework.com/docs/demos/src/input/www/?production=true&amp;ionicplatform=ios"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-android"
+         ng-class="previewPlatform"
+         ng-show="androidActive"
+         ng-cloak>
+      <iframe id="demo-android"
+            
+              src="http://ionicframework.com/docs/demos/src/input/www/?production=true&amp;ionicplatform=android"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-windows"
+         ng-class="previewPlatform"
+         ng-show="windowsActive"
+         ng-cloak>
+      <iframe id="demo-windows"
+            
+              src="http://ionicframework.com/docs/demos/src/input/www/?production=true&amp;ionicplatform=windows"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+  </aside>
+  
+  <main>
+    <h1 class="api-title">
+<a class="anchor" name="input" href="#input"></a>
+
+Input
+<h3><code>ion-input,ion-textarea</code></h3>
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master/src/components/input/input.ts#L16">
+Improve this doc
+</a></p>
+
+<p><code>ion-input</code> is meant for text type inputs only, such as <code>text</code>,
+<code>password</code>, <code>email</code>, <code>number</code>, <code>search</code>, <code>tel</code>, and <code>url</code>. Ionic
+still uses an actual <code>&lt;input type=&quot;text&quot;&gt;</code> HTML element within the
+component, however, with Ionic wrapping the native HTML input
+element it&#39;s better able to handle the user experience and
+interactivity.</p>
+<p>Similarly, <code>&lt;ion-textarea&gt;</code> should be used in place of <code>&lt;textarea&gt;</code>.</p>
+<p>An <code>ion-input</code> is <strong>not</strong> used for non-text type inputs, such as a
+<code>checkbox</code>, <code>radio</code>, <code>toggle</code>, <code>range</code>, <code>select</code>, etc.</p>
+<p>Along with the blur/focus events, <code>input</code> support all standard text input
+events like <code>keyup</code>, <code>keydown</code>, <code>keypress</code>, <code>input</code>,etc. Any standard event
+can be attached and will function as expected.</p>
+
+<!-- @usage tag -->
+
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
+
+<pre><code class="lang-html">&lt;ion-list&gt;
+  &lt;ion-item&gt;
+    &lt;ion-label color=&quot;primary&quot;&gt;Inline Label&lt;/ion-label&gt;
+    &lt;ion-input placeholder=&quot;Text Input&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-label color=&quot;primary&quot; fixed&gt;Fixed Label&lt;/ion-label&gt;
+    &lt;ion-input type=&quot;tel&quot; placeholder=&quot;Tel Input&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-input type=&quot;number&quot; placeholder=&quot;Number Input with no label&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-label color=&quot;primary&quot; stacked&gt;Stacked Label&lt;/ion-label&gt;
+    &lt;ion-input type=&quot;email&quot; placeholder=&quot;Email Input&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-label color=&quot;primary&quot; stacked&gt;Stacked Label&lt;/ion-label&gt;
+    &lt;ion-input type=&quot;password&quot; placeholder=&quot;Password Input&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-label color=&quot;primary&quot; floating&gt;Floating Label&lt;/ion-label&gt;
+    &lt;ion-input&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-input placeholder=&quot;Clear Input&quot; clearInput&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-textarea placeholder=&quot;Enter a description&quot;&gt;&lt;/ion-textarea&gt;
+  &lt;/ion-item&gt;
+&lt;/ion-list&gt;
+</code></pre>
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="ngControl"></div>
+
+<h3>
+<a class="anchor" name="ngControl" href="#ngControl"></a>
+<code>ngControl</code>
+  
+
+</h3>
+
+<!-- input methods on the class -->
+<h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>clearInput</td>
+      <td><code>boolean</code></td>
+      <td><p> If true, a clear icon will appear in the input when there is a value. Clicking it clears the input.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>clearOnEdit</td>
+      <td><code>boolean</code></td>
+      <td><p> If true, the value will be cleared after focus upon edit. Defaults to <code>true</code> when <code>type</code> is <code>&quot;password&quot;</code>, <code>false</code> for all other types.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>disabled</td>
+      <td><code>boolean</code></td>
+      <td><p> If true, the user cannot interact with this element.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>max</td>
+      <td><code>any</code></td>
+      <td><p> The maximum value, which must not be less than its minimum (min attribute) value.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>min</td>
+      <td><code>any</code></td>
+      <td><p> The minimum value, which must not be greater than its maximum (max attribute) value.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>placeholder</td>
+      <td><code>string</code></td>
+      <td><p> Instructional text that shows before the input has a value.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>readonly</td>
+      <td><code>boolean</code></td>
+      <td><p> If true, the user cannot modify the value.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>step</td>
+      <td><code>any</code></td>
+      <td><p> Works with the min and max attributes to limit the increments at which a value can be set.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>type</td>
+      <td><code>string</code></td>
+      <td><p> The type of control to display. The default type is text. Possible values are: <code>&quot;text&quot;</code>, <code>&quot;password&quot;</code>, <code>&quot;email&quot;</code>, <code>&quot;number&quot;</code>, <code>&quot;search&quot;</code>, <code>&quot;tel&quot;</code>, or <code>&quot;url&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>value</td>
+      <td><code>string</code></td>
+      <td><p> The text value of the input.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+<!-- output events on the class -->
+<h2><a class="anchor" name="output-events" href="#output-events"></a>Output Events</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>blur</td>
+      <td><p> Emitted when the input no longer has focus.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>focus</td>
+      <td><p> Emitted when the input has focus.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<h2 id="sass-variable-header"><a class="anchor" name="sass-variables" href="#sass-variables"></a>Sass Variables</h2>
+<div id="sass-variables" ng-controller="SassToggleCtrl">
+  <div class="sass-platform-toggle">
+    
+      
+      
+      <a ng-init="setSassPlatform('base')" ng-class="{ active: active === 'base' }" ng-click="setSassPlatform('base')">All</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'ios' }" ng-click="setSassPlatform('ios')">iOS</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'md' }" ng-click="setSassPlatform('md')">Material Design</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'wp' }" ng-click="setSassPlatform('wp')">Windows Platform</a>
+      
+      
+    
+  </div>
+
+
+  
+  <table ng-show="active === 'base'" id="sass-base" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$text-input-highlight-color-valid</code></td>
+        
+          <td><code>#32db64</code></td>
+        
+        <td><p>Color of the input highlight when valid</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-highlight-color-invalid</code></td>
+        
+          <td><code>#f53d3d</code></td>
+        
+        <td><p>Color of the input highlight when invalid</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-placeholder-color</code></td>
+        
+          <td><code>#999</code></td>
+        
+        <td><p>Color of the input placeholder</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'ios'" id="sass-ios" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$text-input-ios-background-color</code></td>
+        
+          <td><code>$list-ios-background-color</code></td>
+        
+        <td><p>Background color of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-margin-top</code></td>
+        
+          <td><code>$item-ios-padding-top</code></td>
+        
+        <td><p>Margin top of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-margin-end</code></td>
+        
+          <td><code>$text-input-ios-margin-right</code></td>
+        
+        <td><p>Margin end of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-margin-bottom</code></td>
+        
+          <td><code>$item-ios-padding-bottom</code></td>
+        
+        <td><p>Margin bottom of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-margin-start</code></td>
+        
+          <td><code>$text-input-ios-margin-left</code></td>
+        
+        <td><p>Margin start of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-input-clear-icon-width</code></td>
+        
+          <td><code>30px</code></td>
+        
+        <td><p>Width of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-input-clear-icon-color</code></td>
+        
+          <td><code>rgba(0, 0, 0, .5)</code></td>
+        
+        <td><p>Color of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-input-clear-icon-svg</code></td>
+        
+          <td><code>&quot;&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 512 512&#39;&gt;&lt;path fill=&#39;&quot; + $text-input-ios-input-clear-icon-color + &quot;&#39; d=&#39;M403.1,108.9c-81.2-81.2-212.9-81.2-294.2,0s-81.2,212.9,0,294.2c81.2,81.2,212.9,81.2,294.2,0S484.3,190.1,403.1,108.9z M352,340.2L340.2,352l-84.4-84.2l-84,83.8L160,339.8l84-83.8l-84-83.8l11.8-11.8l84,83.8l84.4-84.2l11.8,11.8L267.6,256L352,340.2z&#39;/&gt;&lt;/svg&gt;&quot;</code></td>
+        
+        <td><p>Icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-input-clear-icon-size</code></td>
+        
+          <td><code>18px</code></td>
+        
+        <td><p>Size of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-show-focus-highlight</code></td>
+        
+          <td><code>false</code></td>
+        
+        <td><p>Show the focus highlight when the input has focus</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-show-valid-highlight</code></td>
+        
+          <td><code>$text-input-ios-show-focus-highlight</code></td>
+        
+        <td><p>Show the valid highlight when it is valid and has a value</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-show-invalid-highlight</code></td>
+        
+          <td><code>$text-input-ios-show-focus-highlight</code></td>
+        
+        <td><p>Show the invalid highlight when it is invalid and has value</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-highlight-color</code></td>
+        
+          <td><code>color($colors-ios, primary)</code></td>
+        
+        <td><p>Color of the input highlight</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-highlight-color-valid</code></td>
+        
+          <td><code>$text-input-highlight-color-valid</code></td>
+        
+        <td><p>Color of the input highlight when valid</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-ios-highlight-color-invalid</code></td>
+        
+          <td><code>$text-input-highlight-color-invalid</code></td>
+        
+        <td><p>Color of the input highlight when invalid</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'md'" id="sass-md" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$text-input-md-background-color</code></td>
+        
+          <td><code>$list-md-background-color</code></td>
+        
+        <td><p>Background color of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-margin-top</code></td>
+        
+          <td><code>$item-md-padding-top</code></td>
+        
+        <td><p>Margin top of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-margin-end</code></td>
+        
+          <td><code>$text-input-md-margin-right</code></td>
+        
+        <td><p>Margin end of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-margin-bottom</code></td>
+        
+          <td><code>$item-md-padding-bottom</code></td>
+        
+        <td><p>Margin bottom of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-margin-start</code></td>
+        
+          <td><code>$text-input-md-margin-left</code></td>
+        
+        <td><p>Margin start of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-input-clear-icon-width</code></td>
+        
+          <td><code>30px</code></td>
+        
+        <td><p>Width of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-input-clear-icon-color</code></td>
+        
+          <td><code>#5b5b5b</code></td>
+        
+        <td><p>Color of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-input-clear-icon-svg</code></td>
+        
+          <td><code>&quot;&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 512 512&#39;&gt;&lt;polygon fill=&#39;&quot; + $text-input-md-input-clear-icon-color + &quot;&#39; points=&#39;405,136.798 375.202,107 256,226.202 136.798,107 107,136.798 226.202,256 107,375.202 136.798,405 256,285.798 375.202,405 405,375.202 285.798,256&#39;/&gt;&lt;/svg&gt;&quot;</code></td>
+        
+        <td><p>Icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-input-clear-icon-size</code></td>
+        
+          <td><code>22px</code></td>
+        
+        <td><p>Size of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-show-focus-highlight</code></td>
+        
+          <td><code>true</code></td>
+        
+        <td><p>Show the focus highlight when the input has focus</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-show-valid-highlight</code></td>
+        
+          <td><code>$text-input-md-show-focus-highlight</code></td>
+        
+        <td><p>Show the valid highlight when it is valid and has a value</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-show-invalid-highlight</code></td>
+        
+          <td><code>$text-input-md-show-focus-highlight</code></td>
+        
+        <td><p>Show the invalid highlight when it is invalid and has value</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-highlight-color</code></td>
+        
+          <td><code>color($colors-md, primary)</code></td>
+        
+        <td><p>Color of the input highlight</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-highlight-color-valid</code></td>
+        
+          <td><code>$text-input-highlight-color-valid</code></td>
+        
+        <td><p>Color of the input highlight when valid</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-md-highlight-color-invalid</code></td>
+        
+          <td><code>$text-input-highlight-color-invalid</code></td>
+        
+        <td><p>Color of the input highlight when invalid</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'wp'" id="sass-wp" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$text-input-wp-background-color</code></td>
+        
+          <td><code>$list-wp-background-color</code></td>
+        
+        <td><p>Background color of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-border-color</code></td>
+        
+          <td><code>$input-wp-border-color</code></td>
+        
+        <td><p>Border color of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-border-width</code></td>
+        
+          <td><code>2px</code></td>
+        
+        <td><p>Border width of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-margin-top</code></td>
+        
+          <td><code>$item-wp-padding-top</code></td>
+        
+        <td><p>Margin top of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-margin-end</code></td>
+        
+          <td><code>$text-input-wp-margin-right</code></td>
+        
+        <td><p>Margin end of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-margin-bottom</code></td>
+        
+          <td><code>$item-wp-padding-bottom</code></td>
+        
+        <td><p>Margin bottom of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-margin-start</code></td>
+        
+          <td><code>$text-input-wp-margin-left</code></td>
+        
+        <td><p>Margin start of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-padding-vertical</code></td>
+        
+          <td><code>0</code></td>
+        
+        <td><p>Vertical padding of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-padding-horizontal</code></td>
+        
+          <td><code>8px</code></td>
+        
+        <td><p>Horizontal padding of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-line-height</code></td>
+        
+          <td><code>3rem</code></td>
+        
+        <td><p>Line height of the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-input-clear-icon-width</code></td>
+        
+          <td><code>30px</code></td>
+        
+        <td><p>Width of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-input-clear-icon-color</code></td>
+        
+          <td><code>$input-wp-border-color</code></td>
+        
+        <td><p>Color of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-input-clear-icon-svg</code></td>
+        
+          <td><code>&quot;&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 512 512&#39;&gt;&lt;polygon fill=&#39;&quot; + $text-input-wp-input-clear-icon-color + &quot;&#39; points=&#39;405,136.798 375.202,107 256,226.202 136.798,107 107,136.798 226.202,256 107,375.202 136.798,405 256,285.798 375.202,405 405,375.202 285.798,256&#39;/&gt;&lt;/svg&gt;&quot;</code></td>
+        
+        <td><p>Icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-input-clear-icon-size</code></td>
+        
+          <td><code>22px</code></td>
+        
+        <td><p>Size of the icon used to clear the input</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-show-focus-highlight</code></td>
+        
+          <td><code>true</code></td>
+        
+        <td><p>Show the focus highlight when the input has focus</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-show-valid-highlight</code></td>
+        
+          <td><code>$text-input-wp-show-focus-highlight</code></td>
+        
+        <td><p>Show the valid highlight when it is valid and has a value</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-show-invalid-highlight</code></td>
+        
+          <td><code>$text-input-wp-show-focus-highlight</code></td>
+        
+        <td><p>Show the invalid highlight when it is invalid and has value</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-highlight-color</code></td>
+        
+          <td><code>color($colors-wp, primary)</code></td>
+        
+        <td><p>Color of the input highlight</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-highlight-color-valid</code></td>
+        
+          <td><code>$text-input-highlight-color-valid</code></td>
+        
+        <td><p>Color of the input highlight when valid</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$text-input-wp-highlight-color-invalid</code></td>
+        
+          <td><code>$text-input-highlight-color-invalid</code></td>
+        
+        <td><p>Color of the input highlight when invalid</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div>
+
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../../../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/api/components/input/Input/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:13 GMT -->
+</html>

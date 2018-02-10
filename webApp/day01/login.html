@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+    <script src="js/angular.js"></script>
+</head>
+<body ng-controller="myCtrl">
+ name:<input type="text" name="user_name"/><br/>
+email:<input type="email"/>
+<button ng-click="sendToserver()"></button>
+<p>{{$result}}</p>
+</body>
+<script>
+    var app = angular.module("myApp", ["ng"]);
+    app.controller("myCtrl",["$scope","$http"], function () {
+        $scope.sendToserver=function(){
+            $http.get('data/login.php?name='+scope.user_name)
+                    .success(function(data){
+                        $scope.
+                    })
+        }
+    });
+</script>
+</html>

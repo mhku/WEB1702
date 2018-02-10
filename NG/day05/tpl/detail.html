@@ -1,0 +1,23 @@
+<div ng-include="'tpl/include/header.html'"></div>
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="#/kflStart"></a> 首页/</li>
+        <li>详情页</li>
+    </ul>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h1>鱼香肉丝</h1>
+            <img src="img/p0281-l.jpg" alt=""/>
+            <p>原材料介绍</p>
+            <p>详情的介绍</p>
+            <p>30</p>
+            <div class="panel-footer">
+               <div class="text-right">
+                   <button class="btn btn-success" ng-click="jump('/kflOrder')">我要订餐</button>
+                   <button class="btn bg-warning" ng-click="jump('/kflMain')">我再要看</button>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'tpl/include/footer.html'"></div>

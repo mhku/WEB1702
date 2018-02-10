@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body>
+
+<ion-header-bar>
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+
+  <button>普通的按钮</button>
+  <button class="button button-energized">
+    ionic中按钮
+  </button>
+  <button class="button button-positive">
+    天蓝色
+  </button>
+  <button class="button button-calm">
+    湖蓝色
+  </button>
+  <button class="button button-assertive">
+    红色
+  </button>
+  <button class="button button-royal">
+    紫色
+  </button>
+  <button class="button button-balanced">
+    绿色
+  </button>
+  <button class="button button-dark">
+    深黑色
+  </button>
+
+  <!-- 宽度 -->
+  <button class="button button-block button-balanced">
+    block按钮
+  </button>
+
+  <!-- 大小-->
+  <button class="button button-small button-assertive">
+    small size</button>
+  <button class="button button-positive">normal size</button>
+  <button class="button button-large button-energized">
+    large size </button>
+
+  <!-- button-outline button-clear -->
+  <button class="button button-royal button-outline">
+    只有边框的按钮
+  </button>
+  <button class="button button-dark button-clear">
+    没有边框的按钮
+  </button>
+
+  <br/>
+  <!-- 在按钮添加图标的写法 -->
+  <button class="button">
+    <i class="icon ion-home"></i>
+    主页
+  </button>
+  <button class="button icon-left ion-person">
+    个人中心
+  </button>
+  <button class="button icon-right ion-person">
+    个人中心
+  </button>
+
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+<script>
+  var app = angular.module('myApp',['ionic']);
+</script>
+
+</body>
+</html>

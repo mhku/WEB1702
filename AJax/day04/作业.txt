@@ -1,0 +1,25 @@
+作业:留言板
+	1:发表留言    
+	  msg_add.php         获取表单数据保存数据库
+    http://127.0.0.1/msg_add.php?content=hi&uname=tom
+		msg_add_input.html  表单 
+	2:浏览所有留言
+	  msg_select.php      表格形式
+	3:删除某个留言
+	  msg_delete.php      删除留言
+  4:创建msg.sql
+	  创建库 msg utf8
+		表     t_msg (mid,content,uname)
+
+  删除:
+	浏览所有留言
+	10   hi          [删除]
+	11   hello       [删除]
+  $(".btn-delete").click(function(
+	   var mid = $(this).attr("href");
+	));
+	要求:点击"删除" 先弹出确认框.
+	var rs = window.confirm("您要确认删除该留言吗?");
+	如果用户点选择"是"才真正->跳转->删除页
+	msg_delete.php?mid=6 
+	location.href = 'msg_delete.php?mid=6';

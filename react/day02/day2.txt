@@ -1,0 +1,59 @@
+一、state 状态
+
+初始化状态:返回一个对象的方式来初始化状态
+ getInitialState:function(){}
+
+修改状态：
+ this.setState({状态1：值,状态2：值..})
+
+读取状态
+ this.state.状态名称
+
+例子：开关
+React中的state是可以实现单向数据绑定的，将状态中的数据绑定到视图上，同时只要是状态中的值改了，React框架在最合适的时候，采用最优的算法来重新渲染视图。
+
+练习：需要大家通过state来重构综合练习
+步骤：将保存的result 通过state来初始化、读、写。
+
+
+深入组件：自己的生命周期
+
+3个阶段：
+mount 挂载到DOM
+update 更新
+unmount 从DOM中移除
+
+生命周期的处理函数：是在对应阶段会被自动调用的
+mount：
+componentWillMount
+componentDidMount
+
+update
+componentWillUpdate(nextProps,nextState)
+componentDidUpdate(prevProps,prevState)
+
+unmount
+componentWillUnmount
+
+注意事项：
+一些标识符像 class 和 for 不建议作为 组件属性名。作为替代，ReactDOM使用className和htmlFor来做对应的属性。
+
+
+
+练习：在组件（div）插入到真实的DOM之后，启动定时器修改组件的透明度（0~1）
+
+①指定生命周期处理函数
+②初始化状态，读、写状态
+③ 
+style="opacity:this.state.状态名称"
+==》
+style={{opacity:this.state.状态名称}}
+
+
+二、表单
+
+
+三、三连棋
+
+
+四、ToDoList

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+</head>
+<body>
+
+<h1 id="header">this is header </h1>
+<div id="container"></div>
+
+<span>这是之前的内容</span>
+
+<script>
+  var h1Element = $('#header');
+  var h2Element = $('<h2> header 2</h2>');
+  //将h2添加到h1的下边
+  //h2Element.insertAfter(h1Element);
+  h2Element.insertBefore(h1Element);
+
+  //在容器中追加
+  var container = $('#container');
+  var h3Element = $('<h3> this is header3</h3>')
+  //h3Element.appendTo(container);
+  container.append(h3Element);
+
+  //在容器前添加
+  var h4Element = $('<h4>this is header 4</h4>')
+  //h4Element.prependTo(container);
+  container.prepend(h4Element)
+
+  //读取该节点对应的属性
+  // html() css() width() height()...
+
+  //修改节点
+  var spanElement = $('span');
+  spanElement.html('这是修改后的内容');
+  spanElement.css({
+    color:'#ff00ee'
+  })
+  // addClass() removeClass toggleClass
+
+</script>
+
+
+</body>
+</html>

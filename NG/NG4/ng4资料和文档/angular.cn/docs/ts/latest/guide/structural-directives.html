@@ -1,0 +1,1118 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/structural-directives.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:02 GMT -->
+<head><title>结构型指令 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item is-selected"><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="structural-directives.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/structural-directives.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/structural-directives.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">结构型指令 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><style>h4 {font-size: 17px !important; text-transform: none !important;}
+.syntax { font-family: Consolas, 'Lucida Sans', Courier, sans-serif; color: black; font-size: 85%; }
+</style><p>This guide looks at how Angular manipulates the DOM with <strong>structural directives</strong> and 
+how you can write your own structural directives to do the same thing.</p>
+<p>在本章中，我们将看看Angular如何用<em>结构型指令</em>操纵DOM树，以及我们该如何写自己的结构型指令来完成同样的任务。</p>
+<h3 id="table-of-contents">Table of contents</h3>
+<h3 id="-">目录</h3>
+<ul>
+<li><p><a href="#definition">What are structural directives?</a></p>
+<p><a href="#definition">什么是结构型指令？</a></p>
+</li>
+<li><p><a href="#ngIf"><em>NgIf</em> case study</a></p>
+<p><a href="#ngIf"><em>NgIf</em> 案例</a></p>
+</li>
+<li><p><a href="#asterisk">The asterisk (*) prefix</a></p>
+<p><a href="#asterisk">星号（*）前缀</a></p>
+</li>
+<li><p><a href="#ngFor">Inside <em>NgFor</em></a></p>
+<p><a href="#ngFor"><em>NgFor</em> 指令内幕</a></p>
+<ul>
+<li><p><a href="#microsyntax">microsyntax</a></p>
+<p><a href="#microsyntax">微语法</a></p>
+</li>
+<li><p><a href="#template-input-variable">template input variables</a></p>
+<p><a href="#template-input-variable">模板输入变量</a></p>
+</li>
+<li><p><a href="#one-per-element">one structural directive per element</a></p>
+<p><a href="#one-per-element">每个元素一个结构型指令</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#ngSwitch">Inside the <em>NgSwitch</em> directives</a></p>
+<p><a href="#ngSwitch"><em>NgSwitch</em> 指令内幕</a></p>
+</li>
+<li><p><a href="#prefer-asterisk">Prefer the (*) prefix</a></p>
+<p><a href="#prefer-asterisk">优先使用（*）前缀</a></p>
+</li>
+<li><p><a href="#template">The &lt;ng-template&gt; element</a></p>
+<p><a href="#template">&lt;ng-template&gt; 元素</a></p>
+</li>
+<li><p><a href="#ng-container">Group sibling elements with &lt;ng-container&gt;</a></p>
+<p><a href="#ng-container">使用&lt;ng-container&gt;对兄弟元素进行分组</a></p>
+</li>
+<li><p><a href="#unless">Write a structural directive</a></p>
+<p><a href="#unless">写自己的结构型指令</a></p>
+</li>
+</ul>
+<p>Try the <live-example></live-example>.</p>
+<p>试试<live-example></live-example>。</p>
+<a id="definition"></a><div class="l-main-section"></div><h2 id="what-are-structural-directives-">What are structural directives?</h2>
+<h2 id="-">什么是结构型指令？</h2>
+<p>Structural directives are responsible for HTML layout.
+They shape or reshape the DOM&#39;s <em>structure</em>, typically by adding, removing, or manipulating
+elements.</p>
+<p>结构型指令的职责是HTML布局。
+它们塑造或重塑DOM的结构，比如添加、移除或维护这些元素。</p>
+<p>As with other directives, you apply a structural directive to a <em>host element</em>. 
+The directive then does whatever it&#39;s supposed to do with that host element and its descendents.</p>
+<p>像其它指令一样，你可以把结构型指令应用到一个<em>宿主元素</em>上。
+然后它就可以对宿主元素及其子元素做点什么。</p>
+<p>Structural directives are easy to recognize. 
+An asterisk (*) precedes the directive attribute name as in this example.</p>
+<p>结构型指令非常容易识别。
+在这个例子中，星号（*）被放在指令的属性名之前。</p>
+<div class="code-example"><code-example language="html" format="">&lt;div *ngIf=&quot;hero&quot; &gt;{{hero.name}}&lt;/div&gt;
+</code-example></div><p>No brackets. No parentheses. Just <code>*ngIf</code> set to a string.</p>
+<p>没有方括号，没有圆括号，只是把<code>*ngIf</code>设置为一个字符串。</p>
+<p>You&#39;ll learn in this guide that the <a href="#asterisk">asterisk (*) is a convenience notation</a>
+and the string isa <a href="#microsyntax"><em>microsyntax</em></a> rather than the usual
+<a href="template-syntax.html#template-expressions">template expression</a>.
+Angular desugars this notation into a marked-up <code>&lt;ng-template&gt;</code> that surrounds the
+host element and its descendents. 
+Each structural directive does something different with that template.</p>
+<p>在这个例子中，我们将学到<a href="#asterisk">星号(*)这个简写方法</a>，而这个字符串是一个<a href="#microsyntax"><em>微语法</em></a>，而不是通常的<a href="template-syntax.html#template-expressions">模板表达式</a>。
+Angular会解开这个语法糖，变成一个<code>&lt;ng-template&gt;</code>标记，包裹着宿主元素及其子元素。
+每个结构型指令都可以用这个模板做点不同的事情。</p>
+<p>Three of the common, built-in structural directives&mdash;<a href="template-syntax.html#ngIf">NgIf</a>, 
+<a href="template-syntax.html#ngFor">NgFor</a>, and <a href="template-syntax.html#ngSwitch">NgSwitch...</a>&mdash;are 
+described in the <a href="template-syntax.html"><em>Template Syntax</em></a> guide and seen in samples throughout the Angular documentation. 
+Here&#39;s an example of them in a template:</p>
+<p>三个常用的内置结构型指令 —— <a href="template-syntax.html#ngIf">NgIf</a>、<a href="template-syntax.html#ngFor">NgFor</a>和<a href="template-syntax.html#ngSwitch">NgSwitch...</a>。
+我们在<a href="template-syntax.html"><em>模板语法</em></a>一章中讲过它，并且在Angular文档的例子中到处都在用它。下面是模板中的例子：</p>
+<div class="code-example"><code-example language="html" format="">&lt;div *ngIf=&quot;hero&quot; &gt;{{hero.name}}&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li *ngFor=&quot;let hero of heroes&quot;&gt;{{hero.name}}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div [ngSwitch]=&quot;hero?.emotion&quot;&gt;
+  &lt;happy-hero    *ngSwitchCase=&quot;&#39;happy&#39;&quot;    [hero]=&quot;hero&quot;&gt;&lt;/happy-hero&gt;
+  &lt;sad-hero      *ngSwitchCase=&quot;&#39;sad&#39;&quot;      [hero]=&quot;hero&quot;&gt;&lt;/sad-hero&gt;
+  &lt;confused-hero *ngSwitchCase=&quot;&#39;confused&#39;&quot; [hero]=&quot;hero&quot;&gt;&lt;/confused-hero&gt;
+  &lt;unknown-hero  *ngSwitchDefault           [hero]=&quot;hero&quot;&gt;&lt;/unknown-hero&gt;
+&lt;/div&gt;
+</code-example></div><p>This guide won&#39;t repeat how to <em>use</em> them. But it does explain <em>how they work</em>
+and how to <a href="#unless">write your own</a> structural directive.</p>
+<p>本章不会重复讲如何<em>使用</em>它们，而是解释它们的<em>工作原理</em>以及如何<a href="#unless">写自己的结构型指令</a>。</p>
+<div class="callout is-helpful"><header>Directive spelling</header><header>指令的拼写形式</header><p>Throughout this guide, you&#39;ll see a directive spelled in both <em>UpperCamelCase</em> and <em>lowerCamelCase</em>.
+Already you&#39;ve seen <code>NgIf</code> and <code>ngIf</code>.
+There&#39;s a reason. <code>NgIf</code> refers to the directive <em>class</em>; 
+<code>ngIf</code> refers to the directive&#39;s <em>attribute name</em>. </p>
+<p>在本章中，我们将看到指令同时具有两种拼写形式<em>大驼峰<code>UpperCamelCase</code>和小驼峰<code>lowerCamelCase</code>，比如我们已经看过的<code>NgIf</code>和<code>ngIf</code>。
+这里的原因在于，<code>NgIf</code>引用的是指令的</em>类名<em>，而<code>ngIf</code>引用的是指令的</em>属性名*。</p>
+<p>A directive <em>class</em> is spelled in <em>UpperCamelCase</em> (<code>NgIf</code>).
+A directive&#39;s <em>attribute name</em> is spelled in <em>lowerCamelCase</em> (<code>ngIf</code>).
+The guide refers to the directive <em>class</em> when talking about its properties and what the directive does.
+The guide refers to the <em>attribute name</em> when describing how
+you apply the directive to an element in the HTML template.</p>
+<p>指令的<em>类名</em>拼写成<em>大驼峰形式</em>（<code>NgIf</code>），而它的<em>属性名</em>则拼写成<em>小驼峰形式</em>（<code>ngIf</code>）。
+本章会在谈论指令的属性和工作原理时引用指令的<em>类名</em>，在描述如何在HTML模板中把该指令应用到元素时，引用指令的<em>属性名</em>。</p>
+</div><div class="l-sub-section"><p>There are two other kinds of Angular directives, described extensively elsewhere:
+(1)&nbsp;components and (2)&nbsp;attribute directives.</p>
+<p>还有另外两种Angular指令，在本开发指南的其它地方有讲解：(1) 组件 (2) 属性型指令。</p>
+<p>A <em>component</em> manages a region of HTML in the manner of a native HTML element.
+Technically it&#39;s a directive with a template. </p>
+<p><em>组件</em>可以在原生HTML元素中管理一小片区域的HTML。从技术角度说，它就是一个带模板的指令。</p>
+<p>An <a href="attribute-directives.html"><em>attribute</em> directive</a> changes the appearance or behavior
+of an element, component, or another directive.
+For example, the built-in <a href="template-syntax.html#ngStyle"><code>NgStyle</code></a> directive
+changes several element styles at the same time.</p>
+<p><a href="attribute-directives.html"><em>属性型</em>指令</a>会改变某个元素、组件或其它指令的外观或行为。
+比如，内置的<a href="template-syntax.html#ngStyle"><code>NgStyle</code></a>指令可以同时修改元素的多个样式。</p>
+<p>You can apply many <em>attribute</em> directives to one host element.
+You can <a href="#one-per-element">only apply one</a> <em>structural</em> directive to a host element.</p>
+<p>我们可以在一个宿主元素上应用多个<em>属性型</em>指令，但<a href="#one-per-element">只能应用一个</a><em>结构型</em>指令。</p>
+</div><a id="ngIf"></a><div class="l-main-section"></div><h2 id="ngif-case-study">NgIf case study</h2>
+<h2 id="ngif-">NgIf案例分析</h2>
+<p><code>NgIf</code> is the simplest structural directive and the easiest to understand.
+It takes a boolean expression and makes an entire chunk of the DOM appear or disappear.</p>
+<p>我们重点看下<code>ngIf</code>。它是一个很好的结构型指令案例：它接受一个布尔值，并据此让一整块DOM树出现或消失。</p>
+<div class="code-example"><code-example language="html" format="">&lt;p *ngIf=&quot;true&quot;&gt;
+  Expression is true and ngIf is true.
+  This paragraph is in the DOM.
+&lt;/p&gt;
+&lt;p *ngIf=&quot;false&quot;&gt;
+  Expression is false and ngIf is false.
+  This paragraph is not in the DOM.
+&lt;/p&gt;
+</code-example></div><p>The <code>ngIf</code> directive doesn&#39;t hide elements with CSS. It adds and removes them physically from the DOM.
+Confirm that fact using browser developer tools to inspect the DOM.</p>
+<p><code>ngIf</code>指令并不是使用CSS来隐藏元素的。它会把这些元素从DOM中物理删除。
+使用浏览器的开发者工具就可以确认这一点。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/element-not-in-dom.png" alt="ngIf=false element not in DOM"></figure><p>The top paragraph is in the DOM. The bottom, disused paragraph is not; 
+in its place is a comment about &quot;bindings&quot; (more about that <a href="#asterisk">later</a>).</p>
+<p>可以看到第一段文字出现在了DOM中，而第二段则没有，在第二段的位置上是一个关于“绑定”的注释（<a href="#asterisk">稍后</a>有更多讲解）。</p>
+<p>When the condition is false, <code>NgIf</code> removes its host element from the DOM,
+detaches it from DOM events (the attachments that it made),
+detaches the component from Angular change detection, and destroys it.
+The component and DOM nodes can be garbage-collected and free up memory.</p>
+<p>当条件为假时，<code>NgIf</code>会从DOM中移除它的宿主元素，取消它监听过的那些DOM事件，从Angular变更检测中移除该组件，并销毁它。
+这些组件和DOM节点可以被当做垃圾收集起来，并且释放它们占用的内存。</p>
+<h3 id="why-remove-rather-than-hide-">Why <em>remove</em> rather than <em>hide</em>?</h3>
+<h3 id="-">为什么<em>移除</em>而不是<em>隐藏</em>？</h3>
+<p>A directive could hide the unwanted paragraph instead by setting its <code>display</code> style to <code>none</code>.</p>
+<p>指令也可以通过把它的<code>display</code>风格设置为<code>none</code>而隐藏不需要的段落。</p>
+<div class="code-example"><code-example language="html" format="">&lt;p [style.display]=&quot;&#39;block&#39;&quot;&gt;
+  Expression sets display to &quot;block&quot;.
+  This paragraph is visible.
+&lt;/p&gt;
+&lt;p [style.display]=&quot;&#39;none&#39;&quot;&gt;
+  Expression sets display to &quot;none&quot;.
+  This paragraph is hidden but still in the DOM.
+&lt;/p&gt;
+</code-example></div><p>While invisible, the element remains in the DOM. </p>
+<p>当不可见时，这个元素仍然留在DOM中。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/element-display-in-dom.png" alt="hidden element still in DOM"></figure><p>The difference between hiding and removing doesn&#39;t matter for a simple paragraph. 
+It does matter when the host element is attached to a resource intensive component.
+Such a component&#39;s behavior continues even when hidden.
+The component stays attached to its DOM element. It keeps listening to events.
+Angular keeps checking for changes that could affect data bindings.
+Whatever the component was doing, it keeps doing.</p>
+<p>对于简单的段落，隐藏和移除之间的差异影响不大，但对于资源占用较多的组件是不一样的。当我们隐藏掉一个元素时，组件的行为还在继续 —— 它仍然附加在它所属的DOM元素上，
+它也仍在监听事件。Angular会继续检查哪些能影响数据绑定的变更。
+组件原本要做的那些事情仍在继续。</p>
+<p>Although invisible, the component&mdash;and all of its descendant components&mdash;tie up resources.
+The performance and memory burden can be substantial, responsiveness can degrade, and the user sees nothing.</p>
+<p>虽然不可见，组件及其各级子组件仍然占用着资源，而这些资源如果分配给别人可能会更有用。
+在性能和内存方面的负担相当可观，响应度会降低，而用户却可能无法从中受益。</p>
+<p>On the positive side, showing the element again is quick.
+The component&#39;s previous state is preserved and ready to display.
+The component doesn&#39;t re-initialize&mdash;an operation that could be expensive.
+So hiding and showing is sometimes the right thing to do.</p>
+<p>当然，从积极的一面看，重新显示这个元素会非常快。
+  组件以前的状态被保留着，并随时可以显示。
+  组件不用重新初始化 —— 该操作可能会比较昂贵。
+  这时候隐藏和显示就成了正确的选择。</p>
+<p>But in the absence of a compelling reason to keep them around, 
+your preference should be to remove DOM elements that the user can&#39;t see
+and recover the unused resources with a structural directive like <code>NgIf</code> .</p>
+<p>但是，除非有非常强烈的理由来保留它们，否则我们更倾向于移除用户看不见的那些DOM元素，并且使用<code>NgIf</code>这样的结构型指令来收回用不到的资源。</p>
+<p><strong>These same considerations apply to every structural directive, whether built-in or custom.</strong>
+Before applying a structural directive, you might want to pause for a moment 
+to consider the consequences of adding and removing elements and of creating and destroying components.</p>
+<p><strong>同样的考量也适用于每一个结构型指令，无论是内置的还是自定义的。</strong>
+  我们应该提醒自己以及我们指令的使用者，来仔细考虑添加元素、移除元素以及创建和销毁组件的后果。</p>
+<a id="asterisk"></a><div class="l-main-section"></div><h2 id="the-asterisk-prefix">The asterisk (*) prefix</h2>
+<h2 id="-">星号（*）前缀</h2>
+<p>Surely you noticed the asterisk (*) prefix to the directive name
+and wondered why it is necessary and what it does.</p>
+<p>你可能注意到了指令名的星号（*）前缀，并且困惑于为什么需要它以及它是做什么的。</p>
+<p>Here is <code>*ngIf</code> displaying the hero&#39;s name if <code>hero</code> exists.</p>
+<p>这里的<code>*ngIf</code>会在<code>hero</code>存在时显示英雄的名字。</p>
+<div class="code-example"><code-example language="html" format="">&lt;div *ngIf=&quot;hero&quot; &gt;{{hero.name}}&lt;/div&gt;
+</code-example></div><p>The asterisk is &quot;syntactic sugar&quot; for something a bit more complicated.
+Internally, Angular desugars it in two stages.
+First, it translates the <code>*ngIf=&quot;...&quot;</code> into a template <em>attribute</em>, <code>template=&quot;ngIf ...&quot;</code>,&nbsp; like this.</p>
+<p>星号是一个用来简化更复杂语法的“语法糖”。
+从内部实现来说，Angular会分两个阶段解开这个语法糖。
+首先，它把<code>*ngIf=&quot;...&quot;</code>翻译成一个<code>template</code><em>属性</em> <code>template=&quot;ngIf ...&quot;</code>，代码如下：</p>
+<div class="code-example"><code-example language="html" format="">&lt;div template=&quot;ngIf hero&quot;&gt;{{hero.name}}&lt;/div&gt;
+</code-example></div><p>Then it translates the template <em>attribute</em> into a <code>&lt;ng-template&gt;</code> <em>element</em>, wrapped around the host element, like this.</p>
+<p>然后，它把这个<code>template</code><em>属性</em>翻译成一个<code>&lt;ng-template&gt;</code><em>元素</em>，并用它包裹宿主元素，代码如下：</p>
+<div class="code-example"><code-example language="html" format="">&lt;ng-template [ngIf]=&quot;hero&quot;&gt;
+  &lt;div&gt;{{hero.name}}&lt;/div&gt;
+&lt;/ng-template&gt;
+</code-example></div><ul>
+<li><p>The <code>*ngIf</code> directive moved to the <code>&lt;ng-template&gt;</code> element where it became a property binding,<code>[ngIf]</code>.</p>
+<p><code>*ngIf</code>指令被移到了<code>&lt;ng-template&gt;</code>元素上。在那里它变成了一个属性绑定<code>[ngIf]</code>。</p>
+</li>
+<li><p>The rest of the <code>&lt;div&gt;</code>, including its class attribute, moved inside the <code>&lt;ng-template&gt;</code> element.</p>
+<p><code>&lt;div&gt;</code>上的其余部分，包括它的<code>class</code>属性在内，移到了内部的<code>&lt;ng-template&gt;</code>元素上。</p>
+</li>
+</ul>
+<p>None of these forms are actually rendered. 
+Only the finished product ends up in the DOM.</p>
+<p>上述形式永远不会真的渲染出来。
+只有最终产出的结果才会出现在DOM中。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/hero-div-in-dom.png" alt="hero div in DOM"></figure><p>Angular consumed the <code>&lt;ng-template&gt;</code> content during its actual rendering and 
+replaced the <code>&lt;ng-template&gt;</code> with a diagnostic comment.</p>
+<p>Angular会在真正渲染的时候填充<code>&lt;ng-template&gt;</code>的内容，并且把<code>&lt;ng-template&gt;</code>替换为一个供诊断用的注释。</p>
+<p>The <a href="#ngFor"><code>NgFor</code></a> and <a href="#ngSwitch"><code>NgSwitch...</code></a> directives follow the same pattern.</p>
+<p><a href="#ngFor"><code>NgFor</code></a>和<a href="#ngSwitch"><code>NgSwitch...</code></a>指令也都遵循同样的模式。</p>
+<a id="ngFor"></a><div class="l-main-section"></div><h2 id="inside-_-ngfor_">Inside <em>*ngFor</em></h2>
+<h2 id="-ngfor-"><code>*ngFor</code>内幕</h2>
+<p>Angular transforms the <code>*ngFor</code> in similar fashion from asterisk (*) syntax through
+template <em>attribute</em> to <code>&lt;ng-template&gt;</code> <em>element</em>. </p>
+<p>Angular会把<code>*ngFor</code>用同样的方式把星号（<em>）语法的<code>template</code></em>属性<em>转换成<code>&lt;ng-template&gt;</code></em>元素*。</p>
+<p>Here&#39;s a full-featured application of <code>NgFor</code>, written all three ways:</p>
+<p>这里有一个<code>NgFor</code>的全特性应用，同时用了这三种写法：</p>
+<div class="code-example"><code-example language="html" format="">&lt;div *ngFor=&quot;let hero of heroes; let i=index; let odd=odd; trackBy: trackById&quot; [class.odd]=&quot;odd&quot;&gt;
+  ({{i}}) {{hero.name}}
+&lt;/div&gt;
+
+&lt;div template=&quot;ngFor let hero of heroes; let i=index; let odd=odd; trackBy: trackById&quot; [class.odd]=&quot;odd&quot;&gt;
+  ({{i}}) {{hero.name}}
+&lt;/div&gt;
+
+&lt;ng-template ngFor let-hero [ngForOf]=&quot;heroes&quot; let-i=&quot;index&quot; let-odd=&quot;odd&quot; [ngForTrackBy]=&quot;trackById&quot;&gt;
+  &lt;div [class.odd]=&quot;odd&quot;&gt;({{i}}) {{hero.name}}&lt;/div&gt;
+&lt;/ng-template&gt;
+</code-example></div><p>This is manifestly more complicated than <code>ngIf</code> and rightly so.
+The <code>NgFor</code> directive has more features, both required and optional, than the <code>NgIf</code> shown in this guide.
+At minimum <code>NgFor</code> needs a looping variable (<code>let hero</code>) and a list (<code>heroes</code>).</p>
+<p>它明显比<code>ngIf</code>复杂得多，确实如此。
+<code>NgFor</code>指令比本章展示过的<code>NgIf</code>具有更多的必选特性和可选特性。
+至少<code>NgFor</code>会需要一个循环变量（<code>let hero</code>）和一个列表（<code>heroes</code>）。</p>
+<p>You enable these features in the string assigned to <code>ngFor</code>, which you write in Angular&#39;s <a href="#microsyntax">microsyntax</a>. </p>
+<p>我们可以通过把一个字符串赋值给<code>ngFor</code>来启用这些特性，这个字符串使用Angular的<a href="#microsyntax">微语法</a>。</p>
+<div class="alert is-helpful"><p>Everything <em>outside</em> the <code>ngFor</code> string stays with the host element 
+(the <code>&lt;div&gt;</code>) as it moves inside the <code>&lt;ng-template&gt;</code>. 
+In this example, the <code>[ngClass]=&quot;odd&quot;</code> stays on the <code>&lt;div&gt;</code>.</p>
+<p><code>ngFor</code>字符串<em>之外</em>的每一样东西都会留在宿主元素（<code>&lt;div&gt;</code>）上，也就是说它移到了<code>&lt;ng-template&gt;</code>内部。
+在这个例子中，<code>[ngClass]=&quot;odd&quot;</code>留在了<code>&lt;div&gt;</code>上。</p>
+</div><a id="microsyntax"></a><h3 id="microsyntax">Microsyntax</h3>
+<h3 id="-">微语法</h3>
+<p>The Angular microsyntax lets you configure a directive in a compact, friendly string.
+The microsyntax parser translates that string into attributes on the <code>&lt;ng-template&gt;</code>:</p>
+<p>Angular微语法能让我们通过简短的、友好的字符串来配置一个指令。
+微语法解析器把这个字符串翻译成<code>&lt;ng-template&gt;</code>上的属性：</p>
+<ul>
+<li><p>The <code>let</code> keyword declares a <a href="#template-input-variable"><em>template input variable</em></a> 
+that you reference within the template. The input variables in this example are <code>hero</code>, <code>i</code>, and <code>odd</code>.
+The parser translates <code>let hero</code>, <code>let i</code>, and <code>let odd</code> into variables named, 
+<code>let-hero</code>, <code>let-i</code>, and <code>let-odd</code>.</p>
+<p><code>let</code>关键字声明一个<a href="#template-input-variable">模板输入变量</a>，我们会在模板中引用它。本例子中，这个输入变量就是<code>hero</code>、<code>i</code>和<code>odd</code>。
+解析器会把<code>let hero</code>、<code>let i</code>和<code>let odd</code>翻译成命名变量<code>let-hero</code>、<code>let-i</code>和<code>let-odd</code>。</p>
+</li>
+<li><p>The microsyntax parser takes <code>of</code> and <code>trackby</code>, title-cases them (<code>of</code> -&gt; <code>Of</code>, <code>trackBy</code> -&gt; <code>TrackBy</code>), 
+and prefixes them with the directive&#39;s attribute name (<code>ngFor</code>), yielding the names <code>ngForOf</code> and <code>ngForTrackBy</code>.
+Those are the names of two <code>NgFor</code> <em>input properties</em> .
+That&#39;s how the directive learns that the list is <code>heroes</code> and the track-by function is <code>trackById</code>.</p>
+<p>微语法解析器接收<code>of</code>和<code>trackby</code>，把它们首字母大写（<code>of</code> -&gt; <code>Of</code>, <code>trackBy</code> -&gt; <code>TrackBy</code>），
+并且给它们加上指令的属性名（<code>ngFor</code>）前缀，最终生成的名字是<code>ngForOf</code>和<code>ngForTrackBy</code>。
+还有两个<code>NgFor</code>的<em>输入属性</em>，指令据此了解到列表是<code>heroes</code>，而track-by函数是<code>trackById</code>。</p>
+</li>
+<li><p>As the <code>NgFor</code> directive loops through the list, it sets and resets properties of its own <em>context</em> object.
+These properties include <code>index</code> and <code>odd</code> and a special property named <code>$implicit</code>.</p>
+<p><code>NgFor</code>指令在列表上循环，每个循环中都会设置和重置它自己的<em>上下文</em>对象上的属性。
+这些属性包括<code>index</code>和<code>odd</code>以及一个特殊的属性名<code>$implicit</code>（隐式变量）。</p>
+</li>
+<li><p>The <code>let-i</code> and <code>let-odd</code> variables were defined as <code>let i=index</code> and <code>let odd=odd</code>.
+Angular sets them to the current value of the context&#39;s <code>index</code> and <code>odd</code> properties.</p>
+<p><code>let-i</code>和<code>let-odd</code>变量是通过<code>let i=index</code>和<code>let odd=odd</code>来定义的。
+Angular把它们设置为<em>上下文</em>对象中的<code>index</code>和<code>odd</code>属性的当前值。</p>
+</li>
+<li><p>The context property for <code>let-hero</code> wasn&#39;t specified. 
+It&#39;s intended source is implicit. 
+Angular sets <code>let-hero</code> to the value of the context&#39;s <code>$implicit</code> property
+which <code>NgFor</code> has initialized with the hero for the current iteration.</p>
+<p>上下文中的属性<code>let-hero</code>没有指定过，实际上它来自一个隐式变量。
+Angular会把<code>let-hero</code>设置为上下文对象中的<code>$implicit</code>属性，<code>NgFor</code>会用当前迭代中的英雄初始化它。</p>
+</li>
+<li><p>The <a href="../api/common/index/NgFor-directive.html" title="API: NgFor">API guide</a> 
+describes additional <code>NgFor</code> directive properties and context properties.</p>
+<p><a href="../api/common/index/NgFor-directive.html" title="API: NgFor">API参考手册</a>中描述了<code>NgFor</code>指令的其它属性和上下文属性。</p>
+</li>
+</ul>
+<p>These microsyntax mechanisms are available to you when you write your own structural directives.
+Studying the 
+<a href="https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts" title="Source: NgIf">source code for <code>NgIf</code></a>
+and <a href="https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_for_of.ts" title="Source: NgFor"><code>NgFor</code></a> 
+is a great way to learn more.</p>
+<p>这些微语法机制在你写自己的结构型指令时也同样有效，参考<a href="https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts" title="Source: NgIf"><code>NgIf</code>的源码</a>
+和<a href="https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_for_of.ts" title="Source: NgFor"><code>NgFor</code>的源码</a> 可以学到更多。</p>
+<a id="template-input-variable"></a><a id="template-input-variables"></a><h3 id="template-input-variable">Template input variable</h3>
+<h3 id="-">模板输入变量</h3>
+<p>A <em>template input variable</em> is a variable whose value you can reference <em>within</em> a single instance of the template.
+There are several such variables in this example: <code>hero</code>, <code>i</code>, and <code>odd</code>.
+All are preceded by the keyword <code>let</code>.</p>
+<p><em>模板输入变量</em>是这样一种变量，你可以<em>在单个实例的模板中</em>引用它的值。
+这个例子中有好几个模板输入变量：<code>hero</code>、<code>i</code>和<code>odd</code>。
+它们都是用<code>let</code>作为前导关键字。</p>
+<p>A <em>template input variable</em> is <strong><em>not</em></strong> the same as a 
+<a href="template-syntax.html#ref-vars">template <em>reference</em> variable</a>,
+neither <em>semantically</em> nor <em>syntactically</em>.</p>
+<p>You declare a template <em>input</em> variable using the <code>let</code> keyword (<code>let hero</code>). 
+The variable&#39;s scope is limited to a <em>single instance</em> of the repeated template.
+You can use the same variable name again in the definition of other structural directives.</p>
+<p>You declare a template <em>reference</em> variable by prefixing the variable name with <code>#</code> (<code>#var</code>).
+A <em>reference</em> variable refers to its attached element, component or directive.
+It can be accessed <em>anywhere</em> in the <em>entire template</em>.</p>
+<p>Template <em>input</em> and <em>reference</em> variable names have their own namespaces. The <code>hero</code> in <code>let hero</code> is never the same
+variable as the <code>hero</code> declared as <code>#hero</code>.</p>
+<a id="one-per-element"></a><h3 id="one-structural-directive-per-host-element">One structural directive per host element</h3>
+<p>Someday you&#39;ll want to repeat a block of HTML but only when a particular condition is true.
+You&#39;ll <em>try</em> to put both an <code>*ngFor</code> and an <code>*ngIf</code> on the same host element.
+Angular won&#39;t let you. You may apply only one <em>structural</em> directive to an element. </p>
+<p>The reason is simplicity. Structural directives can do complex things with the host element and its descendents.
+When two directives lay claim to the same host element, which one takes precedence? 
+Which should go first, the <code>NgIf</code> or the <code>NgFor</code>? Can the <code>NgIf</code> cancel the effect of the <code>NgFor</code>?
+If so (and it seems like it should be so), how should Angular generalize the ability to cancel for other structural directives?</p>
+<p>There are no easy answers to these questions. Prohibiting multiple structural directives makes them moot.
+There&#39;s an easy solution for this use case: put the <code>*ngIf</code> on a container element that wraps the <code>*ngFor</code> element.
+One or both elements can be an <a href="#ngcontainer"><code>ng-container</code></a> so you don&#39;t have to introduce extra levels of HTML.</p>
+<a id="ngSwitch"></a><div class="l-main-section"></div><h2 id="inside-_ngswitch_-directives">Inside <em>NgSwitch</em> directives</h2>
+<p>The Angular <em>NgSwitch</em> is actually a set of cooperating directives: <code>NgSwitch</code>, <code>NgSwitchCase</code>, and <code>NgSwitchDefault</code>.</p>
+<p>Here&#39;s an example.</p>
+<div class="code-example"><code-example language="html" format="">&lt;div [ngSwitch]=&quot;hero?.emotion&quot;&gt;
+  &lt;happy-hero    *ngSwitchCase=&quot;&#39;happy&#39;&quot;    [hero]=&quot;hero&quot;&gt;&lt;/happy-hero&gt;
+  &lt;sad-hero      *ngSwitchCase=&quot;&#39;sad&#39;&quot;      [hero]=&quot;hero&quot;&gt;&lt;/sad-hero&gt;
+  &lt;confused-hero *ngSwitchCase=&quot;&#39;confused&#39;&quot; [hero]=&quot;hero&quot;&gt;&lt;/confused-hero&gt;
+  &lt;unknown-hero  *ngSwitchDefault           [hero]=&quot;hero&quot;&gt;&lt;/unknown-hero&gt;
+&lt;/div&gt;
+</code-example></div><p>The switch value assigned to <code>NgSwitch</code> (<code>hero.emotion</code>) determines which
+(if any) of the switch cases are displayed.</p>
+<p><code>NgSwitch</code> itself is not a structural directive. 
+It&#39;s an <em>attribute</em> directive that controls the behavior of the other two switch directives.
+That&#39;s why you write <code>[ngSwitch]</code>, never <code>*ngSwitch</code>.</p>
+<p><code>NgSwitchCase</code> and <code>NgSwitchDefault</code> <em>are</em> structural directives. 
+You attach them to elements using the asterisk (*) prefix notation. 
+An <code>NgSwitchCase</code> displays its host element when its value matches the switch value.
+The <code>NgSwitchDefault</code> displays its host element when no sibling <code>NgSwitchCase</code> matches the switch value.</p>
+<div class="l-sub-section"><p><em>Design thought</em>: minimize initialization effort and consider caching state in a
+companion service.</p>
+<p><em>设计思路</em>：要最小化初始化的成本，并考虑把状态缓存在一个伴生的服务中。</p>
+</div><p>As with other structural directives, the <code>NgSwitchCase</code> and <code>NgSwitchDefault</code> 
+can be desugared into the template <em>attribute</em> form.</p>
+<p><strong>These same considerations apply to every structural directive, whether built-in or custom.</strong>
+We should ask ourselves &mdash; and the users of our directives &mdash; to think carefully
+about the consequences of adding and removing elements and of creating and destroying components.</p>
+<p><strong>同样的考量也适用于每一个结构型指令，无论是内置的还是自定义的。</strong>
+  我们应该提醒自己以及我们指令的使用者，来仔细考虑添加元素、移除元素以及创建和销毁组件的后果。</p>
+<p>Let&#39;s see these dynamics at work. For fun, we&#39;ll stack the deck <em>against</em>
+our recommendation and consider a component called <code>heavy-loader</code> that
+<strong><em>pretends</em></strong> to load a ton of data when initialized.</p>
+<p>让我们在实践中看看这些变化。为了娱乐，我们设想在甲板上有个叫<code>heavy-loader</code>(重型起重机)的组件，它会<strong><em>假装</em></strong>在初始化时装载一吨数据。</p>
+<p>We&#39;ll display two instances of the component.  We toggle the visibility of the first one with CSS.
+We toggle the second into and out of the DOM with <code>ngIf</code>.</p>
+<p>我们将显示该组件的两个实例。我们使用CSS切换第一个实例的可见性，用<code>ngIf</code>把第二个实例添加到DOM和将其移除。</p>
+<code-tabs><code-pane language="html" name="template (excerpt)" format="linenums">出错的文件: ../../../_fragments/structural-directives/ts/src/app/structural-directives.component-message-log.html.md   所在路径: docs,ts,latest,guide,structural-directives 文档路径: ../../../</code-pane><code-pane language="ts" name="heavy-loader.component.ts" format="linenums">出错的文件: ../../../_fragments/structural-directives/ts/src/app/heavy-loader.component.ts.md   所在路径: docs,ts,latest,guide,structural-directives 文档路径: ../../../</code-pane></code-tabs><p>That, in turn, can be desugared into the <code>&lt;ng-template&gt;</code> element form.</p>
+<div class="code-example"><code-example language="html" format="">&lt;div [ngSwitch]=&quot;hero?.emotion&quot;&gt;
+  &lt;ng-template [ngSwitchCase]=&quot;&#39;happy&#39;&quot;&gt;
+    &lt;happy-hero [hero]=&quot;hero&quot;&gt;&lt;/happy-hero&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template [ngSwitchCase]=&quot;&#39;sad&#39;&quot;&gt;
+    &lt;sad-hero [hero]=&quot;hero&quot;&gt;&lt;/sad-hero&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template [ngSwitchCase]=&quot;&#39;confused&#39;&quot;&gt;
+    &lt;confused-hero [hero]=&quot;hero&quot;&gt;&lt;/confused-hero&gt;
+  &lt;/ng-template &gt;
+  &lt;ng-template ngSwitchDefault&gt;
+    &lt;unknown-hero [hero]=&quot;hero&quot;&gt;&lt;/unknown-hero&gt;
+  &lt;/ng-template&gt;
+&lt;/div&gt;
+</code-example></div><a id="prefer-asterisk"></a><h2 id="prefer-the-asterisk-syntax-">Prefer the asterisk (*) syntax.</h2>
+<p>The asterisk (*) syntax is more clear than the other desugared forms.
+Use <a href="#ng-container">&lt;ng-container&gt;</a> when there&#39;s no single element
+to host the directive.</p>
+<p>While there&#39;s rarely a good reason to apply a structural directive in template <em>attribute</em> or <em>element</em> form,
+it&#39;s still important to know that Angular creates a <code>&lt;ng-template&gt;</code> and to understand how it works.
+You&#39;ll refer to the <code>&lt;ng-template&gt;</code> when you <a href="#unless">write your own structural directive</a>.</p>
+<a id="template"></a><div class="l-main-section"></div><h2 id="the-lt-ng-template-gt-">The <em>&lt;ng-template&gt;</em></h2>
+<p>The &lt;ng-template&gt; is an Angular element for rendering HTML.
+It is never displayed directly. 
+In fact, before rendering the view, Angular <em>replaces</em> the <code>&lt;ng-template&gt;</code> and its contents with a comment.</p>
+<p>If there is no structural directive and you merely wrap some elements in a <code>&lt;ng-template&gt;</code>,
+those elements disappear.
+That&#39;s the fate of the middle &quot;Hip!&quot; in the phrase &quot;Hip! Hip! Hooray!&quot;.</p>
+<div class="code-example"><code-example language="html" format="">&lt;p&gt;Hip!&lt;/p&gt;
+&lt;ng-template&gt;
+  &lt;p&gt;Hip!&lt;/p&gt;
+&lt;/ng-template&gt;
+&lt;p&gt;Hooray!&lt;/p&gt;
+</code-example></div><p>Angular erases the middle &quot;Hip!&quot;, leaving the cheer a bit less enthusiastic.</p>
+<p>借助内置的<code>ngOnInit</code>和<code>ngOnDestroy</code><a href="lifecycle-hooks.html">生命周期钩子</a>，我们同时记录了组件的创建或销毁过程。
+下面是它的操作演示：</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/template-rendering.png" width="350" alt="template tag rendering"></figure><p>A structural directive puts a <code>&lt;ng-template&gt;</code> to work
+as you&#39;ll see when you <a href="#unless">write your own structural directive</a>.</p>
+<a id="ngcontainer"></a><a id="ng-container"></a><div class="l-main-section"></div><h2 id="group-sibling-elements-with-lt-ng-container-gt-">Group sibling elements with &lt;ng-container&gt;</h2>
+<p>There&#39;s often a <em>root</em> element that can and should host the structural directive.
+The list element (<code>&lt;li&gt;</code>) is a typical host element of an <code>NgFor</code> repeater.</p>
+<div class="code-example"><code-example language="html" format="">&lt;li *ngFor=&quot;let hero of heroes&quot;&gt;{{hero.name}}&lt;/li&gt;
+</code-example></div><p>When there isn&#39;t a host element, you can usually wrap the content in a native HTML container element,
+such as a <code>&lt;div&gt;</code>, and attach the directive to that wrapper.</p>
+<div class="code-example"><code-example language="html" format="">&lt;div *ngIf=&quot;hero&quot; &gt;{{hero.name}}&lt;/div&gt;
+</code-example></div><p>Introducing another container element&mdash;typically a <code>&lt;span&gt;</code> or <code>&lt;div&gt;</code>&mdash;to 
+group the elements under a single <em>root</em> is usually harmless. 
+<em>Usually</em> ... but not <em>always</em>.</p>
+<p>The grouping element may break the template appearance because CSS styles 
+neither expect nor accommodate the new layout.
+For example, suppose you have the following paragraph layout.</p>
+<div class="code-example"><code-example language="html" format="">&lt;p&gt;
+  I turned the corner
+  &lt;span *ngIf=&quot;hero&quot;&gt;
+    and saw {{hero.name}}. I waved
+  &lt;/span&gt;
+  and continued on my way.
+&lt;/p&gt;
+</code-example></div><p>You also have a CSS style rule that happens to apply to a <code>&lt;span&gt;</code> within a <code>&lt;p&gt;</code>aragraph.</p>
+<div class="code-example"><code-example language="css" format="">p span { color: red; font-size: 70%; }
+</code-example></div><p>The constructed paragraph renders strangely.</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/bad-paragraph.png" alt="spanned paragraph with bad style"></figure><p>The <code>p span</code> style, intended for use elsewhere, was inadvertently applied here.</p>
+<p>Another problem: some HTML elements require all immediate children to be of a specific type.
+For example, the <code>&lt;select&gt;</code> element requires <code>&lt;option&gt;</code> children. 
+You can&#39;t wrap the <em>options</em> in a conditional <code>&lt;div&gt;</code> or a <code>&lt;span&gt;</code>.</p>
+<p>When you try this,</p>
+<div class="code-example"><code-example language="html" format="">&lt;div&gt;
+  Pick your favorite hero
+  (&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked (change)=&quot;showSad = !showSad&quot;&gt;show sad&lt;/label&gt;)
+&lt;/div&gt;
+&lt;select [(ngModel)]=&quot;hero&quot;&gt;
+  &lt;span *ngFor=&quot;let h of heroes&quot;&gt;
+    &lt;span *ngIf=&quot;showSad || h.emotion !== &#39;sad&#39;&quot;&gt;
+      &lt;option [ngValue]=&quot;h&quot;&gt;{{h.name}} ({{h.emotion}})&lt;/option&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/select&gt;
+</code-example></div><p>the drop down is empty.</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/bad-select.png" alt="spanned options don't work"></figure><p>The browser won&#39;t display an <code>&lt;option&gt;</code> within a <code>&lt;span&gt;</code>.</p>
+<h3 id="-lt-ng-container-gt-to-the-rescue">&lt;ng-container&gt; to the rescue</h3>
+<p>The Angular <code>&lt;ng-container&gt;</code> is a grouping element that doesn&#39;t interfere with styles or layout
+because Angular <em>doesn&#39;t put it in the DOM</em>. </p>
+<p>Here&#39;s the conditional paragraph again, this time using <code>&lt;ng-container&gt;</code>.</p>
+<div class="code-example"><code-example language="html" format="">&lt;p&gt;
+  I turned the corner
+  &lt;ng-container *ngIf=&quot;hero&quot;&gt;
+    and saw {{hero.name}}. I waved
+  &lt;/ng-container&gt;
+  and continued on my way.
+&lt;/p&gt;
+</code-example></div><p>It renders properly.</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/good-paragraph.png" alt="ngcontainer paragraph with proper style"></figure><p>Now conditionally exclude a <em>select</em> <code>&lt;option&gt;</code> with <code>&lt;ng-container&gt;</code>.</p>
+<div class="code-example"><code-example language="html" format="">&lt;div&gt;
+  Pick your favorite hero
+  (&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked (change)=&quot;showSad = !showSad&quot;&gt;show sad&lt;/label&gt;)
+&lt;/div&gt;
+&lt;select [(ngModel)]=&quot;hero&quot;&gt;
+  &lt;ng-container *ngFor=&quot;let h of heroes&quot;&gt;
+    &lt;ng-container *ngIf=&quot;showSad || h.emotion !== &#39;sad&#39;&quot;&gt;
+      &lt;option [ngValue]=&quot;h&quot;&gt;{{h.name}} ({{h.emotion}})&lt;/option&gt;
+    &lt;/ng-container&gt;
+  &lt;/ng-container&gt;
+&lt;/select&gt;
+</code-example></div><p>The drop down works properly.</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/select-ngcontainer-anim.gif" alt="ngcontainer options work properly"></figure><p>The <code>&lt;ng-container&gt;</code> is a syntax element recognized by the Angular parser.
+It&#39;s not a directive, component, class, or interface. 
+It&#39;s more like the curly braces in a JavaScript <code>if</code>-block:</p>
+<code-example language="javascript">if (someCondition) {
+  statement1;
+  statement2;
+  statement3;
+} 
+</code-example><p>Without those braces, JavaScript would only execute the first statement
+when you intend to conditionally execute all of them as a single block.
+The <code>&lt;ng-container&gt;</code> satisfies a similar need in Angular templates.</p>
+<a id="unless"></a><div class="l-main-section"></div><h2 id="write-a-structural-directive">Write a structural directive</h2>
+<p>In this section, you write an <code>UnlessDirective</code> structural directive
+that does the opposite of <code>NgIf</code>.
+<code>NgIf</code> displays the template content when the condition is <code>true</code>.
+<code>UnlessDirective</code> displays the content when the condition is <strong><em>false</em></strong>.</p>
+<div class="code-example"><code-example language="html" format="">&lt;p *myUnless=&quot;condition&quot;&gt;Show this sentence unless the condition is true.&lt;/p&gt;
+</code-example></div><p>Creating a directive is similar to creating a component.</p>
+<p>创建指令很像创建组件。</p>
+<ul>
+<li><p>Import the <code>Directive</code> decorator (instead of the <code>Component</code> decorator).</p>
+<p>导入<code>Directive</code>装饰器（而不再是<code>Component</code>）。</p>
+</li>
+<li><p>Import the <code>Input</code>, <code>TemplateRef</code>, and <code>ViewContainerRef</code> symbols; you&#39;ll need them for <em>any</em> structural directive .</p>
+</li>
+<li><p>Apply the decorator to the directive class.</p>
+</li>
+<li><p>Set the CSS <em>attribute selector</em> that identifies the directive when applied to an element in a template.</p>
+</li>
+</ul>
+<p>Here&#39;s how you might begin:</p>
+<div class="code-example"><header><h4>src/app/unless.directive.ts (skeleton)</h4></header><code-example language="ts" format="">import { Directive, Input, TemplateRef, ViewContainerRef } from &#39;@angular/core&#39;;
+
+@Directive({ selector: &#39;[myUnless]&#39;})
+export class UnlessDirective {
+}
+</code-example></div><p>The directive&#39;s <em>selector</em> is typically the directive&#39;s <strong>attribute name</strong> in square brackets, <code>[myUnless]</code>.
+The brackets define a CSS
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors" target="_blank" title="MDN: Attribute selectors">attribute selector</a>.</p>
+<p>The directive <em>attribute name</em> should be spelled in <em>lowerCamelCase</em> and begin with a prefix.
+Don&#39;t use <code>ng</code>. That prefix belongs to Angular.
+Pick something short that fits you or your company.
+In this example, the prefix is <code>my</code>.</p>
+<p>The directive <em>class</em> name ends in <code>Directive</code> per the <a href="style-guide.html#02-03" title="Angular Style Guide">style guide</a>.
+Angular&#39;s own directives do not.</p>
+<h3 id="_templateref_-and-_viewcontainerref_"><em>TemplateRef</em> and <em>ViewContainerRef</em></h3>
+<p>A simple structural directive like this one creates an 
+<a href="../api/core/index/EmbeddedViewRef-class.html" title="API: EmbeddedViewRef"><em>embedded view</em></a>
+from the Angular-generated <code>&lt;ng-template&gt;</code> and inserts that view in a 
+<a href="../api/core/index/ViewContainerRef-class.html" title="API: ViewContainerRef"><em>view container</em></a>
+adjacent to the directive&#39;s original <code>&lt;p&gt;</code> host element.</p>
+<p>You&#39;ll acquire the <code>&lt;ng-template&gt;</code> contents with a
+<a href="../api/core/index/TemplateRef-class.html" title="API: TemplateRef"><code>TemplateRef</code></a>
+and access the <em>view container</em> through a
+<a href="../api/core/index/ViewContainerRef-class.html" title="API: ViewContainerRef"><code>ViewContainerRef</code></a>.</p>
+<p>You inject both in the directive constructor as private variables of the class.</p>
+<div class="code-example"><code-example language="ts" format="">constructor(
+  private templateRef: TemplateRef&lt;any&gt;,
+  private viewContainer: ViewContainerRef) { }
+</code-example></div><h3 id="the-_myunless_-property">The <em>myUnless</em> property</h3>
+<p>The directive consumer expects to bind a true/false condition to <code>[myUnless]</code>.
+That means the directive needs a <code>myUnless</code> property, decorated with <code>@Input</code> </p>
+<div class="l-sub-section"><p>Read about <code>@Input</code> in the <a href="template-syntax.html#inputs-outputs"><em>Template Syntax</em></a> guide.</p>
+</div><div class="code-example"><code-example language="ts" format="">@Input() set myUnless(condition: boolean) {
+  if (!condition &amp;&amp; !this.hasView) {
+    this.viewContainer.createEmbeddedView(this.templateRef);
+    this.hasView = true;
+  } else if (condition &amp;&amp; this.hasView) {
+    this.viewContainer.clear();
+    this.hasView = false;
+  }
+}
+</code-example></div><p>Angular sets the  <code>myUnless</code> property whenever the value of the condition changes.
+Because the <code>myUnless</code> property does work, it needs a setter.</p>
+<ul>
+<li><p>If the condition is falsy and the view hasn&#39;t been created previously,
+tell the <em>view container</em> to create the <em>embedded view</em> from the template.</p>
+</li>
+<li><p>If the condition is truthy and the view is currently displayed, 
+clear the container which also destroys the view.</p>
+</li>
+</ul>
+<p>Nobody reads the <code>myUnless</code> property so it doesn&#39;t need a getter.</p>
+<p>The completed directive code looks like this:</p>
+<div class="code-example"><header><h4>src/app/unless.directive.ts (excerpt)</h4></header><code-example language="ts" format="">import { Directive, Input, TemplateRef, ViewContainerRef } from &#39;@angular/core&#39;;
+
+/**
+ * Add the template content to the DOM unless the condition is true.
+ */
+@Directive({ selector: &#39;[myUnless]&#39;})
+export class UnlessDirective {
+  private hasView = false;
+
+  constructor(
+    private templateRef: TemplateRef&lt;any&gt;,
+    private viewContainer: ViewContainerRef) { }
+
+  @Input() set myUnless(condition: boolean) {
+    if (!condition &amp;&amp; !this.hasView) {
+      this.viewContainer.createEmbeddedView(this.templateRef);
+      this.hasView = true;
+    } else if (condition &amp;&amp; this.hasView) {
+      this.viewContainer.clear();
+      this.hasView = false;
+    }
+  }
+}
+</code-example></div><p>Add this directive to the <code>declarations</code> array of the AppModule.</p>
+<p>Then create some HTML to try it.</p>
+<div class="code-example"><code-example language="html" format="">&lt;p *myUnless=&quot;condition&quot; class=&quot;unless a&quot;&gt;
+  (A) This paragraph is displayed because the condition is false.
+&lt;/p&gt;
+
+&lt;p *myUnless=&quot;!condition&quot; class=&quot;unless b&quot;&gt;
+  (B) Although the condition is true,
+  this paragraph is displayed because myUnless is set to false.
+&lt;/p&gt;
+</code-example></div><p>When the <code>condition</code> is falsy, the top (A) paragraph appears and  the bottom (B) paragraph disappears.
+When the<code>condition</code> is truthy, the top (A)paragraph is removed  and the bottom (B)paragraph appears.</p>
+<p>当<code>condition</code>为<code>false</code>时，顶部的段落就会显示出来，而底部的段落消失了。
+当<code>condition</code>为<code>true</code>时，顶部的段落被移除了，而底部的段落显示了出来。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/structural-directives/unless-anim.gif" alt="UnlessDirective in action"></figure><a id="summary"></a><div class="l-main-section"></div><h2 id="summary">Summary</h2>
+<p>You can both try and download the source code for this guide in the <live-example></live-example>.  </p>
+<p>Here is the source from the <code>src/app/</code> folder.</p>
+<p>本章相关的代码如下：</p>
+<code-tabs><code-pane language="ts" name="app.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+import { Hero, heroes } from &#39;./hero&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  templateUrl: &#39;./app.component.html&#39;,
+  styleUrls: [ &#39;./app.component.css&#39; ]
+})
+export class AppComponent {
+  heroes = heroes;
+  hero = this.heroes[0];
+
+  condition = false;
+  logs: string[] = [];
+  showSad = true;
+  status = &#39;ready&#39;;
+
+  trackById(index: number, hero: Hero): number { return hero.id; }
+}
+</code-pane><code-pane language="html" name="app.component.html" format="linenums">&lt;h1&gt;Structural Directives&lt;/h1&gt;
+
+&lt;p&gt;Conditional display of hero&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;div *ngIf=&quot;hero&quot; &gt;{{hero.name}}&lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;List of heroes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li *ngFor=&quot;let hero of heroes&quot;&gt;{{hero.name}}&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;ngIf&quot;&gt;NgIf&lt;/h2&gt;
+
+&lt;p *ngIf=&quot;true&quot;&gt;
+  Expression is true and ngIf is true.
+  This paragraph is in the DOM.
+&lt;/p&gt;
+&lt;p *ngIf=&quot;false&quot;&gt;
+  Expression is false and ngIf is false.
+  This paragraph is not in the DOM.
+&lt;/p&gt;
+
+&lt;p [style.display]=&quot;&#39;block&#39;&quot;&gt;
+  Expression sets display to &quot;block&quot;.
+  This paragraph is visible.
+&lt;/p&gt;
+&lt;p [style.display]=&quot;&#39;none&#39;&quot;&gt;
+  Expression sets display to &quot;none&quot;.
+  This paragraph is hidden but still in the DOM.
+&lt;/p&gt;
+
+&lt;h4&gt;NgIf with template&lt;/h4&gt;
+&lt;p&gt;&amp;lt;ng-template&amp;gt; element&lt;/p&gt;
+&lt;ng-template [ngIf]=&quot;hero&quot;&gt;
+  &lt;div&gt;{{hero.name}}&lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;p&gt;template attribute&lt;/p&gt;
+&lt;div template=&quot;ngIf hero&quot;&gt;{{hero.name}}&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;ng-container&quot;&gt;&amp;lt;ng-container&amp;gt;&lt;/h2&gt;
+
+&lt;h4&gt;*ngIf with a &amp;lt;ng-container&amp;gt;&lt;/h4&gt;
+
+&lt;button (click)=&quot;hero = hero ? null : heroes[0]&quot;&gt;Toggle hero&lt;/button&gt;
+
+&lt;p&gt;
+  I turned the corner
+  &lt;ng-container *ngIf=&quot;hero&quot;&gt;
+    and saw {{hero.name}}. I waved
+  &lt;/ng-container&gt;
+  and continued on my way.
+&lt;/p&gt;
+&lt;p&gt;
+  I turned the corner
+  &lt;span *ngIf=&quot;hero&quot;&gt;
+    and saw {{hero.name}}. I waved
+  &lt;/span&gt;
+  and continued on my way.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;&amp;lt;select&amp;gt; with &amp;lt;span&amp;gt;&lt;/i&gt;&lt;/p&gt;
+&lt;div&gt;
+  Pick your favorite hero
+  (&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked (change)=&quot;showSad = !showSad&quot;&gt;show sad&lt;/label&gt;)
+&lt;/div&gt;
+&lt;select [(ngModel)]=&quot;hero&quot;&gt;
+  &lt;span *ngFor=&quot;let h of heroes&quot;&gt;
+    &lt;span *ngIf=&quot;showSad || h.emotion !== &#39;sad&#39;&quot;&gt;
+      &lt;option [ngValue]=&quot;h&quot;&gt;{{h.name}} ({{h.emotion}})&lt;/option&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/select&gt;
+
+&lt;p&gt;&lt;i&gt;&amp;lt;select&amp;gt; with &amp;lt;ng-container&amp;gt;&lt;/i&gt;&lt;/p&gt;
+&lt;div&gt;
+  Pick your favorite hero
+  (&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked (change)=&quot;showSad = !showSad&quot;&gt;show sad&lt;/label&gt;)
+&lt;/div&gt;
+&lt;select [(ngModel)]=&quot;hero&quot;&gt;
+  &lt;ng-container *ngFor=&quot;let h of heroes&quot;&gt;
+    &lt;ng-container *ngIf=&quot;showSad || h.emotion !== &#39;sad&#39;&quot;&gt;
+      &lt;option [ngValue]=&quot;h&quot;&gt;{{h.name}} ({{h.emotion}})&lt;/option&gt;
+    &lt;/ng-container&gt;
+  &lt;/ng-container&gt;
+&lt;/select&gt;
+&lt;br&gt;&lt;br&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;ngFor&quot;&gt;NgFor&lt;/h2&gt;
+
+&lt;div class=&quot;box&quot;&gt;
+
+&lt;p class=&quot;code&quot;&gt;&amp;lt;div *ngFor=&quot;let hero of heroes; let i=index; let odd=odd; trackBy: trackById&quot; [class.odd]=&quot;odd&quot;&amp;gt;&lt;/p&gt;
+&lt;div *ngFor=&quot;let hero of heroes; let i=index; let odd=odd; trackBy: trackById&quot; [class.odd]=&quot;odd&quot;&gt;
+  ({{i}}) {{hero.name}}
+&lt;/div&gt;
+
+&lt;p class=&quot;code&quot;&gt;&amp;lt;div template=&quot;ngFor let hero of heroes; let i=index; let odd=odd; trackBy: trackById&quot; [class.odd]=&quot;odd&quot;&amp;gt;&lt;/p&gt;
+&lt;div template=&quot;ngFor let hero of heroes; let i=index; let odd=odd; trackBy: trackById&quot; [class.odd]=&quot;odd&quot;&gt;
+  ({{i}}) {{hero.name}}
+&lt;/div&gt;
+
+&lt;p class=&quot;code&quot;&gt;&amp;lt;template ngFor let-hero [ngForOf]=&quot;heroes&quot; let-i=&quot;index&quot; let-odd=&quot;odd&quot; [ngForTrackBy]=&quot;trackById&quot;&amp;gt;&lt;/p&gt;
+&lt;ng-template ngFor let-hero [ngForOf]=&quot;heroes&quot; let-i=&quot;index&quot; let-odd=&quot;odd&quot; [ngForTrackBy]=&quot;trackById&quot;&gt;
+  &lt;div [class.odd]=&quot;odd&quot;&gt;({{i}}) {{hero.name}}&lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;/div&gt;
+&lt;hr&gt;
+
+&lt;h2 id=&quot;ngSwitch&quot;&gt;NgSwitch&lt;/h2&gt;
+
+&lt;div&gt;Pick your favorite hero&lt;/div&gt;
+&lt;p&gt;
+  &lt;label *ngFor=&quot;let h of heroes&quot;&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;heroes&quot; [(ngModel)]=&quot;hero&quot; [value]=&quot;h&quot;&gt;{{h.name}}
+  &lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;heroes&quot; (click)=&quot;hero = null&quot;&gt;None of the above&lt;/label&gt;
+&lt;/p&gt;
+
+&lt;h4&gt;NgSwitch&lt;/h4&gt;
+
+&lt;div [ngSwitch]=&quot;hero?.emotion&quot;&gt;
+  &lt;happy-hero    *ngSwitchCase=&quot;&#39;happy&#39;&quot;    [hero]=&quot;hero&quot;&gt;&lt;/happy-hero&gt;
+  &lt;sad-hero      *ngSwitchCase=&quot;&#39;sad&#39;&quot;      [hero]=&quot;hero&quot;&gt;&lt;/sad-hero&gt;
+  &lt;confused-hero *ngSwitchCase=&quot;&#39;confused&#39;&quot; [hero]=&quot;hero&quot;&gt;&lt;/confused-hero&gt;
+  &lt;unknown-hero  *ngSwitchDefault           [hero]=&quot;hero&quot;&gt;&lt;/unknown-hero&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;NgSwitch with &lt;i&gt;template&lt;/i&gt; attribute&lt;/h4&gt;
+&lt;div [ngSwitch]=&quot;hero?.emotion&quot;&gt;
+  &lt;happy-hero    template=&quot;ngSwitchCase &#39;happy&#39;&quot;    [hero]=&quot;hero&quot;&gt;&lt;/happy-hero&gt;
+  &lt;sad-hero      template=&quot;ngSwitchCase &#39;sad&#39;&quot;      [hero]=&quot;hero&quot;&gt;&lt;/sad-hero&gt;
+  &lt;confused-hero template=&quot;ngSwitchCase &#39;confused&#39;&quot; [hero]=&quot;hero&quot;&gt;&lt;/confused-hero&gt;
+  &lt;unknown-hero  template=&quot;ngSwitchDefault&quot;         [hero]=&quot;hero&quot;&gt;&lt;/unknown-hero&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;NgSwitch with &amp;lt;ng-template&amp;gt;&lt;/h4&gt;
+&lt;div [ngSwitch]=&quot;hero?.emotion&quot;&gt;
+  &lt;ng-template [ngSwitchCase]=&quot;&#39;happy&#39;&quot;&gt;
+    &lt;happy-hero [hero]=&quot;hero&quot;&gt;&lt;/happy-hero&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template [ngSwitchCase]=&quot;&#39;sad&#39;&quot;&gt;
+    &lt;sad-hero [hero]=&quot;hero&quot;&gt;&lt;/sad-hero&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template [ngSwitchCase]=&quot;&#39;confused&#39;&quot;&gt;
+    &lt;confused-hero [hero]=&quot;hero&quot;&gt;&lt;/confused-hero&gt;
+  &lt;/ng-template &gt;
+  &lt;ng-template ngSwitchDefault&gt;
+    &lt;unknown-hero [hero]=&quot;hero&quot;&gt;&lt;/unknown-hero&gt;
+  &lt;/ng-template&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;&amp;lt;template&amp;gt;&lt;/h2&gt;
+&lt;p&gt;Hip!&lt;/p&gt;
+&lt;ng-template&gt;
+  &lt;p&gt;Hip!&lt;/p&gt;
+&lt;/ng-template&gt;
+&lt;p&gt;Hooray!&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;myUnless&quot;&gt;UnlessDirective&lt;/h2&gt;
+&lt;p&gt;
+  The condition is currently
+  &lt;span [ngClass]=&quot;{ a: !condition, b: condition, unless: true }&quot;&gt;{{condition}}&lt;/span&gt;.
+  &lt;button
+    (click)=&quot;condition = !condition&quot;
+    [ngClass] = &quot;{ a: condition, b: !condition }&quot; &gt;
+    Toggle condition to {{condition ? &#39;false&#39; : &#39;true&#39;}}
+  &lt;/button&gt;
+&lt;/p&gt;
+&lt;p *myUnless=&quot;condition&quot; class=&quot;unless a&quot;&gt;
+  (A) This paragraph is displayed because the condition is false.
+&lt;/p&gt;
+
+&lt;p *myUnless=&quot;!condition&quot; class=&quot;unless b&quot;&gt;
+  (B) Although the condition is true,
+  this paragraph is displayed because myUnless is set to false.
+&lt;/p&gt;
+
+
+&lt;h4&gt;UnlessDirective with template&lt;/h4&gt;
+
+&lt;p *myUnless=&quot;condition&quot;&gt;Show this sentence unless the condition is true.&lt;/p&gt;
+
+&lt;p template=&quot;myUnless condition&quot; class=&quot;code unless&quot;&gt;
+  (A) &amp;lt;p template=&quot;myUnless condition&quot; class=&quot;code unless&quot;&amp;gt;
+&lt;/p&gt;
+
+&lt;ng-template [myUnless]=&quot;condition&quot;&gt;
+  &lt;p class=&quot;code unless&quot;&gt;
+    (A) &amp;lt;template [myUnless]=&quot;condition&quot;&amp;gt;
+  &lt;/p&gt;
+&lt;/ng-template&gt;
+</code-pane><code-pane language="css" name="app.component.css" format="linenums">button {
+  min-width: 100px;
+  font-size: 100%;
+}
+
+.box {
+  border: 1px solid gray;
+  max-width: 600px;
+  padding: 4px;
+}
+.choices {
+  font-style: italic;
+}
+
+code, .code {
+  background-color: #eee;
+  color: black;
+  font-family: Courier, sans-serif;
+  font-size: 85%;
+}
+
+div.code {
+  width: 400px;
+}
+
+.heroic {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+hr {
+  margin: 40px 0
+}
+
+.odd {
+  background-color:  palegoldenrod;
+}
+
+td, th {
+  text-align: left;
+  vertical-align: top;
+}
+
+p span { color: red; font-size: 70%; }
+
+.unless {
+  border: 2px solid;
+  padding: 6px;
+}
+
+p.unless {
+  width: 500px;
+}
+
+button.a, span.a, .unless.a {
+  color: red;
+  border-color: gold;
+  background-color: yellow;
+  font-size: 100%;
+}
+
+button.b, span.b, .unless.b {
+  color: black;
+  border-color: green;
+  background-color: lightgreen;
+  font-size: 100%;
+}
+</code-pane><code-pane language="ts" name="app.module.ts" format="linenums">import { NgModule }      from &#39;@angular/core&#39;;
+import { FormsModule }   from &#39;@angular/forms&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+
+import { AppComponent }         from &#39;./app.component&#39;;
+import { heroSwitchComponents } from &#39;./hero-switch.components&#39;;
+import { UnlessDirective }    from &#39;./unless.directive&#39;;
+
+@NgModule({
+  imports: [ BrowserModule, FormsModule ],
+  declarations: [
+    AppComponent,
+    heroSwitchComponents,
+    UnlessDirective
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-pane><code-pane language="ts" name="hero.ts" format="linenums">export class Hero {
+  id: number;
+  name: string;
+  emotion?: string;
+}
+
+export const heroes: Hero[] = [
+  { id: 1, name: &#39;Mr. Nice&#39;,  emotion: &#39;happy&#39;},
+  { id: 2, name: &#39;Narco&#39;,     emotion: &#39;sad&#39; },
+  { id: 3, name: &#39;Windstorm&#39;, emotion: &#39;confused&#39; },
+  { id: 4, name: &#39;Magneta&#39;}
+];
+</code-pane><code-pane language="ts" name="hero-switch.components.ts" format="linenums">import { Component, Input } from &#39;@angular/core&#39;;
+import { Hero } from &#39;./hero&#39;;
+
+@Component({
+  selector: &#39;happy-hero&#39;,
+  template: `Wow. You like {{hero.name}}. What a happy hero ... just like you.`
+})
+export class HappyHeroComponent {
+  @Input() hero: Hero;
+}
+
+@Component({
+  selector: &#39;sad-hero&#39;,
+  template: `You like {{hero.name}}? Such a sad hero. Are you sad too?`
+})
+export class SadHeroComponent {
+  @Input() hero: Hero;
+}
+
+@Component({
+  selector: &#39;confused-hero&#39;,
+  template: `Are you as confused as {{hero.name}}?`
+})
+export class ConfusedHeroComponent {
+  @Input() hero: Hero;
+}
+
+@Component({
+  selector: &#39;unknown-hero&#39;,
+  template: `{{message}}`
+})
+export class UnknownHeroComponent {
+  @Input() hero: Hero;
+  get message() {
+    return this.hero &amp;&amp; this.hero.name ?
+      `${this.hero.name} is strange and mysterious.` :
+      &#39;Are you feeling indecisive?&#39;;
+  }
+}
+
+export const heroSwitchComponents =
+  [ HappyHeroComponent, SadHeroComponent, ConfusedHeroComponent, UnknownHeroComponent ];
+</code-pane><code-pane language="ts
+  " name="unless.directive.ts" format="linenums">import { Directive, Input, TemplateRef, ViewContainerRef } from &#39;@angular/core&#39;;
+
+/**
+ * Add the template content to the DOM unless the condition is true.
+ *
+ * If the expression assigned to `myUnless` evaluates to a truthy value
+ * then the templated elements are removed removed from the DOM,
+ * the templated elements are (re)inserted into the DOM.
+ *
+ * &lt;div *ngUnless=&quot;errorCount&quot; class=&quot;success&quot;&gt;
+ *   Congrats! Everything is great!
+ * &lt;/div&gt;
+ *
+ * ### Syntax
+ *
+ * - `&lt;div *myUnless=&quot;condition&quot;&gt;...&lt;/div&gt;`
+ * - `&lt;div template=&quot;myUnless condition&quot;&gt;...&lt;/div&gt;`
+ * - `&lt;template [myUnless]=&quot;condition&quot;&gt;&lt;div&gt;...&lt;/div&gt;&lt;/template&gt;`
+ *
+ */
+@Directive({ selector: &#39;[myUnless]&#39;})
+export class UnlessDirective {
+  private hasView = false;
+
+  constructor(
+    private templateRef: TemplateRef&lt;any&gt;,
+    private viewContainer: ViewContainerRef) { }
+
+  @Input() set myUnless(condition: boolean) {
+    if (!condition &amp;&amp; !this.hasView) {
+      this.viewContainer.createEmbeddedView(this.templateRef);
+      this.hasView = true;
+    } else if (condition &amp;&amp; this.hasView) {
+      this.viewContainer.clear();
+      this.hasView = false;
+    }
+  }
+}
+</code-pane></code-tabs><p>You learned</p>
+<ul>
+<li>that structural directives manipulate HTML layout.</li>
+<li>to use <a href="#ngcontainer"><code>&lt;ng-container&gt;</code></a> as a grouping element when there is no suitable host element.</li>
+<li>that the Angular desugars <a href="#asterisk">asterisk (*) syntax</a> into a <code>&lt;ng-template&gt;</code>.</li>
+<li>how that works for the <code>NgIf</code>, <code>NgFor</code> and <code>NgSwitch</code> built-in directives.</li>
+<li>about the <a href="#microsyntax"><em>microsyntax</em></a> that expands into a <a href="#template"><code>&lt;ng-template&gt;</code></a>.</li>
+<li>to write a <a href="#unless">custom structural directive</a>, <code>UnlessDirective</code>.</li>
+</ul><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/structural-directives.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:56:07 GMT -->
+</html>

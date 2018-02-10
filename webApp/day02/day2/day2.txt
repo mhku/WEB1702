@@ -1,0 +1,146 @@
+winhttrack：用来获取别人站点保存本地小软件
+
+扩展：
+js调用原生组件：
+①创建一个接口类的文件
+@JavascriptInterface
+
+②activity配置使用接口
+ wv.addJavascriptInterface(
+new webInterfac(getApplicationContext()),"android");
+
+③在js中调用java中的一些接口
+function callShowToast(){
+    android.showToast();
+  }
+
+一、Ionic概述
+
+移动端app的开发有很多实现方案，原生、现成的框架（ionic、jQueryMobile）
+
+Ionic是一个强大的h5的混合编程app开发框架
+Ionic集成了ng、cordova、一套非常漂亮的移动的ui库
+
+注意事项：Ionic放弃了iOS6、Android4.1以下版本的支持
+
+特点：
+①完美融合了ng
+②集成了cordova，能够通过前端代码调用智能设备的底层硬件
+③设计风格好
+④性能优越，运行速度块
+
+Ionic = ng + cordova + 移动ui库
+
+
+二、搭建Ionic的开发环境
+1、方式1 （命令行）
+http://ionicframework.com/getting-started/
+①npm install -g cordova ionic
+全局安装cordova以及ionic
+②ionic start myApp tabs/sidemenu
+创建一个基于ionic的项目myApp，类型为tabs、sideMenu
+③ionic serve
+
+
+2、方式2：借助于官方所提供的js、css文件
+
+
+三、学习Ionic样式类
+1、color
+9个常用的值 ，参考手册中最后一个color的介绍
+
+2、button按钮
+button/button-small/button-large/button-outline/button-clear/buttn-block/icon-left/icon-right/ion-***
+button-bar
+
+3、list 列表
+list/item/item-icon-left/item-icon-right/list-inset(嵌入效果)/item-divider(分隔符)/badge(badge-assertive)/item-avator/item-thumbnail-left/right
+
+4、card 卡片式
+
+5、form 表单
+list/item/item-input/input-label/item-stacked-label/item-floating-label
+item-toggle(ionToggle)/item-select/ionCheckbox /ionRadio
+
+
+6、grid
+row/col
+col-10/20/50..(指定列的宽度)
+.col-10	10%
+.col-20	20%
+.col-25	25%
+.col-33	33.3333%
+.col-50	50%
+.col-67	66.6666%
+.col-75	75%
+.col-80	80%
+.col-90	90%(设置列与列之间的offset)
+
+.col-offset-10	10%
+.col-offset-20	20%
+.col-offset-25	25%
+.col-offset-33	33.3333%
+.col-offset-50	50%
+.col-offset-67	66.6666%
+.col-offset-75	75%
+.col-offset-80	80%
+.col-offset-90	90%
+
+col-center/col-top/col-bottom
+
+每日一练：使用ionic中的grid来实现具有4列的列表
+
+1、数据如何组织
+
+定义一个对象数组 （25个对象）
+
+2、组织好的数据怎么显示
+
+ngRepeat 
+
+①能够显示第一列
+第一列的下标为0\4\8\12...
+在ngRepeat只显示与4余数为0的数据（ngIf）
+
+②显示第二、三、四列
+下标+1 +2 +3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

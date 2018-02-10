@@ -1,0 +1,749 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/pipes.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:52 GMT -->
+<head><title>管道 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item is-selected"><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="pipes.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/pipes.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/pipes.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">管道 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">管道可以在模板中转换显示的内容。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>Every application starts out with what seems like a simple task: get data, transform them, and show them to users.
+Getting data could be as simple as creating a local variable or as complex as streaming data over a WebSocket.</p>
+<p>每个应用开始的时候差不多都是一些简单任务：获取数据、转换它们，然后把它们显示给用户。
+获取数据可能简单到创建一个局部变量就行，也可能复杂到从WebSocket中获取数据流。</p>
+<p>Once data arrive, you could push their raw <code>toString</code> values directly to the view,
+but that rarely makes for a good user experience.
+For example, in most use cases, users prefer to see a date in a simple format like
+<samp>April 15, 1988</samp> rather than the raw string format
+<samp>Fri Apr 15 1988 00:00:00 GMT-0700 (Pacific Daylight Time)</samp>.</p>
+<p>一旦取到数据，我们可以把它们原始值的<code>toString</code>结果直接推入视图中。
+但这种做法很少能具备良好的用户体验。
+比如，几乎每个人都更喜欢简单的日期格式，例如<samp>1988-04-15</samp>，而不是服务端传过来的原始字符串格式 —— <samp>Fri Apr 15 1988 00:00:00 GMT-0700 (Pacific Daylight Time)</samp>。</p>
+<p>Clearly, some values benefit from a bit of editing. You may notice that you
+desire many of the same transformations repeatedly, both within and across many applications.
+You can almost think of them as styles.
+In fact, you might like to apply them in your HTML templates as you do styles.</p>
+<p>显然，有些值最好显示成用户友好的格式。我们很快就会发现，在很多不同的应用中，都在重复做出某些相同的变换。
+我们几乎会把它们看做某种CSS样式，事实上，我们也确实更喜欢在HTML模板中应用它们 —— 就像CSS样式一样。</p>
+<p>Introducing Angular pipes, a way to write display-value transformations that you can declare in your HTML.</p>
+<p>通过引入Angular管道，我们可以把这种简单的“显示-值”转换器声明在HTML中。</p>
+<p>You can run the <live-example></live-example> in Plunker and download the code from there.</p>
+<p>试试<live-example>在线例子</live-example>。</p>
+<div class="l-main-section"></div><h2 id="using-pipes">Using pipes</h2>
+<h2 id="-">使用管道</h2>
+<p>A pipe takes in data as input and transforms it to a desired output.
+In this page, you&#39;ll use pipes to transform a component&#39;s birthday property into
+a human-friendly date.</p>
+<p>管道把数据作为输入，然后转换它，给出期望的输出。
+我们将把组件的<code>birthday</code>属性转换成对人类更友好的日期格式，来说明这一点：</p>
+<div class="code-example"><header><h4>src/app/hero-birthday1.component.ts</h4></header><code-example language="ts" format="">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;hero-birthday&#39;,
+  template: `&lt;p&gt;The hero&#39;s birthday is {{ birthday | date }}&lt;/p&gt;`
+})
+export class HeroBirthdayComponent {
+  birthday = new Date(1988, 3, 15); // April 15, 1988
+}
+</code-example></div><p>Focus on the component&#39;s template.</p>
+<p>重点看下组件的模板。</p>
+<div class="code-example"><code-example language="html" format="">&lt;p&gt;The hero&#39;s birthday is {{ birthday | date }}&lt;/p&gt;
+</code-example></div><p>Inside the interpolation expression, you flow the component&#39;s <code>birthday</code> value through the
+<a href="template-syntax.html#pipe">pipe operator</a> ( | ) to the <a href="../api/common/index/DatePipe-pipe.html">Date pipe</a>
+function on the right. All pipes work this way.</p>
+<p>在这个插值表达式中，我们让组件的<code>birthday</code>值通过<a href="template-syntax.html#pipe">管道操作符</a>( | )流动到
+右侧的<a href="../api/common/index/DatePipe-class.html">Date管道</a>函数中。所有管道都会用这种方式工作。</p>
+<div class="l-sub-section"><p>The <code>Date</code> and <code>Currency</code> pipes need the <em>ECMAScript Internationalization API</em>.
+Safari and other older browsers don&#39;t support it. You can add support with a polyfill.</p>
+<p><code>Date</code>和<code>Currency</code>管道需要<strong>ECMAScript国际化（I18n）API</strong>，但Safari和其它老式浏览器不支持它，该问题可以用垫片（Polyfill）解决。</p>
+<code-example language="html">&lt;script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"&gt;&lt;/script&gt;
+</code-example></div><div class="l-main-section"></div><h2 id="built-in-pipes">Built-in pipes</h2>
+<h2 id="-">内置的管道</h2>
+<p>Angular comes with a stock of pipes such as
+<code>DatePipe</code>, <code>UpperCasePipe</code>, <code>LowerCasePipe</code>, <code>CurrencyPipe</code>, and <code>PercentPipe</code>.
+They are all available for use in any template.</p>
+<p>Angular内置了一些管道，比如<code>DatePipe</code>、<code>UpperCasePipe</code>、<code>LowerCasePipe</code>、<code>CurrencyPipe</code>和<code>PercentPipe</code>。
+它们全都可以直接用在任何模板中。</p>
+<div class="l-sub-section"><p>Read more about these and many other built-in pipes in the <a href="../api/index.html#!?query=pipe">pipes topics</a> of the
+<a href="../api/index.html">API Reference</a>; filter for entries that include the word &quot;pipe&quot;.</p>
+<p>要学习更多内置管道的知识，参见<a href="../api/index.html#!?apiFilter=pipe">API参考手册</a>，并用“pipe”为关键词对结果进行过滤。</p>
+<p>Angular doesn&#39;t have a <code>FilterPipe</code> or an <code>OrderByPipe</code> for reasons explained in the <a href="#no-filter-pipe">Appendix</a> of this page.</p>
+<p>Angular没有<code>FilterPipe</code>或<code>OrderByPipe</code>管道，原因在<a href="#no-filter-pipe">后面的附录中</a>有解释。</p>
+</div><div class="l-main-section"></div><h2 id="parameterizing-a-pipe">Parameterizing a pipe</h2>
+<h2 id="-">对管道进行参数化</h2>
+<p>A pipe can accept any number of optional parameters to fine-tune its output.
+To add parameters to a pipe, follow the pipe name with a colon ( : ) and then the parameter value
+(such as <code>currency:&#39;EUR&#39;</code>). If the pipe accepts multiple parameters, separate the values with colons (such as <code>slice:1:5</code>)</p>
+<p>管道可能接受任何数量的可选参数来对它的输出进行微调。
+  我们可以在管道名后面添加一个冒号( : )再跟一个参数值，来为管道添加参数(比如<code>currency:&#39;EUR&#39;</code>)。
+  如果我们的管道可以接受多个参数，那么就用冒号来分隔这些参数值(比如<code>slice:1:5</code>)。</p>
+<p>Modify the birthday template to give the date pipe a format parameter.
+After formatting the hero&#39;s April 15th birthday, it renders as <strong><samp>04/15/88</samp></strong>:</p>
+<p>我们将通过修改生日模板来给这个日期管道提供一个格式化参数。
+当格式化完该英雄的4月15日生日之后，它应该被渲染成<strong><samp>04/15/88</samp></strong>。</p>
+<div class="code-example"><code-example language="html" format="">&lt;p&gt;The hero&#39;s birthday is {{ birthday | date:&quot;MM/dd/yy&quot; }} &lt;/p&gt;
+</code-example></div><p>The parameter value can be any valid template expression,
+(see the <a href="template-syntax.html#template-expressions">Template expressions</a> section of the
+<a href="template-syntax.html">Template Syntax</a> page)
+such as a string literal or a component property.
+In other words, you can control the format through a binding the same way you control the birthday value through a binding.</p>
+<p>参数值可以是任何有效的模板表达式（参见<a href="template-syntax.html">模板语法</a>中的<a href="template-syntax.html#template-expressions">模板表达式</a>部分），比如字符串字面量或组件的属性。
+换句话说，借助属性绑定，我们也可以像用绑定来控制生日的值一样，控制生日的显示格式。</p>
+<p>Write a second component that <em>binds</em> the pipe&#39;s format parameter
+to the component&#39;s <code>format</code> property. Here&#39;s the template for that component:</p>
+<p>我们来写第二个组件，它把管道的格式参数<em>绑定</em>到该组件的<code>format</code>属性。这里是新组件的模板：</p>
+<div class="code-example"><header><h4>src/app/hero-birthday2.component.ts (template)</h4></header><code-example language="ts" format="">template: `
+  &lt;p&gt;The hero&#39;s birthday is {{ birthday | date:format }}&lt;/p&gt;
+  &lt;button (click)=&quot;toggleFormat()&quot;&gt;Toggle Format&lt;/button&gt;
+`
+</code-example></div><p>You also added a button to the template and bound its click event to the component&#39;s <code>toggleFormat()</code> method.
+That method toggles the component&#39;s <code>format</code> property between a short form
+(<code>&#39;shortDate&#39;</code>) and a longer form (<code>&#39;fullDate&#39;</code>).</p>
+<p>我们还能在模板中添加一个按钮，并把它的点击事件绑定到组件的<code>toggleFormat()</code>方法。
+此方法会在短日期格式(<code>&#39;shortDate&#39;</code>)和长日期格式(<code>&#39;fullDate&#39;</code>)之间切换组件的<code>format</code>属性。</p>
+<div class="code-example"><header><h4>src/app/hero-birthday2.component.ts (class)</h4></header><code-example language="ts" format="">export class HeroBirthday2Component {
+  birthday = new Date(1988, 3, 15); // April 15, 1988
+  toggle = true; // start with true == shortDate
+
+  get format()   { return this.toggle ? &#39;shortDate&#39; : &#39;fullDate&#39;; }
+  toggleFormat() { this.toggle = !this.toggle; }
+}
+</code-example></div><p>As you click the button, the displayed date alternates between
+&quot;<strong><samp>04/15/1988</samp></strong>&quot; and
+&quot;<strong><samp>Friday, April 15, 1988</samp></strong>&quot;.</p>
+<p>当我们点击按钮的时候，显示的日志会在“<strong><samp>04/15/1988</samp></strong>”和“<strong><samp>Friday, April 15, 1988</samp></strong>”之间切换。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/pipes/date-format-toggle-anim.gif" alt="Date Format Toggle"></figure><div class="l-sub-section"><p>Read more about the <code>DatePipe</code> format options in the <a href="../api/common/index/DatePipe-pipe.html">Date Pipe</a>
+API Reference page.</p>
+<p>要了解更多<code>DatePipes</code>的格式选项，请参阅<a href="../api/common/index/DatePipe-class.html">API文档</a>。</p>
+</div><h2 id="chaining-pipes">Chaining pipes</h2>
+<h2 id="-">链式管道</h2>
+<p>You can chain pipes together in potentially useful combinations.
+In the following example, to display the birthday in uppercase,
+the birthday is chained to the <code>DatePipe</code> and on to the <code>UpperCasePipe</code>.
+The birthday displays as <strong><samp>APR 15, 1988</samp></strong>.</p>
+<p>我们可以把管道链在一起，以组合出一些潜在的有用功能。
+下面这个例子中，我们把<code>birthday</code>链到<code>DatePipe</code>管道，然后又链到<code>UpperCasePipe</code>，这样我们就可以把生日显示成大写形式了。
+比如下面的代码就会把生日显示成<strong><samp>APR 15, 1988</samp></strong>：</p>
+<div class="code-example"><code-example language="html" format="">The chained hero&#39;s birthday is
+{{ birthday | date | uppercase}}
+</code-example></div><p>This example&mdash;which displays <strong><samp>FRIDAY, APRIL 15, 1988</samp></strong>&mdash;chains
+the same pipes as above, but passes in a parameter to <code>date</code> as well.</p>
+<p>下面这个显示<strong><samp>FRIDAY, APRIL 15, 1988</samp></strong>的例子用同样的方式链接了这两个管道，而且同时还给<code>date</code>管道传进去一个参数。</p>
+<div class="code-example"><code-example language="html" format="">The chained hero&#39;s birthday is
+{{  birthday | date:&#39;fullDate&#39; | uppercase}}
+</code-example></div><div id="custom-pipes" class="l-main-section"></div><h2 id="custom-pipes">Custom pipes</h2>
+<h2 id="-">自定义管道</h2>
+<p>You can write your own custom pipes.
+Here&#39;s a custom pipe named <code>ExponentialStrengthPipe</code> that can boost a hero&#39;s powers:</p>
+<p>我们还可以写自己的自定义管道。
+下面就是一个名叫<code>ExponentialStrengthPipe</code>的管道，它可以放大英雄的能力：</p>
+<div class="code-example"><header><h4>src/app/exponential-strength.pipe.ts</h4></header><code-example language="ts" format="">import { Pipe, PipeTransform } from &#39;@angular/core&#39;;
+/*
+ * Raise the value exponentially
+ * Takes an exponent argument that defaults to 1.
+ * Usage:
+ *   value | exponentialStrength:exponent
+ * Example:
+ *   {{ 2 |  exponentialStrength:10}}
+ *   formats to: 1024
+*/
+@Pipe({name: &#39;exponentialStrength&#39;})
+export class ExponentialStrengthPipe implements PipeTransform {
+  transform(value: number, exponent: string): number {
+    let exp = parseFloat(exponent);
+    return Math.pow(value, isNaN(exp) ? 1 : exp);
+  }
+}
+</code-example></div><p>This pipe definition reveals the following key points:</p>
+<p>在这个管道的定义中体现了几个关键点：</p>
+<ul>
+<li><p>A pipe is a class decorated with pipe metadata.</p>
+<p>管道是一个带有“管道元数据(pipe metadata)”装饰器的类。</p>
+</li>
+<li><p>The pipe class implements the <code>PipeTransform</code> interface&#39;s <code>transform</code> method that
+accepts an input value followed by optional parameters and returns the transformed value.</p>
+<p>这个管道类实现了<code>PipeTransform</code>接口的<code>transform</code>方法，该方法接受一个输入值和一些可选参数，并返回转换后的值。</p>
+</li>
+<li><p>There will be one additional argument to the <code>transform</code> method for each parameter passed to the pipe.
+Your pipe has one such parameter: the <code>exponent</code>.</p>
+<p>当每个输入值被传给<code>transform</code>方法时，还会带上另一个参数，比如我们这个管道中的<code>exponent</code>(放大指数)。</p>
+</li>
+<li><p>To tell Angular that this is a pipe, you apply the
+<code>@Pipe</code> decorator, which you import from the core Angular library.</p>
+<p>我们通过<code>@Pipe</code>装饰器告诉Angular：这是一个管道。该装饰器是从Angular的<code>core</code>库中引入的。</p>
+</li>
+<li><p>The <code>@Pipe</code> decorator allows you to define the
+ pipe name that you&#39;ll use within template expressions. It must be a valid JavaScript identifier.
+ Your pipe&#39;s name is <code>exponentialStrength</code>.</p>
+<p>这个<code>@Pipe</code>装饰器允许我们定义管道的名字，这个名字会被用在模板表达式中。它必须是一个有效的JavaScript标识符。
+  比如，我们这个管道的名字是<code>exponentialStrength</code>。</p>
+</li>
+</ul>
+<div class="l-sub-section"><h3 id="the-pipetransform-interface">The <em>PipeTransform</em> interface</h3>
+<h3 id="-pipetransform-"><em>PipeTransform</em>接口</h3>
+<p>The <code>transform</code> method is essential to a pipe.
+The <code>PipeTransform</code> <em>interface</em> defines that method and guides both tooling and the compiler.
+Technically, it&#39;s optional; Angular looks for and executes the <code>transform</code> method regardless.</p>
+<p><code>transform</code>方法是管道的基本要素。
+<code>PipeTransform</code><em>接口</em>中定义了它，并用它指导各种工具和编译器。
+理论上说，它是可选的。Angular不会管它，而是直接查找并执行<code>transform</code>方法。</p>
+</div><p>Now you need a component to demonstrate the pipe.</p>
+<p>现在，我们需要一个组件来演示这个管道。</p>
+<div class="code-example"><header><h4>src/app/power-booster.component.ts</h4></header><code-example language="ts" format="">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;power-booster&#39;,
+  template: `
+    &lt;h2&gt;Power Booster&lt;/h2&gt;
+    &lt;p&gt;Super power boost: {{2 | exponentialStrength: 10}}&lt;/p&gt;
+  `
+})
+export class PowerBoosterComponent { }
+</code-example></div><figure class="image-display"><img src="../../../../resources/images/devguide/pipes/power-booster.png" alt="Power Booster"></figure><p>Note the following:</p>
+<p>要注意的有两点：</p>
+<ul>
+<li><p>You use your custom pipe the same way you use built-in pipes.</p>
+<p>我们使用自定义管道的方式和内置管道完全相同。</p>
+</li>
+<li><p>You must include your pipe in the <code>declarations</code> array of the <code>AppModule</code>.</p>
+<p>我们必须在<code>AppModule</code>的<code>declarations</code>数组中包含这个管道。</p>
+</li>
+</ul>
+<div class="callout is-helpful"><header>Remember the declarations array</header><header>别忘了`declarations`数组</header><p>You must manually register custom pipes.
+If you don&#39;t, Angular reports an error.
+In the previous example, you didn&#39;t list the <code>DatePipe</code> because all
+Angular built-in pipes are pre-registered.</p>
+<p>我们必须手动注册自定义管道。如果忘了，Angular就会报告一个错误。
+在前一个例子中我们没有把<code>DatePipe</code>列进去，这是因为Angular所有的内置管道都已经预注册过了。</p>
+</div><p>To probe the behavior in the <live-example></live-example>,
+change the value and optional exponent in the template.</p>
+<p>如果我们试一下这个<live-example></live-example>，就可以通过修改值和模板中的可选部分来体会其行为。</p>
+<h2 id="power-boost-calculator">Power Boost Calculator</h2>
+<h2 id="-">能力倍增计算器</h2>
+<p>It&#39;s not much fun updating the template to test the custom pipe.
+Upgrade the example to a &quot;Power Boost Calculator&quot; that combines
+your pipe and two-way data binding with <code>ngModel</code>.</p>
+<p>仅仅升级模板来测试这个自定义管道其实没多大意思。
+我们干脆把这个例子升级为“能力倍增计算器”，它可以把该管道和使用<code>ngModel</code>的双向数据绑定组合起来。</p>
+<div class="code-example"><header><h4>src/app/power-boost-calculator.component.ts</h4></header><code-example language="ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;power-boost-calculator&#39;,
+  template: `
+    &lt;h2&gt;Power Boost Calculator&lt;/h2&gt;
+    &lt;div&gt;Normal power: &lt;input [(ngModel)]=&quot;power&quot;&gt;&lt;/div&gt;
+    &lt;div&gt;Boost factor: &lt;input [(ngModel)]=&quot;factor&quot;&gt;&lt;/div&gt;
+    &lt;p&gt;
+      Super Hero Power: {{power | exponentialStrength: factor}}
+    &lt;/p&gt;
+  `
+})
+export class PowerBoostCalculatorComponent {
+  power = 5;
+  factor = 1;
+}
+</code-example></div><figure class="image-display"><img src="../../../../resources/images/devguide/pipes/power-boost-calculator-anim.gif" alt="Power Boost Calculator"></figure><div class="l-main-section"></div><a id="change-detection"></a><h2 id="pipes-and-change-detection">Pipes and change detection</h2>
+<h2 id="-">管道与变更检测</h2>
+<p>Angular looks for changes to data-bound values through a <em>change detection</em> process that runs after every DOM event:
+every keystroke, mouse move, timer tick, and server response. This could be expensive.
+Angular strives to lower the cost whenever possible and appropriate.</p>
+<p>Angular通过<em>变更检测</em>过程来查找绑定值的更改，并在每一次JavaScript事件之后运行：每次按键、鼠标移动、定时器以及服务器的响应。
+这可能会让变更检测显得很昂贵，但是Angular会尽可能降低变更检测的成本。</p>
+<p>Angular picks a simpler, faster change detection algorithm when you use a pipe.</p>
+<p>当我们使用管道时，Angular选用了一种简单、快速的变更检测算法。</p>
+<h3 id="no-pipe">No pipe</h3>
+<h3 id="-">无管道</h3>
+<p>In the next example, the component uses the default, aggressive change detection strategy to monitor and update
+its display of every hero in the <code>heroes</code> array. Here&#39;s the template:</p>
+<p>我们下一个例子中的组件使用默认的、激进(昂贵)的变更检测策略来检测和更新<code>heroes</code>数组中的每个英雄。下面是它的模板：</p>
+<div class="code-example"><header><h4>src/app/flying-heroes.component.html (v1)</h4></header><code-example language="html" format="">New hero:
+  &lt;input type=&quot;text&quot; #box
+          (keyup.enter)=&quot;addHero(box.value); box.value=&#39;&#39;&quot;
+          placeholder=&quot;hero name&quot;&gt;
+  &lt;button (click)=&quot;reset()&quot;&gt;Reset&lt;/button&gt;
+  &lt;div *ngFor=&quot;let hero of heroes&quot;&gt;
+    {{hero.name}}
+  &lt;/div&gt;
+</code-example></div><p>The companion component class provides heroes, adds heroes into the array, and can reset the array.</p>
+<p>和模板相伴的组件类可以提供英雄数组，能把新的英雄添加到数组中，还能重置英雄数组。</p>
+<div class="code-example"><header><h4>src/app/flying-heroes.component.ts (v1)</h4></header><code-example language="ts" format="">export class FlyingHeroesComponent {
+  heroes: any[] = [];
+  canFly = true;
+  constructor() { this.reset(); }
+
+  addHero(name: string) {
+    name = name.trim();
+    if (!name) { return; }
+    let hero = {name, canFly: this.canFly};
+    this.heroes.push(hero);
+  }
+
+  reset() { this.heroes = HEROES.slice(); }
+}
+</code-example></div><p>You can add heroes and Angular updates the display when you do.
+If you click the <code>reset</code> button, Angular replaces <code>heroes</code> with a new array of the original heroes and updates the display.
+If you added the ability to remove or change a hero, Angular would detect those changes and update the display as well.</p>
+<p>我们可以添加新的英雄，加完之后，Angular就会更新显示。
+<code>reset</code>按钮会把<code>heroes</code>替换成一个由原来的英雄组成的新数组，重置完之后，Angular就会更新显示。
+如果我们提供了删除或修改英雄的能力，Angular也会检测到那些更改，并更新显示。</p>
+<h3 id="flying-heroes-pipe">Flying-heroes pipe</h3>
+<h3 id="-">“会飞的英雄”管道</h3>
+<p>Add a <code>FlyingHeroesPipe</code> to the <code>*ngFor</code> repeater that filters the list of heroes to just those heroes who can fly.</p>
+<p>我们来往<code>*ngFor</code>重复器中添加一个<code>FlyingHeroesPipe</code>管道，这个管道能过滤出所有会飞的英雄。</p>
+<div class="code-example"><header><h4>src/app/flying-heroes.component.html (flyers)</h4></header><code-example language="html" format="">&lt;div *ngFor=&quot;let hero of (heroes | flyingHeroes)&quot;&gt;
+  {{hero.name}}
+&lt;/div&gt;
+</code-example></div><p>Here&#39;s the <code>FlyingHeroesPipe</code> implementation, which follows the pattern for custom pipes described earlier.</p>
+<p>下面是<code>FlyingHeroesPipe</code>的实现，它遵循了我们以前见过的那些写自定义管道的模式。</p>
+<div class="code-example"><header><h4>src/app/flying-heroes.pipe.ts</h4></header><code-example language="ts" format="">import { Pipe, PipeTransform } from &#39;@angular/core&#39;;
+
+import { Flyer } from &#39;./heroes&#39;;
+
+@Pipe({ name: &#39;flyingHeroes&#39; })
+export class FlyingHeroesPipe implements PipeTransform {
+  transform(allHeroes: Flyer[]) {
+    return allHeroes.filter(hero =&gt; hero.canFly);
+  }
+}
+</code-example></div><p>Notice the odd behavior in the <live-example></live-example>:
+when you add flying heroes, none of them are displayed under &quot;Heroes who fly.&quot;</p>
+<p>当运行<live-example></live-example>时，我们看到一种奇怪的行为。添加的每个英雄都是会飞行的英雄，但是没有一个被显示出来。</p>
+<p>Although you&#39;re not getting the behavior you want, Angular isn&#39;t broken.
+It&#39;s just using a different change-detection algorithm that ignores changes to the list or any of its items.</p>
+<p>虽然我们没有得到期望的行为，但Angular也没有出错。
+这里只是用了另一种变更检测算法 —— 它会忽略对列表及其子项所做的任何更改。</p>
+<p>Notice how a hero is added:</p>
+<p>来看看我们是如何添加新英雄的：</p>
+<div class="code-example"><code-example language="ts" format="">this.heroes.push(hero);
+</code-example></div><p>You add the hero into the <code>heroes</code> array.  The reference to the array hasn&#39;t changed.
+It&#39;s the same array. That&#39;s all Angular cares about. From its perspective, <em>same array, no change, no display update</em>.</p>
+<p>当我们往<code>heroes</code>数组中添加一个新的英雄时，这个数组的引用并没有改变。它还是那个数组。而引用却是Angular所关心的一切。
+  从Angular的角度来看，<em>这是同一个数组，没有变化，也就不需要更新显示</em>。</p>
+<p>To fix that, create an array with the new hero appended and assign that to <code>heroes</code>.
+This time Angular detects that the array reference has changed.
+It executes the pipe and updates the display with the new array, which includes the new flying hero.</p>
+<p>我们可以修复它。让我们创建一个新数组，把这个英雄追加进去，并把它赋给<code>heroes</code>。
+  这次，Angular检测到数组的引用变化了。它执行了这个管道，并使用这个新数组更新显示，这次它就包括新的飞行英雄了。</p>
+<p>If you <em>mutate</em> the array, no pipe is invoked and the display isn&#39;t updated;
+if you <em>replace</em> the array, the pipe executes and the display is updated.
+The Flying Heroes application extends the
+code with checkbox switches and additional displays to help you experience these effects.</p>
+<p>如果我们<strong>修改了</strong>这个数组，没有管道被执行，也没有显示被更新。
+如果我们<strong>替换了</strong>这个数组，管道就会被执行，显示也更新了。
+这个<em>飞行英雄</em>的例子用检查框和其它显示内容扩展了原有代码，来帮我们体验这些效果。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/pipes/flying-heroes-anim.gif" alt="Flying Heroes"></figure><p>Replacing the array is an efficient way to signal Angular to update the display.
+When do you replace the array? When the data change.
+That&#39;s an easy rule to follow in <em>this</em> example
+where the only way to change the data is by adding a hero.</p>
+<p>直接替换这个数组是通知Angular更新显示的一种高效方式。
+我们该什么时候替换这个数组呢？当数据变化的时候。
+在这个<em>玩具级</em>例子中，这是一个简单的规则，因为这里修改数据的唯一途径就是添加新英雄。</p>
+<p>More often, you don&#39;t know when the data have changed,
+especially in applications that mutate data in many ways,
+perhaps in application locations far away.
+A component in such an application usually can&#39;t know about those changes.
+Moreover, it&#39;s unwise to distort the component design to accommodate a pipe.
+Strive to keep the component class independent of the HTML.
+The component should be unaware of pipes.</p>
+<p>更多情况下，我们不知道什么时候数据变化了，尤其是在那些有很多种途径改动数据的程序中 —— 可能在程序中很远的地方。
+组件就是一个通常无法知道那些改动的例子。此外，它会导致削足适履 —— 扭曲我们的组件设计来适应管道。
+我们要尽可能保持组件类独立于HTML。组件不应该关心管道的存在。</p>
+<p>For filtering flying heroes, consider an <em>impure pipe</em>.</p>
+<p>为了过滤会飞的英雄，我们要使用<em>非纯(impure)管道</em>。</p>
+<div class="l-main-section"></div><h2 id="pure-and-impure-pipes">Pure and impure pipes</h2>
+<h2 id="-pure-impure-">纯(pure)管道与非纯(impure)管道</h2>
+<p>There are two categories of pipes: <em>pure</em> and <em>impure</em>.
+Pipes are pure by default. Every pipe you&#39;ve seen so far has been pure.
+You make a pipe impure by setting its pure flag to false. You could make the <code>FlyingHeroesPipe</code>
+impure like this:</p>
+<p>有两类管道：<strong>纯</strong>的与<strong>非纯</strong>的。
+默认情况下，管道都是纯的。我们以前见到的每个管道都是纯的。
+通过把它的<code>pure</code>标志设置为<code>false</code>，我们可以制作一个非纯管道。我们可以像这样让<code>FlyingHeroesPipe</code>变成非纯的：</p>
+<div class="code-example"><code-example language="ts" format="">@Pipe({
+  name: &#39;flyingHeroesImpure&#39;,
+  pure: false
+})
+</code-example></div><p>Before doing that, understand the difference between pure and impure, starting with a pure pipe.</p>
+<p>在继续往下走之前，我们先理解一下<em>纯</em>和<em>非纯</em>之间的区别，从<em>纯</em>管道开始。</p>
+<h3 id="pure-pipes">Pure pipes</h3>
+<h3 id="-">纯管道</h3>
+<p>Angular executes a <em>pure pipe</em> only when it detects a <em>pure change</em> to the input value.
+A pure change is either a change to a primitive input value (<code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Symbol</code>)
+or a changed object reference (<code>Date</code>, <code>Array</code>, <code>Function</code>, <code>Object</code>).</p>
+<p>Angular只有在它检测到输入值发生了<em>纯变更</em>时才会执行<em>纯管道</em>。
+    <strong><em>纯变更</em></strong>是指对原始类型值(<code>String</code>、<code>Number</code>、<code>Boolean</code>、<code>Symbol</code>)的更改，
+    或者对对象引用(<code>Date</code>、<code>Array</code>、<code>Function</code>、<code>Object</code>)的更改。</p>
+<p>Angular ignores changes within (composite) objects.
+It won&#39;t call a pure pipe if you change an input month, add to an input array, or update an input object property.</p>
+<p>Angular会忽略(复合)对象<em>内部</em>的更改。
+如果我们更改了输入日期(<code>Date</code>)中的月份、往一个输入数组(<code>Array</code>)中添加新值或者更新了一个输入对象(<code>Object</code>)的属性，Angular都不会调用纯管道。</p>
+<p>This may seem restrictive but it&#39;s also fast.
+An object reference check is fast&mdash;much faster than a deep check for
+differences&mdash;so Angular can quickly determine if it can skip both the
+pipe execution and a view update.</p>
+<p>这可能看起来是一种限制，但它保证了速度。
+对象引用的检查是非常快的(比递归的深检查要快得多)，所以Angular可以快速的决定是否应该跳过管道执行和视图更新。</p>
+<p>For this reason, a pure pipe is preferable when you can live with the change detection strategy.
+When you can&#39;t, you <em>can</em> use the impure pipe.</p>
+<p>因此，如果我们要和变更检测策略打交道，就会更喜欢用纯管道。
+如果不能，我们就<em>可以</em>转回到非纯管道。</p>
+<div class="l-sub-section"><p>Or you might not use a pipe at all.
+It may be better to pursue the pipe&#39;s purpose with a property of the component,
+a point that&#39;s discussed laterin this page.</p>
+<p>或者我们也可以完全不用管道。
+有时候，使用组件的属性能比用管道更好的达到目的，这一点我们等后面会再提起。</p>
+</div><h3 id="impure-pipes">Impure pipes</h3>
+<h3 id="-">非纯管道</h3>
+<p>Angular executes an <em>impure pipe</em>  during every component change detection cycle.
+An impure pipe is called often, as often as every keystroke or mouse-move.</p>
+<p>Angular会在每个组件的变更检测周期中执行<em>非纯管道</em>。
+非纯管道可能会被调用很多次，和每个按键或每次鼠标移动一样频繁。</p>
+<p>With that concern in mind, implement an impure pipe with great care.
+An expensive, long-running pipe could destroy the user experience.</p>
+<p>要在脑子里绷着这根弦，我们必须小心翼翼的实现非纯管道。
+一个昂贵、迟钝的管道将摧毁用户体验。</p>
+<a id="impure-flying-heroes"></a><h3 id="an-impure-flyingheroespipe-">An impure <em>FlyingHeroesPipe</em></h3>
+<h3 id="-flyingheroespipe-">非纯版本的<em>FlyingHeroesPipe</em></h3>
+<p>A flip of the switch turns the <code>FlyingHeroesPipe</code> into a <code>FlyingHeroesImpurePipe</code>.
+The complete implementation is as follows:</p>
+<p>我们把<code>FlyingHeroesPipe</code>换成了<code>FlyingHeroesImpurePipe</code>。
+下面是完整的实现：</p>
+<code-tabs><code-pane language="ts" name="FlyingHeroesImpurePipe" format=".">@Pipe({
+  name: &#39;flyingHeroesImpure&#39;,
+  pure: false
+})
+export class FlyingHeroesImpurePipe extends FlyingHeroesPipe {}
+</code-pane><code-pane language="ts" name="FlyingHeroesPipe" format=".">import { Pipe, PipeTransform } from &#39;@angular/core&#39;;
+
+import { Flyer } from &#39;./heroes&#39;;
+
+@Pipe({ name: &#39;flyingHeroes&#39; })
+export class FlyingHeroesPipe implements PipeTransform {
+  transform(allHeroes: Flyer[]) {
+    return allHeroes.filter(hero =&gt; hero.canFly);
+  }
+}
+</code-pane></code-tabs><p>You inherit from <code>FlyingHeroesPipe</code> to prove the point that nothing changed internally.
+The only difference is the <code>pure</code> flag in the pipe metadata.</p>
+<p>我们把它从<code>FlyingHeroesPipe</code>中继承下来，以证明无需改动内部代码。
+唯一的区别是管道元数据中的<code>pure</code>标志。</p>
+<p>This is a good candidate for an impure pipe because the <code>transform</code> function is trivial and fast.</p>
+<p>这是一个很好地非纯管道候选者，因为它的<code>transform</code>函数又小又快。</p>
+<div class="code-example"><code-example language="ts" format="">return allHeroes.filter(hero =&gt; hero.canFly);
+</code-example></div><p>You can derive a <code>FlyingHeroesImpureComponent</code> from <code>FlyingHeroesComponent</code>.</p>
+<p>我们可以从<code>FlyingHeroesComponent</code>派生出一个<code>FlyingHeroesImpureComponent</code>。</p>
+<div class="code-example"><header><h4>src/app/flying-heroes-impure.component.html (excerpt)</h4></header><code-example language="html" format="">&lt;div *ngFor=&quot;let hero of (heroes | flyingHeroesImpure)&quot;&gt;
+  {{hero.name}}
+&lt;/div&gt;
+</code-example></div><p>The only substantive change is the pipe in the template.
+You can confirm in the <live-example></live-example> that the <em>flying heroes</em>
+display updates as you add heroes, even when you mutate the <code>heroes</code> array.</p>
+<p>唯一的重大改动就是管道。
+  我们可以在<live-example></live-example>中确认，当我们输入新的英雄甚至修改</p>
+<p>数组时，这个</p>
+<p>的显示也跟着更新了。</p>
+<h3 id="async-pipe">The impure <i>AsyncPipe</i></h3><h3 id="async-pipe">非纯<i>AsyncPipe</i></h3><p>The Angular <code>AsyncPipe</code> is an interesting example of an impure pipe.
+The <code>AsyncPipe</code> accepts a <code>Promise</code> or <code>Observable</code> as input
+and subscribes to the input automatically, eventually returning the emitted values.</p>
+<p>Angular的<code>AsyncPipe</code>是一个有趣的非纯管道的例子。
+  <code>AsyncPipe</code>接受一个<code>Promise</code>或<code>Observable</code>作为输入，并且自动订阅这个输入，最终返回它们给出的值。</p>
+<p>The <code>AsyncPipe</code> is also stateful.
+The pipe maintains a subscription to the input <code>Observable</code> and
+keeps delivering values from that <code>Observable</code> as they arrive.</p>
+<p><code>AsyncPipe</code>管道是有状态的。
+  该管道维护着一个所输入的<code>Observable</code>的订阅，并且持续从那个<code>Observable</code>中发出新到的值。</p>
+<p>This next example binds an <code>Observable</code> of message strings
+(<code>message$</code>) to a view with the <code>async</code> pipe.</p>
+<p>在下面例子中，我们使用该<code>async</code>管道把一个消息字符串(<code>message$</code>)的<code>Observable</code>绑定到视图中。</p>
+<div class="code-example"><header><h4>src/app/hero-async-message.component.ts</h4></header><code-example language="ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+import { Observable } from &#39;rxjs/Observable&#39;;
+import &#39;rxjs/add/observable/interval&#39;;
+import &#39;rxjs/add/operator/map&#39;;
+import &#39;rxjs/add/operator/take&#39;;
+
+@Component({
+  selector: &#39;hero-message&#39;,
+  template: `
+    &lt;h2&gt;Async Hero Message and AsyncPipe&lt;/h2&gt;
+    &lt;p&gt;Message: {{ message$ | async }}&lt;/p&gt;
+    &lt;button (click)=&quot;resend()&quot;&gt;Resend&lt;/button&gt;`,
+})
+export class HeroAsyncMessageComponent {
+  message$: Observable&lt;string&gt;;
+
+  private messages = [
+    &#39;You are my hero!&#39;,
+    &#39;You are the best hero!&#39;,
+    &#39;Will you be my hero?&#39;
+  ];
+
+  constructor() { this.resend(); }
+
+  resend() {
+    this.message$ = Observable.interval(500)
+      .map(i =&gt; this.messages[i])
+      .take(this.messages.length);
+  }
+}
+</code-example></div><p>The Async pipe saves boilerplate in the component code.
+The component doesn&#39;t have to subscribe to the async data source,
+extract the resolved values and expose them for binding,
+and have to unsubscribe when it&#39;s destroyed
+(a potent source of memory leaks).</p>
+<p>这个Async管道节省了组件的样板代码。
+组件不用订阅这个异步数据源，而且不用在被销毁时取消订阅(如果订阅了而忘了反订阅容易导致隐晦的内存泄露)。</p>
+<h3 id="an-impure-caching-pipe">An impure caching pipe</h3>
+<h3 id="-">一个非纯而且带缓存的管道</h3>
+<p>Write one more impure pipe, a pipe that makes an HTTP request.</p>
+<p>我们来写更多的非纯管道：一个向服务器发起HTTP请求的管道。</p>
+<p>Remember that impure pipes are called every few milliseconds.
+If you&#39;re not careful, this pipe will punish the server with requests.</p>
+<p>时刻记住，非纯管道可能每隔几微秒就会被调用一次。
+如果我们不小心点，这个管道就会发起一大堆请求“攻击”服务器。</p>
+<p>In the following code, the pipe only calls the server when the request URL changes and it caches the server response.
+The code uses the <a href="server-communication.html">Angular http</a> client to retrieve data:</p>
+<p>我们确实得小心点。
+这个管道只有当所请求的URL发生变化时才会向服务器发起请求。它会缓存服务器的响应。
+代码如下，它使用<a href="server-communication.html">Angular http</a>客户端来接收数据</p>
+<div class="code-example"><header><h4>src/app/fetch-json.pipe.ts</h4></header><code-example language="ts" format="linenums">import { Pipe, PipeTransform } from &#39;@angular/core&#39;;
+import { Http }                from &#39;@angular/http&#39;;
+
+import &#39;rxjs/add/operator/map&#39;;
+
+@Pipe({
+  name: &#39;fetch&#39;,
+  pure: false
+})
+export class FetchJsonPipe  implements PipeTransform {
+  private cachedData: any = null;
+  private cachedUrl = &#39;&#39;;
+
+  constructor(private http: Http) { }
+
+  transform(url: string): any {
+    if (url !== this.cachedUrl) {
+      this.cachedData = null;
+      this.cachedUrl = url;
+      this.http.get(url)
+        .map( result =&gt; result.json() )
+        .subscribe( result =&gt; this.cachedData = result );
+    }
+
+    return this.cachedData;
+  }
+}
+</code-example></div><p>Now demonstrate it in a harness component whose template defines two bindings to this pipe,
+both requesting the heroes from the <code>heroes.json</code> file.</p>
+<p>接下来我们用一个测试台组件演示一下它，该组件的模板中定义了两个使用到此管道的绑定，他们都从<code>heroes.json</code>文件中取得英雄数据。</p>
+<div class="code-example"><header><h4>src/app/hero-list.component.ts</h4></header><code-example language="ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;hero-list&#39;,
+  template: `
+    &lt;h2&gt;Heroes from JSON File&lt;/h2&gt;
+
+    &lt;div *ngFor=&quot;let hero of (&#39;heroes.json&#39; | fetch) &quot;&gt;
+      {{hero.name}}
+    &lt;/div&gt;
+
+    &lt;p&gt;Heroes as JSON:
+      {{&#39;heroes.json&#39; | fetch | json}}
+    &lt;/p&gt;`
+})
+export class HeroListComponent { }
+</code-example></div><p>The component renders as the following:</p>
+<p>组件渲染起来是这样的：</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/pipes/hero-list.png" alt="Hero List"></figure><p>A breakpoint on the pipe&#39;s request for data shows the following:</p>
+<p>这个管道上的断点请求数据的过程显示：</p>
+<ul>
+<li><p>Each binding gets its own pipe instance.</p>
+<p>每个绑定都有它自己的管道实例。</p>
+</li>
+<li><p>Each pipe instance caches its own URL and data.</p>
+<p>每个管道实例都缓存了它自己的URL和数据。</p>
+</li>
+<li><p>Each pipe instance only calls the server once.</p>
+<p>每个管道实例都只调用一次服务器。</p>
+</li>
+</ul>
+<h3 id="-jsonpipe-"><em>JsonPipe</em></h3>
+<p>In the previous code sample, the second <code>fetch</code> pipe binding demonstrates more pipe chaining.
+It displays the same hero data in JSON format by chaining through to the built-in <code>JsonPipe</code>.</p>
+<p>第二个绑定除了用到<code>FetchPipe</code>之外还链接了更多管道。
+我们把获取数据的结果同时显示在第一个绑定和第二个绑定中。第二个绑定中，我们通过链接到一个内置管道<code>JsonPipe</code>把它转成了JSON格式。</p>
+<div class="callout is-helpful"><header>Debugging with the json pipe</header><header>借助json管道进行调试</header><p>The <a href="../api/common/index/JsonPipe-pipe.html">JsonPipe</a>
+provides an easy way to diagnosis a mysteriously failing data binding or
+inspect an object for future binding.</p>
+<p><a href="../api/common/index/JsonPipe-class.html">JsonPipe</a>为你诊断数据绑定的某些神秘错误或为做进一步绑定而探查数据时，提供了一个简单途径。</p>
+</div><a id="pure-pipe-pure-fn"></a><h3 id="pure-pipes-and-pure-functions">Pure pipes and pure functions</h3>
+<h3 id="-">纯管道与纯函数</h3>
+<p>A pure pipe uses pure functions.
+Pure functions process inputs and return values without detectable side effects.
+Given the same input, they should always return the same output.</p>
+<p>纯管道使用纯函数。
+纯函数是指在处理输入并返回结果时，不会产生任何副作用的函数。
+给定相同的输入，它们总是返回相同的输出。</p>
+<p>The pipes discussed earlier in this page are implemented with pure functions.
+The built-in <code>DatePipe</code> is a pure pipe with a pure function implementation.
+So are the <code>ExponentialStrengthPipe</code> and <code>FlyingHeroesPipe</code>.
+A few steps back, you reviewed the <code>FlyingHeroesImpurePipe</code>&mdash;an impure pipe with a pure function.</p>
+<p>我们在本章前面见过的管道都是用纯函数实现的。
+内置的<code>DatePipe</code>就是一个用纯函数实现的纯管道。
+<code>ExponentialStrengthPipe</code>是如此，
+<code>FlyingHeroesComponent</code>也是如此。
+不久前我们刚看过的<code>FlyingHeroesImpurePipe</code>，是一个<em>用纯函数实现的非纯管道</em>。</p>
+<p>But always implement a <em>pure pipe</em> with a <em>pure function</em>.
+Otherwise, you&#39;ll see many console errors regarding expressions that changed after they were checked.</p>
+<p>但是一个<em>纯管道</em>必须总是用<em>纯函数</em>实现。忽略这个警告将导致失败并带来一大堆这样的控制台错误：表达式在被检查后被变更。</p>
+<div class="l-main-section"></div><h2 id="next-steps">Next steps</h2>
+<h2 id="-">下一步</h2>
+<p>Pipes are a great way to encapsulate and share common display-value
+transformations. Use them like styles, dropping them
+into your template&#39;s expressions to enrich the appeal and usability
+of your views.</p>
+<p>管道能很好的封装和共享的通用“值-显示”转换逻辑。我们可以像样式一样使用它们，把它们扔到模板表达式中，以提升视图的表现力和可用性。</p>
+<p>Explore Angular&#39;s inventory of built-in pipes in the <a href="../api/index.html#!?query=pipe">API Reference</a>.
+Try writing a custom pipe and perhaps contributing it to the community.</p>
+<p>要浏览Angular的所有内置管道，请到<a href="../api/index.html#!?query=pipe">API参考手册</a>。
+学着写写自定义管道，并贡献给开发社区。</p>
+<a id="no-filter-pipe"></a><div class="l-main-section"></div><h2 id="appendix-no-filterpipe-or-orderbypipe-">Appendix: No <em>FilterPipe</em> or <em>OrderByPipe</em></h2>
+<h2 id="-filterpipe-orderbypipe-">附录：没有<em>FilterPipe</em>或者<em>OrderByPipe</em></h2>
+<p>Angular doesn&#39;t provide pipes for filtering or sorting lists.
+Developers familiar with AngularJS know these as <code>filter</code> and <code>orderBy</code>.
+There are no equivalents in Angular.</p>
+<p>Angular没有随身发布过滤或列表排序的管道。
+熟悉AngularJS的开发人员应该知道<code>filter</code>和<code>orderBy</code>过滤器，但在Angular中它们没有等价物。</p>
+<p>This isn&#39;t an oversight. Angular doesn&#39;t offer such pipes because
+they perform poorly and prevent aggressive minification.
+Both <code>filter</code> and <code>orderBy</code> require parameters that reference object properties.
+Earlier in this page, you learned that such pipes must be <a href="#pure-and-impure-pipes">impure</a> and that
+Angular calls impure pipes in almost every change-detection cycle.</p>
+<p>这并不是疏忽。Angular不想提供这些管道，因为 (a) 它们性能堪忧，以及 (b) 它们会阻止比较激进的代码最小化(minification)。
+无论是<code>filter</code>还是<code>orderBy</code>都需要它的参数引用对象型属性。
+我们前面学过，这样的管道必然是<a href="#pure-and-impure-pipes"><em>非纯管道</em></a>，并且Angular会在几乎每一次变更检测周期中调用非纯管道。</p>
+<p>Filtering and especially sorting are expensive operations.
+The user experience can degrade severely for even moderate-sized lists when Angular calls these pipe methods many times per second.
+<code>filter</code> and <code>orderBy</code> have often been abused in AngularJS apps, leading to complaints that Angular itself is slow.
+That charge is fair in the indirect sense that AngularJS prepared this performance trap
+by offering <code>filter</code> and <code>orderBy</code> in the first place.</p>
+<p>过滤、 特别是排序是昂贵的操作。
+当Angular每秒调用很多次这类管道函数时，即使是中等规模的列表都可能严重降低用户体验。
+在AngularJS程序中，<code>filter</code>和<code>orderBy</code>经常被误用，结果连累到Angular自身，人们抱怨说它太慢。
+从某种意义上，这也不冤：谁叫AngularJS把<code>filter</code>和<code>orderBy</code>作为首发队员呢？是它自己准备了这个性能陷阱。</p>
+<p>The minification hazard is also compelling, if less obvious. Imagine a sorting pipe applied to a list of heroes.
+The list might be sorted by hero <code>name</code> and <code>planet</code> of origin properties in the following way:</p>
+<p>虽然不是很明显，但代码最小化方面也存在风险。想象一个用于英雄列表的排序管道。我们可能根据英雄原始属性中的<code>name</code>和<code>planet</code>进行排序，就像这样：</p>
+<code-example language="html">&lt;!-- NOT REAL CODE! -->
+&lt;div *ngFor="let hero of heroes | orderBy:'name,planet'">&lt;/div>
+</code-example><p>You identify the sort fields by text strings, expecting the pipe to reference a property value by indexing
+(such as <code>hero[&#39;name&#39;]</code>).
+Unfortunately, aggressive minification manipulates the <code>Hero</code> property names so that <code>Hero.name</code> and <code>Hero.planet</code>
+become something like <code>Hero.a</code> and <code>Hero.b</code>. Clearly <code>hero[&#39;name&#39;]</code> doesn&#39;t work.</p>
+<p>我们使用文本字符串来标记出排序字段，期望管道通过索引形式(如<code>hero[&#39;name&#39;]</code>)引用属性的值。
+  不幸的是，激进的代码最小化策略会<em>改变</em><code>Hero</code>类的属性名，所以<code>Hero.name</code>和<code>Hero.planet</code>可能会被变成<code>Hero.a</code>和<code>Hero.b</code>。
+  显然，<code>hero[&#39;name&#39;]</code>是无法正常工作的。</p>
+<p>While some may not care to minify this aggressively,
+the Angular product shouldn&#39;t prevent anyone from minifying aggressively.
+Therefore, the Angular team decided that everything Angular provides will minify safely.</p>
+<p>我们中的一些人可能不想做那么激进的最小化。但那不过是<em>我们的</em>选择而已。
+Angular作为一个产品不应该拒绝那些想做激进的最小化的人。
+所以，Angular开发组决定随Angular一起发布的每样东西，都应该能被安全的最小化。</p>
+<p>The Angular team and many experienced Angular developers strongly recommend moving
+filtering and sorting logic into the component itself.
+The component can expose a <code>filteredHeroes</code> or <code>sortedHeroes</code> property and take control
+over when and how often to execute the supporting logic.
+Any capabilities that you would have put in a pipe and shared across the app can be
+written in a filtering/sorting service and injected into the component.</p>
+<p>Angular开发组和一些有经验的Angular开发者强烈建议你：把你的过滤和排序逻辑挪进组件本身。
+组件可以对外暴露一个<code>filteredHeroes</code>或<code>sortedHeroes</code>属性，这样它就获得控制权，以决定要用什么频度去执行其它辅助逻辑。
+你原本准备实现为管道，并在整个应用中共享的那些功能，都能被改写为一个过滤/排序的服务，并注入到组件中。</p>
+<p>If these performance and minification considerations don&#39;t apply to you, you can always create your own such pipes
+(similar to the <a href="#impure-flying-heroes">FlyingHeroesPipe</a>) or find them in the community.</p>
+<p>如果你不需要顾虑这些性能和最小化问题，也可以创建自己的管道来实现这些功能(参考<a href="#impure-flying-heroes">FlyingHeroesPipe</a>中的写法)或到社区中去找找。</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/pipes.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:56 GMT -->
+</html>

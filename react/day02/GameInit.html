@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <style>
+        body {
+            font: 14px "Century Gothic", Futura, sans-serif;
+            margin: 20px;
+        }
+
+        ol, ul {
+            padding-left: 30px;
+        }
+
+        .board-row:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        .status {
+            margin-bottom: 10px;
+        }
+
+        .square {
+            background: #fff;
+            border: 1px solid #999;
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 34px;
+            height: 34px;
+            margin-right: -1px;
+            margin-top: -1px;
+            padding: 0;
+            text-align: center;
+            width: 34px;
+        }
+
+        .square:focus {
+            outline: none;
+        }
+
+        .kbd-navigation .square:focus {
+            background: #ddd;
+        }
+
+        .game {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .game-info {
+            margin-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container"></div>
+</body>
+
+<script type="text/babel">
+    var Square = React.createClass({
+        handleClick:function(){
+            //调用父组件传递过来的方法（修改状态）
+            this.props.funcSet(this.props.index);
+        },
+        render() {
+        return (
+                <button
+                 onClick={this.handleClick}
+                 className="square">
+                    {this.props.list[this.props.index]}
+                </button>
+    );
+    }});
+    var Board = React.createClass({
+        componentDidUpdate:function(){
+            console.log('组件渲染完毕');
+            //判断输赢
+
+            var result =
+             calculateWinner(this.state.squares);
+            if(result)
+            {
+                alert(result+"赢了");
+            }
+            else if(this.state.squares.indexOf(null) == -1)
+            {
+                alert("平局");
+            }
+
+        },
+        getInitialState: function () {
+            return {
+                squares:Array(9).fill(null),
+                xIsNext: true
+            }
+        },
+        //修改状态(小方块被点击时调用该方法，同时向数组中写入X或者O)
+        set:function(index){
+          //应该写入X还是O
+          var result = this.state.xIsNext?'X':'O';
+          this.setState(
+            {xIsNext:!this.state.xIsNext});
+          //将选择的结果写入到数组中，方便判断输赢
+          var list = this.state.squares;
+          list[index] = result;
+          this.setState({squares:list})
+        },
+        renderSquare(i) {
+            return <Square
+             list={this.state.squares}
+             funcSet={this.set} index={i}/>;
+        },
+        render() {
+            return (
+                    <div>
+                        <div className="status">{status}</div>
+                        <div className="board-row">
+                        {this.renderSquare(0)}
+                        {this.renderSquare(1)}
+                        {this.renderSquare(2)}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare(3)}
+                        {this.renderSquare(4)}
+                        {this.renderSquare(5)}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare(6)}
+                        {this.renderSquare(7)}
+                        {this.renderSquare(8)}
+                    </div>
+                    </div>
+    );}})
+
+    //第二种创建组件的方式
+    class Game extends React.Component {
+        render() {
+            return (
+                    <div className="game">
+                    <div className="game-board">
+                    <Board />
+                    </div>
+                    <div className="game-info">
+                    <div>{ status }</div>
+                    <ol>{/* TODO */}</ol>
+                    </div>
+                    </div>
+        );
+        }
+    }
+
+    // ========================================
+
+    ReactDOM.render(
+    <Game />,
+            document.getElementById('container')
+    );
+
+    function calculateWinner(squares) {
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+        for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c]) {
+                return squares[a];
+            }
+        }
+        return null;
+    }
+
+</script>
+
+</html>  

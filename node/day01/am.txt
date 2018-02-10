@@ -1,0 +1,61 @@
+今天学习的内容
+1:复习总结昨天项目
+2:作业 购物车 删除 更新
+3:今天新的内容
+  3.1: nodejs 简介
+	3.2: 安装与使用 
+	3.3：nodejs 模块
+#-------------------------
+1:复习总结昨天项目
+  建议:写项目(html/js/php/ajax/mysql)
+	     1:表(背)下来 表名 存什么数据 几列 类型
+       2:看思维导图 登录(html/js/php)
+         (登录)
+       html显示数据->js发送ajax->
+			 php处理数据返回结果->js->修改html
+2:作业 购物车 删除 更新(+ -)
+3:今天新的内容
+  3.1: nodejs 简介
+	    a:静态网页和动态网页
+			  静态:网页内容任何在任何时间访问都不变的
+				     HTML/CSS/JS/FLASH/视频音频...
+				动态:网页内容不同人在不同时间访问可能
+				     不同的
+						 DB/JSP/PHP/ASP.NET/NodeJS
+
+      JSP     = HTML+JAVA 功能强大可靠，适合
+			          大型企业级项目.(java)
+								复杂运算
+			PHP     = HTML+PHP
+			          简单易用，适合互联网项目
+			ASP.NET = HTML+C#
+			          易用，适合 windows平台
+			NodeJS  = HTML+"JS"
+			          性能好,适合于服务端IO密集型项目
+								，不适合CPU密集计算项目.
+      IO:输入输出       微博
+			CPU:大量计算弱点
+			           
+
+      #概述:
+			NODEJS不是JS,是一种服务器端技术，它竞争
+			对手是php/jsp/asp.net
+			官网:www.nodejs.org
+			版本:0.12(16初) 4.x(16年中) 6.x(16年底)
+      2009 初 16 发展快用多 
+      
+			LTS:Long Term Support 长期稳定支持版枯
+			Current:最新版本
+	3.2: 安装与使用 
+	    node-v6.10.2-x64.msi  windows 64位
+			node-v6.10.2-x86.msi  windows 32位
+      鼠标右击->我的电脑->属性-> 64位
+			1:安装欢迎向导  next
+			2:许可协议      [*] 我同意
+			3:选择安装目录
+			  #目录不要有中文，不要有空格
+			4:安装选项      next
+			5:install
+			6:安装结束
+
+	3.3：nodejs 模块

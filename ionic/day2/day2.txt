@@ -1,0 +1,83 @@
+保存整站：http://www.httrack.com/
+
+0、实现hyrbidApp方式2
+http://localhost/chaptor4/angularJS/kfl/kfl.html
+
+localhost -> pc真实的ip地址
+
+windows+R -》cmd ->ipconfig 去查看ipV4的地址
+
+
+http://172.163.100.156/chaptor4/angularJS/kfl/kfl.html
+
+
+补充一种新的实现混合编程的方式
+①确认开发啦项目在本地的apache和mysql都启动情况下正常运行
+②创建一个Android工程
+③通过webview组件载入服务器端的项目
+
+
+
+day1：
+①学会了Android原生app的从创建到编写到运行的基本流程 --》java不熟 sdk不太会用
+②创建一个hybridApp 
+
+一、Ionic概述
+移动端常用的ui框架有很多，ionic、jqueryMobile、sechaTouch。。。
+http://ionicframework.com/ 查看官网
+http://ionicons.com/ 查看图标
+
+what？
+Ionic就是一个强大的h5的mobile的开发框架，
+可以使用前端技术(html/css/js)编写接近于原生app体验的移动端应用程序
+
+注意事项：为了保证流畅性，放弃了ios6以下和Android4.1以下所有版本的支持。
+
+why?
+①完美融合了ng
+②专注原生，可以使用cordova(phonegap)所提供的native plugin调用设备底层的功能
+③支持强大的CLI(command line interface)操作
+④ui设计非常漂亮
+
+where?
+移动端的app开发
+
+how?
+
+方式1：通过CLI
+http://ionicframework.com/docs/cli/
+
+方式2：通过引入对应的js和css文件
+
+二、使用ionic（提供的样式类）
+
+1、基础页面
+ionHeaderBar ionContent ionFooterBar
+ion-header-bar
+ion-content
+ion-footer-bar
+
+2、color
+黄色 energized
+绿色 banlanced
+红色 assertive
+紫色 royal
+黑色 dark
+天蓝色 positive
+湖蓝色 calm
+light /stable
+
+3、button
+button/button-small/button-large/button-outline/button-clear/button-block/button-full/icon-left/icon-right/ion-home/person...
+
+
+
+
+
+
+
+
+
+
+
+

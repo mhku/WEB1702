@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="bt1">连接到ws</button>
+<button id="bt2">开始接受ws</button>
+<button id="bt3">发送</button>
+<button id="bt4">断开</button>
+<script>
+    var socket=null;
+    bt1.onclick=function(){
+        socket=new WebSocket('ws://127.0.0.1:8090');
+        socket.onopen=function(){
+            console.log('ws客户端成功连接到服务器');
+        }
+    }
+</script>
+</body>
+</html>

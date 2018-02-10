@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/troubleshooting/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:28:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>Ionic Troubleshooting</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-troubleshooting"
+        class="v2 docs fluid page-troubleshooting has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../index.html">
+        <img src="../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../index.html">
+        <img src="../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../index.html">Framework</a></li>
+<li><a href="../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../support.html">Customer Support</a></li>
+    <li><a href="../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <ul ng-controller="DocsNavCtrl">
+
+  
+  <li class="">
+    <a href="../index.html">Home</a>
+  </li>
+
+  
+  <li class="">
+    <a ng-click="showIntro = !showIntro">Intro</a>
+    <ul ng-show="showIntro"
+        ng-cloak
+        >
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/installation">Installation</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/tutorial">Tutorial</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/deploying">Deploying</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/migration">Migration</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/concepts">Concepts</a>
+      </li>
+    </ul>
+  </li>
+
+  
+
+ 
+  <li id="components-index"
+      class="">
+    <a ng-click="showComponents = !showComponents">Components</a>
+    <ul class="nav"
+        ng-cloak
+        ng-show="showComponents"
+       >
+      <li><a href="../components/index.html#overview">Overview</a></li>
+      <li><a href="../components/index.html#action-sheets">Action Sheets</a></li>
+
+      <li id="components-alerts"><a href="../components/index.html#alert">Alerts</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="../components/index.html#alert-confirm"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#alert-prompt"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#alert-radio"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#alert-checkbox"></a></li>
+        </ul>
+
+      <li><a href="../components/index.html#badges">Badges</a></li>
+
+      <li id="components-buttons"><a href="../components/index.html#buttons">Buttons</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="../components/index.html#outline-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#clear-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#round-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#block-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#full-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#button-sizes"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#icon-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#buttons-in-components"></a></li>
+        </ul>
+
+      <li id="components-cards"><a href="../components/index.html#cards">Cards</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="../components/index.html#card-header"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#card-list"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#card-image"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#card-background"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#advanced-cards"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#card-advanced-social"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#card-advanced-map"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#card-advanced-weather"></a></li>
+        </ul>
+
+      <li><a href="../components/index.html#checkbox">Checkbox</a></li>
+
+      <li><a href="../components/index.html#datetime">DateTime</a></li>
+
+      <li><a href="../components/index.html#fabs">FABs</a></li>
+
+      <li><a href="../components/index.html#gestures">Gestures</a></li>
+
+      <li><a href="../components/index.html#grid">Grid</a></li>
+      <li><a href="../components/index.html#icons">Icons</a></li>
+
+      <li id="components-forms"><a href="../components/index.html#inputs">Inputs</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="../components/index.html#fixed-inline-labels"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#floating-labels"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#inline-labels"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#inset-labels"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#placeholder-labels"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#stacked-labels"></a></li>
+        </ul>
+
+      <li id="components-lists"><a href="../components/index.html#lists">Lists</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="../components/index.html#list-lines"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#list-no-lines"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#inset-list"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#list-dividers"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#list-headers"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#icon-list"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#avatar-list"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#thumbnail-list"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#sliding-list"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#multiline-list"></a></li>
+        </ul>
+
+
+      <li><a href="../components/index.html#loading">Loading</a></li>
+      <li><a href="../components/index.html#menus">Menus</a></li>
+      <li><a href="../components/index.html#modals">Modals</a></li>
+      <li><a href="../components/index.html#navigation">Navigation</a></li>
+      <li><a href="../components/index.html#popovers">Popover</a></li>
+      <li><a href="../components/index.html#radio">Radio</a></li>
+      <li><a href="../components/index.html#range">Range</a></li>
+      <li><a href="../components/index.html#searchbar">Searchbar</a></li>
+      <li><a href="../components/index.html#segment">Segment</a></li>
+      <li><a href="../components/index.html#select">Select</a></li>
+      <li><a href="../components/index.html#slides">Slides</a></li>
+
+      <li id="components-tabs"><a href="../components/index.html#tabs">Tabs</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="../components/index.html#tabs-icon"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#tabs-icon-text"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#tabs-badges"></a></li>
+        </ul>
+
+      <li><a href="../components/index.html#toast">Toast</a></li>
+      <li><a href="../components/index.html#toggle">Toggle</a></li>
+
+      <li id="components-toolbar"><a href="../components/index.html#toolbar">Toolbar</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="../components/index.html#toolbar-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#toolbar-segment"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#toolbar-searchbar"></a></li>
+          <li class="nav-item-hidden"><a href="../components/index.html#toolbar-colors"></a></li>
+        </ul>
+
+    </ul>
+  </li>
+
+
+    
+    <li>
+      <a href="http://ionicframework.com/docs/api">API</a>
+    </li>
+
+  
+   <li>
+     <a href="../native/index.html">Native</a>
+   </li>
+
+   
+    <li class="">
+      <a href="../storage/index.html">Storage</a>
+    </li>
+
+  
+  <li class="">
+    <a ng-click="showTheming = !showTheming">Theming</a>
+    <ul ng-show="showTheming"
+        ng-cloak
+        >
+      <li class="">
+        <a href="../theming/index.html">Intro</a>
+      </li>
+      <li class="">
+        <a href="../theming/css-utilities/index.html">CSS Utilities</a>
+      </li>
+      <li class="">
+        <a href="../theming/responsive-grid/index.html">Responsive Grid</a>
+      </li>
+      <li class="">
+        <a href="../theming/theming-your-app/index.html">Theming your App</a>
+      </li>
+      <li class="">
+        <a href="../theming/sass-variables/index.html">Sass Variables</a>
+      </li>
+      <li class="">
+        <a href="../theming/platform-specific-styles/index.html">
+          Platform Styles
+        </a>
+      </li>
+      <li class="">
+        <a href="../theming/overriding-ionic-variables/index.html">
+          Overriding Ionic Variables
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  
+  <li class="">
+    <a href="../ionicons/index.html">Ionicons</a>
+  </li>
+
+  
+  <li class="">
+    <a ng-click="showCli = !showCli">CLI</a>
+    <ul ng-show="showCli"
+        ng-cloak
+        >
+      <li class="">
+        <a href="../cli/index.html">Intro</a>
+      </li>
+      
+        <li class="">
+          <a href="../cli/cordova/build/index.html">cordova build</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/cordova/compile/index.html">cordova compile</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/cordova/emulate/index.html">cordova emulate</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/cordova/platform/index.html">cordova platform</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/cordova/plugin/index.html">cordova plugin</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/cordova/prepare/index.html">cordova prepare</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/cordova/resources/index.html">cordova resources</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/cordova/run/index.html">cordova run</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/docs/index.html">docs</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/generate/index.html">generate</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/info/index.html">info</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/link/index.html">link</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/login/index.html">login</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/package/build/index.html">package build</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/package/download/index.html">package download</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/package/info/index.html">package info</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/package/list/index.html">package list</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/serve/index.html">serve</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/signup/index.html">signup</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/start/index.html">start</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/telemetry/index.html">telemetry</a>
+        </li>
+      
+        <li class="">
+          <a href="../cli/upload/index.html">upload</a>
+        </li>
+      
+    </ul>
+  </li>
+
+  
+  <li class="top-level active">
+    <a href="index.html">Troubleshooting</a>
+  </li>
+
+  
+  <li class="">
+    <a href="http://ionicframework.com/docs/resources">Resources</a>
+    
+  </li>
+</ul>
+
+    
+  </nav>
+  
+  <main>
+    <h1 id="troubleshooting">Troubleshooting</h1>
+
+<p>Can’t find a solution on this page? Check out the
+<a href="../../../forum.ionicframework.com/index.html">Ionic Forums</a> or join the
+<a href="../../../ionicworldwide.herokuapp.com/index.html">Ionic Worldwide Slack Channel</a>, where the
+friendly Ions of the community will help you!</p>
+
+<nav class="toc">
+  <button class="toggle" onclick="tocToggle(this)">Contents</button>
+  <div class="expanded active">
+<ul id="markdown-toc">
+  <li><a href="#updating-ionics-packages" id="markdown-toc-updating-ionics-packages">Updating Ionic’s packages</a></li>
+  <li><a href="#adding-third-party-libs" id="markdown-toc-adding-third-party-libs">Adding third party libs</a></li>
+  <li><a href="#blank-app" id="markdown-toc-blank-app">Blank App</a></li>
+  <li><a href="#directive-not-working" id="markdown-toc-directive-not-working">Directive Not Working</a></li>
+  <li><a href="#click-delays" id="markdown-toc-click-delays">Click Delays</a></li>
+  <li><a href="#common-mistakes" id="markdown-toc-common-mistakes">Common mistakes</a>    <ul>
+      <li><a href="#forgetting-parentheses-on-a-decorator" id="markdown-toc-forgetting-parentheses-on-a-decorator">Forgetting Parentheses on a Decorator</a></li>
+      <li><a href="#cordova-plugins-not-working-in-the-browser" id="markdown-toc-cordova-plugins-not-working-in-the-browser">Cordova plugins not working in the browser</a></li>
+      <li><a href="#multiple-instances-of-a-provider" id="markdown-toc-multiple-instances-of-a-provider">Multiple instances of a provider</a></li>
+    </ul>
+  </li>
+  <li><a href="#common-errors" id="markdown-toc-common-errors">Common Errors</a>    <ul>
+      <li><a href="#cannot-resolve-all-parameters-for-yourclass-make-sure-that-all-the-parameters-are-decorated-with-inject-or-have-valid-type-annotations-and-that-yourclass-is-decorated-with-injectable" id="markdown-toc-cannot-resolve-all-parameters-for-yourclass-make-sure-that-all-the-parameters-are-decorated-with-inject-or-have-valid-type-annotations-and-that-yourclass-is-decorated-with-injectable">Cannot resolve all parameters for ‘YourClass’(?). Make sure that all the parameters are decorated with Inject or have valid type annotations and that ‘YourClass’ is decorated with Injectable.</a></li>
+      <li><a href="#no-provider-for-paramtype-myclass---paramtype" id="markdown-toc-no-provider-for-paramtype-myclass---paramtype">No provider for ParamType! (MyClass -&gt; ParamType)</a></li>
+      <li><a href="#cant-bind-to-propertyname-since-it-isnt-a-known-property-of-the-elementname-element-and-there-are-no-matching-directives-with-a-corresponding-property" id="markdown-toc-cant-bind-to-propertyname-since-it-isnt-a-known-property-of-the-elementname-element-and-there-are-no-matching-directives-with-a-corresponding-property">Can’t bind to ‘propertyName’ since it isn’t a known property of the ‘elementName’ element and there are no matching directives with a corresponding property</a></li>
+      <li><a href="#no-provider-for-controlcontainer-ngcontrolname---controlcontainer" id="markdown-toc-no-provider-for-controlcontainer-ngcontrolname---controlcontainer">No provider for ControlContainer! (NgControlName -&gt; ControlContainer)</a></li>
+      <li><a href="#no-component-factory-found-for-" id="markdown-toc-no-component-factory-found-for-">No component factory found for <component name=""></component></a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</nav>
+
+<h2 id="updating-ionics-packages">Updating Ionic’s packages</h2>
+
+<p>To update the version of the ionic-angular package, run:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>npm install <a class="__cf_email__" href="../../cdn-cgi/l/email-protection.html" data-cfemail="08616766616b2569666f7d64697a4864697c6d7b7c">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script> --save --save-exact
+</code></pre>
+</div>
+
+<p>This will install the latest version of the framework and saved the version to the package.json.
+If you need to update any additional packages (Angular, RxJS, etc), the output from npm will tell you.</p>
+
+<p>To update the ionic-cli install run:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>npm install -g ionic
+</code></pre>
+</div>
+
+<p>Depending on your setup, you might need to run this with<code class="highlighter-rouge">sudo</code> in front for macOS and Linux.
+For windows, run this from an admin command prompt.</p>
+
+<h2 id="adding-third-party-libs">Adding third party libs</h2>
+
+<p>See our resources page on <a href="http://ionicframework.com/docs//resources/third-party-libs">Adding Third Party Libs</a>.</p>
+
+<h2 id="blank-app">Blank App</h2>
+
+<blockquote>
+  <p>I have no errors in my app. Why does it show a blank screen?</p>
+</blockquote>
+
+<p>There are different reasons this can happen. If you are unable to find a
+solution on the forums, make sure:</p>
+
+<ul>
+  <li>Root <code class="highlighter-rouge">@Component</code> has a <code class="highlighter-rouge">template</code> or <code class="highlighter-rouge">templateUrl</code>.</li>
+  <li>
+    <p>Root <code class="highlighter-rouge">@Component</code> template has an <code class="highlighter-rouge">&lt;ion-nav&gt;</code> with a <code class="highlighter-rouge">root</code> property:</p>
+
+    <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav</span> <span class="err">[</span><span class="na">root</span><span class="err">]="</span><span class="na">rootPage</span><span class="err">"</span><span class="nt">&gt;&lt;/ion-nav&gt;</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h2 id="directive-not-working">Directive Not Working</h2>
+
+<blockquote>
+  <p>Why is my custom component/directive not working?</p>
+</blockquote>
+
+<p>There are a few things you can check. Make sure:</p>
+
+<ul>
+  <li>You include it in the <code class="highlighter-rouge">directives</code> array of the <code class="highlighter-rouge">@Component</code> you want to use it in (only if your ionic-angular version is below RC0).</li>
+  <li>Your selector doesn’t have any misspellings.</li>
+  <li>You’re using the selector correctly as an attribute, element or class.</li>
+  <li>Your selector has the <a href="http://learnangular2.com/components/">proper syntax</a>:
+    <ul>
+      <li><code class="highlighter-rouge">[attr]</code> if it’s an attribute selector</li>
+      <li><code class="highlighter-rouge">element</code> if it’s an element selector</li>
+      <li><code class="highlighter-rouge">.class</code> if it’s a class selector</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Here’s an example using an attribute selector:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Directive</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'[my-dir]'</span> <span class="c1">// &lt;-- [my-dir] because it's an attribute</span>
+<span class="p">})</span>                     <span class="c1">// Could be my-dir, [my-dir], .my-dir</span>
+<span class="kr">class</span> <span class="nx">MyDir</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'I'</span><span class="nx">m</span> <span class="nx">alive</span><span class="o">!</span><span class="s1">');
+  }
+}
+
+@Component({
+  // We add my-dir as an attribute to match the directive'</span><span class="nx">s</span> <span class="nx">selector</span>
+  <span class="nl">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">my</span><span class="o">-</span><span class="nx">dir</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">&lt;</span><span class="sr">/div&gt;`</span><span class="err">,
+</span>
+  <span class="c1">// Alternatively, if you were attaching the directive to an element it would be:</span>
+  <span class="c1">// template: `&lt;my-dir&gt;Hello World&lt;/my-dir&gt;`</span>
+  <span class="c1">// and if you were attaching by class the template would be:</span>
+  <span class="c1">// template: `&lt;div class="my-dir"&gt;Hello World&lt;/div&gt;`</span>
+
+  <span class="nl">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">MyDir</span><span class="p">]</span> <span class="c1">// &lt;-- Don't forget me! (only if your ionic-angular version is below RC0)</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="click-delays">Click Delays</h2>
+
+<blockquote>
+  <p>Why is there a delay on my click event?</p>
+</blockquote>
+
+<p>In general, we recommend only adding <code class="highlighter-rouge">(click)</code> events to elements that are
+normally clickable. This includes <code class="highlighter-rouge">&lt;button&gt;</code> and <code class="highlighter-rouge">&lt;a&gt;</code> elements. This improves
+accessibility as a screen reader will be able to tell that the element is
+clickable.</p>
+
+<p>However, you may need to add a <code class="highlighter-rouge">(click)</code> event to an element that is not
+normally clickable. When you do this you may experience a <code class="highlighter-rouge">300ms</code> delay from the
+time you click the element to the event firing. To remove this delay, you can
+add the <code class="highlighter-rouge">tappable</code> attribute to your element.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code> <span class="nt">&lt;div</span> <span class="na">tappable</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">doClick</span><span class="err">()"</span><span class="nt">&gt;</span>I am clickable!<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="common-mistakes">Common mistakes</h2>
+
+<h3 id="forgetting-parentheses-on-a-decorator">Forgetting Parentheses on a Decorator</h3>
+
+<p>Decorators should have parentheses <code class="highlighter-rouge">()</code> after an annotation. Some examples
+include: <code class="highlighter-rouge">@Injectable()</code>, <code class="highlighter-rouge">@Optional()</code>, <code class="highlighter-rouge">@Input()</code>, etc.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Directive</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-dir'</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyDirective</span> <span class="p">{</span>
+  <span class="c1">// Wrong, should be @Optional()</span>
+  <span class="c1">// @Optional does nothing here, so MyDirective will error if parent is undefined</span>
+  <span class="kd">constructor</span><span class="p">(</span> <span class="err">@</span><span class="nx">Optional</span> <span class="nx">parent</span><span class="err">:</span> <span class="nx">ParentComponent</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="cordova-plugins-not-working-in-the-browser">Cordova plugins not working in the browser</h3>
+
+<p>At some point in your development you may, try to call Cordova plugin, but get a
+warning:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[Warning] Native: tried calling StatusBar.styleDefault, but Cordova is not
+available. Make sure to include cordova.js or run in a device/simulator
+(app.bundle.js, line 83388)
+</code></pre>
+</div>
+
+<p>This happens when you try to call a native plugin, but Cordova isn’t available.
+Thankfully, Ionic Native will print out a nice warning, instead of an error.</p>
+
+<p>In other cases where the plugin is not being used through Ionic Native, plugins
+can print a much more obscure warning.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>EXCEPTION: Error: Uncaught (in promise): TypeError: undefined is not an object
+(evaluating 'navigator.camera.getPicture')
+</code></pre>
+</div>
+
+<p>If this happens, test the plugin on a real device or simulator.</p>
+
+<h3 id="multiple-instances-of-a-provider">Multiple instances of a provider</h3>
+
+<p>If you inject a provider in every component because you want it available to all
+of them you will end up with multiple instances of the provider. You should
+inject the provider once in the parent component if you want it to be available
+to the child components.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyService</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-component'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s1">'Hello World'</span><span class="p">,</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">MyService</span><span class="p">]</span> <span class="c1">// &lt;-- Creates a new instance of MyService :(</span>
+<span class="p">})</span>                       <span class="c1">// Unnecessary because MyService is in App's providers</span>
+<span class="kr">class</span> <span class="nx">MyComp</span> <span class="p">{</span>
+  <span class="c1">// id is 1, s is a different MyService instance than MyApp</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">s</span><span class="err">:</span> <span class="nx">MyService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'MyService id is: '</span> <span class="o">+</span> <span class="nx">s</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;my-component&gt;&lt;/my-component&gt;'</span><span class="p">,</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">MyService</span><span class="p">],</span> <span class="c1">// MyService only needs to be here</span>
+  <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">MyComp</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+  <span class="c1">// id is 0</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">s</span><span class="err">:</span> <span class="nx">MyService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'MyService id is: '</span> <span class="o">+</span> <span class="nx">s</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Plunker: <a href="http://plnkr.co/edit/QzgR5H0r8FijHeVtv2dd">http://plnkr.co/edit/QzgR5H0r8FijHeVtv2dd</a></p>
+
+<h2 id="common-errors">Common Errors</h2>
+
+<h3 id="cannot-resolve-all-parameters-for-yourclass-make-sure-that-all-the-parameters-are-decorated-with-inject-or-have-valid-type-annotations-and-that-yourclass-is-decorated-with-injectable">Cannot resolve all parameters for ‘YourClass’(?). Make sure that all the parameters are decorated with Inject or have valid type annotations and that ‘YourClass’ is decorated with Injectable.</h3>
+
+<p>This exception means that Angular is confused about one or more of the
+parameters for <code class="highlighter-rouge">YourClass</code>’s constructor. In order to do
+<a href="https://angular.io/docs/ts/latest/guide/dependency-injection.html">dependency injection</a>
+Angular needs to know the type of the parameter to inject. You let Angular know
+this by specifying the class of the parameter. Make sure:</p>
+
+<ul>
+  <li>You are importing the parameter’s class.</li>
+  <li>You have properly annotated the parameter or specified its type.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MyService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'my-service'</span><span class="p">;</span> <span class="c1">//Don't forget to import me!</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="nx">Hello</span> <span class="nx">World</span><span class="err">`</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+  <span class="c1">// service is of type MyService</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">service</span><span class="err">:</span> <span class="nx">MyService</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Sometimes circular references within your code can cause this error. Circular
+references mean that two objects depend on each other, and so there is no way to
+declare both of them before each other. To get around this, we can use the
+<a href="https://angular.io/docs/ts/latest/api/core/index/forwardRef-function.html"><code class="highlighter-rouge">forwardRef</code></a>
+function built in to Angular.</p>
+
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">forwardRef</span> <span class="p">}</span> <span class="k">from</span> <span class="s1"><a class="__cf_email__" href="../../cdn-cgi/l/email-protection.html" data-cfemail="a780e7c6c9c0d2cbc6d5">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-button'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+               <span class="o">&lt;</span><span class="nx">icon</span><span class="o">&gt;&lt;</span><span class="sr">/icon</span><span class="err">&gt;
+</span>               <span class="o">&lt;</span><span class="nx">input</span> <span class="kd">type</span><span class="o">=</span><span class="s2">"button"</span> <span class="o">/&gt;</span>
+             <span class="o">&lt;</span><span class="sr">/div&gt;`</span><span class="err">,
+</span>  <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">forwardRef</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">MyIcon</span><span class="p">)]</span> <span class="c1">// MyIcon has not been defined yet</span>
+<span class="p">})</span>                                       <span class="c1">// forwardRef resolves as MyIcon when MyIcon is needed</span>
+<span class="kr">class</span> <span class="nx">MyButton</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">Directive</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'icon'</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyIcon</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">containerButton</span><span class="err">:</span> <span class="nx">MyButton</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">// MyButton has been defined</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="no-provider-for-paramtype-myclass---paramtype">No provider for ParamType! (MyClass -&gt; ParamType)</h3>
+
+<p>This means Angular knows the type of parameter it is supposed to inject, but it
+doesn’t know how to inject it.</p>
+
+<p>If the parameter is a service, make sure you have added the specified class to
+the list of providers available to your app:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MyService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'my-service'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'app/app.html'</span><span class="p">,</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">MyService</span><span class="p">]</span> <span class="c1">// Don't forget me!</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If the parameter is another component or directive (for example, a parent
+  component), adding it to your list of providers will make the error go away,
+  but this will have the same effect as the
+  <a href="#multiple_instances">Multiple instances of a provider</a> above. You’ll be
+  creating a new instance of the component class, and you won’t get a reference
+  to the component instance you want. Instead, make sure that the directive or
+  component you expect to be injected is available to your component (e.g. that
+    it is actually a parent if you are expecting it to be a parent). This is
+    probably easiest understood with an example:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-comp'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;p my-dir&gt;&lt;/p&gt;'</span><span class="p">,</span>
+  <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">forwardRef</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">MyDir</span><span class="p">)]</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyComp</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'My Component'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">Directive</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'[my-dir]'</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyDir</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">c</span><span class="err">:</span> <span class="nx">MyComp</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// &lt;-- This is the line of interest</span>
+
+    <span class="c1">// Errors when directive is on regular div because there is no MyComp in the</span>
+    <span class="c1">// component tree so there is no MyComp to inject</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Host component'</span><span class="nx">s</span> <span class="nx">name</span><span class="err">:</span> <span class="err">'</span> <span class="o">+</span> <span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">"&lt;my-comp&gt;&lt;/my-comp&gt;"</span> <span class="o">+</span> <span class="c1">// No error in MyDir constructor, MyComp is parent of MyDir</span>
+  <span class="s2">"&lt;my-comp my-dir&gt;&lt;/my-comp&gt;"</span> <span class="o">+</span> <span class="c1">// No error in MyDir constructor, MyComp is host of MyDir</span>
+  <span class="s2">"&lt;div my-dir&gt;&lt;/div&gt;"</span><span class="p">,</span> <span class="c1">// Errors in MyDir constructor</span>
+  <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">MyComp</span><span class="p">,</span> <span class="nx">MyDir</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Here’s a diagram illustrating what injectors are available:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>                 +-------+
+                 |  App  |
+                 +---+---+
+                     |
+       +-------------+------------+
+       |                          |
++------+------+          +--------+--------+
+| Div (MyDir) |          | MyComp (MyDir)  |  &lt;- MyComp can be injected
++-------------+          +--------+--------+
+       ^                          |
+No MyComp to inject        +------+------+
+                           | P (MyDir)   | &lt;- MyComp can be injected from parent
+                           +-------------+
+</code></pre>
+</div>
+
+<p>To expand on the previous example, you can use the Angular 2 <code class="highlighter-rouge">@Optional</code> a
+nnotation if you don’t always expect a component/directive reference:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Directive</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'[my-dir]'</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyDir</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span> <span class="err">@</span><span class="nx">Optional</span><span class="p">()</span> <span class="nx">c</span><span class="err">:</span> <span class="nx">MyComp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// No longer errors if c is undefined</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Host component'</span><span class="nx">s</span> <span class="nx">name</span><span class="err">:</span> <span class="err">'</span> <span class="o">+</span> <span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="cant-bind-to-propertyname-since-it-isnt-a-known-property-of-the-elementname-element-and-there-are-no-matching-directives-with-a-corresponding-property">Can’t bind to ‘propertyName’ since it isn’t a known property of the ‘elementName’ element and there are no matching directives with a corresponding property</h3>
+
+<p>This happens when you try and bind a property on an element that doesn’t have
+that property. If the element is a component or has one or more directives on
+it, neither the component nor the directives have that property either.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- div doesn't have a 'foo' property --&gt;</span>
+<span class="nt">&lt;div</span> <span class="err">[</span><span class="na">foo</span><span class="err">]="</span><span class="na">bar</span><span class="err">"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="no-provider-for-controlcontainer-ngcontrolname---controlcontainer">No provider for ControlContainer! (NgControlName -&gt; ControlContainer)</h3>
+
+<p>This error is a more specific version of the <code class="highlighter-rouge">No provider</code> error above.  It
+happens when you use a form control like NgControlName without specifying a
+parent <a href="https://angular.io/docs/ts/latest/api/forms/index/NgForm-directive.html">NgForm</a>
+or NgFormModel.  In most cases, this can be resolved by making sure your form
+control is within an actual form element.  NgForm uses <code class="highlighter-rouge">form</code> as a selector so
+this will instantiate a new NgForm:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span>
+  <span class="s1">'&lt;form&gt;'</span> <span class="o">+</span>
+  <span class="s1">'&lt;input ngControl="login"&gt;'</span> <span class="o">+</span>
+  <span class="s1">'&lt;/form&gt;'</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+<h3 id="no-component-factory-found-for-">No component factory found for <component name=""></component></h3>
+
+<p>This error happens when you are trying to use a component, provider pipe or
+directive that has not been imported and added to your ngModule. Whenever you
+add a new component, provider, pipe or directive to your app, you must add it to
+the ngModule in the <code class="highlighter-rouge">src/app/app.module.ts</code> file for Angular to be able to use it.
+To fix this error you can import the offending component, provider, pipe or
+directive into the app.module file and then if it is a provider add it to the
+<code class="highlighter-rouge">providers</code> array and for a component, pipe or directive add it to both the
+declarations array and entryComponents array.</p>
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.0/anchor.min.js"></script>
+<script>
+ anchors.options.placement = 'left';
+  anchors.add('main h2, main h3');
+</script>
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/troubleshooting/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:28:00 GMT -->
+</html>

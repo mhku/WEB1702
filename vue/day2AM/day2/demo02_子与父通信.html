@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="example">
+  <!-- 调用父组件-->
+  <father-component></father-component>
+</div>
+
+<script>
+  //创建一个父组件
+  Vue.component('father-component',{
+    methods:{
+      recvMsg: function (msg) {
+        console.log(
+          'toFather event is triggered'+msg);
+      }
+    },
+    template:`<div>
+      <h1>this is father component</h1>
+      <hr/>
+      <son-component v-on:toFather="recvMsg">
+      </son-component>
+    </div>`
+  })
+/*
+* ng中父子控制器之间通过事件是如何传值的？
+*
+* $scope.$on()
+* 由上往下：
+* $scope.$broadcast()
+* 由下往上：
+* $scope.$emit()
+*
+* */
+
+
+  //创建一个子组件
+  Vue.component('son-component',{
+    methods:{
+      handleClick: function () {
+        //触发事件,并传值
+        this.$emit('toFather',100);
+      }
+    },
+    template:`<div>
+    <h1>this is son component</h1>
+    <button @click="handleClick">
+    向父组件通过事件传值
+    </button>
+    </div>
+    `
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  <!-- 循环功能-->
+  <ul>
+    <li v-for="item in myList">
+      {{item}}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="(value,key) in myList">
+      {{"key is "+key+" value is "+value}}
+    </li>
+  </ul>
+
+  <!-- 判断 -->
+  <p v-if="num>=5">大于等于5</p>
+
+  <!-- 判断分支用法-->
+  <p v-if="count > 8">大于8</p>
+  <p v-else-if="count == 8">等于8</p>
+  <p v-else="count < 8">小于8</p>
+
+  <!-- 常用指令-->
+  <!-- ng  img ng-src='img/{{imgUrl}}' -->
+
+  <!-- vBind指令绑定一个变量到属性中 -->
+  <img v-bind:src="'img/'+imgUrl" alt=""/>
+  <a v-bind:href="linkUrl">clickMe</a>
+
+  <!-- 方向2的绑定：将用户的输入绑定到数据 -->
+  <!-- ng: ngModel-->
+  <input type="text" v-model="kw"/>
+  <p>{{kw}}</p>
+
+  <!-- 事件绑定-->
+  <button v-on:click="handleClick">clickMe</button>
+  <br/>
+
+  <!-- 有两个指令，支持缩写-->
+  <!-- v-on:change @change-->
+  <button @click="handleClick">clickMe</button>
+  <!-- v-bind:href  :href  v-bind:src :src-->
+  <a :href="linkUrl">clickMe</a>
+</div>
+
+<script>
+  new Vue({
+    el:'#example',
+    data:{
+      myList:[100,200,300],
+      num:5,
+      count:8,
+      imgUrl:'1.jpg',
+      linkUrl:'http://tedu.cn',
+      kw:'123'
+    },
+    methods:{
+      handleClick:function(){
+        alert('Hello VueJS');
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

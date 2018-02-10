@@ -1,0 +1,21 @@
+今天学习的内容
+1:复习昨天知识重点
+2:作业/综合练习
+3:http协议
+#-----------------------
+1:复习昨天知识重点
+  1.1:php 操作mysql 查询
+	    a:连接数据库
+      b:设置编码utf8
+			c:创建sql{SELECT ..},发送
+			d:$result 结果集对象
+			e:抓取
+			  一次抓取一行数据
+				关联:$row = mysqli_fetch_assoc($result);
+				索引:$row = mysqli_fetch_row($result);
+				一次抓取所有行数据
+				$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+	1.2:http协议
+2:作业/综合练习
+  
+3:http协议

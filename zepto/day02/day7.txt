@@ -1,0 +1,11 @@
+
+一、在线版简历
+
+要求：使用zeptojs来完成数据的加载和显示
+
+步骤
+1、请求getWorkInfo.php拿到数据并显示在视图
+get/post/ajax
+找到容器，动态的生成节点，插入到容器
+
+2、请求getTechInfo.php拿到数据并显示在视图

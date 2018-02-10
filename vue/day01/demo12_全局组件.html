@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  {{msg}}
+  <my-component></my-component>
+</div>
+
+<script>
+
+  //创建全局组件
+  Vue.component('my-component',{
+    template:'<span> Hello Global Component</span>'
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+
+</script>
+
+</body>
+</html>

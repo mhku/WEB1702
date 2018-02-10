@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  {{count}}
+  <button @click="handleClick"> clickMe </button>
+</div>
+
+<script>
+
+  var app = new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world',
+      count:0
+    },
+    methods:{
+      handleClick: function () {
+        this.count++;
+        if(this.count > 5)
+        {
+          app.$destroy();
+        }
+      }
+    },
+    beforeCreate: function () {
+      console.log('before create');
+    },
+    created: function () {
+      console.log('already created');
+    },
+    beforeMount: function () {
+      console.log('vue instance will mount');
+    },
+    mounted: function () {
+      console.log('already mount');
+    },
+    beforeUpdate: function () {
+      console.log('vue instance will update');
+    },
+    updated: function () {
+      console.log('updated');
+    },
+    beforeDestroy: function () {
+      console.log('vue instance will destroy');
+    },
+    destroyed: function () {
+      console.log('already destroyed');
+    }
+  })
+
+</script>
+
+</body>
+</html>

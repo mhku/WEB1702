@@ -1,0 +1,19 @@
+惠买车 
+1:创建sql 文件 11:25---11:40
+  htdocs/huimaiche
+  1.1:创建库 huimaiche
+	1.2:创建表 t_car(cid/cname/pic/price/
+	           buycount 销售数量)
+      添加8条记录
+  1.3:创建php
+	    car_add.php 
+			接收客户端提交 cname/pic/buycount/price
+			INSERT 数据库表中，返回 "成功"
+			http://127.0.0.1/car_add.php?cname=qq10&pic=1.jpg&buycount=10&price=5
+  1.4:创建html
+	    car_add_input.html
+			创建表单 {cname/pic/buycount/price}
+  1.5:car_select.php 查询所有汽车
+	    图片  汽车名称  汽车价格
+  1.6:car_delete.php 删除指定汽车
+	    获以cid

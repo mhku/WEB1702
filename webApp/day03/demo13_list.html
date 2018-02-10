@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+  <button ng-click="toggleDelete()">
+    {{deleteEnableText}}
+  </button>
+  <ion-list show-delete="deleteEnable">
+    <ion-item ng-repeat="tmp in list">
+      <ion-delete-button
+        ng-click="deleteItem($index)"
+        class="ion-minus-circled">
+
+      </ion-delete-button>
+      {{tmp}}
+    </ion-item>
+  </ion-list>
+
+  <br/>
+  <ion-list>
+    <ion-item>
+      michael
+      <ion-option-button class="button-positive">
+        action1
+      </ion-option-button>
+      <ion-option-button class="button-assertive">
+        action2
+      </ion-option-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- 学习列表在ionic手工排序的实现 -->
+  <ion-toggle ng-model="reorderEnable">排序</ion-toggle>
+  <ion-list show-reorder="reorderEnable">
+    <ion-item ng-repeat="tmp in list">
+      {{tmp}}
+      <ion-reorder-button
+        on-reorder="reOrder(tmp,$fromIndex,$toIndex)"
+        class="ion-navicon">
+
+      </ion-reorder-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer-bar>
+
+</ion-footer-bar>
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',
+    ['$scope',
+      function ($scope) {
+        $scope.list = [11, 22, 33, 44, 55];
+
+        $scope.deleteEnableText = "编辑";
+        $scope.deleteEnable = false;
+
+        //删除指定位置的数据
+        $scope.deleteItem = function (index) {
+          $scope.list.splice(index, 1);
+        }
+
+        //是否允许删除按钮显示的方法
+        $scope.toggleDelete = function () {
+          $scope.deleteEnable = !$scope.deleteEnable;
+          if ($scope.deleteEnable) {
+            $scope.deleteEnableText = '编辑完成'
+          }
+          else {
+            $scope.deleteEnableText = '编辑'
+          }
+        }
+
+        //排序时调用的方法
+        $scope.reOrder = function (item, from, to) {
+
+          //删除原本位置的数据
+          $scope.list.splice(from,1)
+          //在目的地位置插入数据
+          $scope.list.splice(to,0,item)
+        }
+
+
+      }])
+
+</script>
+
+</body>
+</html>

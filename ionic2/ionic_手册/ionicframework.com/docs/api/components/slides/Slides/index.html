@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/api/components/slides/Slides/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../../../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>Slides - Ionic API Documentation -  Ionic Framework</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../../../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../../../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../../../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-slides"
+        class="v2 docs fluid page-slides has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../../../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../../../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../../../../index.html">Framework</a></li>
+<li><a href="../../../../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../../../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../../../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../../../../support.html">Customer Support</a></li>
+    <li><a href="../../../../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     
+       ng-controller="APIDemoCtrl"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/nightly/api/"
+    >
+    nightly 
+  </option>
+
+  <option
+   value="/docs/api/"
+    selected>
+    3.3.0 (latest)
+  </option>
+
+  <option
+   value="/docs/3.2.0/api/"
+    >
+    3.2.0 
+  </option>
+
+  <option
+   value="/docs/3.1.1/api/"
+    >
+    3.1.1 
+  </option>
+
+  <option
+   value="/docs/3.1.0/api/"
+    >
+    3.1.0 
+  </option>
+
+  <option
+   value="/docs/3.0.1/api/"
+    >
+    3.0.1 
+  </option>
+
+  <option
+   value="/docs/3.0.0/api/"
+    >
+    3.0.0 
+  </option>
+
+  <option
+   value="/docs/2.3.0/api/"
+    >
+    2.3.0 
+  </option>
+
+  <option
+   value="/docs/2.2.0/api/"
+    >
+    2.2.0 
+  </option>
+
+  <option
+   value="/docs/2.1.0/api/"
+    >
+    2.1.0 
+  </option>
+
+  <option
+   value="/docs/2.0.1/api/"
+    >
+    2.0.1 
+  </option>
+
+  <option
+   value="/docs/2.0.0/api/"
+    >
+    2.0.0 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="../../../../index.html">Back to Main Docs</a>
+  </li>
+  
+  
+    
+
+  
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/alert/AlertController">AlertController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/avatar/Avatar">Avatar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/chip/Chip">Chip</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Col">Col</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/datetime/DateTime">DateTime</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabButton">FabButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabContainer">FabContainer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabList">FabList</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Footer">Footer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Grid">Grid</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/tap-click/Haptic">Haptic</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Header">Header</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/img/Img">Img</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/IonicErrorHandler">IonicErrorHandler</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicModule">IonicModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/IonicPage">IonicPage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicPageModule">IonicPageModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemOptions">ItemOptions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemReorder">ItemReorder</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/loading/LoadingController">LoadingController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/MenuController">MenuController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/modal/ModalController">ModalController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/normalizeURL">normalizeURL</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/note/Note">Note</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/PlatformConfigToken">PlatformConfigToken</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/popover/PopoverController">PopoverController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/range/Range">Range</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/registerModeConfigs">registerModeConfigs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Row">Row</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize active">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/split-pane/SplitPane">SplitPane</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/thumbnail/Thumbnail">Thumbnail</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toast/ToastController">ToastController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/typography/Typography">Typography</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/ViewController">ViewController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/virtual-scroll/VirtualScroll">VirtualScroll</a>
+</li>
+
+
+
+</ul>
+
+    
+  </nav>
+  
+  <aside id="platform-preview" class="platform-preview">
+    <div class="platform-toggle">
+      <a ng-class="{active: iosActive}"
+         ng-click="setPlatform('ios')">iOS</a>
+      <a ng-class="{active: androidActive}"
+         ng-click="setPlatform('android')">Android</a>
+      <a ng-class="{active: windowsActive}"
+         ng-click="setPlatform('windows')">Windows</a>
+    </div>
+    <div id="demo-device-ios"
+         ng-class="previewPlatform"
+         ng-show="iosActive"
+         ng-cloak>
+      <iframe id="demo-ios"
+            
+              src="http://ionicframework.com/docs/demos/src/slides/www/?production=true&amp;ionicplatform=ios"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-android"
+         ng-class="previewPlatform"
+         ng-show="androidActive"
+         ng-cloak>
+      <iframe id="demo-android"
+            
+              src="http://ionicframework.com/docs/demos/src/slides/www/?production=true&amp;ionicplatform=android"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-windows"
+         ng-class="previewPlatform"
+         ng-show="windowsActive"
+         ng-cloak>
+      <iframe id="demo-windows"
+            
+              src="http://ionicframework.com/docs/demos/src/slides/www/?production=true&amp;ionicplatform=windows"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+  </aside>
+  
+  <main>
+    <h1 class="api-title">
+<a class="anchor" name="slides" href="#slides"></a>
+
+Slides
+<h3><code>ion-slides</code></h3>
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master/src/components/slides/slides.ts#L12">
+Improve this doc
+</a></p>
+
+<p>The Slides component is a multi-section container. Each section can be swiped
+or dragged between. It contains any number of <a href="http://ionicframework.com/docs/api/components/slides/Slide">Slide</a> components.</p>
+<h3 id="creating">Creating</h3>
+<p>You should use a template to create slides and listen to slide events. The template
+should contain the slide container, an <code>&lt;ion-slides&gt;</code> element, and any number of
+<a href="http://ionicframework.com/docs/api/components/slides/Slide">Slide</a> components, written as <code>&lt;ion-slide&gt;</code>. Basic configuration
+values can be set as input properties, which are listed below. Slides events
+can also be listened to such as the slide changing by placing the event on the
+<code>&lt;ion-slides&gt;</code> element. See <a href="#usage">Usage</a> below for more information.</p>
+<h3 id="navigating">Navigating</h3>
+<p>After creating and configuring the slides, you can navigate between them
+by swiping or calling methods on the <code>Slides</code> instance. You can call <code>slideTo()</code> to
+navigate to a specific slide, or <code>slideNext()</code> to change to the slide that follows
+the active slide. All of the <a href="#instance-members">methods</a> provided by the <code>Slides</code>
+instance are listed below. See <a href="#usage">Usage</a> below for more information on
+navigating between slides.</p>
+
+<!-- @usage tag -->
+
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
+
+<p>You can add slides to a <code>@Component</code> using the following template:</p>
+<pre><code class="lang-html">&lt;ion-slides&gt;
+  &lt;ion-slide&gt;
+    &lt;h1&gt;Slide 1&lt;/h1&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide&gt;
+    &lt;h1&gt;Slide 2&lt;/h1&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide&gt;
+    &lt;h1&gt;Slide 3&lt;/h1&gt;
+  &lt;/ion-slide&gt;
+&lt;/ion-slides&gt;
+</code></pre>
+<p>Next, we can use <code>ViewChild</code> to assign the Slides instance to
+your <code>slides</code> property. Now we can call any of the <code>Slides</code>
+<a href="#instance-members">methods</a>, for example we can use the Slide&#39;s
+<code>slideTo()</code> method in order to navigate to a specific slide on
+a button click. Below we call the <code>goToSlide()</code> method and it
+navigates to the 3rd slide:</p>
+<pre><code class="lang-ts">import { ViewChild } from &#39;@angular/core&#39;;
+import { Slides } from &#39;ionic-angular&#39;;
+
+class MyPage {
+  @ViewChild(Slides) slides: Slides;
+
+  goToSlide() {
+    this.slides.slideTo(2, 500);
+  }
+}
+</code></pre>
+<p>We can also add events to listen to on the <code>&lt;ion-slides&gt;</code> element.
+Let&#39;s add the <code>ionSlideDidChange</code> event and call a method when the slide changes:</p>
+<pre><code class="lang-html">&lt;ion-slides (ionSlideDidChange)=&quot;slideChanged()&quot;&gt;
+</code></pre>
+<p>In our class, we add the <code>slideChanged()</code> method which gets the active
+index and prints it:</p>
+<pre><code class="lang-ts">class MyPage {
+  ...
+
+  slideChanged() {
+    let currentIndex = this.slides.getActiveIndex();
+    console.log(&quot;Current index is&quot;, currentIndex);
+  }
+}
+</code></pre>
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="controlBy"></div>
+
+<h3>
+<a class="anchor" name="controlBy" href="#controlBy"></a>
+<code>controlBy</code>
+  
+
+</h3>
+
+<div id="controlInverse"></div>
+
+<h3>
+<a class="anchor" name="controlInverse" href="#controlInverse"></a>
+<code>controlInverse</code>
+  
+
+</h3>
+
+<div id="enableKeyboardControl"></div>
+
+<h3>
+<a class="anchor" name="enableKeyboardControl" href="#enableKeyboardControl"></a>
+<code>enableKeyboardControl(shouldEnableKeyboard)</code>
+  
+
+</h3>
+
+<p>Enable or disable keyboard control.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        shouldEnableKeyboard
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>If set to true the slider can be controled by a keyboard.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="getActiveIndex"></div>
+
+<h3>
+<a class="anchor" name="getActiveIndex" href="#getActiveIndex"></a>
+<code>getActiveIndex()</code>
+  
+
+</h3>
+
+<p>Get the index of the active slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> <p>The index number of the current slide.</p>
+
+
+</div>
+
+<div id="getPreviousIndex"></div>
+
+<h3>
+<a class="anchor" name="getPreviousIndex" href="#getPreviousIndex"></a>
+<code>getPreviousIndex()</code>
+  
+
+</h3>
+
+<p>Get the index of the previous slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> <p>The index number of the previous slide.</p>
+
+
+</div>
+
+<div id="isBeginning"></div>
+
+<h3>
+<a class="anchor" name="isBeginning" href="#isBeginning"></a>
+<code>isBeginning()</code>
+  
+
+</h3>
+
+<p>Get whether or not the current slide is the first slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> <p>If the slide is the first slide or not.</p>
+
+
+</div>
+
+<div id="isEnd"></div>
+
+<h3>
+<a class="anchor" name="isEnd" href="#isEnd"></a>
+<code>isEnd()</code>
+  
+
+</h3>
+
+<p>Get whether or not the current slide is the last slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> <p>If the slide is the last slide or not.</p>
+
+
+</div>
+
+<div id="length"></div>
+
+<h3>
+<a class="anchor" name="length" href="#length"></a>
+<code>length()</code>
+  
+
+</h3>
+
+<p>Get the total number of slides.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> <p>The total number of slides.</p>
+
+
+</div>
+
+<div id="lockSwipeToNext"></div>
+
+<h3>
+<a class="anchor" name="lockSwipeToNext" href="#lockSwipeToNext"></a>
+<code>lockSwipeToNext(shouldLockSwipeToNext)</code>
+  
+
+</h3>
+
+<p>Lock or unlock the ability to slide to the next slides.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        shouldLockSwipeToNext
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>If set to true the user will not be able to swipe to the next slide. 
+Set to false to unlock this behaviour.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="lockSwipeToPrev"></div>
+
+<h3>
+<a class="anchor" name="lockSwipeToPrev" href="#lockSwipeToPrev"></a>
+<code>lockSwipeToPrev(shouldLockSwipeToPrev)</code>
+  
+
+</h3>
+
+<p>Lock or unlock the ability to slide to the previous slides.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        shouldLockSwipeToPrev
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>If set to true the user will not be able to swipe to the previous slide.
+Set to false to unlock this behaviour.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="lockSwipes"></div>
+
+<h3>
+<a class="anchor" name="lockSwipes" href="#lockSwipes"></a>
+<code>lockSwipes(shouldLockSwipes)</code>
+  
+
+</h3>
+
+<p>Lock or unlock the ability to slide to change slides.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        shouldLockSwipes
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>If set to true user can not swipe in either direction on slide. 
+False allows swiping in both directions.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="resize"></div>
+
+<h3>
+<a class="anchor" name="resize" href="#resize"></a>
+<code>resize()</code>
+  
+
+</h3>
+
+<div id="slideNext"></div>
+
+<h3>
+<a class="anchor" name="slideNext" href="#slideNext"></a>
+<code>slideNext(speed,&nbsp;runCallbacks)</code>
+  
+
+</h3>
+
+<p>Transition to the next slide.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        speed
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Transition duration (in ms).<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        runCallbacks
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether or not to emit the <code>ionSlideWillChange</code>/<code>ionSlideDidChange</code> events. Default true.<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="slidePrev"></div>
+
+<h3>
+<a class="anchor" name="slidePrev" href="#slidePrev"></a>
+<code>slidePrev(speed,&nbsp;runCallbacks)</code>
+  
+
+</h3>
+
+<p>Transition to the previous slide.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        speed
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Transition duration (in ms).<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        runCallbacks
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether or not to emit the <code>ionSlideWillChange</code>/<code>ionSlideDidChange</code> events. Default true.<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="slideTo"></div>
+
+<h3>
+<a class="anchor" name="slideTo" href="#slideTo"></a>
+<code>slideTo(index,&nbsp;speed,&nbsp;runCallbacks)</code>
+  
+
+</h3>
+
+<p>Transition to the specified slide.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        index
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>The index number of the slide.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        speed
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Transition duration (in ms).<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        runCallbacks
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether or not to emit the <code>ionSlideWillChange</code>/<code>ionSlideDidChange</code> events. Default true.<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="startAutoplay"></div>
+
+<h3>
+<a class="anchor" name="startAutoplay" href="#startAutoplay"></a>
+<code>startAutoplay()</code>
+  
+
+</h3>
+
+<p>Start auto play.</p>
+
+<div id="stopAutoplay"></div>
+
+<h3>
+<a class="anchor" name="stopAutoplay" href="#stopAutoplay"></a>
+<code>stopAutoplay()</code>
+  
+
+</h3>
+
+<p>Stop auto play.</p>
+
+<div id="update"></div>
+
+<h3>
+<a class="anchor" name="update" href="#update"></a>
+<code>update()</code>
+  
+
+</h3>
+
+<p>Update the underlying slider implementation. Call this if you’ve added or removed
+child slides.</p>
+
+<!-- input methods on the class -->
+<h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>autoplay</td>
+      <td><code>number</code></td>
+      <td><p> Delay between transitions (in milliseconds). If this
+parameter is not passed, autoplay is disabled. Default does
+not have a value and does not autoplay.
+Default: <code>null</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>control</td>
+      <td><code>Slides</code></td>
+      <td><p> Pass another Slides instance or array of Slides instances
+that should be controlled by this Slides instance.
+Default: <code>null</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>dir</td>
+      <td><code>string</code></td>
+      <td><p> If dir attribute is equal to rtl, set interal _rtl to true;</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>direction</td>
+      <td><code>string</code></td>
+      <td><p>  Swipe direction: &#39;horizontal&#39; or &#39;vertical&#39;.
+Default: <code>horizontal</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>effect</td>
+      <td><code>string</code></td>
+      <td><p> The animation effect of the slides.
+Possible values are: <code>slide</code>, <code>fade</code>, <code>cube</code>, <code>coverflow</code> or <code>flip</code>.
+Default: <code>slide</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>initialSlide</td>
+      <td><code>number</code></td>
+      <td><p>  Index number of initial slide. Default: <code>0</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>loop</td>
+      <td><code>boolean</code></td>
+      <td><p> If true, continuously loop from the last slide to the
+first slide.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>pager</td>
+      <td><code>boolean</code></td>
+      <td><p>  If true, show the pager.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>paginationType</td>
+      <td><code>string</code></td>
+      <td><p>  Type of pagination. Possible values are:
+<code>bullets</code>, <code>fraction</code>, <code>progress</code>. Default: <code>bullets</code>.
+(Note that the pager will not show unless <code>pager</code> input
+is set to true).</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>parallax</td>
+      <td><code>boolean</code></td>
+      <td><p> If true, allows you to use &quot;parallaxed&quot; elements inside of
+slider.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>slidesPerView</td>
+      <td><code>number</code></td>
+      <td><p> Slides per view. Slides visible at the same time. Default: <code>1</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>spaceBetween</td>
+      <td><code>number</code></td>
+      <td><p> Distance between slides in px. Default: <code>0</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>speed</td>
+      <td><code>number</code></td>
+      <td><p> Duration of transition between slides
+(in milliseconds). Default: <code>300</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>zoom</td>
+      <td><code>boolean</code></td>
+      <td><p> If true, enables zooming functionality.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+<!-- output events on the class -->
+<h2><a class="anchor" name="output-events" href="#output-events"></a>Output Events</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>ionSlideAutoplay</td>
+      <td><p> Emitted when a slide moves.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideAutoplayStart</td>
+      <td><p> Emitted when a autoplay starts.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideAutoplayStop</td>
+      <td><p> Emitted when a autoplay stops.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideDidChange</td>
+      <td><p> Emitted when a slide change ends.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideDoubleTap</td>
+      <td><p> Emitted when the user double taps on the slide&#39;s container.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideDrag</td>
+      <td><p> Emitted when a slide moves.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideNextEnd</td>
+      <td><p> Emitted when a slide change ends with the &quot;forward&quot; direction.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideNextStart</td>
+      <td><p> Emitted when a slide change starts with the &quot;forward&quot; direction.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlidePrevEnd</td>
+      <td><p> Emitted when a slide change ends with the &quot;backward&quot; direction.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlidePrevStart</td>
+      <td><p> Emitted when a slide change starts with the &quot;backward&quot; direction.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideReachEnd</td>
+      <td><p> Emitted when slides reaches its last slide.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideReachStart</td>
+      <td><p> Emitted when slides reaches its beginning (initial position).</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideTap</td>
+      <td><p> Emitted when the user taps/clicks on the slide&#39;s container.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionSlideWillChange</td>
+      <td><p> Emitted when a slide change starts.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+<h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<p>There are several options available to create customized slides. Ionic exposes
+the most commonly used options as <a href="http://learnangular2.com/inputs/">inputs</a>.
+In order to use an option that isn&#39;t exposed as an input the following code
+should be used, where <code>freeMode</code> is the option to change:</p>
+<pre><code class="lang-ts">import { ViewChild } from &#39;@angular/core&#39;;
+import { Slides } from &#39;ionic-angular&#39;;
+
+class MyPage {
+  @ViewChild(Slides) slides: Slides;
+
+  ngAfterViewInit() {
+    this.slides.freeMode = true;
+  }
+}
+</code></pre>
+<p>To see all of the available options, take a look at the
+<a href="https://github.com/driftyco/ionic/blob/master/src/components/slides/slides.ts">source for slides</a>.</p>
+
+<!-- related link -->
+
+<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
+
+<p><a href="http://ionicframework.com/docs/components#slides">Slides Component Docs</a></p>
+
+<p>Adopted from Swiper.js:
+The most modern mobile touch slider and framework with
+hardware accelerated transitions.</p>
+
+<p>http://www.idangero.us/swiper/</p>
+
+<p>Copyright 2016, Vladimir Kharlampidi
+The iDangero.us
+http://www.idangero.us/</p>
+
+<p>Licensed under MIT<!-- end content block --></p>
+
+<!-- end body block -->
+
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../../../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/api/components/slides/Slides/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:18 GMT -->
+</html>

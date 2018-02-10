@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/api/components/virtual-scroll/VirtualScroll/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../../../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>VirtualScroll - Ionic API Documentation -  Ionic Framework</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../../../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../../../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../../../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../../../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-virtualscroll"
+        class="v2 docs fluid page-virtualscroll has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../../../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../../../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../../../../index.html">
+        <img src="../../../../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../../../../index.html">Framework</a></li>
+<li><a href="../../../../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../../../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../../../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../../../../support.html">Customer Support</a></li>
+    <li><a href="../../../../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/nightly/api/"
+    >
+    nightly 
+  </option>
+
+  <option
+   value="/docs/api/"
+    selected>
+    3.3.0 (latest)
+  </option>
+
+  <option
+   value="/docs/3.2.0/api/"
+    >
+    3.2.0 
+  </option>
+
+  <option
+   value="/docs/3.1.1/api/"
+    >
+    3.1.1 
+  </option>
+
+  <option
+   value="/docs/3.1.0/api/"
+    >
+    3.1.0 
+  </option>
+
+  <option
+   value="/docs/3.0.1/api/"
+    >
+    3.0.1 
+  </option>
+
+  <option
+   value="/docs/3.0.0/api/"
+    >
+    3.0.0 
+  </option>
+
+  <option
+   value="/docs/2.3.0/api/"
+    >
+    2.3.0 
+  </option>
+
+  <option
+   value="/docs/2.2.0/api/"
+    >
+    2.2.0 
+  </option>
+
+  <option
+   value="/docs/2.1.0/api/"
+    >
+    2.1.0 
+  </option>
+
+  <option
+   value="/docs/2.0.1/api/"
+    >
+    2.0.1 
+  </option>
+
+  <option
+   value="/docs/2.0.0/api/"
+    >
+    2.0.0 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="../../../../index.html">Back to Main Docs</a>
+  </li>
+  
+  
+    
+
+  
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/alert/AlertController">AlertController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/avatar/Avatar">Avatar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/chip/Chip">Chip</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Col">Col</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/datetime/DateTime">DateTime</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabButton">FabButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabContainer">FabContainer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabList">FabList</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Footer">Footer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Grid">Grid</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/tap-click/Haptic">Haptic</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Header">Header</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/img/Img">Img</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/IonicErrorHandler">IonicErrorHandler</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicModule">IonicModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/IonicPage">IonicPage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicPageModule">IonicPageModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemOptions">ItemOptions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemReorder">ItemReorder</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/loading/LoadingController">LoadingController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/MenuController">MenuController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/modal/ModalController">ModalController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/normalizeURL">normalizeURL</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/note/Note">Note</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/PlatformConfigToken">PlatformConfigToken</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/popover/PopoverController">PopoverController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/range/Range">Range</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/registerModeConfigs">registerModeConfigs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Row">Row</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/split-pane/SplitPane">SplitPane</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/thumbnail/Thumbnail">Thumbnail</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toast/ToastController">ToastController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/typography/Typography">Typography</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/ViewController">ViewController</a>
+</li>
+<li class="capitalize active">
+  <a href="http://ionicframework.com/docs/api/components/virtual-scroll/VirtualScroll">VirtualScroll</a>
+</li>
+
+
+
+</ul>
+
+    
+  </nav>
+  
+  <main>
+    <h1 class="api-title">
+<a class="anchor" name="virtual-scroll" href="#virtual-scroll"></a>
+
+VirtualScroll
+<h3><code>[virtualScroll]</code></h3>
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master/src/components/virtual-scroll/virtual-scroll.ts#L12">
+Improve this doc
+</a></p>
+
+<p>Virtual Scroll displays a virtual, &quot;infinite&quot; list. An array of records
+is passed to the virtual scroll containing the data to create templates
+for. The template created for each record, referred to as a cell, can
+consist of items, headers, and footers.</p>
+<p>For performance reasons, not every record in the list is rendered at once;
+instead a small subset of records (enough to fill the viewport) are rendered
+and reused as the user scrolls.</p>
+<h3 id="the-basics">The Basics</h3>
+<p>The array of records should be passed to the <code>virtualScroll</code> property.
+The data given to the <code>virtualScroll</code> property must be an array. An item
+template with the <code>*virtualItem</code> property is required in the <code>virtualScroll</code>.
+The <code>virtualScroll</code> and <code>*virtualItem</code> properties can be added to any element.</p>
+<pre><code class="lang-html">&lt;ion-list [virtualScroll]=&quot;items&quot;&gt;
+
+  &lt;ion-item *virtualItem=&quot;let item&quot;&gt;
+    {{ item }}
+  &lt;/ion-item&gt;
+
+&lt;/ion-list&gt;
+</code></pre>
+<h3 id="section-headers-and-footers">Section Headers and Footers</h3>
+<p>Section headers and footers are optional. They can be dynamically created
+from developer-defined functions. For example, a large list of contacts
+usually has a divider for each letter in the alphabet. Developers provide
+their own custom function to be called on each record. The logic in the
+custom function should determine whether to create the section template
+and what data to provide to the template. The custom function should
+return <code>null</code> if a template shouldn&#39;t be created.</p>
+<pre><code class="lang-html">&lt;ion-list [virtualScroll]=&quot;items&quot; [headerFn]=&quot;myHeaderFn&quot;&gt;
+
+  &lt;ion-item-divider *virtualHeader=&quot;let header&quot;&gt;
+    Header: {{ header }}
+  &lt;/ion-item-divider&gt;
+
+  &lt;ion-item *virtualItem=&quot;let item&quot;&gt;
+    Item: {{ item }}
+  &lt;/ion-item&gt;
+
+&lt;/ion-list&gt;
+</code></pre>
+<p>Below is an example of a custom function called on every record. It
+gets passed the individual record, the record&#39;s index number,
+and the entire array of records. In this example, after every 20
+records a header will be inserted. So between the 19th and 20th records,
+between the 39th and 40th, and so on, a <code>&lt;ion-item-divider&gt;</code> will
+be created and the template&#39;s data will come from the function&#39;s
+returned data.</p>
+<pre><code class="lang-ts">myHeaderFn(record, recordIndex, records) {
+  if (recordIndex % 20 === 0) {
+    return &#39;Header &#39; + recordIndex;
+  }
+  return null;
+}
+</code></pre>
+<h3 id="approximate-widths-and-heights">Approximate Widths and Heights</h3>
+<p>If the height of items in the virtual scroll are not close to the
+default size of 40px, it is extremely important to provide an value for
+approxItemHeight height. An exact pixel-perfect size is not necessary,
+but without an estimate the virtual scroll will not render correctly.</p>
+<p>The approximate width and height of each template is used to help
+determine how many cells should be created, and to help calculate
+the height of the scrollable area. Note that the actual rendered size
+of each cell comes from the app&#39;s CSS, whereas this approximation
+is only used to help calculate initial dimensions.</p>
+<p>It&#39;s also important to know that Ionic&#39;s default item sizes have
+slightly different heights between platforms, which is perfectly fine.</p>
+<h3 id="images-within-virtual-scroll">Images Within Virtual Scroll</h3>
+<p>HTTP requests, image decoding, and image rendering can cause jank while
+scrolling. In order to better control images, Ionic provides <code>&lt;ion-img&gt;</code>
+to manage HTTP requests and image rendering. While scrolling through items
+quickly, <code>&lt;ion-img&gt;</code> knows when and when not to make requests, when and
+when not to render images, and only loads the images that are viewable
+after scrolling. <a href="../../img/Img/index.html">Read more about <code>ion-img</code>.</a></p>
+<p>It&#39;s also important for app developers to ensure image sizes are locked in,
+and after images have fully loaded they do not change size and affect any
+other element sizes. Simply put, to ensure rendering bugs are not introduced,
+it&#39;s vital that elements within a virtual item does not dynamically change.</p>
+<p>For virtual scrolling, the natural effects of the <code>&lt;img&gt;</code> are not desirable
+features. We recommend using the <code>&lt;ion-img&gt;</code> component over the native
+<code>&lt;img&gt;</code> element because when an <code>&lt;img&gt;</code> element is added to the DOM, it
+immediately makes a HTTP request for the image file. Additionally, <code>&lt;img&gt;</code>
+renders whenever it wants which could be while the user is scrolling. However,
+<code>&lt;ion-img&gt;</code> is governed by the containing <code>ion-content</code> and does not render
+images while scrolling quickly.</p>
+<pre><code class="lang-html">&lt;ion-list [virtualScroll]=&quot;items&quot;&gt;
+
+  &lt;ion-item *virtualItem=&quot;let item&quot;&gt;
+    &lt;ion-avatar item-start&gt;
+      &lt;ion-img [src]=&quot;item.avatarUrl&quot;&gt;&lt;/ion-img&gt;
+    &lt;/ion-avatar&gt;
+    {{ item.firstName }} {{ item.lastName }}
+  &lt;/ion-item&gt;
+
+&lt;/ion-list&gt;
+</code></pre>
+<h3 id="custom-components">Custom Components</h3>
+<p>If a custom component is going to be used within Virtual Scroll, it&#39;s best
+to wrap it with a good old <code>&lt;div&gt;</code> to ensure the component is rendered
+correctly. Since each custom component&#39;s implementation and internals can be
+quite different, wrapping within a <code>&lt;div&gt;</code> is a safe way to make sure
+dimensions are measured correctly.</p>
+<pre><code class="lang-html">&lt;ion-list [virtualScroll]=&quot;items&quot;&gt;
+
+  &lt;div *virtualItem=&quot;let item&quot;&gt;
+    &lt;my-custom-item [item]=&quot;item&quot;&gt;
+       {{ item }}
+    &lt;/my-custom-item&gt;
+  &lt;/div&gt;
+
+&lt;/ion-list&gt;
+</code></pre>
+<h2 id="virtual-scroll-performance-tips">Virtual Scroll Performance Tips</h2>
+<h4 id="ios-cordova-wkwebview">iOS Cordova WKWebView</h4>
+<p>When deploying to iOS with Cordova, it&#39;s highly recommended to use the
+<a href="http://blog.ionic.io/cordova-ios-performance-improvements-drop-in-speed-with-wkwebview/">WKWebView plugin</a>
+in order to take advantage of iOS&#39;s higher performimg webview. Additionally,
+WKWebView is superior at scrolling efficiently in comparision to the older
+UIWebView.</p>
+<h4 id="lock-in-element-dimensions-and-locations">Lock in element dimensions and locations</h4>
+<p>In order for virtual scroll to efficiently size and locate every item, it&#39;s
+very important every element within each virtual item does not dynamically
+change its dimensions or location. The best way to ensure size and location
+does not change, it&#39;s recommended each virtual item has locked in its size
+via CSS.</p>
+<h4 id="use-ion-img-for-images">Use <code>ion-img</code> for images</h4>
+<p>When including images within Virtual Scroll, be sure to use
+<a href="http://ionicframework.com/docs/api/components/virtual-scroll/img/Img/"><code>ion-img</code></a> rather than the standard <code>&lt;img&gt;</code> HTML element.
+With <code>ion-img</code>, images are lazy loaded so only the viewable ones are
+rendered, and HTTP requests are efficiently controlled while scrolling.</p>
+<h4 id="set-approximate-widths-and-heights">Set Approximate Widths and Heights</h4>
+<p>As mentioned above, all elements should lock in their dimensions. However,
+virtual scroll isn&#39;t aware of the dimensions until after they have been
+rendered. For the initial render, virtual scroll still needs to set
+how many items should be built. With &quot;approx&quot; property inputs, such as
+<code>approxItemHeight</code>, we&#39;re able to give virtual scroll an approximate size,
+therefore allowing virtual scroll to decide how many items should be
+created.</p>
+<h4 id="changing-dataset-should-use-virtualtrackby-">Changing dataset should use <code>virtualTrackBy</code></h4>
+<p>It is possible for the identities of elements in the iterator to change
+while the data does not. This can happen, for example, if the iterator
+produced from an RPC to the server, and that RPC is re-run. Even if the
+&quot;data&quot; hasn&#39;t changed, the second response will produce objects with
+different identities, and Ionic will tear down the entire DOM and rebuild
+it. This is an expensive operation and should be avoided if possible.</p>
+<h4 id="efficient-headers-and-footer-functions">Efficient headers and footer functions</h4>
+<p>Each virtual item must stay extremely efficient, but one way to really
+kill its performance is to perform any DOM operations within section header
+and footer functions. These functions are called for every record in the
+dataset, so please make sure they&#39;re performant.</p>
+
+<!-- @usage tag -->
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+<!-- input methods on the class -->
+<h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>approxFooterHeight</td>
+      <td><code>string</code></td>
+      <td><p> The approximate height of each footer template&#39;s cell.
+This dimension is used to help determine how many cells should
+be created when initialized, and to help calculate the height of
+the scrollable area. This height value can only use <code>px</code> units.
+Note that the actual rendered size of each cell comes from the
+app&#39;s CSS, whereas this approximation is used to help calculate
+initial dimensions before the item has been rendered. Default is <code>40px</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>approxFooterWidth</td>
+      <td><code>string</code></td>
+      <td><p> The approximate width of each footer template&#39;s cell.
+This dimension is used to help determine how many cells should
+be created when initialized, and to help calculate the height of
+the scrollable area. This value can use either <code>px</code> or <code>%</code> units.
+Note that the actual rendered size of each cell comes from the
+app&#39;s CSS, whereas this approximation is used to help calculate
+initial dimensions before the item has been rendered. Default is <code>100%</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>approxHeaderHeight</td>
+      <td><code>string</code></td>
+      <td><p> The approximate height of each header template&#39;s cell.
+This dimension is used to help determine how many cells should
+be created when initialized, and to help calculate the height of
+the scrollable area. This height value can only use <code>px</code> units.
+Note that the actual rendered size of each cell comes from the
+app&#39;s CSS, whereas this approximation is used to help calculate
+initial dimensions before the item has been rendered. Default is <code>40px</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>approxHeaderWidth</td>
+      <td><code>string</code></td>
+      <td><p> The approximate width of each header template&#39;s cell.
+This dimension is used to help determine how many cells should
+be created when initialized, and to help calculate the height of
+the scrollable area. This value can use either <code>px</code> or <code>%</code> units.
+Note that the actual rendered size of each cell comes from the
+app&#39;s CSS, whereas this approximation is used to help calculate
+initial dimensions. Default is <code>100%</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>approxItemHeight</td>
+      <td><code>string</code></td>
+      <td><p> It is important to provide this
+if virtual item height will be significantly larger than the default
+The approximate height of each virtual item template&#39;s cell.
+This dimension is used to help determine how many cells should
+be created when initialized, and to help calculate the height of
+the scrollable area. This height value can only use <code>px</code> units.
+Note that the actual rendered size of each cell comes from the
+app&#39;s CSS, whereas this approximation is used to help calculate
+initial dimensions before the item has been rendered. Default is
+<code>40px</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>approxItemWidth</td>
+      <td><code>string</code></td>
+      <td><p> The approximate width of each item template&#39;s cell.
+This dimension is used to help determine how many cells should
+be created when initialized, and to help calculate the height of
+the scrollable area. This value can use either <code>px</code> or <code>%</code> units.
+Note that the actual rendered size of each cell comes from the
+app&#39;s CSS, whereas this approximation is used to help calculate
+initial dimensions before the item has been rendered. Default is
+<code>100%</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>bufferRatio</td>
+      <td><code>number</code></td>
+      <td><p> The buffer ratio is used to decide how many cells
+should get created when initially rendered. The number is a
+multiplier against the viewable area&#39;s height. For example, if it
+takes <code>20</code> cells to fill up the height of the viewable area, then
+with a buffer ratio of <code>3</code> it will create <code>60</code> cells that are
+available for reuse while scrolling. For better performance, it&#39;s
+better to have more cells than what are required to fill the
+viewable area. Default is <code>3</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>footerFn</td>
+      <td><code>function</code></td>
+      <td><p> Section footers and the data used within its given
+template can be dynamically created by passing a function to <code>footerFn</code>.
+The logic within the footer function can decide if the footer template
+should be used, and what data to give to the footer template. The function
+must return <code>null</code> if a footer cell shouldn&#39;t be created.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>headerFn</td>
+      <td><code>function</code></td>
+      <td><p> Section headers and the data used within its given
+template can be dynamically created by passing a function to <code>headerFn</code>.
+For example, a large list of contacts usually has dividers between each
+letter in the alphabet. App&#39;s can provide their own custom <code>headerFn</code>
+which is called with each record within the dataset. The logic within
+the header function can decide if the header template should be used,
+and what data to give to the header template. The function must return
+<code>null</code> if a header cell shouldn&#39;t be created.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>virtualScroll</td>
+      <td><code>array</code></td>
+      <td><p> The data that builds the templates within the virtual scroll.
+This is the same data that you&#39;d pass to <code>*ngFor</code>. It&#39;s important to note
+that when this data has changed, then the entire virtual scroll is reset,
+which is an expensive operation and should be avoided if possible.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>virtualTrackBy</td>
+      <td><code>function</code></td>
+      <td><p> Same as <code>ngForTrackBy</code> which can be used on <code>ngFor</code>.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../../../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/api/components/virtual-scroll/VirtualScroll/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:21 GMT -->
+</html>

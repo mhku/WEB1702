@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h3>练习：使用AUDIO播放网页的背景音乐</h3>
+  <audio id="bgMusic" src="res/bg.mp3" autoplay loop></audio>
+  <label>
+    <input id="cb" type="checkbox" checked>播放背景音乐
+  </label>
+
+  <script>
+    bgMusic.volume = 0.2;       //17:15
+
+    //监听复选框勾选事件，控制背景音乐播放/暂停
+    cb.onchange = function(){
+      //console.log(cb.checked);
+      if(cb.checked){     //复选框被勾选
+        bgMusic.play();
+      }else {             //复选框取消勾选
+        bgMusic.pause();
+      }
+    }
+  </script>
+</body>
+</html>

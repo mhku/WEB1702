@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="container">
+
+  <ul>
+    <li><a href="">test01</a></li>
+    <li id="itemId"><a href="">test02</a></li>
+    <li><a href="">test03</a></li>
+  </ul>
+
+</div>
+
+<script>
+
+  //获取节点
+
+  //parent parents prev next children
+  var list = $('ul');
+  console.log(list);
+  //父节点
+  console.log(list.parent());
+  //祖先节点
+  console.log(list.parents());
+
+  //找到中间的li
+  var middleLi = $('#itemId');
+  //下一个兄弟节点
+  console.log(middleLi.next());
+  //上一个兄弟节点
+  console.log(middleLi.prev());
+
+</script>
+
+
+</body>
+</html>

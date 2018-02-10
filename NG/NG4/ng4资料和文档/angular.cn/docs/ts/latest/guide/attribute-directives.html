@@ -1,0 +1,697 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/attribute-directives.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:26 GMT -->
+<head><title>属性型指令 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent ">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item "><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent is-selected">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item is-selected"><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="attribute-directives.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/attribute-directives.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/attribute-directives.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">属性型指令 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">属性型指令把行为添加到现有元素上。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>An <strong>Attribute</strong> directive changes the appearance or behavior of a DOM element.</p>
+<p><strong>属性</strong>型指令用于改变一个 DOM 元素的外观或行为。</p>
+<h1 id="contents">Contents</h1>
+<h1 id="-">目录</h1>
+<ul>
+<li><p><a href="#directive-overview">Directives overview</a></p>
+<p><a href="#directive-overview">指令概览</a></p>
+</li>
+<li><p><a href="#write-directive">Build a simple attribute directive</a></p>
+<p><a href="#write-directive">创建简单的属性型指令</a></p>
+</li>
+<li><p><a href="#apply-directive">Apply the attribute directive to an element in a template</a></p>
+<p><a href="#apply-directive">应用属性型指令到模板中的元素</a></p>
+</li>
+<li><p><a href="#respond-to-user">Respond to user-initiated events</a></p>
+<p><a href="#respond-to-user">响应用户引发的事件</a></p>
+</li>
+<li><p><a href="#bindings">Pass values into the directive with an <em>@Input</em> data binding</a></p>
+<p><a href="#bindings">使用数据绑定把值传到指令中</a></p>
+</li>
+<li><p><a href="#second-property">Bind to a second property</a></p>
+<p><a href="#second-property">绑定第二个属性</a></p>
+</li>
+</ul>
+<p>Try the <live-example title="Attribute Directive example"></live-example>.</p>
+<p>试试<live-example title="Attribute Directive example"></live-example>。</p>
+<div id="directive-overview" class="l-main-section"></div><h2 id="directives-overview">Directives overview</h2>
+<h2 id="-">指令概览</h2>
+<p>There are three kinds of directives in Angular:</p>
+<p>在 Angular 中有三种类型的指令：</p>
+<ol>
+<li><p>Components&mdash;directives with a template.</p>
+<p>组件 &mdash; 拥有模板的指令</p>
+</li>
+<li><p>Structural directives&mdash;change the DOM layout by adding and removing DOM elements.</p>
+<p>结构型指令 &mdash; 通过添加和移除 DOM 元素改变 DOM 布局的指令</p>
+</li>
+<li><p>Attribute directives&mdash;change the appearance or behavior of an element, component, or another directive.</p>
+<p>属性型指令 &mdash; 改变元素、组件或其它指令的外观和行为的指令。</p>
+</li>
+</ol>
+<p><em>Components</em> are the most common of the three directives.
+You saw a component for the first time in the <a href="../quickstart.html">QuickStart</a> guide.</p>
+<p><em>组件</em>是这三种指令中最常用的。
+你在<a href="../quickstart.html#root-component">快速起步</a>例子中第一次见到组件。</p>
+<p><em>Structural Directives</em> change the structure of the view.
+Two examples are <a href="template-syntax.html#ngFor">NgFor</a> and <a href="template-syntax.html#ngIf">NgIf</a>.
+Learn about them in the <a href="structural-directives.html">Structural Directives</a> guide.</p>
+<p><em>结构型</em>指令修改视图的结构。例如，<a href="template-syntax.html#ngFor">NgFor</a> 和 <a href="template-syntax.html#ngIf">NgIf</a>。
+要了解更多，参见<a href="structural-directives.html">结构型指令</a> guide。</p>
+<p><em>Attribute directives</em> are used as attributes of elements.
+The built-in <a href="template-syntax.html#ngStyle">NgStyle</a> directive in the 
+<a href="template-syntax.html">Template Syntax</a> guide, for example,
+can change several element styles at the same time.</p>
+<p><em>属性型</em>指令改变一个元素的外观或行为。例如，内置的 <a href="template-syntax.html#ngStyle">NgStyle</a> 指令可以同时修改元素的多个样式。</p>
+<div id="write-directive" class="l-main-section"></div><h2 id="build-a-simple-attribute-directive">Build a simple attribute directive</h2>
+<h2 id="-">创建一个简单的属性型指令</h2>
+<p>An attribute directive minimally requires building a controller class annotated with
+<code>@Directive</code>, which specifies the selector that identifies
+the attribute.
+The controller class implements the desired directive behavior.</p>
+<p>属性型指令至少需要一个带有<code>@Directive</code>装饰器的控制器类。该装饰器指定了一个用于标识属性的选择器。
+控制器类实现了指令需要的指令行为。</p>
+<p>This page demonstrates building a simple <em>myHighlight</em> attribute
+directive to set an element&#39;s background color
+when the user hovers over that element. You can apply it like this:</p>
+<p>本章展示了如何创建一个简单的属性型指令 <em>myHighlight</em> ，当用户把鼠标悬停在一个元素上时，改变它的背景色。你可以这样用它：</p>
+<div class="code-example"><code-example language="html" format="">&lt;p myHighlight&gt;Highlight me!&lt;/p&gt;
+</code-example></div><h3 id="write-the-directive-code">Write the directive code</h3>
+<h3 id="-">编写指令代码</h3>
+<p>Follow the <a href="setup.html">setup</a> instructions for creating a new local project
+named <code>attribute-directives</code>.</p>
+<p>按照<a href="setup.html">开发环境</a>的说明，创建一个名叫<code>attribute-directives</code>的项目文件夹。</p>
+<p>Create the following source file in the indicated folder:</p>
+<p>在指定的文件夹下创建下列源码文件：</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts</h4></header><code-example language="ts" format="linenums">import { Directive, ElementRef, Input } from &#39;@angular/core&#39;;
+
+@Directive({ selector: &#39;[myHighlight]&#39; })
+export class HighlightDirective {
+    constructor(el: ElementRef) {
+       el.nativeElement.style.backgroundColor = &#39;yellow&#39;;
+    }
+}
+</code-example></div><p>The <code>import</code> statement specifies symbols from the Angular <code>core</code>:</p>
+<p><code>import</code>语句指定了从 Angular 的<code>core</code>库导入的一些符号。  </p>
+<ol>
+<li><p><code>Directive</code> provides the functionality of the <code>@Directive</code> decorator.</p>
+<p><code>Directive</code>提供<code>@Directive</code>装饰器功能。  </p>
+</li>
+<li><p><code>ElementRef</code> <a href="dependency-injection.html">injects</a> into the directive&#39;s constructor
+so the code can access the DOM element.</p>
+<p><code>ElementRef</code><a href="dependency-injection.html">注入</a>到指令构造函数中。这样代码就可以访问 DOM 元素了。  </p>
+<ol>
+<li><p><code>Input</code> allows data to flow from the binding expression into the directive.</p>
+<p><code>Input</code>将数据从绑定表达式传达到指令中。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Next, the <code>@Directive</code> decorator function contains the directive metadata in a configuration object
+as an argument.</p>
+<p>然后，<code>@Directive</code>装饰器函数以配置对象参数的形式，包含了指令的元数据。</p>
+<p><code>@Directive</code> requires a CSS selector to identify
+the HTML in the template that is associated with the directive.</p>
+<p><code>@Directive</code>装饰器需要一个 CSS 选择器，以便从模板中识别出关联到这个指令的 HTML。</p>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">CSS selector for an attribute</a>
+is the attribute name in square brackets.
+Here, the directive&#39;s selector is <code>[myHighlight]</code>.
+Angular locates all elements in the template that have an attribute named <code>myHighlight</code>.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">用于 attribute 的 CSS 选择器</a>就是属性名称加方括号。
+这里，指令的选择器是<code>[myHighlight]</code>，Angular 将会在模板中找到所有带<code>myHighlight</code>属性的元素。</p>
+<div class="l-sub-section"><h3 id="why-not-call-it-highlight-">Why not call it &quot;highlight&quot;?</h3>
+<h3 id="-highlight-">为什么不直接叫做 &quot;highlight&quot;？</h3>
+<p>Though <em>highlight</em> is a more concise name than <em>myHighlight</em> and would work,
+a best practice is to prefix selector names to ensure
+they don&#39;t conflict with standard HTML attributes.
+This also reduces the risk of colliding with third-party directive names.</p>
+<p>尽管<em>highlight</em> 是一个比 <em>myHighlight</em> 更简洁的名字，而且它确实也能工作。
+但是最佳实践是在选择器名字前面添加前缀，以确保它们不会与标准 HTML 属性冲突。
+它同时减少了与第三方指令名字发生冲突的危险。</p>
+<p>Make sure you do <strong>not</strong> prefix the <code>highlight</code> directive name with <strong><code>ng</code></strong> because
+that prefix is reserved for Angular and using it could cause bugs that are difficult to diagnose. 
+For a simple demo, the short prefix, <code>my</code>, helps distinguish your custom directive.</p>
+<p>确认你<strong>没有</strong>给<code>highlight</code>指令添加<strong><code>ng</code></strong>前缀。
+那个前缀属于 Angular，使用它可能导致难以诊断的 bug。例如，这个简短的前缀<code>my</code>可以帮助你区分自定义指令。</p>
+</div><p>After the <code>@Directive</code> metadata comes the directive&#39;s controller class, 
+called <code>HighlightDirective</code>, which contains the logic for the directive.
+Exporting <code>HighlightDirective</code> makes it accessible to other components.</p>
+<p><code>@Directive</code>元数据之后就是该指令的控制器类，名叫<code>HighlightDirective</code>，它包含该指令的逻辑。
+然后导出<code>HighlightDirective</code>，以便让它能从其它组件中访问到。</p>
+<p>Angular creates a new instance of the directive&#39;s controller class for
+each matching element, injecting an Angular <code>ElementRef</code>
+into the constructor.
+<code>ElementRef</code> is a service that grants direct access to the DOM element
+through its <code>nativeElement</code> property.</p>
+<p>Angular 会为每个匹配的元素创建一个指令控制器类的实例，并把 Angular 的<code>ElementRef</code>和<code>Renderer</code>注入进构造函数。
+<code>ElementRef</code>是一个服务，它赋予我们通过它的<code>nativeElement</code>属性直接访问 DOM 元素的能力。
+<code>Renderer</code>服务允许通过代码设置元素的样式。</p>
+<div id="apply-directive" class="l-main-section"></div><h2 id="apply-the-attribute-directive">Apply the attribute directive</h2>
+<h2 id="-">使用属性型指令</h2>
+<p>To use the new <code>HighlightDirective</code>, create a template that
+applies the directive as an attribute to a paragraph (<code>&lt;p&gt;</code>) element.
+In Angular terms, the <code>&lt;p&gt;</code> element is the attribute <strong>host</strong>.</p>
+<p>要使用这个新的<code>HighlightDirective</code>，创建一个模板，把这个指令作为属性应用到一个段落(<code>p</code>)元素上。
+用 Angular 的话说，<code>&lt;p&gt;</code>元素就是这个属性型指令的<strong>宿主</strong>。</p>
+<p>Put the template in its own <code>app.component.html</code>
+file that looks like this:</p>
+<p>我们把这个模板放到它的<code>app.component.html</code>文件中，就像这样：</p>
+<div class="code-example"><header><h4>src/app/app.component.html</h4></header><code-example language="html" format="linenums">&lt;h1&gt;My First Attribute Directive&lt;/h1&gt;
+&lt;p myHighlight&gt;Highlight me!&lt;/p&gt;
+</code-example></div><p>Now reference this template in the <code>AppComponent</code>:</p>
+<p>现在，在<code>AppComponent</code>中引用这个模板：</p>
+<div class="code-example"><header><h4>src/app/app.component.ts</h4></header><code-example language="ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  templateUrl: &#39;./app.component.html&#39;
+})
+export class AppComponent {
+  color: string;
+}
+</code-example></div><p>Next, add an <code>import</code> statement to fetch the <code>Highlight</code> directive and
+add that class to the <code>declarations</code> NgModule metadata. This way Angular
+recognizes the directive when it encounters <code>myHighlight</code> in the template.</p>
+<p>接下来，添加了一个<code>import</code>语句来获得<code>Highlight</code>指令类，并把这个类添加到 NgModule 元数据的<code>declarations</code>数组中。
+这样，当 Angular 在模板中遇到<code>myHighlight</code>时，就能认出这是指令了。</p>
+<div class="code-example"><header><h4>src/app/app.module.ts</h4></header><code-example language="ts" format="linenums">import { NgModule } from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+
+import { AppComponent } from &#39;./app.component&#39;;
+import { HighlightDirective } from &#39;./highlight.directive&#39;;
+
+@NgModule({
+  imports: [ BrowserModule ],
+  declarations: [
+    AppComponent,
+    HighlightDirective
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><p>Now when the app runs, the <code>myHighlight</code> directive highlights the paragraph text.</p>
+<p>运行应用，就会看到我们的指令确实高亮了段落中的文本。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/attribute-directives/first-highlight.png" alt="First Highlight"></figure><div class="l-sub-section"><h3 id="your-directive-isn-t-working-">Your directive isn&#39;t working?</h3>
+<h3 id="-">你的指令没生效？</h3>
+<p>Did you remember to add the directive to the  <code>declarations</code> attribute of <code>@NgModule</code>? 
+It is easy to forget!</p>
+<p>你记着设置<code>@NgModule</code>的<code>declarations</code>数组了吗？它很容易被忘掉。</p>
+<p>Open the console in the browser tools and look for an error like this:</p>
+<p>打开浏览器调试工具的控制台，会看到像这样的错误信息：</p>
+<code-example format="nocode">EXCEPTION: Template parse errors:
+  Can't bind to 'myHighlight' since it isn't a known property of 'p'.
+</code-example><p>Angular detects that you&#39;re trying to bind to <em>something</em> but it can&#39;t find this directive
+in the module&#39;s <code>declarations</code> array.
+After specifying <code>HighlightDirective</code> in the <code>declarations</code> array,
+Angular knows it can apply the directive to components declared in this module.</p>
+<p>Angular 检测到你正在尝试绑定到<em>某些东西</em>，但它不认识。所以它在<code>declarations</code>元数据数组中查找。
+把<code>HighlightDirective</code>列在元数据的这个数组中，Angular 就会检查对应的导入语句，从而找到<code>highlight.directive.ts</code>，并了解<code>myHightlight</code>的功能。</p>
+</div><p>To summarize, Angular found the <code>myHighlight</code> attribute on the <code>&lt;p&gt;</code> element.
+It created an instance of the <code>HighlightDirective</code> class and
+injected a reference to the <code>&lt;p&gt;</code> element into the directive&#39;s constructor
+which sets the <code>&lt;p&gt;</code> element&#39;s background style to yellow.</p>
+<p>总结：Angular 在<code>&lt;p&gt;</code>元素上发现了一个<code>myHighlight</code>属性。
+然后它创建了一个<code>HighlightDirective</code>类的实例，并把所在元素的引用注入到了指令的构造函数中。
+在构造函数中，我们把<code>&lt;p&gt;</code>元素的背景设置为了黄色。</p>
+<div id="respond-to-user" class="l-main-section"></div><h2 id="respond-to-user-initiated-events">Respond to user-initiated events</h2>
+<h2 id="-">响应用户引发的事件</h2>
+<p>Currently, <code>myHighlight</code> simply sets an element color.
+The directive could be more dynamic.
+It could detect when the user mouses into or out of the element
+and respond by setting or clearing the highlight color.</p>
+<p>当前，<code>myHighlight</code>只是简单的设置元素的颜色。
+这个指令应该在用户鼠标悬浮一个元素时，设置它的颜色。</p>
+<p>Begin by adding <code>HostListener</code> to the list of imported symbols;
+add the <code>Input</code> symbol as well because you&#39;ll need it soon.</p>
+<p>先把<code>HostListener</code>加进导入列表中，同时再添加<code>Input</code>符号，因为我们很快就要用到它。</p>
+<div class="code-example"><code-example language="ts" format="">import { Directive, ElementRef, HostListener, Input } from &#39;@angular/core&#39;;
+</code-example></div><p>Then add two eventhandlers that respond when the mouse enters or leaves,
+each adorned by the <code>HostListener</code> decorator.</p>
+<p>然后使用<code>HostListener</code>装饰器添加两个事件处理器，它们会在鼠标进入或离开时进行响应。</p>
+<div class="code-example"><code-example language="ts" format="">  @HostListener(&#39;mouseenter&#39;) onMouseEnter() {
+    this.highlight(&#39;yellow&#39;);
+  }
+
+  @HostListener(&#39;mouseleave&#39;) onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+</code-example></div><p>The <code>@HostListener</code> decorator lets you subscribe to events of the DOM 
+element that hosts an attribute directive, the <code>&lt;p&gt;</code> in this case.</p>
+<p><code>@HostListener</code>装饰器引用属性型指令的宿主元素，在这个例子中就是<code>&lt;p&gt;</code>。</p>
+<div class="l-sub-section"><p>Of course you could reach into the DOM with standard JavaScript and and attach event listeners manually.
+There are at least three problems with <em>that</em> approach:</p>
+<p>当然，你可以通过标准的JavaScript方式手动给宿主 DOM 元素附加一个事件监听器。
+但这种方法至少有三个问题：</p>
+<ol>
+<li><p>You have to write the listeners correctly.</p>
+<p>必须正确的书写事件监听器。</p>
+</li>
+<li><p>The code must <em>detach</em> the listener when the directive is destroyed to avoid memory leaks.</p>
+<p>当指令被销毁的时候，必须<em>拆卸</em>事件监听器，否则会导致内存泄露。</p>
+</li>
+<li><p>Talking to DOM API directly isn&#39;t a best practice.</p>
+<p>必须直接和 DOM API 打交道，应该避免这样做。</p>
+</li>
+</ol>
+</div><p>The handlers delegate to a helper method that sets the color on the DOM element, <code>el</code>,
+which you declare and initialize in the constructor.</p>
+<p>这些处理器委托给了一个辅助方法，它用于为DOM元素设置颜色，<code>el</code>就是你在构造器中声明和初始化过的。</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts (constructor)</h4></header><code-example language="ts" format="">constructor(private el: ElementRef) { }
+</code-example></div><p>Here&#39;s the updated directive in full:</p>
+<p>下面是修改后的指令代码：</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts</h4></header><code-example language="ts" format="linenums">import { Directive, ElementRef, HostListener, Input } from &#39;@angular/core&#39;;
+
+@Directive({
+  selector: &#39;[myHighlight]&#39;
+})
+export class HighlightDirective {
+  constructor(private el: ElementRef) { }
+
+  @HostListener(&#39;mouseenter&#39;) onMouseEnter() {
+    this.highlight(&#39;yellow&#39;);
+  }
+
+  @HostListener(&#39;mouseleave&#39;) onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+</code-example></div><p>Run the app and confirm that the background color appears when the mouse hovers over the <code>p</code> and
+disappears as it moves out.We run the app and confirm that the background color appears as we move the mouse over the <code>p</code> and
+disappears as we move out.</p>
+<p>运行本应用并确认：当把鼠标移到<code>p</code>上的时候，背景色就出现了，而移开的时候，它消失了。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/attribute-directives/highlight-directive-anim.gif" alt="Second Highlight"></figure><div id="bindings" class="l-main-section"></div><h2 id="pass-values-into-the-directive-with-an-_-input_-data-binding">Pass values into the directive with an <em>@Input</em> data binding</h2>
+<h2 id="-">使用数据绑定向指令传递值</h2>
+<p>Currently the highlight color is hard-coded <em>within</em> the directive. That&#39;s inflexible.
+In this section, you give the developer the power to set the highlight color while applying the directive.</p>
+<p>现在的高亮颜色是硬编码在指令中的，这不够灵活。
+我们应该让指令的使用者可以在模板中通过绑定来设置颜色。</p>
+<p>Start by adding a <code>highlightColor</code> property to the directive class like this:</p>
+<p>我们先把<code>highlightColor</code>属性添加到指令类中，就像这样：</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts (highlightColor)</h4></header><code-example language="ts" format="">@Input() highlightColor: string;
+</code-example></div><a id="input"></a><h3 id="binding-to-an-_-input_-property">Binding to an <em>@Input</em> property</h3>
+<h3 id="-_-input_-">绑定到<em>@Input</em>属性</h3>
+<p>Notice the <code>@Input</code> decorator. It adds metadata to the class that makes the directive&#39;s <code>highlightColor</code> property available for binding.</p>
+<p>注意看<code>@Input</code>装饰器。它往类上添加了一些元数据，从而让该指令的<code>highlightColor</code>能用于绑定。</p>
+<p>It&#39;s called an <em>input</em> property because data flows from the binding expression <em>into</em> the directive.
+Without that input metadata, Angular rejects the binding; see <a href="#why-input" title="Why add @Input?">below</a> for more about that.</p>
+<p>它之所以称为<em>输入</em>属性，是因为数据流是从绑定表达式流向指令内部的。
+如果没有这个元数据，Angular就会拒绝绑定，参见<a href="#why-input" title="为什么要添加@Input?">稍后</a>了解更多。</p>
+<p>Try it by adding the following directive binding variations to the <code>AppComponent</code> template:</p>
+<p>试试把下列指令绑定变量添加到<code>AppComponent</code>的模板中：</p>
+<div class="code-example"><header><h4>src/app/app.component.html (excerpt)</h4></header><code-example language="html" format="">&lt;p myHighlight highlightColor=&quot;yellow&quot;&gt;Highlighted in yellow&lt;/p&gt;
+&lt;p myHighlight [highlightColor]=&quot;&#39;orange&#39;&quot;&gt;Highlighted in orange&lt;/p&gt;
+</code-example></div><p>Add a <code>color</code> property to the <code>AppComponent</code>.</p>
+<p>把<code>color</code>属性添加到<code>AppComponent</code>中：</p>
+<div class="code-example"><header><h4>src/app/app.component.ts (class)</h4></header><code-example language="ts" format="">export class AppComponent {
+  color = &#39;yellow&#39;;
+}
+</code-example></div><p>Let it control the highlight color with a property binding.</p>
+<p>让它通过属性绑定来控制高亮颜色。</p>
+<div class="code-example"><header><h4>src/app/app.component.html (excerpt)</h4></header><code-example language="html" format="">&lt;p myHighlight [highlightColor]=&quot;color&quot;&gt;Highlighted with parent component&#39;s color&lt;/p&gt;
+</code-example></div><p>That&#39;s good, but it would be nice to <em>simultaneously</em> apply the directive and set the color <em>in the same attribute</em> like this.</p>
+<p>很不错，但还可以更好。我们可以在应用该指令时在同一个属性中设置颜色，就像这样：</p>
+<div class="code-example"><code-example language="html" format="">&lt;p [myHighlight]=&quot;color&quot;&gt;Highlight me!&lt;/p&gt;
+</code-example></div><p>The <code>[myHighlight]</code> attribute binding both applies the highlighting directive to the <code>&lt;p&gt;</code> element
+and sets the directive&#39;s highlight color with a property binding.
+You&#39;re re-using the directive&#39;s attribute selector (<code>[myHighlight]</code>) to do both jobs.
+That&#39;s a crisp, compact syntax.</p>
+<p><code>[myHighlight]</code>属性同时做了两件事：把这个高亮指令应用到了<code>&lt;p&gt;</code>元素上，并且通过属性绑定设置了该指令的高亮颜色。
+我们复用了该指令的属性选择器<code>[myHighlight]</code>来同时完成它们。
+这是清爽、简约的语法。</p>
+<p>You&#39;ll have to rename the directive&#39;s <code>highlightColor</code> property to <code>myHighlight</code> because that&#39;s now the color property binding name.</p>
+<p>我们还要把该指令的<code>highlightColor</code>改名为<code>myHighlight</code>，因为它是颜色属性目前的绑定名。</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts (renamed to match directive selector)</h4></header><code-example language="ts" format="">@Input() myHighlight: string;
+</code-example></div><p>This is disagreeable. The word, <code>myHighlight</code>, is a terrible property name and it doesn&#39;t convey the property&#39;s intent.</p>
+<p>这可不好。因为<code>myHighlight</code>是一个糟糕的属性名，而且不能反映该属性的意图。</p>
+<a id="input-alias"></a><h3 id="bind-to-an-_-input_-alias">Bind to an <em>@Input</em> alias</h3>
+<h3 id="-_-input_-">绑定到<em>@Input</em>别名</h3>
+<p>Fortunately you can name the directive property whatever you want <em>and</em> <strong><em>alias it</em></strong> for binding purposes.</p>
+<p>幸运的是，我们可以随意命名该指令的属性，并且<strong>给它指定一个用于绑定的别名</strong>。</p>
+<p>Restore the original property name and specify the selector as the alias in the argument to <code>@Input</code>. </p>
+<p>恢复原始属性名，并在<code>@Input</code>的参数中把选择器<code>myHighlight</code>指定为别名。</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts (color property with alias)</h4></header><code-example language="ts" format="">@Input(&#39;myHighlight&#39;) highlightColor: string;
+</code-example></div><p><em>Inside</em> the directive the property is known as <code>highlightColor</code>.
+<em>Outside</em> the directive, where you bind to it, it&#39;s known as <code>myHighlight</code>.</p>
+<p>在指令内部，该属性叫<code>highlightColor</code>，在外部，当我们绑定到它时，它叫<code>myHighlight</code>。</p>
+<p>You get the best of both worlds: the property name you want and the binding syntax you want:</p>
+<p>这是最好的结果：理想的内部属性名，理想的绑定语法：</p>
+<div class="code-example"><code-example language="html" format="">&lt;p [myHighlight]=&quot;color&quot;&gt;Highlight me!&lt;/p&gt;
+</code-example></div><p>Now that you&#39;re binding to <code>highlightColor</code>, modify the <code>onMouseEnter()</code> method to use it. 
+If someone neglects to bind to <code>highlightColor</code>, highlight in red:</p>
+<p>现在，我们绑定到了<code>highlightColor</code>属性，并修改<code>onMouseEnter()</code>方法来使用它。
+如果有人忘了绑定到<code>highlightColor</code>，那就用红色进行高亮。</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts (mouse enter)</h4></header><code-example language="ts" format="">@HostListener(&#39;mouseenter&#39;) onMouseEnter() {
+  this.highlight(this.highlightColor || &#39;red&#39;);
+}
+</code-example></div><p>Here&#39;s the latest version of the directive class.</p>
+<p>这是最终版本的指令类。</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts (excerpt)</h4></header><code-example language="ts" format="">import { Directive, ElementRef, HostListener, Input } from &#39;@angular/core&#39;;
+
+@Directive({
+  selector: &#39;[myHighlight]&#39;
+})
+export class HighlightDirective {
+
+  constructor(private el: ElementRef) { }
+
+  @Input(&#39;myHighlight&#39;) highlightColor: string;
+
+  @HostListener(&#39;mouseenter&#39;) onMouseEnter() {
+    this.highlight(this.highlightColor || &#39;red&#39;);
+  }
+
+  @HostListener(&#39;mouseleave&#39;) onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+}
+</code-example></div><h2 id="write-a-harness-to-try-it">Write a harness to try it</h2>
+<h2 id="-">写个测试程序试验下</h2>
+<p>It may be difficult to imagine how this directive actually works.
+In this section, you&#39;ll turn <code>AppComponent</code> into a harness that
+lets you pick the highlight color with a radio button and bind your color choice to the directive.</p>
+<p>凭空想象该指令如何工作可不容易。
+在本节，我们将把<code>AppComponent</code>改成一个测试程序，它让你可以通过单选按钮来选取高亮颜色，并且把你选取的颜色绑定到指令中。</p>
+<p>Update <code>app.component.html</code> as follows:</p>
+<p>把<code>app.component.html</code>修改成这样：</p>
+<div class="code-example"><code-example language="html" format="">&lt;h1&gt;My First Attribute Directive&lt;/h1&gt;
+
+&lt;h4&gt;Pick a highlight color&lt;/h4&gt;
+&lt;div&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;colors&quot; (click)=&quot;color=&#39;lightgreen&#39;&quot;&gt;Green
+  &lt;input type=&quot;radio&quot; name=&quot;colors&quot; (click)=&quot;color=&#39;yellow&#39;&quot;&gt;Yellow
+  &lt;input type=&quot;radio&quot; name=&quot;colors&quot; (click)=&quot;color=&#39;cyan&#39;&quot;&gt;Cyan
+&lt;/div&gt;
+&lt;p [myHighlight]=&quot;color&quot;&gt;Highlight me!&lt;/p&gt;
+</code-example></div><p>Revise the <code>AppComponent.color</code> so that it has no initial value.</p>
+<p>修改<code>AppComponent.color</code>，让它不再有初始值。</p>
+<div class="code-example"><code-example language="ts" format="">export class AppComponent {
+  color: string;
+}
+</code-example></div><p>Here are the harness and directive in action.</p>
+<p>下面是测试程序和指令的动图。</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/attribute-directives/highlight-directive-v2-anim.gif" alt="Highlight v.2"></figure><div id="second-property" class="l-main-section"></div><h2 id="bind-to-a-second-property">Bind to a second property</h2>
+<h2 id="-">绑定到第二个属性</h2>
+<p>This highlight directive has a single customizable property. In a real app, it may need more.</p>
+<p>本例的指令只有一个可定制属性，真实的应用通常需要更多。</p>
+<p>At the moment, the default color&mdash;the color that prevails until
+the user picks a highlight color&mdash;is hard-coded as &quot;red&quot;.
+Let the template developer set the default color.</p>
+<p>目前，默认颜色（它在用户选取了高亮颜色之前一直有效）被硬编码为红色。我们要让模板的开发者也可以设置默认颜色。</p>
+<p>Add a second <strong>input</strong> property to <code>HighlightDirective</code> called <code>defaultColor</code>:</p>
+<p>把第二个名叫<code>defaultColor</code>的<strong>输入</strong>属性添加到<code>HighlightDirective</code>中：</p>
+<div class="code-example"><header><h4>src/app/highlight.directive.ts(defaultColor) (excerpt)</h4></header><code-example language="ts(defaultColor)" format="">出错的文件: ../../../_fragments/attribute-directives/ts/src/app/highlight.directive.ts(defaultColor).md   所在路径: docs,ts,latest,guide,attribute-directives 文档路径: ../../../</code-example></div><p>Revise the directive&#39;s <code>onMouseEnter</code> so that it first tries to highlight with the <code>highlightColor</code>,
+then with the <code>defaultColor</code>, and falls back to &quot;red&quot; if both properties are undefined.</p>
+<p>修改该指令的<code>onMouseEnter</code>，让它首先尝试使用<code>highlightColor</code>进行高亮，然后用<code>defaultColor</code>，如果它们都没有指定，那就用红色作为后备。</p>
+<div class="code-example"><code-example language="ts" format="">@HostListener(&#39;mouseenter&#39;) onMouseEnter() {
+  this.highlight(this.highlightColor || this.defaultColor || &#39;red&#39;);
+}
+</code-example></div><p>How do you bind to a second property when you&#39;re already binding to the <code>myHighlight</code> attribute name?</p>
+<p>当已经绑定过<code>myHighlight</code>属性时，要如何绑定到第二个属性呢？</p>
+<p>As with components, you can add as many directive property bindings as you need by stringing them along in the template.
+The developer should be able to write the following template HTML to both bind to the <code>AppComponent.color</code>
+and fall back to &quot;violet&quot; as the default color.</p>
+<p>像组件一样，你也可以绑定到指令的很多属性，只要把它们依次写在模板中就行了。
+开发者可以绑定到<code>AppComponent.color</code>，并且用紫罗兰色作为默认颜色，代码如下：</p>
+<div class="code-example"><code-example language="html" format="">&lt;p [myHighlight]=&quot;color&quot; defaultColor=&quot;violet&quot;&gt;
+  Highlight me too!
+&lt;/p&gt;
+</code-example></div><p>Angular knows that the <code>defaultColor</code> binding belongs to the <code>HighlightDirective</code>
+because you made it <em>public</em> with the <code>@Input</code> decorator.</p>
+<p>Angular之所以知道<code>defaultColor</code>绑定属于<code>HighlightDirective</code>，是因为我们已经通过<code>@Input</code>装饰器把它设置成了<em>公共</em>属性。</p>
+<p>Here&#39;s how the harness should work when you&#39;re done coding.</p>
+<p>当这些代码完成时，测试程序工作时的动图如下：</p>
+<figure class="image-display"><img src="../../../../resources/images/devguide/attribute-directives/highlight-directive-final-anim.gif" alt="Final Highlight"></figure><div class="l-main-section"></div><h2 id="summary">Summary</h2>
+<h2 id="-">总结</h2>
+<p>This page covered how to:</p>
+<p>本章介绍了如何：</p>
+<ul>
+<li><p><a href="#write-directive">Build an <strong>attribute directive</strong></a> that modifies the behavior of an element.</p>
+<p><a href="#write-directive">构建一个<strong>属性型指令</strong></a>，它用于修改一个元素的行为。</p>
+</li>
+<li><p><a href="#apply-directive">Apply the directive</a> to an element in a template.</p>
+<p><a href="#apply-directive">把一个指令应用到</a>模板中的某个元素上。</p>
+</li>
+<li><p><a href="#respond-to-user">Respond to <strong>events</strong></a> that change the directive&#39;s behavior.</p>
+<p><a href="#respond-to-user">响应<strong>事件</strong></a>以改变指令的行为。</p>
+</li>
+<li><p><a href="#bindings"><strong>Bind</strong> values to the directive</a>.</p>
+<p><a href="#bindings">把值<strong>绑定</strong>到指令中</a>。</p>
+</li>
+</ul>
+<p>The final source code follows:</p>
+<p>最终的源码如下：</p>
+<code-tabs><code-pane language="ts" name="app/app.component.ts" format="linenums">import { Component } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;my-app&#39;,
+  templateUrl: &#39;./app.component.html&#39;
+})
+export class AppComponent {
+  color: string;
+}
+</code-pane><code-pane language="html" name="app/app.component.html" format="linenums">&lt;h1&gt;My First Attribute Directive&lt;/h1&gt;
+
+&lt;h4&gt;Pick a highlight color&lt;/h4&gt;
+&lt;div&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;colors&quot; (click)=&quot;color=&#39;lightgreen&#39;&quot;&gt;Green
+  &lt;input type=&quot;radio&quot; name=&quot;colors&quot; (click)=&quot;color=&#39;yellow&#39;&quot;&gt;Yellow
+  &lt;input type=&quot;radio&quot; name=&quot;colors&quot; (click)=&quot;color=&#39;cyan&#39;&quot;&gt;Cyan
+&lt;/div&gt;
+&lt;p [myHighlight]=&quot;color&quot;&gt;Highlight me!&lt;/p&gt;
+
+&lt;p [myHighlight]=&quot;color&quot; defaultColor=&quot;violet&quot;&gt;
+  Highlight me too!
+&lt;/p&gt;
+</code-pane><code-pane language="ts" name="app/highlight.directive.ts" format="linenums">import { Directive, ElementRef, HostListener, Input } from &#39;@angular/core&#39;;
+
+@Directive({
+  selector: &#39;[myHighlight]&#39;
+})
+export class HighlightDirective {
+
+  constructor(private el: ElementRef) { }
+
+  @Input() defaultColor: string;
+
+  @Input(&#39;myHighlight&#39;) highlightColor: string;
+
+  @HostListener(&#39;mouseenter&#39;) onMouseEnter() {
+    this.highlight(this.highlightColor || this.defaultColor || &#39;red&#39;);
+  }
+
+  @HostListener(&#39;mouseleave&#39;) onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+}
+</code-pane><code-pane language="ts" name="app/app.module.ts" format="linenums">import { NgModule } from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+
+import { AppComponent } from &#39;./app.component&#39;;
+import { HighlightDirective } from &#39;./highlight.directive&#39;;
+
+@NgModule({
+  imports: [ BrowserModule ],
+  declarations: [
+    AppComponent,
+    HighlightDirective
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code-pane><code-pane language="ts" name="main.ts" format="linenums">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import { AppModule } from &#39;./app/app.module&#39;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+</code-pane><code-pane language="html
+  " name="index.html" format="linenums">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Attribute Directives&lt;/title&gt;
+    &lt;base href=&quot;/&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;node_modules/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;node_modules/zone.js/dist/zone.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;node_modules/systemjs/dist/system.src.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import(&#39;main.js&#39;).catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;my-app&gt;loading...&lt;/my-app&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code-pane></code-tabs><p>You can also experience and download the <live-example title="Attribute Directive example"></live-example>.</p>
+<p>你还可以体验和下载<live-example title="属性型指令范例"></live-example>.</p>
+<div id="why-input" class="l-main-section"></div><h3 id="appendix-why-add-_-input_-">Appendix: Why add <em>@Input</em>?</h3>
+<h3 id="-input-">附录：为什么要加<em>@Input</em>？</h3>
+<p>In this demo, the <code>hightlightColor</code> property is an <strong><em>input</em></strong> property of
+the <code>HighlightDirective</code>. You&#39;ve seen it applied without an alias:</p>
+<p>在这个例子中<code>hightlightColor</code>是<code>HighlightDirective</code>的一个<strong><em>输入型</em></strong>属性。我们见过它没有用别名时的代码：</p>
+<div class="code-example"><code-example language="ts" format="">@Input() highlightColor: string;
+</code-example></div><p>You&#39;ve seen it with an alias:</p>
+<p>也见过用别名时的代码：</p>
+<div class="code-example"><code-example language="ts" format="">@Input(&#39;myHighlight&#39;) highlightColor: string;
+</code-example></div><p>Either way, the <code>@Input</code> decorator tells Angular that this property is
+<em>public</em> and available for binding by a parent component.
+Without  <code>@Input</code>, Angular refuses to bind to the property.</p>
+<p>无论哪种方式，<code>@Input</code>装饰器都告诉Angular，该属性是<em>公共的</em>，并且能被父组件绑定。
+如果没有<code>@Input</code>，Angular就会拒绝绑定到该属性。</p>
+<p>You&#39;ve bound template HTML to component properties before and never used <code>@Input</code>.
+What&#39;s different?</p>
+<p>但我们以前也曾经把模板HTML绑定到组件的属性，而且从来没有用过<code>@Input</code>。
+差异何在？</p>
+<p>The difference is a matter of trust.
+Angular treats a component&#39;s template as <em>belonging</em> to the component.
+The component and its template trust each other implicitly.
+Therefore, the component&#39;s own template may bind to <em>any</em> property of that component,
+with or without the <code>@Input</code> decorator.</p>
+<p>差异在于信任度不同。
+Angular把组件的模板看做<em>从属于</em>该组件的。
+组件和它的模板默认会相互信任。
+这也就是意味着，组件自己的模板可以绑定到组件的<em>任意</em>属性，无论是否使用了<code>@Input</code>装饰器。</p>
+<p>But a component or directive shouldn&#39;t blindly trust <em>other</em> components and directives.
+The properties of a component or directive are hidden from binding by default.
+They are <em>private</em> from an Angular binding perspective.
+When adorned with the <code>@Input</code> decorator, the property becomes <em>public</em> from an Angular binding perspective.
+Only then can it be bound by some other component or directive.</p>
+<p>但组件或指令不应该盲目的信任其它组件或指令。
+因此组件或指令的属性默认是不能被绑定的。
+从Angular绑定机制的角度来看，它们是<em>私有</em>的，而当添加了<code>@Input</code>时，它们变成了<em>公共</em>的
+只有这样，它们才能被其它组件或属性绑定。</p>
+<p>You can tell if <code>@Input</code> is needed by the position of the property name in a binding.</p>
+<p>你可以根据属性名在绑定中出现的位置来判定是否要加<code>@Input</code>。</p>
+<ul>
+<li><p>When it appears in the template expression to the <strong><em>right</em></strong> of the equals (=),
+it belongs to the template&#39;s component and does not require the <code>@Input</code> decorator.</p>
+<p>当它出现在等号<strong><em>右侧</em></strong>的模板表达式中时，它属于模板所在的组件，不需要<code>@Input</code>装饰器。</p>
+</li>
+<li><p>When it appears in <strong>square brackets</strong> ([ ]) to the <strong>left</strong> of the equals (=),
+the property belongs to some <em>other</em> component or directive;
+that property must be adorned with the <code>@Input</code> decorator.</p>
+<p>当它出现在等号<strong>左边</strong>的<strong>方括号（[ ]）</strong>中时，该属性属于<em>其它</em>组件或指令，它必须带有<code>@Input</code> 装饰器。</p>
+</li>
+</ul>
+<p>Now apply that reasoning to the following example:</p>
+<p>试用此原理分析下列范例：</p>
+<div class="code-example"><code-example language="html" format="">&lt;p [myHighlight]=&quot;color&quot;&gt;Highlight me!&lt;/p&gt;
+</code-example></div><ul>
+<li><p>The <code>color</code> property in the expression on the right belongs to the template&#39;s component.
+The template and its component trust each other.
+The <code>color</code> property doesn&#39;t require the <code>@Input</code> decorator.</p>
+<p><code>color</code>属性位于右侧的绑定表达式中，它属于模板所在的组件。
+  该模板和组件相互信任。因此<code>color</code>不需要<code>@Input</code>装饰器。</p>
+</li>
+<li><p>The <code>myHighlight</code> property on the left refers to an <em>aliased</em> property of the <code>HighlightDirective</code>,
+not a property of the template&#39;s component. There are trust issues.
+Therefore, the directive property must carry the <code>@Input</code> decorator.</p>
+<p><code>myHighlight</code>属性位于左侧，它引用了<code>MyHighlightDirective</code>中一个<em>带别名的</em>属性，它不是模板所属组件的一部分，因此存在信任问题。
+所以，该属性必须带<code>@Input</code>装饰器。</p>
+</li>
+</ul><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/attribute-directives.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:55:29 GMT -->
+</html>

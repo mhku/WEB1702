@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>绘制文本</h3>
+  <canvas id="c11" width="500" height="400"></canvas>
+  <script>
+    var ctx = c11.getContext('2d');
+
+    var txt = '达内科技2017';
+    ctx.font = '30px SimHei';
+    ctx.textBaseline = 'top';
+
+    //左上角
+    ctx.strokeText(txt, 0, 0);
+
+    //右上角
+    var w = ctx.measureText(txt).width;
+    ctx.strokeText(txt, 500-w, 0);
+
+    //左下角
+    ctx.fillText(txt, 0, 400-30);
+    //右下角
+    ctx.fillText(txt, 500-w, 400-30);
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>清除一个矩形</h3>
+  <canvas id="c4" width="500" height="400"></canvas>
+  <script>
+    var ctx = c4.getContext('2d');
+
+    //填充一个淡绿的背景
+    ctx.fillStyle = '#afa';
+    ctx.fillRect(0, 0, 500, 400);
+
+    //扣除一个矩形
+    ctx.clearRect( 50, 50,  100, 80);
+    ctx.clearRect( 250, 50,  100, 80);
+
+    ctx.strokeRect(50, 300, 100, 80);
+    ctx.lineWidth = 5;
+    ctx.strokeRect(250, 300, 100, 80);
+    console.dir(ctx);
+  </script>
+</body>
+</html>

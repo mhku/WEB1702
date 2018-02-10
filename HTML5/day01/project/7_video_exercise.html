@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    #container {
+      position: relative;
+    }
+    #btn {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -32px;
+      margin-top: -32px;
+      cursor: pointer;
+    }
+    #ad {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -100px;
+      margin-top: -75px;
+    }
+  </style>
+</head>
+<body>
+<h3>练习：H5中的视频播放</h3>
+
+<div id="container">
+  <video src="res/birds.mp4" id="v7"></video>
+  <img src="img/3.jpg" id="ad">
+  <img src="img/play.png" id="btn"/>
+</div>
+<script>
+  //点击btn则播放/暂停视频
+  btn.onclick = function(){
+    if(v7.paused){    //视频当前处于暂停状态
+      v7.play();
+      btn.src = 'img/pause.png';
+    }else {           //视频当前处于播放状态
+      v7.pause();
+      btn.src = 'img/play.png';
+    }
+  }
+  //鼠标进入#container则显示按钮，移除则隐藏
+  container.onmouseenter = function(){
+    btn.style.display = 'block';
+  }
+  container.onmouseleave = function(){
+    btn.style.display = 'none';
+  }
+  //视频一播放就隐藏广告，一暂停就显示广告
+  v7.onplay = function(){
+    ad.style.display = 'none';
+  }
+  v7.onpause = function(){
+    ad.style.display = 'block';
+  }
+</script>
+</body>
+</html>

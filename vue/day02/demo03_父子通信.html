@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/vue.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example">
+  {{msg}}
+  <parent></parent>
+</div>
+<!--父组件的模板内容-->
+<script type="text/x-template" id="parentTpl">
+  <div>
+    <h1>这是父组件</h1>
+    <button @click="checkSon">查看儿子在干嘛</button>
+    <hr/>
+    <son ref="mySon"></son>
+  </div>
+</script>
+
+<!--子组件的模板内容-->
+<script type="text/x-template" id="sonTpl">
+  <div>
+    <h1>这是子组件</h1>
+    <button @click="checkFather">查看老爹在干嘛</button>
+  </div>
+</script>
+
+
+<script>
+
+  //父组件
+  Vue.component('parent', {
+    template: '#parentTpl',
+    data: function () {
+        return{
+          nowDoing:'钓鱼...'
+        }
+    },
+    methods: {
+      checkSon: function () {
+        //通过$refs找到子组件,读取属性或者调用方法
+        console.log(this.$refs.mySon.nowDoing);
+      },
+      toFather: function (msg) {
+        console.log('父组件接收到子组件传来的数据为'+msg);
+      }
+    }
+  })
+  //子组件
+  Vue.component('son', {
+    template: '#sonTpl',
+    data: function () {
+        return {
+          nowDoing:'正在健身'
+        }
+    },
+    methods: {
+      checkFather: function () {
+        //子组件如何调用父组件中的数据
+        console.log(this.$parent.nowDoing);
+        //子组件通过调用父组件中的方法进行传值
+        this.$parent.toFather('回家吃饭把');
+      }
+    }
+  })
+
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'hello world'
+    }
+  })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>绘制文本</h3>
+  <canvas id="c11" width="500" height="400"></canvas>
+  <script>
+    var ctx = c11.getContext('2d');
+
+    var txt = '达内科技2017';
+    ctx.font = '60px SimHei';
+    ctx.textBaseline = 'top';
+    ctx.strokeStyle = '#f00';
+
+    var w = ctx.measureText(txt).width;
+    var x = -w;
+    var y = 0;
+    setInterval(function(){
+      //清除已有内容
+      ctx.clearRect(0,0, 500, 400);
+      //重新绘制文本
+      ctx.strokeText(txt, x, y);
+      x += 10;
+      if(x>=500){   //文本已到最右侧
+        x = -w;
+      }
+    }, 50)
+
+  </script>
+</body>
+</html>

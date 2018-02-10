@@ -1,0 +1,116 @@
+
+一、组件通信
+
+props down ,events up.
+
+1、父与子的数据传递：通过属性
+①在子组件指定props，对应的值是数组，数组中的字符串就是将来从父组件传递过来的属性名称
+Vue.component('son',{
+	props:['name']
+})
+
+②在父组件调用子组件 指定属性
+
+Vue.component('father',{
+	template:` <son name='zhangsan'></son> `
+})
+
+③在子组件使用传递过来的属性的值
+和data属性定义的变量用法是一致
+
+Vue.component('son',{
+	props:['name'],
+	template:' <h1>{{this.name}}</h1>'
+})
+
+
+2、子与父通信 
+通过事件
+①给子组件绑定事件
+Vue.component('father',{
+	template:` <son @msgTF="revMsg"></son> `,
+	methods:{
+		revMsg:function(msg){
+			//msg就是在子组件传递来的值
+		}
+	}
+})
+
+
+②在子组件中触发事件
+this.$emit('msgTF','123');
+
+
+3、父子通信
+父与子通信 $refs
+子与父通信 $parent
+
+用法： 通过$parent找到父组件
+Vue.component('parent',{
+	template:' <son></son> '
+})
+
+Vue.component('son',{
+	template:' <button @click="handleClick">
+	</button>'
+	methods:{
+		handleClick:function(){
+			//与父组件通信
+			this.$parent.属性或者方法
+		}
+	}
+})
+
+
+用法： 通过$refs找到子组件
+Vue.component('parent',{
+	template:`<div> 
+							<son ref='mySon'></son>
+							<button @click="handleClick">
+							</button>
+						</div>`
+  methods:{
+		handleClick:function(){
+			this.$refs.mySon.属性或者方法
+		}
+	}
+})
+
+Vue.component('son',{
+	template:' <button>	</button>'
+	data:function(){
+		return {
+			msg:'你好'
+		}
+	}
+})
+
+
+4、兄弟组件通信
+有很多种方案，比如通过共同的父组件；
+
+可以事件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+二、路由
+
+
+
+三、网络请求

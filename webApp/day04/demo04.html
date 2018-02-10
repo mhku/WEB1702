@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/ionic.css"/>
+    <script src="js/ionic.bundle.js"></script>
+</head>
+<body>
+<ion-header-bar>
+    <h1 class="title">header</h1>
+</ion-header-bar>
+<ion-content>
+    <ui-view>
+
+    </ui-view>
+</ion-content>
+<ion-footer-bar>
+    <h1 class="title">footer</h1>
+</ion-footer-bar>
+</body>
+<script>
+    var app = angular.module('myApp', ['ionic']);
+    app.config(
+            function ($stateProvider, $urlRouterProvider) {
+                //添加状态
+                $stateProvider
+                        .state('login', {
+                            url: '/myLogin',
+                            templateUrl: 'tpl/myLogin.html'
+                        })
+                        .state('mail', {
+                            url:'/myMail',
+                            templateUrl:'tpl/myMain.html'
+                        })
+//                        .state('mail.inbox', {
+//                            url:'/inbox',
+//                            templateUrl:'tpl/inbox.html'
+//                        })
+//                        .state('mail.outbox', {
+//                            url:'/outbox',
+//                            templateUrl:'tpl/outbox.html'
+//                        })
+                        .state('inbox', {
+                            url:'/inbox',
+                            templateUrl:'tpl/inbox.html',
+                            parent:"mail"
+                        })
+                        .state('outbox', {
+                            url:'/outbox',
+                            templateUrl:'tpl/outbox.html',
+                            parent:"mail"
+                        })
+                //处理异常
+                $urlRouterProvider.otherwise('/myLogin');
+            })
+
+    //创建父控制器
+    app.controller('parentCtrl',['$scope','$state',
+        function ($scope,$state) {
+
+        }
+    ])
+</script>
+
+</html>

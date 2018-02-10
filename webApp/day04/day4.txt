@@ -1,0 +1,102 @@
+一、ngRoute知识点回顾
+1、使用ngRoute创建SPA基本步骤
+①引入angular-route.js 创建模块指定依赖ngRoute
+②指定容器 ngView
+③创建代码片段
+④配置路由词典
+app.config(function($routeProvider){
+	$routeProvider
+		.when('/myStart',{
+			templateUrl:'',
+			controller:''
+		})
+		.otherwise({redirectTo:'/myStart'})
+})
+
+
+2、如何跳转
+js:$location.path()
+a <a href='#/myStart'/>
+直接修改地址栏
+
+3、如何传参
+①发送 接收方
+②配置接收方的路由
+
+when('/myStart',{})
+-->
+when('/myStart/:id',{})
+③接收参数 $routeParams
+④发送参数
+
+二、uiRouter用法
+uiRouter帮助我们在ng、react项目中充当路由管理库，
+实现SPA。
+最大的特点是可以实现嵌套路由。
+
+1、使用uiRouter创建SPA的基本步骤
+①引入angular-ui-router.js 并在创建模块时指定依赖ui.router模块
+注意事项：在ionic模块中已经指定过依赖ui.router模块，在ionic的项目中直接指定依赖于ionic就可以使用uiRouter。
+
+②uiView 指定盛放代码片段的容器
+③创建代码片段
+④配置状态机
+app.config(function($stateProvider,$urlRouterProvider){
+//添加状态
+	$stateProvider
+		.state('状态名字',{
+			url:'/**'，
+			templateUrl:'',
+			controller:''
+		})
+	//处理异常
+	$urlRouterProvider.otherwise('某状态对应的url')
+})
+
+2、跳转的方式
+直接修改地址栏
+js:  $state.go('状态名字')
+属性：<any ui-sref="状态名字"></any>
+a <a href='#url'/>
+
+3、传参
+①发送 接收
+②配置接收方state对应的url
+③接收参数
+$stateParams
+④发送参数
+
+从send跳转到pay并传递价格40.
+①发送：send 接收方pay
+②配置接收方对应的url
+.state('kflPay',{
+	url:'/pay',
+	templateUrl:'tpl/pay.html'
+})
+-->
+.state('kflPay',{
+	url:'/pay/:price',
+	templateUrl:'tpl/pay.html'
+})
+③接收参数
+$stateParams.price
+④发送参数
+http://127.0.0.1/index.html#/pay/20
+$state.go('kflPay',{price:40})
+<any ui-sref='kflPay({price:40})'>
+a href='#/pay/40'
+
+注意事项：通过js或者uiSref属性传参时，参数的key要和配置状态机中url的变量名称要保持一致
+url:'/pay/:price' --> {price:40}
+
+
+练习：（11:10 - 11:25）
+实现SPA
+代码片段：login register start
+login： 按钮（没有账号，去注册）--> 注册
+        按钮（登录 js的方式跳转并传参） 传参id=10--》start
+
+start： 接收到参数并显示在视图 
+				a 点击退出登录 ---》 login
+
+register：按钮--》跳转到login

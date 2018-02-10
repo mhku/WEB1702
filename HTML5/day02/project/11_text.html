@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>绘制文本</h3>
+  <canvas id="c11" width="500" height="400"></canvas>
+  <script>
+    var ctx = c11.getContext('2d');
+
+    var txt = 'abgyj中国123';
+    ctx.font = '30px SimHei';
+    ctx.textBaseline = 'top';
+    //ctx.fillText(txt, 0, 0);
+    ctx.strokeText(txt, 0, 0);
+
+
+    console.log( ctx.measureText(txt) )
+  </script>
+</body>
+</html>

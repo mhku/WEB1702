@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var LabelComponent = React.createClass({
+    render:function(){
+      return <label>{this.props.labelName}</label>
+    }
+  })
+  
+  var InputComponent = React.createClass({
+    render:function(){
+      return <input type="text"
+       placeholder={this.props.tips}/>
+    }
+  })
+
+  var ButtonComponent = React.createClass({
+    render:function(){
+      return <button>{this.props.btnName}</button>
+    }
+  })
+
+  var LoginWindow = React.createClass({
+    render:function(){
+      return <div>
+      <LabelComponent labelName='用户名'>
+      </LabelComponent>
+      <InputComponent tips="请输入用户名">
+      </InputComponent>
+      <br/>
+      <LabelComponent labelName='密码'>
+      </LabelComponent>
+      <InputComponent tips="请输入密码">
+      </InputComponent>
+      <br/>
+      <ButtonComponent btnName="登录">
+      </ButtonComponent>
+      <ButtonComponent btnName="注册">
+      </ButtonComponent>
+    </div>
+  }
+  })
+  
+
+  ReactDOM.render(
+    <LoginWindow></LoginWindow>,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

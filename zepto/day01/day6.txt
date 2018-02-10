@@ -1,0 +1,109 @@
+ionic2升级版：
+https://github.com/kunyashaw/ionic2ExamplesV2
+
+
+一、Zepto概述
+zeptojs.com
+http://github.e-sites.nl/zeptobuilder/
+
+1、what
+轻量的针对现代高级浏览器的js库，与jQuery有着类似的api，可以让使用过jQuery的程序员把精力放到开发
+
+2、why
+ionic适合中大型，zepto可以帮助实现简单的移动端的应用程序
+①轻量
+②低廉的学习成本
+③支持现代高级浏览器，满足移动端浏览器的需求
+
+3、where
+移动端DOM操作比较频繁的的app
+
+4、how
+直接引入zepto.js文件到工程中
+
+
+二、使用zeptojs
+1、核心模块 (zepto)
+①工具类方法
+each/map/trim/parseJson...
+
+②操作节点
+
+选择器:标签、id、class、属性、父子、后代
+selector.js 模块中还支持一些其他的选择器
+
+添加
+insertAfter insertBefore
+append appendTo 
+prepend prependTo
+
+删除
+remove removeClass
+
+修改
+html/css/addClass/toggleClass
+
+
+//查找兄弟、子、父、祖先。。
+prev next children parent parents
+
+
+2、detect模块
+$.os  记录操作系统相关的信息
+Object {android: true, version: "4.4.2", tablet: false, phone: true}
+
+$.browser 记录浏览器相关的信息
+Object {webkit: true, version: "55.0.2883.75", chrome: true}
+
+
+3、event模块
+on/off/one/trigger
+
+练习：
+计数器：点击button1按钮(on)，数字自增，从0开始，当数值超过5的时候，提示：再点击就解绑了（off），再点击，只提示一次“已经解绑了” (one);
+
+自定义事件以及触发。
+给button2添加一个自定义事件customCLick（处理函数：在控制台输出一句话）,当button被加载时，自动触发该事件
+
+
+4、Ajax模块
+
+$.ajax/$.get/$.post/$.param
+
+练习：请求方式为post
+var user = {name:'zhangSan'};
+服务器解析传过来的name，返回Hello zhangsan。
+
+注意:apache 端口
+
+5、form
+serialize()/serializeArray()/submit()
+
+序列化 指定submit事件触发时对应的处理函数
+
+注意：
+①form必须指定name属性
+②复选框/单选框 没有值，序列化会的结果会略过该值
+
+
+6、touch
+提供了移动端触控相关的事件支持
+①tap
+tap/longtap/doubletap
+②swipe
+swipe/swipeLeft/swipeRight/swipeUp/swipeDown
+
+7、fx 动画模块
+
+封装好的方法：
+fadeIn fadeOut fadeTo fadeToggle
+show hide toggle
+
+animate();
+
+
+
+
+
+
+

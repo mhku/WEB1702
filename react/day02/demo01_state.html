@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var SwitchComponent =
+  React.createClass({
+    getInitialState:function(){
+      //初始化状态
+      return {switchValue:true}
+    },
+    handleClick:function(){
+      //修改状态
+      this.setState(
+        {switchValue:!this.state.switchValue},
+        function(){
+          console.log(this.state.switchValue);
+        }
+      );
+    },
+    render:function(){
+      return <button onClick={this.handleClick} >
+        {"开关状态"+this.state.switchValue}
+        </button>
+    }
+  })
+  ReactDOM.render(
+    <SwitchComponent></SwitchComponent>,
+    document.getElementById('example')
+  )
+
+</script>
+
+</body>
+</html>

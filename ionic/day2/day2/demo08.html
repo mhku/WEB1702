@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/ionic.css"/>
+    <script src="js/ionic.bundle.js"></script>
+</head>
+<body>
+<ion-header-bar>
+    <h1 class="title">header</h1>
+</ion-header-bar>
+<ion-content>
+    <div class="list list-inset">
+        <label for="" class="item item-input">
+            <span class="input-label">姓名</span>
+            <input type="text"/>
+        </label>
+        <label for="" class="item item-input">
+            <span class="input-label">年龄</span>
+            <input type="text"/>
+        </label>
+    </div>
+    <!--方式三-->
+    <div class="list list-inset">
+        <label for="" class="item item-input item-stacked-label">
+            <span class="input-label">姓名</span>
+            <input type="text" placeholder="请输入用户名"/>
+        </label>
+        <label for="" class="item item-input item-stacked-label">
+            <span class="input-label">年龄</span>
+            <input type="text" placeholder="请输入年龄"/>
+        </label>
+    </div>
+   <!--方式四-->
+    <div class="list list-inset">
+        <label for="" class="item item-input item-floating-label">
+            <span class="input-label">姓名</span>
+            <input type="text" placeholder="请输入用户名"/>
+        </label>
+        <label for="" class="item item-input item-floating-label">
+            <span class="input-label">年龄</span>
+            <input type="text" placeholder="请输入年龄"/>
+        </label>
+    </div>
+</ion-content>
+<ion-footer-bar>
+    <h1 class="title">footer</h1>
+</ion-footer-bar>
+</body>
+<script>
+    var app = angular.module('myApp', ['ionic']);
+</script>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="en" ng-app="angularIOApp" itemscope itemtype="http://schema.org/Framework"><!-- template: public/docs/_layout-->
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/appmodule.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:54:55 GMT -->
+<head><title>AppModule: 根模块 - ts - GUIDE</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta name="keywords" content="Angular, 中文, 中文版, AngularJS, AngularDart, Javscript, Dart, Framework, JavaScript MVC, Google"/><meta name="robots" content="all"/><meta name="referrer" content="origin"/><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"/><meta property="og:title" content="Angular"/><meta property="og:image" content="../../../../resources/images/logos/standard/shield-large.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="184"/><meta property="og:image:height" content="200"/><meta property="og:description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="name" content="Angular"/><meta itemprop="description" content="Angular是用于构建移动应用和桌面Web应用的开发平台"/><meta itemprop="image" content="../../../../resources/images/logos/standard/shield-large.png"/><link rel="icon" type="image/x-icon" href="../../../../resources/images/icons/favicon.ico"/><link rel="stylesheet" href="../../../../resources/css/vendor/angular-material.min.css"/><link href="../../../../resources/fonts/vendor/roboto.css" rel="stylesheet" type="text/css"/><link href="../../../../resources/fonts/vendor/material-icons.css" rel="stylesheet"/><link rel="stylesheet" href="../../../../resources/css/vendor/icomoon/style.css"/><link rel="stylesheet" href="../../../../resources/css/vendor/animate.css"/><link rel="stylesheet" href="../../../../resources/css/main.css"/><!-- MOBILE ICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../resources/images/favicons/apple-touch-icon-57x57.html">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../resources/images/favicons/apple-touch-icon-60x60.html">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../resources/images/favicons/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../resources/images/favicons/apple-touch-icon-76x76.html">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../resources/images/favicons/apple-touch-icon-114x114.html">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../resources/images/favicons/apple-touch-icon-120x120.html">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../resources/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../resources/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../resources/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/android-chrome-192x192.html" sizes="192x192">
+<link rel="icon" type="image/png" href="../../../../resources/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../../../resources/images/favicons/manifest.json"></head><body ng-controller="AppCtrl as appCtrl" class="l-offset-nav l-offset-side-nav"><nav data-swiftype-index="false" scroll-y-offset-element="scroll-y-offset-element" class="main-nav l-pinned-top l-layer-5"><h1><a href="../../../../index.html" md-button>Angular <sup>by Google</sup></a></h1><button aria-label="查看菜单" ng-click="appCtrl.toggleMainMenu($event)" md-button="md-button" class="main-nav-button main-nav-mobile-trigger l-right">网站菜单 <span class="icon icon-arrow-drop-down"></span></button><ul ng-class="appCtrl.showMainNav ? 'is-visible' : ''"><li class="l-left"><a class="main-nav-button" href="../../../../features.html" md-button>特性</a></li><li class="l-left"><a class="main-nav-button" href="../index.html" md-button>文档</a></li><li class="l-left"><a class="main-nav-button" href="../../../../events.html" md-button>会议</a></li><li class="l-left"><a href="http://community.angular.cn/" target="_blank" md-button="md-button" class="main-nav-button">社区</a></li><li class="l-left"><a class="main-nav-button" href="../../../../translate/cn/home.html" md-button>关于中文版</a></li><li class="l-right"><a class="main-nav-button" href="../quickstart.html" md-button>立即开始！</a></li><li class="l-right"><a ng-click="appCtrl.toggleSource($event)" href="href.html" class="main-nav-button md-button ng-cloak"><span>{{appCtrl.sourceVisible?'Hide English':'Show English'}}</span></a></li></ul></nav><!-- Include this file ONLY when current.path[2] is defined--><nav data-swiftype-index="false" ng-class="appCtrl.showDocsNav ? 'is-visible' : ''" class="sidenav l-pinned-left l-layer-4 l-offset-nav"><!-- SEARCH BAR--><header class="sidenav-search st-input-wrapper"><div class="st-input-inner"><label for="search-io" class="is-hidden">搜索文档</label><input type="text" placeholder="搜索文档..." class="st-default-search-input"/></div><button aria-label="View Docs Menu" ng-click="appCtrl.toggleDocsMenu($event)" md-button="md-button" class="mobile-trigger button">文档 <span class="icon icon-arrow-drop-down"></span></button></header><ul class="sidenav-links"><li class="sidenav-section no-border"><a href="../index.html" class="nav-title">文档首页</a></li><!-- CORE DOCUMENTATION--><li class="sidenav-section-divider"><h3>核心文档</h3></li><li class="sidenav-section"><a href="../quickstart.html" title="快速起步" class="nav-title ">快速起步</a></li><li class="sidenav-section"><a href="../cli-quickstart.html" title="使用 CLI 快速构建 Angular 应用" class="nav-title ">CLI 快速起步</a></li><li class="sidenav-section"><a href="index.html" title="如何阅读本文档" class="nav-title is-parent is-selected">开发指南<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists"><ul><li class="nav-list-item "><a href="index.html" title="如何阅读本文档">1. 概览</a></li><li class="nav-list-item "><a href="setup.html" title="安装 Angular 《快速起步》种子，更快更有效地在本地开发应用">2. 开发环境</a></li><li class="nav-list-item "><a href="learning-angular.html" title="Angular 初学者的推荐学习路径">3. 学习 Angular</a></li><li class="nav-list-item "><a href="architecture.html" title="Angular 应用的基本构造块">4. 架构</a></li><li class="nav-list-item is-selected"><a href="appmodule.html" title="如何在根 &quot;AppModule&quot; 中构建和启动应用。">5. 根模块</a></li><li class="nav-list-item "><a href="displaying-data.html" title="属性绑定机制把数据显示到用户界面上。">6. 显示数据</a></li><li class="nav-list-item "><a href="user-input.html" title="用户输入触发 DOM 事件。我们通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。">7. 用户输入</a></li><li class="nav-list-item "><a href="forms.html" title="表单创建一个有机、有效、引人注目的数据输入体验。Angular 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，并且显示错误信息。">8. 表单</a></li><li class="nav-list-item "><a href="dependency-injection.html" title="Angular 的依赖注入系统能够即时地创建和交付所依赖的服务。">9. 依赖注入</a></li><li class="nav-list-item "><a href="template-syntax.html" title="学习如何写模板来显示数据，以及在数据绑定的帮助下响应用户事件。">10. 模板语法</a></li><li class="nav-list-item "><a href="cheatsheet.html" title="速查表">11. 速查表</a></li><li class="nav-list-item "><a href="style-guide.html" title="如何写 Angular 风格的程序">12. 风格指南</a></li><li class="nav-list-item "><a href="glossary.html" title="Angular 中最重要的词汇的简要定义">13. 词汇表</a></li><li class="nav-list-item "><a href="change-log.html" title="最新文档更新历史记录。">14. 更新记录</a></li></ul></div></li><li class="sidenav-section no-border"><a href="../api/index.html" title="API 参考手册" class="nav-title ">API参考手册</a></li><!-- ADVANCED DOCUMENATION--><li class="sidenav-section-divider"><h3>附加文档</h3></li><li class="sidenav-section"><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。" class="nav-title is-parent ">教程<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-ordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../tutorial/index.html" title="英雄指南教程带我们一步步使用 TypeScript 创建 Angular 应用。">1. 简介</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt1.html" title="构建一个简单的英雄编辑器">2. 英雄编辑器</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt2.html" title="构建一个主从结构的页面，用于展现英雄列表">3. 主从结构</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt3.html" title="把主从结构的页面重构成多个组件">4. 多个组件</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt4.html" title="创建一个可复用的服务来调用英雄的数据">5. 服务</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt5.html" title="添加 Angular 组件路由，并且学习在视图之间导航">6. 路由</a></li><li class="nav-list-item "><a href="../tutorial/toh-pt6.html" title="把服务和组件改为用 Angular 的 HTTP 服务实现">7. HTTP</a></li></ul></div></li><li class="sidenav-section"><a href="animations.html" title="Angular 动画系统指南。" class="nav-title is-parent ">高级文档<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="animations.html" title="Angular 动画系统指南。" class="translated-cn">动画</a></li><li class="nav-list-item "><a href="attribute-directives.html" title="属性型指令把行为添加到现有元素上。" class="translated-cn">属性型指令</a></li><li class="nav-list-item "><a href="browser-support.html" title="浏览器支持与填充 (Polyfill) 指南" class="translated-cn">浏览器支持</a></li><li class="nav-list-item "><a href="component-styles.html" title="学习如何给组件应用 CSS 样式。" class="translated-cn">组件样式</a></li><li class="nav-list-item "><a href="deployment.html" title="如何部署Angular应用。" class="translated-cn">部署</a></li><li class="nav-list-item "><a href="hierarchical-dependency-injection.html" title="Angular 的多级依赖注入系统支持与组件树并行的嵌套式注入器。" class="translated-cn">多级注入器</a></li><li class="nav-list-item "><a href="reactive-forms.html" title="使用FormBuilder、组合数组创建响应式表单。" class="translated-cn">响应式表单</a></li><li class="nav-list-item "><a href="server-communication.html" title="通过 HTTP 客户端与远程服务器对话。" class="translated-cn">HTTP 客户端</a></li><li class="nav-list-item "><a href="lifecycle-hooks.html" title="Angular 调用指令和组件的生命周期钩子函数，包括它的创建、变更和销毁时。" class="translated-cn">生命周期钩子</a></li><li class="nav-list-item "><a href="ngmodule.html" title="用 @NgModule 定义应用中的模块" class="translated-cn">Angular模块 (NgModule)</a></li><li class="nav-list-item "><a href="npm-packages.html" title="推荐的 npm 包以及如何指定所依赖的包" class="translated-cn">npm 包</a></li><li class="nav-list-item "><a href="pipes.html" title="管道可以在模板中转换显示的内容。" class="translated-cn">管道</a></li><li class="nav-list-item "><a href="router.html" title="揭示如何通过 Angular 路由进行基本的屏幕导航。" class="translated-cn">路由与导航</a></li><li class="nav-list-item "><a href="security.html" title="开发内容安全的 Angular 应用。" class="translated-cn">安全</a></li><li class="nav-list-item "><a href="setup-systemjs-anatomy.html" title="解析 SystemJS 本地开发环境" class="translated-cn">搭建剖析</a></li><li class="nav-list-item "><a href="structural-directives.html" title="Angular 有一个强力的模板引擎，它能让你轻松维护元素的DOM树结构。" class="translated-cn">结构型指令</a></li><li class="nav-list-item "><a href="testing.html" title="Angular 应用的测试技术与实践。" class="translated-cn">测试</a></li><li class="nav-list-item "><a href="typescript-configuration.html" title="Angular 开发者的 TypeScript 配置" class="translated-cn">TypeScript 配置</a></li><li class="nav-list-item "><a href="upgrade.html" title="AngularJS 应用可以逐步升级到 Angular。" class="translated-cn">从 AngularJS 升级</a></li><li class="nav-list-item "><a href="webpack.html" title="使用基于 Webpack 的工具创建 Angular 应用" class="translated-cn">Webpack 简介</a></li></ul></div></li><li class="sidenav-section"><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="nav-title is-parent ">烹饪宝典<img src="../../../../resources/images/icons/ic_keyboard_arrow_down_black_24px.svg" class="inline-arrow-down-svg"/></a><div class="nav-unordered-lists is-hidden"><ul><li class="nav-list-item "><a href="../cookbook/index.html" title="一组常见 Angular 应用场景的“烹饪宝典”" class="translated-cn">概览</a></li><li class="nav-list-item "><a href="../cookbook/aot-compiler.html" title="学习如何使用预编译器" class="translated-cn">预 (AoT) 编译器</a></li><li class="nav-list-item "><a href="../cookbook/ajs-quick-reference.html" title="学习如何把 AngularJS 中的概念和技术对应到 Angular 中" class="translated-cn">从 AngularJS 到 Angular</a></li><li class="nav-list-item "><a href="../cookbook/component-communication.html" title="在不同的指令和组件之间共享信息" class="translated-cn">组件通讯</a></li><li class="nav-list-item "><a href="../cookbook/component-relative-paths.html" title="为组件的模板和样式指定相对于组件的路径" class="translated-cn">相对于组件的路径</a></li><li class="nav-list-item "><a href="../cookbook/dependency-injection.html" title="依赖注入技术" class="translated-cn">依赖注入</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-component-loader.html" title="如何动态加载组件" class="translated-cn">动态组件加载器</a></li><li class="nav-list-item "><a href="../cookbook/dynamic-form.html" title="用 FormGroup 渲染动态表单" class="translated-cn">动态表单</a></li><li class="nav-list-item "><a href="../cookbook/form-validation.html" title="验证用户在表单中的输入" class="translated-cn">表单验证</a></li><li class="nav-list-item "><a href="../cookbook/i18n.html" title="把应用的模板文本翻译成多种语言。" class="translated-cn">国际化 (i18n)</a></li><li class="nav-list-item "><a href="../cookbook/ngmodule-faq.html" title="对 @NgModule 常见问题的解答" class="translated-cn">Angular 模块常见问题</a></li><li class="nav-list-item "><a href="../cookbook/set-document-title.html" title="使用 Title 服务来设置文档标题或窗口标题" class="translated-cn">设置文档标题</a></li><li class="nav-list-item "><a href="../cookbook/ts-to-js.html" title="把 Angular 的 TypeScript 范例转换为 ES6 和 ES5 JavaScript." class="translated-cn">从 TypeScript 到 JavaScript</a></li><li class="nav-list-item "><a href="../cookbook/visual-studio-2015.html" title="使用 Visual Studio 2015 快速起步" class="translated-cn">Visual Studio 2015 快速起步</a></li></ul></div></li></ul><nav class="dropdown"><button aria-label="选择Angular版本" md-button="md-button" ng-click="appCtrl.toggleVersionMenu($event)" class="dropdown-button">Angular for TypeScript  <span class="icon icon-arrow-drop-down"></span></button><div ng-click="appCtrl.toggleVersionMenu($event)" ng-show="appCtrl.showMenu" class="overlay ng-hide"></div><ul ng-class="appCtrl.showMenu ? 'is-visible' : ''" class="dropdown-menu"><li><a href="appmodule.html" md-button>Angular for TypeScript </a></li><li><a href="../../../js/latest/guide/appmodule.html" md-button>Angular for JavaScript </a></li><li><a href="../../../dart/latest/guide/appmodule.html" md-button>Angular for Dart </a></li></ul></nav></nav><script>// Could put in appCtrl but only needed here and clear here
+(function scrollToSelectedLink() {
+  var sideNav = document.getElementsByClassName('sidenav')[0];
+  var link = sideNav.getElementsByClassName('is-selected')[0];
+  if (link && link.offsetTop > window.innerHeight) {
+    sideNav.scrollTop = link.offsetTop - (window.innerHeight / 2);
+    //alert("offsetTop: " + link.offsetTop + " side-nav top is " + sideNav.scrollTop);
+  }
+})()</script><header class="hero background-sky"><h1 class="hero-title ">AppModule: 根模块 </h1><div class="clear"></div></header><div class="banner"><p class="text-body translated-cn">如何在根 "AppModule" 中构建和启动应用。</p></div><article class="l-content-small grid-fluid docs-content"><script>function why(id, backTo) {
+  var id = "#"+id;
+  var el = document.querySelector(id);
+  el.hidden=el.hidden=!el.hidden;
+
+  if (el.hidden && backTo){
+    // the next line is required to work around a bug in WebKit (Chrome / Safari)
+    location.href = "#";
+    location.href =  "#" + backTo;
+  }
+}</script><script>function verbose(isVerbose) {
+  isVerbose = !! isVerbose;
+  var el = document.querySelector('button.verbose.off');
+  el.style.display = isVerbose ? 'block' : 'none';
+  var el = document.querySelector('button.verbose.on');
+  el.style.display = isVerbose ? 'none' : 'block';
+
+  CCSStylesheetRuleStyle('main','.l-verbose-section', 'display',
+    isVerbose ? 'block' : 'none');
+}
+</script><script>function CCSStylesheetRuleStyle(stylesheet, selectorText, style, value){
+  /* returns the value of the element style of the rule in the stylesheet
+  *  If no value is given, reads the value
+  *  If value is given, the value is changed and returned
+  *  If '' (empty string) is given, erases the value.
+  *  The browser will apply the default one
+  *
+  * string stylesheet: part of the .css name to be recognized, e.g. 'default'
+  * string selectorText: css selector, e.g. '#myId', '.myClass', 'thead td'
+  * string style: camelCase element style, e.g. 'fontSize'
+  * string value optional : the new value
+  */
+  var CCSstyle = undefined, rules, sheet;
+  for(var m in document.styleSheets){
+    sheet = document.styleSheets[m];
+    if(sheet.href && sheet.href.indexOf(stylesheet) != -1){
+    rules = sheet[document.all ? 'rules' : 'cssRules'];
+    for(var n in rules){
+      console.log(rules[n].selectorText);
+      if(rules[n].selectorText == selectorText){
+        CCSstyle = rules[n].style;
+        break;
+      }
+    }
+    break;
+    }
+  }
+  if(value == undefined)
+    return CCSstyle[style]
+  else
+    return CCSstyle[style] = value
+}
+</script><p>An Angular module class describes how the application parts fit together.
+Every application has at least one Angular module, the <em>root</em> module 
+that you <a href="#main">bootstrap</a> to launch the application.
+You can call it anything you want. The conventional name is <code>AppModule</code>.</p>
+<p>Angular 模块类描述应用的部件是如何组合在一起的。
+每个应用都至少有一个 Angular 模块，也就是<em>根</em>模块，用来<a href="#main">引导</a>并运行应用。
+你可以为它取任何名字。常规名字是<code>AppModule</code>。</p>
+<p>The <a href="setup.html">setup</a> instructions produce a new project with the following minimal <code>AppModule</code>.
+You&#39;ll evolve this module as your application grows.</p>
+<p><a href="setup.html">开发环境</a>讲解了如何使用下面这个最小的<code>AppModule</code>来创建一个新项目。
+这个模块随着应用的成长而演变。</p>
+<div class="code-example"><header><h4>src/app/app.module.ts</h4></header><code-example language="ts" format="">import { NgModule }      from &#39;@angular/core&#39;;
+import { BrowserModule } from &#39;@angular/platform-browser&#39;;
+import { AppComponent }  from &#39;./app.component&#39;;
+
+@NgModule({
+  imports:      [ BrowserModule ],
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+</code-example></div><p>After the <code>import</code> statements, you come to a class adorned with the
+<strong><code>@NgModule</code></strong> <a href="glossary.html#decorator" title="&quot;Decorator&quot; explained"><em>decorator</em></a>.</p>
+<p><code>import</code>语句之后，可以看到一个<strong><code>@NgModule</code></strong><a href="glossary.html#decorator" title="&quot;Decorator&quot; explained">装饰器</a>修饰的类。</p>
+<p>The <code>@NgModule</code> decorator identifies <code>AppModule</code> as an Angular module class (also called an <code>NgModule</code> class).
+<code>@NgModule</code> takes a <em>metadata</em> object that tells Angular how to compile and launch the application.</p>
+<p><code>@NgModule</code>装饰器将<code>AppModule</code>标记为 Angular 模块类（也叫<code>NgModule</code>类）。
+<code>@NgModule</code>接受一个<em>元数据</em>对象，告诉 Angular 如何编译和启动应用。</p>
+<ul>
+<li><p><strong><em>imports</em></strong> &mdash; the <code>BrowserModule</code> that this and every application needs to run in a browser.</p>
+<p><strong><em>imports</em></strong> &mdash; <code>BrowserModule</code>，这个和每个在浏览器中运行应用都需要它。</p>
+</li>
+<li><p><strong><em>declarations</em></strong> &mdash; the application&#39;s lone component, which is also ...</p>
+<p><strong><em>declarations</em></strong> &mdash; 应用的唯一组件，它同时也是...</p>
+</li>
+<li><p><strong><em>bootstrap</em></strong> &mdash; the <em>root</em> component that Angular creates and inserts into the <code>index.html</code> host web page.</p>
+<p><strong><em>bootstrap</em></strong> &mdash; <em>根</em>组件，Angular 创建它并插入<code>index.html</code>宿主页面。</p>
+</li>
+</ul>
+<p>The <a href="ngmodule.html">Angular Modules (NgModule)</a> guide dives deeply into the details of Angular modules.
+All you need to know at the moment is a few basics about these three properties.</p>
+<p><a href="ngmodule.html">Angular 模块 (NgModules)</a> 指南深入讲解了 Angular 模块。
+现在先初步了解这三个属性。</p>
+<a id="imports"></a><h3 id="the-_imports_-array">The <em>imports</em> array</h3>
+<h3 id="_imports_-"><em>imports</em> 数组</h3>
+<p>Angular modules are a way to consolidate features that belong together into discrete units.
+Many features of Angular itself are organized as Angular modules. 
+HTTP services are in the <code>HttpModule</code>. The router is in the <code>RouterModule</code>.
+Eventually you may create a feature module.</p>
+<p>Angular 模块把特性合并成离散单元的一种方式。
+Angular 自身的许多特性也是通过 Angular 模块组织的。
+HTTP 服务在<code>HttpModule</code>里。路由器在<code>RouterModule</code>中。
+最终，你可能也会创建特性模块。</p>
+<p>Add a module to the <code>imports</code> array when the application requires its features.</p>
+<p>当应用需要模块的特性时，将其添加到<code>imports</code>数组中。</p>
+<p><em>This</em> application, like most applications, executes in a browser.
+Every application that executes in a browser needs the <code>BrowserModule</code> from <code>@angular/platform-browser</code>.
+So every such application includes the <code>BrowserModule</code> in its <em>root</em> <code>AppModule</code>&#39;s <code>imports</code> array.
+Other guide and cookbook pages will tell you when you need to add additional modules to this array.</p>
+<p><em>这个</em>应用和大多数其他应用一样，在浏览器中运行。
+每个浏览器中运行的应用都需要<code>@angular/platform-browser</code>里的<code>BrowserModule</code>。
+所以每个这样的应用都在其<em>根</em><code>AppModule</code>的<code>imports</code>数组中包含<code>BrowserModule</code>。
+在需要添加额外模块到此数组时，其他指南和烹饪宝典页面会告诉你。</p>
+<div class="alert is-important"><p><strong>Only <code>NgModule</code> classes</strong> go in the <code>imports</code> array. Do not put any other kind of class in <code>imports</code>.</p>
+<p><code>imports</code>数组中应该<strong>只有<code>NgModule</code>类</strong>。不要放置其它类型的类。</p>
+</div><div class="l-sub-section"><p>The <code>import</code> statements at the top of the file and the Angular module&#39;s <code>imports</code> array
+are unrelated and have completely different jobs.</p>
+<p>不要将 Angular 模块的<code>imports</code>数组与文件顶部的<code>import</code>语句弄混淆了。它们的功能不同。</p>
+<p>The <em>JavaScript</em> <code>import</code> statements give you access to symbols <em>exported</em> by other files
+so you can reference them within <em>this</em> file.
+You add <code>import</code> statements to almost every application file. 
+They have nothing to do with Angular and Angular knows nothing about them.</p>
+<p><em>JavaScript</em> 的<code>import</code>声明允许你访问在其他文件中<em>导出</em>的符号，这样你可以在<em>当前</em>文件引用它们。
+我们会往几乎所有类型的应用中加入<code>import</code>语句。
+它们与 Angular 毫无关系，Angular 对它们也一无所知。</p>
+<p>The <em>module&#39;s</em> <code>imports</code> array appears <em>exclusively</em> in the <code>@NgModule</code> metadata object.
+It tells Angular about specific <em>other</em> Angular modules &mdash; all of them classes decorated with <code>@NgModule</code> &mdash;
+that the application needs to function properly.</p>
+<p><em>模块</em>的<code>imports</code>数组是<code>@NgModule</code>元数据中<em>独有的</em>。它告诉 Angular 特定 Angular 模块的信息 &mdash; 用<code>@NgModule</code>装饰的类 &mdash; 应用需要它们来正常工作。</p>
+</div><a id="declarations"></a><h3 id="the-_declarations_-array">The <em>declarations</em> array</h3>
+<h3 id="-declarations-"><em>declarations</em> 数组</h3>
+<p>You tell Angular which components belong to the <code>AppModule</code> by listing it in the module&#39;s <code>declarations</code> array.
+As you create more components, you&#39;ll add them to <code>declarations</code>.</p>
+<p>通过将其列到<code>AppModule</code>模块的<code>declarations</code>数组中，可以告诉 Angular 哪个组件属于<code>AppModule</code>。
+在创建更多组件的过程中，逐步将它们添加到<code>declarations</code>中。</p>
+<p>You must declare <em>every</em> component in an <code>NgModule</code> class. 
+If you use a component without declaring it, you&#39;ll see a clear error message in the browser console.</p>
+<p>你必须在一个<code>NgModule</code>类声明<em>每一个</em>组件。
+否则当你使用这些组件时就会在浏览器的控制台中看到一个明显的错误信息。</p>
+<p>You&#39;ll learn to create two other kinds of classes &mdash; 
+<a href="attribute-directives.html">directives</a> and <a href="pipes.html">pipes</a> &mdash;
+that you must also add to the <code>declarations</code> array.</p>
+<p>你将会学习如何创建其他两种类 &mdash; <a href="attribute-directives.html">指令</a>和<a href="pipes.html">管道</a> &mdash;
+它们也必须被添加到<code>declarations</code>数组。</p>
+<div class="alert is-important"><p><strong>Only <em>declarables</em></strong> &mdash; <em>components</em>, <em>directives</em> and <em>pipes</em> &mdash; belong in the <code>declarations</code> array. 
+Do not put any other kind of class in <code>declarations</code>; <em>not</em> <code>NgModule</code> classes, <em>not</em> service classes, <em>not</em> model classes.</p>
+<p><strong>只有*可以声明的</strong> &mdash; <em>组件</em>、<em>指令</em>和<em>管道</em> &mdash; 属于<code>declarations</code>数组。
+不要将其他类型的类添加到<code>declarations</code>中，例如<code>NgModule</code>类, 服务类，模型类。</p>
+</div><a id="bootstrap-array"></a><h3 id="the-_bootstrap_-array">The <em>bootstrap</em> array</h3>
+<h3 id="_bootstrap_-"><em>bootstrap</em> 数组</h3>
+<p>You launch the application by <a href="#main"><em>bootstrapping</em></a> the root <code>AppModule</code>. 
+Among other things, the <em>bootstrapping</em> process creates the component(s) listed in the <code>bootstrap</code> array
+and inserts each one into the browser DOM.</p>
+<p>通过<a href="#main"><em>引导</em></a>根<code>AppModule</code>来启动应用。
+在启动过程中，其中一步是创建列在<code>bootstrap</code>数组的组件，
+并将它们每一个都插入到浏览器的DOM中。</p>
+<p>Each bootstrapped component is the base of its own tree of components.
+Inserting a bootstrapped component usually triggers a cascade of component creations that fill out that tree.</p>
+<p>每个被引导的组件都是它自己的组件树的根。
+插入一个被引导的组件通常触发一系列组件的创建并形成组件树。</p>
+<p>While you can put more than one component tree on a host web page, that&#39;s not typical. 
+Most applications have only one component tree and they bootstrap a single <em>root</em> component.</p>
+<p>虽然你可以将多个组件树插入到宿主页面，但并不普遍。
+大多数应用只有一个组件树，它们引导单一<em>根</em>组件。</p>
+<p>You can call the one <em>root</em> component anything you want but most developers call it <code>AppComponent</code>.</p>
+<p>你可以为这个<em>根</em>组件取任何名字，但是大多数程序员将其取名为<code>AppComponent</code>。</p>
+<p>Which brings us to the <em>bootstrapping</em> process itself.</p>
+<p>下面让我们来看看<em>引导</em>过程本身。</p>
+<a id="main"></a><l-main-section></l-main-section><h2 id="bootstrap-in-_main-ts_">Bootstrap in <em>main.ts</em></h2>
+<h2 id="-main-ts-">在<em>main.ts</em>中引导</h2>
+<p>There are many ways to bootstrap an application.
+The variations depend upon how you want to compile the application and where you want to run it.</p>
+<p>引导应用的方法很多。
+它们取决于你想如何编译应用以及应用将在哪儿运行。</p>
+<p>In the beginning, you will compile the application dynamically with the <em>Just-in-Time (JIT)</em> compiler
+and you&#39;ll run it in a browser. You can learn about other options later.</p>
+<p>开始时，你将使用<em>即时 (JiT) </em>编译器动态编译应用。然后在浏览器中运行它。
+稍后，你可以了解其他选项。</p>
+<p>The recommended place to bootstrap a JIT-compiled browser application is in a separate file 
+in the <code>src</code> folder named <code>src/main.ts</code></p>
+<p>引导即时编译的浏览器应用的推荐地点是在<code>src</code>目录中一个名为<code>src/main.ts</code>的单独文件中。</p>
+<div class="code-example"><header><h4>src/main.ts</h4></header><code-example language="ts" format="">import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import { AppModule }              from &#39;./app/app.module&#39;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+</code-example></div><p>This code creates a browser platform for dynamic (JIT) compilation and
+bootstraps the <code>AppModule</code> described above.</p>
+<p>上面的代码为动态 (JiT) 编译创建浏览器平台，并引导上面提到的<code>AppModule</code>。</p>
+<p>The <em>bootstrapping</em> process sets up the execution environment,
+digs the <em>root</em> <code>AppComponent</code> out of the module&#39;s <code>bootstrap</code> array, 
+creates an instance of the component and inserts it within the element tag identified by the component&#39;s <code>selector</code>.</p>
+<p>引导过程搭建运行环境，从模块的<code>bootstrap</code>数组中提出<em>根</em><code>AppComponent</code>， 创建该组件的实例，并将其插入到组件<code>selector</code>标识的元素标签中。</p>
+<p>The <code>AppComponent</code> selector &mdash; here and in most documentation samples &mdash; is <code>my-app</code> 
+so Angular looks for a <code>&lt;my-app&gt;</code> tag in the <code>index.html</code> like this one ...</p>
+<p><code>AppComponent</code>选择器 &mdash; 在这里以及文档大部分例子中 &mdash; 是<code>my-app</code>，
+所以 Angular 在<code>index.html</code>中查找像这样的<code>&lt;my-app&gt;</code>标签...</p>
+<div class="code-example"><code-example language="html" format="">&lt;my-app&gt;&lt;!-- content managed by Angular --&gt;&lt;/my-app&gt;
+</code-example></div><p>... and displays the <code>AppComponent</code> there.</p>
+<p>...然后在那儿显示<code>AppComponent</code>。</p>
+<p>This file is very stable. Once you&#39;ve set it up, you may never change it again.</p>
+<p>该文件非常稳定。一旦配置好，你可能永远不会再修改它。</p>
+<l-main-section></l-main-section><h2 id="more-about-angular-modules">More about Angular Modules</h2>
+<h2 id="-angular-">关于Angular模块的更多知识</h2>
+<p>Your initial app has only a single module, the <em>root</em> module.
+As your app grows, you&#39;ll consider subdividing it into multiple &quot;feature&quot; modules,
+some of which can be loaded later (&quot;lazy loaded&quot;) if and when the user chooses
+to visit those features.</p>
+<p>你最初的应用只有一个单一的模块 —— <em>根</em>模块。
+当这个应用不断成长时，你就要考虑把它们拆分到多个 &quot;特性&quot; 模块中了。
+这些特性模块中的一部分可以稍后加载（即惰性加载），它们只会在用户访问到这些特性时才会加载。</p>
+<p>When you&#39;re ready to explore these possibilities, visit the <a href="ngmodule.html">Angular Modules (NgModule)</a> guide.</p>
+<p>如果你要了解这些知识，请访问<a href="ngmodule.html">Angular 模块 (NgModule)</a>页</p><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><div class="l-sub-section"><h3>下一步</h3><a href="displaying-data.html" class="translated-cn">显示数据</a></div><!--NEXT PAGE HAS NOW BEEN SET--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--><!-- CHECK IF CURRENT PAGE IS SET, THEN SET NEXT PAGE--><!-- SET CURRENT PAGE FLAG WHEN YOU PASS IT--></article><div data-swiftype-index="false" class="main-footer"><nav class="background-midnight grid-fluid"><div class="c3 main-footer-branding"><div class="logo-inverse-large"></div></div><div class="c2"><h3 class="text-headline">RESOURCES</h3><h3 class="text-headline">资源库</h3><ul class="text-body"><!-- TODO: (ericjim) make a libraries page to showcase all angular libraries--><!--li <a href="/libraries.html">Libraries</a>--><li><p><a href="../../../../about/index.html">About</a></p><p><a href="../../../../about/index.html">关于</a></p></li><li><p><a href="../../../../resources/index.html#Education">Books & Training</a></p><p><a href="../../../../resources/index.html#Education">书籍与培训</a></p></li><li><p><a href="../../../../resources/index.html">Tools & Libraries</a></p><p><a href="../../../../resources/index.html">工具与库</a></p></li><li><p><a href="../../../../resources/index.html">Community</a></p><p><a href="../../../../resources/index.html">社区</a></p></li><li><p><a href="../../../../presskit.html">Press Kit</a></p><p><a href="../../../../presskit.html">宣传资料</a></p></li></ul></div><div class="c2"><h3 class="text-headline">HELP</h3><h3 class="text-headline">帮助</h3><ul class="text-body"><li><a href="http://stackoverflow.com/questions/tagged/angular2">Stack Overflow</a></li><li><a href="https://gitter.im/angular/angular">Gitter</a></li><li><a href="https://groups.google.com/forum/#!forum/angular"> Google Group</a></li><li><p><a href="https://github.com/angular/angular/issues"> Report Issues</a></p><p><a href="https://github.com/angular/angular/issues"> 报告问题</a></p></li><li><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> Site Feedback</a></p><p><a class="footer-feedback" ng-click="appCtrl.openFeedback()" aria-label="Submit feedback on this page"> 网站反馈</a></p></li></ul></div><div class="c2"><h3 class="text-headline">COMMUNITY</h3><h3 class="text-headline">社区</h3><ul class="text-body"><li><p><a href="../../../../events.html">Events</a></p><p><a href="../../../../events.html">会议</a></p></li><li><a href="http://www.meetup.com/topics/angularjs/">Meetups</a></li><li><a href="https://twitter.com/angular"> Twitter</a></li><li><a href="https://github.com/angular/angular"> GitHub</a></li><li><p><a href="../../../../contribute.html"> Contribute</a></p><p><a href="../../../../contribute.html"> 做贡献</a></p></li></ul></div><div class="c2"><h3 class="text-headline">LANGUAGES</h3><h3 class="text-headline">其它语种</h3><ul class="text-body"><li><a href="https://angular.io/">英文版</a></li></ul></div></nav><footer class="background-midnight"><small class="text-caption">Powered by Google ©2010-2017。代码授权方式：<a href="../../../../license">MIT-style License</a>。文档授权方式：<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。</small><a aria-label="查看风格指南" href="../styleguide.html" title="风格指南" md-button="md-button" class="styleguide-trigger text-snow translated-cn"><span class="icon-favorite"></span></a><p><small class="text-caption">本网站由洛阳永欣维护 &nbsp;<a href="http://www.miitbeian.gov.cn/">豫ICP备16019859号-1</a></small></p></footer></div><!-- VENDORS --><script src="../../../../resources/js/vendor/prettify.js"></script><script src="../../../../resources/js/vendor/lang-basic.js"></script><script src="../../../../resources/js/vendor/lang-dart.js"></script><script src="../../../../resources/js/vendor/lodash.js"></script><script src="../../../../resources/js/vendor/clipboard.min.js"></script><!-- Angular Material Dependencies --><script src="../../../../resources/js/vendor/angular.min.js"></script><script src="../../../../resources/js/vendor/angular-animate.min.js"></script><script src="../../../../resources/js/vendor/angular-aria.min.js"></script><script src="../../../../resources/js/vendor/angular-material.min.js"></script><!-- Firebase -->
+<script src="../../../../resources/js/vendor/firebase.js"></script>
+<!-- AngularFire -->
+<script src="../../../../resources/js/vendor/angularfire.min.js"></script>
+<!-- Angular.io Site JS --><script src="../../../../translate/cn/translate.js"></script><script src="../../../../resources/js/site.js"></script><script src="../../../../resources/js/util.js"></script><script src="../../../../resources/js/controllers/app-controller.js"></script><script src="../../../../resources/js/controllers/resources-controller.js"></script><script src="../../../../resources/js/directives/cheatsheet.js"></script><script src="../../../../resources/js/directives/api-list.js"></script><script src="../../../../resources/js/directives/bio.js"></script><script src="../../../../resources/js/directives/bold.js"></script><script src="../../../../resources/js/directives/announcement-bar.js"></script><script src="../../../../resources/js/directives/code.js"></script><script src="../../../../resources/js/directives/copy.js"></script><script src="../../../../resources/js/directives/code-tabs.js"></script><script src="../../../../resources/js/directives/code-pane.js"></script><script src="../../../../resources/js/directives/code-example.js"></script><script src="../../../../resources/js/directives/if-docs.js"></script><script src="../../../../resources/js/directives/live-example.js"></script><script src="../../../../resources/js/directives/scroll-y-offset-element.js"></script><!-- GA --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80456300-1', 'auto');
+ga('send', 'pageview')
+</script><!-- SWIFTYPE --><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','../../../../../s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','VsuU7kH5Hnnj9tfyNvfK','2.0.0');</script></body>
+<!-- Mirrored from angular.cn/docs/ts/latest/guide/appmodule.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jul 2017 11:54:55 GMT -->
+</html>

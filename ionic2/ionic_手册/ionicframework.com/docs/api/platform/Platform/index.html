@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ionicframework.com/docs/api/platform/Platform/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="../../../../css/stylesf664.css?v=24aa40e8981b5a8a8d736c16830ab1d8" rel="stylesheet">
+
+
+  <title>Platform - Ionic API Documentation -  Ionic Framework</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="index.html">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="../../../../img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="../../../../img/ionic-meta.jpg"/>
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="../../../../../www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="../../../../img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../../../img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../../../img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../../../img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../../../img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../../../img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../../../img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../../../img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../../../img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../img/meta/favicon-192x192.html" sizes="192x192">
+<link rel="manifest" href="../../../../manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../../../img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="../../../../img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-platform"
+        class="v2 docs fluid page-platform has-snap
+               "
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="../../../../enterprise.html" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              id="collapse-toggle"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="../../../../index.html">
+        <img src="../../../../img/docs/ionic-docs-icon.png" id="ionic-docs-logo" />
+        <img src="../../../../img/docs/ionic-docs-icon-back.png" id="ionic-docs-back" />
+      </a>
+      <a class="navbar-brand" href="../../../index.html">
+        <img src="../../../../img/docs/ionic-docs-type.png" id="ionic-docs-text" />
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li ><a
+  href="../../../../index.html">Framework</a></li>
+<li><a href="../../../../products/index.html">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank"
+  href="../../../../../showcase.ionicframework.com/index.html">Showcase</a></li>
+<li class="sm-hide"><a href="../../../../../blog.ionic.io/index.html">Blog</a></li>
+<li class="active"><a href="../../../../developers/index.html">Docs</a></li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../../../../getting-started/index.html">Getting Started</a></li>
+    <li class="hide-sm"><a href="../../../../../forum.ionicframework.com/index.html">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="../../../../support.html">Customer Support</a></li>
+    <li><a href="../../../../trusted-partners.html">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="#"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     role="button"
+     aria-haspopup="true"
+     aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="../../../../../market.ionic.io/index.html">Market</a></li>
+    <li><a target="_blank" href="../../../../../jobs.ionic.io/index.html">Jobs</a></li>
+    <li><a target="_blank" href="../../../../../shop.ionic.io/index.html">Shop</a></li>
+    <li><a target="_blank" href="../../../../../ionic.io/products/creator.html">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="../../../../../twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="../../../../../ionicworldwide.herokuapp.com/index.html">
+      Slack</a></li>
+    <li><a target="_blank" href="../../../../../github.com/driftyco/ionic.html">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="../../../../../apps.ionic.io/login.html" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="../../../../../apps.ionic.io/signup.html">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container"
+     
+       ng-controller="APIDemoCtrl"
+     >
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search" role="search">
+      <input type="text"
+             class="form-control search-input"
+             placeholder="Search"
+             data-searchpos="sidebar"
+             ng-model="searchTerm">
+    </form>
+    
+      <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/nightly/api/"
+    >
+    nightly 
+  </option>
+
+  <option
+   value="/docs/api/"
+    selected>
+    3.3.0 (latest)
+  </option>
+
+  <option
+   value="/docs/3.2.0/api/"
+    >
+    3.2.0 
+  </option>
+
+  <option
+   value="/docs/3.1.1/api/"
+    >
+    3.1.1 
+  </option>
+
+  <option
+   value="/docs/3.1.0/api/"
+    >
+    3.1.0 
+  </option>
+
+  <option
+   value="/docs/3.0.1/api/"
+    >
+    3.0.1 
+  </option>
+
+  <option
+   value="/docs/3.0.0/api/"
+    >
+    3.0.0 
+  </option>
+
+  <option
+   value="/docs/2.3.0/api/"
+    >
+    2.3.0 
+  </option>
+
+  <option
+   value="/docs/2.2.0/api/"
+    >
+    2.2.0 
+  </option>
+
+  <option
+   value="/docs/2.1.0/api/"
+    >
+    2.1.0 
+  </option>
+
+  <option
+   value="/docs/2.0.1/api/"
+    >
+    2.0.1 
+  </option>
+
+  <option
+   value="/docs/2.0.0/api/"
+    >
+    2.0.0 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="../../../index.html">Back to Main Docs</a>
+  </li>
+  
+  
+    
+
+  
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/alert/AlertController">AlertController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/avatar/Avatar">Avatar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/chip/Chip">Chip</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Col">Col</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/datetime/DateTime">DateTime</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabButton">FabButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabContainer">FabContainer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/fab/FabList">FabList</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Footer">Footer</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Grid">Grid</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/tap-click/Haptic">Haptic</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Header">Header</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/img/Img">Img</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/IonicErrorHandler">IonicErrorHandler</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicModule">IonicModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/IonicPage">IonicPage</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/IonicPageModule">IonicPageModule</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemOptions">ItemOptions</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemReorder">ItemReorder</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/loading/LoadingController">LoadingController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/app/MenuController">MenuController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/modal/ModalController">ModalController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/util/normalizeURL">normalizeURL</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/note/Note">Note</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize active">
+  <a href="http://ionicframework.com/docs/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/platform/PlatformConfigToken">PlatformConfigToken</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/popover/PopoverController">PopoverController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/range/Range">Range</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/config/registerModeConfigs">registerModeConfigs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/grid/Row">Row</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/split-pane/SplitPane">SplitPane</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/thumbnail/Thumbnail">Thumbnail</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toast/ToastController">ToastController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/typography/Typography">Typography</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/navigation/ViewController">ViewController</a>
+</li>
+<li class="capitalize ">
+  <a href="http://ionicframework.com/docs/api/components/virtual-scroll/VirtualScroll">VirtualScroll</a>
+</li>
+
+
+
+</ul>
+
+    
+  </nav>
+  
+  <aside id="platform-preview" class="platform-preview">
+    <div class="platform-toggle">
+      <a ng-class="{active: iosActive}"
+         ng-click="setPlatform('ios')">iOS</a>
+      <a ng-class="{active: androidActive}"
+         ng-click="setPlatform('android')">Android</a>
+      <a ng-class="{active: windowsActive}"
+         ng-click="setPlatform('windows')">Windows</a>
+    </div>
+    <div id="demo-device-ios"
+         ng-class="previewPlatform"
+         ng-show="iosActive"
+         ng-cloak>
+      <iframe id="demo-ios"
+            
+              src="http://ionicframework.com/docs/demos/src/platform/www/?production=true&amp;ionicplatform=ios"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-android"
+         ng-class="previewPlatform"
+         ng-show="androidActive"
+         ng-cloak>
+      <iframe id="demo-android"
+            
+              src="http://ionicframework.com/docs/demos/src/platform/www/?production=true&amp;ionicplatform=android"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+    <div id="demo-device-windows"
+         ng-class="previewPlatform"
+         ng-show="windowsActive"
+         ng-cloak>
+      <iframe id="demo-windows"
+            
+              src="http://ionicframework.com/docs/demos/src/platform/www/?production=true&amp;ionicplatform=windows"
+            
+              frameborder="0">
+      </iframe>
+    </div>
+  </aside>
+  
+  <main>
+    <h1 class="api-title">
+<a class="anchor" name="platform" href="#platform"></a>
+
+Platform
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master/src/platform/platform.ts#L4">
+Improve this doc
+</a></p>
+
+<p>The Platform service can be used to get information about your current device.
+You can get all of the platforms associated with the device using the <a href="#platforms">platforms</a>
+method, including whether the app is being viewed from a tablet, if it&#39;s
+on a mobile device or browser, and the exact platform (iOS, Android, etc).
+You can also get the orientation of the device, if it uses right-to-left
+language direction, and much much more. With this information you can completely
+customize your app to fit any device.</p>
+
+<!-- @usage tag -->
+
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
+
+<pre><code class="lang-ts">import { Platform } from &#39;ionic-angular&#39;;
+
+@Component({...})
+export MyPage {
+  constructor(public plt: Platform) {
+
+  }
+}
+</code></pre>
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="dir"></div>
+
+<h3>
+<a class="anchor" name="dir" href="#dir"></a>
+<code>dir()</code>
+  
+
+</h3>
+
+<p>Returns app’s language direction.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.
+<a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>string</code> 
+
+</div>
+
+<div id="getQueryParam"></div>
+
+<h3>
+<a class="anchor" name="getQueryParam" href="#getQueryParam"></a>
+<code>getQueryParam()</code>
+  
+
+</h3>
+
+<p>Get the query string parameter</p>
+
+<div id="height"></div>
+
+<h3>
+<a class="anchor" name="height" href="#height"></a>
+<code>height()</code>
+  
+
+</h3>
+
+<p>Gets the height of the platform’s viewport using <code class="highlighter-rouge">window.innerHeight</code>.
+Using this method is preferred since the dimension is a cached value,
+which reduces the chance of multiple and expensive DOM reads.</p>
+
+<div id="is"></div>
+
+<h3>
+<a class="anchor" name="is" href="#is"></a>
+<code>is(platformName)</code>
+  
+
+</h3>
+
+<p>Depending on the platform the user is on, <code class="highlighter-rouge">is(platformName)</code> will
+return <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>. Note that the same app can return <code class="highlighter-rouge">true</code>
+for more than one platform name. For example, an app running from
+an iPad would return <code class="highlighter-rouge">true</code> for the platform names: <code class="highlighter-rouge">mobile</code>,
+<code class="highlighter-rouge">ios</code>, <code class="highlighter-rouge">ipad</code>, and <code class="highlighter-rouge">tablet</code>. Additionally, if the app was running
+from Cordova then <code class="highlighter-rouge">cordova</code> would be true, and if it was running
+from a web browser on the iPad then <code class="highlighter-rouge">mobileweb</code> would be <code class="highlighter-rouge">true</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Platform } from 'ionic-angular';
+
+@Component({...})
+export MyPage {
+  constructor(public plt: Platform) {
+    if (this.plt.is('ios')) {
+      // This will only print when on iOS
+      console.log("I'm an iOS device!");
+    }
+  }
+}
+</code></pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Platform Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>android</td>
+      <td>on a device running Android.</td>
+    </tr>
+    <tr>
+      <td>cordova</td>
+      <td>on a device running Cordova.</td>
+    </tr>
+    <tr>
+      <td>core</td>
+      <td>on a desktop device.</td>
+    </tr>
+    <tr>
+      <td>ios</td>
+      <td>on a device running iOS.</td>
+    </tr>
+    <tr>
+      <td>ipad</td>
+      <td>on an iPad device.</td>
+    </tr>
+    <tr>
+      <td>iphone</td>
+      <td>on an iPhone device.</td>
+    </tr>
+    <tr>
+      <td>mobile</td>
+      <td>on a mobile device.</td>
+    </tr>
+    <tr>
+      <td>mobileweb</td>
+      <td>in a browser on a mobile device.</td>
+    </tr>
+    <tr>
+      <td>phablet</td>
+      <td>on a phablet device.</td>
+    </tr>
+    <tr>
+      <td>tablet</td>
+      <td>on a tablet device.</td>
+    </tr>
+    <tr>
+      <td>windows</td>
+      <td>on a device running Windows.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        platformName
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> <p>returns true/false based on platform.</p>
+
+
+</div>
+
+<div id="isLandscape"></div>
+
+<h3>
+<a class="anchor" name="isLandscape" href="#isLandscape"></a>
+<code>isLandscape()</code>
+  
+
+</h3>
+
+<p>Returns <code class="highlighter-rouge">true</code> if the app is in landscape mode.</p>
+
+<div id="isPortrait"></div>
+
+<h3>
+<a class="anchor" name="isPortrait" href="#isPortrait"></a>
+<code>isPortrait()</code>
+  
+
+</h3>
+
+<p>Returns <code class="highlighter-rouge">true</code> if the app is in portait mode.</p>
+
+<div id="isRTL"></div>
+
+<h3>
+<a class="anchor" name="isRTL" href="#isRTL"></a>
+<code>isRTL</code>
+  
+
+</h3>
+
+<p>Returns if this app is using right-to-left language direction or not.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.
+<a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> 
+
+</div>
+
+<div id="lang"></div>
+
+<h3>
+<a class="anchor" name="lang" href="#lang"></a>
+<code>lang()</code>
+  
+
+</h3>
+
+<p>Returns app’s language and optional country code.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>.
+<a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>string</code> 
+
+</div>
+
+<div id="pause"></div>
+
+<h3>
+<a class="anchor" name="pause" href="#pause"></a>
+<code>pause</code>
+  
+
+</h3>
+
+<p>The pause event emits when the native platform puts the application
+into the background, typically when the user switches to a different
+application. This event would emit when a Cordova app is put into
+the background, however, it would not fire on a standard web browser.</p>
+
+<div id="platforms"></div>
+
+<h3>
+<a class="anchor" name="platforms" href="#platforms"></a>
+<code>platforms()</code>
+  
+
+</h3>
+
+<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.
+Each possible value is a hierarchy of platforms. For example, on an iPhone,
+it would return <code class="highlighter-rouge">mobile</code>, <code class="highlighter-rouge">ios</code>, and <code class="highlighter-rouge">iphone</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Platform } from 'ionic-angular';
+
+@Component({...})
+export MyPage {
+  constructor(public plt: Platform) {
+    // This will print an array of the current platforms
+    console.log(this.plt.platforms());
+  }
+}
+</code></pre>
+</div>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>array</code> <p>the array of platforms</p>
+
+
+</div>
+
+<div id="ready"></div>
+
+<h3>
+<a class="anchor" name="ready" href="#ready"></a>
+<code>ready()</code>
+  
+
+</h3>
+
+<p>Returns a promise when the platform is ready and native functionality
+can be called. If the app is running from within a web browser, then
+the promise will resolve when the DOM is ready. When the app is running
+from an application engine such as Cordova, then the promise will
+resolve when Cordova triggers the <code class="highlighter-rouge">deviceready</code> event.</p>
+
+<p>The resolved value is the <code class="highlighter-rouge">readySource</code>, which states which platform
+ready was used. For example, when Cordova is ready, the resolved ready
+source is <code class="highlighter-rouge">cordova</code>. The default ready source value will be <code class="highlighter-rouge">dom</code>. The
+<code class="highlighter-rouge">readySource</code> is useful if different logic should run depending on the
+platform the app is running from. For example, only Cordova can execute
+the status bar plugin, so the web should not run status bar plugin logic.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Component } from <a class="__cf_email__" href="../../../../cdn-cgi/l/email-protection.html" data-cfemail="725532131c15071e1300">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>/core';
+import { Platform } from 'ionic-angular';
+
+@Component({...})
+export MyApp {
+  constructor(public plt: Platform) {
+    this.plt.ready().then((readySource) =&gt; {
+      console.log('Platform ready from', readySource);
+      // Platform now ready, execute any required native code
+    });
+  }
+}
+</code></pre>
+</div>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>promise</code> 
+
+</div>
+
+<div id="registerBackButtonAction"></div>
+
+<h3>
+<a class="anchor" name="registerBackButtonAction" href="#registerBackButtonAction"></a>
+<code>registerBackButtonAction(fn,&nbsp;priority)</code>
+  
+
+</h3>
+
+<p>The back button event is triggered when the user presses the native
+platform’s back button, also referred to as the “hardware” back button.
+This event is only used within Cordova apps running on Android and
+Windows platforms. This event is not fired on iOS since iOS doesn’t come
+with a hardware back button in the same sense an Android or Windows device
+does.</p>
+
+<p>Registering a hardware back button action and setting a priority allows
+apps to control which action should be called when the hardware back
+button is pressed. This method decides which of the registered back button
+actions has the highest priority and should be called.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        fn
+        
+        
+      </td>
+      <td>
+        
+  <code>Function</code>
+      </td>
+      <td>
+        <p>Called when the back button is pressed,
+if this registered action has the highest priority.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        priority
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Set the priority for this action. Only the highest priority will execute. Defaults to <code>0</code>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Function</code> <p>A function that, when called, will unregister
+the back button action.</p>
+
+
+</div>
+
+<div id="resize"></div>
+
+<h3>
+<a class="anchor" name="resize" href="#resize"></a>
+<code>resize</code>
+  
+
+</h3>
+
+<p>The resize event emits when the native platform pulls the application
+out from the background. This event would emit when a Cordova app comes
+out from the background, however, it would not fire on a standard web browser.</p>
+
+<div id="resume"></div>
+
+<h3>
+<a class="anchor" name="resume" href="#resume"></a>
+<code>resume</code>
+  
+
+</h3>
+
+<p>The resume event emits when the native platform pulls the application
+out from the background. This event would emit when a Cordova app comes
+out from the background, however, it would not fire on a standard web browser.</p>
+
+<div id="setDir"></div>
+
+<h3>
+<a class="anchor" name="setDir" href="#setDir"></a>
+<code>setDir(dir,&nbsp;updateDocument)</code>
+  
+
+</h3>
+
+<p>Set the app’s language direction, which will update the <code class="highlighter-rouge">dir</code> attribute
+on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element. We recommend the app’s <code class="highlighter-rouge">index.html</code>
+file already has the correct <code class="highlighter-rouge">dir</code> attribute value set, such as
+<code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>. This method is useful if the
+direction needs to be dynamically changed per user/session.
+<a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        dir
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Examples: <code>rtl</code>, <code>ltr</code></p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        updateDocument
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="setLang"></div>
+
+<h3>
+<a class="anchor" name="setLang" href="#setLang"></a>
+<code>setLang(language,&nbsp;updateDocument)</code>
+  
+
+</h3>
+
+<p>Set the app’s language and optionally the country code, which will update
+the <code class="highlighter-rouge">lang</code> attribute on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>. This method is useful if
+the language needs to be dynamically changed per user/session.
+<a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        language
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Examples: <code>en-US</code>, <code>en-GB</code>, <code>ar</code>, <code>de</code>, <code>zh</code>, <code>es-MX</code></p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        updateDocument
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Specifies whether the <code>lang</code> attribute of <code>&lt;html&gt;</code> should be updated</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="testUserAgent"></div>
+
+<h3>
+<a class="anchor" name="testUserAgent" href="#testUserAgent"></a>
+<code>testUserAgent()</code>
+  
+
+</h3>
+
+<div id="url"></div>
+
+<h3>
+<a class="anchor" name="url" href="#url"></a>
+<code>url()</code>
+  
+
+</h3>
+
+<p>Get the current url.</p>
+
+<div id="versions"></div>
+
+<h3>
+<a class="anchor" name="versions" href="#versions"></a>
+<code>versions()</code>
+  
+
+</h3>
+
+<p>Returns an object containing version information about all of the platforms.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Platform } from 'ionic-angular';
+
+@Component({...})
+export MyPage {
+  constructor(public plt: Platform) {
+    // This will print an object containing
+    // all of the platforms and their versions
+    console.log(plt.versions());
+  }
+}
+</code></pre>
+</div>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>object</code> <p>An object containing all of the platforms and their versions.</p>
+
+
+</div>
+
+<div id="width"></div>
+
+<h3>
+<a class="anchor" name="width" href="#width"></a>
+<code>width()</code>
+  
+
+</h3>
+
+<p>Gets the width of the platform’s viewport using <code class="highlighter-rouge">window.innerWidth</code>.
+Using this method is preferred since the dimension is a cached value,
+which reduces the chance of multiple and expensive DOM reads.</p>
+
+<h2 id="sass-variable-header"><a class="anchor" name="sass-variables" href="#sass-variables"></a>Sass Variables</h2>
+<div id="sass-variables" ng-controller="SassToggleCtrl">
+  <div class="sass-platform-toggle">
+    
+      
+      
+      <a ng-init="setSassPlatform('base')" ng-class="{ active: active === 'base' }" ng-click="setSassPlatform('base')">All</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'ios' }" ng-click="setSassPlatform('ios')">iOS</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'md' }" ng-click="setSassPlatform('md')">Material Design</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'wp' }" ng-click="setSassPlatform('wp')">Windows Platform</a>
+      
+      
+    
+  </div>
+
+
+  
+  <table ng-show="active === 'base'" id="sass-base" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$cordova-statusbar-padding-modal-max-width</code></td>
+        
+          <td><code>767px</code></td>
+        
+        <td><p>The breakpoint when a modal becomes inset</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'ios'" id="sass-ios" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$cordova-ios-statusbar-padding</code></td>
+        
+          <td><code>20px</code></td>
+        
+        <td><p>Height of the Statusbar</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$cordova-ios-statusbar-padding-modal-max-width</code></td>
+        
+          <td><code>$cordova-statusbar-padding-modal-max-width</code></td>
+        
+        <td><p>The breakpoint when a modal becomes inset</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'md'" id="sass-md" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$cordova-md-statusbar-padding</code></td>
+        
+          <td><code>20px</code></td>
+        
+        <td><p>Height of the Statusbar</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$cordova-md-statusbar-padding-modal-max-width</code></td>
+        
+          <td><code>$cordova-statusbar-padding-modal-max-width</code></td>
+        
+        <td><p>The breakpoint when a modal becomes inset</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'wp'" id="sass-wp" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$cordova-wp-statusbar-padding</code></td>
+        
+          <td><code>20px</code></td>
+        
+        <td><p>Height of the Statusbar</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$cordova-wp-statusbar-padding-modal-max-width</code></td>
+        
+          <td><code>$cordova-statusbar-padding-modal-max-width</code></td>
+        
+        <td><p>The breakpoint when a modal becomes inset</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div>
+
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../../../../../www.google-analytics.com/cx/f9704.txt?experiment=MRClmJX_QEakg3kJs2jH9g"></script>
+
+<script src="../../../../js/ionic-site.min66d2.js?v=3fc9bf1ff60463e990bde7bfb65b71bf"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ionicframework.com/docs/api/platform/Platform/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 May 2017 12:34:20 GMT -->
+</html>

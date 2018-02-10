@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+</head>
+<body>
+
+<script>
+  //操作集合
+  //json
+  var jsonStr = '{"name":"michael","age":20}';
+  var jsonObj = $.parseJSON(jsonStr);
+  console.log(jsonObj);
+  //遍历集合
+  var list = ['michal','john','finch'];
+  $.each(list, function (index,value) {
+    console.log(index,value);
+  });
+  //在集合中得到新的集合
+  var numList = [20,100,40,80,30];
+  var numListAfterDeal = $.grep(numList, function (value) {
+    return value > 50
+  })
+  console.log(numListAfterDeal);
+
+  //字符串操作
+  var name = " zhangsan ";
+  console.log(name.length);
+  var nameAfterDeal = $.trim(name);
+  console.log(nameAfterDeal.length);
+
+
+</script>
+
+</body>
+</html>
